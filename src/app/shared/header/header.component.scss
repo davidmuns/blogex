@@ -1,0 +1,30 @@
+.toolbarClass{
+    background-color: #B0BEC5;//200
+    
+    #title{
+        width:200px;
+        margin: 20px auto;
+        font-size: 1.8rem;
+        color: #263238;
+    }
+    #logReg{
+        width:130px;
+        a{
+            color: #263238;
+            font-size: .9rem;
+            cursor: pointer;
+        }
+    }
+    #logout{
+        div{
+            color: #263238;
+            font-size: .9rem;
+            cursor: pointer;
+        }
+    }
+}
+.modalBox{
+    background: pink;
+    padding:15px;
+    border-radius: 5px;
+}
