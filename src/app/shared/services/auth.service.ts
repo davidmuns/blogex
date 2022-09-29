@@ -1,6 +1,6 @@
 import { Login } from './../models/login';
 import { User } from './../models/user';
- import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
