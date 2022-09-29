@@ -14,7 +14,9 @@ form>div{
     text-align: center;
 }
 form span{
-    color: var(--accent);
+    color: var(--warn);
     cursor: pointer;
+}
+form span:hover{
     text-decoration: underline;
 }

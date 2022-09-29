@@ -1,0 +1,16 @@
+.example-full-width{
+    margin: 10px 42%;
+    width: 300px;
+    @media(max-width:1200px){
+        margin: 10px 34%;
+    }
+    @media(max-width:800px){
+        margin: 10px 28%;
+    }
+    @media(max-width: 600px){
+        margin: 10px 20%;
+    }
+}
+input{
+    width:90%;
+}
