@@ -17,7 +17,8 @@ export class SignupComponent implements OnInit {
   public hide:boolean = true;
   public signupForm!: FormGroup;
 
-  constructor(private readonly dialog: MatDialog,
+  constructor(
+    private readonly dialog: MatDialog,
     private readonly fb: FormBuilder,
     public authSvc: AuthService,
     private readonly router: Router,
@@ -59,7 +60,7 @@ export class SignupComponent implements OnInit {
         this.toastr.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center',
         });
-
+        this.dialog.closeAll();
 
       },
 
