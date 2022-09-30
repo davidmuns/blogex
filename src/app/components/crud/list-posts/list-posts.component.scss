@@ -1,0 +1,35 @@
+.container{
+  position: absolute;
+  left:70%;
+  width:30%;
+  margin-top: 0px;
+}
+table {
+  width: 100%;
+  background-color: silver;
+}
+mat-label{
+  color:rgb(121, 47, 140);
+  font-size: 13pt;
+}
+  
+.mat-form-field {
+  padding: 0px 3%;
+  font-size: 14px;
+  width: 94%;
+  background: LightGrey;
+}
+mat-paginator{
+  width:100%;
+}
+.estilsArt{
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.estilsArt:hover {
+  color: MediumSpringGreen;
+  background-color: dimgray;
+}
+button{
+  background-color: rgba(210,210,210, 1);
+}

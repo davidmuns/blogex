@@ -8,13 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { HomeComponent } from './components/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { CrudModule } from './components/crud/crud.module';
 
 import { HeaderComponent } from './shared/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { SearchComponent } from './components/search/search.component';
-
 
 @NgModule({
   declarations: [
@@ -31,8 +30,8 @@ import { SearchComponent } from './components/search/search.component';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    MatAutocompleteModule,
-    HttpClientModule
+    HttpClientModule,
+    CrudModule
   ],
   providers: [],
   bootstrap: [AppComponent]
