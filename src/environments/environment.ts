@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   users: "",
-  AUTH_URL: 'https://davidmuns-login.herokuapp.com/auth/'
+  AUTH_URL: 'https://davidmuns-login.herokuapp.com/auth/',
+  EMAIL_PASSWORD_URL: 'https://davidmuns-login.herokuapp.com/email-password/',
 };
 
 /*

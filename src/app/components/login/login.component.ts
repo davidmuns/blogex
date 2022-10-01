@@ -1,3 +1,4 @@
+import { EmailPasswordComponent } from './../email-password/email-password.component';
 import { Router } from '@angular/router';
 import { Login } from './../../shared/models/login';
 import { Component, OnInit } from '@angular/core';
@@ -40,6 +41,11 @@ export class LoginComponent implements OnInit {
   signupOpen() {
     this.dialog.closeAll();
     this.dialog.open(SignupComponent);
+  }
+
+  emailOpen() {
+    this.dialog.closeAll();
+    this.dialog.open(EmailPasswordComponent);
   }
 
   loginUser(login: Login) {
