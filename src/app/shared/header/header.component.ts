@@ -1,3 +1,4 @@
+import { TokenService } from './../services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
@@ -13,15 +14,26 @@ export class HeaderComponent implements OnInit {
 
   public validation: boolean = false;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    public tokenService: TokenService
+  ) {
 
-  ngOnInit(): void { }
+  }
 
-  openDialog(){
+  ngOnInit(): void {
+    
+  }
+
+  openDialog() {
     this.dialog.open(LoginComponent);
   }
-  signupDialog(){
+  signupDialog() {
     this.dialog.open(SignupComponent);
+  }
+
+  onLogout(){
+    this.tokenService.logOut();
   }
 
 }

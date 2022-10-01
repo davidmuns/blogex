@@ -2,13 +2,15 @@
     <mat-toolbar-row>
         <mat-icon>home</mat-icon>
         <h1 id="title">Blog de rutes</h1>
-        <div id="logReg" *ngIf="this.validation == false">
+        <div id="logReg" *ngIf="this.tokenService.isLogged() === false; else logged">
             <a data-bs-toggle="modal" data-bs-target="#LogIn" (click)="openDialog()">LOG IN &nbsp;</a>
             <span>-&nbsp;&nbsp;</span>
             <a data-bs-toggle="modal" data-bs-target="#SignUp" (click)="signupDialog()">SIGN UP</a>
         </div>
-        <div id="logOut">
-            <div *ngIf="this.validation">LOG OUT</div>
-        </div>
+        <ng-template #logged>
+            <div id="logOut" #isLoged>
+                <a (click)="onLogout()">LOG OUT</a>
+            </div>
+        </ng-template>
     </mat-toolbar-row>
 </mat-toolbar>

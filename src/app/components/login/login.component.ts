@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     this.dialog.open(EmailPasswordComponent);
   }
 
-  loginUser(login: Login) {
+  onSubmit(login: Login) {
     this.authSvc.loginUser(login).subscribe({
       next: data => {
         this.tokenService.setToken(data.token);
@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
         this.toastr.error(err.error.message, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
+        this.loginForm.reset();
       }
     });
   }
