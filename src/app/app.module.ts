@@ -9,14 +9,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './components/home/home.component';
 
 import { HeaderComponent } from './shared/header/header.component';
-import { LoginComponent } from './components/login/login.component';
-import { SignupComponent } from './components/signup/signup.component';
-import { EmailPasswordComponent } from './components/email-password/email-password.component';
+import { LoginComponent } from './components/Auth/login/login.component';
+import { SignupComponent } from './components/Auth/signup/signup.component';
+import { EmailPasswordComponent } from './components/Auth/email-password/email-password.component';
 
 
 import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
 
 
 
@@ -27,7 +28,8 @@ import { ToastrModule } from 'ngx-toastr';
     HeaderComponent,
     LoginComponent,
     SignupComponent,
-    EmailPasswordComponent
+    EmailPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,9 @@
+import { ResetPassword } from './../models/reset-password';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Email } from '../models/Email';
+import { Email } from '../models/email';
 
 
 const EMAIL_PASSWORD_URL = environment.EMAIL_PASSWORD_URL;
@@ -18,7 +19,7 @@ export class EmailPasswordService {
     return this.httpClient.post<any>(EMAIL_PASSWORD_URL + 'send', email);
   }
 
-  // public resetPassword(resetPasswordDto: ResetPasswordDto): Observable<any> {
-  //   return this.httpClient.post<any>(EMAIL_PASSWORD_URL + 'reset', resetPasswordDto);
-  // }
+  public resetPassword(resetPassword: ResetPassword): Observable<any> {
+    return this.httpClient.post<any>(EMAIL_PASSWORD_URL + 'reset', resetPassword);
+  }
 }
