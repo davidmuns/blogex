@@ -1,1 +1,38 @@
-<p>new works!</p>
+<mat-card class="example-card">
+    <mat-card-title>Create a new article</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="newPostForm" (ngSubmit)="newPost(newPostForm.value)">
+            <p>
+            <mat-form-field class="input-width" appearance="fill">
+                <mat-label>Title</mat-label>
+                <input matInput type="text"  id="title" formControlName="title" placeholder="The title of your article">
+            </mat-form-field>
+            </p>
+
+            <div *ngFor="let view of viewForm">
+                <div class="containerFile">
+                    <label>Picture {{ view }}:</label><br>
+                    <input type="file" accept=".png, .jpg, .jpeg" multiple id="inputUpload" formControlName="img{{ view }}" (change)="handleImage1($event)">
+                    <label for="inputUpload">Foto <mat-icon>backup</mat-icon></label>
+                </div>
+                
+                <p>
+                <mat-form-field class="input-width" appearance="fill">
+                    <mat-label>Alt {{ view }}</mat-label>
+                    <input matInput formControlName="alt{{ view }}" placeholder="Information about the picture">
+                </mat-form-field>
+                </p>
+                <p>
+                <mat-form-field class="input-width" appearance="fill">
+                    <mat-label>Text {{ view }}</mat-label>
+                    <textarea matInput id="textarea" formControlName="text{{ view }}" placeholder="Some text. The content of your article"></textarea>
+                </mat-form-field>
+                </p>
+            </div>
+            
+            <button id="moreButton" mat-stroked-button color="accent" (click)="moreImgs()">{{ buttonTag }}</button>
+            <button id="createButton" type="submit" mat-raised-button>Create Article</button>
+        </form>
+    </mat-card-content>
+  </mat-card>
+

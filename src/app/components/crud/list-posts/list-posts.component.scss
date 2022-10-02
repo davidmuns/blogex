@@ -1,23 +1,23 @@
 .container{
   position: absolute;
-  left:70%;
+  top: 74px;
+  left:69%;
   width:30%;
-  margin-top: 0px;
+  margin: 0px;
 }
 table {
   width: 100%;
   background-color: silver;
+} 
+mat-form-field mat-label{
+  font-size: 14pt;
+  //color: rgba(30,40,180,1);
 }
-mat-label{
-  color:rgb(121, 47, 140);
-  font-size: 13pt;
-}
-  
 .mat-form-field {
   padding: 0px 3%;
   font-size: 14px;
   width: 94%;
-  background: LightGrey;
+  background: #EEEEEE;
 }
 mat-paginator{
   width:100%;
