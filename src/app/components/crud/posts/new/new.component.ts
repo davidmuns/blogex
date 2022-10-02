@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class NewComponent implements OnInit{
 
-  @ViewChild('inputFields') private repeatForm!: TemplateRef<any>;
   public newPostForm!: FormGroup;
   public viewForm: any = [1];
   public flag: number = 1;
@@ -47,7 +46,6 @@ export class NewComponent implements OnInit{
       this.flag--;
       this.buttonTag = "One More";
     }
-    console.log("Flag: ", this.flag);
   }
 
   newPost(post:any){}

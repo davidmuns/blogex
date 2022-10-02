@@ -7,7 +7,7 @@
 }
 table {
   width: 100%;
-  background-color: silver;
+  background-color: Gainsboro;
 } 
 mat-form-field mat-label{
   font-size: 14pt;
@@ -17,7 +17,7 @@ mat-form-field mat-label{
   padding: 0px 3%;
   font-size: 14px;
   width: 94%;
-  background: #EEEEEE;
+  background: rgba(240,240,240, 1);;
 }
 mat-paginator{
   width:100%;
@@ -31,5 +31,5 @@ mat-paginator{
   background-color: dimgray;
 }
 button{
-  background-color: rgba(210,210,210, 1);
+  background-color: rgba(230,230,230, 1);
 }
