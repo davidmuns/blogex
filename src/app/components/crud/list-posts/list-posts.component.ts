@@ -1,21 +1,23 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
+import { DeleteComponent } from '../delete/delete.component';
 
-/* export interface PeriodicElement {
-  titol: string
-} */
+export interface PeriodicElement {
+  title: string
+}
 
-const ELEMENT_DATA: any[] = [
-  {title: "Primer article", alt1: "Imatge del primer article", text1: "Aquest és el tex, una mica més llarg del primer article"},
-  {title: "Segon article", alt1: "Imatge del primer article", text1: "Aquest és el tex, una mica més llarg del primer article"},
-  {title: "Tercer article", alt1: "Imatge del primer article", text1: "Aquest és el tex, una mica més llarg del primer article"},
-  {title: "quart article", alt1: "Imatge del primer article", text1: "Aquest és el tex, una mica més llarg del primer article"},
-  {title: "quart article", alt1: "Imatge del primer article", text1: "Aquest és el tex, una mica més llarg del primer article"},
-  {title: "Desè article", alt1: "Imatge del primer article", text1: "Aquest és el tex, una mica més llarg del primer article"},
-  {title: "Onzè article", alt1: "Imatge del primer article", text1: "Aquest és el tex, una mica més llarg del primer article"}
+const ELEMENT_DATA: PeriodicElement[] = [
+  {title: "Primer article"},
+  {title: "Segon article"},
+  {title: "Tercer article"},
+  {title: "quart article"},
+  {title: "Cinquè article"},
+  {title: "Desè article"},
+  {title: "Onzè article"}
 ];
 
 @Component({
@@ -36,7 +38,7 @@ export class ListPostsComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private readonly router: Router) { }
+  constructor(private readonly router: Router, private readonly dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
@@ -47,11 +49,13 @@ export class ListPostsComponent implements OnInit {
 
   applyFilter(event: Event){}
   
-  onEdit(post: any){
+  onEdit(post: Article){
     this.navigationExtras.state = post;
     this.router.navigate(['/admin/edit'], this.navigationExtras);
   }
 
-  onDelete(post: any){}
+  onDelete(post: any){
+    this.dialog.open(DeleteComponent);
+  }
 
 }

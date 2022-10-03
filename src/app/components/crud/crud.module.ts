@@ -10,6 +10,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { NewComponent } from './posts/new/new.component';
 import { EditComponent } from './posts/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DeleteComponent } from './delete/delete.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CrudComponent,
     ListPostsComponent,
     NewComponent,
-    EditComponent
+    EditComponent,
+    DeleteComponent
   ],
   imports: [
     CommonModule,
