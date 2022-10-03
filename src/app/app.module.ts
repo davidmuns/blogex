@@ -19,6 +19,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
 
+import { ArticleService } from './shared/services/article.service';
+import { ArticleComponent } from './components/article/article.component';
+
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { ResetPasswordComponent } from './components/Auth/reset-password/reset-p
     LoginComponent,
     SignupComponent,
     EmailPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,7 @@ import { ResetPasswordComponent } from './components/Auth/reset-password/reset-p
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
   ],
-  providers: [],
+  providers: [ArticleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
