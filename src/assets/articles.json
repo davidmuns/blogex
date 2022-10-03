@@ -2,13 +2,13 @@
   {
     "id": 1,
     "title": "Title 1",
-    "img": "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2016/11/03/14781812561274.jpg",
+    "img": "https://www.sensacionrural.es/blog/wp-content/uploads/2019/04/rutas-senderismo-asturias.jpg",
     "description": "Description 1"
   },
   {
     "id": 2,
     "title": "Title 2",
-    "img": "https://www.lavozdegalicia.es/default/2019/09/22/00121569162722054118567/Foto/HS23C7F1_163036.jpg",
+    "img": "https://espanafascinante.com/wp-content/uploads/imagen_rutas-de-senderismo-por-Asturias_Os-Teixois.jpg",
     "description": "Description 2"
   },
   {
@@ -32,7 +32,7 @@
   {
     "id": 6,
     "title": "Title 6",
-    "img": "https://www.revistaoxigeno.es/uploads/s1/23/68/39/4/5df9eb290ce69433318b48ec-el-abecedario-de-la-montana.jpeg",
+    "img": "https://static1.abc.es/media/bienestar/2021/05/08/rutas-montana-consejo-k0LI--1200x630@abc.jpg",
     "description": "Description 3"
   }
 ]
