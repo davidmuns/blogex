@@ -1,1 +1,48 @@
-<p>edit works!</p>
+<mat-card class="example-card">
+    <mat-card-title>Edit article</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="editPostForm" (ngSubmit)="editPost(editPostForm.value)">
+            <p>
+            <mat-form-field class="input-width" appearance="fill">
+                <mat-label>Title</mat-label>
+                <input matInput type="text"  id="title" formControlName="title" placeholder="The title of your article">
+            </mat-form-field>
+            </p>
+
+            <div *ngFor="let view of viewForm">
+                <div class="containerFile">
+                    <label>Picture {{ view }}:</label><br>
+                    <input type="file" accept=".png, .jpg, .jpeg" multiple id="inputUpload" formControlName="img{{ view }}" (change)="handleImage1($event)">
+                    <label for="inputUpload">Foto <mat-icon>backup</mat-icon></label>
+                </div>
+                <p>
+                <mat-form-field class="input-width" appearance="fill">
+                    <mat-label>Alt {{ view }}</mat-label>
+                    <input matInput formControlName="alt{{ view }}" placeholder="Information about the picture">
+                </mat-form-field>
+                </p>
+                <p>
+                <mat-form-field class="input-width" appearance="fill">
+                    <mat-label>Text {{ view }}</mat-label>
+                    <textarea matInput id="textarea" formControlName="text{{ view }}" placeholder="Some text. The content of your article"></textarea>
+                </mat-form-field>
+                </p>
+            </div>
+
+            <h3 matTooltip="Introduce the coordinates to see this route on the map" matTooltipPosition="right">Coordinates:</h3>
+            <table class="example-full-width" cellspacing="0"><tr>
+                <td><mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Latitude</mat-label>
+                  <input matInput formControlName="longitude">
+                </mat-form-field></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <td><mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Longitude</mat-label>
+                  <input matInput formControlName="latitude">
+                </mat-form-field></td>
+            </tr></table>
+            
+            <button id="moreButton" mat-stroked-button color="accent" (click)="moreImgs()">{{ buttonTag }}</button>
+            <button id="createButton" type="submit" mat-raised-button>Save Changes</button>
+        </form>
+    </mat-card-content>
+  </mat-card>
