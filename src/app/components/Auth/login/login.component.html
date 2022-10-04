@@ -1,16 +1,16 @@
-<form>
+<form [formGroup]="this.loginForm" (ngSubmit)="onSubmit(loginForm.value)">
     <h3>Login</h3>
     <p>
     <mat-form-field appearance="fill">
-      <mat-label>User Name</mat-label>
-      <input matInput placeholder="User Name">
+      <mat-label>Username or email</mat-label>
+      <input matInput placeholder="User Name" formControlName="nombreUsuario" required>
     </mat-form-field>
     </p>
 
     <p>
     <mat-form-field appearance="fill">
         <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'">
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
         <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </div>
@@ -18,6 +18,7 @@
     </p>
 
     <button mat-raised-button>LogIn</button>
-
-    <div (click)="signupOpen()">Create an account</div>
+    <div class="link-signup" (click)="signupOpen()">Create an account</div>
+    <div class="forgot-pass">Forgot your password?<span (click)="emailOpen()">&nbsp;send email</span></div>
+    
 </form>
