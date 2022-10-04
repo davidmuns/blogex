@@ -1,6 +1,7 @@
 <mat-toolbar class="toolbarClass">
     <mat-toolbar-row>
-        <mat-icon>home</mat-icon>
+        <mat-icon style="cursor:pointer" routerLink="/home">home</mat-icon>
+        <a routerLink="/admin/new" mat-button>Your routes</a>
         <h1 id="title">Blog de rutes</h1>
         <div id="logReg" *ngIf="this.validation == false">
             <a data-bs-toggle="modal" data-bs-target="#LogIn" (click)="openDialog()">LOG IN &nbsp;</a>

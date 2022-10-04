@@ -1,0 +1,22 @@
+div{
+    padding: 0px 50px;
+}
+.material-icons{
+    color: red;
+    margin: 10px 30%;
+    font-size: 70px;
+}
+h3{
+    font-size: 1.6rem;
+    text-align: center;
+}
+button{
+    color: white;
+}
+button:nth-child(1){
+    background-color: var(--accent);
+}
+button:nth-child(2){
+    background-color: var(--warnOrange);
+    margin-left: 20px;
+}

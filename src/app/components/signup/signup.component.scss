@@ -1,3 +1,6 @@
+form{
+    padding: 0px 20px;
+}
 h3{
     text-align: center;
     font-size: 1.6rem;
@@ -14,7 +17,7 @@ form>div{
     text-align: center;
 }
 form span{
-    color: var(--warn);
+    color: var(--warnOrange);
     cursor: pointer;
 }
 form span:hover{
