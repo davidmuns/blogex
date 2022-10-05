@@ -5,8 +5,10 @@
 export const environment = {
   production: false,
   users: "",
-  AUTH_URL: 'https://davidmuns-login.herokuapp.com/auth/',
-  EMAIL_PASSWORD_URL: 'https://davidmuns-login.herokuapp.com/email-password/',
+  PRODUCT_URL: 'http://localhost:8080/producto/',
+  AUTH_URL: 'http://localhost:8080/auth/',
+  EMAIL_PASSWORD_URL: 'http://localhost:8080/email-password/',
+  ARTICLE_BASE_URL: 'http://localhost:8080/article/'
 };
 
 /*

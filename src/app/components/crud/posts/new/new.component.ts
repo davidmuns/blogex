@@ -1,3 +1,6 @@
+import { ToastrService } from 'ngx-toastr';
+import { ArticleService } from './../../../../shared/services/article.service';
+import { TokenService } from './../../../../shared/services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Article } from 'src/app/shared/models/article';
@@ -14,7 +17,12 @@ export class NewComponent implements OnInit{
   public flag: number = 1;
   public buttonTag: string = "One More";
 
-  constructor(private readonly fBuilder: FormBuilder) { 
+  constructor(
+    private readonly fBuilder: FormBuilder,
+    private tokenService: TokenService,
+    private articleService: ArticleService,
+    private toastrService: ToastrService
+    ) { 
     this.initForm();
   }
 
@@ -51,7 +59,25 @@ export class NewComponent implements OnInit{
     }
   }
 
-  newPost(post: Article){}
+  newPost(post: Article){
+    console.log(post);
+    const username = this.tokenService.getUsername() as string;
+    console.log(username);
+    
+    this.articleService.createArticle(post, username).subscribe({
+      next: data => {
+        console.log(data.mensaje);
+        
+      },
+      error: err => {
+        console.log(err);
+        
+      }
+      
+    });
+    
+    
+  }
 
   handleImage1(image:any){}
 
