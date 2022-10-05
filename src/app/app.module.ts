@@ -25,6 +25,7 @@ import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
+import { MapComponent } from './components/map/map.component';
 
 
 
@@ -38,7 +39,8 @@ import { ResetPasswordComponent } from './components/Auth/reset-password/reset-p
     SignupComponent,
     EmailPasswordComponent,
     ResetPasswordComponent,
-    SearchComponent
+    SearchComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
