@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,8 +24,7 @@ import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
-
-
+import { interceptorProvider } from './interceptors/article-interceptor.service';
 
 
 @NgModule({
@@ -50,7 +48,7 @@ import { ResetPasswordComponent } from './components/Auth/reset-password/reset-p
     CrudModule,
     ToastrModule.forRoot(), // ToastrModule added
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
