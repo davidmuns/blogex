@@ -67,10 +67,16 @@ export class NewComponent implements OnInit{
     this.articleService.createArticle(post, username).subscribe({
       next: data => {
         console.log(data.mensaje);
+        this.toastrService.success(data.mensaje, '', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
         
       },
       error: err => {
         console.log(err);
+        this.toastrService.error(err.error.mensaje, '', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
         
       }
       
