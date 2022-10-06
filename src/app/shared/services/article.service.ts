@@ -17,4 +17,8 @@ export class ArticleService {
   public createArticle(post: Article, username: string): Observable<any> {
     return this.HttpClient.post<any>(ARTICLE_BASE_URL + 'create/' + username, post);
   }
+
+  public getAll(username: string): Observable<Article[]> {
+    return this.HttpClient.get<Article[]>(ARTICLE_BASE_URL + 'list/' + username);
+  }
 }

@@ -16,6 +16,7 @@ export class NewComponent implements OnInit{
   public viewForm: any = [1];
   public flag: number = 1;
   public buttonTag: string = "One More";
+  articles: Article[] = [];
 
   constructor(
     private readonly fBuilder: FormBuilder,
@@ -70,7 +71,7 @@ export class NewComponent implements OnInit{
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        
+        this.getAllArticlesByUsername();
       },
       error: err => {
         console.log(err);
@@ -80,9 +81,21 @@ export class NewComponent implements OnInit{
         
       }
       
-    });
-    
-    
+    });   
+  }
+
+  private getAllArticlesByUsername(){
+    const username = this.tokenService.getUsername() as string;
+    this.articleService.getAll(username).subscribe({
+      next: data => {
+        this.articles = data;
+      },
+      error: err => {
+        console.log(err);
+        
+      }
+    })
+
   }
 
   handleImage1(image:any){}

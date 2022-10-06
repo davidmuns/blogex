@@ -51,5 +51,10 @@
             <button id="createButton" type="submit" mat-raised-button>Create Article</button>
         </form>
     </mat-card-content>
+    <ng-container *ngFor="let article of this.articles" style="margin-top: 50px;">
+        <img [src]="article.img1" alt="">
+      </ng-container>
   </mat-card>
+
+  
 
