@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Map, tileLayer } from 'leaflet';
 
 @Component({
@@ -8,7 +8,9 @@ import { Map, tileLayer } from 'leaflet';
 })
 export class MapComponent implements AfterViewInit {
 
-  constructor() { }
+  @ViewChild('capa') toCapa!: ElementRef;
+
+  constructor(private readonly renderer2: Renderer2) { }
 
   ngAfterViewInit(): void {
     const map = new Map('map').setView([41.40249, 2.194332], 13);
@@ -16,6 +18,11 @@ export class MapComponent implements AfterViewInit {
       maxZoom: 20,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+  }
+
+  removeCapa(){
+    const asCapa = this.toCapa.nativeElement;
+    this.renderer2.setStyle(asCapa, 'width', '0px');
   }
 
 }
