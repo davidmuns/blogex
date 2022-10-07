@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from './../../../../shared/services/article.service';
 import { TokenService } from './../../../../shared/services/token.service';
@@ -16,13 +17,13 @@ export class NewComponent implements OnInit{
   public viewForm: any = [1];
   public flag: number = 1;
   public buttonTag: string = "One More";
-  articles: Article[] = [];
-
+  
   constructor(
     private readonly fBuilder: FormBuilder,
     private tokenService: TokenService,
     private articleService: ArticleService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
     ) { 
     this.initForm();
   }
@@ -71,7 +72,7 @@ export class NewComponent implements OnInit{
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        this.getAllArticlesByUsername();
+        this.router.navigate(['home']);
       },
       error: err => {
         console.log(err);
@@ -82,20 +83,6 @@ export class NewComponent implements OnInit{
       }
       
     });   
-  }
-
-  private getAllArticlesByUsername(){
-    const username = this.tokenService.getUsername() as string;
-    this.articleService.getAll(username).subscribe({
-      next: data => {
-        this.articles = data;
-      },
-      error: err => {
-        console.log(err);
-        
-      }
-    })
-
   }
 
   handleImage1(image:any){}

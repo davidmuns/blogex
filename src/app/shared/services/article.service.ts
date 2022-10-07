@@ -21,4 +21,9 @@ export class ArticleService {
   public getAll(username: string): Observable<Article[]> {
     return this.HttpClient.get<Article[]>(ARTICLE_BASE_URL + 'list/' + username);
   }
+
+  public delete(articleId: Number): Observable<any>{
+    return this.HttpClient.delete<any>(ARTICLE_BASE_URL + 'delete/' + articleId);
+  }
+  
 }

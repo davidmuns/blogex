@@ -1,4 +1,5 @@
 export interface Article {
+    id: Number,
     title: string,
     img1:  any,
     alt1: string,
