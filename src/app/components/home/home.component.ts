@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   articles: Article[] = [];
+  
   constructor(
     private tokenService: TokenService,
     private articleService: ArticleService,
@@ -49,6 +50,10 @@ export class HomeComponent implements OnInit {
         
       }
     })
+  }
+
+  onEdit(articleId: Number){
+
   }
 
 }

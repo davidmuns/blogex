@@ -14,12 +14,20 @@ export class ArticleService {
 
   constructor(private HttpClient: HttpClient) { }
 
-  public createArticle(post: Article, username: string): Observable<any> {
-    return this.HttpClient.post<any>(ARTICLE_BASE_URL + 'create/' + username, post);
+  public getArticle(articleId: Number): Observable<Article> {
+    return this.HttpClient.get<Article>(ARTICLE_BASE_URL + articleId);
   }
 
   public getAll(username: string): Observable<Article[]> {
     return this.HttpClient.get<Article[]>(ARTICLE_BASE_URL + 'list/' + username);
+  }
+
+  public createArticle(post: Article, username: string): Observable<any> {
+    return this.HttpClient.post<any>(ARTICLE_BASE_URL + 'create/' + username, post);
+  }
+
+  public update(articleId: number, article: Article): Observable<any>{
+    return this.HttpClient.put<any>(ARTICLE_BASE_URL + 'update/' + articleId, article);
   }
 
   public delete(articleId: Number): Observable<any>{

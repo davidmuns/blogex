@@ -11,6 +11,7 @@ import { NewComponent } from './posts/new/new.component';
 import { EditComponent } from './posts/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
+import { EditTempComponent } from './posts/edit-temp/edit-temp.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { DeleteComponent } from './delete/delete.component';
     ListPostsComponent,
     NewComponent,
     EditComponent,
-    DeleteComponent
+    DeleteComponent,
+    EditTempComponent
   ],
   imports: [
     CommonModule,

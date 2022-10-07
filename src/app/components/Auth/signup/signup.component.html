@@ -31,37 +31,40 @@
 </form> -->
 
 
-<form [formGroup]="this.signupForm" (ngSubmit)="newUser(signupForm.value)"> <!-- [formGroup]="signupForm" (ngSubmit)="newUser(signupForm.value)"  formControlName="user"  formControlName="email"  formControlName="password" -->
+<form [formGroup]="this.signupForm" (ngSubmit)="newUser(signupForm.value)">
+    <!-- [formGroup]="signupForm" (ngSubmit)="newUser(signupForm.value)"  formControlName="user"  formControlName="email"  formControlName="password" -->
     <h3>Signup</h3>
     <p>
         <mat-form-field appearance="fill">
-          <mat-label>Name</mat-label>
-          <input matInput placeholder="Name" formControlName="nombre" required>
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" formControlName="nombre" required>
         </mat-form-field>
-        </p>
+    </p>
     <p>
-    <mat-form-field appearance="fill">
-      <mat-label>User Name</mat-label>
-      <input matInput placeholder="User Name" formControlName="nombreUsuario" required>
-    </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>User Name</mat-label>
+            <input matInput placeholder="User Name" formControlName="nombreUsuario" required>
+        </mat-form-field>
     </p>
 
     <p>
-    <mat-form-field appearance="fill">
-        <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="Email" formControlName="email" required>
-        <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-    </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="Email" formControlName="email" required>
+            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+        </mat-form-field>
     </p>
 
     <p>
-    <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password" required>
-        <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </div>
-    </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" formControlName="password"
+                required>
+            <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </div>
+        </mat-form-field>
     </p>
 
     <button type="submit" mat-raised-button>Signup</button>
