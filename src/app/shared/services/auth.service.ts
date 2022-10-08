@@ -16,16 +16,14 @@ export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   public signupUser(user: User): Observable<any>{
-    // const {email, password} = user;
-    // return this.http.post(email, password);
     return this.httpClient.post<any>(AUTH_URL + 'nuevo', user);
   }
 
-  public loginUser(login: Login): Observable<Jwt> {
-    return this.httpClient.post<Jwt>(AUTH_URL + 'login', login);
+  public loginUser(login: Login): Observable<any> {
+    return this.httpClient.post<any>(AUTH_URL + 'login', login);
   }
 
-  // loginByUserName(){
-  //   this.http.get(environment.users);
-  // } 
+  public getUserByTokenPassword(tokenPassword: string): Observable<any> {
+    return this.httpClient.get<any>(AUTH_URL + 'user/' + tokenPassword);
+  }
 } 
