@@ -29,5 +29,7 @@ span {
     font-size: .8rem;
     color: var(--warnOrange);
     cursor: pointer;
+}
+span:hover{
     text-decoration: underline;
 }

@@ -1,18 +1,22 @@
 .toolbarClass{
-    background-color: #B0BEC5;//200
+    background-color: var(--accent);//200
+    margin-bottom: 10px;
+    color: #69F0AE;
     mat-icon{
         width: 130px;
     }
     #title{
-        width:200px;
-        margin: 20px auto;
+        width:100px;
+        margin-top: 0px;
+        margin-left: 180px;
         font-size: 1.8rem;
-        color: #263238;
+        color: #69F0AE;
     }
     #logReg{
         width:130px;
+        margin-left: 60px;
         a{
-            color: #263238;
+            color: #69F0AE;
             font-size: .9rem;
             cursor: pointer;
         }
@@ -20,14 +24,9 @@
     #logOut{
         width:130px;
         a{
-            color: #263238;
+            color: #69F0AE;
             font-size: .9rem;
             cursor: pointer;
         }
     }
-}
-.modalBox{
-    background: pink;
-    padding:15px;
-    border-radius: 5px;
 }

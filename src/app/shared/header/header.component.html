@@ -2,8 +2,9 @@
     <mat-toolbar-row>
         <mat-icon style="cursor:pointer" routerLink="/home">home</mat-icon>
         <a routerLink="/admin/new" mat-button>Your routes</a>
-        <h1 id="title">Blog de rutes</h1>
-        <div id="logReg" *ngIf="this.tokenService.isLogged() === false; else logged">
+        <app-search></app-search>
+        <h1 id="title">Blog</h1>
+        <div id="logReg" *ngIf="this.tokenService.isLogged() === false; else logged" color="accent">
             <a data-bs-toggle="modal" data-bs-target="#LogIn" (click)="openDialog()">LOG IN &nbsp;</a>
             <span>-&nbsp;&nbsp;</span>
             <a data-bs-toggle="modal" data-bs-target="#SignUp" (click)="signupDialog()">SIGN UP</a>
