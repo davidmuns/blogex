@@ -64,7 +64,7 @@ export class EditTempComponent implements OnInit {
 
   onSubmit(article: Article){
     const articleId = Number(this.activatedRoute.snapshot.paramMap.get('articleid'));
-    this.articleService.update(articleId, article).subscribe({
+    this.articleService.updateArticle(articleId, article).subscribe({
       next: data => {
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center',

@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   }
 
   onDelete(articleId: Number){
-    this.articleService.delete(articleId).subscribe({
+    this.articleService.deleteArticle(articleId).subscribe({
       next: data => {
         console.log(data.mensaje);
         this.toastrService.success(data.mensaje, '', {

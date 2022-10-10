@@ -13,6 +13,8 @@ import { Article } from 'src/app/shared/models/article';
 })
 export class NewComponent implements OnInit{
 
+  imagen!: File;
+
   public newPostForm!: FormGroup;
   public viewForm: any = [1];
   public flag: number = 1;
@@ -61,21 +63,41 @@ export class NewComponent implements OnInit{
     }
   }
 
-  newPost(post: Article){
-    console.log(post);
+  handleImage1(event: any){
+   this.imagen = event.target.files[0];
+    console.log(this.imagen);
+    
+  }
+
+  onSubmit(post: Article){
+    
     const username = this.tokenService.getUsername() as string;
-    console.log(username);
+    
+    post.imagen = this.imagen; 
+
+    
+
+    this.articleService.uploadImage(this.imagen).subscribe({
+      next: data => {
+        this.toastrService.success(data.mensaje, '', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+      },
+      error: err => {
+        this.toastrService.error(err.error.mensaje, '', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });     
+      }
+    })
     
     this.articleService.createArticle(post, username).subscribe({
       next: data => {
-        console.log(data.mensaje);
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         this.router.navigate(['home']);
       },
       error: err => {
-        console.log(err);
         this.toastrService.error(err.error.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
@@ -84,7 +106,5 @@ export class NewComponent implements OnInit{
       
     });   
   }
-
-  handleImage1(image:any){}
 
 }

@@ -26,12 +26,22 @@ export class ArticleService {
     return this.HttpClient.post<any>(ARTICLE_BASE_URL + 'create/' + username, post);
   }
 
-  public update(articleId: number, article: Article): Observable<any>{
+  public updateArticle(articleId: number, article: Article): Observable<any>{
     return this.HttpClient.put<any>(ARTICLE_BASE_URL + 'update/' + articleId, article);
   }
 
-  public delete(articleId: Number): Observable<any>{
+  public deleteArticle(articleId: Number): Observable<any>{
     return this.HttpClient.delete<any>(ARTICLE_BASE_URL + 'delete/' + articleId);
+  }
+
+  public uploadImage(img: File): Observable<any>{
+    const formData = new FormData();
+    formData.append('multipartFile', img);
+    return this.HttpClient.post<any>('http://localhost:8080/cloudinary/upload', formData);
+  }
+
+  public deleteImg(id: number): Observable<any>{
+    return this.HttpClient.delete<any>('http://localhost:8080/cloudinary/delete/' + id);
   }
   
 }

@@ -1,7 +1,7 @@
 <mat-card class="example-card">
     <mat-card-title>Create new article</mat-card-title>
     <mat-card-content>
-        <form [formGroup]="newPostForm" (ngSubmit)="newPost(newPostForm.value)">
+        <form [formGroup]="newPostForm" (ngSubmit)="onSubmit(newPostForm.value)">
             <p>
             <mat-form-field class="input-width" appearance="fill">
                 <mat-label>Title</mat-label>

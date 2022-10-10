@@ -2,6 +2,7 @@ export interface Article {
     id: Number,
     title: string,
     img1:  any,
+    imagen: File;
     alt1: string,
     text1: string,
     img2?:  any,
