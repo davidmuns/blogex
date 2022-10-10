@@ -34,7 +34,7 @@ export class SignupComponent implements OnInit {
       nombre: ['', Validators.required],
       nombreUsuario: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     })
   }
 
@@ -61,23 +61,16 @@ export class SignupComponent implements OnInit {
           timeOut: 3000, positionClass: 'toast-top-center',
         });
         this.dialog.closeAll();
-
+        //this.router.navigate(['admin/new']);
       },
 
       error: err => {
         console.log(err.error.mensaje);
         this.toastr.error(err.error.mensaje, '', {
           timeOut: 3000,  positionClass: 'toast-top-center',
-
         });
-
       }
-
     });
-
-    /* this.initform();
-    this.authSvc.signupUser(user);
-    this.router.navigate(['']);*/
   }
 
 }
