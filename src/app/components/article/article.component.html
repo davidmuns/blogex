@@ -1,0 +1,21 @@
+<div class="main-container">
+    <div *ngFor="let article of articles">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div class="example-header-image"></div>
+          <mat-card-title>{{ article.title }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="article.img1" alt="{{ article.alt1 }}">
+        <p>{{ article.alt1 }}</p>
+        <mat-card-content>
+          <p>
+            {{ article.text1 }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>

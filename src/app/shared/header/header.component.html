@@ -2,6 +2,7 @@
     <mat-toolbar-row class="toolbar">
         <mat-icon style="cursor:pointer" routerLink="/home">home</mat-icon>
         <a routerLink="/admin/new" mat-button>Your routes</a>
+        <a routerLink="/articles" mat-button>Article</a>
         <app-search></app-search>
         <h1 id="title">Blog</h1>
         <div id="logReg" *ngIf="this.tokenService.isLogged() === false; else logged" color="accent">

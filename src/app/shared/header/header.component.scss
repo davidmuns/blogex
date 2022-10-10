@@ -1,5 +1,5 @@
 .toolbarClass{
-    background-color: var(--accent);
+    background-color: var(--accent);//200
     margin-bottom: 10px;
     color: #69F0AE;
     mat-icon{
@@ -7,11 +7,13 @@
     }
     #title{
         width:100px;
+        margin-left: 14%;
         font-size: 1.8rem;
         color: #69F0AE;
     }
     #logReg{
         width:130px;
+        margin-left: 60px;
         a{
             color: #69F0AE;
             font-size: .9rem;
@@ -20,6 +22,7 @@
     }
     #logOut{
         width:130px;
+        text-align: end;
         a{
             color: #69F0AE;
             font-size: .9rem;
