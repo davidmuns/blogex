@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,6 +27,7 @@ import { ResetPasswordComponent } from './components/Auth/reset-password/reset-p
 import { MapComponent } from './components/map/map.component';
 
 
+import { interceptorProvider } from './interceptors/article-interceptor.service';
 
 
 @NgModule({
@@ -52,7 +52,7 @@ import { MapComponent } from './components/map/map.component';
     CrudModule,
     ToastrModule.forRoot(), // ToastrModule added
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

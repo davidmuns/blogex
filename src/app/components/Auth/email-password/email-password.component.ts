@@ -31,7 +31,7 @@ export class EmailPasswordComponent implements OnInit {
 
   private initform(): void {
     this.emailForm = this.fb.group({
-      emailTo: ['', [Validators.required, Validators.email]]
+      emailTo: ['', Validators.required]
     })
   }
 

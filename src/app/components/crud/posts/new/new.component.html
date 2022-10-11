@@ -16,6 +16,12 @@
                     <label for="inputUpload">Foto <mat-icon>backup</mat-icon></label>
                 </div>
                 <p>
+                    <mat-form-field class="input-width" appearance="fill">
+                        <mat-label>Img {{ view }}</mat-label>
+                        <input matInput formControlName="img{{ view }}" placeholder="Information about the picture">
+                    </mat-form-field>
+                    </p>
+                <p>
                 <mat-form-field class="input-width" appearance="fill">
                     <mat-label>Alt {{ view }}</mat-label>
                     <input matInput formControlName="alt{{ view }}" placeholder="Information about the picture">
@@ -46,4 +52,6 @@
         </form>
     </mat-card-content>
   </mat-card>
+
+  
 

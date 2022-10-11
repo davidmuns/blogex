@@ -1,1 +1,26 @@
 <app-map></app-map>
+<app-search></app-search>
+
+<div class="main-container">
+  <div *ngFor="let article of this.articles">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ article.title }}</mat-card-title>
+        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      </mat-card-header>
+      <a>
+        <img mat-card-image [src]="article.img1" alt="Photo of a Shiba Inu">
+      </a>
+      <mat-card-content>
+        <p>
+          {{ article.alt1 }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button routerLink="/edit/{{ article.id }}">Edit</button>
+        <button mat-button (click)="onDelete(article.id)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
