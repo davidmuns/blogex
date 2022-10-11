@@ -1,0 +1,56 @@
+export const ArticleJson = [
+    {
+      "id": 1,
+      "title": "Title 1",
+      "img1": "https://www.sensacionrural.es/blog/wp-content/uploads/2019/04/rutas-senderismo-asturias.jpg",
+      "alt1": "Paisatge asturià",
+      "text1": "Description 1",
+      "latitude": 41.831591, 
+      "longitude": -1.946639
+    },
+    {
+      "id": 2,
+      "title": "Title 2",
+      "img1": "https://espanafascinante.com/wp-content/uploads/imagen_rutas-de-senderismo-por-Asturias_Os-Teixois.jpg",
+      "alt1": "Camins amagats",
+      "text1": "Description 2",
+      "latitude": 42.40255199258423, 
+      "longitude": 2.1943192116804253  
+    },
+    {
+      "id": 3,
+      "title": "Title 3",
+      "img1": "https://www.revistaoxigeno.es/uploads/s1/23/68/39/4/5df9eb290ce69433318b48ec-el-abecedario-de-la-montana.jpeg",
+      "alt1": "Revista",
+      "text1": "Description 3",
+      "latitude": 42.09300337315629, 
+      "longitude": -2.946328944886432
+    },
+    {
+      "id": 4,
+      "title": "Title 4",
+      "img1": "https://e00-expansion.uecdn.es/assets/multimedia/imagenes/2016/11/03/14781812561274.jpg",
+      "alt1": "Llocs diferents",
+      "text1": "Description 1",
+      "latitude": 41.071760330261654, 
+      "longitude": -2.2046557206656345
+    },
+    {
+      "id": 5,
+      "title": "Title 5",
+      "img1": "https://www.lavozdegalicia.es/default/2019/09/22/00121569162722054118567/Foto/HS23C7F1_163036.jpg",
+      "alt1": "llocs de Galícia",
+      "text1": "Description 2",
+      "latitude": 41.58999686580363, 
+      "longitude": -2.257352728718054
+    },
+    {
+      "id": 6,
+      "title": "Title 6",
+      "img1": "https://static1.abc.es/media/bienestar/2021/05/08/rutas-montana-consejo-k0LI--1200x630@abc.jpg",
+      "alt1": "Rutes de muntanya",
+      "text1": "Description 3",
+      "latitude": 41.92174024466012, 
+      "longitude": -2.075335052129607
+    }
+  ]

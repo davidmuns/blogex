@@ -25,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
 import { MapComponent } from './components/map/map.component';
+import { ArticleComponent } from './components/article/article.component';
 
 
 import { interceptorProvider } from './interceptors/article-interceptor.service';
@@ -40,7 +41,8 @@ import { interceptorProvider } from './interceptors/article-interceptor.service'
     EmailPasswordComponent,
     ResetPasswordComponent,
     SearchComponent,
-    MapComponent
+    MapComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
