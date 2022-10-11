@@ -8,7 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'reset-password/:tokenPassword', component: ResetPasswordComponent},
+  {path: 'reset-password/:token-password', component: ResetPasswordComponent},
   {path: 'articles', component: ArticleComponent}, 
   {path: 'edit/:articleid', component: EditTempComponent}
 
