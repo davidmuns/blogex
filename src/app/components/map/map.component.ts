@@ -21,7 +21,10 @@ export class MapComponent implements AfterViewInit {
     }).addTo(map);
 
     ArticleJson.map(point => {
-      marker([point.latitude, point.longitude]).addTo(map);
+      marker([point.latitude, point.longitude]).addTo(map).bindPopup(`
+        <h5>${point.title}</h5>
+        <img src="${point.img1}">
+      `);
     })
 
     const cibernarium = marker([41.40255199258423, 2.1943192116804253]).addTo(map);
