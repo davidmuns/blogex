@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,6 +28,7 @@ import { MapComponent } from './components/map/map.component';
 import { ArticleComponent } from './components/article/article.component';
 
 
+import { interceptorProvider } from './interceptors/article-interceptor.service';
 
 
 @NgModule({
@@ -54,7 +54,7 @@ import { ArticleComponent } from './components/article/article.component';
     CrudModule,
     ToastrModule.forRoot(), // ToastrModule added
   ],
-  providers: [],
+  providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

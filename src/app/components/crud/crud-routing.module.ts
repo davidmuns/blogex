@@ -6,12 +6,13 @@ import { EditModule } from './posts/edit/edit.module';
 import { NewModule } from './posts/new/new.module';
 
 const routes: Routes = [
-  {path: '', component: CrudComponent,
-  children: [
-    {path: 'admin/new', loadChildren: () => NewModule},
-    {path: 'admin/edit', loadChildren: () => EditModule}
-  ]
-}
+  {
+    path: '', component: CrudComponent,
+    children: [
+      { path: 'admin/new', loadChildren: () => NewModule },
+      { path: 'admin/edit', loadChildren: () => EditModule }
+    ]
+  }
 ];
 
 @NgModule({
