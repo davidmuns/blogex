@@ -49,7 +49,7 @@ export class NewComponent implements OnInit{
 
   ngOnInit(): void { 
   }
-
+  
   moreImgs(){
     if(this.flag < 3){
       this.flag++;
@@ -64,19 +64,12 @@ export class NewComponent implements OnInit{
   }
 
   handleImage1(event: any){
-   this.imagen = event.target.files[0];
-    console.log(this.imagen);
-    
+   this.imagen = event.target.files[0]; 
   }
 
-  onSubmit(post: Article){
-    
+  onSubmit(post: Article){ 
     const username = this.tokenService.getUsername() as string;
-    
     post.imagen = this.imagen; 
-
-    
-
     this.articleService.uploadImage(this.imagen).subscribe({
       next: data => {
         this.toastrService.success(data.mensaje, '', {
@@ -102,9 +95,7 @@ export class NewComponent implements OnInit{
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         
-      }
-      
+      }     
     });   
   }
-
 }

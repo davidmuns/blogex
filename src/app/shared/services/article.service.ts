@@ -37,7 +37,7 @@ export class ArticleService {
   public uploadImage(img: File): Observable<any>{
     const formData = new FormData();
     formData.append('multipartFile', img);
-    return this.HttpClient.post<any>('http://localhost:8080/cloudinary/upload', formData);
+    return this.HttpClient.post<any>(ARTICLE_BASE_URL + 'image/upload', formData);
   }
 
   public deleteImg(id: number): Observable<any>{
