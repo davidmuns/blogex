@@ -3,6 +3,7 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 import { ArticleService } from 'src/app/shared/services/article.service';
+import { Article } from 'src/app/shared/models/article';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +13,8 @@ import { ArticleService } from 'src/app/shared/services/article.service';
 export class SearchComponent implements OnInit {
 
   myControl = new FormControl('');
-  options: string[] = ['One', 'Two', 'Three'];
+  options: string[] = [];
+  allOptions: Article[] = [];
   filteredOptions!: Observable<string[]>;
 
   constructor(private readonly articleSvc: ArticleService) { }
@@ -22,10 +24,23 @@ export class SearchComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value || '')),
     );
+
+    /* this.articleSvc.getAll()
+    .subscribe(res => {
+      this.allOptions = res;
+      this.allOptions.map(x => this.options = x.title);
+    });
+ */
+    
+    
   }
+
+  
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
+
+    
   
       return this.options.filter(option => option.toLowerCase().includes(filterValue));
 
