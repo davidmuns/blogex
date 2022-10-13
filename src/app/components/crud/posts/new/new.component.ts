@@ -70,11 +70,21 @@ export class NewComponent implements OnInit{
   onSubmit(post: Article){ 
     const username = this.tokenService.getUsername() as string;
     post.imagen = this.imagen; 
+    
+    this.uploadImage();
+    
+    setTimeout(() => {
+      this.createArticle(post, username);
+    }, 500)
+      
+  }
+
+  private uploadImage(){
     this.articleService.uploadImage(this.imagen).subscribe({
       next: data => {
-        this.toastrService.success(data.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
+        // this.toastrService.success(data.mensaje, '', {
+        //   timeOut: 3000, positionClass: 'toast-top-center'
+        // });
       },
       error: err => {
         this.toastrService.error(err.error.mensaje, '', {
@@ -82,7 +92,9 @@ export class NewComponent implements OnInit{
         });     
       }
     })
-    
+  }
+
+  private createArticle(post: Article, username: string){
     this.articleService.createArticle(post, username).subscribe({
       next: data => {
         this.toastrService.success(data.mensaje, '', {
@@ -96,6 +108,7 @@ export class NewComponent implements OnInit{
         });
         
       }     
-    });   
+    });  
   }
+
 }
