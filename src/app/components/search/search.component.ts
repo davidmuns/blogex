@@ -25,29 +25,17 @@ export class SearchComponent implements OnInit {
       map(value => this._filter(value || '')),
     );
 
-    /* this.articleSvc.getAll()
+    this.articleSvc.getArticles()
     .subscribe(res => {
       this.allOptions = res;
-      this.allOptions.map(x => this.options = x.title);
+      this.allOptions.map(x =>{ this.options.push(x.title);
+      });
     });
- */
-    
-    
   }
-
-  
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
-    
-  
-      return this.options.filter(option => option.toLowerCase().includes(filterValue));
-
-    /* return this.articleSvc.getAll()
-    .subscribe(res => {
-      res. filter(option => option.toLowerCase().includes(filterValue));
-    })  */
+    return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
 }

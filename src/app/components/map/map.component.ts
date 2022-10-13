@@ -21,10 +21,11 @@ export class MapComponent implements AfterViewInit {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    this.articleSvc.getAll().subscribe(
+    this.articleSvc.getArticles().subscribe(
       (res: Article[]) => {res.map(point => {
         marker([point.latitude, point.longitude]).addTo(map).bindPopup(`
-        <h5>${point.title}</h5>
+        <a [routerLink]="['/article', article.id]" target="blank">${point.title}</a>
+        <p class="text">${point.text1}</p>
         <img src="${point.img1}">
       `);
       });

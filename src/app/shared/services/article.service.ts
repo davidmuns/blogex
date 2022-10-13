@@ -41,5 +41,9 @@ export class ArticleService {
   public getArticles(): Observable<Article[]>{
     return this.HttpClient.get<Article[]>(environment.ARTICLES_LOCAL);
   }
+
+  public getLocalArticle(articleId: number): Observable<Article> {
+    return this.HttpClient.get<Article>(environment.ARTICLES_LOCAL);
+  }
   
 }
