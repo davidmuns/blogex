@@ -11,13 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   articles: Article[] = [];
-  
+
   constructor(
     private tokenService: TokenService,
     private articleService: ArticleService,
     private toastrService: ToastrService) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.getAllArticlesByUsername();
   }
 
@@ -25,14 +25,14 @@ export class HomeComponent implements OnInit {
     const username = this.tokenService.getUsername() as string;
     this.articleService.getAll(username).subscribe({
       next: data => {
-        data.forEach(article => {
-          let file: File = article.imagen;
-          article.img1 = 'data:image/jpeg;base64,' + file;
-        })    
+        // data.forEach(article => {
+        //   let file: File = article.imagen;
+        //   article.img1 = 'data:image/jpeg;base64,' + file;
+        // })
         this.articles = data;
       },
       error: err => {
-        console.log(err);   
+        console.log(err);
       }
     })
   }
@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit {
         this.getAllArticlesByUsername();
       },
       error: err => {
-        console.log(err);       
+        console.log(err);
       }
     })
   }
