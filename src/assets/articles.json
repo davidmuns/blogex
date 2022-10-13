@@ -1,4 +1,4 @@
-export const ArticleJson = [
+[
     {
       "id": 1,
       "title": "Title 1",

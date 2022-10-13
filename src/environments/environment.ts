@@ -10,7 +10,8 @@ export const environment = {
   EMAIL_PASSWORD_URL: 'http://localhost:8080/email-password/',
   ARTICLE_BASE_URL: 'http://localhost:8080/article/',
   AUTHORIZATION: 'Authorization',
-  BEARER: 'Bearer '
+  BEARER: 'Bearer ',
+  ARTICLES_LOCAL: './assets/articles.json'
 };
 
 /*

@@ -18,8 +18,12 @@ export class ArticleService {
     return this.HttpClient.get<Article>(ARTICLE_BASE_URL + articleId);
   }
 
-  public getAll(username: string): Observable<Article[]> {
+  public getAllByUserName(username: string): Observable<Article[]> {
     return this.HttpClient.get<Article[]>(ARTICLE_BASE_URL + 'list/' + username);
+  }
+
+  public getAll(): Observable<Article[]> {
+    return this.HttpClient.get<Article[]>(ARTICLE_BASE_URL + 'list');
   }
 
   public createArticle(post: Article, username: string): Observable<any> {
@@ -32,6 +36,10 @@ export class ArticleService {
 
   public delete(articleId: Number): Observable<any>{
     return this.HttpClient.delete<any>(ARTICLE_BASE_URL + 'delete/' + articleId);
+  }
+
+  public getArticles(): Observable<Article[]>{
+    return this.HttpClient.get<Article[]>(environment.ARTICLES_LOCAL);
   }
   
 }
