@@ -1,3 +1,4 @@
+import { Imagen } from './../../shared/models/imagen';
 import { ToastrService } from 'ngx-toastr';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { ArticleService } from './../../shared/services/article.service';
@@ -11,6 +12,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   articles: Article[] = [];
+  articleIds: number[] = [];
+  imagenes: Imagen[] = [];
 
   constructor(
     private tokenService: TokenService,
@@ -21,23 +24,37 @@ export class HomeComponent implements OnInit {
     this.getAllArticlesByUsername();
   }
 
-  private getAllArticlesByUsername(){
+  private getAllArticlesByUsername() {
     const username = this.tokenService.getUsername() as string;
     this.articleService.getArticles(username).subscribe({
-      next: data => {
-        // data.forEach(article => {
-        //   let file: File = article.imagen;
-        //   article.img1 = 'data:image/jpeg;base64,' + file;
-        // })
+      next: (data: Article[]) => {  
         this.articles = data;
+        this.articles.forEach((a: Article) => {
+          this.articleIds.push(a.id);
+        })
+        console.log(this.articleIds);
+        this.articleIds.forEach((id: number) => {
+          this.getImgsByArticleId(id);
+        })  
+        //this.articleIds = [];
       },
       error: err => {
         console.log(err);
       }
+    }); 
+  }
+
+  private getImgsByArticleId(id: number) {
+    this.articleService.getImagesByArticleId(id).subscribe({
+      next: (data: Imagen[]) => {
+        this.imagenes = data;
+        console.log(this.imagenes);
+
+      }
     })
   }
 
-  onDelete(articleId: Number){
+  onDelete(articleId: Number) {
     this.articleService.deleteArticle(articleId).subscribe({
       next: data => {
         console.log(data.mensaje);
@@ -51,9 +68,4 @@ export class HomeComponent implements OnInit {
       }
     })
   }
-
-  onEdit(articleId: Number){
-
-  }
-
 }

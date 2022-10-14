@@ -12,34 +12,36 @@ const ARTICLE_BASE_URL = environment.ARTICLE_BASE_URL;
 })
 export class ArticleService {
 
-  constructor(private HttpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
   public getArticle(articleId: Number): Observable<Article> {
-    return this.HttpClient.get<Article>(ARTICLE_BASE_URL + articleId);
+    return this.httpClient.get<Article>(ARTICLE_BASE_URL + articleId);
   }
 
   public getArticles(username: string): Observable<Article[]> {
-    return this.HttpClient.get<Article[]>(ARTICLE_BASE_URL + 'list/' + username);
+    return this.httpClient.get<Article[]>(ARTICLE_BASE_URL + 'list/' + username);
   }
 
   public createArticle(post: Article, username: string): Observable<any> {
-    return this.HttpClient.post<any>(ARTICLE_BASE_URL + 'create/' + username, post);
+    return this.httpClient.post<any>(ARTICLE_BASE_URL + 'create/' + username, post);
   }
 
   public updateArticle(articleId: number, article: Article): Observable<any>{
-    return this.HttpClient.put<any>(ARTICLE_BASE_URL + 'update/' + articleId, article);
+    return this.httpClient.put<any>(ARTICLE_BASE_URL + 'update/' + articleId, article);
   }
 
   public deleteArticle(articleId: Number): Observable<any>{
-    return this.HttpClient.delete<any>(ARTICLE_BASE_URL + 'delete/' + articleId);
+    return this.httpClient.delete<any>(ARTICLE_BASE_URL + 'delete/' + articleId);
   }
 
   public uploadImage(img: File): Observable<any>{
-    console.log(img);
-    
     const formData = new FormData();
     formData.append('multipartFile', img);
-    return this.HttpClient.post<any>(ARTICLE_BASE_URL + 'image/upload', formData);
+    return this.httpClient.post<any>(ARTICLE_BASE_URL + 'image/upload', formData);
+  }
+
+  public getImagesByArticleId(articleId: number): Observable<any> {
+    return this.httpClient.get<any>(ARTICLE_BASE_URL + 'image/list/' + articleId);
   }
   
 }

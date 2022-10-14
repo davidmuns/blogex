@@ -2,6 +2,9 @@
 
 <div class="main-container">
   <div *ngFor="let article of this.articles">
+    <ng-container *ngFor="let imagen of this.imagenes">
+      <img [src]="imagen.url" alt="">
+    </ng-container>
     <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
@@ -21,5 +24,7 @@
         <button mat-button (click)="onDelete(article.id)">Delete</button>
       </mat-card-actions>
     </mat-card>
+    
   </div>
 </div>
+
