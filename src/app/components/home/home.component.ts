@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
 
   private getAllArticlesByUsername(){
     const username = this.tokenService.getUsername() as string;
-    this.articleService.getAll(username).subscribe({
+    this.articleService.getArticles(username).subscribe({
       next: data => {
         // data.forEach(article => {
         //   let file: File = article.imagen;

@@ -18,7 +18,7 @@ export class ArticleService {
     return this.HttpClient.get<Article>(ARTICLE_BASE_URL + articleId);
   }
 
-  public getAll(username: string): Observable<Article[]> {
+  public getArticles(username: string): Observable<Article[]> {
     return this.HttpClient.get<Article[]>(ARTICLE_BASE_URL + 'list/' + username);
   }
 
@@ -35,13 +35,11 @@ export class ArticleService {
   }
 
   public uploadImage(img: File): Observable<any>{
+    console.log(img);
+    
     const formData = new FormData();
     formData.append('multipartFile', img);
     return this.HttpClient.post<any>(ARTICLE_BASE_URL + 'image/upload', formData);
-  }
-
-  public deleteImg(id: number): Observable<any>{
-    return this.HttpClient.delete<any>('http://localhost:8080/cloudinary/delete/' + id);
   }
   
 }

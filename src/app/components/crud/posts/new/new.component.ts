@@ -13,7 +13,7 @@ import { Article } from 'src/app/shared/models/article';
 })
 export class NewComponent implements OnInit{
 
-  imagen!: File;
+  images: File [] = [];
 
   public newPostForm!: FormGroup;
   public viewForm: any = [1];
@@ -64,26 +64,23 @@ export class NewComponent implements OnInit{
   }
 
   handleImage1(event: any){
-   this.imagen = event.target.files[0]; 
+   this.images.push(event.target.files[0]);
   }
 
   onSubmit(post: Article){ 
     const username = this.tokenService.getUsername() as string;
-    post.imagen = this.imagen; 
-    
-    this.uploadImage();
-    
-    setTimeout(() => {
-      this.createArticle(post, username);
-    }, 500)
-      
+    this.createArticle(post, username);
+    this.images.forEach((img: File) => {
+      this.uploadImage(img);
+    })
+  
   }
 
-  private uploadImage(){
-    this.articleService.uploadImage(this.imagen).subscribe({
+  private uploadImage(image: File){
+    this.articleService.uploadImage(image).subscribe({
       next: data => {
         // this.toastrService.success(data.mensaje, '', {
-        //   timeOut: 3000, positionClass: 'toast-top-center'
+        //   timeOut: 1000, positionClass: 'toast-top-center'
         // });
       },
       error: err => {
