@@ -18,8 +18,12 @@ export class ArticleService {
     return this.httpClient.get<Article>(ARTICLE_BASE_URL + articleId);
   }
 
-  public getArticles(username: string): Observable<Article[]> {
+  public getArticlesByUsername(username: string): Observable<Article[]> {
     return this.httpClient.get<Article[]>(ARTICLE_BASE_URL + 'list/' + username);
+  }
+
+  public getArticles(): Observable<Article[]>{
+    return this.httpClient.get<Article[]>(ARTICLE_BASE_URL + 'list')
   }
 
   public createArticle(post: Article, username: string): Observable<any> {

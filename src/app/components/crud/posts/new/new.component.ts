@@ -97,7 +97,6 @@ export class NewComponent implements OnInit{
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        this.router.navigate(['home']);
       },
       error: err => {
         this.toastrService.error(err.error.mensaje, '', {

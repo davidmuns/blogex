@@ -1,3 +1,4 @@
+import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
 import { EditTempComponent } from './components/crud/posts/edit-temp/edit-temp.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -8,7 +9,9 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'reset-password/:token-password', component: ResetPasswordComponent},
-  {path: 'edit/:articleid', component: EditTempComponent}
+  {path: 'edit/:articleid', component: EditTempComponent},
+  {path: 'list', component: ListTempComponent},
+
 ]
 
 @NgModule({

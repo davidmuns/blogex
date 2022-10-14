@@ -1,7 +1,8 @@
 <mat-toolbar class="toolbarClass">
     <mat-toolbar-row>
         <mat-icon style="cursor:pointer" routerLink="/home">home</mat-icon>
-        <a routerLink="admin/new" mat-button *ngIf="this.tokenService.isLogged()">Your routes</a>
+        <a routerLink="admin/new" mat-button *ngIf="this.tokenService.isLogged()">My routes</a>
+        <a routerLink="list" mat-button *ngIf="this.tokenService.isLogged()">My list</a>
         <h1 id="title">Blog de rutes</h1>
         <div id="logReg" *ngIf="this.tokenService.isLogged() === false; else logged">
             <a data-bs-toggle="modal" data-bs-target="#LogIn" (click)="openDialog()">LOG IN &nbsp;</a>

@@ -1,3 +1,4 @@
+import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -36,7 +37,8 @@ import { interceptorProvider } from './interceptors/article-interceptor.service'
     SignupComponent,
     EmailPasswordComponent,
     ResetPasswordComponent,
-    SearchComponent
+    SearchComponent,
+    ListTempComponent
   ],
   imports: [
     BrowserModule,
