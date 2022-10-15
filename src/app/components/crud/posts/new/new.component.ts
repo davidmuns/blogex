@@ -73,6 +73,7 @@ export class NewComponent implements OnInit{
     this.images.forEach((img: File) => {
       this.uploadImage(img);
     })
+    //this.newPostForm.reset();
   
   }
 

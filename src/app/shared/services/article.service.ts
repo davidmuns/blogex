@@ -4,6 +4,7 @@ import { environment } from './../../../environments/environment';
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Imagen } from '../models/imagen';
 
 const ARTICLE_BASE_URL = environment.ARTICLE_BASE_URL;
 
@@ -44,8 +45,8 @@ export class ArticleService {
     return this.httpClient.post<any>(ARTICLE_BASE_URL + 'image/upload', formData);
   }
 
-  public getImagesByArticleId(articleId: number): Observable<any> {
-    return this.httpClient.get<any>(ARTICLE_BASE_URL + 'image/list/' + articleId);
+  public getImagesByArticleId(articleId: number): Observable<Imagen[]> {
+    return this.httpClient.get<Imagen[]>(ARTICLE_BASE_URL + 'image/list/' + articleId);
   }
   
 }

@@ -1,6 +1,4 @@
 import { Imagen } from './../../shared/models/imagen';
-import { ToastrService } from 'ngx-toastr';
-import { TokenService } from 'src/app/shared/services/token.service';
 import { ArticleService } from './../../shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
 import { Component, OnInit } from '@angular/core';
@@ -12,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   articles: Article[] = [];
+  imagenes: Imagen[] = [];
 
   constructor(private articleService: ArticleService) { }
 
@@ -29,5 +28,22 @@ export class HomeComponent implements OnInit {
       }
      });
   }
+
+  onImgs(articleId: number) {
+    this.getImgsByArticleId(articleId);
+    this.imagenes = [];
+  }
+
+  private getImgsByArticleId(id: number) {
+    this.articleService.getImagesByArticleId(id).subscribe({
+      next: (data: Imagen[]) => {
+        this.imagenes = data;
+      },
+      error: err => {
+        console.log(err);
+      }
+    })
+  }
+
 
 }
