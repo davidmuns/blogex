@@ -1,5 +1,4 @@
-import { ToastrService } from 'ngx-toastr';
-import { TokenService } from 'src/app/shared/services/token.service';
+import { Imagen } from './../../shared/models/imagen';
 import { ArticleService } from './../../shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
 import { Component, OnInit } from '@angular/core';
@@ -11,49 +10,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   articles: Article[] = [];
-  
-  constructor(
-    private tokenService: TokenService,
-    private articleService: ArticleService,
-    private toastrService: ToastrService) { }
+  imagenes: Imagen[] = [];
 
-  ngOnInit(): void { 
-    this.getAllArticlesByUsername();
+  constructor(private articleService: ArticleService) { }
+
+  ngOnInit(): void {
+   this.getArticles();
   }
 
-  private getAllArticlesByUsername(){
-    const username = this.tokenService.getUsername() as string;
-    this.articleService.getAllByUserName(username).subscribe({
+  private getArticles(){
+    this.articleService.getArticles().subscribe({
       next: data => {
-        console.log(data);
-        
         this.articles = data;
       },
       error: err => {
-        console.log(err);
-        
+        console.log(err);     
       }
-    })
+     });
   }
 
-  onDelete(articleId: Number){
-    this.articleService.delete(articleId).subscribe({
-      next: data => {
-        console.log(data.mensaje);
-        this.toastrService.success(data.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.getAllArticlesByUsername();
+  onImgs(articleId: number) {
+    this.getImgsByArticleId(articleId);
+    this.imagenes = [];
+  }
+
+  private getImgsByArticleId(id: number) {
+    this.articleService.getImagesByArticleId(id).subscribe({
+      next: (data: Imagen[]) => {
+        this.imagenes = data;
       },
       error: err => {
         console.log(err);
-        
       }
     })
   }
 
-  onEdit(articleId: Number){
-
-  }
 
 }

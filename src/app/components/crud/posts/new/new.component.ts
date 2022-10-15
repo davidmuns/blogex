@@ -13,6 +13,8 @@ import { Article } from 'src/app/shared/models/article';
 })
 export class NewComponent implements OnInit{
 
+  images: File [] = [];
+
   public newPostForm!: FormGroup;
   public viewForm: any = [1];
   public flag: number = 1;
@@ -47,7 +49,7 @@ export class NewComponent implements OnInit{
 
   ngOnInit(): void { 
   }
-
+  
   moreImgs(){
     if(this.flag < 3){
       this.flag++;
@@ -61,30 +63,49 @@ export class NewComponent implements OnInit{
     }
   }
 
-  newPost(post: Article){
-    console.log(post);
+  handleImage1(event: any){
+   this.images.push(event.target.files[0]);
+  }
+
+  onSubmit(post: Article){ 
     const username = this.tokenService.getUsername() as string;
-    console.log(username);
-    
+    this.createArticle(post, username);
+    this.images.forEach((img: File) => {
+      this.uploadImage(img);
+    })
+    //this.newPostForm.reset();
+  
+  }
+
+  private uploadImage(image: File){
+    this.articleService.uploadImage(image).subscribe({
+      next: data => {
+        // this.toastrService.success(data.mensaje, '', {
+        //   timeOut: 1000, positionClass: 'toast-top-center'
+        // });
+      },
+      error: err => {
+        this.toastrService.error(err.error.mensaje, '', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });     
+      }
+    })
+  }
+
+  private createArticle(post: Article, username: string){
     this.articleService.createArticle(post, username).subscribe({
       next: data => {
-        console.log(data.mensaje);
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        this.router.navigate(['home']);
       },
       error: err => {
-        console.log(err);
         this.toastrService.error(err.error.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         
-      }
-      
-    });   
+      }     
+    });  
   }
-
-  handleImage1(image:any){}
 
 }

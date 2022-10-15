@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         this.dialog.closeAll();
+        this.router.navigate(['admin/new']);
       },
       error: err => {
         // this.toastr.error(err.error.mensaje, '', {

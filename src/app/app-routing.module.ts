@@ -1,3 +1,4 @@
+import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
 import { EditTempComponent } from './components/crud/posts/edit-temp/edit-temp.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -10,7 +11,8 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'reset-password/:token-password', component: ResetPasswordComponent},
   {path: 'articles', component: ArticleComponent}, 
-  {path: 'edit/:articleid', component: EditTempComponent}
+  {path: 'edit/:articleid', component: EditTempComponent},
+  {path: 'list', component: ListTempComponent},
 
 ]
 
