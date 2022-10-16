@@ -1,3 +1,4 @@
+import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
 import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -44,7 +45,8 @@ import { interceptorProvider } from './interceptors/article-interceptor.service'
     SearchComponent,
     MapComponent,
     ArticleComponent,
-    ListTempComponent
+    ListTempComponent,
+    AddImageComponent
   ],
   imports: [
     BrowserModule,

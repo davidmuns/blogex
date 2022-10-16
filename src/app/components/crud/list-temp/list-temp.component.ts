@@ -1,3 +1,6 @@
+import { AddImageComponent } from './../posts/add-image/add-image.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from './../../../shared/services/article.service';
 import { TokenService } from './../../../shared/services/token.service';
@@ -14,11 +17,14 @@ export class ListTempComponent implements OnInit {
   @ViewChild('id') id!: ElementRef;
   articles: Article[] = [];
   imagenes: Imagen[] = [];
+  showImgs: boolean = false;
 
   constructor(
+    private readonly dialog: MatDialog,
     private tokenService: TokenService,
     private articleService: ArticleService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getAllArticlesByUsername();
@@ -41,6 +47,7 @@ export class ListTempComponent implements OnInit {
     });
   }
   onImgs(articleId: number) {
+    this.showImgs = !this.showImgs;
     this.getImgsByArticleId(articleId);
   }
 
@@ -55,7 +62,7 @@ export class ListTempComponent implements OnInit {
     })
   }
 
-  onDelete(articleId: Number) {
+  onDeleteArticle(articleId: Number) {
     this.articleService.deleteArticle(articleId).subscribe({
       next: data => {
         console.log(data.mensaje);
@@ -69,5 +76,24 @@ export class ListTempComponent implements OnInit {
       }
     })
   }
+  
+  onDeleteImage(imgId: string){
+    this.articleService.deleteImage(imgId).subscribe({
+      next: (data: any) => {
+        this.toastrService.success(data.mensaje, '', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        window.location.reload();
+      },
+      error: err => {
+        console.log(err);
+      }
+    })
+  }
 
+  onAdd(articleId: number){
+    console.log(articleId);
+    
+    this.dialog.open(AddImageComponent);
+  }
 }

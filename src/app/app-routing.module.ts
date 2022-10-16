@@ -1,3 +1,4 @@
+import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
 import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
 import { EditTempComponent } from './components/crud/posts/edit-temp/edit-temp.component';
 import { NgModule } from '@angular/core';
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'reset-password/:token-password', component: ResetPasswordComponent},
   {path: 'articles', component: ArticleComponent}, 
   {path: 'edit/:articleid', component: EditTempComponent},
+  {path: 'add-image/:articleid', component: AddImageComponent},
   {path: 'list', component: ListTempComponent},
 
 ]

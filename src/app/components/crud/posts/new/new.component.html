@@ -12,6 +12,12 @@
       <div *ngFor="let view of viewForm">
         <div class="containerFile">
           <label>Picture {{ view }}:</label><br>
+          <div *ngIf="inputUpload" style="margin-top: 5px;">
+            <!-- <h5>Vista previa</h5> -->
+            <div>
+              <img class="image-thumbnail" style="max-width: 100px; border-radius: 5%;" [src]="miniatura">
+            </div>
+          </div>
           <input type="file" accept=".png, .jpg, .jpeg" multiple id="inputUpload" formControlName="img{{ view }}"
             (change)="handleImage1($event)">
           <label for="inputUpload">Foto <mat-icon>backup</mat-icon></label>

@@ -11,73 +11,80 @@ import { Article } from 'src/app/shared/models/article';
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.scss']
 })
-export class NewComponent implements OnInit{
-
-  images: File [] = [];
+export class NewComponent implements OnInit {
+  inputUpload!: File;
+  images: File[] = [];
+  miniatura!: File;
 
   public newPostForm!: FormGroup;
   public viewForm: any = [1];
   public flag: number = 1;
   public buttonTag: string = "One More";
-  
+
   constructor(
     private readonly fBuilder: FormBuilder,
     private tokenService: TokenService,
     private articleService: ArticleService,
     private toastrService: ToastrService,
     private router: Router
-    ) { 
+  ) {
     this.initForm();
   }
 
-  private initForm():void{
+  private initForm(): void {
     this.newPostForm = this.fBuilder.group({
-      title:['', Validators.required],
-      img1:['', Validators.required],
-      alt1:['', Validators.required],
-      text1:['', Validators.required],
-      img2:[''],
-      alt2:[''],
-      text2:[''],
-      img3:[''],
-      alt3:[''],
-      text3:[''],
-      longitude:['', Validators.required],
-      latitude:['', Validators.required]
+      title: ['', Validators.required],
+      img1: ['', Validators.required],
+      alt1: ['', Validators.required],
+      text1: ['', Validators.required],
+      img2: [''],
+      alt2: [''],
+      text2: [''],
+      img3: [''],
+      alt3: [''],
+      text3: [''],
+      longitude: ['', Validators.required],
+      latitude: ['', Validators.required]
     })
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
   }
-  
-  moreImgs(){
-    if(this.flag < 3){
+
+  moreImgs() {
+    if (this.flag < 3) {
       this.flag++;
       this.viewForm.push(this.flag);
-      if(this.flag == 3)
+      if (this.flag == 3)
         this.buttonTag = "One Less";
-    }else{
+    } else {
       this.viewForm.pop(this.flag)
       this.flag--;
       this.buttonTag = "One More";
     }
   }
 
-  handleImage1(event: any){
-   this.images.push(event.target.files[0]);
+  handleImage1(event: any) {
+    this.inputUpload = event.target.files[0];
+    this.images.push(this.inputUpload);
+    const fr = new FileReader();
+    fr.onload = (e: any) => {
+      this.miniatura = e.target.result;
+    }
+    fr.readAsDataURL(this.inputUpload);
   }
 
-  onSubmit(post: Article){ 
+  onSubmit(post: Article) {
     const username = this.tokenService.getUsername() as string;
     this.createArticle(post, username);
     this.images.forEach((img: File) => {
       this.uploadImage(img);
     })
     //this.newPostForm.reset();
-  
+
   }
 
-  private uploadImage(image: File){
+  private uploadImage(image: File) {
     this.articleService.uploadImage(image).subscribe({
       next: data => {
         // this.toastrService.success(data.mensaje, '', {
@@ -87,12 +94,12 @@ export class NewComponent implements OnInit{
       error: err => {
         this.toastrService.error(err.error.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
-        });     
+        });
       }
     })
   }
 
-  private createArticle(post: Article, username: string){
+  private createArticle(post: Article, username: string) {
     this.articleService.createArticle(post, username).subscribe({
       next: data => {
         this.toastrService.success(data.mensaje, '', {
@@ -103,9 +110,9 @@ export class NewComponent implements OnInit{
         this.toastrService.error(err.error.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        
-      }     
-    });  
+
+      }
+    });
   }
 
 }
