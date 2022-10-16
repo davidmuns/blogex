@@ -35,7 +35,7 @@ export class ListTempComponent implements OnInit {
         //   article.img1 = 'data:image/jpeg;base64,' + file;
         // })
       },
-      error: err => {
+      error: (err: any) => {
         console.log(err);
       }
     });

@@ -19,7 +19,7 @@ export class ArticleService {
     return this.httpClient.get<Article>(ARTICLE_BASE_URL + articleId);
   }
 
-  public getAllByUserName(username: string): Observable<Article[]> {
+  public getArticlesByUsername(username: string): Observable<Article[]> {
     return this.httpClient.get<Article[]>(ARTICLE_BASE_URL + 'list/' + username);
   }
 

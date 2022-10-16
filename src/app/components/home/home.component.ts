@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   }
 
   private getArticles(){
-    this.articleService.getArticles().subscribe({
+    this.articleService.getAll().subscribe({
       next: data => {
         this.articles = data;
       },
