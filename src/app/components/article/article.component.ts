@@ -11,13 +11,15 @@ import { ArticleService } from 'src/app/shared/services/article.service';
 })
 export class ArticleComponent implements OnInit {
 
-  public post$!: Observable<Article>;
+  public post!: Article;
 
   constructor(private readonly route: ActivatedRoute, private articleSvc: ArticleService) {  }
 
   ngOnInit(): void {
-    const idPost = this.route.snapshot.params["id"];
-    this.post$ = this.articleSvc.getLocalArticle(idPost);
+    const idPost = this.route.snapshot.params['title'];   //snapshot.params['id'];
+    this.articleSvc.getLocalArticle(idPost)
+    .subscribe(data => this.post = data);
+    console.log("Post: ", idPost);
   }
 
     //In case of assets file is a JSON format

@@ -30,10 +30,6 @@ input{
     margin-left: 2%;
     vertical-align: middle;
 }
-/* input:hover{
-    outline: 2px solid #FFD700;
-    box-shadow: none;
-} */
 input:focus{
     background-color: #fbfdf1;
     outline: 3px solid #C6FF00;
@@ -41,8 +37,7 @@ input:focus{
     width: 100%;
     margin: 0px 3px 0px 0px;
 }
-.mat-icon{
-    vertical-align: middle;
-    width:8%;
-    margin-left: 1px;
+#searchButton{
+    margin-left: 6px;
+    
 }
