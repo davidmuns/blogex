@@ -34,7 +34,7 @@ export class SearchComponent implements OnInit {
       map(value => this._filter(value || '')),
     );
 
-    this.articleSvc.getArticles()
+    this.articleSvc.getAll()
     .subscribe(res => {
       this.allOptions = res;
       this.allOptions.map(x =>{ this.options.push(x.title);

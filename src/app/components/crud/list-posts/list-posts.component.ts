@@ -45,7 +45,7 @@ export class ListPostsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.articleSvc.getArticles().subscribe(posts => this.dataSource.data = posts);
+    this.articleSvc.getAll().subscribe(posts => this.dataSource.data = posts);
   }
 
   ngAfterViewInit(){

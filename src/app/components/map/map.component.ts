@@ -27,7 +27,7 @@ export class MapComponent implements AfterViewInit {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    this.articleSvc.getArticles().subscribe(
+    this.articleSvc.getAll().subscribe(
       (res: Article[]) => {res.map(point => {
         this.postActual = point;
         marker([point.latitude, point.longitude]).addTo(map).bindPopup(`
