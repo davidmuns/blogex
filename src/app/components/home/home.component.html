@@ -1,26 +1,53 @@
+<!-- <app-search></app-search> -->
 <app-map></app-map>
+
+<!-- {{ this.imagenesAll | json }} -->
+
 
 
 <div class="main-container">
+  <div *ngFor="let imagenAll of this.imagenesAll">
+    <!-- https://animate.style/ -->
+    <mat-card class="example-card animate__animated animate__zoomIn">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title>Article ID: {{ imagenAll.articleId }}</mat-card-title>
+        <!-- <mat-card-subtitle>id {{ article.id  }}</mat-card-subtitle> -->
+      </mat-card-header>
+      <img mat-card-image [src]="imagenAll.url" alt="">
+      <mat-card-content >
+       
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="openGalery()">Ver</button>
+        <!-- <button mat-button>Delete</button> -->
+      </mat-card-actions >
+    </mat-card>
+    
+  </div>
+</div>
+
+<ng-container *ngFor="let imagen of this.imagenes">
+  <img [src]="imagen.url" alt="">
+</ng-container>
+
+<div class="main-container">
   <div *ngFor="let article of this.articles">
+   
     <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{ article.title }}</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        <mat-card-subtitle>id {{ article.id  }}</mat-card-subtitle>
       </mat-card-header>
-      <a>
-        <img mat-card-image [src]="article.img1" alt="Photo of a Shiba Inu">
-      </a>
       <mat-card-content>
-        <p>
-          {{ article.alt1 }}
-        </p>
+        <p>{{ article.alt1 }}</p>
+        <p>{{ article.text1 }}</p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button routerLink="/edit/{{ article.id }}">Edit</button>
-        <button mat-button (click)="onDelete(article.id)">Delete</button>
+        <!-- <button mat-button (click)="onImgs(article.id)">img</button> -->
       </mat-card-actions>
     </mat-card>
+    
   </div>
 </div>

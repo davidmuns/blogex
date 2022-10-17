@@ -1,5 +1,6 @@
-import { ToastrService } from 'ngx-toastr';
-import { TokenService } from 'src/app/shared/services/token.service';
+import { LoginComponent } from 'src/app/components/Auth/login/login.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Imagen } from './../../shared/models/imagen';
 import { ArticleService } from './../../shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
 import { Component, OnInit } from '@angular/core';
@@ -11,49 +12,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   articles: Article[] = [];
-  
-  constructor(
-    private tokenService: TokenService,
-    private articleService: ArticleService,
-    private toastrService: ToastrService) { }
+  imagenes: Imagen[] = [];
+  imagenesAll: Imagen[] = [];
 
-  ngOnInit(): void { 
-    this.getAllArticlesByUsername();
+  constructor(
+    private articleService: ArticleService,
+    private dialog: MatDialog) { }
+
+  ngOnInit(): void {
+    this.getArticles();
+    this.getImagenes();
   }
 
-  private getAllArticlesByUsername(){
-    const username = this.tokenService.getUsername() as string;
-    this.articleService.getAllByUserName(username).subscribe({
+  private getArticles() {
+    this.articleService.getAll().subscribe({
       next: data => {
-        console.log(data);
-        
         this.articles = data;
       },
       error: err => {
         console.log(err);
-        
+      }
+    });
+  }
+
+  private getImagenes() {
+    this.articleService.getImages().subscribe({
+      next: (data: Imagen[]) => {
+        this.imagenesAll = data;
       }
     })
   }
 
-  onDelete(articleId: Number){
-    this.articleService.delete(articleId).subscribe({
-      next: data => {
-        console.log(data.mensaje);
-        this.toastrService.success(data.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.getAllArticlesByUsername();
+  onImgs(articleId: number) {
+    this.getImgsByArticleId(articleId);
+    this.imagenes = [];
+  }
+
+  private getImgsByArticleId(id: number) {
+    this.articleService.getImagesByArticleId(id).subscribe({
+      next: (data: Imagen[]) => {
+        this.imagenes = data;
       },
       error: err => {
         console.log(err);
-        
       }
     })
   }
 
-  onEdit(articleId: Number){
-
+  openGalery() {
+    this.dialog.open(LoginComponent);
   }
 
 }

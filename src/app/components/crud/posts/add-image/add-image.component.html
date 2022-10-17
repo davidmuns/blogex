@@ -1,0 +1,25 @@
+<div class="container animate__animated animate__backInUp" style="margin-top: 50px;">
+  <form [formGroup]="this.imageForm" (ngSubmit)="onSubmit(imageForm.value)">
+    <h3>Add new image</h3>
+    <!-- <p style="text-align: center; padding: 10px;">Enter the email address or username you use in this application. We will send you a link to reset your password.</p> -->
+
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Article ID</mat-label>
+      <input matInput placeholder="article id" formControlName="articleId" required>
+    </mat-form-field> -->
+
+    <div class="containerFile">
+      <label>Picture</label><br>
+      <div *ngIf="inputUpload" style="margin-top: 5px;">
+        <!-- <h5>Vista previa</h5> -->
+        <div>
+          <img class="image-thumbnail" style="max-width: 100px; border-radius: 5%;" [src]="miniatura">
+        </div>
+      </div>
+      <input type="file" accept=".png, .jpg, .jpeg" multiple id="inputUpload" formControlName="image"
+        (change)="handleImage($event)">
+      <label for="inputUpload">Foto <mat-icon>backup</mat-icon></label>
+    </div>
+    <button type="submit" mat-raised-button>Add image</button>
+  </form>
+</div>
