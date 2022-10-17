@@ -35,7 +35,7 @@ export class ArticleService {
     return this.httpClient.put<any>(ARTICLE_BASE_URL + 'update/' + articleId, article);
   }
 
-  public deleteArticle(articleId: Number): Observable<any>{
+  public deleteArticle(articleId: number): Observable<any>{
     return this.httpClient.delete<any>(ARTICLE_BASE_URL + 'delete/' + articleId);
   }
 

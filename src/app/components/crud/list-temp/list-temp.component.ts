@@ -63,7 +63,7 @@ export class ListTempComponent implements OnInit {
     })
   }
 
-  onDeleteArticle(articleId: Number) {
+  onDeleteArticle(articleId: number) {
     this.articleService.deleteArticle(articleId).subscribe({
       next: data => {
         console.log(data.mensaje);
