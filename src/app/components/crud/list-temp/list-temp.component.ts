@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from './../../../shared/services/article.service';
 import { TokenService } from './../../../shared/services/token.service';
-import { Imagen } from './../../../shared/models/imagen';
+
 import { Article } from './../../../shared/models/article';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Imagen } from 'src/app/shared/models/imagen';
 
 @Component({
   selector: 'app-list-temp',
@@ -76,7 +77,7 @@ export class ListTempComponent implements OnInit {
       }
     })
   }
-  
+
   onDeleteImage(imgId: string){
     this.articleService.deleteImage(imgId).subscribe({
       next: (data: any) => {
@@ -93,7 +94,7 @@ export class ListTempComponent implements OnInit {
 
   onAdd(articleId: number){
     console.log(articleId);
-    
+
     this.dialog.open(AddImageComponent);
   }
 }

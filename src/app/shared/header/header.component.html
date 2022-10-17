@@ -3,8 +3,8 @@
   <mat-toolbar-row class="toolbar">
     <mat-icon style="cursor:pointer" routerLink="/home">home</mat-icon>
     <a routerLink="/admin/new" mat-button *ngIf="this.tokenService.isLogged()">Your routes</a>
-    <a routerLink="/article" mat-button>Article</a>
-    <a routerLink="list" mat-button *ngIf="this.tokenService.isLogged()">My list</a>
+    <!-- <a routerLink="/article" mat-button>Article</a> -->
+    <a routerLink="/list" mat-button *ngIf="this.tokenService.isLogged()">My list</a>
     <app-search></app-search>
     <h1 id="title">Blog de rutes</h1>
     <div id="logReg" *ngIf="this.tokenService.isLogged() === false; else logged">
