@@ -63,18 +63,16 @@ export class ArticleService {
     return this.httpClient.get<Imagen[]>(ARTICLE_BASE_URL + 'image/list/');
   }
 
-  
-
   public getArticles(): Observable<Article[]>{
     return this.httpClient.get<Article[]>(environment.ARTICLES_LOCAL);
   }
 
   public getLocalArticle(id: Article): Observable<Article> {
-    return this.HttpClient.get<Article>(environment.ARTICLES_LOCAL + '/article/' + id);
+    return this.httpClient.get<Article>(environment.ARTICLES_LOCAL + '/article/' + id);
   }
 
   public getLocalArticleByTitle(title: string): Observable<Article> {
-    return this.HttpClient.get<Article>(environment.ARTICLES_LOCAL + title);
+    return this.httpClient.get<Article>(environment.ARTICLES_LOCAL + title);
   }
-  
+
 }
