@@ -4,13 +4,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
+import { ArticleService } from 'src/app/shared/services/article.service';
 import { DeleteComponent } from '../delete/delete.component';
 
 export interface PeriodicElement {
   title: string
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+/* const ELEMENT_DATA: PeriodicElement[] = [
   {title: "Primer article"},
   {title: "Segon article"},
   {title: "Tercer article"},
@@ -18,7 +19,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   {title: "Cinquè article"},
   {title: "Desè article"},
   {title: "Onzè article"}
-];
+]; */
 
 @Component({
   selector: 'app-list-posts',
@@ -34,21 +35,29 @@ export class ListPostsComponent implements OnInit {
   };
 
   displayedColumns: string[] = ['titol', 'borrar'];
-  dataSource = ELEMENT_DATA;
+  dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private readonly router: Router, private readonly dialog: MatDialog) { }
+  constructor(private readonly router: Router, 
+    private readonly dialog: MatDialog,
+    private readonly articleSvc: ArticleService
+    ) { }
 
   ngOnInit(): void {
+    this.articleSvc.getAll().subscribe(posts => this.dataSource.data = posts);
   }
 
   ngAfterViewInit(){
-    //this.dataSource.paginator = this.paginator;
+    this.dataSource.paginator = this.paginator;
   }
 
-  applyFilter(event: Event){}
+  applyFilter(event: Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
   
+  //Send all the post
   onEdit(post: Article){
     this.navigationExtras.state = post;
     this.router.navigate(['/admin/edit'], this.navigationExtras);

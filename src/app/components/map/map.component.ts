@@ -1,5 +1,7 @@
 import { Component, AfterViewInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 import { Map, marker, tileLayer } from 'leaflet';
+import { Observable } from 'rxjs';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 
@@ -12,7 +14,11 @@ export class MapComponent implements AfterViewInit {
 
   @ViewChild('capa') toCapa!: ElementRef;
 
-  constructor(private readonly renderer2: Renderer2, private articleSvc: ArticleService) { }
+  private postActual!: any;
+
+  constructor(private readonly renderer2: Renderer2,
+     private articleSvc: ArticleService,
+     private router: Router) { }
 
   ngAfterViewInit(): void {
     const map = new Map('map').setView([42.40249, 2.194332], 13);
@@ -23,9 +29,11 @@ export class MapComponent implements AfterViewInit {
 
     this.articleSvc.getAll().subscribe(
       (res: Article[]) => {res.map(point => {
+        this.postActual = point;
         marker([point.latitude, point.longitude]).addTo(map).bindPopup(`
-        <h5>${point.title}</h5>
-        <img src="${point.img1}">
+        <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
+        <p class="text">${point.text1}</p>
+        <img src="${point.img1}" (mouseover)="initWindow(${point.id})">
       `);
       });
       map.fitBounds([
@@ -33,6 +41,12 @@ export class MapComponent implements AfterViewInit {
       ]);
     });	
   }
+
+  /* initWindow(id:number): void{
+    console.log("Post: ", this.postActual);
+    //this.articleSvc.getLocalArticle(id);
+    this.router.navigate(["'/article', article.id"])
+  } */
 
   //Click to map and enable zoom
   removeCapa(){

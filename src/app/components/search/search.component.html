@@ -1,18 +1,22 @@
-<form class="example-form">
-    <div class="example1" appearance="fill">
-            <input type="text"
-                    placeholder="Search an article"
-                    aria-label="Number"
-                    matInput
-                    [formControl]="myControl"
-                    [matAutocomplete]="auto"
-                    fontIcon="search">
-                    <mat-icon>search</mat-icon>
-            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-          {{option}}
-        </mat-option>
-      </mat-autocomplete>
-    </div>
+<form class="example-form" (submit)="selectArticle()">
+  <div class="example1" appearance="fill">
+    <input type="text"
+            placeholder="Search an article"
+            aria-label="Number"
+            matInput
+            id="myControl"
+            [formControl]="myControl"
+            [matAutocomplete]="auto"
+            fontIcon="search">
+            <button (click)="selectArticle()" mat-stroked-button id="searchButton">
+              <mat-icon>search</mat-icon>
+            </button>
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+    
 </form>
   

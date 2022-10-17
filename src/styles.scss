@@ -18,3 +18,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .leaflet-popup img{
         width: 100%;
 }
+.text{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.leaflet-container a{
+    cursor:pointer;
+    font-size: 1.2rem;
+}
