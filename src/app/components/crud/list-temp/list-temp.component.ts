@@ -15,11 +15,11 @@ import { Imagen } from 'src/app/shared/models/imagen';
   styleUrls: ['./list-temp.component.scss']
 })
 export class ListTempComponent implements OnInit {
-  @ViewChild('id') id!: ElementRef;
   articles: Article[] = [];
   imagenes: Imagen[] = [];
   showImgs: boolean = false;
-
+  imgsUser: Imagen[] = [];
+  
   constructor(
     private readonly dialog: MatDialog,
     private tokenService: TokenService,
@@ -29,33 +29,35 @@ export class ListTempComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllArticlesByUsername();
-
   }
 
   private getAllArticlesByUsername() {
     const username = this.tokenService.getUsername() as string;
     this.articleService.getArticlesByUsername(username).subscribe({
       next: (data: Article[]) => {
-        this.articles = data;
-        // data.forEach(article => {
-        //   let file: File = article.imagen;
-        //   article.img1 = 'data:image/jpeg;base64,' + file;
-        // })
+        this.articles = data; 
+        this.articles.forEach(a => {
+          this.getImgsByArticleId(a.id);
+          
+        });    
       },
       error: (err: any) => {
         console.log(err);
       }
     });
   }
-  onImgs(articleId: number) {
-    this.showImgs = !this.showImgs;
-    this.getImgsByArticleId(articleId);
-  }
+  // onImgs(articleId: number) {
+  //   this.showImgs = !this.showImgs;
+  //   this.getImgsByArticleId(articleId);
+  // }
 
   private getImgsByArticleId(id: number) {
     this.articleService.getImagesByArticleId(id).subscribe({
       next: (data: Imagen[]) => {
         this.imagenes = data;
+        this.imagenes.forEach(img => {   
+          this.imgsUser.push(img);
+        })
       },
       error: err => {
         console.log(err);
@@ -63,20 +65,18 @@ export class ListTempComponent implements OnInit {
     })
   }
 
-  onDeleteArticle(articleId: number) {
-    this.articleService.deleteArticle(articleId).subscribe({
-      next: data => {
-        console.log(data.mensaje);
-        this.toastrService.success(data.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.getAllArticlesByUsername();
-      },
-      error: err => {
-        console.log(err);
-      }
-    })
-  }
+  // onDeleteArticle(articleId: number) {
+  //   this.articleService.deleteArticle(articleId).subscribe({
+  //     next: data => {
+  //       this.toastrService.success(data.mensaje, '', {
+  //         timeOut: 3000, positionClass: 'toast-top-center'
+  //       });
+  //     },
+  //     error: err => {
+  //       console.log(err);
+  //     }
+  //   })
+  // }
 
   onDeleteImage(imgId: string){
     this.articleService.deleteImage(imgId).subscribe({
@@ -90,11 +90,5 @@ export class ListTempComponent implements OnInit {
         console.log(err);
       }
     })
-  }
-
-  onAdd(articleId: number){
-    console.log(articleId);
-
-    this.dialog.open(AddImageComponent);
   }
 }
