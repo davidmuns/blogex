@@ -17,11 +17,26 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 620px;
 }
 
 .main-container>div {
     margin: 10px;
     padding: 20px;
+}
+
+.main-container-edit {
+    padding: 20px;
+    // border: 10px solid gray;
+    // background-color: rgb(126, 234, 253);
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    div{
+        margin: 10px;
+        padding: 20px;
+    }
 }
 
 img {

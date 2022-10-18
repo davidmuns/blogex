@@ -63,8 +63,8 @@ export class ListPostsComponent implements OnInit {
     this.router.navigate(['/admin/edit'], this.navigationExtras);
   }
 
-  onDelete(post: any){
-    this.dialog.open(DeleteComponent);
+  onDelete(post: Article){
+    this.dialog.open(DeleteComponent, {data: {name: `${post.id}`}});
   }
 
 }

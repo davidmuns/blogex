@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Article } from 'src/app/shared/models/article';
+import { ArticleService } from 'src/app/shared/services/article.service';
 
 @Component({
   selector: 'app-delete',
@@ -11,16 +15,31 @@ export class DeleteComponent implements OnInit {
 
   durationInSeconds = 5;
 
-  constructor(private readonly dialog: MatDialog, private snack: MatSnackBar) { }
+  constructor(private readonly dialog: MatDialog, 
+    private snack: MatSnackBar,
+    private readonly articleSvc: ArticleService,
+    @Inject(MAT_DIALOG_DATA) public data: {name: number},
+    private toastr: ToastrService,
+    private readonly router: Router
+    ) { }
 
   ngOnInit(): void {
   }
 
   deleteArticle(){
+    this.articleSvc.deleteArticle(this.data.name).subscribe({
+      next: data => {
+        this.snack.open("Article deleted", "",
+        {duration:  3000});
+        this.redirectTo(this.router.url);
+      }});
     this.dialog.closeAll();
-    this.snack.open("Article deleted", "",
-    {duration:  3000});
   }
+
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
+ }
 
   cancel(){
     this.dialog.closeAll();
