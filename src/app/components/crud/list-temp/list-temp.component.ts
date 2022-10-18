@@ -4,9 +4,8 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from './../../../shared/services/article.service';
 import { TokenService } from './../../../shared/services/token.service';
-
 import { Article } from './../../../shared/models/article';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Imagen } from 'src/app/shared/models/imagen';
 
 @Component({
@@ -17,8 +16,7 @@ import { Imagen } from 'src/app/shared/models/imagen';
 export class ListTempComponent implements OnInit {
   articles: Article[] = [];
   imagenes: Imagen[] = [];
-  showImgs: boolean = false;
-  imgsUser: Imagen[] = [];
+  // showImgs: boolean = false;
   
   constructor(
     private readonly dialog: MatDialog,
@@ -36,9 +34,8 @@ export class ListTempComponent implements OnInit {
     this.articleService.getArticlesByUsername(username).subscribe({
       next: (data: Article[]) => {
         this.articles = data; 
-        this.articles.forEach(a => {
-          this.getImgsByArticleId(a.id);
-          
+        this.articles.forEach(article => {
+          this.getImgsByArticleId(article.id);        
         });    
       },
       error: (err: any) => {
@@ -54,9 +51,8 @@ export class ListTempComponent implements OnInit {
   private getImgsByArticleId(id: number) {
     this.articleService.getImagesByArticleId(id).subscribe({
       next: (data: Imagen[]) => {
-        this.imagenes = data;
-        this.imagenes.forEach(img => {   
-          this.imgsUser.push(img);
+        data.forEach(img => {   
+          this.imagenes.push(img);
         })
       },
       error: err => {

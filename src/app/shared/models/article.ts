@@ -11,5 +11,6 @@ export interface Article {
     alt3?: string,
     text3?: string,
     longitude: number,
-    latitude: number
+    latitude: number,
+    imagenPortada: string
 }

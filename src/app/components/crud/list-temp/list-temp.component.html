@@ -1,6 +1,6 @@
 <h1 style="text-align: center;">GALERY</h1>
 <div class="main-container" >
-  <div *ngFor="let imagen of this.imgsUser">
+  <div *ngFor="let imagen of this.imagenes">
 
    <!-- https://animate.style/ -->
     <mat-card class="example-card animate__animated animate__zoomIn">
@@ -34,9 +34,9 @@
         <mat-card-title>{{ article.title }}</mat-card-title>
         <mat-card-subtitle>{{ article.id }}</mat-card-subtitle>
       </mat-card-header>
-      <!-- <a *ngIf="article.id == 35">
-        <img mat-card-image [src]="imgsUser[0].url" alt="Photo of a Shiba Inu">
-      </a> -->
+      <a>
+        <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
+      </a>
       <mat-card-content>
         <p>{{ article.alt1 }}</p>
         <p>{{ article.text1 }}</p>
@@ -48,7 +48,6 @@
         <button mat-button routerLink="/add-image/{{ article.id }}">Add img</button>
       </mat-card-actions>
     </mat-card>
-    
   </div>
 </div>
 
