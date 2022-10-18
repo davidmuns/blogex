@@ -10,7 +10,7 @@ const routes: Routes = [
     path: '', component: CrudComponent,
     children: [
       { path: 'admin/new', loadChildren: () => NewModule },
-      { path: 'admin/edit', loadChildren: () => EditModule }
+      { path: 'admin/edit/:idArticle', loadChildren: () => EditModule }
     ]
   }
 ];

@@ -1,3 +1,4 @@
+import { TokenService } from 'src/app/shared/services/token.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
@@ -39,13 +40,16 @@ export class ListPostsComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private readonly router: Router, 
+  constructor(
+    private tokenService: TokenService,
+    private readonly router: Router, 
     private readonly dialog: MatDialog,
     private readonly articleSvc: ArticleService
     ) { }
 
   ngOnInit(): void {
-    this.articleSvc.getAll().subscribe(posts => this.dataSource.data = posts);
+    const username =this.tokenService.getUsername() as string;
+    this.articleSvc.getArticlesByUsername(username).subscribe(posts => this.dataSource.data = posts);
   }
 
   ngAfterViewInit(){
@@ -60,7 +64,7 @@ export class ListPostsComponent implements OnInit {
   //Send all the post
   onEdit(post: Article){
     this.navigationExtras.state = post;
-    this.router.navigate(['/admin/edit'], this.navigationExtras);
+    this.router.navigate([`/admin/edit/${post.id}`], this.navigationExtras);
   }
 
   onDelete(post: Article){

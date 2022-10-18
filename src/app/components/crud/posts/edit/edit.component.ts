@@ -1,6 +1,8 @@
+import { Toast, ToastrService } from 'ngx-toastr';
+import { ArticleService } from 'src/app/shared/services/article.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 
 @Component({
@@ -18,7 +20,11 @@ export class EditComponent implements OnInit {
   private image!: any;
   public imageOriginal: any;
 
-  constructor(private readonly fBuilder: FormBuilder,
+  constructor(
+    private toastrService: ToastrService,
+    private articleService: ArticleService,
+    private activatedRoute: ActivatedRoute,
+    private readonly fBuilder: FormBuilder,
     private readonly router: Router) { 
       const navigation = router.getCurrentNavigation();
       this.article = navigation?.extras?.state;
@@ -80,7 +86,24 @@ export class EditComponent implements OnInit {
     }
   }
 
-  editPost(post: Article){}
+  editPost(post: Article){
+    const articleId = Number(this.activatedRoute.snapshot.paramMap.get('idArticle'));
+    this.articleService.updateArticle(articleId, post).subscribe({
+      next: data => {
+        this.toastrService.success(data.mensaje, '', {
+          timeOut: 3000, positionClass: 'toast-top-center',
+        });
+      this.router.navigate(['list']);
+      },
+      error: err => {
+        this.toastrService.error(err.error.mensaje, '', {
+          timeOut: 3000,  positionClass: 'toast-top-center',
+
+        });
+      }
+    })
+    
+  }
 
   handleImage1(image:any){}
 
