@@ -105,14 +105,19 @@ export class NewComponent implements OnInit {
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
+        this.redirectTo(this.router.url);
       },
       error: err => {
         this.toastrService.error(err.error.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-
       }
     });
   }
+
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
+ }
 
 }
