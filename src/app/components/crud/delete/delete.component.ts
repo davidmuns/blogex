@@ -18,7 +18,7 @@ export class DeleteComponent implements OnInit {
   constructor(private readonly dialog: MatDialog, 
     private snack: MatSnackBar,
     private readonly articleSvc: ArticleService,
-    @Inject(MAT_DIALOG_DATA) public data: {name: number},
+    @Inject(MAT_DIALOG_DATA) public data: {articleId: number},
     private toastr: ToastrService,
     private readonly router: Router
     ) { }
@@ -27,7 +27,7 @@ export class DeleteComponent implements OnInit {
   }
 
   deleteArticle(){
-    this.articleSvc.deleteArticle(this.data.name).subscribe({
+    this.articleSvc.deleteArticle(this.data.articleId).subscribe({
       next: data => {
         this.snack.open("Article deleted", "",
         {duration:  3000});
