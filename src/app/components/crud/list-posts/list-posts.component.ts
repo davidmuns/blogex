@@ -42,7 +42,7 @@ export class ListPostsComponent implements OnInit {
 
   constructor(
     private tokenService: TokenService,
-    private readonly router: Router, 
+    private readonly router: Router,
     private readonly dialog: MatDialog,
     private readonly articleSvc: ArticleService
     ) { }
@@ -60,11 +60,11 @@ export class ListPostsComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  
+
   //Send all the post
   onEdit(post: Article){
     this.navigationExtras.state = post;
-    this.router.navigate([`/admin/edit/${post.id}`], this.navigationExtras);
+    this.router.navigate(['admin/edit'], this.navigationExtras);
   }
 
   onDelete(post: Article){

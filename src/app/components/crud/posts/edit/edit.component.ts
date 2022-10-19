@@ -25,7 +25,7 @@ export class EditComponent implements OnInit {
     private articleService: ArticleService,
     private activatedRoute: ActivatedRoute,
     private readonly fBuilder: FormBuilder,
-    private readonly router: Router) { 
+    private readonly router: Router) {
       const navigation = router.getCurrentNavigation();
       this.article = navigation?.extras?.state;
       this.reload();
@@ -58,6 +58,7 @@ export class EditComponent implements OnInit {
 
   private initForm():void{
     this.editPostForm = this.fBuilder.group({
+      id:['', Validators.required],
       title:['', Validators.required],
       img1:['', Validators.required],
       alt1:['', Validators.required],
@@ -87,8 +88,8 @@ export class EditComponent implements OnInit {
   }
 
   editPost(post: Article){
-    const articleId = Number(this.activatedRoute.snapshot.paramMap.get('idArticle'));
-    this.articleService.updateArticle(articleId, post).subscribe({
+    // const articleId = Number(this.activatedRoute.snapshot.paramMap.get('idArticle'));
+    this.articleService.updateArticle(post.id, post).subscribe({
       next: data => {
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center',
@@ -102,7 +103,7 @@ export class EditComponent implements OnInit {
         });
       }
     })
-    
+
   }
 
   handleImage1(image:any){}

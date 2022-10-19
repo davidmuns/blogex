@@ -61,6 +61,7 @@ export class SignupComponent implements OnInit {
           timeOut: 3000, positionClass: 'toast-top-center',
         });
         this.dialog.closeAll();
+        this.dialog.open(LoginComponent);
         //this.router.navigate(['admin/new']);
       },
 

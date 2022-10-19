@@ -31,6 +31,7 @@ export class EditTempComponent implements OnInit {
 
   private initForm():void{
     this.editForm = this.fBuilder.group({
+      id:['', Validators.required],
       title:['', Validators.required],
       img1:['', Validators.required],
       alt1:['', Validators.required],
@@ -63,8 +64,8 @@ export class EditTempComponent implements OnInit {
   }
 
   onSubmit(article: Article){
-    const articleId = Number(this.activatedRoute.snapshot.paramMap.get('articleid'));
-    this.articleService.updateArticle(articleId, article).subscribe({
+    // const articleId = Number(this.activatedRoute.snapshot.paramMap.get('articleid'));
+    this.articleService.updateArticle(article.id, article).subscribe({
       next: data => {
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center',
@@ -78,7 +79,7 @@ export class EditTempComponent implements OnInit {
         });
       }
     })
-    
+
   }
 
 }

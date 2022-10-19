@@ -1,8 +1,8 @@
 <h1 style="text-align: center;">GALERY</h1>
-<div class="main-container" >
+<div class="main-container">
   <div *ngFor="let imagen of this.imagenes">
 
-   <!-- https://animate.style/ -->
+    <!-- https://animate.style/ -->
     <mat-card class="example-card animate__animated animate__zoomIn">
       <mat-card-header>
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
@@ -10,24 +10,24 @@
         <!-- <mat-card-subtitle>id {{ article.id  }}</mat-card-subtitle> -->
       </mat-card-header>
       <img mat-card-image [src]="imagen.url" alt="">
-      <mat-card-content >
-       
+      <mat-card-content>
+
       </mat-card-content>
       <mat-card-actions align="start">
         <!-- <button mat-button routerLink="/add-image/{{ imagen.articleId }}">Add img</button> -->
         <button mat-button (click)="onDeleteImage(imagen.id)">Delete</button>
-      </mat-card-actions >
+      </mat-card-actions>
     </mat-card>
-    
+
   </div>
 </div>
 
 
 <h1 style="text-align: center;">ARTICLES</h1>
 <div class="main-container animate__animated animate__backInLeft">
-  
+
   <div *ngFor="let article of this.articles">
-   
+
     <mat-card class="example-card">
       <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
@@ -50,6 +50,3 @@
     </mat-card>
   </div>
 </div>
-
-
-

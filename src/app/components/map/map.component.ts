@@ -33,13 +33,13 @@ export class MapComponent implements AfterViewInit {
         marker([point.latitude, point.longitude]).addTo(map).bindPopup(`
         <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
-        <img src="${point.img1}" (mouseover)="initWindow(${point.id})">
+        <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
       `);
       });
       map.fitBounds([
         ...res.map(point => [point.latitude, point.longitude] as [number, number])
       ]);
-    });	
+    });
   }
 
   /* initWindow(id:number): void{
