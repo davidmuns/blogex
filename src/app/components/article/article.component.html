@@ -3,13 +3,13 @@
       <mat-card class="example-card">
         <mat-card-header>
           <div class="example-header-image"></div>
-          <mat-card-title>{{ post.title }}</mat-card-title>
+          <mat-card-title>{{ post?.title }}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image [src]="post.img1" alt="{{ post.alt1 }}">
-        <p>{{ post.alt1 }}</p>
+        <img mat-card-image [src]="post?.img1" alt="{{ post?.alt1 }}">
+        <p>{{ post?.alt1 }}</p>
         <mat-card-content>
           <p>
-            {{ post.text1 }}
+            {{ post?.text1 }}
           </p>
         </mat-card-content>
         <mat-card-actions>

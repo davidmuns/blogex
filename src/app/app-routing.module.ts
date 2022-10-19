@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'reset-password/:token-password', component: ResetPasswordComponent},
-  {path: 'article/:title', component: ArticleComponent},
+  {path: 'article/:id', component: ArticleComponent},
   {path: 'edit/:articleid', component: EditTempComponent},
   {path: 'articles', component: ArticleComponent},
   {path: 'edit/:articleid', component: EditTempComponent},

@@ -49,24 +49,29 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(login: Login) {
-    this.authSvc.loginUser(login).subscribe({
-      next: data => {
-        this.tokenService.setToken(data.token);
-        this.toastr.success(`Welcome again ${login.nombreUsuario}!`, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.dialog.closeAll();
-        this.router.navigate(['admin/new']);
-      },
-      error: err => {
-        // this.toastr.error(err.error.mensaje, '', {
-        //   timeOut: 3000, positionClass: 'toast-top-center'
-        // });
-        this.toastr.error(err.error.message, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.loginForm.reset();
-      }
-    });
-  }
+    if(this.loginForm.valid){
+      this.authSvc.loginUser(login).subscribe({
+        next: data => {
+          this.tokenService.setToken(data.token);
+          this.toastr.success(`Welcome again ${login.nombreUsuario}!`, '', {
+            timeOut: 3000, positionClass: 'toast-top-center'
+          });
+          this.dialog.closeAll();
+          this.router.navigate(['admin/new']);
+        },
+        error: err => {
+          // this.toastr.error(err.error.mensaje, '', {
+          //   timeOut: 3000, positionClass: 'toast-top-center'
+          // });
+          this.toastr.error(err.error.message, '', {
+            timeOut: 3000, positionClass: 'toast-top-center'
+          });
+          this.loginForm.reset();
+        }
+      });
+    }else{
+      this.toastr.error("Error", '', {
+        timeOut: 3000,  positionClass: 'toast-top-center',
+      });
+  }}
 }

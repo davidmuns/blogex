@@ -25,6 +25,7 @@ export class SearchComponent implements OnInit {
   filteredOptions!: Observable<string[]>;
   oneArticle!: any;
   articlesTitle!: string[];
+  articleId!: number;
 
   constructor(private readonly articleSvc: ArticleService, private readonly router: Router) { }
 
@@ -40,6 +41,7 @@ export class SearchComponent implements OnInit {
       this.allOptions.map(x =>{ this.options.push(x.title);
       });
     });
+
   }
 
   private _filter(value: string): string[] {
@@ -60,12 +62,11 @@ export class SearchComponent implements OnInit {
 
     for(let i = 0; i < this.allOptions.length; i++){
       if(this.allOptions[i].title == this.myControl.value){
-        this.router.navigate(['/article', this.myControl.value]);
-        console.log("Article: ", this.allOptions);
-      console.log("Input: ", this.myControl);
+        this.articleId = this.allOptions[i].id;
+        this.router.navigate(['/article', this.articleId]);
       } 
-      
+      }    
     }
-  }
+  
 
 }
