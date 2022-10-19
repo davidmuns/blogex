@@ -1,6 +1,6 @@
+import { Imagen } from './../../shared/models/imagen';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 
@@ -11,23 +11,38 @@ import { ArticleService } from 'src/app/shared/services/article.service';
 })
 export class ArticleComponent implements OnInit {
 
-  public post!: Article;
+  public post!: Article | undefined;
+  imagenes!: Imagen[] | undefined;
+  
 
   constructor(private readonly route: ActivatedRoute, private articleSvc: ArticleService) {  }
 
   ngOnInit(): void {
-    const idPost = this.route.snapshot.params['title'];   //snapshot.params['id'];
-    this.articleSvc.getArticle(idPost)
-    .subscribe(data => this.post = data);
-    console.log("Post: ", idPost);
+    const idPost: number = this.route.snapshot.params['id'];   //snapshot.params['id'];
+    this.getArticleById(idPost);
   }
 
-    //In case of assets file is a JSON format
-   /* private async getArticles(){
-    this.articleSvc.getArticles()
-      .subscribe(res => {
-        this.articles = res;
-      })
-  } */
+  private getArticleById(id: number){
+    this.articleSvc.getArticle(id)
+    .subscribe(data => this.post = data);
+  }
+
+  showGallery(id: number | undefined){
+    const idArticle: number = id as number;
+    this.getImgsByArticleId(idArticle);
+    
+  }
+
+  private getImgsByArticleId(id: number){
+    this.articleSvc.getImagesByArticleId(id).subscribe({
+      next: (data: Imagen[]) => {
+        this.imagenes = data;
+      }
+    })
+  }
+
+  hideGallery(){
+    this.imagenes = [];
+  }
  
 }

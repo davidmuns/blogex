@@ -14,7 +14,7 @@
         <mat-card-title>{{ article.title }}</mat-card-title>
         <mat-card-subtitle>id {{ article.id }}</mat-card-subtitle>
       </mat-card-header>
-      <a>
+      <a (click)="onClick(article.id)" style="cursor: pointer;">
         <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
       </a>
       <mat-card-content>

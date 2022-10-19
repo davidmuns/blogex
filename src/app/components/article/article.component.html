@@ -1,21 +1,46 @@
+<h1 style="text-align: center;">GALLERY</h1>
 <div class="main-container">
-    <div>
-      <mat-card class="example-card">
-        <mat-card-header>
-          <div class="example-header-image"></div>
-          <mat-card-title>{{ post.title }}</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image [src]="post.img1" alt="{{ post.alt1 }}">
-        <p>{{ post.alt1 }}</p>
-        <mat-card-content>
-          <p>
-            {{ post.text1 }}
-          </p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
+  <div *ngFor="let imagen of this.imagenes">
+
+    <!-- https://animate.style/ -->
+    <mat-card class="example-card animate__animated animate__zoomIn">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <!-- <mat-card-title>{{ imagen.article.title }}</mat-card-title> -->
+        <!-- <mat-card-subtitle>id {{ article.id  }}</mat-card-subtitle> -->
+      </mat-card-header>
+      <img mat-card-image [src]="imagen.url" alt="">
+      <mat-card-content>
+
+      </mat-card-content>
+      <mat-card-actions align="start">
+        <!-- <button mat-button routerLink="/add-image/{{ imagen.articleId }}">Add img</button> -->
+        <!-- <button mat-button (click)="onDeleteImage(imagen.id)">Delete</button> -->
+      </mat-card-actions>
+    </mat-card>
+
   </div>
+</div>
+
+<div class="main-container">
+  <div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div class="example-header-image"></div>
+        <mat-card-title>{{ post?.title }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.alt1 }}">
+      <p>{{ post?.alt1 }}</p>
+      <mat-card-content>
+        <p>
+          {{ post?.text1 }}
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="showGallery(post?.id)">Show gallery</button>
+        <button mat-button (click)="hideGallery()">Hide gallery</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
