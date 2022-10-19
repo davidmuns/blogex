@@ -100,19 +100,25 @@ export class NewComponent implements OnInit {
   }
 
   private createArticle(post: Article, username: string) {
-    this.articleService.createArticle(post, username).subscribe({
-      next: data => {
-        this.toastrService.success(data.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.redirectTo(this.router.url);
-      },
-      error: err => {
-        this.toastrService.error(err.error.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-      }
-    });
+    if(this.newPostForm.valid){
+      this.articleService.createArticle(post, username).subscribe({
+        next: data => {
+          this.toastrService.success(data.mensaje, '', {
+            timeOut: 3000, positionClass: 'toast-top-center'
+          });
+          this.redirectTo(this.router.url);
+        },
+        error: err => {
+          this.toastrService.error(err.error.mensaje, '', {
+            timeOut: 3000, positionClass: 'toast-top-center'
+          });
+        }
+      });
+      }else{
+        this.toastrService.error(this.newPostForm.errors?.['required'] + " needs to be completed", '', {
+        timeOut: 3000,  positionClass: 'toast-top-center',
+      });
+    }
   }
 
   redirectTo(uri:string){
