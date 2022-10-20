@@ -17,8 +17,9 @@ export class EditComponent implements OnInit {
   public flag: number = 1;
   public buttonTag: string = "One More";
   public article: any = null;
-  private image!: any;
+  public image!: File;
   public imageOriginal: any;
+  public miniatura!: File;
 
   constructor(
     private toastrService: ToastrService,
@@ -26,86 +27,114 @@ export class EditComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private readonly fBuilder: FormBuilder,
     private readonly router: Router) {
-      const navigation = router.getCurrentNavigation();
-      this.article = navigation?.extras?.state;
-      this.reload();
-      this.initForm();
+    const navigation = router.getCurrentNavigation();
+    this.article = navigation?.extras?.state;
+    this.reload();
+    this.initForm();
   }
 
   ngOnInit(): void {
     //Check if there is some image and if not place it
     this.image = this.imageOriginal;
-    if(this.imageOriginal !== ''){
+    if (this.imageOriginal !== '') {
       this.imageOriginal = this.article.img1;
     }
     //If the post is not empty, fill the fields of the form
-    if(typeof this.article !== 'undefined'){
+    if (typeof this.article !== 'undefined') {
       this.editPostForm.patchValue(this.article);
-    }else{
+    } else {
       this.router.navigate(['admin/new']);
     }
   }
 
   //Reload the page to bring more forms
-  reload(){
+  reload() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
   }
 
-  toNew(){
+  toNew() {
     this.router.navigate(['admin/new']);
   }
 
-  private initForm():void{
+  private initForm(): void {
     this.editPostForm = this.fBuilder.group({
-      id:['', Validators.required],
-      title:['', Validators.required],
-      img1:['', Validators.required],
-      alt1:['', Validators.required],
-      text1:['', Validators.required],
-      img2:[''],
-      alt2:[''],
-      text2:[''],
-      img3:[''],
-      alt3:[''],
-      text3:[''],
-      longitude:['', Validators.required],
-      latitude:['', Validators.required]
+      id: ['', Validators.required],
+      title: ['', Validators.required],
+      img1: ['', Validators.required],
+      alt1: ['', Validators.required],
+      text1: ['', Validators.required],
+      img2: [''],
+      alt2: [''],
+      text2: [''],
+      img3: [''],
+      alt3: [''],
+      text3: [''],
+      longitude: ['', Validators.required],
+      latitude: ['', Validators.required]
     })
   }
 
-  moreImgs(){
-    if(this.flag < 3){
+  moreImgs() {
+    if (this.flag < 3) {
       this.flag++;
       this.viewForm.push(this.flag);
-      if(this.flag == 3)
+      if (this.flag == 3)
         this.buttonTag = "One Less";
-    }else{
+    } else {
       this.viewForm.pop(this.flag)
       this.flag--;
       this.buttonTag = "One More";
     }
   }
 
-  editPost(post: Article){
+  onSubmit(post: Article) {
     // const articleId = Number(this.activatedRoute.snapshot.paramMap.get('idArticle'));
+    this.editPost(post.id, post);
+    console.log(this.image);
+
+    //this.uploadImage(this.image);
+  }
+
+  private editPost(id: number, post: Article) {
     this.articleService.updateArticle(post.id, post).subscribe({
       next: data => {
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center',
         });
-      this.router.navigate(['list']);
+        this.router.navigate(['list']);
       },
       error: err => {
         this.toastrService.error(err.error.mensaje, '', {
-          timeOut: 3000,  positionClass: 'toast-top-center',
+          timeOut: 3000, positionClass: 'toast-top-center',
 
         });
       }
     })
-
   }
 
-  handleImage1(image:any){}
+  private uploadImage(image: File) {
+    this.articleService.uploadImage(image).subscribe({
+      next: data => {
+        // this.toastrService.success(data.mensaje, '', {
+        //   timeOut: 1000, positionClass: 'toast-top-center'
+        // });
+      },
+      error: err => {
+        this.toastrService.error(err.error.mensaje, '', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+      }
+    })
+  }
+
+  handleImage1(event: any) {
+    this.image = event.target.files[0];
+    const fr = new FileReader();
+    fr.onload = (e: any) => {
+      this.miniatura = e.target.result;
+    }
+    fr.readAsDataURL(this.image);
+  }
 
 }
