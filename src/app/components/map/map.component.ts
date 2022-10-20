@@ -22,10 +22,21 @@ export class MapComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     const map = new Map('map').setView([42.40249, 2.194332], 13);
+    const map2 = new Map('map2').setView([42.40249, 2.194332], 13);
+    const map3 = new Map('map3').setView([42.40249, 2.194332], 13);
+
     tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 20,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+
+    tileLayer.wms("http://ows.mundialis.de/services/service?", {
+    layers: 'Dark',
+    maxZoom: 13,
+    format: 'image/png',
+    transparent: true,
+    attribution: "Weather data © 2012 IEM Nexrad"
+    }).addTo(map2);
 
     this.articleSvc.getAll().subscribe(
       (res: Article[]) => {res.map(point => {
@@ -40,17 +51,26 @@ export class MapComponent implements AfterViewInit {
         ...res.map(point => [point.latitude, point.longitude] as [number, number])
       ]);
     });
-  }
 
-  /* initWindow(id:number): void{
-    console.log("Post: ", this.postActual);
-    //this.articleSvc.getLocalArticle(id);
-    this.router.navigate(["'/article', article.id"])
-  } */
+    this.articleSvc.getAll().subscribe(
+      (res: Article[]) => {res.map(point => {
+        this.postActual = point;
+        marker([point.latitude, point.longitude]).addTo(map2).bindPopup(`
+        <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
+        <p class="text">${point.text1}</p>
+        <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
+      `);
+      });
+      map2.fitBounds([
+        ...res.map(point => [point.latitude, point.longitude] as [number, number])
+      ]);
+    });
+  }
 
   //Click to map and enable zoom
   removeCapa(){
     const asCapa = this.toCapa.nativeElement;
+    this.renderer2.setStyle(asCapa, 'width', '0px');
     this.renderer2.setStyle(asCapa, 'width', '0px');
   }
 

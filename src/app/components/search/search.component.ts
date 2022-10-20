@@ -50,23 +50,14 @@ export class SearchComponent implements OnInit {
   }
 
   selectArticle(){
-    /* const title: any = this.myControl.value;
-    this.articleSvc.getLocalArticleByTitle(title).subscribe({next: res => {
-      this.oneArticle = res;
-      console.log("One Article: ", this.oneArticle);
-    }
-    }); */
-    /* this.articleSvc.getArticles().subscribe((res:Article[]) => {res.map(x => {
-      this.oneArticle = x
-    })}); */
 
     for(let i = 0; i < this.allOptions.length; i++){
       if(this.allOptions[i].title == this.myControl.value){
         this.articleId = this.allOptions[i].id;
         this.router.navigate(['/article', this.articleId]);
       } 
-      }    
-    }
+    }    
+  }
   
 
 }
