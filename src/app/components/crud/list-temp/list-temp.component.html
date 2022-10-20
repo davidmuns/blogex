@@ -1,17 +1,15 @@
 <h1 style="text-align: center;">GALLERY</h1>
 <div class="main-container">
   <div *ngFor="let imagen of this.imgsByArticleId">
-
     <!-- https://animate.style/ -->
-    <mat-card class="example-card animate__animated animate__zoomIn">
+    <mat-card class="example-card animate__animated animate__backInLeft">
       <mat-card-header>
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
         <mat-card-title>{{ imagen.article.title }}</mat-card-title>
         <!-- <mat-card-subtitle>id {{ article.id  }}</mat-card-subtitle> -->
       </mat-card-header>
-      <img mat-card-image [src]="imagen.url" alt="">
+     <img mat-card-image [src]="imagen.url" alt="">
       <mat-card-content>
-
       </mat-card-content>
       <mat-card-actions align="start">
         <!-- <button mat-button routerLink="/add-image/{{ imagen.articleId }}">Add img</button> -->
@@ -21,7 +19,6 @@
 
   </div>
 </div>
-
 
 <h1 style="text-align: center;">ARTICLES</h1>
 <div class="main-container animate__animated animate__backInLeft">
@@ -34,7 +31,7 @@
         <mat-card-title>{{ article.title }}</mat-card-title>
         <mat-card-subtitle>{{ article.id }}</mat-card-subtitle>
       </mat-card-header>
-      <a>
+      <a (click)="loadImgsByArticleId(article.id)">
         <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
       </a>
       <mat-card-content>
@@ -46,10 +43,14 @@
         <!-- <button mat-button (click)="onDeleteArticle(article.id)">Delete</button> -->
         <!-- <button mat-button (click)="onImgs(article.id)">Galery</button> -->
         <button mat-button routerLink="/add-image/{{ article.id }}">Add img</button>
-        <button mat-button (click)="loadImgsByArticleId(article.id)">Edit main img</button>
+       
+          <button mat-button (click)="loadImgsByArticleId(article.id)">Gallery</button>
+       
       </mat-card-actions>
     </mat-card>
   </div>
 </div>
+
+
 <h1>{{ this.imgsByArticleId.length }}</h1>
 <!-- <p>{{ this.imgsByArticleId | json }}</p> -->

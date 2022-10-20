@@ -89,11 +89,9 @@ export class EditComponent implements OnInit {
   }
 
   onSubmit(post: Article) {
-    // const articleId = Number(this.activatedRoute.snapshot.paramMap.get('idArticle'));
     this.editPost(post.id, post);
-    console.log(this.image);
-
-    //this.uploadImage(this.image);
+    this.uploadImage(this.image);
+    // this.router.navigate(['list']);
   }
 
   private editPost(id: number, post: Article) {
@@ -102,7 +100,6 @@ export class EditComponent implements OnInit {
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center',
         });
-        this.router.navigate(['list']);
       },
       error: err => {
         this.toastrService.error(err.error.mensaje, '', {
