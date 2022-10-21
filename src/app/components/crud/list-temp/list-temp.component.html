@@ -13,7 +13,7 @@
       </mat-card-content>
       <mat-card-actions align="start">
         <!-- <button mat-button routerLink="/add-image/{{ imagen.articleId }}">Add img</button> -->
-        <button mat-button (click)="onDeleteImage(imagen.id)">Delete</button>
+        <button mat-stroked-button color="warn" (click)="onDeleteImage(imagen.id)"><mat-icon>delete</mat-icon></button>
       </mat-card-actions>
     </mat-card>
 

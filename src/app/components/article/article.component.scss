@@ -1,26 +1,35 @@
 .example-card {
-    max-width: 250px;
-  
-  }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
-  // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
-  .main-container {
-    padding: 20px;
-    // border: 10px solid gray;
-    // background-color: rgb(126, 234, 253);
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .main-container>div {
-    margin: 10px;
-    padding: 20px;
-  }
-   img {
-    height: 200px;
-   }
+  max-width: 350px;
+
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+// https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
+.main-container {
+  padding: 20px;
+  // border: 10px solid gray;
+  // background-color: rgb(126, 234, 253);
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.main-container>div {
+  margin: 10px;
+  padding: 20px;
+}
+
+img {
+  height: 200px;
+}
+
+.carousel,
+.carousel-inner>.carousel-item>img {
+
+  height: 500px;
+}
