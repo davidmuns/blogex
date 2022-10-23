@@ -36,6 +36,16 @@ export class EmailPasswordComponent implements OnInit {
   }
 
   onSubmit(email: Email) {
+    if(this.emailForm.valid){
+      this.sendEmail(email);
+    }else{
+      this.toastr.error('Please, enter an email or username.', '', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+    }
+  }
+
+  private sendEmail(email: Email){
     this.emailPasswordService.sendEmail(email).subscribe({
       next: data => {
         this.toastr.success(data.mensaje, '', {
