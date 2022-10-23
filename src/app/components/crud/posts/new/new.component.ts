@@ -33,7 +33,7 @@ export class NewComponent implements OnInit {
 
   private initForm(): void {
     this.newPostForm = this.fBuilder.group({
-      title: ['', Validators.required],
+      title: ['', [Validators.required, Validators.maxLength(50)]],
       img1: ['', Validators.required],
       alt1: ['', Validators.required],
       text1: ['', Validators.required],

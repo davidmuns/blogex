@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, Renderer2, Input, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { Map, marker, tileLayer } from 'leaflet';
 import { Observable } from 'rxjs';
@@ -12,7 +12,12 @@ import { ArticleService } from 'src/app/shared/services/article.service';
 })
 export class MapComponent implements AfterViewInit {
 
+  @Input() valueScroll: any;
   @ViewChild('capa') toCapa!: ElementRef;
+  @ViewChild('map') mapa1!: ElementRef;
+  @ViewChild('map2') mapa2!: ElementRef;
+  @ViewChild('map3') mapa3!: ElementRef;
+  
 
   private postActual!: any;
 
@@ -21,6 +26,9 @@ export class MapComponent implements AfterViewInit {
      private router: Router) { }
 
   ngAfterViewInit(): void {
+
+    this.onScroll();
+
     const map = new Map('map').setView([42.40249, 2.194332], 13);
     const map2 = new Map('map2').setView([42.40249, 2.194332], 13);
     const map3 = new Map('map3').setView([42.40249, 2.194332], 13);
@@ -72,6 +80,24 @@ export class MapComponent implements AfterViewInit {
     const asCapa = this.toCapa.nativeElement;
     this.renderer2.setStyle(asCapa, 'width', '0px');
     this.renderer2.setStyle(asCapa, 'width', '0px');
+  }
+
+  onScroll() {
+    console.log("Scroll: ", this.valueScroll);
+    this.valueScroll = window.scrollY;
+    const asMap1 = this.mapa1.nativeElement;
+    const asMap2 = this.mapa2.nativeElement;
+    const asMap3 = this.mapa3.nativeElement;
+    if(this.valueScroll > 300 && this.valueScroll < 600){
+      this.renderer2.setStyle(asMap1, 'display', 'none');
+      this.renderer2.setStyle(asMap2, 'display', 'block');
+      this.renderer2.setStyle(asMap3, 'display', 'none');
+    }
+    if(this.valueScroll > 600){
+      this.renderer2.setStyle(asMap1, 'display', 'none');
+      this.renderer2.setStyle(asMap2, 'display', 'none');
+      this.renderer2.setStyle(asMap3, 'display', 'block');
+    }
   }
 
 }

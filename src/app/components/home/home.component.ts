@@ -1,66 +1,145 @@
-import { LoginComponent } from 'src/app/components/Auth/login/login.component';
-import { MatDialog } from '@angular/material/dialog';
-import { Imagen } from './../../shared/models/imagen';
+import { Component, HostListener, AfterViewInit, ViewChild, ElementRef, Renderer2, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Map, marker, tileLayer } from 'leaflet';
+import { Router } from '@angular/router';
 import { ArticleService } from './../../shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent implements OnInit {
-  articles: Article[] = [];
-  imagenes: Imagen[] = [];
-  imagenesAll: Imagen[] = [];
+export class HomeComponent implements AfterViewInit {
 
-  constructor(
-    private articleService: ArticleService,
-    private dialog: MatDialog) { }
+  @ViewChild('capa') toCapa!: ElementRef;
+  @ViewChild('map') toMap!: ElementRef;
+  @ViewChild('map2') toMap2!: ElementRef;
+  @ViewChild('map3') toMap3!: ElementRef;
 
-  ngOnInit(): void {
-    this.getArticles();
-    this.getImagenes();
+  @HostListener('document:scroll', ['$event'])
+  handleKey(event: any): void {
+    this.onScroll()
   }
 
-  private getArticles() {
-    this.articleService.getAll().subscribe({
-      next: data => {
-        this.articles = data;
-      },
-      error: err => {
-        console.log(err);
-      }
+  public catchScroll!: any;
+  private postActual!: any;
+
+  constructor(
+    private articleSvc: ArticleService,
+    private renderer2: Renderer2
+    ) { }
+
+  ngAfterViewInit(): void {
+
+    const map = new Map('map').setView([42.40249, 2.194332], 13);
+    const map2 = new Map('map2').setView([42.40249, 2.194332], 13);
+    const map3 = new Map('map3').setView([42.40249, 2.194332], 13);
+
+    //Map1 code
+    tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 20,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    this.articleSvc.getAll().subscribe(
+      (res: Article[]) => {res.map(point => {
+        this.postActual = point;
+        marker([point.latitude, point.longitude]).addTo(map).bindPopup(`
+        <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
+        <p class="text">${point.text1}</p>
+        <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
+      `);
+      });
+      map.fitBounds([
+        ...res.map(point => [point.latitude, point.longitude] as [number, number])
+      ]);
+    });
+
+    //Map2 code
+    tileLayer.wms("http://ows.mundialis.de/services/service?", {
+    layers: 'Dark',
+    maxZoom: 13,
+    format: 'image/png',
+    transparent: true,
+    attribution: "Weather data © 2012 IEM Nexrad"
+    }).addTo(map2);
+
+    this.articleSvc.getAll().subscribe(
+      (res: Article[]) => {res.map(point => {
+        this.postActual = point;
+        marker([point.latitude, point.longitude]).addTo(map2).bindPopup(`
+        <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
+        <p class="text">${point.text1}</p>
+        <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
+      `);
+      });
+      map2.fitBounds([
+        ...res.map(point => [point.latitude, point.longitude] as [number, number])
+      ]);
+    });
+
+    //Map3 code
+    tileLayer.wms("http://ows.mundialis.de/services/service?", {
+    layers: 'OSM-Overlay-WMS',
+    maxZoom: 13,
+    format: 'image/png',
+    transparent: true,
+    attribution: "Weather data © 2012 IEM Nexrad"
+    }).addTo(map3);
+
+    this.articleSvc.getAll().subscribe(
+      (res: Article[]) => {res.map(point => {
+        this.postActual = point;
+        marker([point.latitude, point.longitude]).addTo(map3).bindPopup(`
+        <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
+        <p class="text">${point.text1}</p>
+        <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
+      `);
+      });
+      map3.fitBounds([
+        ...res.map(point => [point.latitude, point.longitude] as [number, number])
+      ]);
     });
   }
 
-  private getImagenes() {
-    this.articleService.getImages().subscribe({
-      next: (data: Imagen[]) => {
-        this.imagenesAll = data;
-      }
-    })
+  //Click to map and enable zoom
+  removeCapa(){
+    const asCapa = this.toCapa.nativeElement;
+    const asMap1 = this.toMap.nativeElement;
+      this.renderer2.setStyle(asCapa, 'display', 'none');
+      this.renderer2.setStyle(asMap1, 'zIndex', '0');
   }
 
-  onImgs(articleId: number) {
-    this.getImgsByArticleId(articleId);
-    this.imagenes = [];
+  outMap(){
+    const asCapa = this.toCapa.nativeElement;
+    const asMap1 = this.toMap.nativeElement;
+    this.renderer2.setStyle(asCapa, 'display', 'block');
+    this.renderer2.setStyle(asMap1, 'zIndex', '-2');
   }
 
-  private getImgsByArticleId(id: number) {
-    this.articleService.getImagesByArticleId(id).subscribe({
-      next: (data: Imagen[]) => {
-        this.imagenes = data;
-      },
-      error: err => {
-        console.log(err);
-      }
-    })
-  }
+  onScroll(){
+    this.catchScroll = window.scrollY;
+    console.log("CatchScroll: ", this.catchScroll);
 
-  openGalery() {
-    this.dialog.open(LoginComponent);
+    const asMap1 = this.toMap.nativeElement;
+    const asMap2 = this.toMap2.nativeElement;
+    const asMap3 = this.toMap3.nativeElement;
+    if(this.catchScroll > 0 && this.catchScroll < 1000){
+      this.renderer2.setStyle(asMap1, 'display', 'block');
+      this.renderer2.setStyle(asMap2, 'display', 'none');
+      this.renderer2.setStyle(asMap3, 'display', 'none');
+    }
+    if(this.catchScroll > 1000 && this.catchScroll < 2400){
+      this.renderer2.setStyle(asMap1, 'display', 'none');
+      this.renderer2.setStyle(asMap2, 'display', 'block');
+      this.renderer2.setStyle(asMap3, 'display', 'none');
+    } 
+    if(this.catchScroll > 2400){
+      this.renderer2.setStyle(asMap1, 'display', 'none');
+      this.renderer2.setStyle(asMap2, 'display', 'none');
+      this.renderer2.setStyle(asMap3, 'display', 'block');
+    } 
   }
 
 }

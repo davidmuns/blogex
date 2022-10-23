@@ -1,32 +1,32 @@
 <mat-toolbar class="toolbarClass">
 
   <mat-toolbar-row class="toolbar">
+
+    <button mat-menu-item id="menuHome" *ngIf="!this.tokenService.isLogged()">
+      <mat-icon routerLink="/">home</mat-icon>
+    </button>
     
-    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+    *ngIf="this.tokenService.isLogged()">
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <button mat-menu-item routerLink="/">
         <mat-icon>home</mat-icon>
-        <a routerLink="/" mat-button>Home</a>
+        <a mat-button>Home</a>
       </button>
       <mat-divider></mat-divider>
-      <button mat-menu-item>
+      <button mat-menu-item routerLink="/admin/new">
         <mat-icon>edit</mat-icon>
-        <a routerLink="/admin/new" mat-button *ngIf="this.tokenService.isLogged()">Your routes</a>
+        <a mat-button>Your routes</a>
       </button>
       <mat-divider></mat-divider>
-      <button mat-menu-item>
+      <button mat-menu-item routerLink="/list">
         <mat-icon>image</mat-icon>
-        <a routerLink="/list" mat-button *ngIf="this.tokenService.isLogged()">My list</a>
-      </button>
-      
+        <a mat-button>My list</a>
+      </button>  
     </mat-menu>
     
-    <!-- <mat-icon style="cursor:pointer" routerLink="/home">restaurant_menu</mat-icon>
-    <a routerLink="/admin/new" mat-button *ngIf="this.tokenService.isLogged()">Your routes</a> -->
-    <!-- <a routerLink="/article" mat-button>Article</a> -->
-    <!-- <a routerLink="/list" mat-button *ngIf="this.tokenService.isLogged()">My list</a> -->
     <app-search></app-search>
     <!-- <h1 id="title">Blog de rutes</h1> -->
     <div id="logReg" *ngIf="this.tokenService.isLogged() === false; else logged">
