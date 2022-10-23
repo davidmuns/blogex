@@ -1,4 +1,12 @@
 <h1 style="text-align: center;">GALLERY</h1>
+<div style="display: flex; justify-content: center">
+  <div>
+    <button mat-button (click)="showGallery(post?.id)">Show</button>
+  </div>
+  <div>
+    <button mat-button (click)="hideGallery()">Hide</button>
+  </div>
+</div>
 
 <div class="main-container">
   <div *ngFor="let imagen of this.imagenes; let i = index">
