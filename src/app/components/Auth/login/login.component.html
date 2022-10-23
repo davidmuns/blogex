@@ -3,21 +3,21 @@
     <p>
     <mat-form-field appearance="fill">
       <mat-label>Username or email</mat-label>
-      <input matInput placeholder="User Name" formControlName="nombreUsuario" required>
+      <input class="inputLogin" matInput placeholder="User Name" formControlName="nombreUsuario" required>
     </mat-form-field>
     </p>
 
     <p>
     <mat-form-field appearance="fill">
         <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+        <input class="inputLogin" matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
         <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </div>
     </mat-form-field>
     </p>
 
-    <button mat-raised-button [disabled]="this.loginForm.invalid">LogIn</button>
+    <button mat-raised-button>LogIn</button>
     <div class="link-signup" (click)="signupOpen()">Create an account</div>
     <div class="forgot-pass">Forgot your password?<span (click)="emailOpen()">&nbsp;send email</span></div>
     

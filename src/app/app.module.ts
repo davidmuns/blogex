@@ -31,6 +31,8 @@ import { ArticleComponent } from './components/article/article.component';
 
 
 import { interceptorProvider } from './interceptors/article-interceptor.service';
+import { FrontArticlesComponent } from './components/home/front-articles/front-articles.component';
+import { FooterComponent } from './shared/footer/footer.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { interceptorProvider } from './interceptors/article-interceptor.service'
     MapComponent,
     ArticleComponent,
     ListTempComponent,
-    AddImageComponent
+    AddImageComponent,
+    FrontArticlesComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

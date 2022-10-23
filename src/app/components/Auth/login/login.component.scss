@@ -1,3 +1,7 @@
+form{
+    width:220px;
+    padding: 0px 10px
+}
 h3{
     text-align: center;
     font-size: 1.6rem;
@@ -32,4 +36,7 @@ span {
 }
 span:hover{
     text-decoration: underline;
+}
+.mat-form-field{
+    width:100%
 }

@@ -53,7 +53,7 @@ export class SignupComponent implements OnInit {
   }
 
   newUser(user:User){
-    console.log(user);
+    if(this.signupForm.valid){
     this.authSvc.signupUser(user).subscribe({
       next: (data) => {
         console.log(data.mensaje);
@@ -70,8 +70,13 @@ export class SignupComponent implements OnInit {
         this.toastr.error(err.error.mensaje, '', {
           timeOut: 3000,  positionClass: 'toast-top-center',
         });
-      }
-    });
+        }
+      });
+    }else{
+      this.toastr.error("Error", '', {
+        timeOut: 3000,  positionClass: 'toast-top-center',
+      });
+    }
   }
 
 }

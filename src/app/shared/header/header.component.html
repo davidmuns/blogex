@@ -1,12 +1,34 @@
 <mat-toolbar class="toolbarClass">
 
   <mat-toolbar-row class="toolbar">
-    <mat-icon style="cursor:pointer" routerLink="/home">home</mat-icon>
-    <a routerLink="/admin/new" mat-button *ngIf="this.tokenService.isLogged()">Your routes</a>
-    <!-- <a routerLink="/article" mat-button>Article</a> -->
-    <a routerLink="/list" mat-button *ngIf="this.tokenService.isLogged()">My list</a>
+
+    <button mat-menu-item id="menuHome" *ngIf="!this.tokenService.isLogged()">
+      <mat-icon routerLink="/">home</mat-icon>
+    </button>
+    
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+    *ngIf="this.tokenService.isLogged()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/">
+        <mat-icon>home</mat-icon>
+        <a mat-button>Home</a>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="/admin/new">
+        <mat-icon>edit</mat-icon>
+        <a mat-button>Your routes</a>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="/list">
+        <mat-icon>image</mat-icon>
+        <a mat-button>My list</a>
+      </button>  
+    </mat-menu>
+    
     <app-search></app-search>
-    <h1 id="title">Blog de rutes</h1>
+    <!-- <h1 id="title">Blog de rutes</h1> -->
     <div id="logReg" *ngIf="this.tokenService.isLogged() === false; else logged">
       <a data-bs-toggle="modal" data-bs-target="#LogIn" (click)="openDialog()">LOG IN &nbsp;</a>
       <span>-&nbsp;&nbsp;</span>

@@ -68,7 +68,7 @@ export class ArticleService {
   }
 
   public getLocalArticle(id: Article): Observable<Article> {
-    return this.httpClient.get<Article>(environment.ARTICLES_LOCAL + '/article/' + id);
+    return this.httpClient.get<Article>(environment.ARTICLES_LOCAL + id);
   }
 
   public getLocalArticleByTitle(title: string): Observable<Article> {

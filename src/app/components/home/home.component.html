@@ -1,6 +1,15 @@
-<app-map></app-map>
+<div id="capa1" (click)="removeCapa()" (dblclick)="outMap()">Click to map to zoom
+  <div #capa class="capa"></div>
+  <div #map id="map"></div>
+  <div #map2 id="map2"></div>
+  <div #map3 id="map3"></div>
+</div>
 
-<h1 style="text-align: center;">ARTICLES</h1>
+<app-front-articles></app-front-articles>
+<app-front-articles></app-front-articles>
+<div id="marge"></div>
+<app-footer></app-footer>
+<!-- <h1 style="text-align: center;">ARTICLES</h1>
 <ng-container *ngFor="let imagen of this.imagenes">
   <img [src]="imagen.url" alt="">
 </ng-container>
@@ -21,10 +30,10 @@
         <p>{{ article.alt1 }}</p>
         <p>{{ article.text1 }}</p>
       </mat-card-content>
-      <mat-card-actions>
+      <mat-card-actions> -->
         <!-- <button mat-button (click)="onImgs(article.id)">img</button> -->
-      </mat-card-actions>
+      <!-- </mat-card-actions>
     </mat-card>
 
   </div>
-</div>
+</div> -->
