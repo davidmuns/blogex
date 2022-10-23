@@ -1,6 +1,7 @@
 <h1 style="text-align: center;">GALLERY</h1>
+
 <div class="main-container">
-  <div *ngFor="let imagen of this.imagenes">
+  <div *ngFor="let imagen of this.imagenes; let i = index">
 
     <!-- https://animate.style/ -->
     <mat-card class="example-card animate__animated animate__zoomIn">
@@ -9,7 +10,7 @@
         <!-- <mat-card-title>{{ imagen.article.title }}</mat-card-title> -->
         <!-- <mat-card-subtitle>id {{ article.id  }}</mat-card-subtitle> -->
       </mat-card-header>
-      <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;">
+      <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;" (click)="getIndex(i)">
         <img mat-card-image [src]="imagen.url" alt="">
       </a>
 
@@ -48,7 +49,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"   style="padding: 0px;">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="padding: 0px;">
   <div class="modal-dialog modal-xl">
     <div class="modal-content" style="height: 530px; background-color: transparent; border: none;">
       <!-- <div class="modal-header">
@@ -64,6 +65,12 @@
             <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
             </div>
+             <!-- <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == this.indice }">
+              <img [src]="imagen.url" class="d-block w-100" alt="...">
+            </div> -->
+            <!-- <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == 0 }">
+              <img [src]="imagen.url" class="d-block w-100" alt="...">
+            </div> -->
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
