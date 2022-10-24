@@ -128,17 +128,17 @@ export class HomeComponent implements AfterViewInit {
     const asMap1 = this.toMap.nativeElement;
     const asMap2 = this.toMap2.nativeElement;
     const asMap3 = this.toMap3.nativeElement;
-    if (this.catchScroll > 0 && this.catchScroll < 1000) {
+    if (this.catchScroll > 0 && this.catchScroll < 800) {
       this.renderer2.setStyle(asMap1, 'display', 'block');
       this.renderer2.setStyle(asMap2, 'display', 'none');
       this.renderer2.setStyle(asMap3, 'display', 'none');
     }
-    if (this.catchScroll > 1000 && this.catchScroll < 2400) {
+    if (this.catchScroll > 800 && this.catchScroll < 2600) {
       this.renderer2.setStyle(asMap1, 'display', 'none');
       this.renderer2.setStyle(asMap2, 'display', 'block');
       this.renderer2.setStyle(asMap3, 'display', 'none');
     }
-    if (this.catchScroll > 2400) {
+    if (this.catchScroll > 2600) {
       this.renderer2.setStyle(asMap1, 'display', 'none');
       this.renderer2.setStyle(asMap2, 'display', 'none');
       this.renderer2.setStyle(asMap3, 'display', 'block');

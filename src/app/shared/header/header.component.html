@@ -10,20 +10,20 @@
     *ngIf="this.tokenService.isLogged()">
       <mat-icon>menu</mat-icon>
     </button>
-    <mat-menu #menu="matMenu">
+    <mat-menu #menu id="matMenu">
       <button mat-menu-item routerLink="/">
         <mat-icon>home</mat-icon>
-        <a mat-button>Home</a>
+        Home
       </button>
       <mat-divider></mat-divider>
       <button mat-menu-item routerLink="/admin/new">
         <mat-icon>edit</mat-icon>
-        <a mat-button>Your routes</a>
+        Your routes
       </button>
       <mat-divider></mat-divider>
       <button mat-menu-item routerLink="/list">
         <mat-icon>image</mat-icon>
-        <a mat-button>My list</a>
+        My list
       </button>  
     </mat-menu>
     
