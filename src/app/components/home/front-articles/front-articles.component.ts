@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Imagen } from './../../../shared/models/imagen';
 import { ArticleService } from './../../../shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-front-articles',
@@ -18,11 +19,12 @@ export class FrontArticlesComponent implements OnInit {
 
 
   constructor(private articleService: ArticleService,
+    private router: Router,
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getArticles();
-    this.getImagenes();
+    // this.getImagenes();
   }
 
   private getArticles() {
@@ -36,32 +38,36 @@ export class FrontArticlesComponent implements OnInit {
     });
   }
 
-  private getImagenes() {
-    this.articleService.getImages().subscribe({
-      next: (data: Imagen[]) => {
-        this.imagenesAll = data;
-      }
-    })
+  onClick(articleId: number) {
+    this.router.navigate(['article/' + articleId]);
   }
 
-  onImgs(articleId: number) {
-    this.getImgsByArticleId(articleId);
-    this.imagenes = [];
-  }
+  // private getImagenes() {
+  //   this.articleService.getImages().subscribe({
+  //     next: (data: Imagen[]) => {
+  //       this.imagenesAll = data;
+  //     }
+  //   })
+  // }
 
-  private getImgsByArticleId(id: number) {
-    this.articleService.getImagesByArticleId(id).subscribe({
-      next: (data: Imagen[]) => {
-        this.imagenes = data;
-      },
-      error: err => {
-        console.log(err);
-      }
-    })
-  }
+  // onImgs(articleId: number) {
+  //   this.getImgsByArticleId(articleId);
+  //   this.imagenes = [];
+  // }
 
-  openGalery() {
-    this.dialog.open(LoginComponent);
-  }
+  // private getImgsByArticleId(id: number) {
+  //   this.articleService.getImagesByArticleId(id).subscribe({
+  //     next: (data: Imagen[]) => {
+  //       this.imagenes = data;
+  //     },
+  //     error: err => {
+  //       console.log(err);
+  //     }
+  //   })
+  // }
+
+  // openGalery() {
+  //   this.dialog.open(LoginComponent);
+  // }
 
 }
