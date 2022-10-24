@@ -49,7 +49,7 @@ export class HomeComponent implements AfterViewInit {
           marker([point.latitude, point.longitude]).addTo(map).bindPopup(`
         <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
-        <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
+        <a href="http://localhost:4200/article/${point.id}"><img src="${point.imagenPortada}"></a>
       `);
         });
         map.fitBounds([
@@ -73,7 +73,7 @@ export class HomeComponent implements AfterViewInit {
           marker([point.latitude, point.longitude]).addTo(map2).bindPopup(`
         <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
-        <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
+        <a href="http://localhost:4200/article/${point.id}"><img src="${point.imagenPortada}"></a>
       `);
         });
         map2.fitBounds([
@@ -97,7 +97,7 @@ export class HomeComponent implements AfterViewInit {
           marker([point.latitude, point.longitude]).addTo(map3).bindPopup(`
         <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
-        <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
+        <a href="http://localhost:4200/article/${point.id}"><img src="${point.imagenPortada}" class="imgMap"></a>
       `);
         });
         map3.fitBounds([

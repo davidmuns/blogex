@@ -31,7 +31,7 @@ export class DeleteComponent implements OnInit {
       next: data => {
         this.snack.open("Article deleted", "",
           { duration: 3000 });
-        this.redirectTo(this.router.url);
+        this.redirectTo('admin/new');
       }
     });
     this.dialog.closeAll();

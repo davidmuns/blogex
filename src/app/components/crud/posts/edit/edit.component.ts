@@ -60,8 +60,8 @@ export class EditComponent implements OnInit {
   private initForm(): void {
     this.editPostForm = this.fBuilder.group({
       id: ['', Validators.required],
-      title: ['', Validators.required],
-      img1: ['', Validators.required],
+      title: ['', [Validators.required, Validators.maxLength(60)]],
+      img1: [''],
       alt1: ['', Validators.required],
       text1: ['', Validators.required],
       img2: [''],
@@ -75,7 +75,7 @@ export class EditComponent implements OnInit {
     })
   }
 
-  moreImgs() {
+  /* moreImgs() {
     if (this.flag < 3) {
       this.flag++;
       this.viewForm.push(this.flag);
@@ -86,7 +86,7 @@ export class EditComponent implements OnInit {
       this.flag--;
       this.buttonTag = "One More";
     }
-  }
+  } */
 
   onSubmit(post: Article) {
     this.editPost(post.id, post);
@@ -95,19 +95,20 @@ export class EditComponent implements OnInit {
   }
 
   private editPost(id: number, post: Article) {
-    this.articleService.updateArticle(post.id, post).subscribe({
-      next: data => {
-        this.toastrService.success(data.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
-      },
-      error: err => {
-        this.toastrService.error(err.error.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-
-        });
-      }
-    })
+    if(this.editPostForm.valid){
+      this.articleService.updateArticle(post.id, post).subscribe({
+        next: data => {
+          this.toastrService.success(data.mensaje, '', {
+            timeOut: 3000, positionClass: 'toast-top-center',
+          });
+        },
+        error: err => {
+          this.toastrService.error(err.error.mensaje, '', {
+            timeOut: 3000, positionClass: 'toast-top-center',
+          });
+        }
+      })
+    }
   }
 
   private uploadImage(image: File) {
