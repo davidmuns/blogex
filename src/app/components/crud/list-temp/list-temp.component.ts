@@ -16,8 +16,9 @@ import { Imagen } from 'src/app/shared/models/imagen';
 export class ListTempComponent implements OnInit {
   articles: Article[] = [];
   imagenes: Imagen[] = [];
+  imgsByArticleId: Imagen[] = [];
   // showImgs: boolean = false;
-  
+
   constructor(
     private readonly dialog: MatDialog,
     private tokenService: TokenService,
@@ -33,10 +34,10 @@ export class ListTempComponent implements OnInit {
     const username = this.tokenService.getUsername() as string;
     this.articleService.getArticlesByUsername(username).subscribe({
       next: (data: Article[]) => {
-        this.articles = data; 
+        this.articles = data;
         this.articles.forEach(article => {
-          this.getImgsByArticleId(article.id);        
-        });    
+          this.getImgsByArticleId(article.id);
+        });
       },
       error: (err: any) => {
         console.log(err);
@@ -51,7 +52,7 @@ export class ListTempComponent implements OnInit {
   private getImgsByArticleId(id: number) {
     this.articleService.getImagesByArticleId(id).subscribe({
       next: (data: Imagen[]) => {
-        data.forEach(img => {   
+        data.forEach(img => {
           this.imagenes.push(img);
         })
       },
@@ -74,7 +75,7 @@ export class ListTempComponent implements OnInit {
   //   })
   // }
 
-  onDeleteImage(imgId: string){
+  onDeleteImage(imgId: string) {
     this.articleService.deleteImage(imgId).subscribe({
       next: (data: any) => {
         this.toastrService.success(data.mensaje, '', {
@@ -86,5 +87,15 @@ export class ListTempComponent implements OnInit {
         console.log(err);
       }
     })
+  }
+
+  loadImgsByArticleId(id: number) {
+    this.imgsByArticleId = [];
+    this.imagenes.forEach(img => {
+      if (img.articleId == id) {
+        this.imgsByArticleId.push(img);
+      }
+    })
+
   }
 }
