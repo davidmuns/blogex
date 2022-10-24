@@ -90,7 +90,9 @@ export class EditComponent implements OnInit {
 
   onSubmit(post: Article) {
     this.editPost(post.id, post);
-    this.uploadImage(this.image);
+    if (this.image != undefined) {
+      this.uploadImage(this.image);
+    }
     // this.router.navigate(['list']);
   }
 
