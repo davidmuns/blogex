@@ -93,7 +93,8 @@ export class EditComponent implements OnInit {
     if (this.image != undefined) {
       this.uploadImage(this.image);
     }
-    // this.router.navigate(['list']);
+    
+    this.router.navigate(['list']);
   }
 
   private editPost(id: number, post: Article) {
@@ -102,6 +103,7 @@ export class EditComponent implements OnInit {
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center',
         });
+        //this.editPostForm.reset();
       },
       error: err => {
         this.toastrService.error(err.error.mensaje, '', {

@@ -32,7 +32,9 @@ export class AddImageComponent implements OnInit {
     if (this.image != undefined) {
       this.addImage(this.image, articleId);
     } else {
-      this.toastr.error('Please select an image.');
+      this.toastr.error('Please select an image.', '', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
     }
 
   }

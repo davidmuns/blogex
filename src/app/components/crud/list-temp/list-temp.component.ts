@@ -1,4 +1,3 @@
-import { AddImageComponent } from './../posts/add-image/add-image.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -17,6 +16,10 @@ export class ListTempComponent implements OnInit {
   articles: Article[] = [];
   imagenes: Imagen[] = [];
   imgsByArticleId: Imagen[] = [];
+  image!: File;
+  miniatura!: Imagen;
+  username!: string;
+  articleId!: number;
   // showImgs: boolean = false;
 
   constructor(
@@ -24,15 +27,17 @@ export class ListTempComponent implements OnInit {
     private tokenService: TokenService,
     private articleService: ArticleService,
     private toastrService: ToastrService,
-    private router: Router) { }
+    private router: Router) { 
+    
+    }
 
   ngOnInit(): void {
     this.getAllArticlesByUsername();
   }
 
   private getAllArticlesByUsername() {
-    const username = this.tokenService.getUsername() as string;
-    this.articleService.getArticlesByUsername(username).subscribe({
+    this.username = this.tokenService.getUsername() as string;
+    this.articleService.getArticlesByUsername(this.username).subscribe({
       next: (data: Article[]) => {
         this.articles = data;
         this.articles.forEach(article => {
@@ -44,10 +49,6 @@ export class ListTempComponent implements OnInit {
       }
     });
   }
-  // onImgs(articleId: number) {
-  //   this.showImgs = !this.showImgs;
-  //   this.getImgsByArticleId(articleId);
-  // }
 
   private getImgsByArticleId(id: number) {
     this.articleService.getImagesByArticleId(id).subscribe({
@@ -62,26 +63,14 @@ export class ListTempComponent implements OnInit {
     })
   }
 
-  // onDeleteArticle(articleId: number) {
-  //   this.articleService.deleteArticle(articleId).subscribe({
-  //     next: data => {
-  //       this.toastrService.success(data.mensaje, '', {
-  //         timeOut: 3000, positionClass: 'toast-top-center'
-  //       });
-  //     },
-  //     error: err => {
-  //       console.log(err);
-  //     }
-  //   })
-  // }
-
   onDeleteImage(imgId: string) {
     this.articleService.deleteImage(imgId).subscribe({
       next: (data: any) => {
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        window.location.reload();
+        this.redirectTo(this.router.url);
+        //window.location.reload();
       },
       error: err => {
         console.log(err);
@@ -89,11 +78,54 @@ export class ListTempComponent implements OnInit {
     })
   }
 
+  redirectTo(uri: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate([uri]));
+  }
+
   loadImgsByArticleId(id: number) {
+    this.articleId = id;
     this.imgsByArticleId = [];
     this.imagenes.forEach(img => {
-      if (img.articleId == id) {
+      if (img.articleId == this.articleId) {
         this.imgsByArticleId.push(img);
+      }
+    })
+
+  }
+  handleImage(event: any) {
+    this.image = event.target.files[0];
+    const fr = new FileReader();
+    fr.onload = (e: any) => {
+      this.miniatura = e.target.result;
+    }
+    fr.readAsDataURL(this.image);
+  }
+
+  onAddImg(){
+    if (this.image != undefined) {
+      this.addImage(this.image, this.articleId);
+    } else {
+      this.toastrService.error('Please select an image.', '', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+    }
+    
+  }
+  private addImage(image: File, articleId: number) {
+    this.articleService.addImageToArticle(image, articleId).subscribe({
+      next: data => {
+        this.toastrService.success(data.mensaje, '', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
+        this.imagenes = [];
+        this.getImgsByArticleId(this.articleId);
+        //this.redirectTo(this.router.url);
+      },
+      error: err => {
+        this.toastrService.error(err.error.mensaje, '', {
+          timeOut: 3000, positionClass: 'toast-top-center'
+        });
       }
     })
 
