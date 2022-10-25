@@ -8,7 +8,7 @@
         <mat-card-title>{{ article.title }}</mat-card-title>
         <mat-card-subtitle>{{ article.id }}</mat-card-subtitle>
       </mat-card-header>
-      <a (click)="loadImgsByArticleId(article.id)">
+      <a (click)="onOpenGallery(article.id)" style="cursor: pointer;">
         <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
       </a>
       <mat-card-content>
@@ -22,16 +22,17 @@
         <button mat-button routerLink="/add-image/{{ article.id }}">Add img</button>
         <!-- <img class="image-thumbnail" style="max-width: 100px; border-radius: 5%;" [src]="miniatura" *ngIf="this.image" style="margin-top: 5px;">
         <input type="file" accept=".png, .jpg, .jpeg" multiple id="inputUpload" formControlName="image" (change)="handleImage($event)"> -->
-        <button mat-button data-bs-toggle="modal" data-bs-target="#gallery"
-          (click)="loadImgsByArticleId(article.id)"><i class="fa-sharp fa-solid fa-eye"></i> Gallery</button>
-
+        <!-- <button mat-button data-bs-toggle="modal" data-bs-target="#gallery" (click)="loadImgsByArticleId(article.id)"> -->
+        <button mat-button (click)="onOpenGallery(article.id)">
+          <i class="fa-sharp fa-solid fa-eye"></i> Gallery
+        </button>
       </mat-card-actions>
     </mat-card>
   </div>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="gallery" tabindex="-1" aria-labelledby="gallerylLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="gallery" tabindex="-1" aria-labelledby="gallerylLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
@@ -42,18 +43,18 @@
 
         <div class="main-container">
           <div *ngFor="let imagen of this.imgsByArticleId">
-            <!-- https://animate.style/ -->
+
             <mat-card class="example-card animate__animated animate__backInLeft">
               <mat-card-header>
-                <!-- <div mat-card-avatar class="example-header-image"></div> -->
+
                 <mat-card-title>{{ imagen.article.title }}</mat-card-title>
-                <!-- <mat-card-subtitle>id {{ article.id  }}</mat-card-subtitle> -->
+
               </mat-card-header>
               <img mat-card-image [src]="imagen.url" alt="">
               <mat-card-content>
               </mat-card-content>
               <mat-card-actions align="start">
-                <!-- <button mat-button routerLink="/add-image/{{ imagen.articleId }}">Add img</button> -->
+                <button mat-button routerLink="/add-image/{{ imagen.articleId }}">Add img</button>
                 <button mat-stroked-button color="warn" (click)="onDeleteImage(imagen.id)" data-bs-dismiss="modal">
                   <mat-icon>delete</mat-icon>
                 </button>
@@ -63,12 +64,6 @@
         </div>
       </div>
       <div class="modal-footer">
-        <!-- <div class="custom-file">
-          <input type="file" class="custom-file-input" id="customFile" (change)="handleImage($event)"
-            style="visibility: hidden;">
-          <a href=""><label class="custom-file-label" for="customFile" style="cursor: pointer;">Choose image</label></a>
-        </div> -->
-
         <input type="file" accept=".png, .jpg, .jpeg" (change)="handleImage($event)">
 
         <button type="button" class="btn btn-outline-success" (click)="onAddImg()">
@@ -77,6 +72,6 @@
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <app-footer></app-footer>
+<app-footer></app-footer>

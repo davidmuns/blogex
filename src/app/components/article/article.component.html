@@ -76,7 +76,8 @@
             <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
             </div> -->
-            <div class="carousel-item" data-bs-interval="2000" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == this.indice }">
+            <div class="carousel-item" data-bs-interval="2000" *ngFor="let imagen of imagenes; let i = index"
+              [ngClass]="{'active': i == this.indice }">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
             </div>
             <!-- <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == 0 }">
@@ -98,3 +99,5 @@
     </div>
   </div>
 </div>
+
+<!-- <app-footer></app-footer> -->
