@@ -12,24 +12,35 @@ import { Component, OnInit } from '@angular/core';
 export class AddImageComponent implements OnInit {
   imageForm!: FormGroup;
   miniatura!: File;
-  inputUpload!: File;
+  image!: File;
   constructor(
     private readonly fBuilder: FormBuilder,
     private articleService: ArticleService,
     private toastr: ToastrService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) { 
+  ) {
     this.initForm();
   }
 
   ngOnInit() {
   }
 
-  onSubmit(undefined: any){
+  onSubmit(usless: any) {
     const articleId = Number(this.activatedRoute.snapshot.paramMap.get('articleid'));
-    console.log(articleId);
-    this.articleService.addImageToArticle(this.inputUpload, articleId).subscribe({
+
+    if (this.image != undefined) {
+      this.addImage(this.image, articleId);
+    } else {
+      this.toastr.error('Please select an image.', '', {
+        timeOut: 3000, positionClass: 'toast-top-center'
+      });
+    }
+
+  }
+
+  private addImage(image: File, articleId: number) {
+    this.articleService.addImageToArticle(image, articleId).subscribe({
       next: data => {
         this.toastr.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
@@ -42,23 +53,23 @@ export class AddImageComponent implements OnInit {
         });
       }
     })
-    
+
   }
 
-  private initForm(): void{
+  private initForm(): void {
     this.imageForm = this.fBuilder.group({
       articleId: ['', Validators.required],
       image: ['', Validators.required]
     })
   }
 
-  handleImage(event: any){
-    this.inputUpload = event.target.files[0];
+  handleImage(event: any) {
+    this.image = event.target.files[0];
     const fr = new FileReader();
     fr.onload = (e: any) => {
       this.miniatura = e.target.result;
     }
-    fr.readAsDataURL(this.inputUpload);
+    fr.readAsDataURL(this.image);
   }
 
 }

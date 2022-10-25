@@ -33,6 +33,7 @@ import { ArticleComponent } from './components/article/article.component';
 import { interceptorProvider } from './interceptors/article-interceptor.service';
 import { FrontArticlesComponent } from './components/home/front-articles/front-articles.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { GalleryUserComponent } from './shared/GalleryUser/GalleryUser.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { FooterComponent } from './shared/footer/footer.component';
     ListTempComponent,
     AddImageComponent,
     FrontArticlesComponent,
-    FooterComponent
+    FooterComponent,
+    GalleryUserComponent
   ],
   imports: [
     BrowserModule,

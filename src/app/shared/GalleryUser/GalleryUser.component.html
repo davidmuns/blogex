@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>GALLERY</h2>
+<mat-dialog-content class="mat-typography">
+  <div class="main-container">
+    <div *ngFor="let imagen of this.imagenes">
+      <mat-card class="example-card animate__animated animate__backInLeft">
+        <mat-card-header>
+          <mat-card-title>{{ imagen.article.title }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="imagen.url" alt="">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions align="start">
+          <button mat-stroked-button color="warn" (click)="onDeleteImage(imagen.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</mat-dialog-content>
+<div style="display: flex; justify-content: end;">
+  <img class="image-thumbnail" style="max-width: 70px; max-height: 70px; border-radius: 5%;" [src]="miniatura"
+    *ngIf="this.image">
+</div>
+
+<mat-dialog-actions align="end">
+  <div class="custom-file mx-2">
+    <input type="file" class="custom-file-input" id="customFile" (change)="handleImage($event)"
+      style="visibility: hidden;">
+    <a href=""><label class="custom-file-label" for="customFile" style="cursor: pointer;">Choose image</label></a>
+  </div>
+  <div>
+    <button mat-button (click)="onUpload()">
+      <!-- <i class="fa-solid fa-upload"></i> upload -->
+      <mat-icon>upload</mat-icon>
+    </button>
+  </div>
+  <div>
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
+</mat-dialog-actions>

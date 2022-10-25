@@ -18,7 +18,9 @@
   flex-wrap: wrap;
   justify-content: center;
 }
-
+/* .main-container{
+  margin-top: 600px;
+} */
 .main-container>div {
   margin: 10px;
   padding: 20px;
@@ -28,8 +30,8 @@ img {
   height: 200px;
 }
 
-.carousel,
-.carousel-inner>.carousel-item>img {
+// input[type=file]{
+//     background-color: gray;
+//     font-size: 10px;
 
-  height: 500px;
-}
+// }

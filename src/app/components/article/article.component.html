@@ -50,8 +50,8 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button (click)="showGallery(post?.id)">Show gallery</button>
-        <button mat-button (click)="hideGallery()">Hide gallery</button>
+        <!-- <button mat-button (click)="showGallery(post?.id)">Show gallery</button>
+        <button mat-button (click)="hideGallery()">Hide gallery</button> -->
       </mat-card-actions>
     </mat-card>
   </div>
@@ -69,16 +69,17 @@
       <div class="modal-body">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
-            <div class="carousel-item active">
+            <!-- <div class="carousel-item active">
               <img src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg"
                 class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
-            </div>
-            <!-- <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == this.indice }">
-              <img [src]="imagen.url" class="d-block w-100" alt="...">
             </div> -->
+            <div class="carousel-item" data-bs-interval="2000" *ngFor="let imagen of imagenes; let i = index"
+              [ngClass]="{'active': i == this.indice }">
+              <img [src]="imagen.url" class="d-block w-100" alt="...">
+            </div>
             <!-- <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == 0 }">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
             </div> -->
@@ -98,3 +99,5 @@
     </div>
   </div>
 </div>
+
+<!-- <app-footer></app-footer> -->
