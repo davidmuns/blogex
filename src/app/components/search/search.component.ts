@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Observable, pipe } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
@@ -19,6 +19,8 @@ export class SearchComponent implements OnInit {
     }
   };
 
+  @ViewChild('hideForm') toForm!: ElementRef;
+
   myControl = new FormControl('');
   options: string[] = [];
   allOptions: Article[] = [];
@@ -26,8 +28,12 @@ export class SearchComponent implements OnInit {
   oneArticle!: any;
   articlesTitle!: string[];
   articleId!: number;
+  mostrar: boolean = false;
 
-  constructor(private readonly articleSvc: ArticleService, private readonly router: Router) { }
+  constructor(private readonly articleSvc: ArticleService, 
+    private readonly router: Router,
+    private readonly renderer2: Renderer2
+    ) { }
 
   ngOnInit(): void {
     this.filteredOptions = this.myControl.valueChanges.pipe(
@@ -50,13 +56,23 @@ export class SearchComponent implements OnInit {
   }
 
   selectArticle(){
-
     for(let i = 0; i < this.allOptions.length; i++){
       if(this.allOptions[i].title == this.myControl.value){
         this.articleId = this.allOptions[i].id;
         this.router.navigate(['/article', this.articleId]);
       } 
     }    
+  }
+
+  openSelect(){
+    this.mostrar = !this.mostrar;
+    /* const asForm = this.toForm.nativeElement;
+    if(this.mostrar == true){
+      this.renderer2.setStyle(asForm, 'left', 'block');
+    }else{
+      this.renderer2.setStyle(asForm, 'display', 'none');
+    } */
+    console.log("Mostrar: ", this.mostrar);
   }
   
 

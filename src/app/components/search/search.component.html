@@ -17,6 +17,26 @@
       </mat-option>
     </mat-autocomplete>
   </div>
-    
 </form>
-  
+
+<button id="searchHideButton" (click)="openSelect()" mat-stroked-button>
+  <mat-icon>search</mat-icon>
+</button>
+
+<form *ngIf="mostrar == true"  #hideForm class="responsive-form" (submit)="selectArticle()">
+  <div class="responsive-div" appearance="fill">
+    <input type="text"
+            placeholder="Search an article"
+            aria-label="Number"
+            matInput
+            id="myControl"
+            [formControl]="myControl"
+            [matAutocomplete]="auto"
+            fontIcon="search">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </div>
+</form>
