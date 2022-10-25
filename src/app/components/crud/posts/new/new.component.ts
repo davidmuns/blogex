@@ -115,7 +115,8 @@ export class NewComponent implements OnInit {
         }
       });
       }else{
-        this.toastrService.error(this.newPostForm.errors?.['required'] + " needs to be completed", '', {
+        // this.toastrService.error(this.newPostForm.errors?.['required'] + " needs to be completed", '', {
+        this.toastrService.error("Please fill the blanks.", '', {
         timeOut: 3000,  positionClass: 'toast-top-center',
       });
     }

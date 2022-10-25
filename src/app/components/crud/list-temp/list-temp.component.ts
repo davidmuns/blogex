@@ -1,5 +1,5 @@
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from './../../../shared/services/article.service';
 import { TokenService } from './../../../shared/services/token.service';
@@ -14,6 +14,13 @@ import { GalleryUserComponent } from './../../../shared/GalleryUser/GalleryUser.
   styleUrls: ['./list-temp.component.scss']
 })
 export class ListTempComponent implements OnInit {
+
+  navigationExtras: NavigationExtras = {
+    state: {
+      value: null
+    }
+  };
+
   articles: Article[] = [];
   imagenes: Imagen[] = [];
   imgsByArticleId: Imagen[] = [];
@@ -21,7 +28,6 @@ export class ListTempComponent implements OnInit {
   miniatura!: Imagen;
   username!: string;
   articleId!: number;
-  // showImgs: boolean = false;
 
   constructor(
     private readonly dialog: MatDialog,
@@ -96,7 +102,11 @@ export class ListTempComponent implements OnInit {
     //     this.imgsByArticleId.push(img);
     //   }
     // })
+  }
 
+  onEdit(post: Article){
+    this.navigationExtras.state = post;
+    this.router.navigate(['admin/edit'], this.navigationExtras);
   }
   // handleImage(event: any) {
   //   this.image = event.target.files[0];
