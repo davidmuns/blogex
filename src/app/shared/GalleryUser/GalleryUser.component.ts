@@ -54,7 +54,7 @@ export class GalleryUserComponent implements OnInit {
     fr.readAsDataURL(this.image);
   }
 
-  onAddImg() {
+  onUpload() {
     if (this.image != undefined) {
       this.addImage(this.image, this.articleId);
     } else {
