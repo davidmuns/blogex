@@ -15,7 +15,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="titol">
       <th mat-header-cell *matHeaderCellDef> Title </th>
-      <td class="estilsArt" mat-cell *matCellDef="let element" (click)="onEdit(element)"> {{element.title}} </td>
+      <td class="estilsArt" mat-cell *matCellDef="let element" (click)="onEdit(element)" matTooltip="edit article" matTooltipPosition="above"> {{element.title}} </td>
     </ng-container>
 
     <!-- Delete Row -->

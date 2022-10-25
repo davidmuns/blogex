@@ -18,7 +18,7 @@
         <!-- <mat-card-title>{{ imagen.article.title }}</mat-card-title> -->
         <!-- <mat-card-subtitle>id {{ article.id  }}</mat-card-subtitle> -->
       </mat-card-header>
-      <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;"
+      <a type="button"  matTooltip="slide view" matTooltipPosition="above" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;"
         (click)="getIndex(i)">
         <img mat-card-image [src]="imagen.url" alt="">
       </a>
