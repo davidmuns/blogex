@@ -4,4 +4,6 @@ footer{
     background-color: var(--primary);
     color: white;
     border-top: 3px solid white;
+    display: flex;
+    align-items: flex-end;
 }

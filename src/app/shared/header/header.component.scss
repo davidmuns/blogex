@@ -34,6 +34,12 @@
             font-size: .9rem;
             cursor: pointer;
         }
+        @media(max-width: 600px){
+            margin-left: 2px;
+            a{
+                font-size: .8rem;
+            }
+        }
     }
     #logOut{
         width:130px;
@@ -49,4 +55,8 @@
     display: flex;
     justify-content: space-between;
     border-bottom: 10px solid white;
+    
+}
+.mat-menu-item{
+    font-weight: 500;
 }

@@ -1,9 +1,9 @@
 import { TokenService } from './../services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { LoginComponent } from 'src/app/components/Auth/login/login.component';
 import { SignupComponent } from 'src/app/components/Auth/signup/signup.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +16,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    public tokenService: TokenService
+    public tokenService: TokenService,
+    public router: Router
   ) {
 
   }

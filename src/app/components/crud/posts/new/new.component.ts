@@ -33,7 +33,7 @@ export class NewComponent implements OnInit {
 
   private initForm(): void {
     this.newPostForm = this.fBuilder.group({
-      title: ['', [Validators.required, Validators.maxLength(50)]],
+      title: ['', [Validators.required, Validators.maxLength(60)]],
       img1: ['', Validators.required],
       alt1: ['', Validators.required],
       text1: ['', Validators.required],
@@ -51,7 +51,7 @@ export class NewComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  moreImgs() {
+  /* moreImgs() {
     if (this.flag < 3) {
       this.flag++;
       this.viewForm.push(this.flag);
@@ -62,7 +62,7 @@ export class NewComponent implements OnInit {
       this.flag--;
       this.buttonTag = "One More";
     }
-  }
+  } */
 
   handleImage1(event: any) {
     this.inputUpload = event.target.files[0];

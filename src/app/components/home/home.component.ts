@@ -49,7 +49,7 @@ export class HomeComponent implements AfterViewInit {
           marker([point.latitude, point.longitude]).addTo(map).bindPopup(`
         <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
-        <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
+        <a href="http://localhost:4200/article/${point.id}"><img src="${point.imagenPortada}"></a>
       `);
         });
         map.fitBounds([
@@ -73,7 +73,7 @@ export class HomeComponent implements AfterViewInit {
           marker([point.latitude, point.longitude]).addTo(map2).bindPopup(`
         <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
-        <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
+        <a href="http://localhost:4200/article/${point.id}"><img src="${point.imagenPortada}"></a>
       `);
         });
         map2.fitBounds([
@@ -97,7 +97,7 @@ export class HomeComponent implements AfterViewInit {
           marker([point.latitude, point.longitude]).addTo(map3).bindPopup(`
         <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
-        <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
+        <a href="http://localhost:4200/article/${point.id}"><img src="${point.imagenPortada}" class="imgMap"></a>
       `);
         });
         map3.fitBounds([
@@ -123,22 +123,22 @@ export class HomeComponent implements AfterViewInit {
 
   onScroll() {
     this.catchScroll = window.scrollY;
-    console.log("CatchScroll: ", this.catchScroll);
+    //console.log("CatchScroll: ", this.catchScroll);
 
     const asMap1 = this.toMap.nativeElement;
     const asMap2 = this.toMap2.nativeElement;
     const asMap3 = this.toMap3.nativeElement;
-    if (this.catchScroll > 0 && this.catchScroll < 1000) {
+    if (this.catchScroll > 0 && this.catchScroll < 800) {
       this.renderer2.setStyle(asMap1, 'display', 'block');
       this.renderer2.setStyle(asMap2, 'display', 'none');
       this.renderer2.setStyle(asMap3, 'display', 'none');
     }
-    if (this.catchScroll > 1000 && this.catchScroll < 2400) {
+    if (this.catchScroll > 800 && this.catchScroll < 2550) {
       this.renderer2.setStyle(asMap1, 'display', 'none');
       this.renderer2.setStyle(asMap2, 'display', 'block');
       this.renderer2.setStyle(asMap3, 'display', 'none');
     }
-    if (this.catchScroll > 2400) {
+    if (this.catchScroll > 2550) {
       this.renderer2.setStyle(asMap1, 'display', 'none');
       this.renderer2.setStyle(asMap2, 'display', 'none');
       this.renderer2.setStyle(asMap3, 'display', 'block');
