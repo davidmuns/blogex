@@ -12,7 +12,7 @@
         margin: 10px 34%;
     }
     @media(max-width:900px){
-        margin: 10px 20% 10px 10%;
+        margin: 10px 20% 10px 6%;
         width: 230px;
     }
 }
@@ -65,28 +65,39 @@ input:focus{
     }
     .responsive-div{
         position: relative;
-        top: 24px;
+        top: 22px;
         left: 0px;
         width:410px;
-        height: 80px;
-        background-color: rgba(109, 139, 167, 0.404);
+        height: 100px;
+        border-radius: 6px;
+        background-color: rgba(109, 139, 167, 0.504);
     }
     .responsive-form{
         position: absolute;
-        top: 10px;
-        left: 20px;
+        top: 20px;
+        left: 60px;
         height:0px;
+        margin: 0px;
+        display:none;
     }
     input{
         position: absolute;
-        top: 20px;
+        top: 30px;
         left: 8px;
-        width:380px;
+        width:360px;
     }
     input:focus{
         position: absolute;
         left: 10px;
-        width: 390px;
+        width: 370px;
         margin-left:0px;
+    }
+}
+@media(min-width: 600px){
+    .responsive-form{
+        display: none;
+        input{
+            display: none;
+        }
     }
 }

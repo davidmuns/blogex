@@ -1,5 +1,7 @@
 <div class="container">
-  <h3>Click one post to edit</h3>
+<button id="toList" mat-stroked-button color="primary" (click)="toList()" >List of Articles</button>
+<div #list class="inside">
+  <h3>Posts to edit</h3>
   <mat-form-field appearance="standard">
     <mat-label for="labelFilter">Filter</mat-label>
     <input matInput id="filter" (keyup)="applyFilter($event)" #input>
@@ -42,4 +44,5 @@
               [pageSizeOptions]="[5, 10]"
               showFirstLastButtons>
   </mat-paginator>
+</div>
 </div>
