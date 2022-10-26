@@ -133,12 +133,12 @@ export class HomeComponent implements AfterViewInit {
       this.renderer2.setStyle(asMap2, 'display', 'none');
       this.renderer2.setStyle(asMap3, 'display', 'none');
     }
-    if (this.catchScroll > 800 && this.catchScroll < 2550) {
+    if (this.catchScroll > 800 && this.catchScroll < 2570) {
       this.renderer2.setStyle(asMap1, 'display', 'none');
       this.renderer2.setStyle(asMap2, 'display', 'block');
       this.renderer2.setStyle(asMap3, 'display', 'none');
     }
-    if (this.catchScroll > 2550) {
+    if (this.catchScroll > 2570) {
       this.renderer2.setStyle(asMap1, 'display', 'none');
       this.renderer2.setStyle(asMap2, 'display', 'none');
       this.renderer2.setStyle(asMap3, 'display', 'block');
