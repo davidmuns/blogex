@@ -4,6 +4,10 @@
     width: 67%;
     margin: 0px 1%;
     padding:0px;
+    @media(max-width:800px){
+        width:90%;
+        margin: 0px 5%;
+    }
 }
 mat-card-title{
     text-align: center;
@@ -41,7 +45,7 @@ form h3{
 #toNew{
     position: absolute;
     top:14px;
-    left: 80%
+    left: 75%
 }
 .error{
     color:red;

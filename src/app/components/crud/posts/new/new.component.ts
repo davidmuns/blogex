@@ -12,6 +12,7 @@ import { Article } from 'src/app/shared/models/article';
   styleUrls: ['./new.component.scss']
 })
 export class NewComponent implements OnInit {
+
   inputUpload!: File;
   images: File[] = [];
   miniatura!: File;

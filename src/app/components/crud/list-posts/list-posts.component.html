@@ -1,4 +1,5 @@
 <div class="container">
+  <h3>Click one post to edit</h3>
   <mat-form-field appearance="standard">
     <mat-label for="labelFilter">Filter</mat-label>
     <input matInput id="filter" (keyup)="applyFilter($event)" #input>
@@ -15,7 +16,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="titol">
       <th mat-header-cell *matHeaderCellDef> Title </th>
-      <td class="estilsArt" mat-cell *matCellDef="let element" (click)="onEdit(element)" matTooltip="edit article" matTooltipPosition="above"> {{element.title}} </td>
+      <td class="estilsArt" mat-cell *matCellDef="let element" (click)="onEdit(element)"> {{element.title}} </td>
     </ng-container>
 
     <!-- Delete Row -->

@@ -4,6 +4,10 @@ mat-card{
     width: 67%;
     margin: 0px 1%;
     padding:0px;
+    @media(max-width:800px){
+        width:90%;
+        margin: 0px 5%;
+    }
 }
 mat-card-title{
     text-align: center;
@@ -34,6 +38,11 @@ mat-card-content{
 }
 form h3{
     width:100px;
+}
+#toEdit{
+    position: absolute;
+    top:14px;
+    left: 75%
 }
 .error{
     color:red;
