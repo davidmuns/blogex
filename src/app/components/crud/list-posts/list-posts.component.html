@@ -1,4 +1,7 @@
 <div class="container">
+<button id="toList" mat-stroked-button color="primary" (click)="toList()" >List of Articles</button>
+<div #list class="inside">
+  <h3>Posts to edit</h3>
   <mat-form-field appearance="standard">
     <mat-label for="labelFilter">Filter</mat-label>
     <input matInput id="filter" (keyup)="applyFilter($event)" #input>
@@ -15,7 +18,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="titol">
       <th mat-header-cell *matHeaderCellDef> Title </th>
-      <td class="estilsArt" mat-cell *matCellDef="let element" (click)="onEdit(element)" matTooltip="edit article" matTooltipPosition="above"> {{element.title}} </td>
+      <td class="estilsArt" mat-cell *matCellDef="let element" (click)="onEdit(element)"> {{element.title}} </td>
     </ng-container>
 
     <!-- Delete Row -->
@@ -41,4 +44,5 @@
               [pageSizeOptions]="[5, 10]"
               showFirstLastButtons>
   </mat-paginator>
+</div>
 </div>

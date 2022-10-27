@@ -76,7 +76,7 @@ h1{
 
 .main-container>article {
     width: 23%;
-    margin: 40px 1%;
+    margin: 80px 1%;
     padding: 0px;
 }
 /* .mat-card{
@@ -87,6 +87,9 @@ h1{
     padding-top: 20px;
 } */
 @media(max-width: 900px){
+    .container-articles{
+        margin-top: 540px;
+    }
     .main-container{
         width: 100%;
         padding: 20px 0px;
@@ -95,9 +98,22 @@ h1{
         overflow-y: hidden;
         article{
             width: 46%;
-            margin: 30px 2%;
-            
+            margin: 30px 2%; 
         }
     }
-    
+}
+@media(max-width: 600px){
+    .container-articles{
+        padding: 22px;
+        margin-top: 660px;
+    }
+    .main-container{
+        height: 1050px;
+        width:88%;
+        margin: 0px 6%;
+        article{
+            width:90%;
+            margin: 20px 5%;
+        }
+    }
 }

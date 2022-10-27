@@ -1,9 +1,45 @@
+#toList{
+  display: none;
+  @media(max-width: 800px){
+    position: absolute;
+    top:14px;
+    left: 36%;
+    display: block;
+  }
+}
 .container{
   position: absolute;
   top: 74px;
   left:69%;
   width:30%;
   margin: 0px;
+  @media(max-width: 800px){
+    left:0px;
+    width:90%;
+    background-color: white;
+    margin: 0px 5%;
+  }
+}
+.inside{
+  height: 100vh;
+  overflow-y: hidden;
+  @media(max-width: 800px){
+    height: 0px;
+  }
+  @media(min-width: 800px){
+    height: 100vh !important;
+  }
+}
+h3{
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin-top: 15px;
+  @media(max-width: 800px){
+    text-align: start;
+    z-index: 2;
+    background-color: white;
+  }
 }
 table {
   width: 100%;
