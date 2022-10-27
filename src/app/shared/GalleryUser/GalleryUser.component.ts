@@ -26,7 +26,8 @@ export class GalleryUserComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { articleId: number },
     private articleService: ArticleService,
     private toastrService: ToastrService,
-    private router: Router) { }
+    private router: Router,
+    public tokenService: TokenService) { }
 
   ngOnInit() {
     this.getImgsByArticleId(this.data.articleId);

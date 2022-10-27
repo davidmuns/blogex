@@ -1,5 +1,5 @@
 import { MatDialog } from '@angular/material/dialog';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from './../../../shared/services/article.service';
 import { TokenService } from './../../../shared/services/token.service';
@@ -31,10 +31,11 @@ export class ListTempComponent implements OnInit {
 
   constructor(
     private readonly dialog: MatDialog,
-    private tokenService: TokenService,
+    public tokenService: TokenService,
     private articleService: ArticleService,
     private toastrService: ToastrService,
-    private router: Router) {
+    private router: Router,
+    private activatedRoute: ActivatedRoute) {
 
   }
 
@@ -45,6 +46,10 @@ export class ListTempComponent implements OnInit {
 
   private getAllArticlesByUsername() {
     this.username = this.tokenService.getUsername() as string;
+    if (!this.tokenService.isLogged()) {
+      this.username = this.activatedRoute.snapshot.paramMap.get('username') as string;
+    }
+
     this.articleService.getArticlesByUsername(this.username).subscribe({
       next: (data: Article[]) => {
         this.articles = data;
@@ -104,7 +109,7 @@ export class ListTempComponent implements OnInit {
     // })
   }
 
-  onEdit(post: Article){
+  onEdit(post: Article) {
     this.navigationExtras.state = post;
     this.router.navigate(['admin/edit'], this.navigationExtras);
   }

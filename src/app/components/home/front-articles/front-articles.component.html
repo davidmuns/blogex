@@ -17,8 +17,11 @@
         <div id="content">
           <div class="example-header-image"></div>
           <p>{{ article.alt1 }}</p>
+          <a routerLink="/list/{{ article.usuario.nombreUsuario }}">
+            <p>Author: {{ article.usuario.nombreUsuario }}</p>
+          </a>
         </div>
-       <!--  <mat-card-actions>
+        <!--  <mat-card-actions>
           <button mat-button (click)="onImgs(article.id)">img</button>
         </mat-card-actions> -->
       </div>

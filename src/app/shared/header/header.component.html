@@ -5,9 +5,9 @@
     <button mat-menu-item id="menuHome" *ngIf="!this.tokenService.isLogged()">
       <mat-icon routerLink="/">home</mat-icon>
     </button>
-    
+
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
-    *ngIf="this.tokenService.isLogged()">
+      *ngIf="this.tokenService.isLogged()">
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu id="matMenu">
@@ -21,12 +21,12 @@
         Your routes
       </button>
       <mat-divider></mat-divider>
-      <button mat-menu-item routerLink="/list">
+      <button mat-menu-item routerLink="/list/gfgf">
         <mat-icon>image</mat-icon>
         My list
-      </button>  
+      </button>
     </mat-menu>
-    
+
     <app-search></app-search>
     <!-- <h1 id="title">Blog de rutes</h1> -->
     <div id="logReg" *ngIf="this.tokenService.isLogged() === false; else logged">

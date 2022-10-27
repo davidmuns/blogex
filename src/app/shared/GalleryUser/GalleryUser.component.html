@@ -13,7 +13,8 @@
         <mat-card-content>
         </mat-card-content>
         <mat-card-actions align="end">
-          <button mat-stroked-button color="warn" (click)="onDeleteImage(imagen.id)">
+          <button *ngIf="this.tokenService.isLogged()" mat-stroked-button color="warn"
+            (click)="onDeleteImage(imagen.id)">
             <mat-icon>delete</mat-icon>
           </button>
         </mat-card-actions>
@@ -27,13 +28,14 @@
 </div>
 
 <mat-dialog-actions align="end">
-  <div class="custom-file mx-2">
+  <div *ngIf="this.tokenService.isLogged()" class="custom-file mx-2">
     <input type="file" class="custom-file-input" id="customFile" (change)="handleImage($event)"
       style="visibility: hidden;">
     <a href=""><label class="custom-file-label" for="customFile" style="cursor: pointer;">Choose image</label></a>
   </div>
   <div>
-    <button mat-button mat-stroked-button color="primary" (click)="onUpload()" matTooltip="upload image" matTooltipPosition="above">
+    <button *ngIf="this.tokenService.isLogged()" mat-button mat-stroked-button color="primary" (click)="onUpload()"
+      matTooltip="upload image" matTooltipPosition="above">
       <!-- <i class="fa-solid fa-upload"></i> upload -->
       <mat-icon>upload</mat-icon>
     </button>

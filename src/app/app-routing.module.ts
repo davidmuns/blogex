@@ -8,15 +8,15 @@ import { ResetPasswordComponent } from './components/Auth/reset-password/reset-p
 import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
-  {path: 'reset-password/:token-password', component: ResetPasswordComponent},
-  {path: 'article/:id', component: ArticleComponent},
-  {path: 'edit/:articleid', component: EditTempComponent},
-  {path: 'articles', component: ArticleComponent},
-  {path: 'edit/:articleid', component: EditTempComponent},
-  {path: 'add-image/:articleid', component: AddImageComponent},
-  {path: 'list', component: ListTempComponent},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'reset-password/:token-password', component: ResetPasswordComponent },
+  { path: 'article/:id', component: ArticleComponent },
+  { path: 'edit/:articleid', component: EditTempComponent },
+  { path: 'articles', component: ArticleComponent },
+  { path: 'edit/:articleid', component: EditTempComponent },
+  { path: 'add-image/:articleid', component: AddImageComponent },
+  { path: 'list/:username', component: ListTempComponent },
 
 ]
 
