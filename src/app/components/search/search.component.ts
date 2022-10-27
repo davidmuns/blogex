@@ -69,12 +69,8 @@ export class SearchComponent implements OnInit {
     const asForm = this.toForm.nativeElement;
     if(this.mostrar == true){
       this.renderer2.setStyle(asForm, 'display', 'block');
-      //this.renderer2.setStyle(asForm, 'transition', 'all 1s')
     }else{
       this.renderer2.setStyle(asForm, 'display', 'none');
     }
-    console.log("Mostrar: ", this.mostrar);
   }
-  
-
 }
