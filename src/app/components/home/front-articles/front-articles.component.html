@@ -11,12 +11,12 @@
         <div>
           <h3>{{ article.title }}</h3>
         </div>
-        <a (click)="onClick(article.id)" style="cursor: pointer;">
-          <img [src]="article.imagenPortada" alt="{{ article.alt1 }}">
+        <a (click)="onClick(article.id)">
+          <img [src]="article.imagenPortada" alt="{{ article.alt1 }}" >
         </a>
         <div id="content">
-          <div class="example-header-image"></div>
-          <p>{{ article.alt1 }}</p>
+          <!-- <div class="example-header-image"></div> -->
+          <p>Author: &nbsp;<span routerLink="/blog/{{ article.usuario.nombreUsuario }}">{{ article.usuario.nombreUsuario }}</span></p>
         </div>
        <!--  <mat-card-actions>
           <button mat-button (click)="onImgs(article.id)">img</button>
