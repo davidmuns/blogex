@@ -31,7 +31,7 @@
   <div *ngIf="this.tokenService.isLogged()" class="custom-file mx-2">
     <input type="file" class="custom-file-input" id="customFile" (change)="handleImage($event)"
       style="visibility: hidden;">
-    <a href=""><label class="custom-file-label" for="customFile" style="cursor: pointer;">Choose image</label></a>
+    <a href=""><label class="custom-file-label" for="customFile" style="cursor: pointer;"><mat-icon>add_to_photos</mat-icon> new image</label></a>
   </div>
   <div>
     <button *ngIf="this.tokenService.isLogged()" mat-button mat-stroked-button color="primary" (click)="onUpload()"

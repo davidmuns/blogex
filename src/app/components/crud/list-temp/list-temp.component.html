@@ -1,3 +1,26 @@
+<!-- <div class="scroll" #topPage> -->
+<div style="display: flex; justify-content: center;">
+  <button *ngIf="this.imagenes.length != 0" mat-button (click)="hideGallery()">
+    <mat-icon>block</mat-icon> Hide
+  </button>
+</div>
+
+<!-- IMAGES LIST WHEN NOT LOGGED -->
+<div class="main-container" *ngIf="!this.tokenService.isLogged()">
+
+  <div *ngFor="let imagen of this.imagenes; let i = index">
+    <!-- https://animate.style/ -->
+    <mat-card class="example-card animate__animated animate__zoomIn">
+      <a type="button" matTooltip="slide view" matTooltipPosition="above" data-bs-toggle="modal"
+        data-bs-target="#gallery" style="cursor: pointer;" (click)="getIndex(i)">
+        <img mat-card-image [src]="imagen.url" alt="">
+      </a>
+    </mat-card>
+  </div>
+</div>
+
+
+<!-- ARTICLES LIST -->
 <h1 style="text-align: center;">ARTICLES by {{ this.username }} </h1>
 <div class="main-container animate__animated animate__backInLeft">
 
@@ -18,18 +41,25 @@
     </mat-card-actions>
   </mat-card>
 
-
   <div *ngFor="let article of this.articles">
     <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-header style="margin-bottom: 20px;">
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
         <mat-card-title>{{ article.title }}</mat-card-title>
-        <mat-card-subtitle>{{ article.id }}</mat-card-subtitle>
+        <!-- <mat-card-subtitle>{{ article.id }}</mat-card-subtitle> -->
       </mat-card-header>
-      <a (click)="onOpenGallery(article.id)" style="cursor: pointer;" matTooltip="gallery view"
-        matTooltipPosition="above">
+      <a *ngIf="this.tokenService.isLogged(); else notLogged" (click)="onOpenGallery(article.id)"
+        style="cursor: pointer;" matTooltip="gallery view" matTooltipPosition="above">
         <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
       </a>
+
+      <ng-template #notLogged>
+        <a style="cursor: pointer;" matTooltip="gallery view" matTooltipPosition="above"
+          (click)="showGallery(article.id)">
+          <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
+        </a>
+      </ng-template>
+
       <mat-card-content>
         <p>{{ article.alt1 }}</p>
         <p>{{ article.text1 }}</p>
@@ -47,8 +77,8 @@
           (click)="onEdit(article)">
           <mat-icon>article</mat-icon>
         </button>
-
-        <button mat-button (click)="onOpenGallery(article.id)" matTooltip="gallery view">
+        <button *ngIf="this.tokenService.isLogged()" mat-button (click)="onOpenGallery(article.id)"
+          matTooltip="gallery view">
           <mat-icon>image</mat-icon>
         </button>
       </mat-card-actions>
@@ -56,47 +86,51 @@
   </div>
 </div>
 
-<!-- Modal -->
-<!-- <div class="modal fade" id="gallery" tabindex="-1" aria-labelledby="gallerylLabel" aria-hidden="true">
+<!-- </div> -->
+<!-- MODAL WHEN IS LOGGED -->
+<div class="modal fade" id="gallery" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+  style="padding: 0px;">
   <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title" id="gallerylLabel">GALLERY</h1>
+    <div class="modal-content" style="height: 530px; background-color: transparent; border: none;">
+      <!-- <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+      </div> -->
       <div class="modal-body">
 
-        <div class="main-container">
-          <div *ngFor="let imagen of this.imgsByArticleId">
-
-            <mat-card class="example-card animate__animated animate__backInLeft">
-              <mat-card-header>
-
-                <mat-card-title>{{ imagen.article.title }}</mat-card-title>
-
-              </mat-card-header>
-              <img mat-card-image [src]="imagen.url" alt="">
-              <mat-card-content>
-              </mat-card-content>
-              <mat-card-actions align="start">
-                <button mat-button routerLink="/add-image/{{ imagen.articleId }}">Add img</button>
-                <button mat-stroked-button color="warn" (click)="onDeleteImage(imagen.id)" data-bs-dismiss="modal">
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </mat-card-actions>
-            </mat-card>
+        <!-- CAROUSEL -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <!-- <div class="carousel-item active">
+              <img src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg"
+                class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index">
+              <img [src]="imagen.url" class="d-block w-100" alt="...">
+            </div> -->
+            <div class="carousel-item" data-bs-interval="2000" *ngFor="let imagen of imagenes; let i = index"
+              [ngClass]="{'active': i == this.indice }">
+              <img [src]="imagen.url" class="d-block w-100" alt="...">
+            </div>
+            <!-- <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == 0 }">
+              <img [src]="imagen.url" class="d-block w-100" alt="...">
+            </div> -->
           </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-      </div>
-      <div class="modal-footer">
-        <input type="file" accept=".png, .jpg, .jpeg" (change)="handleImage($event)">
 
-        <button type="button" class="btn btn-outline-success" (click)="onAddImg()">
-          <i class="fa-solid fa-upload"></i> upload
-        </button>
-        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
-  </div> -->
+  </div>
+</div>
 
 <app-footer></app-footer>

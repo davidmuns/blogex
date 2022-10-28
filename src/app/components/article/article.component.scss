@@ -27,8 +27,30 @@ img {
   height: 200px;
 }
 
+.container > img {
+
+  width: 100%;
+  height: 700px;
+
+}
+
 .carousel,
 .carousel-inner>.carousel-item>img {
 
-  height: 500px;
+  height: 650px;
+}
+
+@media (max-width: 950px) {
+
+  .container > img {
+
+    width: 100%;
+    height: 350px;
+  }
+
+  .carousel,
+  .carousel-inner>.carousel-item>img {
+
+      height: 350px;
+  }
 }

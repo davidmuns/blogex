@@ -1,10 +1,10 @@
 <h1 style="text-align: center;">GALLERY</h1>
 <div style="display: flex; justify-content: center">
   <div>
-    <button mat-button (click)="showGallery(post?.id)">Show</button>
+    <button mat-button (click)="showGallery(post?.id)"><mat-icon>collections</mat-icon> Show</button>
   </div>
   <div>
-    <button mat-button (click)="hideGallery()">Hide</button>
+    <button mat-button (click)="hideGallery()"><mat-icon>block</mat-icon> Hide</button>
   </div>
 </div>
 
@@ -35,8 +35,21 @@
   </div>
 </div>
 
+<div class="container mb-5 animate__animated animate__backInLeft shadow" style="max-width: 80%;">
+  <div class="row pt-2">
+    <h1><b>{{ post?.title }}</b></h1>
+  </div>
+  <div class="row mb-2">
+    <article>{{ post?.text1 }}</article>
+  </div>
+  
+    <img class="img-portada" [src]="post?.imagenPortada" alt="{{ post?.alt1 }}" style="padding-bottom: 17px;">
+  
+</div>
+
+
 <!-- ARTICLE -->
-<div class="main-container">
+<!-- <div class="main-container">
   <div>
     <mat-card class="example-card">
       <mat-card-header>
@@ -51,12 +64,12 @@
         </p>
       </mat-card-content>
       <mat-card-actions>
-        <!-- <button mat-button (click)="showGallery(post?.id)">Show gallery</button>
-        <button mat-button (click)="hideGallery()">Hide gallery</button> -->
+        <button mat-button (click)="showGallery(post?.id)">Show gallery</button>
+        <button mat-button (click)="hideGallery()">Hide gallery</button>
       </mat-card-actions>
     </mat-card>
   </div>
-</div>
+</div> -->
 
 <!-- MODAL -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -104,4 +117,4 @@
   </div>
 </div>
 
-<!-- <app-footer></app-footer> -->
+<app-footer></app-footer>

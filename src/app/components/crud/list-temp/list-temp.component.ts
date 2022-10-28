@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from './../../../shared/services/article.service';
 import { TokenService } from './../../../shared/services/token.service';
 import { Article } from './../../../shared/models/article';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Imagen } from 'src/app/shared/models/imagen';
 import { GalleryUserComponent } from './../../../shared/GalleryUser/GalleryUser.component';
 
@@ -15,6 +15,7 @@ import { GalleryUserComponent } from './../../../shared/GalleryUser/GalleryUser.
 })
 export class ListTempComponent implements OnInit {
 
+  @ViewChild('topPage') topPage!: ElementRef;
   navigationExtras: NavigationExtras = {
     state: {
       value: null
@@ -28,6 +29,7 @@ export class ListTempComponent implements OnInit {
   miniatura!: Imagen;
   username!: string;
   articleId!: number;
+  indice!: number;
 
   constructor(
     private readonly dialog: MatDialog,
@@ -63,91 +65,40 @@ export class ListTempComponent implements OnInit {
     });
   }
 
-  // private getImgsByArticleId(id: number) {
-  //   this.articleService.getImagesByArticleId(id).subscribe({
-  //     next: (data: Imagen[]) => {
-  //       data.forEach(img => {
-  //         this.imagenes.push(img);
-  //       })
-  //     },
-  //     error: err => {
-  //       console.log(err);
-  //     }
-  //   })
-  // }
+  showGallery(id: number | undefined) {
+    const idArticle: number = id as number;
+    this.getImgsByArticleId(idArticle);
 
-  // onDeleteImage(imgId: string) {
-  //   this.articleService.deleteImage(imgId).subscribe({
-  //     next: (data: any) => {
-  //       this.toastrService.success(data.mensaje, '', {
-  //         timeOut: 3000, positionClass: 'toast-top-center'
-  //       });
-  //       this.redirectTo(this.router.url);
-  //       window.location.reload();
-  //       this.imagenes = [];
-  //       this.getImgsByArticleId(this.articleId);
-  //     },
-  //     error: err => {
-  //       console.log(err);
-  //     }
-  //   })
-  // }
+  }
 
-  // redirectTo(uri: string) {
-  //   this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-  //     this.router.navigate([uri]));
-  // }
+  private getImgsByArticleId(id: number) {
+    this.articleService.getImagesByArticleId(id).subscribe({
+      next: (data: Imagen[]) => {
+        this.imagenes = data;
+      }
+    })
+  }
+  getIndex(index: number) {
+    this.indice = index;
+    console.log('index: ', this.indice);
 
+  }
+ 
   onOpenGallery(id: number) {
     this.dialog.open(GalleryUserComponent, { data: { articleId: `${id}` } });
-    // this.articleId = id;
-    // this.imgsByArticleId = [];
-    // this.imagenes.forEach(img => {
-    //   if (img.articleId == this.articleId) {
-    //     this.imgsByArticleId.push(img);
-    //   }
-    // })
   }
 
   onEdit(post: Article) {
     this.navigationExtras.state = post;
     this.router.navigate(['admin/edit'], this.navigationExtras);
   }
-  // handleImage(event: any) {
-  //   this.image = event.target.files[0];
-  //   const fr = new FileReader();
-  //   fr.onload = (e: any) => {
-  //     this.miniatura = e.target.result;
-  //   }
-  //   fr.readAsDataURL(this.image);
-  // }
 
-  // onAddImg() {
-  //   if (this.image != undefined) {
-  //     this.addImage(this.image, this.articleId);
-  //   } else {
-  //     this.toastrService.error('Please select an image.', '', {
-  //       timeOut: 3000, positionClass: 'toast-top-center'
-  //     });
-  //   }
+  goTopPage(){
+    this.topPage.nativeElement.scrollTop = 0;
+  }
 
-  // }
-  // private addImage(image: File, articleId: number) {
-  //   this.articleService.addImageToArticle(image, articleId).subscribe({
-  //     next: data => {
-  //       this.toastrService.success(data.mensaje, '', {
-  //         timeOut: 3000, positionClass: 'toast-top-center'
-  //       });
-  //       this.imagenes = [];
-  //       // this.getImgsByArticleId(this.articleId);
-  //       //this.redirectTo(this.router.url);
-  //     },
-  //     error: err => {
-  //       this.toastrService.error(err.error.mensaje, '', {
-  //         timeOut: 3000, positionClass: 'toast-top-center'
-  //       });
-  //     }
-  //   })
-
-  // }
+  hideGallery(){
+    this.imagenes = [];
+  }
+ 
 }

@@ -14,13 +14,10 @@ import { Router } from '@angular/router';
 })
 export class GalleryUserComponent implements OnInit {
 
-  imagesByArticleId: Imagen[] = [];
   articles: Article[] = [];
   imagenes: Imagen[] = [];
   image!: File;
   miniatura!: Imagen;
-  username!: string;
-  articleId!: number;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { articleId: number },
@@ -31,7 +28,6 @@ export class GalleryUserComponent implements OnInit {
 
   ngOnInit() {
     this.getImgsByArticleId(this.data.articleId);
-    this.articleId = this.data.articleId;
   }
 
   private getImgsByArticleId(id: number) {
@@ -57,7 +53,7 @@ export class GalleryUserComponent implements OnInit {
 
   onUpload() {
     if (this.image != undefined) {
-      this.addImage(this.image, this.articleId);
+      this.addImage(this.image, this.data.articleId);
     } else {
       this.toastrService.error('Please select an image.', '', {
         timeOut: 3000, positionClass: 'toast-top-center'
@@ -73,7 +69,7 @@ export class GalleryUserComponent implements OnInit {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         this.imagenes = [];
-        this.getImgsByArticleId(this.articleId);
+        this.getImgsByArticleId(this.data.articleId);
         //this.redirectTo(this.router.url);
       },
       error: err => {
@@ -94,7 +90,7 @@ export class GalleryUserComponent implements OnInit {
         //this.redirectTo(this.router.url);
         //window.location.reload();
         this.imagenes = [];
-        this.getImgsByArticleId(this.articleId);
+        this.getImgsByArticleId(this.data.articleId);
       },
       error: err => {
         console.log(err);
