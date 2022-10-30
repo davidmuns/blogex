@@ -21,7 +21,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .leaflet-popup-content{
     margin: 8px;
 }
-.text{
+.text, .example-card>mat-card-content>p{
     font-size: .7rem;
     overflow: hidden;
     text-overflow: ellipsis;

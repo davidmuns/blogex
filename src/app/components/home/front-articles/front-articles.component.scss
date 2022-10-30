@@ -19,10 +19,11 @@ h1{
     div{
         height: 60px;
     }
-    div>h3{
+    div h3{
         font-size: .9rem;
         text-align: center;
         margin:5px 0px;
+        cursor: pointer;
     }
     a{
         width: 100%;

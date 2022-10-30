@@ -21,10 +21,12 @@
               <img class="image-thumbnail" style="max-width: 100px; border-radius: 5%;" [src]="miniatura">
             </div>
           </div>
-          <input type="file" accept=".png, .jpg, .jpeg" multiple id="inputUpload" formControlName="img{{ view }}"
-            (change)="handleImage1($event)">
-          <img class="prev-image" [src]="article.img1">
-          <label for="inputUpload">Foto <mat-icon>backup</mat-icon></label>
+          <div class="custom-file">
+            <input type="file" class="custom-file-input" accept=".png, .jpg, .jpeg" multiple id="inputUpload" formControlName="img{{ view }}"
+              (change)="handleImage1($event)">
+            <label class="custom-file-label" for="inputUpload"><mat-icon>upload</mat-icon>&nbsp;&nbsp;Upload Picture</label>
+            <img class="prev-image" [src]="article.img1">
+          </div>
         </div>
         <p>
           <mat-form-field class="input-width" appearance="fill">
