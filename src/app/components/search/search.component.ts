@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
 
   @ViewChild('hideForm') toForm!: ElementRef;
 
-  myControl = this.fb.control('', Validators.minLength(3));
+  myControl = this.fb.control('', [Validators.minLength(3), Validators.required]);
   options: string[] = [];
   allOptions: Article[] = [];
   filteredOptions!: Observable<string[]>;
@@ -29,6 +29,7 @@ export class SearchComponent implements OnInit {
   articlesTitle!: string[];
   articleId!: number;
   mostrar: boolean = false;
+  private debounceTimer!: any;
 
   constructor(private readonly articleSvc: ArticleService, 
     private readonly router: Router,
@@ -51,12 +52,26 @@ export class SearchComponent implements OnInit {
         this.allOptions.map(x =>{ this.options.push(x.title);
         });
       });
-    }
+    }                                     
 
   }
 
+ /*  onQueryChanged(query: string = ''){
+    if(this.debounceTimer) clearTimeout(this.debounceTimer);
+
+    this.debounceTimer = setTimeout(() => {
+      this.articleSvc.getAll()
+      .subscribe(res => {
+        this.allOptions = res;
+        this.allOptions.map(x =>{ this.options.push(x.title);
+        });
+      });
+    }, 500)
+
+  } */
+
   private _filter(value: string): string[] {
-    console.log("Control: ", this.myControl.status);
+    //console.log("Control: ", this.myControl.status);
     const filterValue = value.toLowerCase();
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
