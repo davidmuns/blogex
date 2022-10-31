@@ -19,10 +19,12 @@
   </div>
 </form>
 
+<!-- Button to open/hide input of mobile format -->
 <button id="searchHideButton" (click)="openSelect()" mat-stroked-button>
   <mat-icon>search</mat-icon>
 </button>
 
+<!-- Form of mobile format -->
 <form  #hideForm class="responsive-form" (submit)="selectArticle()">
   <div class="responsive-div" appearance="fill">
     <input type="text"

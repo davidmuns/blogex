@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginComponent } from 'src/app/components/Auth/login/login.component';
 import { SignupComponent } from 'src/app/components/Auth/signup/signup.component';
 import { Router } from '@angular/router';
+import { Article } from '../models/article';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-header',
@@ -13,17 +15,28 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   public validation: boolean = false;
+  public articles: Article[] = [];
 
   constructor(
     public dialog: MatDialog,
     public tokenService: TokenService,
-    public router: Router
-  ) {
-
-  }
+    public router: Router,
+    private readonly articleSvc: ArticleService
+  ) { }
 
   ngOnInit(): void {
-    
+    this.getArticles();
+  }
+
+  private getArticles() {
+    this.articleSvc.getAll().subscribe({
+      next: data => {
+        this.articles = data;
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
   }
 
   openDialog() {

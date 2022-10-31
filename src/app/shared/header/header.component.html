@@ -16,15 +16,20 @@
         Home
       </button>
       <mat-divider></mat-divider>
+      <button mat-menu-item routerLink="/blog/{{ this.tokenService.getUsername() }}">
+        <mat-icon>book</mat-icon>
+        Your Blog
+      </button>  
+      <mat-divider></mat-divider>
       <button mat-menu-item routerLink="/admin/new">
         <mat-icon>edit</mat-icon>
-        Your routes
+        Your Articles
       </button>
       <mat-divider></mat-divider>
       <button mat-menu-item routerLink="/list">
         <mat-icon>image</mat-icon>
-        My list
-      </button>  
+        Your Pictures
+      </button>
     </mat-menu>
     
     <app-search></app-search>

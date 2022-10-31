@@ -35,8 +35,6 @@ input:focus{
     background-color: #fbfdf1;
     outline: 3px solid #C6FF00;
     box-shadow: none;
-    width: 100%;
-    margin: 0px;
 }
 #searchButton, #searchHideButton{
     margin-left: 6px;
@@ -75,7 +73,7 @@ input:focus{
     .responsive-form{
         position: absolute;
         top: 20px;
-        left: 60px;
+        left: 4%;
         height:0px;
         margin: 0px;
         display:none;

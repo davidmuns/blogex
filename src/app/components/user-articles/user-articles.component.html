@@ -1,0 +1,47 @@
+<ng-container *ngIf="articles">
+  <h2>The Blog of {{ articles[0].usuario.nombreUsuario }}</h2>
+  <div id="linkToHome" class="animate__animated animate__fadeInRight" routerLink="/list">BlogEx.com</div>
+  <div *ngFor="let article of this.articles | paginate:pageSize:pageNumber">
+    
+    <mat-card class="example-card">
+      <mat-card-header>
+        <!-- <div mat-card-avatar class="example-header-image"></div> -->
+        <mat-card-title>{{ article.title }}</mat-card-title>
+        <!-- <mat-card-subtitle>{{ article.id }}</mat-card-subtitle> -->
+      </mat-card-header>
+      <!-- <a (click)="onOpenGallery(article.id)" style="cursor: pointer;" matTooltip="gallery view"
+        matTooltipPosition="above">
+        <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
+      </a> -->
+      <img mat-card-image [src]="article.imagenPortada" alt="{{ article.alt1 }}">
+      <p  id="footerImg">{{ article.alt1 }}</p>
+      <mat-card-content>
+        <p>{{ article.text1 }}</p>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <!-- <button mat-button routerLink="/edit/{{ article.id }}">Edit</button> -->
+        <!-- <button mat-button (click)="onDeleteArticle(article.id)">Delete</button> -->
+        <!-- <button mat-button (click)="onImgs(article.id)">Galery</button> -->
+        <!-- <button mat-button routerLink="/add-image/{{ article.id }}">Add img</button> -->
+        <!-- <img class="image-thumbnail" style="max-width: 100px; border-radius: 5%;" [src]="miniatura" *ngIf="this.image" style="margin-top: 5px;">
+        <input type="file" accept=".png, .jpg, .jpeg" multiple id="inputUpload" formControlName="image" (change)="handleImage($event)"> -->
+        <!-- <button mat-button data-bs-toggle="modal" data-bs-target="#gallery" (click)="loadImgsByArticleId(article.id)"> -->
+        <!-- <button *ngIf="this.tokenService.isLogged()" mat-button matTooltip="edit article" matTooltipPosition="left"
+          (click)="onEdit(article)">
+          <mat-icon>article</mat-icon>
+        </button>
+
+        <button mat-button (click)="onOpenGallery(article.id)" matTooltip="gallery view">
+          <mat-icon>image</mat-icon>
+        </button> -->
+      </mat-card-actions>
+    </mat-card>
+  </div>
+    <mat-paginator [length]="articles.length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              aria-label="Select page"
+              showFirstLastButtons
+              (page)="onPageChange($event)">
+    </mat-paginator>
+</ng-container>

@@ -15,7 +15,6 @@ export class ArticleComponent implements OnInit {
   imagenes!: Imagen[] | undefined;
   indice!: number;
 
-
   constructor(
     private readonly route: ActivatedRoute,
     private articleSvc: ArticleService,
@@ -34,7 +33,6 @@ export class ArticleComponent implements OnInit {
   showGallery(id: number | undefined) {
     const idArticle: number = id as number;
     this.getImgsByArticleId(idArticle);
-
   }
   getIndex(index: number) {
     this.indice = index;

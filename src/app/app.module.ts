@@ -34,6 +34,8 @@ import { interceptorProvider } from './interceptors/article-interceptor.service'
 import { FrontArticlesComponent } from './components/home/front-articles/front-articles.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { GalleryUserComponent } from './shared/GalleryUser/GalleryUser.component';
+import { UserArticlesComponent } from './components/user-articles/user-articles.component';
+import { PaginatePipe } from './shared/pipes/paginate.pipe';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { GalleryUserComponent } from './shared/GalleryUser/GalleryUser.component
     AddImageComponent,
     FrontArticlesComponent,
     FooterComponent,
-    GalleryUserComponent
+    GalleryUserComponent,
+    UserArticlesComponent,
+    PaginatePipe
   ],
   imports: [
     BrowserModule,

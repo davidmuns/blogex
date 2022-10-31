@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Observable, pipe } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { debounceTime, map, startWith } from 'rxjs/operators';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
 import { NavigationExtras, Router } from '@angular/router';
@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
 
   @ViewChild('hideForm') toForm!: ElementRef;
 
-  myControl = new FormControl('');
+  myControl = this.fb.control('', [Validators.minLength(3), Validators.required]);
   options: string[] = [];
   allOptions: Article[] = [];
   filteredOptions!: Observable<string[]>;
@@ -29,28 +29,49 @@ export class SearchComponent implements OnInit {
   articlesTitle!: string[];
   articleId!: number;
   mostrar: boolean = false;
+  private debounceTimer!: any;
 
   constructor(private readonly articleSvc: ArticleService, 
     private readonly router: Router,
-    private readonly renderer2: Renderer2
+    private readonly renderer2: Renderer2,
+    private readonly fb: FormBuilder
     ) { }
 
   ngOnInit(): void {
+      
     this.filteredOptions = this.myControl.valueChanges.pipe(
+      debounceTime(400),
       startWith(''),
       map(value => this._filter(value || '')),
     );
 
-    this.articleSvc.getAll()
-    .subscribe(res => {
-      this.allOptions = res;
-      this.allOptions.map(x =>{ this.options.push(x.title);
+    if(this.myControl.valid){
+      this.articleSvc.getAll()
+      .subscribe(res => {
+        this.allOptions = res;
+        this.allOptions.map(x =>{ this.options.push(x.title);
+        });
       });
-    });
+    }                                     
 
   }
 
+ /*  onQueryChanged(query: string = ''){
+    if(this.debounceTimer) clearTimeout(this.debounceTimer);
+
+    this.debounceTimer = setTimeout(() => {
+      this.articleSvc.getAll()
+      .subscribe(res => {
+        this.allOptions = res;
+        this.allOptions.map(x =>{ this.options.push(x.title);
+        });
+      });
+    }, 500)
+
+  } */
+
   private _filter(value: string): string[] {
+    //console.log("Control: ", this.myControl.status);
     const filterValue = value.toLowerCase();
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }

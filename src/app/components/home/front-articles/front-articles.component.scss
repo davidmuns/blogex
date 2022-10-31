@@ -19,10 +19,11 @@ h1{
     div{
         height: 60px;
     }
-    div>h3{
+    div h3{
         font-size: .9rem;
         text-align: center;
         margin:5px 0px;
+        cursor: pointer;
     }
     a{
         width: 100%;
@@ -58,6 +59,14 @@ h1{
         padding: 8px 0px;
         margin: 0px;
         font-size: .8rem;
+        span{
+            cursor:pointer;
+            font-size: .9rem;
+            font-weight: 500;
+        }
+    }
+    img{
+        cursor: pointer;
     }
 }
 
@@ -72,6 +81,9 @@ h1{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    img{
+        cursor: pointer;
+    }
 }
 
 .main-container>article {
