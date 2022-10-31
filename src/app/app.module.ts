@@ -1,3 +1,4 @@
+import { ArticleGalleryComponent } from './components/article/articleGallery/articleGallery.component';
 import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
 import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
 import { NgModule } from '@angular/core';
@@ -52,7 +53,8 @@ import { GalleryUserComponent } from './shared/GalleryUser/GalleryUser.component
     AddImageComponent,
     FrontArticlesComponent,
     FooterComponent,
-    GalleryUserComponent
+    GalleryUserComponent,
+    ArticleGalleryComponent
   ],
   imports: [
     BrowserModule,

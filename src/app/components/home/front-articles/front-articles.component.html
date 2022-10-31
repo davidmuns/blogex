@@ -11,19 +11,21 @@
         <div>
           <h3>{{ article.title }}</h3>
         </div>
-        <a (click)="onClick(article.id)" style="cursor: pointer;" matTooltip="go to post" matTooltipPosition="above">
+        <a (click)="onClick(article.id)" style="cursor: pointer;" matTooltip="see post" matTooltipPosition="above">
           <img [src]="article.imagenPortada" alt="{{ article.alt1 }}">
         </a>
         <div id="content">
           <div class="example-header-image"></div>
           <p>{{ article.alt1 }}</p>
-          <a routerLink="/list/{{ article.usuario.nombreUsuario }}">
+          <!-- <a routerLink="/list/{{ article.usuario.nombreUsuario }}">
             <p>Author: {{ article.usuario.nombreUsuario }}</p>
-          </a>
+          </a> -->
         </div>
-        <!--  <mat-card-actions>
-          <button mat-button (click)="onImgs(article.id)">img</button>
-        </mat-card-actions> -->
+         <mat-card-actions align="end">          
+            <button mat-button routerLink="/list/{{ article.usuario.nombreUsuario }}" matTooltip="See {{ article.usuario.nombreUsuario }} posts">
+              <mat-icon>perm_identity</mat-icon>
+            </button> 
+        </mat-card-actions>
       </div>
 
     </article>

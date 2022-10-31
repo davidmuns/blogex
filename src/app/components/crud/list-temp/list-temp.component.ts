@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from './../../../shared/services/article.service';
 import { TokenService } from './../../../shared/services/token.service';
 import { Article } from './../../../shared/models/article';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { Imagen } from 'src/app/shared/models/imagen';
 import { GalleryUserComponent } from './../../../shared/GalleryUser/GalleryUser.component';
 
@@ -28,8 +28,9 @@ export class ListTempComponent implements OnInit {
   image!: File;
   miniatura!: Imagen;
   username!: string;
-  articleId!: number;
+  @Input('articleId') articleId!: number;
   indice!: number;
+  openArticleGallery: boolean = false;
 
   constructor(
     private readonly dialog: MatDialog,
@@ -66,8 +67,11 @@ export class ListTempComponent implements OnInit {
   }
 
   showGallery(id: number | undefined) {
-    const idArticle: number = id as number;
-    this.getImgsByArticleId(idArticle);
+    this.articleId = id as number;
+    this.openArticleGallery = true;
+    
+    
+    this.getImgsByArticleId(this.articleId);
 
   }
 
