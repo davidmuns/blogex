@@ -1,3 +1,4 @@
+import { SketchComponent } from './shared/sketch/sketch.component';
 import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
 import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
 import { EditTempComponent } from './components/crud/posts/edit-temp/edit-temp.component';
@@ -17,7 +18,8 @@ const routes: Routes = [
   //{path: 'edit/:articleid', component: EditTempComponent},
   {path: 'add-image/:articleid', component: AddImageComponent},
   {path: 'list', component: ListTempComponent, canActivate: [LogsGuard]},
-  {path: 'blog/:username', component: UserArticlesComponent}
+  {path: 'blog/:username', component: UserArticlesComponent},
+  {path: 'game', component: SketchComponent, canActivate: [LogsGuard]}
 ]
 
 @NgModule({

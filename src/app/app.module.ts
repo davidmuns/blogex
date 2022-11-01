@@ -1,3 +1,4 @@
+import { SketchComponent } from './shared/sketch/sketch.component';
 import { ArticleGalleryComponent } from './components/article/articleGallery/articleGallery.component';
 import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
 import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
@@ -58,6 +59,7 @@ import { PaginatePipe } from './shared/pipes/paginate.pipe';
     GalleryUserComponent,
     UserArticlesComponent,
     ArticleGalleryComponent,
+    SketchComponent,
     PaginatePipe
   ],
   imports: [

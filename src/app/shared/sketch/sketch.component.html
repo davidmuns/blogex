@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row mb-2 mt-3">
+    <div class="col">
+      <h1>Welcome to Angular + p5.js!</h1>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+
+    <button type="button" class="btn btn-outline-primary" (click)="onBigger()">Bigger</button>
+
+    <button type="button" class="btn btn-outline-primary" (click)="onSmaller()">Smaller</button>
+
+    <button type="button" class="btn btn-outline-primary" (click)="onBackground()">Background</button>
+
+    <button type="button" class="btn btn-outline-primary" (click)="onFaster()">Faster</button>
+
+    <button type="button" class="btn btn-outline-primary" (click)="onSlower()">Slower</button>
+
+    <button type="button" class="btn btn-outline-primary" (click)="onWider()">Wider</button>
+
+    <button type="button" class="btn btn-outline-primary" (click)="onNarrower()">Narrower</button>
+
+    <button type="button" class="btn btn-outline-primary" (click)="onHigher()">Higher</button>
+
+    <button type="button" class="btn btn-outline-primary" (click)="onShorter()">Shorter</button>
+
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="sketch-container">
+        <div id="sketch-holder">
+          <!-- <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+
+            <button type="button" class="btn btn-outline-primary" (click)="onBigger()">Bigger</button>
+
+            <button type="button" class="btn btn-outline-primary" (click)="onSmaller()">Smaller</button>
+
+            <button type="button" class="btn btn-outline-primary" (click)="onBackground()">Background</button>
+
+            <button type="button" class="btn btn-outline-primary" (click)="onFaster()">Faster</button>
+
+            <button type="button" class="btn btn-outline-primary" (click)="onSlower()">Slower</button>
+
+            <button type="button" class="btn btn-outline-primary" (click)="onWider()">Wider</button>
+
+            <button type="button" class="btn btn-outline-primary" (click)="onNarrower()">Narrower</button>
+
+            <button type="button" class="btn btn-outline-primary" (click)="onHigher()">Higher</button>
+
+            <button type="button" class="btn btn-outline-primary" (click)="onShorter()">Shorter</button>
+          </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h4 style="text-align: center;">speed x: {{ this.speedX }}</h4>
+<h4 style="text-align: center;">speed y: {{ this.speedY }}</h4>
+<h4 style="text-align: center;">size: {{ this.circulo.size }}</h4>
+<h4 style="text-align: center;">X: {{ this.circulo.x }}</h4>
+
+<app-footer></app-footer>
+ 
+  
