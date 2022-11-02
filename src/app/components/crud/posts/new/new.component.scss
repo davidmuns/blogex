@@ -20,6 +20,9 @@ mat-card-title{
 }
 mat-card-content{
     padding:10px 30px;
+    @media(max-width: 600px){
+        padding-left: 10px;
+    }
 }
 .input-width{
     width:100%;
