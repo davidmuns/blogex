@@ -114,6 +114,7 @@ export class HomeComponent implements AfterViewInit {
     this.renderer2.setStyle(asMap1, 'zIndex', '0');
   }
 
+  //Double click to map to exit zoom
   outMap() {
     const asCapa = this.toCapa.nativeElement;
     const asMap1 = this.toMap.nativeElement;
