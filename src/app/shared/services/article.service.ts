@@ -31,31 +31,31 @@ export class ArticleService {
     return this.httpClient.post<any>(ARTICLE_BASE_URL + 'create/' + username, post);
   }
 
-  public updateArticle(articleId: number, article: Article): Observable<any>{
+  public updateArticle(articleId: number, article: Article): Observable<any> {
     return this.httpClient.put<any>(ARTICLE_BASE_URL + 'update/' + articleId, article);
   }
 
-  public deleteArticle(articleId: number): Observable<any>{
+  public deleteArticle(articleId: number): Observable<any> {
     return this.httpClient.delete<any>(ARTICLE_BASE_URL + 'delete/' + articleId);
   }
 
-  public deleteImage(imgId: string): Observable<any>{
+  public deleteImage(imgId: string): Observable<any> {
     return this.httpClient.delete<any>(ARTICLE_BASE_URL + 'delete/image/' + imgId);
   }
 
-  public uploadImage(img: File): Observable<any>{
+  public uploadImage(img: File): Observable<any> {
     const formData = new FormData();
     formData.append('multipartFile', img);
     return this.httpClient.post<any>(ARTICLE_BASE_URL + 'image/upload', formData);
   }
 
-  public addImageToArticle(img: File, articleId: number): Observable<any>{
+  public addImageToArticle(img: File, articleId: number): Observable<any> {
     const formData = new FormData();
     formData.append('multipartFile', img);
     return this.httpClient.post<any>(ARTICLE_BASE_URL + `image/add/${articleId}`, formData);
   }
 
-  public getImagesByArticleId(articleId: number): Observable<Imagen[]> {
+  public getImagesByArticleId(articleId: number | undefined): Observable<Imagen[]> {
     return this.httpClient.get<Imagen[]>(ARTICLE_BASE_URL + 'image/list/' + articleId);
   }
 
@@ -63,7 +63,7 @@ export class ArticleService {
     return this.httpClient.get<Imagen[]>(ARTICLE_BASE_URL + 'image/list/');
   }
 
-  public getArticles(): Observable<Article[]>{
+  public getArticles(): Observable<Article[]> {
     return this.httpClient.get<Article[]>(environment.ARTICLES_LOCAL);
   }
 

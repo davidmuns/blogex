@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(login: Login) {
-    if(this.loginForm.valid){
+    if (this.loginForm.valid) {
       this.authSvc.loginUser(login).subscribe({
         next: data => {
           this.tokenService.setToken(data.token);
@@ -69,9 +69,10 @@ export class LoginComponent implements OnInit {
           this.loginForm.reset();
         }
       });
-    }else{
-      this.toastr.error("Error", '', {
-        timeOut: 3000,  positionClass: 'toast-top-center',
+    } else {
+      this.toastr.error("Please fill in the blanks.", '', {
+        timeOut: 3000, positionClass: 'toast-top-center',
       });
-  }}
+    }
+  }
 }

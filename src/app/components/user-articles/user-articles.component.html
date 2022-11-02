@@ -2,7 +2,7 @@
   <h2>The Blog of {{ articles[0].usuario.nombreUsuario }}</h2>
   <div id="linkToHome" class="animate__animated animate__fadeInRight" routerLink="/list">BlogEx.com</div>
   <div *ngFor="let article of this.articles | paginate:pageSize:pageNumber">
-    
+
     <mat-card class="example-card">
       <mat-card-header>
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
@@ -14,10 +14,11 @@
         <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
       </a> -->
       <img mat-card-image [src]="article.imagenPortada" alt="{{ article.alt1 }}">
-      <p  id="footerImg">{{ article.alt1 }}</p>
+      <p id="footerImg">{{ article.alt1 }}</p>
       <mat-card-content>
         <p>{{ article.text1 }}</p>
       </mat-card-content>
+      <app-articleGallery [articleId]="article.id"></app-articleGallery>
       <mat-card-actions align="end">
         <!-- <button mat-button routerLink="/edit/{{ article.id }}">Edit</button> -->
         <!-- <button mat-button (click)="onDeleteArticle(article.id)">Delete</button> -->
@@ -37,11 +38,7 @@
       </mat-card-actions>
     </mat-card>
   </div>
-    <mat-paginator [length]="articles.length"
-              [pageSize]="pageSize"
-              [pageSizeOptions]="pageSizeOptions"
-              aria-label="Select page"
-              showFirstLastButtons
-              (page)="onPageChange($event)">
-    </mat-paginator>
+  <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+  </mat-paginator>
 </ng-container>

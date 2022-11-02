@@ -14,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class SignupComponent implements OnInit {
 
-  public hide:boolean = true;
+  public hide: boolean = true;
   public signupForm!: FormGroup;
 
   constructor(
@@ -23,13 +23,13 @@ export class SignupComponent implements OnInit {
     public authSvc: AuthService,
     private readonly router: Router,
     private toastr: ToastrService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.initform();
   }
 
-  private initform():void{
+  private initform(): void {
     this.signupForm = this.fb.group({
       nombre: ['', Validators.required],
       nombreUsuario: ['', Validators.required],
@@ -47,34 +47,34 @@ export class SignupComponent implements OnInit {
   //   return this.email.hasError('email') ? 'Not a valid email' : '';
   // }
 
-  signupOpen(){
+  signupOpen() {
     this.dialog.closeAll();
     this.dialog.open(LoginComponent);
   }
 
-  newUser(user:User){
-    if(this.signupForm.valid){
-    this.authSvc.signupUser(user).subscribe({
-      next: (data) => {
-        console.log(data.mensaje);
-        this.toastr.success(data.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center',
-        });
-        this.dialog.closeAll();
-        this.dialog.open(LoginComponent);
-        //this.router.navigate(['admin/new']);
-      },
+  newUser(user: User) {
+    if (this.signupForm.valid) {
+      this.authSvc.signupUser(user).subscribe({
+        next: (data) => {
+          console.log(data.mensaje);
+          this.toastr.success(data.mensaje, '', {
+            timeOut: 3000, positionClass: 'toast-top-center',
+          });
+          this.dialog.closeAll();
+          this.dialog.open(LoginComponent);
+          //this.router.navigate(['admin/new']);
+        },
 
-      error: err => {
-        console.log(err.error.mensaje);
-        this.toastr.error(err.error.mensaje, '', {
-          timeOut: 3000,  positionClass: 'toast-top-center',
-        });
+        error: err => {
+          console.log(err.error.mensaje);
+          this.toastr.error(err.error.mensaje, '', {
+            timeOut: 3000, positionClass: 'toast-top-center',
+          });
         }
       });
-    }else{
-      this.toastr.error("Error", '', {
-        timeOut: 3000,  positionClass: 'toast-top-center',
+    } else {
+      this.toastr.error("Please fill in the blanks.", '', {
+        timeOut: 3000, positionClass: 'toast-top-center',
       });
     }
   }

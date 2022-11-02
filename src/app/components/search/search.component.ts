@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
 
   @ViewChild('hideForm') toForm!: ElementRef;
 
-  myControl = this.fb.control('', [Validators.minLength(3), Validators.required]);
+  myControl = this.fb.control('', [Validators.minLength(2), Validators.required]);
   options: string[] = [];
   allOptions: Article[] = [];
   filteredOptions!: Observable<string[]>;
@@ -31,66 +31,69 @@ export class SearchComponent implements OnInit {
   mostrar: boolean = false;
   private debounceTimer!: any;
 
-  constructor(private readonly articleSvc: ArticleService, 
+  constructor(private readonly articleSvc: ArticleService,
     private readonly router: Router,
     private readonly renderer2: Renderer2,
     private readonly fb: FormBuilder
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-      
+
     this.filteredOptions = this.myControl.valueChanges.pipe(
       debounceTime(400),
       startWith(''),
       map(value => this._filter(value || '')),
     );
 
-    if(this.myControl.valid){
-      this.articleSvc.getAll()
-      .subscribe(res => {
-        this.allOptions = res;
-        this.allOptions.map(x =>{ this.options.push(x.title);
-        });
-      });
-    }                                     
+
 
   }
 
- /*  onQueryChanged(query: string = ''){
-    if(this.debounceTimer) clearTimeout(this.debounceTimer);
+  /*  onQueryChanged(query: string = ''){
+     if(this.debounceTimer) clearTimeout(this.debounceTimer);
 
-    this.debounceTimer = setTimeout(() => {
-      this.articleSvc.getAll()
-      .subscribe(res => {
-        this.allOptions = res;
-        this.allOptions.map(x =>{ this.options.push(x.title);
-        });
-      });
-    }, 500)
+     this.debounceTimer = setTimeout(() => {
+       this.articleSvc.getAll()
+       .subscribe(res => {
+         this.allOptions = res;
+         this.allOptions.map(x =>{ this.options.push(x.title);
+         });
+       });
+     }, 500)
 
-  } */
+   } */
 
   private _filter(value: string): string[] {
     //console.log("Control: ", this.myControl.status);
     const filterValue = value.toLowerCase();
+    if (this.myControl.valid) {
+      this.articleSvc.getAll()
+        .subscribe(res => {
+          this.allOptions = res;
+          this.allOptions.map(x => {
+            this.options.push(x.title);
+          });
+        });
+    }
+
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  selectArticle(){
-    for(let i = 0; i < this.allOptions.length; i++){
-      if(this.allOptions[i].title == this.myControl.value){
+  selectArticle() {
+    for (let i = 0; i < this.allOptions.length; i++) {
+      if (this.allOptions[i].title == this.myControl.value) {
         this.articleId = this.allOptions[i].id;
         this.router.navigate(['/article', this.articleId]);
-      } 
-    }    
+      }
+    }
   }
 
-  openSelect(){
+  openSelect() {
     this.mostrar = !this.mostrar;
     const asForm = this.toForm.nativeElement;
-    if(this.mostrar == true){
+    if (this.mostrar == true) {
       this.renderer2.setStyle(asForm, 'display', 'block');
-    }else{
+    } else {
       this.renderer2.setStyle(asForm, 'display', 'none');
     }
   }

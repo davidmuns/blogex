@@ -28,6 +28,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
 import { MapComponent } from './components/map/map.component';
 import { ArticleComponent } from './components/article/article.component';
+import { ArticleGalleryComponent } from './components/article/article-gallery/articleGallery.component';
 
 
 import { interceptorProvider } from './interceptors/article-interceptor.service';
@@ -56,9 +57,11 @@ import { PaginatePipe } from './shared/pipes/paginate.pipe';
     FooterComponent,
     GalleryUserComponent,
     UserArticlesComponent,
+    ArticleGalleryComponent,
     PaginatePipe
   ],
   imports: [
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
