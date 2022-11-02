@@ -6,8 +6,10 @@
         <div class="example-header-image"></div>
         <mat-card-title>{{ post?.title }}</mat-card-title>
       </mat-card-header>
-      <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.alt1 }}">
-      <p>{{ post?.alt1 }}</p>
+      <div class="imageMarc">
+        <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.alt1 }}">
+        <p>{{ post?.alt1 }}</p>
+      </div>
       <mat-card-content>
         <p>
           {{ post?.text1 }}

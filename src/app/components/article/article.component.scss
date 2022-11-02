@@ -64,31 +64,43 @@ h2{
     }
 }
 .example-card{
-    width:80%;
+    width:78%;
     margin:20px auto 100px;
     background-color: rgba(47,47,47,1);
     color:white;
+    padding: 0px;
     mat-card-title{
         font-size: 1.6rem;
         font-family: 'Libre Baskerville', serif;
         padding: 10px 0px;
         line-height: 2rem;
     }
-    img{
+    .imageMarc{
         margin-bottom: 4px;
         border-top: 2px solid white;
         border-bottom: 1px solid white;
+        height: 600px;
+        overflow: hidden;
+        margin: 0px;
+    }
+    /* img{
+        
     }
     #footerImg{
         font-size: .8rem;
-    }
+    } */
 }
-mat-card-content>p{
+mat-card-content{
+  
+  p{
     font-size: 1.1rem;
     padding:30px 15px;
     text-indent: 30px;
-    
+    display: block;
+    overflow:auto;
+    white-space: pre-line;
     @media(max-width:600px){
         font-size: 1rem;
     }
+  }
 }
