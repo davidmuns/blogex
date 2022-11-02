@@ -1,3 +1,4 @@
+import { WeatherService } from './../../../shared/services/weather.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, NavigationExtras } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -28,8 +29,10 @@ export class ListTempComponent implements OnInit {
   miniatura!: Imagen;
   username!: string;
   articleId!: number;
+  tiempo: any;
 
   constructor(
+    private weatherService: WeatherService,
     private readonly dialog: MatDialog,
     private tokenService: TokenService,
     private articleService: ArticleService,
@@ -41,6 +44,18 @@ export class ListTempComponent implements OnInit {
   ngOnInit(): void {
     this.getAllArticlesByUsername();
     this.articles = [];
+    this.getWeather();
+  }
+
+  private getWeather() {
+    const apiKey = 'd0047952dfbeb9ec30622425fe11ed84';
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${41.77970438505784}&lon=${3.0441483949242727}&appid=${apiKey}&units=metric&lang=es`)
+      .then(resp => resp.json())
+      .then(
+        data => {
+          this.tiempo = data;
+        }
+      )
   }
 
   private getAllArticlesByUsername() {
@@ -104,7 +119,7 @@ export class ListTempComponent implements OnInit {
     // })
   }
 
-  onEdit(post: Article){
+  onEdit(post: Article) {
     this.navigationExtras.state = post;
     this.router.navigate(['admin/edit'], this.navigationExtras);
   }
