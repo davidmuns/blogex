@@ -30,6 +30,7 @@ export class SearchComponent implements OnInit {
   articleId!: number;
   mostrar: boolean = false;
   private debounceTimer!: any;
+  private uniqueChars: string[] = [];
 
   constructor(private readonly articleSvc: ArticleService,
     private readonly router: Router,
@@ -72,11 +73,12 @@ export class SearchComponent implements OnInit {
           this.allOptions = res;
           this.allOptions.map(x => {
             this.options.push(x.title);
+            this.uniqueChars = [...new Set(this.options)];
           });
         });
     }
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return this.uniqueChars.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   selectArticle() {
