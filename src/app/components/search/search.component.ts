@@ -45,9 +45,6 @@ export class SearchComponent implements OnInit {
       startWith(''),
       map(value => this._filter(value || '')),
     );
-
-
-
   }
 
   /*  onQueryChanged(query: string = ''){
@@ -61,7 +58,6 @@ export class SearchComponent implements OnInit {
          });
        });
      }, 500)
-
    } */
 
   private _filter(value: string): string[] {
@@ -77,7 +73,6 @@ export class SearchComponent implements OnInit {
           });
         });
     }
-
     return this.uniqueChars.filter(option => option.toLowerCase().includes(filterValue));
   }
 

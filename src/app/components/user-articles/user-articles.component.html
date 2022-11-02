@@ -13,9 +13,11 @@
         matTooltipPosition="above">
         <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
       </a> -->
-      <img mat-card-image [src]="article.imagenPortada" alt="{{ article.alt1 }}">
-      <p id="footerImg">{{ article.alt1 }}</p>
+      <div class="imageMarc">
+        <img mat-card-image [src]="article.imagenPortada" alt="{{ article.alt1 }}">
+      </div>
       <mat-card-content>
+        <p id="footerImg">{{ article.alt1 }}</p>
         <p>{{ article.text1 }}</p>
       </mat-card-content>
       <app-articleGallery [articleId]="article.id"></app-articleGallery>
