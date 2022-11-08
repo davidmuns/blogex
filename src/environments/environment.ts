@@ -5,10 +5,10 @@
 export const environment = {
   production: false,
   users: "",
-  PRODUCT_URL: 'http://localhost:8080/producto/',
-  AUTH_URL: 'http://localhost:8080/auth/',
-  EMAIL_PASSWORD_URL: 'http://localhost:8080/email-password/',
-  ARTICLE_BASE_URL: 'http://localhost:8080/article/',
+  PRODUCT_URL: 'https://blogexapp.herokuapp.com/producto/',
+  AUTH_URL: 'https://blogexapp.herokuapp.com/auth/',
+  EMAIL_PASSWORD_URL: 'https://blogexapp.herokuapp.com/email-password/',
+  ARTICLE_BASE_URL: 'https://blogexapp.herokuapp.com/article/',
   AUTHORIZATION: 'Authorization',
   BEARER: 'Bearer ',
   ARTICLES_LOCAL: './assets/articles.json'
