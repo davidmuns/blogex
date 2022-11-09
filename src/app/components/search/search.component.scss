@@ -99,3 +99,12 @@ input:focus{
         }
     }
 }
+
+@media (max-width: 450px){
+    input {
+        width: 290px;
+    }
+    .responsive-div{
+        width: 330px;
+    }
+}
