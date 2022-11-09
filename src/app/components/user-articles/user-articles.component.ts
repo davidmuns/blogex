@@ -19,8 +19,8 @@ export class UserArticlesComponent implements OnInit {
 
   private username!: string;
   public articles!: Article[];
-  public pageSizeOptions: number[] = [3, 5, 10];
-  public pageSize: number = 3;
+  public pageSizeOptions: number[] = [1];
+  public pageSize: number = 1;
   public pageNumber: number = 1;
 
   constructor(private readonly activatedRoute: ActivatedRoute,

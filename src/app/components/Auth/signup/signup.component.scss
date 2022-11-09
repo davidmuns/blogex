@@ -1,33 +1,46 @@
-form{
+form {
     padding: 0px 15px;
     width: 280px
 }
-h3{
+
+h3 {
     text-align: center;
     font-size: 1.6rem;
     padding: 10px;
 }
-button{
+
+button {
     background: var(--primary);
     color: white;
     width: 100%;
 }
-form>div{
-    padding:40px 20px 0px 20px;
+
+form>div {
+    padding: 40px 20px 0px 20px;
     font-size: .8rem;
     text-align: center;
 }
-form span{
+
+form span {
     color: var(--warnOrange);
     cursor: pointer;
 }
-form span:hover{
+
+form span:hover {
     text-decoration: underline;
 }
-.error{
-    color:red;
+
+.error {
+    color: red;
     font-size: .8rem;
 }
-.mat-form-field{
+
+.mat-form-field {
     width: 100%;
+}
+
+@media (max-width: 400px) {
+    form {
+        width: 220px;
+    }
 }
