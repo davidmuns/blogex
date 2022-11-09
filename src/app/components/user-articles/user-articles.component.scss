@@ -11,6 +11,12 @@ h2{
     background-color: white;
     border-bottom: 2px solid dimgray;
     background-color: silver;
+    @media(max-width:600px){
+        font-size: 2rem;
+    }
+    @media(max-width:355px){
+        font-size: 1.8rem;
+    }
 }
 #linkToHome{
     position: absolute;
