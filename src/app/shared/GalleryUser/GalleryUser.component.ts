@@ -61,10 +61,10 @@ export class GalleryUserComponent implements OnInit {
       if (this.image.size < environment.IMG_MAX_SIZE) {
         this.addImage(this.image, this.articleId);
       } else {
-        this.snack.open("Image exceeds its maximum permitted size of 2MB.", "", { duration: 3000 });
+        this.snack.open("Image exceeds its maximum permitted size of 2MB.", "", { duration: 5000 });
       }
     } else {
-      this.snack.open("Please choose an image.", "close");
+      this.snack.open("Please choose one image.", "", { duration: 5000 });
     }
   }
 
