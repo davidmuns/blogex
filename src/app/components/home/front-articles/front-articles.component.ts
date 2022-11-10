@@ -4,7 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Imagen } from './../../../shared/models/imagen';
 import { ArticleService } from './../../../shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-front-articles',
@@ -13,10 +14,19 @@ import { Router } from '@angular/router';
 })
 export class FrontArticlesComponent implements OnInit {
 
+  navigationExtras: NavigationExtras = {
+    state: {
+      value: null
+    }
+  };
+
+  public pageSizeOptions: number[] = [1, 3];
+  public pageSize: number = 1;
+  public pageNumber: number = 1;
+
   articles: Article[] = [];
   imagenes: Imagen[] = [];
   imagenesAll: Imagen[] = [];
-
 
   constructor(private articleService: ArticleService,
     private router: Router,
@@ -36,6 +46,11 @@ export class FrontArticlesComponent implements OnInit {
         console.log(err);
       }
     });
+  }
+
+  onPageChange(event: PageEvent){
+    this.pageSize = event.pageSize;
+    this.pageNumber = event.pageIndex +1;
   }
 
   onClick(articleId: number) {

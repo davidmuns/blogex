@@ -1,11 +1,15 @@
 <div class="container-articles">
-  <h1>Last Posts</h1>
+  <h1>Posts</h1>
   <!-- <ng-container *ngFor="let imagen of this.imagenes">
     <img [src]="imagen.url" alt="">
   </ng-container> -->
 
+  <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+  </mat-paginator>
+
   <section class="main-container">
-    <article *ngFor="let article of this.articles | slice:0:8">
+    <article *ngFor="let article of this.articles | paginate:pageSize:pageNumber">
 
       <div class="example-card">
         <div>

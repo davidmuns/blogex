@@ -39,6 +39,8 @@ export class ListPostsComponent implements OnInit {
   showHidePosts: boolean = false;
   displayedColumns: string[] = ['titol', 'borrar'];
   dataSource = new MatTableDataSource();
+  isAdmin: boolean = false;
+  username!: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('list') asList!: ElementRef;
@@ -52,8 +54,44 @@ export class ListPostsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    const username =this.tokenService.getUsername() as string;
-    this.articleSvc.getArticlesByUsername(username).subscribe(posts => this.dataSource.data = posts);
+    this.isAdmin =this.tokenService.isAdmin();
+    // const username =this.tokenService.getUsername() as string;
+    // this.articleSvc.getArticlesByUsername(username).subscribe(posts => this.dataSource.data = posts);
+    if(this.isAdmin){
+      this.getAllArticles();
+    }else{
+      this.getAllArticlesByUsername();
+    }
+
+  }
+
+  private getAllArticles(){
+    this.articleSvc.getAll().subscribe({
+      next: (data: Article[]) => {
+        this.dataSource.data = data;
+        // this.articles.forEach(article => {
+        //   this.getImgsByArticleId(article.id);
+        // });
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    })
+  }
+
+  private getAllArticlesByUsername() {
+    this.username = this.tokenService.getUsername() as string;
+    this.articleSvc.getArticlesByUsername(this.username).subscribe({
+      next: (data: Article[]) => {
+        this.dataSource.data = data;
+        // this.articles.forEach(article => {
+        //   this.getImgsByArticleId(article.id);
+        // });
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    });
   }
 
   ngAfterViewInit(){
