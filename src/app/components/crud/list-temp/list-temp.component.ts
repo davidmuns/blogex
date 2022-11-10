@@ -45,15 +45,11 @@ export class ListTempComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAdmin =this.tokenService.isAdmin();
-    console.log('ADMIN', this.isAdmin);
-
     if(this.isAdmin){
       this.getAllArticles();
     }else{
       this.getAllArticlesByUsername();
     }
-    
-    
     this.articles = [];
   }
 
