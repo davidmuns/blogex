@@ -1,3 +1,5 @@
+import { environment } from 'src/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from './../../../../shared/services/article.service';
@@ -13,7 +15,7 @@ import { Article } from 'src/app/shared/models/article';
 })
 export class NewComponent implements OnInit {
 
-  inputUpload!: File;
+  image!: File;
   images: File[] = [];
   miniatura!: File;
 
@@ -23,6 +25,7 @@ export class NewComponent implements OnInit {
   public buttonTag: string = "One More";
 
   constructor(
+    private snack: MatSnackBar,
     private readonly fBuilder: FormBuilder,
     private tokenService: TokenService,
     private articleService: ArticleService,
@@ -65,23 +68,42 @@ export class NewComponent implements OnInit {
     }
   } */
 
-  handleImage1(event: any) {
-    this.inputUpload = event.target.files[0];
-    this.images.push(this.inputUpload);
+  handleImage(event: any) {
+    this.image = event.target.files[0];
+    //this.images.push(this.image);
     const fr = new FileReader();
     fr.onload = (e: any) => {
       this.miniatura = e.target.result;
     }
-    fr.readAsDataURL(this.inputUpload);
+    fr.readAsDataURL(this.image);
   }
 
+  // onSubmit(post: Article) {
+  //   const username = this.tokenService.getUsername() as string;
+  //   this.createArticle(post, username);
+  //   this.images.forEach((img: File) => {
+  //     this.uploadImage(img);
+  //   })
+  // }
+
+  // onSubmit(post: Article) {
+  //   const username = this.tokenService.getUsername() as string;
+  //   this.createArticle(post, username);
+  //   this.images.forEach((img: File) => {
+  //     this.uploadImage(img);
+  //   })
+  // }
+
   onSubmit(post: Article) {
-    const username = this.tokenService.getUsername() as string;
-    this.createArticle(post, username);
-    this.images.forEach((img: File) => {
-      this.uploadImage(img);
-    })
-    //this.newPostForm.reset();
+    if (this.image.size <= environment.IMG_MAX_SIZE) {
+      const username = this.tokenService.getUsername() as string;
+      this.createArticle(post, username);
+      this.uploadImage(this.image);
+
+    }else{
+      this.snack.open("Image exceeds its maximum permitted size of 2MB", "",
+      { duration: 3000 });
+    }
 
   }
 
@@ -93,7 +115,7 @@ export class NewComponent implements OnInit {
         // });
       },
       error: err => {
-        this.toastrService.error(err.error.mensaje, '', {
+        this.toastrService.error('Image exceeds its maximum permitted size of 1MB', '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
       }
@@ -101,7 +123,7 @@ export class NewComponent implements OnInit {
   }
 
   private createArticle(post: Article, username: string) {
-    if(this.newPostForm.valid){
+    if (this.newPostForm.valid) {
       this.articleService.createArticle(post, username).subscribe({
         next: data => {
           this.toastrService.success(data.mensaje, '', {
@@ -115,17 +137,17 @@ export class NewComponent implements OnInit {
           });
         }
       });
-      }else{
-        // this.toastrService.error(this.newPostForm.errors?.['required'] + " needs to be completed", '', {
-        this.toastrService.error("Please fill the blanks.", '', {
-        timeOut: 3000,  positionClass: 'toast-top-center',
+    } else {
+      // this.toastrService.error(this.newPostForm.errors?.['required'] + " needs to be completed", '', {
+      this.toastrService.error("Please fill the blanks.", '', {
+        timeOut: 3000, positionClass: 'toast-top-center',
       });
     }
   }
 
-  redirectTo(uri:string){
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate([uri]));
- }
+  redirectTo(uri: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate([uri]));
+  }
 
 }
