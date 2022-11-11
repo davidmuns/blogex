@@ -50,3 +50,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     justify-content: center !important;
     margin-bottom: 20px;
 }
+@media(max-width: 300px){
+    .mat-dialog-container{
+        padding: 10px !important;
+    }
+    .mat-toolbar-row{
+        padding: 0px 4px 0px 2px !important;
+    }
+}
+@media(max-width: 600px){
+    .example-card{
+        width:100% !important;
+    }
+}

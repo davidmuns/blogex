@@ -1,12 +1,13 @@
-<div id="capa1" (click)="removeCapa()" (dblclick)="outMap()">Click to map to zoom
+<div id="capa1" (click)="removeCapa()" (dblclick)="outMap()">
   <div #capa class="capa"></div>
   <div #map id="map"></div>
   <div #map2 id="map2"></div>
   <div #map3 id="map3"></div>
+  <div id="message">Click to map to zoom</div>
 </div>
 
-<app-front-articles></app-front-articles>
-<app-front-articles></app-front-articles>
+<app-front-articles [numbers1]="0" [numbers2]="8"></app-front-articles>
+<app-front-articles *ngIf="hideSection == true" [numbers1]="8" [numbers2]="15"></app-front-articles>
 <div id="marge"></div>
 <app-footer></app-footer>
 <!-- <h1 style="text-align: center;">ARTICLES</h1>
@@ -18,7 +19,7 @@
   <div *ngFor="let article of this.articles">
 
     <mat-card class="example-card">
-      <!-- <mat-card-header>
+      <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title>{{ article.title }}</mat-card-title>
         <mat-card-subtitle>id {{ article.id }}</mat-card-subtitle>

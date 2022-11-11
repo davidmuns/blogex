@@ -69,6 +69,10 @@ h2{
     background-color: rgba(47,47,47,1);
     color:white;
     padding: 0px;
+    @media(max-width: 600px){
+      width:100%;
+      
+    }
     mat-card-title{
         font-size: 1.6rem;
         font-family: 'Libre Baskerville', serif;

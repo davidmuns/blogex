@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   public validation: boolean = false;
   public articles: Article[] = [];
+  public hideLogOut: boolean = true;
 
   constructor(
     public dialog: MatDialog,
@@ -26,6 +27,11 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getArticles();
+    if(window.screen.width < 250){
+      this.hideLogOut = false;
+    }else{
+      this.hideLogOut = true;
+    }
   }
 
   private getArticles() {

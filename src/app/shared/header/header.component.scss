@@ -6,6 +6,12 @@
     background-color: var(--accent);//200
     margin-bottom: 10px;
     color: #69F0AE;
+   /*  @media(max-width: 600px){
+        margin-bottom: 300px;
+    }
+    @media(max-width: 400px){
+        margin-bottom: 200px;
+    } */
     mat-icon{
         width: 40px;
     }
@@ -18,6 +24,9 @@
         .mat-icon{
             display: flex;
             justify-content: center;
+            @media(max-width: 210px){
+                justify-content: start;
+            }
         }
     }
     #title{
@@ -40,6 +49,13 @@
                 font-size: .8rem;
             }
         }
+        @media(max-width: 220px){
+            //width:80px;
+            margin-left: 2px;
+            a{
+                font-size: .7rem;
+            }
+        }
     }
     #logOut{
         width:130px;
@@ -48,6 +64,10 @@
             color: #69F0AE;
             font-size: .9rem;
             cursor: pointer;
+            text-decoration: none;
+            @media(max-width: 250px){
+                margin-right: 15px;
+            }
         }
     }
 }

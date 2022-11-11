@@ -1,4 +1,4 @@
-import { Component, HostListener, AfterViewInit, ViewChild, ElementRef, Renderer2, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, HostListener, AfterViewInit, ViewChild, ElementRef, Renderer2, Input, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Map, marker, tileLayer } from 'leaflet';
 import { Router } from '@angular/router';
 import { ArticleService } from './../../shared/services/article.service';
@@ -10,7 +10,7 @@ import { Article } from 'src/app/shared/models/article';
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent implements OnInit, AfterViewInit {
 
   @ViewChild('capa') toCapa!: ElementRef;
   @ViewChild('map') toMap!: ElementRef;
@@ -24,16 +24,24 @@ export class HomeComponent implements AfterViewInit {
 
   public catchScroll!: any;
   private postActual!: any;
+  public hideSection: boolean = true;
 
   constructor(
     private articleSvc: ArticleService,
     private renderer2: Renderer2
   ) { }
+  ngOnInit(): void {
+    if(window.screen.width < 600){
+      this.hideSection = false;
+    }else{
+      this.hideSection = true;
+    }
+  }
 
   ngAfterViewInit(): void {
 
-    const map = new Map('map').setView([42.40249, 2.194332], 13);
-    const map2 = new Map('map2').setView([42.40249, 2.194332], 13);
+    const map = new Map('map').setView([41.40249, 2.194332], 4);
+    const map2 = new Map('map2').setView([42.40249, 2.194332], 5);
     const map3 = new Map('map3').setView([42.40249, 2.194332], 13);
 
     //Map1 code
@@ -52,9 +60,9 @@ export class HomeComponent implements AfterViewInit {
         <a href="http://localhost:4200/article/${point.id}"><img src="${point.imagenPortada}"></a>
       `);
         });
-        map.fitBounds([
+        /* map.fitBounds([
           ...res.map(point => [point.latitude, point.longitude] as [number, number])
-        ]);
+        ]); */
       });
 
     //Map2 code
@@ -76,9 +84,9 @@ export class HomeComponent implements AfterViewInit {
         <a href="http://localhost:4200/article/${point.id}"><img src="${point.imagenPortada}"></a>
       `);
         });
-        map2.fitBounds([
+        /* map2.fitBounds([
           ...res.map(point => [point.latitude, point.longitude] as [number, number])
-        ]);
+        ]); */
       });
 
     //Map3 code
@@ -114,6 +122,7 @@ export class HomeComponent implements AfterViewInit {
     this.renderer2.setStyle(asMap1, 'zIndex', '0');
   }
 
+  //Double click to map to exit zoom
   outMap() {
     const asCapa = this.toCapa.nativeElement;
     const asMap1 = this.toMap.nativeElement;

@@ -78,6 +78,23 @@
     z-index: -3;
     display: block;
 }
+#message{
+    z-index: -2;
+    position: fixed;
+    top:75px;
+    left: 10px;
+}
 #marge{
     margin-top: 664px;
+}
+@media(max-width: 600px){
+    #map2{
+        display: none;
+    }
+    #map3{
+        display:none;
+    }
+    #marge{
+        margin:0px;
+    }
 }

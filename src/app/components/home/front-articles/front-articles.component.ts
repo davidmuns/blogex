@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { LoginComponent } from 'src/app/components/Auth/login/login.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Imagen } from './../../../shared/models/imagen';
@@ -12,6 +12,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./front-articles.component.scss']
 })
 export class FrontArticlesComponent implements OnInit {
+
+  @Input() numbers1!: number;
+  @Input() numbers2!: number;
 
   articles: Article[] = [];
   imagenes: Imagen[] = [];
