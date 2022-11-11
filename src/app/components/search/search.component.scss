@@ -97,3 +97,15 @@ input:focus{
         }
     }
 }
+
+@media (max-width: 450px){
+    input {
+        width: 285px;
+    }
+    input:focus{
+        width: 295px;
+    }
+    .responsive-div{
+        width: 330px;
+    }
+}

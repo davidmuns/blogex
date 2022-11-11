@@ -7,6 +7,7 @@ import { Article } from './../../../shared/models/article';
 import { Component, OnInit } from '@angular/core';
 import { Imagen } from 'src/app/shared/models/imagen';
 import { GalleryUserComponent } from './../../../shared/GalleryUser/GalleryUser.component';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-temp',
@@ -28,6 +29,10 @@ export class ListTempComponent implements OnInit {
   miniatura!: Imagen;
   username!: string;
   articleId!: number;
+  public pageSizeOptions: number[] = [1, 3, 5];
+  public pageSize: number = 1;
+  public pageNumber: number = 1;
+  isAdmin: boolean = false;
 
   constructor(
     private readonly dialog: MatDialog,
@@ -39,8 +44,32 @@ export class ListTempComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getAllArticlesByUsername();
+    this.isAdmin =this.tokenService.isAdmin();
+    if(this.isAdmin){
+      this.getAllArticles();
+    }else{
+      this.getAllArticlesByUsername();
+    }
     this.articles = [];
+  }
+
+  onPageChange(event: PageEvent){
+    this.pageSize = event.pageSize;
+    this.pageNumber = event.pageIndex +1;
+  }
+
+  private getAllArticles(){
+    this.articleService.getAll().subscribe({
+      next: (data: Article[]) => {
+        this.articles = data;
+        // this.articles.forEach(article => {
+        //   this.getImgsByArticleId(article.id);
+        // });
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    })
   }
 
   private getAllArticlesByUsername() {

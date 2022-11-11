@@ -1,6 +1,11 @@
 <ng-container *ngIf="articles">
   <h2>The Blog of {{ articles[0].usuario.nombreUsuario }}</h2>
   <div id="linkToHome" class="animate__animated animate__fadeInRight" routerLink="/list">BlogEx.com</div>
+  
+  <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+  </mat-paginator>
+
   <div *ngFor="let article of this.articles | paginate:pageSize:pageNumber">
 
     <mat-card class="example-card">

@@ -13,7 +13,7 @@
   padding: 20px;
   // border: 10px solid gray;
   // background-color: rgb(126, 234, 253);
-  height: auto;
+  //height: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -35,3 +35,15 @@ img {
 //     font-size: 10px;
 
 // }
+
+@media (max-width: 500px) {
+  .main-container {
+      height: 240px;
+  }
+
+  img {
+    height: 125px;
+  }
+}
+
+

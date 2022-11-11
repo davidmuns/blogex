@@ -1,3 +1,5 @@
+import { environment } from 'src/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Toast, ToastrService } from 'ngx-toastr';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { Component, OnInit } from '@angular/core';
@@ -24,7 +26,7 @@ export class EditComponent implements OnInit {
   constructor(
     private toastrService: ToastrService,
     private articleService: ArticleService,
-    private activatedRoute: ActivatedRoute,
+    private snack: MatSnackBar,
     private readonly fBuilder: FormBuilder,
     private readonly router: Router) {
     const navigation = router.getCurrentNavigation();
@@ -89,12 +91,21 @@ export class EditComponent implements OnInit {
   } */
 
   onSubmit(post: Article) {
-    this.editPost(post.id, post);
+    
     if (this.image != undefined) {
-      this.uploadImage(this.image);
+      if(this.image.size <= environment.IMG_MAX_SIZE){
+        this.uploadImage(this.image);
+        this.router.navigate(['list']);
+        this.snack.open("Cover image updated.", "", { duration: 5000 });
+      }else{
+        this.snack.open("Image exceeds its maximum permitted size of 2MB", "", { duration: 5000 });
+      }
+    }else{
+      this.editPost(post.id, post);
+      this.router.navigate(['list']);
     }
     
-    this.router.navigate(['list']);
+   
   }
 
   private editPost(id: number, post: Article) {

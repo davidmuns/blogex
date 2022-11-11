@@ -16,6 +16,7 @@ mat-card-title{
     font-size: 1.7rem;
     @media(max-width:800px){
         text-align: start;
+        font-size: 1.4rem;
     }
 }
 mat-card-content{
@@ -81,4 +82,10 @@ form h3{
 .error{
     color:red;
     font-size: .8rem;
+}
+
+.input-coordinates {
+    @media(max-width: 500px){
+        width: 130px;
+    }
 }

@@ -4,7 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { Imagen } from './../../../shared/models/imagen';
 import { ArticleService } from './../../../shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-front-articles',
@@ -19,7 +20,6 @@ export class FrontArticlesComponent implements OnInit {
   articles: Article[] = [];
   imagenes: Imagen[] = [];
   imagenesAll: Imagen[] = [];
-
 
   constructor(private articleService: ArticleService,
     private router: Router,

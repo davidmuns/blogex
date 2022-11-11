@@ -55,9 +55,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
         res.map(point => {
           this.postActual = point;
           marker([point.latitude, point.longitude]).addTo(map).bindPopup(`
-        <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
+        <a href="https://blogex.netlify.app/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
-        <a href="http://localhost:4200/article/${point.id}"><img src="${point.imagenPortada}"></a>
+        <a href="https://blogex.netlify.app/article/${point.id}"><img src="${point.imagenPortada}"></a>
       `);
         });
         /* map.fitBounds([
@@ -79,9 +79,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
         res.map(point => {
           this.postActual = point;
           marker([point.latitude, point.longitude]).addTo(map2).bindPopup(`
-        <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
+        <a href="https://blogex.netlify.app/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
-        <a href="http://localhost:4200/article/${point.id}"><img src="${point.imagenPortada}"></a>
+        <a href="https://blogex.netlify.app/article/${point.id}"><img src="${point.imagenPortada}"></a>
       `);
         });
         /* map2.fitBounds([
@@ -103,9 +103,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
         res.map(point => {
           this.postActual = point;
           marker([point.latitude, point.longitude]).addTo(map3).bindPopup(`
-        <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
+        <a href="https://blogex.netlify.app/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
-        <a href="http://localhost:4200/article/${point.id}"><img src="${point.imagenPortada}" class="imgMap"></a>
+        <a href="https://blogex.netlify.app/article/${point.id}"><img src="${point.imagenPortada}" class="imgMap"></a>
       `);
         });
         map3.fitBounds([

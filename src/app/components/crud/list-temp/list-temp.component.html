@@ -1,4 +1,12 @@
 <h1 style="text-align: center;">ARTICLES by {{ this.username }} </h1>
+
+
+<mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+  aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+</mat-paginator>
+
+
+
 <div class="main-container animate__animated animate__backInLeft">
 
   <mat-card *ngIf="this.articles.length == 0" class="example-card">
@@ -19,7 +27,7 @@
   </mat-card>
 
 
-  <div *ngFor="let article of this.articles">
+  <div *ngFor="let article of this.articles | paginate:pageSize:pageNumber">
     <mat-card class="example-card">
       <mat-card-header style="margin-bottom: 10px;">
         <!-- <div mat-card-avatar class="example-header-image"></div> -->

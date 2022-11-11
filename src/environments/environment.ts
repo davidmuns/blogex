@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
   users: "",
   /* PRODUCT_URL: 'http://localhost:8080/producto/',
   AUTH_URL: 'http://localhost:8080/auth/',
@@ -15,7 +15,8 @@ export const environment = {
   ARTICLE_BASE_URL: 'https://blogexapp.herokuapp.com/article/',
   AUTHORIZATION: 'Authorization',
   BEARER: 'Bearer ',
-  ARTICLES_LOCAL: './assets/articles.json'
+  ARTICLES_LOCAL: './assets/articles.json',
+  IMG_MAX_SIZE: 2100000
 };
 
 /*
