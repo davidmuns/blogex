@@ -91,18 +91,24 @@ export class EditComponent implements OnInit {
   } */
 
   onSubmit(post: Article) {
+
+    // this.editPost(post.id, post);
+
+    // this.uploadImage(this.image);
     
     if (this.image != undefined) {
       if(this.image.size <= environment.IMG_MAX_SIZE){
+        this.editPost(post.id, post);
         this.uploadImage(this.image);
-        this.router.navigate(['list']);
+        //this.router.navigate(['article/'+ post.id]);
         this.snack.open("Cover image updated.", "", { duration: 5000 });
       }else{
         this.snack.open("Image exceeds its maximum permitted size of 2MB", "", { duration: 5000 });
       }
     }else{
       this.editPost(post.id, post);
-      this.router.navigate(['list']);
+      //this.router.navigate(['article/'+ post.id]);
+      //this.router.navigate(['list']);
     }
     
    
