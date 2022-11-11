@@ -3,7 +3,6 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 
 @Component({
@@ -19,7 +18,6 @@ export class DeleteComponent implements OnInit {
     private snack: MatSnackBar,
     private readonly articleSvc: ArticleService,
     @Inject(MAT_DIALOG_DATA) public data: { articleId: number },
-    private toastr: ToastrService,
     private readonly router: Router
   ) { }
 
