@@ -5,8 +5,7 @@
   </ng-container> -->
 
   <section class="main-container">
-    <article *ngFor="let article of this.articles | slice:0:8">
-
+    <article *ngFor="let article of this.articles | slice: numbers1 : numbers2 ">
       <div class="example-card">
         <div>
           <a (click)="onClick(article.id)">

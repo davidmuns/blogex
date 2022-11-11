@@ -4,7 +4,6 @@
     top: 0px;
     left: 0px;
     margin-top: 664px;
-    //max-width: 1300px;
     z-index: 1;
     padding: 120px 20px;
 }
@@ -14,7 +13,6 @@ h1{
 }
 .example-card {
     width: 100%;
-    //height: 260px;
     border: 1px solid rgb(220, 220, 220);
     div{
         height: 60px;
@@ -73,8 +71,6 @@ h1{
 // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
 .main-container {
     padding: 20px;
-    // border: 10px solid gray;
-    // background-color: rgb(126, 234, 253);
     max-width: 1300px;
     margin: 0px auto;
     height: auto;
@@ -91,13 +87,6 @@ h1{
     margin: 80px 1%;
     padding: 0px;
 }
-/* .mat-card{
-    height: 300px;
-    padding: 0px;
-}
-.mat-card-image {
-    padding-top: 20px;
-} */
 @media(max-width: 900px){
     .container-articles{
         margin-top: 540px;
@@ -114,18 +103,26 @@ h1{
         }
     }
 }
-@media(max-width: 600px){
+@media(max-width: 500px){
     .container-articles{
         padding: 22px;
-        margin-top: 660px;
+        margin-top: 300px;
+        @media(max-width: 350px){
+            margin-top: 200px;
+            padding: 22px 0px;
+        }
     }
     .main-container{
-        height: 1050px;
-        width:88%;
-        margin: 0px 6%;
+        height: 1950px;
+        width:80%;
+        margin: 0px 10%;
+        @media(max-width: 350px){
+            width:100%;
+            margin: 0px;
+        }
         article{
-            width:90%;
-            margin: 20px 5%;
+            width:94%;
+            margin: 10px 3%;
         }
     }
 }

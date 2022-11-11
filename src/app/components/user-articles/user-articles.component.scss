@@ -4,8 +4,8 @@ h2{
     top:-75px;
     left:0px;
     z-index: 1;
-    height: 80px;
-    padding-top: 25px;
+    height: auto;
+    padding: 25px 0px 15px;
     text-align: center;
     font-size: 2.2rem;
     background-color: white;
@@ -24,7 +24,8 @@ h2{
     transition: all .1s;
     cursor: pointer;
     @media(max-width:600px){
-        top:80px;
+        top:auto;
+        margin-top: -85px;
     }
 }
 .example-card{
@@ -64,7 +65,7 @@ mat-card-content{
     p{
     font-size: 1.1rem;
     padding:30px 15px;
-    text-indent: 30px;
+    //text-indent: 30px;
     display: block;
     overflow:auto;
     white-space: pre-line;

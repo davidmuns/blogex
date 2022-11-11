@@ -87,3 +87,14 @@
 #marge{
     margin-top: 664px;
 }
+@media(max-width: 600px){
+    #map2{
+        display: none;
+    }
+    #map3{
+        display:none;
+    }
+    #marge{
+        margin:0px;
+    }
+}

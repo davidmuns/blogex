@@ -31,3 +31,15 @@ form span:hover{
 .mat-form-field{
     width: 100%;
 }
+@media(max-width: 400px){
+    form{
+        padding: 0px;
+        width: 160px;
+        @media(max-width: 220px){
+            width:140px;
+        }
+        div{
+            padding: 20px 10px 0px 10px;
+        }
+    }
+}

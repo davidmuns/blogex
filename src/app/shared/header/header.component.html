@@ -41,7 +41,8 @@
     </div>
     <ng-template #logged>
       <div id="logOut" #isLoged>
-        <a (click)="onLogout()">LOG OUT({{ this.tokenService.getUsername() }})</a>
+        <a *ngIf="hideLogOut == true" (click)="onLogout()">LOG OUT({{ this.tokenService.getUsername() }})</a>
+        <a *ngIf="hideLogOut == false" (click)="onLogout()">LOG OUT</a>
       </div>
     </ng-template>
   </mat-toolbar-row>
