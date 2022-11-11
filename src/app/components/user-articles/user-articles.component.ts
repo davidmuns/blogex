@@ -19,7 +19,7 @@ export class UserArticlesComponent implements OnInit {
 
   private username!: string;
   public articles!: Article[];
-  public pageSizeOptions: number[] = [3, 5, 10];
+  public pageSizeOptions: number[] = [1];
   public pageSize: number = 1;
   public pageNumber: number = 1;
 

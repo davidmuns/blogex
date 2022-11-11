@@ -77,41 +77,25 @@ export class EditComponent implements OnInit {
     })
   }
 
-  /* moreImgs() {
-    if (this.flag < 3) {
-      this.flag++;
-      this.viewForm.push(this.flag);
-      if (this.flag == 3)
-        this.buttonTag = "One Less";
-    } else {
-      this.viewForm.pop(this.flag)
-      this.flag--;
-      this.buttonTag = "One More";
-    }
-  } */
-
   onSubmit(post: Article) {
-
-    // this.editPost(post.id, post);
-
-    // this.uploadImage(this.image);
-    
-    if (this.image != undefined) {
-      if(this.image.size <= environment.IMG_MAX_SIZE){
-        this.editPost(post.id, post);
-        this.uploadImage(this.image);
-        //this.router.navigate(['article/'+ post.id]);
-        this.snack.open("Cover image updated.", "", { duration: 5000 });
+    if(this.editPostForm.valid){
+      if (this.image != undefined) {
+        if(this.image.size <= environment.IMG_MAX_SIZE){
+          this.editPost(post.id, post);
+          this.uploadImage(this.image);
+          this.router.navigate(['article/'+ post.id]);
+          this.snack.open("Cover image updated.", "", { duration: 5000 });
+        }else{
+          this.snack.open("Image exceeds its maximum permitted size of 2MB", "", { duration: 5000 });
+        }
       }else{
-        this.snack.open("Image exceeds its maximum permitted size of 2MB", "", { duration: 5000 });
-      }
+        this.editPost(post.id, post);
+        this.router.navigate(['article/'+ post.id]);
+        //this.router.navigate(['list']);
+      } 
     }else{
-      this.editPost(post.id, post);
-      //this.router.navigate(['article/'+ post.id]);
-      //this.router.navigate(['list']);
-    }
-    
-   
+      this.snack.open("Please fill in the blanks", "", { duration: 3000 });
+    } 
   }
 
   private editPost(id: number, post: Article) {

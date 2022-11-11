@@ -52,25 +52,11 @@ export class NewComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  /* moreImgs() {
-    if (this.flag < 3) {
-      this.flag++;
-      this.viewForm.push(this.flag);
-      if (this.flag == 3)
-        this.buttonTag = "One Less";
-    } else {
-      this.viewForm.pop(this.flag)
-      this.flag--;
-      this.buttonTag = "One More";
-    }
-  } */
 
   handleImage(event: any) {
     this.image = event.target.files[0];
-    //this.images.push(this.image);
     const fr = new FileReader();
     fr.onload = (e: any) => {
       this.miniatura = e.target.result;
@@ -78,33 +64,21 @@ export class NewComponent implements OnInit {
     fr.readAsDataURL(this.image);
   }
 
-  // onSubmit(post: Article) {
-  //   const username = this.tokenService.getUsername() as string;
-  //   this.createArticle(post, username);
-  //   this.images.forEach((img: File) => {
-  //     this.uploadImage(img);
-  //   })
-  // }
-
-  // onSubmit(post: Article) {
-  //   const username = this.tokenService.getUsername() as string;
-  //   this.createArticle(post, username);
-  //   this.images.forEach((img: File) => {
-  //     this.uploadImage(img);
-  //   })
-  // }
-
   onSubmit(post: Article) {
-    if (this.image.size <= environment.IMG_MAX_SIZE) {
-      const username = this.tokenService.getUsername() as string;
-      this.createArticle(post, username);
-      this.uploadImage(this.image);
-
+    if (this.newPostForm.valid) {
+      if (this.image.size <= environment.IMG_MAX_SIZE) {
+        const username = this.tokenService.getUsername() as string;
+        this.createArticle(post, username);
+        this.uploadImage(this.image);
+  
+      }else{
+        this.snack.open("Image exceeds its maximum permitted size of 2MB", "",
+        { duration: 3000 });
+      }
     }else{
-      this.snack.open("Image exceeds its maximum permitted size of 2MB", "",
-      { duration: 3000 });
+      this.snack.open("Please fill in the blanks and insert image", "",
+        { duration: 3000 });
     }
-
   }
 
   private uploadImage(image: File) {
@@ -136,11 +110,6 @@ export class NewComponent implements OnInit {
             timeOut: 3000, positionClass: 'toast-top-center'
           });
         }
-      });
-    } else {
-      // this.toastrService.error(this.newPostForm.errors?.['required'] + " needs to be completed", '', {
-      this.toastrService.error("Please fill the blanks.", '', {
-        timeOut: 3000, positionClass: 'toast-top-center',
       });
     }
   }
