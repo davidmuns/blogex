@@ -123,7 +123,7 @@ export class ListTempComponent implements OnInit {
   // }
 
   onOpenGallery(id: number) {
-    this.dialog.open(GalleryUserComponent, { data: { articleId: `${id}` } });
+    this.dialog.open(GalleryUserComponent, { data: { articleId: id } });
     // this.articleId = id;
     // this.imgsByArticleId = [];
     // this.imagenes.forEach(img => {

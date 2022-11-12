@@ -1,10 +1,14 @@
 <h1 style="text-align: center;">GALLERY</h1>
 <div style="display: flex; justify-content: center">
   <div>
-    <button mat-button (click)="showGallery()"><mat-icon>collections</mat-icon> Show</button>
+    <button mat-button (click)="showGallery()">
+      <mat-icon>collections</mat-icon> Show
+    </button>
   </div>
   <div>
-    <button mat-button (click)="hideGallery()"><mat-icon>block</mat-icon> Hide</button>
+    <button mat-button (click)="hideGallery()">
+      <mat-icon>block</mat-icon> Hide
+    </button>
   </div>
 </div>
 
@@ -17,15 +21,16 @@
       <mat-card-header>
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
         <!-- <mat-card-title>{{ imagen.article.title }}</mat-card-title> -->
-        <!-- <mat-card-subtitle>id {{ article.id  }}</mat-card-subtitle> -->
+        <!-- <mat-card-subtitle>{{ imagen.caption  }}</mat-card-subtitle> -->
       </mat-card-header>
-      <a type="button"  matTooltip="slide view" matTooltipPosition="above" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;"
-        (click)="getIndex(i)">
+      <a type="button" matTooltip="Preview" matTooltipPosition="above" data-bs-toggle="modal"
+        data-bs-target="#exampleModal" style="cursor: pointer;" (click)="getIndex(i)">
         <img mat-card-image [src]="imagen.url" alt="">
       </a>
 
       <mat-card-content>
-
+        <!-- <mat-card-title>{{ imagen.caption }}</mat-card-title> -->
+        <mat-card-subtitle><strong>{{ imagen.caption }}</strong></mat-card-subtitle>
       </mat-card-content>
       <mat-card-actions align="start">
         <!-- <button mat-button routerLink="/add-image/{{ imagen.articleId }}">Add img</button> -->
@@ -60,6 +65,10 @@
             <div class="carousel-item" data-bs-interval="90000" *ngFor="let imagen of imagenes; let i = index"
               [ngClass]="{'active': i == this.indice }">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h2 style="padding: 0;"><strong>{{ imagen.caption }}</strong></h2>
+                <p>image {{ i + 1 }} of {{ this.imagenes.length }}</p> 
+              </div>
             </div>
             <!-- <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == 0 }">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
@@ -76,7 +85,7 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-        
+
       </div>
     </div>
   </div>

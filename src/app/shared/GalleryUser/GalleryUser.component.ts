@@ -1,7 +1,8 @@
+import { CaptionComponent } from './caption/caption.component';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Imagen } from './../models/imagen';
 import { Article } from './../models/article';
 import { ArticleService } from './../services/article.service';
@@ -25,6 +26,7 @@ export class GalleryUserComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { articleId: number },
+    private readonly dialog: MatDialog,
     private snack: MatSnackBar,
     private articleService: ArticleService,
     private toastrService: ToastrService,
@@ -66,6 +68,10 @@ export class GalleryUserComponent implements OnInit {
     } else {
       this.snack.open("Please choose one image.", "", { duration: 5000 });
     }
+  }
+
+  onCaption(id: string) {
+    this.dialog.open(CaptionComponent, { data: { imgId: id } });
   }
 
   private addImage(image: File, articleId: number) {
