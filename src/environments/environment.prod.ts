@@ -5,6 +5,7 @@ export const environment = {
   AUTH_URL: 'https://blogexapp.herokuapp.com/auth/',
   EMAIL_PASSWORD_URL: 'https://blogexapp.herokuapp.com/email-password/',
   ARTICLE_BASE_URL: 'https://blogexapp.herokuapp.com/article/',
+  IMG_BASE_URL: 'https://blogexapp.herokuapp.com/imagen/',
   AUTHORIZATION: 'Authorization',
   BEARER: 'Bearer ',
   ARTICLES_LOCAL: './assets/articles.json',
