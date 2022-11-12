@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-  <h2 mat-dialog-title>GALLERY</h2>
+  <h2 mat-dialog-title>Gallery</h2>
 </div>
 
 <mat-dialog-content class="mat-typography" style="background-color: #607d8b;">
@@ -10,11 +10,14 @@
           <mat-card-title>{{ imagen.article.title }}</mat-card-title>
           <mat-card-subtitle><strong>{{ imagen.caption }}</strong></mat-card-subtitle>
         </mat-card-header>
-        <a style="cursor: pointer;" (click)="onCaption(imagen.id)"><img mat-card-image [src]="imagen.url" alt="" matTooltip="add caption"></a>
+        <img mat-card-image [src]="imagen.url" alt="" matTooltip="add caption">
         <mat-card-content>
-          
+
         </mat-card-content>
         <mat-card-actions align="end">
+          <button mat-stroked-button (click)="onCaption(imagen.id)" matTooltip="add caption">
+            <mat-icon>add_box</mat-icon>
+          </button>
           <button mat-stroked-button color="warn" (click)="onDeleteImage(imagen.id)">
             <mat-icon>delete</mat-icon>
           </button>
@@ -32,10 +35,11 @@
   <div class="custom-file mx-2">
     <input type="file" class="custom-file-input" id="customFile" (change)="handleImage($event)"
       style="visibility: hidden;">
-    <a href=""><label class="custom-file-label" for="customFile" style="cursor: pointer;">Choose image</label></a>
+    <a href=""><label class="custom-file-label" for="customFile" style="cursor: pointer;">select image</label></a>
   </div>
   <div>
-    <button mat-button mat-stroked-button color="primary" (click)="onUpload()" matTooltip="upload image" matTooltipPosition="above">
+    <button mat-button mat-stroked-button color="primary" (click)="onUpload()" matTooltip="upload image"
+      matTooltipPosition="above">
       <!-- <i class="fa-solid fa-upload"></i> upload -->
       <mat-icon>upload</mat-icon>
     </button>

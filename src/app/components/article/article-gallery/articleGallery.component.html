@@ -1,13 +1,13 @@
-<h1 style="text-align: center;">GALLERY</h1>
+<h1 style="text-align: center;">Gallery</h1>
 <div style="display: flex; justify-content: center">
   <div>
     <button mat-button (click)="showGallery()">
-      <mat-icon>collections</mat-icon> Show
+      <mat-icon>visibility</mat-icon> Show
     </button>
   </div>
   <div>
     <button mat-button (click)="hideGallery()">
-      <mat-icon>block</mat-icon> Hide
+      <mat-icon>visibility_off</mat-icon> Hide
     </button>
   </div>
 </div>
@@ -66,8 +66,8 @@
               [ngClass]="{'active': i == this.indice }">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
               <div class="carousel-caption d-none d-md-block">
-                <h2 style="padding: 0;"><strong>{{ imagen.caption }}</strong></h2>
-                <p>image {{ i + 1 }} of {{ this.imagenes.length }}</p> 
+                <h2 class="m-0"><strong>{{ imagen.caption }}</strong></h2>
+                <p class="m-0">image {{ i + 1 }} of {{ this.imagenes.length }}</p> 
               </div>
             </div>
             <!-- <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == 0 }">
