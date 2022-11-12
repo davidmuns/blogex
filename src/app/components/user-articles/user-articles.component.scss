@@ -35,7 +35,8 @@ h2{
     }
 }
 .example-card{
-    width:78%;
+    // width:78%;
+    max-width: 1000px;
     margin:-20px auto 100px;
     background-color: rgba(47,47,47,1);
     color:white;
@@ -50,7 +51,7 @@ h2{
         //margin-bottom: 4px;
         border-top: 2px solid white;
         border-bottom: 1px solid white;
-        max-height: 600px;
+        // max-height: 600px;
         overflow: hidden;
         width:100%;
     }
