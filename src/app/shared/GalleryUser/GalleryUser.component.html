@@ -5,18 +5,17 @@
 <mat-dialog-content class="mat-typography" style="background-color: #607d8b;">
   <div class="main-container">
     <div *ngFor="let imagen of this.imagenes">
-      <mat-card class="example-card animate__animated animate__backInLeft">
+      <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: rgba(0, 0, 0, 0.4);">
         <mat-card-header class="mb-3">
-          <mat-card-title>{{ imagen.article.title }}</mat-card-title>
-          <mat-card-subtitle><strong>{{ imagen.caption }}</strong></mat-card-subtitle>
+          <mat-card-title style="color: rgba(255, 255, 255);">{{ imagen.article.title }}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image [src]="imagen.url" alt="" matTooltip="add caption">
+        <img mat-card-image [src]="imagen.url" alt="">
         <mat-card-content>
-
+          <p style="color: rgba(255, 255, 255);">{{ imagen.caption }}</p>
         </mat-card-content>
         <mat-card-actions align="end">
           <button mat-stroked-button (click)="onCaption(imagen.id)" matTooltip="add caption">
-            <mat-icon>add_box</mat-icon>
+            <mat-icon style="color: rgba(255, 255, 255);">add_box</mat-icon>
           </button>
           <button mat-stroked-button color="warn" (click)="onDeleteImage(imagen.id)">
             <mat-icon>delete</mat-icon>

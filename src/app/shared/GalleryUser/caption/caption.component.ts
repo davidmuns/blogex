@@ -58,7 +58,7 @@ export class CaptionComponent implements OnInit {
         this.dialog.closeAll();
       },
       error: (err: any) => {
-        this.toastr.error(err.error.mensaje, '', {
+        this.toastr.error(err.error.message, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
       }

@@ -17,7 +17,7 @@
   <div *ngFor="let imagen of this.imagenes; let i = index">
 
     <!-- https://animate.style/ -->
-    <mat-card class="example-card animate__animated animate__zoomIn">
+    <mat-card class="example-card animate__animated animate__zoomIn" style="background-color: rgba(255, 255, 255, 0.09);">
       <mat-card-header>
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
         <!-- <mat-card-title>{{ imagen.article.title }}</mat-card-title> -->
@@ -30,7 +30,7 @@
 
       <mat-card-content>
         <!-- <mat-card-title>{{ imagen.caption }}</mat-card-title> -->
-        <mat-card-subtitle><strong>{{ imagen.caption }}</strong></mat-card-subtitle>
+        <p style="color: white;">{{ imagen.caption }}</p>
       </mat-card-content>
       <mat-card-actions align="start">
         <!-- <button mat-button routerLink="/add-image/{{ imagen.articleId }}">Add img</button> -->

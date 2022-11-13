@@ -28,10 +28,10 @@
 
 
   <div *ngFor="let article of this.articles | paginate:pageSize:pageNumber">
-    <mat-card class="example-card">
+    <mat-card class="example-card" style="background-color: #607D8B">
       <mat-card-header style="margin-bottom: 10px;">
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
-        <mat-card-title>{{ article.title }}</mat-card-title>
+        <mat-card-title style="color: rgba(255, 255, 255);">{{ article.title }}</mat-card-title>
         <!-- <mat-card-subtitle>{{ article.id }}</mat-card-subtitle> -->
       </mat-card-header>
       <a (click)="onOpenGallery(article.id)" style="cursor: pointer;">
@@ -39,7 +39,7 @@
       </a>
       <mat-card-content>
         <!-- <p>{{ article.alt1 }}</p> -->
-        <p>{{ article.text1 }}</p>
+        <!-- <p style="color: rgba(255, 255, 255);">{{ article.text1 }}</p> -->
       </mat-card-content>
       <mat-card-actions align="end">
         <!-- <button mat-button routerLink="/edit/{{ article.id }}">Edit</button> -->
@@ -50,11 +50,11 @@
         <input type="file" accept=".png, .jpg, .jpeg" multiple id="inputUpload" formControlName="image" (change)="handleImage($event)"> -->
         <!-- <button mat-button data-bs-toggle="modal" data-bs-target="#gallery" (click)="loadImgsByArticleId(article.id)"> -->
         <button mat-button matTooltip="edit article" matTooltipPosition="left" (click)="onEdit(article)">
-          <mat-icon>article</mat-icon>
+          <mat-icon style="color: rgba(255, 255, 255, 0.5);">article</mat-icon>
         </button>
 
         <button mat-button (click)="onOpenGallery(article.id)" matTooltip="gallery view">
-          <mat-icon>image</mat-icon>
+          <mat-icon style="color: rgba(255, 255, 255, 0.5);">image</mat-icon>
         </button>
       </mat-card-actions>
     </mat-card>
