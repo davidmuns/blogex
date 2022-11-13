@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getArticles();
-    if(window.screen.width < 360){
+    if(window.screen.width < 400){
       this.hideUsername = true;
     }else{
       this.hideUsername = false;

@@ -7,9 +7,9 @@
 
 
 
-<div class="main-container animate__animated animate__backInLeft">
+<div class="container shadow">
 
-  <mat-card *ngIf="this.articles.length == 0" class="example-card">
+  <mat-card *ngIf="this.articles.length == 0" class="example-card animate__animated animate__backInLeft">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>No articles</mat-card-title>
@@ -28,7 +28,7 @@
 
 
   <div *ngFor="let article of this.articles | paginate:pageSize:pageNumber">
-    <mat-card class="example-card" style="background-color: #607D8B">
+    <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: #607D8B">
       <mat-card-header style="margin-bottom: 10px;">
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
         <mat-card-title style="color: rgba(255, 255, 255);">{{ article.title }}</mat-card-title>
@@ -42,66 +42,16 @@
         <!-- <p style="color: rgba(255, 255, 255);">{{ article.text1 }}</p> -->
       </mat-card-content>
       <mat-card-actions align="end">
-        <!-- <button mat-button routerLink="/edit/{{ article.id }}">Edit</button> -->
-        <!-- <button mat-button (click)="onDeleteArticle(article.id)">Delete</button> -->
-        <!-- <button mat-button (click)="onImgs(article.id)">Galery</button> -->
-        <!-- <button mat-button routerLink="/add-image/{{ article.id }}">Add img</button> -->
-        <!-- <img class="image-thumbnail" style="max-width: 100px; border-radius: 5%;" [src]="miniatura" *ngIf="this.image" style="margin-top: 5px;">
-        <input type="file" accept=".png, .jpg, .jpeg" multiple id="inputUpload" formControlName="image" (change)="handleImage($event)"> -->
-        <!-- <button mat-button data-bs-toggle="modal" data-bs-target="#gallery" (click)="loadImgsByArticleId(article.id)"> -->
         <button mat-button matTooltip="edit article" matTooltipPosition="left" (click)="onEdit(article)">
-          <mat-icon style="color: rgba(255, 255, 255, 0.5);">article</mat-icon>
+          <mat-icon style="color: rgba(255, 255, 255);">article</mat-icon>
         </button>
 
         <button mat-button (click)="onOpenGallery(article.id)" matTooltip="gallery view">
-          <mat-icon style="color: rgba(255, 255, 255, 0.5);">image</mat-icon>
+          <mat-icon style="color: rgba(255, 255, 255);">image</mat-icon>
         </button>
       </mat-card-actions>
     </mat-card>
   </div>
 </div>
-
-<!-- Modal -->
-<!-- <div class="modal fade" id="gallery" tabindex="-1" aria-labelledby="gallerylLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title" id="gallerylLabel">GALLERY</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-
-        <div class="main-container">
-          <div *ngFor="let imagen of this.imgsByArticleId">
-
-            <mat-card class="example-card animate__animated animate__backInLeft">
-              <mat-card-header>
-
-                <mat-card-title>{{ imagen.article.title }}</mat-card-title>
-
-              </mat-card-header>
-              <img mat-card-image [src]="imagen.url" alt="">
-              <mat-card-content>
-              </mat-card-content>
-              <mat-card-actions align="start">
-                <button mat-button routerLink="/add-image/{{ imagen.articleId }}">Add img</button>
-                <button mat-stroked-button color="warn" (click)="onDeleteImage(imagen.id)" data-bs-dismiss="modal">
-                  <mat-icon>delete</mat-icon>
-                </button>
-              </mat-card-actions>
-            </mat-card>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <input type="file" accept=".png, .jpg, .jpeg" (change)="handleImage($event)">
-
-        <button type="button" class="btn btn-outline-success" (click)="onAddImg()">
-          <i class="fa-solid fa-upload"></i> upload
-        </button>
-        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div> -->
 
 <app-footer></app-footer>

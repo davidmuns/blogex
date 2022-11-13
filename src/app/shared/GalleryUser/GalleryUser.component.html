@@ -1,11 +1,20 @@
-<div style="text-align: center;">
-  <h2 mat-dialog-title>Gallery</h2>
+<div class="header">
+  <div></div>
+
+  <div>
+    <h2 mat-dialog-title>Gallery</h2>
+  </div>
+  <div>
+    <mat-icon mat-button mat-dialog-close class="close-btn">close</mat-icon>
+  </div>
+  
 </div>
 
 <mat-dialog-content class="mat-typography" style="background-color: #607d8b;">
   <div class="main-container">
     <div *ngFor="let imagen of this.imagenes">
-      <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: rgba(0, 0, 0, 0.4);">
+      <mat-card class="example-card animate__animated animate__backInLeft"
+        style="background-color: rgba(0, 0, 0, 0.4);">
         <mat-card-header class="mb-3">
           <mat-card-title style="color: rgba(255, 255, 255);">{{ imagen.article.title }}</mat-card-title>
         </mat-card-header>
@@ -25,25 +34,19 @@
     </div>
   </div>
 </mat-dialog-content>
-<div class="my-2" style="display: flex; justify-content: end;">
-  <img class="image-thumbnail" style="max-width: 90px; max-height: 70px; border-radius: 5%;" [src]="miniatura"
-    *ngIf="this.image">
-</div>
 
 <mat-dialog-actions align="end">
-  <div class="custom-file mx-2">
-    <input type="file" class="custom-file-input" id="customFile" (change)="handleImage($event)"
-      style="visibility: hidden;">
-    <a href=""><label class="custom-file-label" for="customFile" style="cursor: pointer;">select image</label></a>
+
+  <div class="input-div mx-1 p-1 shadow-sm">
+    <input type="file" class="file-input" id="customFile" (change)="handleImage($event)">
+    <label class="file-label" for="customFile" matTooltip="max 2MB">Select image</label>
   </div>
-  <div>
-    <button mat-button mat-stroked-button color="primary" (click)="onUpload()" matTooltip="upload image"
-      matTooltipPosition="above">
-      <!-- <i class="fa-solid fa-upload"></i> upload -->
-      <mat-icon>upload</mat-icon>
-    </button>
+  <div class="mx-1">
+    <img *ngIf="this.image" class="thumbnail" [src]="miniatura">
   </div>
-  <div>
-    <button mat-button mat-dialog-close>Close</button>
+  <div class="upload-icon p-1 shadow-sm">
+    <mat-icon mat-button mat-stroked-button color="primary" (click)="onUpload()" matTooltip="upload image"
+      matTooltipPosition="above">upload</mat-icon>
   </div>
+
 </mat-dialog-actions>
