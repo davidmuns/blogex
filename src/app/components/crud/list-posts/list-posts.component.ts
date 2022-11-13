@@ -13,16 +13,6 @@ export interface PeriodicElement {
   title: string
 }
 
-/* const ELEMENT_DATA: PeriodicElement[] = [
-  {title: "Primer article"},
-  {title: "Segon article"},
-  {title: "Tercer article"},
-  {title: "quart article"},
-  {title: "Cinquè article"},
-  {title: "Desè article"},
-  {title: "Onzè article"}
-]; */
-
 @Component({
   selector: 'app-list-posts',
   templateUrl: './list-posts.component.html',
@@ -39,6 +29,7 @@ export class ListPostsComponent implements OnInit {
   showHidePosts: boolean = false;
   displayedColumns: string[] = ['titol', 'borrar'];
   dataSource = new MatTableDataSource();
+  public articleHtml!: boolean;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('list') asList!: ElementRef;
@@ -54,6 +45,11 @@ export class ListPostsComponent implements OnInit {
   ngOnInit(): void {
     const username =this.tokenService.getUsername() as string;
     this.articleSvc.getArticlesByUsername(username).subscribe(posts => this.dataSource.data = posts);
+    if(window.screen.width > 400){
+      this.articleHtml = true;
+    }else{ 
+      this.articleHtml = false;
+    }
   }
 
   ngAfterViewInit(){
@@ -79,12 +75,12 @@ export class ListPostsComponent implements OnInit {
   toList(){
     const listPosts = this.asList.nativeElement;
     this.showHidePosts = !this.showHidePosts;
+    this.articleSvc.fadeInOut = !this.articleSvc.fadeInOut;
     if(this.showHidePosts == true){
-      this.renderer2.setStyle(listPosts, 'height', '100vh');
+      this.renderer2.setStyle(listPosts, 'height', '1200px');
       this.renderer2.setStyle(listPosts, 'transition', 'all 1s')
-
     }else{
-      this.renderer2.setStyle(listPosts, 'height', '0vh');
+      this.renderer2.setStyle(listPosts, 'height', '0px');
     }
     
   }

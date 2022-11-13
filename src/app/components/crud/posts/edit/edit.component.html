@@ -1,6 +1,8 @@
 <mat-card class="example-card">
   <mat-card-title>Edit article</mat-card-title>
-  <button id="toNew" mat-stroked-button color="primary" (click)="toNew()">New Article</button>
+  <button id="toNew" mat-stroked-button color="primary" (click)="toNew()">New 
+    <span *ngIf="articleHtml == true">Article</span>
+  </button>
   <mat-card-content>
     <form [formGroup]="editPostForm" (ngSubmit)="onSubmit(editPostForm.value)">
       <p>
@@ -48,13 +50,13 @@
       <table class="example-full-width" cellspacing="0">
         <tr>
           <td>
-            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-form-field class="example-input" appearance="fill">
               <mat-label>Latitude</mat-label>
               <input matInput formControlName="latitude">
             </mat-form-field>
           </td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <td>
-            <mat-form-field class="example-full-width" appearance="fill">
+            <mat-form-field class="example-input" appearance="fill">
               <mat-label>Longitude</mat-label>
               <input matInput formControlName="longitude">
             </mat-form-field>

@@ -3,7 +3,13 @@
   @media(max-width: 800px){
     position: absolute;
     top:14px;
-    left: 36%;
+    left: 38%;
+    display: block;
+  }
+  @media(max-width: 400px){
+    position: absolute;
+    top: 14px;
+    left: 55%;
     display: block;
   }
 }
@@ -15,9 +21,9 @@
   margin: 0px;
   @media(max-width: 800px){
     left:0px;
-    width:90%;
+    min-width:100%;
     background-color: white;
-    margin: 0px 5%;
+    margin: 0px;
   }
 }
 .inside{

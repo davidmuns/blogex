@@ -20,6 +20,7 @@ export class EditComponent implements OnInit {
   public image!: File;
   public imageOriginal: any;
   public miniatura!: File;
+  public articleHtml!: boolean;
 
   constructor(
     private toastrService: ToastrService,
@@ -44,6 +45,12 @@ export class EditComponent implements OnInit {
       this.editPostForm.patchValue(this.article);
     } else {
       this.router.navigate(['admin/new']);
+    }
+
+    if(window.screen.width > 400){
+      this.articleHtml = true;
+    }else{
+      this.articleHtml = false;
     }
   }
 
