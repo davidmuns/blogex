@@ -1,31 +1,10 @@
-<h1 style="text-align: center;">ARTICLES by {{ this.username }} </h1>
-
+<h1 style="text-align: center;">IMAGES {{ this.username }} </h1>
 
 <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
   aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
 </mat-paginator>
 
-
-
-<div class="container shadow">
-
-  <mat-card *ngIf="this.articles.length == 0" class="example-card animate__animated animate__backInLeft">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>No articles</mat-card-title>
-      <mat-card-subtitle>BLOGEX</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg"
-      alt="Photo of a Shiba Inu">
-    <mat-card-content>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-button matTooltip="new article" matTooltipPosition="left" routerLink="/admin/new">
-        <mat-icon>article</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card>
-
+<div *ngIf="this.articles.length > 0; else noArticles" class="container shadow">
 
   <div *ngFor="let article of this.articles | paginate:pageSize:pageNumber">
     <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: #607D8B">
@@ -53,5 +32,25 @@
     </mat-card>
   </div>
 </div>
+
+<ng-template #noArticles>
+  <div class="container shadow">
+    <div>
+      <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: #607D8B">
+        <mat-card-header style="margin-bottom: 10px;">
+          <mat-card-title style="color: rgba(255, 255, 255);">No images</mat-card-title>
+        </mat-card-header>  
+          <img mat-card-image src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg" alt="blogex-logo">
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-button matTooltip="new article" matTooltipPosition="left" routerLink="/admin/new">
+            <mat-icon style="color: rgba(255, 255, 255);">article</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</ng-template>
 
 <app-footer></app-footer>

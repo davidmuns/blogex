@@ -18,6 +18,27 @@ h2{
         font-size: 1.8rem;
     }
 }
+mat-icon {
+    position: absolute;
+    top: 22px;
+    left: 20px;
+    z-index: 1;
+    cursor: pointer;
+
+    @media(max-width:500px){
+        top: 72px;
+    }
+
+    @media(max-width:297px){
+        top: 32px;
+    }
+
+}
+
+mat-icon:hover {
+    color: #69F0AE;
+}
+
 #linkToHome{
     position: absolute;
     top:30px;
@@ -25,7 +46,7 @@ h2{
     z-index: 1;
     color: #69F0AE;
     border-radius: 2px;
-    padding:2px;
+    padding:5px;
     background-color: var(--accent);
     transition: all .1s;
     cursor: pointer;

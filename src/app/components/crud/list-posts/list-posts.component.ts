@@ -55,8 +55,7 @@ export class ListPostsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAdmin =this.tokenService.isAdmin();
-    // const username =this.tokenService.getUsername() as string;
-    // this.articleSvc.getArticlesByUsername(username).subscribe(posts => this.dataSource.data = posts);
+  
     if(this.isAdmin){
       this.getAllArticles();
     }else{
@@ -69,9 +68,6 @@ export class ListPostsComponent implements OnInit {
     this.articleSvc.getAll().subscribe({
       next: (data: Article[]) => {
         this.dataSource.data = data;
-        // this.articles.forEach(article => {
-        //   this.getImgsByArticleId(article.id);
-        // });
       },
       error: (err: any) => {
         console.log(err);
@@ -84,9 +80,6 @@ export class ListPostsComponent implements OnInit {
     this.articleSvc.getArticlesByUsername(this.username).subscribe({
       next: (data: Article[]) => {
         this.dataSource.data = data;
-        // this.articles.forEach(article => {
-        //   this.getImgsByArticleId(article.id);
-        // });
       },
       error: (err: any) => {
         console.log(err);

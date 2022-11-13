@@ -1,17 +1,21 @@
-<ng-container *ngIf="articles">
-  <h2>The Blog of {{ articles[0].usuario.nombreUsuario }}</h2>
-  <div id="linkToHome" class="animate__animated animate__fadeInRight" routerLink="/list">BlogEx.com</div>
-  
+<ng-container *ngIf="this.articles.length > 0; else noArticles">
+  <h2>The Blog of {{ this.articles[0].usuario.nombreUsuario }}</h2>
+  <mat-icon class="animate__animated animate__fadeInLeft" routerLink="/">home</mat-icon>
+  <div *ngIf="this.tokenService.isLogged(); else notLogged" id="linkToHome"
+    class="animate__animated animate__fadeInRight" routerLink="/list">My Images</div>
+  <ng-template #notLogged>
+    <div id="linkToHome" class="animate__animated animate__fadeInRight" (click)="openDialog()">My Images</div>
+  </ng-template>
+
   <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
     aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
   </mat-paginator>
 
   <div *ngFor="let article of this.articles | paginate:pageSize:pageNumber">
-
     <mat-card class="example-card">
       <mat-card-header>
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
-        <mat-card-title>{{ article.title }}</mat-card-title>
+        <mat-card-title>{{ article.title }} | {{ this.temp }} ºC</mat-card-title>
         <!-- <mat-card-subtitle>{{ article.id }}</mat-card-subtitle> -->
       </mat-card-header>
       <!-- <a (click)="onOpenGallery(article.id)" style="cursor: pointer;" matTooltip="gallery view"
@@ -38,14 +42,44 @@
           (click)="onEdit(article)">
           <mat-icon>article</mat-icon>
         </button>
-
         <button mat-button (click)="onOpenGallery(article.id)" matTooltip="gallery view">
           <mat-icon>image</mat-icon>
         </button> -->
       </mat-card-actions>
     </mat-card>
   </div>
-  <mat-paginator [length]="articles.length" [pageSize]="pageSize" 
-    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+  <mat-paginator [length]="articles.length" [pageSize]="pageSize" aria-label="Select page" showFirstLastButtons
+    (page)="onPageChange($event)">
   </mat-paginator>
 </ng-container>
+
+<ng-template #noArticles>
+  <h2>The Blog of {{ this.tokenService.getUsername()}}</h2>
+  <mat-icon class="animate__animated animate__fadeInLeft" routerLink="/">home</mat-icon>
+  <div *ngIf="this.tokenService.isLogged(); else notLogged" id="linkToHome"
+    class="animate__animated animate__fadeInRight" routerLink="/list">My Images</div>
+  <ng-template #notLogged>
+    <div id="linkToHome" class="animate__animated animate__fadeInRight" (click)="openDialog()">My Images</div>
+  </ng-template>
+  <div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>No articles</mat-card-title>
+      </mat-card-header>
+      <div class="imageMarc">
+        <img mat-card-image src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg"
+          alt="blogex-logo">
+      </div>
+      <mat-card-content>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button matTooltip="new article" matTooltipPosition="left" routerLink="/admin/new">
+          <mat-icon style="color: rgba(255, 255, 255);">article</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</ng-template>
+
+<app-footer></app-footer>

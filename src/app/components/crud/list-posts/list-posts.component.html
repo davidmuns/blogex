@@ -1,7 +1,7 @@
 <div class="container">
   <button id="toList" mat-stroked-button color="primary" (click)="toList()">List of Articles</button>
   <div #list class="inside">
-    <h3>Posts to edit</h3>
+    <h3>Articles to edit</h3>
     <mat-form-field appearance="standard">
       <mat-label for="labelFilter">Filter</mat-label>
       <input matInput id="filter" (keyup)="applyFilter($event)" #input>
