@@ -1,5 +1,8 @@
 <ng-container *ngIf="this.articles.length > 0; else noArticles">
-  <h2>The Blog of {{ this.articles[0].usuario.nombreUsuario }}</h2>
+  <h2 *ngIf="this.tokenService.isAdmin(); else noAdmin">The Blog of {{ this.username }}</h2>
+  <ng-template #noAdmin>
+    <h2>The Blog of {{ this.articles[0].usuario.nombreUsuario }}</h2>
+  </ng-template>
   <mat-icon class="animate__animated animate__fadeInLeft" routerLink="/">home</mat-icon>
   <div *ngIf="this.tokenService.isLogged(); else notLogged" id="linkToHome"
     class="animate__animated animate__fadeInRight" routerLink="/list">My Images</div>

@@ -20,12 +20,13 @@ export class UserArticlesComponent implements OnInit {
     }
   };
 
-  private username!: string;
+  username!: string;
   public articles: Article[] = []
   public pageSizeOptions: number[] = [1];
   public pageSize: number = 1;
   public pageNumber: number = 1;
   temp!: number;
+  isAdmin: boolean = false;
 
   constructor(
     public dialog: MatDialog,
@@ -35,7 +36,13 @@ export class UserArticlesComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getAllArticlesByUsername();
+    this.username = this.tokenService.getUsername() as string;
+    this.isAdmin = this.tokenService.isAdmin();
+    if (this.isAdmin) {
+      this.getAllArticles();
+    } else {
+      this.getAllArticlesByUsername();
+    }
   }
 
   private getAllArticlesByUsername() {
@@ -50,6 +57,17 @@ export class UserArticlesComponent implements OnInit {
         }
       }
     )
+  }
+
+  private getAllArticles() {
+    this.articleSvc.getAll().subscribe({
+      next: (data: Article[]) => {
+        this.articles = data;
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    })
   }
 
   openDialog() {
