@@ -1,5 +1,6 @@
 <div class="container">
-<button id="toList" mat-stroked-button color="primary" (click)="toList()" >List of Articles</button>
+<button id="toList" mat-stroked-button color="primary" (click)="toList()" >List 
+  <span *ngIf="articleHtml == true">of Articles</span></button>
 <div #list class="inside">
   <h3>Posts to edit</h3>
   <mat-form-field appearance="standard">

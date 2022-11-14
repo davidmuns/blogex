@@ -27,6 +27,17 @@ mat-card-content{
 .input-width{
     width:100%;
 }
+.example-input {
+    @media(max-width: 500px){
+        width: 170px;
+    }
+    @media(max-width: 400px){
+        width: 120px;
+    }
+    @media(max-width: 300px){
+        width: 80px;
+    }
+}
 .containerFile{
     margin: 20px 0px;
     #inputUpload{

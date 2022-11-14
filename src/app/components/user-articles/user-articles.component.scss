@@ -19,29 +19,47 @@ h2{
     z-index: 1;
     color: #69F0AE;
     border-radius: 2px;
-    padding:2px;
+    padding:0px 2px;
+    height: 24px;
+    display: flex;
+    align-items:center;
+    font-size: .9rem;
     background-color: var(--accent);
     transition: all .1s;
     cursor: pointer;
     @media(max-width:600px){
         top:auto;
-        margin-top: -85px;
+        margin-top: 20px;
     }
+}
+.mat-paginator{
+    margin: -80px 0px 40px;
+    @media(max-width:600px){
+        margin: -70px 0px 30px;
+    }
+}
+.mat-card-header-text{
+    margin:0px;
 }
 .example-card{
     width:78%;
-    margin:-20px auto 100px;
+    margin:-50px auto 100px;
     background-color: rgba(47,47,47,1);
     color:white;
     padding: 0px;
-    mat-card-title{
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 1px 6px #888888;
+    @media(max-width: 600px){    
+        width:100%;
+    }
+    #title-post{
         font-size: 1.6rem;
         font-family: 'Libre Baskerville', serif;
-        padding: 10px 0px;
+        padding: 10px 10px 20px 15px;
         line-height: 2rem;
+        height: auto;
     }
     .imageMarc{
-        //margin-bottom: 4px;
         border-top: 2px solid white;
         border-bottom: 1px solid white;
         max-height: 600px;
@@ -49,9 +67,6 @@ h2{
         width:100%;
     }
     img{
-        /* margin-bottom: 4px;
-        border-top: 2px solid white;
-        border-bottom: 1px solid white; */
         margin:0px;
         width: 100%;
     }
@@ -62,10 +77,28 @@ h2{
     } 
 }
 mat-card-content{
+    .autor{
+        padding: 20px 15px 0px;
+        display: flex;
+        flex-direction: row;
+        #autorLink{
+          font-size: 1rem;
+          display: flex;
+          align-items: center;
+          span{
+            font-size: 1.1rem;
+            font-family: 'Libre Baskerville', serif;
+            text-transform: capitalize;
+            cursor: pointer;
+          }
+        }
+        #editAutor{
+          padding: 2px 5px;
+        }
+    }
     p{
     font-size: 1.1rem;
     padding:30px 15px;
-    //text-indent: 30px;
     display: block;
     overflow:auto;
     white-space: pre-line;

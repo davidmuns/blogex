@@ -1,6 +1,6 @@
 import { Toast, ToastrService } from 'ngx-toastr';
 import { ArticleService } from 'src/app/shared/services/article.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
@@ -12,6 +12,16 @@ import { Article } from 'src/app/shared/models/article';
 })
 export class EditComponent implements OnInit {
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any): void{
+    this.innerWidth = event.target.innerWidth;
+    if(this.innerWidth > 420){
+      this.articleHtml = true;
+    }else{
+      this.articleHtml = false;
+    }
+  }
+
   public editPostForm!: FormGroup;
   public viewForm: any = [1];
   public flag: number = 1;
@@ -20,6 +30,8 @@ export class EditComponent implements OnInit {
   public image!: File;
   public imageOriginal: any;
   public miniatura!: File;
+  public articleHtml!: boolean;
+  public innerWidth: any;
 
   constructor(
     private toastrService: ToastrService,
@@ -45,6 +57,7 @@ export class EditComponent implements OnInit {
     } else {
       this.router.navigate(['admin/new']);
     }
+    this.innerWidth = window.innerWidth;
   }
 
   //Reload the page to bring more forms

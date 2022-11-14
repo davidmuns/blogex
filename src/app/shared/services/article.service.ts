@@ -13,6 +13,8 @@ const ARTICLE_BASE_URL = environment.ARTICLE_BASE_URL;
 })
 export class ArticleService {
 
+  public fadeInOut: boolean = true;
+
   constructor(private httpClient: HttpClient) { }
 
   public getArticle(articleId: Number): Observable<Article> {

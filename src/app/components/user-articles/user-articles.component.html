@@ -1,12 +1,17 @@
 <ng-container *ngIf="articles">
-  <h2>The Blog of {{ articles[0].usuario.nombreUsuario }}</h2>
+  <h2>The Blog of {{ articles[0].usuario.nombreUsuario }}
   <div id="linkToHome" class="animate__animated animate__fadeInRight" routerLink="/list">BlogEx.com</div>
+  </h2>
   <div *ngFor="let article of this.articles | paginate:pageSize:pageNumber">
 
-    <mat-card class="example-card">
+    <mat-paginator [length]="articles.length" [pageSize]="pageSize" 
+      aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+    </mat-paginator>
+
+    <div class="example-card">
       <mat-card-header>
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
-        <mat-card-title>{{ article.title }}</mat-card-title>
+        <div id="title-post">{{ article.title }}</div>
         <!-- <mat-card-subtitle>{{ article.id }}</mat-card-subtitle> -->
       </mat-card-header>
       <!-- <a (click)="onOpenGallery(article.id)" style="cursor: pointer;" matTooltip="gallery view"
@@ -18,6 +23,10 @@
       </div>
       <mat-card-content>
         <p id="footerImg">{{ article.alt1 }}</p>
+        <div class="autor">
+          <button *ngIf="article.usuario.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent" 
+            id="editAutor" (click)="onEdit(article)"><mat-icon>edit</mat-icon>&nbsp;Edit article</button>
+        </div>
         <p>{{ article.text1 }}</p>
       </mat-card-content>
       <app-articleGallery [articleId]="article.id"></app-articleGallery>
@@ -38,7 +47,7 @@
           <mat-icon>image</mat-icon>
         </button> -->
       </mat-card-actions>
-    </mat-card>
+    </div>
   </div>
   <mat-paginator [length]="articles.length" [pageSize]="pageSize" 
     aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">

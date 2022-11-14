@@ -1,5 +1,5 @@
 import { TokenService } from 'src/app/shared/services/token.service';
-import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,16 +12,6 @@ import { transition } from '@angular/animations';
 export interface PeriodicElement {
   title: string
 }
-
-/* const ELEMENT_DATA: PeriodicElement[] = [
-  {title: "Primer article"},
-  {title: "Segon article"},
-  {title: "Tercer article"},
-  {title: "quart article"},
-  {title: "Cinquè article"},
-  {title: "Desè article"},
-  {title: "Onzè article"}
-]; */
 
 @Component({
   selector: 'app-list-posts',
@@ -39,9 +29,21 @@ export class ListPostsComponent implements OnInit {
   showHidePosts: boolean = false;
   displayedColumns: string[] = ['titol', 'borrar'];
   dataSource = new MatTableDataSource();
+  public articleHtml!: boolean;
+  public innerWidth: any;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('list') asList!: ElementRef;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event:any): void{
+    this.innerWidth = event.target.innerWidth;
+    if(this.innerWidth > 420){
+      this.articleHtml = true;
+    }else{
+      this.articleHtml = false;
+    }
+  }
 
   constructor(
     private tokenService: TokenService,
@@ -54,6 +56,7 @@ export class ListPostsComponent implements OnInit {
   ngOnInit(): void {
     const username =this.tokenService.getUsername() as string;
     this.articleSvc.getArticlesByUsername(username).subscribe(posts => this.dataSource.data = posts);
+    this.innerWidth = window.innerWidth;
   }
 
   ngAfterViewInit(){
@@ -79,12 +82,12 @@ export class ListPostsComponent implements OnInit {
   toList(){
     const listPosts = this.asList.nativeElement;
     this.showHidePosts = !this.showHidePosts;
+    this.articleSvc.fadeInOut = !this.articleSvc.fadeInOut;
     if(this.showHidePosts == true){
-      this.renderer2.setStyle(listPosts, 'height', '100vh');
+      this.renderer2.setStyle(listPosts, 'height', '1200px');
       this.renderer2.setStyle(listPosts, 'transition', 'all 1s')
-
     }else{
-      this.renderer2.setStyle(listPosts, 'height', '0vh');
+      this.renderer2.setStyle(listPosts, 'height', '0px');
     }
     
   }

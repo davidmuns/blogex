@@ -1,16 +1,22 @@
 <!-- ARTICLE -->
 <div class="main-container">
   <div>
-    <mat-card class="example-card">
+    <div class="example-card">
       <mat-card-header>
         <div class="example-header-image"></div>
-        <mat-card-title>{{ post?.title }}</mat-card-title>
+        <div id="title-post">{{ post?.title }}</div>
       </mat-card-header>
       <div class="imageMarc">
         <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.alt1 }}">
       </div>
       <mat-card-content>
         <p id="footerImg">{{ post?.alt1 }}</p>
+        <div class="autor">
+          <div id="autorLink">Created by:&nbsp;<span routerLink="/blog/{{ post?.usuario?.nombreUsuario }}"> 
+          {{ post?.usuario?.nombreUsuario }}</span></div>&nbsp;&nbsp;&nbsp;
+          <button *ngIf="post?.usuario?.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent" 
+          id="editAutor" (click)="onEdit(post)"><mat-icon>edit</mat-icon>&nbsp;Edit article</button>
+        </div>
         <p>
           {{ post?.text1 }}
         </p>
@@ -20,7 +26,7 @@
         <!-- <button mat-button (click)="showGallery(post?.id)">Show gallery</button>
         <button mat-button (click)="hideGallery()">Hide gallery</button> -->
       </mat-card-actions>
-    </mat-card>
+    </div>
   </div>
 </div>
 
