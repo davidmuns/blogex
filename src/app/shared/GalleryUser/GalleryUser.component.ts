@@ -1,8 +1,10 @@
+import { CaptionComponent } from './caption/caption.component';
+import { environment } from 'src/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Imagen } from './../models/imagen';
 import { Article } from './../models/article';
-import { TokenService } from './../services/token.service';
 import { ArticleService } from './../services/article.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -24,6 +26,8 @@ export class GalleryUserComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { articleId: number },
+    private readonly dialog: MatDialog,
+    private snack: MatSnackBar,
     private articleService: ArticleService,
     private toastrService: ToastrService,
     private router: Router) { }
@@ -56,13 +60,18 @@ export class GalleryUserComponent implements OnInit {
 
   onUpload() {
     if (this.image != undefined) {
-      this.addImage(this.image, this.articleId);
+      if (this.image.size < environment.IMG_MAX_SIZE) {
+        this.addImage(this.image, this.articleId);
+      } else {
+        this.snack.open("Image exceeds its maximum permitted size of 2MB.", "", { duration: 5000 });
+      }
     } else {
-      this.toastrService.error('Please select an image.', '', {
-        timeOut: 3000, positionClass: 'toast-top-center'
-      });
+      this.snack.open("Please select one image.", "", { duration: 5000 });
     }
+  }
 
+  onCaption(id: string) {
+    this.dialog.open(CaptionComponent, { data: { imgId: id } });
   }
 
   private addImage(image: File, articleId: number) {
@@ -76,9 +85,9 @@ export class GalleryUserComponent implements OnInit {
         //this.redirectTo(this.router.url);
       },
       error: err => {
-        this.toastrService.error(err.error.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
+        // this.toastrService.error("Image exceeds its maximum permitted size of 2MB", '', {
+        //   timeOut: 3000, positionClass: 'toast-top-center'
+        // });
       }
     })
 

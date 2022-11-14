@@ -11,16 +11,11 @@
 // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
 .main-container {
   padding: 20px;
-  // border: 10px solid gray;
-  // background-color: rgb(126, 234, 253);
-  height: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-/* .main-container{
-  margin-top: 600px;
-} */
+
 .main-container>div {
   margin: 10px;
   padding: 20px;
@@ -30,8 +25,48 @@ img {
   height: 200px;
 }
 
-// input[type=file]{
-//     background-color: gray;
-//     font-size: 10px;
+@media (max-width: 600px) {
+  img {
+    height: 130px;
+  }
+}
 
-// }
+.file-input {
+  visibility: visible;
+  width: 0px;
+}
+
+.file-label {
+  cursor: pointer;
+
+}
+
+.file-label:hover {
+  color: #607d8b;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.close-btn:hover {
+  color: #607d8b;
+}
+
+.upload-icon:hover {
+  cursor: pointer;
+  color: #607d8b;
+}
+
+.thumbnail {
+  width: 90px;
+  height: 70px;
+  border-radius: 5%;
+
+  @media (max-width: 600px) {
+    width: 70px;
+    height: 50px;
+  }
+
+}

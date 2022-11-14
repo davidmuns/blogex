@@ -1,10 +1,14 @@
-<h1 style="text-align: center;">gallery</h1>
+<h1 style="text-align: center;">Gallery</h1>
 <div style="display: flex; justify-content: center">
   <div>
-    <button mat-button (click)="showGallery()"><mat-icon>collections</mat-icon> Show</button>
+    <button mat-button (click)="showGallery()">
+      <mat-icon>visibility</mat-icon> Show
+    </button>
   </div>
   <div>
-    <button mat-button (click)="hideGallery()"><mat-icon>block</mat-icon> Hide</button>
+    <button mat-button (click)="hideGallery()">
+      <mat-icon>visibility_off</mat-icon> Hide
+    </button>
   </div>
 </div>
 
@@ -13,19 +17,20 @@
   <div *ngFor="let imagen of this.imagenes; let i = index">
 
     <!-- https://animate.style/ -->
-    <mat-card class="example-card animate__animated animate__zoomIn">
+    <mat-card class="example-card animate__animated animate__zoomIn" style="background-color: rgba(255, 255, 255, 0.09);">
       <mat-card-header>
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
         <!-- <mat-card-title>{{ imagen.article.title }}</mat-card-title> -->
-        <!-- <mat-card-subtitle>id {{ article.id  }}</mat-card-subtitle> -->
+        <!-- <mat-card-subtitle>{{ imagen.caption  }}</mat-card-subtitle> -->
       </mat-card-header>
-      <a type="button"  matTooltip="slide view" matTooltipPosition="above" data-bs-toggle="modal" data-bs-target="#exampleModal" style="cursor: pointer;"
-        (click)="getIndex(i)">
+      <a type="button" matTooltip="Preview" matTooltipPosition="above" data-bs-toggle="modal"
+        data-bs-target="#exampleModal" style="cursor: pointer;" (click)="getIndex(i)">
         <img mat-card-image [src]="imagen.url" alt="">
       </a>
 
       <mat-card-content>
-
+        <!-- <mat-card-title>{{ imagen.caption }}</mat-card-title> -->
+        <p style="color: white;">{{ imagen.caption }}</p>
       </mat-card-content>
       <mat-card-actions align="start">
         <!-- <button mat-button routerLink="/add-image/{{ imagen.articleId }}">Add img</button> -->
@@ -48,7 +53,7 @@
       <div class="modal-body">
 
         <!-- CAROUSEL -->
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
           <div class="carousel-inner">
             <!-- <div class="carousel-item active">
               <img src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg"
@@ -57,9 +62,13 @@
             <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
             </div> -->
-            <div class="carousel-item" data-bs-interval="2000" *ngFor="let imagen of imagenes; let i = index"
+            <div class="carousel-item" data-bs-interval="90000" *ngFor="let imagen of imagenes; let i = index"
               [ngClass]="{'active': i == this.indice }">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
+              <div class="carousel-caption d-none d-md-block">
+                <h2 class="m-0"><strong>{{ imagen.caption }}</strong></h2>
+                <p class="m-0">image {{ i + 1 }} of {{ this.imagenes.length }}</p> 
+              </div>
             </div>
             <!-- <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == 0 }">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
@@ -76,7 +85,7 @@
             <span class="visually-hidden">Next</span>
           </button>
         </div>
-        
+
       </div>
     </div>
   </div>

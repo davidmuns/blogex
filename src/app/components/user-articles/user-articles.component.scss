@@ -11,7 +11,34 @@ h2{
     background-color: white;
     border-bottom: 2px solid dimgray;
     background-color: silver;
+    @media(max-width:600px){
+        font-size: 2rem;
+    }
+    @media(max-width:355px){
+        font-size: 1.8rem;
+    }
 }
+mat-icon {
+    position: absolute;
+    top: 22px;
+    left: 20px;
+    z-index: 1;
+    cursor: pointer;
+
+    @media(max-width:500px){
+        top: 72px;
+    }
+
+    @media(max-width:297px){
+        top: 32px;
+    }
+
+}
+
+mat-icon:hover {
+    color: #69F0AE;
+}
+
 #linkToHome{
     position: absolute;
     top:30px;
@@ -62,7 +89,7 @@ h2{
     .imageMarc{
         border-top: 2px solid white;
         border-bottom: 1px solid white;
-        max-height: 600px;
+        // max-height: 600px;
         overflow: hidden;
         width:100%;
     }

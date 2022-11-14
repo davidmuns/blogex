@@ -5,6 +5,7 @@
       <mat-card-header>
         <div class="example-header-image"></div>
         <div id="title-post">{{ post?.title }}</div>
+        <mat-card-title>{{ post?.title }} | {{ this.temp }} ºC</mat-card-title>
       </mat-card-header>
       <div class="imageMarc">
         <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.alt1 }}">

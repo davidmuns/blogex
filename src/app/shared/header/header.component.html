@@ -18,31 +18,31 @@
       <mat-divider></mat-divider>
       <button mat-menu-item routerLink="/blog/{{ this.tokenService.getUsername() }}">
         <mat-icon>book</mat-icon>
-        Your Blog
+        My Blog
       </button>  
       <mat-divider></mat-divider>
       <button mat-menu-item routerLink="/admin/new">
         <mat-icon>edit</mat-icon>
-        Your Articles
+        My Articles
       </button>
       <mat-divider></mat-divider>
       <button mat-menu-item routerLink="/list">
         <mat-icon>image</mat-icon>
-        Your Pictures
+        My Images
       </button>
     </mat-menu>
     
     <app-search></app-search>
     <!-- <h1 id="title">Blog de rutes</h1> -->
     <div id="logReg" *ngIf="this.tokenService.isLogged() === false; else logged">
-      <a data-bs-toggle="modal" data-bs-target="#LogIn" (click)="openDialog()">LOG IN &nbsp;</a>
+      <a (click)="openDialog()">LOG IN &nbsp;</a>
       <span>-&nbsp;&nbsp;</span>
-      <a data-bs-toggle="modal" data-bs-target="#SignUp" (click)="signupDialog()">SIGN UP</a>
+      <a (click)="signupDialog()">SIGN UP</a>
     </div>
     <ng-template #logged>
       <div id="logOut" #isLoged>
-        <a *ngIf="hideLogOut == true" (click)="onLogout()">LOG OUT({{ this.tokenService.getUsername() }})</a>
-        <a *ngIf="hideLogOut == false" (click)="onLogout()">LOG OUT</a>
+        <a *ngIf="!this.hideUsername" (click)="onLogout()">LOG OUT({{ this.tokenService.getUsername() }})</a>
+        <a *ngIf="this.hideUsername" (click)="onLogout()">LOG OUT</a>
       </div>
     </ng-template>
   </mat-toolbar-row>

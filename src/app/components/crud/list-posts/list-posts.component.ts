@@ -31,6 +31,8 @@ export class ListPostsComponent implements OnInit {
   dataSource = new MatTableDataSource();
   public articleHtml!: boolean;
   public innerWidth: any;
+  isAdmin: boolean = false;
+  username!: string;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('list') asList!: ElementRef;
@@ -54,9 +56,40 @@ export class ListPostsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    const username =this.tokenService.getUsername() as string;
-    this.articleSvc.getArticlesByUsername(username).subscribe(posts => this.dataSource.data = posts);
+    this.username =this.tokenService.getUsername() as string;
+    // this.articleSvc.getArticlesByUsername(username).subscribe(posts => this.dataSource.data = posts);
     this.innerWidth = window.innerWidth;
+    this.isAdmin =this.tokenService.isAdmin();
+  
+    if(this.isAdmin){
+      this.getAllArticles();
+    }else{
+      this.getAllArticlesByUsername();
+    }
+
+  }
+
+  private getAllArticles(){
+    this.articleSvc.getAll().subscribe({
+      next: (data: Article[]) => {
+        this.dataSource.data = data;
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    })
+  }
+
+  private getAllArticlesByUsername() {
+    this.username = this.tokenService.getUsername() as string;
+    this.articleSvc.getArticlesByUsername(this.username).subscribe({
+      next: (data: Article[]) => {
+        this.dataSource.data = data;
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    });
   }
 
   ngAfterViewInit(){

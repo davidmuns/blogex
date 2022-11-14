@@ -50,7 +50,7 @@ export class MapComponent implements AfterViewInit {
       (res: Article[]) => {res.map(point => {
         this.postActual = point;
         marker([point.latitude, point.longitude]).addTo(map).bindPopup(`
-        <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
+        <a href="https://blogex.netlify.app/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
         <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
       `);
@@ -64,7 +64,7 @@ export class MapComponent implements AfterViewInit {
       (res: Article[]) => {res.map(point => {
         this.postActual = point;
         marker([point.latitude, point.longitude]).addTo(map2).bindPopup(`
-        <a href="http://localhost:4200/article/${point.id}">${point.title}</a>
+        <a href="https://https://blogex.netlify.app/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
         <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
       `);

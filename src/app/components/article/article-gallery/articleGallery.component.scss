@@ -34,7 +34,7 @@ img {
   height: 650px;
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1200px) {
   .container>img {
     width: 100%;
     height: 350px;
@@ -44,4 +44,17 @@ img {
   .carousel-inner>.carousel-item>img {
     height: 350px;
   }
+}
+
+@media (max-width: 500px) {
+  .container>img {
+    width: 100%;
+    height: 150px;
+  }
+
+  .carousel,
+  .carousel-inner>.carousel-item>img {
+    height: 230px;
+  }
+
 }

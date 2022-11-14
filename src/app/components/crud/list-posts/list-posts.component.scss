@@ -12,6 +12,12 @@
     left: 51%;
     display: block;
   }
+  @media(max-width: 450px){
+    position: absolute;
+    top:14px;
+    left: 36%;
+    display: block;
+  }
 }
 .container{
   position: absolute;
@@ -44,6 +50,7 @@ h3{
   @media(max-width: 800px){
     text-align: start;
     z-index: 2;
+    font-size: 1rem;
     background-color: white;
   }
 }

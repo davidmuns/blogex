@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { TokenService } from 'src/app/shared/services/token.service';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
-import { TokenService } from 'src/app/shared/services/token.service';
+
 
 @Component({
   selector: 'app-user-articles',
@@ -18,59 +19,79 @@ export class UserArticlesComponent implements OnInit {
     }
   };
 
-  private username!: string;
-  public articles!: Article[];
-  public pageSizeOptions: number[] = [3, 5, 10];
+  username!: string;
+  public articles: Article[] = []
+  public pageSizeOptions: number[] = [1];
   public pageSize: number = 1;
   public pageNumber: number = 1;
+  temp!: number;
+  isAdmin: boolean = false;
 
-  constructor(private readonly activatedRoute: ActivatedRoute,
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
     private readonly articleSvc: ArticleService,
     private router: Router,
     public tokenSvc: TokenService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    this.getAllArticlesByUsername();
+    this.username = this.tokenSvc.getUsername() as string;
+    this.isAdmin = this.tokenSvc.isAdmin();
+    if (this.isAdmin) {
+      this.getAllArticles();
+    } else {
+      this.getAllArticlesByUsername();
+    }
   }
 
-  private getAllArticlesByUsername(){
+  private getAllArticlesByUsername() {
     this.username = this.activatedRoute.snapshot.paramMap.get('username') as string;
-
     this.articleSvc.getArticlesByUsername(this.username).subscribe(
       (data: Article[]) => {
         this.articles = data
+        if (this.articles.length > 0) {
+          let lon = this.articles[this.pageNumber - 1].longitude;
+          let lat = this.articles[this.pageNumber - 1].latitude;
+          this.getWeather(lat, lon);
+        }
       }
     )
   }
 
-  onPageChange(event: PageEvent){
-    this.pageSize = event.pageSize;
-    this.pageNumber = event.pageIndex +1;
+  private getAllArticles() {
+    this.articleSvc.getAll().subscribe({
+      next: (data: Article[]) => {
+        this.articles = data;
+      },
+      error: (err: any) => {
+        console.log(err);
+      }
+    })
   }
 
-  onEdit(post: any){
+  onEdit(post: any) {
     this.navigationExtras.state = post;
     this.router.navigate(['admin/edit'], this.navigationExtras);
   }
 
-  /* public getServerData(event?:PageEvent){
-    this.articleSvc.getAll().subscribe(
-      response =>{
-        if(response.error) {
-          // handle error
-        } else {
-          this.datasource = response.data;
-          this.pageIndex = response.pageIndex;
-          this.pageSize = response.pageSize;
-          this.length = response.length;
-        }
-      },
-      error =>{
-        // handle error
-      }
-    );
-    return event;
-  } */
 
+  onPageChange(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.pageNumber = event.pageIndex + 1;
+    let lon = this.articles[this.pageNumber - 1].longitude;
+    let lat = this.articles[this.pageNumber - 1].latitude;
+    this.getWeather(lat, lon);
+  }
+
+  // https://www.youtube.com/watch?v=vpq2FxNzgd4
+  private getWeather(lat: number | undefined, lon: number | undefined) {
+    const apiKey = 'd0047952dfbeb9ec30622425fe11ed84';
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=es`)
+      .then(resp => resp.json())
+      .then(
+        data => {
+          this.temp = parseInt(data.main.temp);
+        }
+      )
+  }
 }

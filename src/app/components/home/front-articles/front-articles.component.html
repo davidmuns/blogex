@@ -1,15 +1,15 @@
 <div class="container-articles">
-  <h1>Last Posts</h1>
+  <h1>Articles</h1>
   <!-- <ng-container *ngFor="let imagen of this.imagenes">
     <img [src]="imagen.url" alt="">
   </ng-container> -->
 
-  <section class="main-container">
-    <article *ngFor="let article of this.articles | slice: numbers1 : numbers2 ">
+  <section class="main-container shadow">
+    <article *ngFor="let article of this.articles | slice: numbers1 : numbers2 " style="background-color: #607D8B">
       <div class="example-card">
         <div>
           <a (click)="onClick(article.id)">
-            <h3>{{ article.title }}</h3>
+            <h3 style="color: rgba(255, 255, 255);">{{ article.title }}</h3>
           </a>
         </div>
         <a (click)="onClick(article.id)">
@@ -20,7 +20,7 @@
           <!-- <mat-icon routerLink="/blog/{{ article.usuario.nombreUsuario }}" style="cursor: pointer;"
             matTooltip="Blog {{ article.usuario.nombreUsuario }}">perm_identity
           </mat-icon> -->
-          <p>Author: &nbsp;<span routerLink="/blog/{{ article.usuario.nombreUsuario }}">{{ article.usuario.nombreUsuario
+          <p style="color: rgba(255, 255, 255);">Author: &nbsp;<span routerLink="/blog/{{ article.usuario.nombreUsuario }}">{{ article.usuario.nombreUsuario
               }}</span></p>
         </div>
         <!--  <mat-card-actions>

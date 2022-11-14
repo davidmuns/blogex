@@ -9,30 +9,29 @@
 }
 
 // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
-.main-container {
-    padding: 20px;
-    // border: 10px solid gray;
-    // background-color: rgb(126, 234, 253);
-    height: auto;
+.container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    
+    width: 100%;
+    border-radius: 1%;
+    height: auto;
+
+    @media(max-width: 565px){
+        width: 95%;
+    }
+
 }
-.main-container{
+.container{
     //margin-top: 600px;
-    margin-bottom: 133px;;
+    margin-bottom: 50px;;
 }
-.main-container>div {
-    margin: 10px;
-    padding: 20px;
+.container>div {
+    margin: 20px;
+    padding: 5px;
 }
 
 img {
     height: 200px;
 }
-
-// input[type=file]{
-//     background-color: gray;
-//     font-size: 10px;
-    
-// }

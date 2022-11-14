@@ -1,11 +1,17 @@
-<ng-container *ngIf="articles">
-  <h2>The Blog of {{ articles[0].usuario.nombreUsuario }}
-  <div id="linkToHome" class="animate__animated animate__fadeInRight" routerLink="/list">BlogEx.com</div>
+<ng-container *ngIf="this.articles.length > 0; else noArticles">
+  <h2 *ngIf="this.tokenSvc.isAdmin(); else noAdmin">The Blog of {{ this.username }}
+    <div id="linkToHome" class="animate__animated animate__fadeInRight" routerLink="/list">BlogEx.com</div>
   </h2>
+  <ng-template #noAdmin>
+    <h2>The Blog of {{ this.articles[0].usuario.nombreUsuario }}
+      <div id="linkToHome" class="animate__animated animate__fadeInRight" routerLink="/list">BlogEx.com</div>
+    </h2>
+  </ng-template>
+  
   <div *ngFor="let article of this.articles | paginate:pageSize:pageNumber">
 
-    <mat-paginator [length]="articles.length" [pageSize]="pageSize" 
-      aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+    <mat-paginator [length]="articles.length" [pageSize]="pageSize" aria-label="Select page" showFirstLastButtons
+      (page)="onPageChange($event)">
     </mat-paginator>
 
     <div class="example-card">
@@ -24,8 +30,10 @@
       <mat-card-content>
         <p id="footerImg">{{ article.alt1 }}</p>
         <div class="autor">
-          <button *ngIf="article.usuario.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent" 
-            id="editAutor" (click)="onEdit(article)"><mat-icon>edit</mat-icon>&nbsp;Edit article</button>
+          <button *ngIf="article.usuario.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent"
+            id="editAutor" (click)="onEdit(article)">
+            <mat-icon>edit</mat-icon>&nbsp;Edit article
+          </button>
         </div>
         <p>{{ article.text1 }}</p>
       </mat-card-content>
@@ -42,14 +50,44 @@
           (click)="onEdit(article)">
           <mat-icon>article</mat-icon>
         </button>
-
         <button mat-button (click)="onOpenGallery(article.id)" matTooltip="gallery view">
           <mat-icon>image</mat-icon>
         </button> -->
       </mat-card-actions>
     </div>
   </div>
-  <mat-paginator [length]="articles.length" [pageSize]="pageSize" 
-    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+  <mat-paginator [length]="articles.length" [pageSize]="pageSize" aria-label="Select page" showFirstLastButtons
+    (page)="onPageChange($event)">
   </mat-paginator>
 </ng-container>
+
+<ng-template #noArticles>
+  <h2>The Blog of {{ this.tokenSvc.getUsername()}}</h2>
+  <mat-icon class="animate__animated animate__fadeInLeft" routerLink="/">home</mat-icon>
+  <div *ngIf="this.tokenSvc.isLogged(); else notLogged" id="linkToHome"
+    class="animate__animated animate__fadeInRight" routerLink="/list">My Images</div>
+  <ng-template #notLogged>
+    <div id="linkToHome" class="animate__animated animate__fadeInRight" (click)="openDialog()">My Images</div>
+  </ng-template>
+  <div>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>No articles</mat-card-title>
+      </mat-card-header>
+      <div class="imageMarc">
+        <img mat-card-image src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg"
+          alt="blogex-logo">
+      </div>
+      <mat-card-content>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button matTooltip="new article" matTooltipPosition="left" routerLink="/admin/new">
+          <mat-icon style="color: rgba(255, 255, 255);">article</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</ng-template>
+
+<app-footer></app-footer>
