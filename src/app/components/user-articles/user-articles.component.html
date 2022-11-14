@@ -30,9 +30,10 @@
       <mat-card-content>
         <p id="footerImg">{{ article.alt1 }}</p>
         <div class="autor">
-          <button *ngIf="article.usuario.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent"
+          <button *ngIf="this.tokenSvc.isLogged()" mat-stroked-button color="accent"
             id="editAutor" (click)="onEdit(article)">
-            <mat-icon>edit</mat-icon>&nbsp;Edit article
+            <!-- <mat-icon>edit</mat-icon> -->
+             Edit article 
           </button>
         </div>
         <p>{{ article.text1 }}</p>
