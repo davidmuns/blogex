@@ -9,10 +9,6 @@
 --warnOrange: #E64A19;
 }
 
-html, body { 
-    height: 100%;  
-    overflow-x: hidden;
-}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .leaflet-popup{
@@ -59,10 +55,5 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
     .mat-toolbar-row{
         padding: 0px 4px 0px 2px !important;
-    }
-}
-@media(max-width: 600px){
-    .example-card{
-        width:100% !important;
     }
 }

@@ -33,10 +33,13 @@ h2{
     }
 }
 .mat-paginator{
-    margin: -90px 0px 30px;
+    margin: -80px 0px 40px;
     @media(max-width:600px){
         margin: -70px 0px 30px;
     }
+}
+.mat-card-header-text{
+    margin:0px;
 }
 .example-card{
     width:78%;
@@ -44,11 +47,17 @@ h2{
     background-color: rgba(47,47,47,1);
     color:white;
     padding: 0px;
-    mat-card-title{
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 1px 6px #888888;
+    @media(max-width: 600px){    
+        width:100%;
+    }
+    #title-post{
         font-size: 1.6rem;
         font-family: 'Libre Baskerville', serif;
-        padding: 10px 0px;
+        padding: 10px 10px 20px 15px;
         line-height: 2rem;
+        height: auto;
     }
     .imageMarc{
         border-top: 2px solid white;
@@ -68,6 +77,25 @@ h2{
     } 
 }
 mat-card-content{
+    .autor{
+        padding: 20px 15px 0px;
+        display: flex;
+        flex-direction: row;
+        #autorLink{
+          font-size: 1rem;
+          display: flex;
+          align-items: center;
+          span{
+            font-size: 1.1rem;
+            font-family: 'Libre Baskerville', serif;
+            text-transform: capitalize;
+            cursor: pointer;
+          }
+        }
+        #editAutor{
+          padding: 2px 5px;
+        }
+    }
     p{
     font-size: 1.1rem;
     padding:30px 15px;

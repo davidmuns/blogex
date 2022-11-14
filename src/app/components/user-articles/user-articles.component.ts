@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute, NavigationExtras } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
+import { TokenService } from 'src/app/shared/services/token.service';
 
 @Component({
   selector: 'app-user-articles',
@@ -24,7 +25,9 @@ export class UserArticlesComponent implements OnInit {
   public pageNumber: number = 1;
 
   constructor(private readonly activatedRoute: ActivatedRoute,
-    private readonly articleSvc: ArticleService
+    private readonly articleSvc: ArticleService,
+    private router: Router,
+    public tokenSvc: TokenService
     ) { }
 
   ngOnInit(): void {
@@ -44,6 +47,11 @@ export class UserArticlesComponent implements OnInit {
   onPageChange(event: PageEvent){
     this.pageSize = event.pageSize;
     this.pageNumber = event.pageIndex +1;
+  }
+
+  onEdit(post: any){
+    this.navigationExtras.state = post;
+    this.router.navigate(['admin/edit'], this.navigationExtras);
   }
 
   /* public getServerData(event?:PageEvent){
