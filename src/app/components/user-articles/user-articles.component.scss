@@ -69,7 +69,8 @@ mat-icon:hover {
     margin:0px;
 }
 .example-card{
-    width:78%;
+    //width:78%;
+    max-width: 1000px;
     margin:-50px auto 100px;
     background-color: rgba(47,47,47,1);
     color:white;

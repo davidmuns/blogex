@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
-  loginForm!: FormGroup;
+  resetForm!: FormGroup;
   hide: boolean = true;
   tokenPassword!: string;
   user!: User | null | undefined;
@@ -34,7 +34,7 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   private initform(): void {
-    this.loginForm = this.fb.group({
+    this.resetForm = this.fb.group({
       newPassword: ['', Validators.required],
       confirmPassword: ['', Validators.required],
     })
@@ -53,7 +53,8 @@ export class ResetPasswordComponent implements OnInit {
         this.toastr.error(err.error.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        setTimeout(() => {  window.location.reload(); }, 3000);
+        this.resetForm.reset();
+        // setTimeout(() => {  window.location.reload(); }, 3000);
       }
     });
   }

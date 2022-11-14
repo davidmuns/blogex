@@ -55,7 +55,10 @@ export class GalleryUserComponent implements OnInit {
     fr.onload = (e: any) => {
       this.miniatura = e.target.result;
     }
-    fr.readAsDataURL(this.image);
+    if(this.image != null){
+      fr.readAsDataURL(this.image);
+    }
+    
   }
 
   onUpload() {

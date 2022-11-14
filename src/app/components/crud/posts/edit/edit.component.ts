@@ -30,7 +30,7 @@ export class EditComponent implements OnInit {
   public buttonTag: string = "One More";
   public article: any = null;
   public image!: File;
-  public imageOriginal: any;
+  //public imageOriginal: any;
   public miniatura!: File;
   public articleHtml!: boolean;
   public innerWidth: any;
@@ -49,10 +49,10 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     //Check if there is some image and if not place it
-    this.image = this.imageOriginal;
-    if (this.imageOriginal !== '') {
-      this.imageOriginal = this.article.img1;
-    }
+    // this.image = this.imageOriginal;
+    // if (this.imageOriginal !== '') {
+    //   this.imageOriginal = this.article.img1;
+    // }
     //If the post is not empty, fill the fields of the form
     if (typeof this.article !== 'undefined') {
       this.editPostForm.patchValue(this.article);
@@ -149,7 +149,10 @@ export class EditComponent implements OnInit {
     fr.onload = (e: any) => {
       this.miniatura = e.target.result;
     }
-    fr.readAsDataURL(this.image);
+    if(this.image != null){
+      fr.readAsDataURL(this.image);
+    }
+    
   }
 
 }
