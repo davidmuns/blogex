@@ -15,7 +15,7 @@
       <div class="autor">
         <div id="autorLink">Created by:&nbsp;<span routerLink="/blog/{{ post?.usuario?.nombreUsuario }}">
             {{ post?.usuario?.nombreUsuario }}</span></div>&nbsp;&nbsp;&nbsp;
-        <button *ngIf="this.tokenSvc.isLogged()" mat-stroked-button color="accent" id="editAutor"
+        <button *ngIf="post?.usuario?.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent" id="editAutor"
           (click)="onEdit(post)">
           <mat-icon>edit</mat-icon> Edit article 
         </button>
