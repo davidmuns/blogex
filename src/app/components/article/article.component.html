@@ -13,10 +13,12 @@
       <mat-card-content>
         <p id="footerImg">{{ post?.alt1 }}</p>
         <div class="autor">
-          <div id="autorLink">Created by:&nbsp;<span routerLink="/blog/{{ post?.usuario?.nombreUsuario }}"> 
-          {{ post?.usuario?.nombreUsuario }}</span></div>&nbsp;&nbsp;&nbsp;
-          <button *ngIf="post?.usuario?.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent" 
-          id="editAutor" (click)="onEdit(post)"><mat-icon>edit</mat-icon>&nbsp;Edit article</button>
+          <div id="autorLink">Created by:&nbsp;<span routerLink="/blog/{{ post?.usuario?.nombreUsuario }}">
+              {{ post?.usuario?.nombreUsuario }}</span></div>&nbsp;&nbsp;&nbsp;
+          <button *ngIf="post?.usuario?.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent"
+            id="editAutor" (click)="onEdit(post)">
+            <mat-icon>edit</mat-icon>&nbsp;Edit article
+          </button>
         </div>
         <p>
           {{ post?.text1 }}
