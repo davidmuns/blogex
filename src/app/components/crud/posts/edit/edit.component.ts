@@ -59,7 +59,13 @@ export class EditComponent implements OnInit {
     } else {
       this.router.navigate(['admin/new']);
     }
+    
     this.innerWidth = window.innerWidth;
+    if(this.innerWidth > 420){
+      this.articleHtml = true;
+    }else{
+      this.articleHtml = false;
+    }
   }
 
   //Reload the page to bring more forms

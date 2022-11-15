@@ -32,8 +32,7 @@
         <div class="autor">
           <button *ngIf="article.usuario.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent"
             id="editAutor" (click)="onEdit(article)">
-            <!-- <mat-icon>edit</mat-icon> -->
-             Edit article 
+            <mat-icon>edit</mat-icon> Edit article 
           </button>
         </div>
         <p>{{ article.text1 }}</p>

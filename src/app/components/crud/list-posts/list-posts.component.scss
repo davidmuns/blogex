@@ -6,17 +6,20 @@
     left: 40%;
     display: block;
   }
-  @media(max-width: 400px){
+  @media(max-width: 450px){
+    position: absolute;
+    top:14px;
+    left: 38%;
+    display: block;
+  }
+  @media(max-width: 420px){
     position: absolute;
     top: 14px;
     left: 51%;
     display: block;
   }
-  @media(max-width: 450px){
-    position: absolute;
-    top:14px;
-    left: 36%;
-    display: block;
+  span{
+    padding-bottom: 2px;
   }
 }
 .container{
@@ -27,9 +30,21 @@
   margin: 0px;
   @media(max-width: 800px){
     left:0px;
+    min-width:90%;
+    background-color: white;
+    margin: 0px 5%;
+  }
+  @media(max-width: 420px){
+    left:0px;
     min-width:100%;
     background-color: white;
     margin: 0px;
+    td.mat-cell:first-of-type{
+      padding-left: 10px;
+    }
+    td.mat-cell:last-of-type{
+      padding-right: 1px;
+    }
   }
 }
 .inside{

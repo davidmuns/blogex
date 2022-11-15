@@ -50,6 +50,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    //const markers = L.markerClusterGroup();
+
     this.articleSvc.getAll().subscribe(
       (res: Article[]) => {
         res.map(point => {

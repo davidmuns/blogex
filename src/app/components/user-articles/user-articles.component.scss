@@ -65,9 +65,7 @@ mat-icon:hover {
         margin: -70px 0px 30px;
     }
 }
-.mat-card-header-text{
-    margin:0px;
-}
+
 .example-card{
     //width:78%;
     max-width: 1000px;
@@ -104,6 +102,7 @@ mat-icon:hover {
         margin: 0px;
     } 
 }
+
 mat-card-content{
     .autor{
         padding: 20px 15px 0px;
@@ -121,7 +120,18 @@ mat-card-content{
           }
         }
         #editAutor{
-          padding: 2px 5px;
+            width: 107px;
+            padding: 2px 5px;
+            text-align: end;
+            mat-icon{
+                position: absolute;
+                top:8px;
+                left:5px;
+                z-index: 0;
+            }
+            mat-icon:hover{
+                color: #ff4081;
+            }
         }
     }
     p{
