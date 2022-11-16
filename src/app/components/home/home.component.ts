@@ -1,5 +1,6 @@
 import { Component, HostListener, AfterViewInit, ViewChild, ElementRef, Renderer2, Input, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { Map, marker, tileLayer } from 'leaflet';
+import { Map, marker, MarkerClusterGroup, tileLayer } from 'leaflet';
+import  'leaflet.markercluster';
 import { Router } from '@angular/router';
 import { ArticleService } from './../../shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
@@ -50,13 +51,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    //const markers = L.markerClusterGroup();
+    const markers1 = new MarkerClusterGroup();
+    const markers2 = new MarkerClusterGroup();
+    const markers3 = new MarkerClusterGroup();
 
     this.articleSvc.getAll().subscribe(
       (res: Article[]) => {
         res.map(point => {
           this.postActual = point;
-          marker([point.latitude, point.longitude]).addTo(map).bindPopup(`
+          marker([point.latitude, point.longitude]).addTo(markers1).bindPopup(`
         <a href="https://blogex.netlify.app/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
         <a href="https://blogex.netlify.app/article/${point.id}"><img src="${point.imagenPortada}"></a>
@@ -66,6 +69,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
           ...res.map(point => [point.latitude, point.longitude] as [number, number])
         ]); */
       });
+
+      markers1.addTo(map);
 
     //Map2 code
     tileLayer.wms("http://ows.mundialis.de/services/service?", {
@@ -80,7 +85,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       (res: Article[]) => {
         res.map(point => {
           this.postActual = point;
-          marker([point.latitude, point.longitude]).addTo(map2).bindPopup(`
+          marker([point.latitude, point.longitude]).addTo(markers2).bindPopup(`
         <a href="https://blogex.netlify.app/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
         <a href="https://blogex.netlify.app/article/${point.id}"><img src="${point.imagenPortada}"></a>
@@ -90,6 +95,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
           ...res.map(point => [point.latitude, point.longitude] as [number, number])
         ]); */
       });
+      markers2.addTo(map2);
 
     //Map3 code
     tileLayer.wms("http://ows.mundialis.de/services/service?", {
@@ -104,7 +110,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
       (res: Article[]) => {
         res.map(point => {
           this.postActual = point;
-          marker([point.latitude, point.longitude]).addTo(map3).bindPopup(`
+          marker([point.latitude, point.longitude]).addTo(markers3).bindPopup(`
         <a href="https://blogex.netlify.app/article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
         <a href="https://blogex.netlify.app/article/${point.id}"><img src="${point.imagenPortada}" class="imgMap"></a>
@@ -114,6 +120,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
           ...res.map(point => [point.latitude, point.longitude] as [number, number])
         ]);
       });
+      markers3.addTo(map3);
   }
 
   //Click to map and enable zoom
