@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from './../../../../shared/services/article.service';
 import { TokenService } from './../../../../shared/services/token.service';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Article } from 'src/app/shared/models/article';
 
@@ -14,16 +14,6 @@ import { Article } from 'src/app/shared/models/article';
   styleUrls: ['./new.component.scss']
 })
 export class NewComponent implements OnInit {
-
-  /* @HostListener('document:scroll', ['$event'])
-  handleKey(event: any): void {
-    this.onScroll()
-  }
-  onScroll() {
-    if(window.scrollY > 1){
-
-    }
-  } */
 
   image!: File;
   images: File[] = [];

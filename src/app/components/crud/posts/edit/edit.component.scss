@@ -6,7 +6,6 @@ mat-card{
     padding:0px;
     @media(max-width:800px){
         width:90%;
-        max-width: 540px;
         margin: 0px 5%;
     }
 }
@@ -29,7 +28,7 @@ mat-card-content{
 .input-width{
     width:100%;
 }
-.example-input {
+.input-coordinates {
     @media(max-width: 500px){
         width: 170px;
     }
@@ -79,6 +78,10 @@ mat-card-content{
     margin:10px 35%;
     background-color: var(--primary);
     color: white;
+    @media(max-width: 350px){
+        margin:10px 5%;
+        width:90%;
+    }
 }
 #moreButton{
     margin-top: 20px;;
@@ -100,14 +103,11 @@ form h3{
     @media(max-width: 400px){
         left: 76%;
     }
+    span{
+        padding-bottom: 2px;
+    }
 }
 .error{
     color:red;
     font-size: .8rem;
-}
-
-.input-coordinates {
-    @media(max-width: 500px){
-        width: 130px;
-    }
 }

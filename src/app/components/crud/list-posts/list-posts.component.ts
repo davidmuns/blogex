@@ -67,6 +67,11 @@ export class ListPostsComponent implements OnInit {
       this.getAllArticlesByUsername();
     }
 
+    if(this.innerWidth > 420){
+      this.articleHtml = true;
+    }else{
+      this.articleHtml = false;
+    }
   }
 
   private getAllArticles(){
@@ -115,7 +120,7 @@ export class ListPostsComponent implements OnInit {
   toList(){
     const listPosts = this.asList.nativeElement;
     this.showHidePosts = !this.showHidePosts;
-    this.articleSvc.fadeInOut = !this.articleSvc.fadeInOut;
+    //this.articleSvc.fadeInOut = !this.articleSvc.fadeInOut;
     if(this.showHidePosts == true){
       this.renderer2.setStyle(listPosts, 'height', '1200px');
       this.renderer2.setStyle(listPosts, 'transition', 'all 1s')
