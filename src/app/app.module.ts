@@ -38,6 +38,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { GalleryUserComponent } from './shared/GalleryUser/GalleryUser.component';
 import { UserArticlesComponent } from './components/user-articles/user-articles.component';
 import { PaginatePipe } from './shared/pipes/paginate.pipe';
+import { AboutComponent } from './components/home/about/about.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { PaginatePipe } from './shared/pipes/paginate.pipe';
     UserArticlesComponent,
     ArticleGalleryComponent,
     CaptionComponent,
-    PaginatePipe
+    PaginatePipe,
+    AboutComponent
   ],
   imports: [
 

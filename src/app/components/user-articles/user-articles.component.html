@@ -1,10 +1,10 @@
 <ng-container *ngIf="this.articles.length > 0; else noArticles">
   <h2 *ngIf="this.tokenSvc.isAdmin(); else noAdmin">The Blog of {{ this.username }}
-    <div id="linkToHome" class="animate__animated animate__fadeInRight" routerLink="/list">BlogEx.com</div>
+    <div id="linkToHome" routerLink="/list">BlogEx.com</div>
   </h2>
   <ng-template #noAdmin>
     <h2>The Blog of {{ this.articles[0].usuario.nombreUsuario }}
-      <div id="linkToHome" class="animate__animated animate__fadeInRight" routerLink="/list">BlogEx.com</div>
+      <div id="linkToHome" routerLink="/list">BlogEx.com</div><!-- class="animate__animated animate__fadeInRight" -->
     </h2>
   </ng-template>
   

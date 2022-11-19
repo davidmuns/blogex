@@ -1,0 +1,20 @@
+.container-about{
+    position: relative;
+    top: 0px;
+    left: 0px;
+    margin-top: 664px;
+    z-index: 1;
+    width:100%;
+    background: white;
+    h2{
+        padding: 40px 0px;
+        text-align: center;
+        font-size: 2.4rem;
+    }
+    p{
+        width: 44%;
+        padding: 0px 3%;
+        text-align: start;
+        font-size: 1.4rem;
+    }
+}
