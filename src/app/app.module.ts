@@ -1,9 +1,10 @@
+import { SwitchLanguageComponent } from './shared/switch-language/switch-language.component';
 import { CaptionComponent } from './shared/GalleryUser/caption/caption.component';
 import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
 import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -40,6 +41,13 @@ import { UserArticlesComponent } from './components/user-articles/user-articles.
 import { PaginatePipe } from './shared/pipes/paginate.pipe';
 
 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+// MATERIAL
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +55,7 @@ import { PaginatePipe } from './shared/pipes/paginate.pipe';
     HeaderComponent,
     LoginComponent,
     SignupComponent,
+    SwitchLanguageComponent,
     EmailPasswordComponent,
     ResetPasswordComponent,
     SearchComponent,
@@ -63,17 +72,29 @@ import { PaginatePipe } from './shared/pipes/paginate.pipe';
     PaginatePipe
   ],
   imports: [
-
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatButtonToggleModule,
     ReactiveFormsModule,
     HttpClientModule,
     CrudModule,
     ToastrModule.forRoot(), // ToastrModule added
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// AOT compilation support
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

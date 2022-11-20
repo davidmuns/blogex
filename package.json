@@ -20,6 +20,8 @@
     "@angular/platform-browser": "^14.0.0",
     "@angular/platform-browser-dynamic": "^14.0.0",
     "@angular/router": "^14.0.0",
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
     "leaflet": "^1.9.2",
     "leaflet.markercluster": "^1.5.3",
     "ngx-toastr": "^15.1.0",
