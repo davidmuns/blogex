@@ -5,7 +5,8 @@
       <p>This action cannot be undone!</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button (click)="deleteArticle()">Yes, delete!</button>
+      <button *ngIf="this.data.option === 'deleteArticle'" mat-button (click)="onDeleteArticle()">Delete article</button>
+      <button *ngIf="this.data.option === 'deleteImage'" mat-button (click)="onDeleteImage()">Delete image</button>
       <button mat-button (click)="cancel()">Cancel</button>
     </mat-card-actions>
 </div>
