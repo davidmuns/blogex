@@ -35,7 +35,7 @@
     <app-search></app-search>
     <!-- <h1 id="title">Blog de rutes</h1> -->
     <div id="logReg" *ngIf="this.tokenService.isLogged() === false; else logged">
-      <a (click)="openDialog()">{{ 'Login' | translate }} &nbsp;</a>
+      <a (click)="openDialog()">{{ 'Login' | translate }}</a>
       <!-- <span>-&nbsp;&nbsp;</span>
       <a (click)="signupDialog()">SIGN UP</a> -->
     </div>

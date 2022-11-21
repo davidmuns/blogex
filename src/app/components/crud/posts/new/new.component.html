@@ -8,7 +8,7 @@
           <input matInput type="text" id="title" formControlName="title" placeholder="{{ 'Title' | translate }}">
           <div *ngIf="newPostForm.get('title')?.touched && newPostForm.get('title')?.errors?.['maxlength']"
             class="error">
-            Title too large</div>
+            {{ 'TitleLength' | translate }}</div>
         </mat-form-field>
       </p>
 

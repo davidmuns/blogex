@@ -10,17 +10,23 @@
     "UsernameOrEmail": "Username or email",
     "Username": "Username",
     "Password": "Enter your password",
+    "ResetPass": "Reset password",
+    "NewPass": "New password",
+    "ConfirmPass": "Confirm password",
+    "ConfirmChangePass": "Change password", 
+    "ChangePass": "Changing password for",
     "Name": "Name",
     "Email": "Email",
     "Text": "Text",
     "Title": "Tittle",
+    "TitleLength": "Title too long",
     "Caption": "Caption",
     "Coordinates": "Coordinates",
     "Longitude": "Longitude",
     "Latitude": "Latitude",
     "Article": "Article",
     "Articles": "Articles",
-    "Images": "Images",
+    "Images": "Images of",
     "Gallery": "Galeria",
     "Show": "Show",
     "Hide": "Hide",
@@ -44,7 +50,6 @@
     "SearchArticle": "Search article",
     "Author": "Author",
     "CreatedBy": "Created by",
-    "ClickMap": "click once to zoom in | click twice to exit"
-
-
+    "ClickMap": "click once to zoom in, twice to exit"
+   
 }
