@@ -1,11 +1,11 @@
 <mat-card #newArticle class="example-card">
-  <mat-card-title>New Article</mat-card-title>
+  <mat-card-title>{{ 'NewArticle' | translate }}</mat-card-title>
   <mat-card-content>
     <form [formGroup]="newPostForm" (ngSubmit)="onSubmit(newPostForm.value)">
       <p>
         <mat-form-field class="input-width" appearance="fill">
-          <mat-label>Title</mat-label>
-          <input matInput type="text" id="title" formControlName="title" placeholder="The title of your article">
+          <mat-label>{{ 'Title' | translate }}</mat-label>
+          <input matInput type="text" id="title" formControlName="title" placeholder="{{ 'Title' | translate }}">
           <div *ngIf="newPostForm.get('title')?.touched && newPostForm.get('title')?.errors?.['maxlength']"
             class="error">
             Title too large</div>
@@ -14,7 +14,7 @@
 
       <div *ngFor="let view of viewForm">
         <div class="containerFile">
-          <label>Cover image (max 2MB):</label><br>
+          <label>{{ 'CoverImage' | translate }} (max 2MB):</label><br>
           <div *ngIf="this.image" style="margin-top: 5px;">
             <!-- <h5>Vista previa</h5> -->
             <div>
@@ -25,7 +25,7 @@
             <input type="file" class="custom-file-input" accept=".png, .jpg, .jpeg" multiple id="inputUpload"
               formControlName="img{{ view }}" (change)="handleImage($event)">
             <label class="custom-file-label" for="inputUpload">
-              <mat-icon>upload</mat-icon>&nbsp;&nbsp;Select image
+              <mat-icon>upload</mat-icon>&nbsp;&nbsp;{{ 'SelectImage' | translate }}
             </label>
           </div>
         </div>
@@ -37,39 +37,39 @@
                 </p> -->
         <p>
           <mat-form-field class="input-width" appearance="fill">
-            <mat-label>Caption</mat-label>
+            <mat-label>{{ 'Caption' | translate }}</mat-label>
             <input matInput formControlName="alt{{ view }}" placeholder="Information about the picture">
           </mat-form-field>
         </p>
         <p>
           <mat-form-field class="input-width" appearance="fill">
-            <mat-label>Text</mat-label>
+            <mat-label>{{ 'Text' | translate }}</mat-label>
             <textarea matInput id="textarea" formControlName="text{{ view }}"
-              placeholder="Some text. The content of your article"></textarea>
+              placeholder="{{ 'Text' | translate }}"></textarea>
           </mat-form-field>
         </p>
       </div>
 
-      <h3 matTooltip="Introduce the coordinates to see this route on the map" matTooltipPosition="right">Coordinates:
+      <h3 matTooltip="Introduce the coordinates to see this route on the map" matTooltipPosition="right">{{ 'Coordinates' | translate }}:
       </h3>
       <table class="example-full-width" cellspacing="0">
         <tr>
           <td>
             <mat-form-field class="input-coordinates" appearance="fill">
-              <mat-label>Latitude</mat-label>
+              <mat-label>{{ 'Latitude' | translate }}</mat-label>
               <input type="number" matInput formControlName="latitude">
             </mat-form-field>
           </td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <td>
             <mat-form-field class="input-coordinates" appearance="fill">
-              <mat-label>Longitude</mat-label>
+              <mat-label>{{ 'Longitude' | translate }}</mat-label>
               <input type="number" matInput formControlName="longitude">
             </mat-form-field>
           </td>
         </tr>
       </table>
       <!-- <button id="moreButton" mat-stroked-button color="accent" (click)="moreImgs()">{{ buttonTag }}</button> -->
-      <button id="createButton" type="submit" mat-raised-button>Publish Article</button>
+      <button id="createButton" type="submit" mat-raised-button>{{ 'PublishArticle' | translate }}</button>
     </form>
   </mat-card-content>
 </mat-card>

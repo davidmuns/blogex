@@ -4,6 +4,7 @@
     "Signup": "Signup",
     "Home": "Home",
     "Blog": "My blog",
+    "BlogOf": "The blog of",
     "MyArticles": "My articles",
     "MyImages": "My images",
     "UsernameOrEmail": "Username or email",
@@ -20,7 +21,9 @@
     "Article": "Article",
     "Articles": "Articles",
     "Images": "Images",
-    "Gallery": "Gallery",
+    "Gallery": "Galeria",
+    "Show": "Show",
+    "Hide": "Hide",
     "Create": "Create an account",
     "Forgot": "Forgot your password?",
     "SendEmail": "Send email",
@@ -28,10 +31,20 @@
     "Required": "Required",
     "TextPassword": "Enter the email address or username you use in this application. We will send you a link to reset your password.",
     "ResetPassword": "Reset password",
-    "NewArticle": "New article",
+    "New": "New",
+    "NewArticle": "New Article",
     "EditArticle": "Edit article",
     "CoverImage": "Cover image",
-    "SelectImage": "Select image"
+    "SelectImage": "Select image",
+    "ArticlesToEdit": "Articles to edit",
+    "PublishArticle": "Publish article",
+    "Filter": "Filter",
+    "Delete": "Delete",
+    "SaveChanges": "Save changes",
+    "SearchArticle": "Search article",
+    "Author": "Author",
+    "CreatedBy": "Created by",
+    "ClickMap": "click once to zoom in | click twice to exit"
 
 
 }

@@ -1,5 +1,5 @@
 <div class="container-articles">
-  <h1>Articles</h1>
+  <h1>{{ 'Articles' | translate }}</h1>
   <!-- <ng-container *ngFor="let imagen of this.imagenes">
     <img [src]="imagen.url" alt="">
   </ng-container> -->
@@ -20,7 +20,7 @@
           <!-- <mat-icon routerLink="/blog/{{ article.usuario.nombreUsuario }}" style="cursor: pointer;"
             matTooltip="Blog {{ article.usuario.nombreUsuario }}">perm_identity
           </mat-icon> -->
-          <p style="color: rgba(255, 255, 255);">Author: &nbsp;<span routerLink="/blog/{{ article.usuario.nombreUsuario }}">{{ article.usuario.nombreUsuario
+          <p style="color: rgba(255, 255, 255);">{{ 'Author' | translate }}: &nbsp;<span routerLink="/blog/{{ article.usuario.nombreUsuario }}">{{ article.usuario.nombreUsuario
               }}</span></p>
         </div>
         <!--  <mat-card-actions>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 import { CrudRoutingModule } from './crud-routing.module';
 import { CrudComponent } from './crud.component';
@@ -12,6 +13,10 @@ import { EditComponent } from './posts/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
 import { EditTempComponent } from './posts/edit-temp/edit-temp.component';
+
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 
 
 @NgModule({
@@ -29,7 +34,19 @@ import { EditTempComponent } from './posts/edit-temp/edit-temp.component';
     EditModule,
     NewModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ]
 })
 export class CrudModule { }
+
+// AOT compilation support
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

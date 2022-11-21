@@ -1,4 +1,4 @@
-<h1 style="text-align: center;">IMAGES {{ this.username }} </h1>
+<h1 style="text-align: center;">{{ 'Images' | translate }} {{ this.username }} </h1>
 
 <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
   aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
