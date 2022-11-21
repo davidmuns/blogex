@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { CaptionComponent } from './caption/caption.component';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -9,6 +10,7 @@ import { ArticleService } from './../services/article.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { DeleteComponent } from 'src/app/components/crud/delete/delete.component';
+import { LowerCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-GalleryUser',
@@ -31,6 +33,7 @@ export class GalleryUserComponent implements OnInit {
     private snack: MatSnackBar,
     private articleService: ArticleService,
     private toastrService: ToastrService,
+    private translateService: TranslateService,
     private router: Router) { }
 
   ngOnInit() {
@@ -56,10 +59,10 @@ export class GalleryUserComponent implements OnInit {
       if (this.image.size < environment.IMG_MAX_SIZE) {
         this.addImage(this.image, this.articleId);
       } else {
-        this.snack.open("Image exceeds its maximum permitted size of 2MB.", "", { duration: 5000 });
+        this.snack.open(this.translateService.instant('ImgMaximumExceed') + " 2MB", "", { duration: 5000 });
       }
     } else {
-      this.snack.open("Please select one image.", "", { duration: 5000 });
+      this.snack.open(this.translateService.instant('PleaseSelectImage'), "", { duration: 5000 });
     }
   }
 

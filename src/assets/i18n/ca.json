@@ -61,5 +61,8 @@
     "List": "Llista",
     "Of": "de",
     "NoCoincidence": "No hi ha coincidencias amb",
-    "ItemsPage": "Elements per pàgina"
+    "ItemsPage": "Elements per pàgina",
+    "FillBlanks": "Si us plau, omple els camps buits i afegeix una imatge",
+    "ImgMaximumExceed": "Imatge excedeix tamany màxim permés de",
+    "PleaseSelectImage": "Si us plau seleccionar una imatge"
 }

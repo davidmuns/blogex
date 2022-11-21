@@ -62,5 +62,8 @@
     "List": "Lista",
     "Of": "de",
     "NoCoincidence": "No hay coincidencias con",
-    "ItemsPage": "Elementos por página"
+    "ItemsPage": "Elementos por página",
+    "FillBlanks": "Por favor rellena los campos vacios e inserta una imagen",
+    "ImgMaximumExceed": "Imagen excede tamaño máximo permitido de",
+    "PleaseSelectImage": "Por favor seleccionar una imagen"
 }

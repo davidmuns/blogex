@@ -61,7 +61,10 @@
     "List": "List",
     "Of": "of",
     "NoCoincidence": "There is no coincidence with",
-    "ItemsPage": "Items per page"
+    "ItemsPage": "Items per page",
+    "FillBlanks": "Please fill in the blanks and insert image",
+    "ImgMaximumExceed": "Image exceeds its maximum permitted size of",
+    "PleaseSelectImage": "Please select an image"
 
    
 }
