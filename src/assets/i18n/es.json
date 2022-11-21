@@ -51,5 +51,16 @@
     "SearchArticle": "Buscar artículo",
     "Author": "Autor",
     "CreatedBy": "Creado por",
-    "ClickMap": "click una vez para ampliar, dos para salir"
+    "ClickMap": "click una vez para ampliar, dos para salir",
+    "Add": "Añadir",
+    "Set": "Establecer",
+    "Insert": "Insertar",
+    "Cancel": "Cancelar",
+    "Image": "Imagen",
+    "YouSure": "¿Estás seguro?",
+    "Undone": "Esta acción no se puede deshacer",
+    "List": "Lista",
+    "Of": "de",
+    "NoCoincidence": "No hay coincidencias con",
+    "ItemsPage": "Elementos por página"
 }

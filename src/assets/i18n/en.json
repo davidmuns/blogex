@@ -27,7 +27,7 @@
     "Article": "Article",
     "Articles": "Articles",
     "Images": "Images of",
-    "Gallery": "Galeria",
+    "Gallery": "Gallery",
     "Show": "Show",
     "Hide": "Hide",
     "Create": "Create an account",
@@ -50,6 +50,18 @@
     "SearchArticle": "Search article",
     "Author": "Author",
     "CreatedBy": "Created by",
-    "ClickMap": "click once to zoom in, twice to exit"
+    "ClickMap": "click once to zoom in, twice to exit",
+    "Add": "Add",
+    "Set": "Set",
+    "Insert": "Insert",
+    "Cancel": "Cancel",
+    "Image": "Image",
+    "YouSure": "Are you sure?",
+    "Undone": "This action cannot be undone",
+    "List": "List",
+    "Of": "of",
+    "NoCoincidence": "There is no coincidence with",
+    "ItemsPage": "Items per page"
+
    
 }
