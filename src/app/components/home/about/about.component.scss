@@ -1,20 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 .container-about{
     position: relative;
     top: 0px;
     left: 0px;
     margin-top: 664px;
-    z-index: 1;
     width:100%;
     background: white;
+    display: flex;
+    flex-wrap: wrap;
     h2{
-        padding: 40px 0px;
+        padding: 30px 0px;
+        margin: 0px;
         text-align: center;
-        font-size: 2.4rem;
+        font-size: 2.6rem;
+        width: 100%;
+        font-family: 'Libre Baskerville', serif;
+        font-weight: 500;
     }
-    p{
-        width: 44%;
-        padding: 0px 3%;
-        text-align: start;
-        font-size: 1.4rem;
+    #text{
+        width: 46%;
+        padding: 50px 4% 10px 0%;
+        margin-left: 4%;
+        border-top: 1px solid #607D8B;
+        p{
+            text-align: start;
+            font-size: 1.6rem;
+            line-height: 2.4rem;
+        }
+        div{
+            width:200px;
+            margin: 60px auto 0px;
+            display: flex;
+            justify-content: space-between;
+            .color-button{
+                background: var(--accent);
+                color: #69F0AE;
+                
+            }
+            .color-button:hover{
+                color: ivory;
+            }
+        }
+        .color-button-blog{
+            background: var(--accent);
+            color: #69F0AE;
+            margin: 60px 40% 0px;
+            
+        }
+        .color-button:hover{
+            color: ivory;
+        }
+        
+    }
+    
+    #sky{
+        background: url('../../../../assets/clouds.jpg');
+        background-size: cover;  
+        width: 50%;
+        height: 300px;
+    }
+}
+@media(max-width:900px){
+    .container-about{
+        margin-top: 540px;
+        h2{
+            font-size: 1.8rem;
+        }
+        #text{
+            padding-top: 20px;
+            p{
+                font-size: 1.2rem;
+                @media(max-width: 520px){
+                    font-size: 1.1rem;
+                }
+            }
+            div{
+                margin-top: 30px;
+            }
+            .color-button-blog{
+                margin: 20px 40% 0px;
+            }
+        }
+        
+    }
+}
+@media(max-width:500px){
+    .container-about{
+        margin-top: 300px;
+        height: 310px;
+        h2{
+            font-size: 1.2rem;
+            padding: 10px 0px;
+        }
+        #text{
+            padding: 30px 0px 10px;
+            width: 96%;
+            margin: 0px 2%;
+            p{
+                font-size: 1rem;
+            }
+            .color-button-blog{
+                margin: 5px 40% 0px;
+            }
+        }     
+        #sky{
+            width: 0px;
+        }
+    }
+}
+@media(max-width: 350px){
+    .container-about{
+        height: auto;
     }
 }

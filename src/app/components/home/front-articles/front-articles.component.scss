@@ -5,7 +5,7 @@
     left: 0px;
     margin-bottom: 664px;
     z-index: 1;
-    padding: 120px 20px;
+    padding: 20px 20px 140px;
 }
 h1{
     padding-top: 10px;
@@ -89,13 +89,13 @@ h1{
 }
 @media(max-width: 900px){
     .container-articles{
-        margin-top: 540px;
+        margin-top: 0px;
     }
     .main-container{
         width: 100%;
         padding: 20px 0px;
         margin: 0px;
-        height: 1100px;
+        height: 740px;
         overflow-y: hidden;
         article{
             width: 46%;
@@ -106,9 +106,10 @@ h1{
 @media(max-width: 500px){
     .container-articles{
         padding: 22px;
-        margin-top: 300px;
+        margin-top: 0px;
+        margin-bottom: 0px;
         @media(max-width: 350px){
-            margin-top: 200px;
+            //margin-top: 200px;
             padding: 22px 0px;
         }
     }

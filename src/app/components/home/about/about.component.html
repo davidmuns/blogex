@@ -1,5 +1,17 @@
 <div class="container-about">
     <h2>Discover places around the world</h2>
-    <p>Here you can find articles about interesting places. Subscribe and create your personal blog. 
-        Make the people discover places you know </p>
+    <div id="text">
+        <p>Here you can find articles about interesting places. Subscribe and create your personal blog. 
+            Make the people discover places you know </p>
+        <div *ngIf="this.tokenSvc.isLogged() === false; else logged">
+            <button mat-raised-button class="color-button" (click)="openDialog()">LOGIN</button>
+            <button mat-raised-button class="color-button" (click)="signupDialog()">SIGNUP</button>
+        </div>
+        <ng-template #logged>
+            <button mat-raised-button class="color-button-blog" routerLink="/blog/{{ this.tokenSvc.getUsername() }}">Blog</button>
+        </ng-template>
+    </div>
+    <div id="sky"></div>
+
+    
 </div>
