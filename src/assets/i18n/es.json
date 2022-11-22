@@ -69,5 +69,21 @@
     "about": {
         "title": "Descubre lugares del mundo",
         "text": "Aquí puedes encontrar artículos sobre lugares interesantes. Suscríbete y crea tu blog personal. Haz que la gente descubra los lugares que conoces."
+    },
+    "auth": {
+        "login": {
+            "fill-blanks": "Por favor, rellena los campos vacios"
+        },
+        "signup": {
+            "fill-blanks": "Por favor, rellena los campos vacios",
+            "pass-length": "La contraseña debe tener un mínimo de 6 caracteres"
+        },
+        "email-send": {
+            "fill-blanks": "Por favor, introduce un nombre de usuario o un email"
+        },
+        "reset-pass": {
+            "fill-blanks": "Por favor, introduce un nombre de usuario o un email",
+            "pass-length": "La contraseña debe tener un mínimo de 6 caracteres"
+        }
     }
 }

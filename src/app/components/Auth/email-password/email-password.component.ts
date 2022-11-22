@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { EmailPasswordService } from 'src/app/shared/services/email-password.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-email-password',
@@ -22,6 +23,7 @@ export class EmailPasswordComponent implements OnInit {
     private readonly dialog: MatDialog,
     private readonly fb: FormBuilder,
     private toastr: ToastrService,
+    private translateService: TranslateService,
     private router: Router
   ) { }
 
@@ -39,7 +41,7 @@ export class EmailPasswordComponent implements OnInit {
     if(this.emailForm.valid){
       this.sendEmail(email);
     }else{
-      this.toastr.error('Please, enter an email or username.', '', {
+      this.toastr.error(this.translateService.instant('auth.email-send.fill-blanks'), '', {
         timeOut: 3000, positionClass: 'toast-top-center'
       });
     }

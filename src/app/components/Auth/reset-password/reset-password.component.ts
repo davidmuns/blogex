@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { User } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { EmailPasswordService } from 'src/app/shared/services/email-password.service';
@@ -24,6 +25,7 @@ export class ResetPasswordComponent implements OnInit {
     private readonly router: Router,
     private toastr: ToastrService,
     private activatedRoute: ActivatedRoute,
+    private translateService: TranslateService,
     private authService: AuthService
   ) { }
 
@@ -35,34 +37,43 @@ export class ResetPasswordComponent implements OnInit {
 
   private initform(): void {
     this.resetForm = this.fb.group({
-      newPassword: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      newPassword: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(6)]]
     })
   }
-  
-  onSubmit(resetPassword: ResetPassword) {   
-    resetPassword.tokenPassword = this.tokenPassword;
-    this.emailPasswordService.resetPassword(resetPassword).subscribe({
-      next: data => {
-        this.toastr.success(data.mensaje + ' Redirecting to home...', '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        setTimeout(() => { this.router.navigate(['']); }, 3000);
-      },
-      error: err => {
-        this.toastr.error(err.error.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.resetForm.reset();
-        // setTimeout(() => {  window.location.reload(); }, 3000);
-      }
-    });
+
+  onSubmit(resetPassword: ResetPassword) {
+    if (this.resetForm.valid) {
+
+      resetPassword.tokenPassword = this.tokenPassword;
+      this.emailPasswordService.resetPassword(resetPassword).subscribe({
+        next: data => {
+          this.toastr.success(data.mensaje + ' Redirecting to home...', '', {
+            timeOut: 3000, positionClass: 'toast-top-center'
+          });
+          setTimeout(() => { this.router.navigate(['']); }, 3000);
+        },
+        error: err => {
+          this.toastr.error(err.error.mensaje, '', {
+            timeOut: 3000, positionClass: 'toast-top-center'
+          });
+          this.resetForm.reset();
+          // setTimeout(() => {  window.location.reload(); }, 3000);
+        }
+      });
+    
+    }else {
+      this.toastr.error(this.translateService.instant('auth.reset-pass.fill-blanks'), '', {
+        timeOut: 3000, positionClass: 'toast-top-center',
+      });
+    }
+
   }
 
-  private getUser(tokenPassword: string){
+  private getUser(tokenPassword: string) {
     this.authService.getUserByTokenPassword(tokenPassword).subscribe({
       next: data => {
-        this.user = data; 
+        this.user = data;
       },
       error: err => {
         this.toastr.error(err.error.mensaje, '', {

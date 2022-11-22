@@ -13,7 +13,7 @@ button{
     width: 100%;
 }
 .link-signup{
-    padding-top:30px;
+    padding-top: 10px;
     font-size: .9rem;
     text-align: center;
     color: var(--warnOrange);
@@ -26,15 +26,19 @@ button{
 .forgot-pass {
     font-size: .8rem;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
-span {
+.send-email {
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
     font-size: .8rem;
     color: var(--warnOrange);
     cursor: pointer;
 }
-span:hover{
+
+.send-email:hover{
     text-decoration: underline;
 }
 .mat-form-field{
@@ -46,9 +50,6 @@ span:hover{
         width: 220px;
         @media(max-width: 220px){
             width:140px;
-        }
-        div{
-            padding: 20px 10px 0px 10px;
         }
     }
 }

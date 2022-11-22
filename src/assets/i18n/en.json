@@ -68,6 +68,22 @@
     "about": {
         "title": "Discover places around the world",
         "text": "Here you can find articles about interesting places. Subscribe and create your personal blog. Make the people discover places you know."
+    },
+    "auth": {
+        "login": {
+            "fill-blanks": "Please fill in the blanks"
+        },
+        "signup": {
+            "fill-blanks": "Please fill in the blanks",
+            "pass-length": "Password must have min 6 characters"
+        },
+        "email-send": {
+            "fill-blanks": "Please enter an email or username"
+        },
+        "reset-pass": {
+            "fill-blanks": "Please fill in the blanks",
+            "pass-length": "Password must have min 6 characters"
+        }
     }
 
    

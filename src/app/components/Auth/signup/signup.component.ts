@@ -6,6 +6,7 @@ import { User } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { LoginComponent } from '../login/login.component';
 import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-signup',
@@ -22,6 +23,7 @@ export class SignupComponent implements OnInit {
     private readonly fb: FormBuilder,
     public authSvc: AuthService,
     private readonly router: Router,
+    private translateService: TranslateService,
     private toastr: ToastrService
   ) { }
 
@@ -73,7 +75,7 @@ export class SignupComponent implements OnInit {
         }
       });
     } else {
-      this.toastr.error("Please fill in the blanks.", '', {
+      this.toastr.error(this.translateService.instant('auth.signup.fill-blanks'), '', {
         timeOut: 3000, positionClass: 'toast-top-center',
       });
     }

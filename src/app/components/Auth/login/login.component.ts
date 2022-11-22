@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { EmailPasswordComponent } from '../email-password/email-password.component';
 import { Router } from '@angular/router';
 import { Login } from '../../../shared/models/login';
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
     private authSvc: AuthService,
     private tokenService: TokenService,
     private readonly router: Router,
+    private translateService: TranslateService,
     private toastr: ToastrService
   ) { }
 
@@ -70,7 +72,7 @@ export class LoginComponent implements OnInit {
         }
       });
     } else {
-      this.toastr.error("Please fill in the blanks.", '', {
+      this.toastr.error(this.translateService.instant('auth.login.fill-blanks'), '', {
         timeOut: 3000, positionClass: 'toast-top-center',
       });
     }
