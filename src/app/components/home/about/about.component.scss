@@ -1,125 +1,160 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
-.container-about{
+
+.container-about {
     position: relative;
     top: 0px;
     left: 0px;
     margin-top: 664px;
-    width:100%;
+    margin-bottom: 10px;
+    // width:100%;
+    max-width: 1300px;
     padding: 0px 1% 10px;
     background: var(--accent);
     display: flex;
     flex-wrap: wrap;
-    h2{
+
+    h2 {
         padding: 30px 0px;
         margin: 0px;
         text-align: center;
-        font-size: 2.6rem;
+        font-size: 2.2rem;
         width: 100%;
         font-family: 'Libre Baskerville', serif;
         font-weight: 500;
         color: white;
+        font-weight: bold;
     }
-    #text{
+
+    #text {
         width: 49%;
         padding: 50px 4% 10px 0%;
         margin-left: 1%;
         border-top: 1px solid white;
-        p{
+
+        p {
             text-align: start;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             line-height: 2.4rem;
             color: white;
         }
-        div{
-            width:200px;
+
+        div {
+            // width:200px;
             margin: 60px auto 0px;
-            display: flex;
-            justify-content: space-between;
-            .color-button{
+
+            // display: flex;
+            // justify-content: flex-start;
+            .color-button {
                 background: #69F0AE;
-                box-shadow: 1px 1px 6px rgba(60,60,60,1);
+                box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
             }
-            .color-button:hover{
+
+            .color-button:hover {
                 color: ivory;
             }
         }
-        .color-button-blog{
+
+        .color-button-blog {
+            margin: 60px auto 0px;
             background: #69F0AE;
-            box-shadow: 1px 1px 6px rgba(60,60,60,1);
-            margin: 60px 40% 0px;
-            
+            box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
+            //margin: 60px 40% 0px;
+
         }
-        .color-button-blog:hover{
+
+        .color-button-blog:hover {
             color: ivory;
         }
-        
+
     }
-    
-    #sky{
+
+    #sky {
         background: url('../../../../assets/clouds.jpg');
-        background-size: cover;  
+        background-size: cover;
         width: 50%;
         height: 300px;
     }
 }
-@media(max-width:900px){
-    .container-about{
+
+@media(max-width:900px) {
+    .container-about {
         margin-top: 540px;
-        h2{
+
+        h2 {
             font-size: 1.8rem;
         }
-        #text{
+
+        #text {
             padding-top: 20px;
-            p{
+
+            p {
                 font-size: 1.2rem;
-                @media(max-width: 640px){
+
+                @media(max-width: 640px) {
                     font-size: 1.1rem;
                 }
             }
-            div{
+
+            div {
                 margin-top: 30px;
             }
-            .color-button-blog{
+
+            .color-button-blog {
                 margin: 20px 40% 0px;
             }
         }
-        
+
     }
 }
-@media(max-width:500px){
-    .container-about{
+
+@media(max-width:600px) {
+    .container-about {
         margin-top: 300px;
         height: auto;
+
         //padding-left: 1%;
-        h2{
+        h2 {
             font-size: 1.2rem;
             padding: 10px 0px;
             height: auto;
         }
-        #text{
-            padding: 10px 2% 10px;
+
+        #text {
+            text-align: start;
+            // padding: 10px 2% 10px;
             width: 100%;
-            height: 210px;
-            margin: 0px;
-            //background: rgba(47, 47, 47, 1);
-            p{
+
+            // height: 210px;
+            // margin: 0px;
+            // height: auto;
+            // background: rgba(47, 47, 47, 1);
+            p {
                 font-size: 1rem;
             }
-            .color-button-blog{
+
+            div {
+                display: flex;
+                justify-content: center;
+            }
+
+            .color-button-blog {
                 margin: 5px 40% 0px;
             }
-        }     
-        #sky{
+        }
+
+        #sky {
             width: 0px;
             height: 0px;
             //display: none;
         }
     }
 }
-@media(max-width: 350px){
-    .container-about{
+
+@media(max-width: 350px) {
+    .container-about {
         height: auto;
-        #text{
+
+        #text {
             height: auto;
         }
     }

@@ -65,5 +65,9 @@
     "ItemsPage": "Elementos por página",
     "FillBlanks": "Por favor rellena los campos vacios e inserta una imagen",
     "ImgMaximumExceed": "Imagen excede tamaño máximo permitido de",
-    "PleaseSelectImage": "Por favor seleccionar una imagen"
+    "PleaseSelectImage": "Por favor seleccionar una imagen",
+    "about": {
+        "title": "Descubre lugares del mundo",
+        "text": "Aquí puedes encontrar artículos sobre lugares interesantes. Suscríbete y crea tu blog personal. Haz que la gente descubra los lugares que conoces."
+    }
 }

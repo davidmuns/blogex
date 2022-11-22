@@ -3,6 +3,12 @@
 
 }
 
+h1 {
+    color: var(--accent);
+    // font-weight: bold;
+    text-align: center;
+}
+
 .example-header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;

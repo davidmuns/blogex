@@ -38,7 +38,7 @@
     "TextPassword": "Enter the email address or username you use in this application. We will send you a link to reset your password.",
     "ResetPassword": "Reset password",
     "New": "New",
-    "NewArticle": "New Article",
+    "NewArticle": "New article",
     "EditArticle": "Edit article",
     "CoverImage": "Cover image",
     "SelectImage": "Select image",
@@ -64,7 +64,11 @@
     "ItemsPage": "Items per page",
     "FillBlanks": "Please fill in the blanks and insert image",
     "ImgMaximumExceed": "Image exceeds its maximum permitted size of",
-    "PleaseSelectImage": "Please select an image"
+    "PleaseSelectImage": "Please select an image",
+    "about": {
+        "title": "Discover places around the world",
+        "text": "Here you can find articles about interesting places. Subscribe and create your personal blog. Make the people discover places you know."
+    }
 
    
 }
