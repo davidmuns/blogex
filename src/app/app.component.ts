@@ -1,5 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +8,6 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   title = 'blogex';
 
-  constructor(public translate: TranslateService){
-    translate.getBrowserLang();
-    translate.addLangs(['en', 'es', 'ca']);
-    translate.setDefaultLang('ca');
-  }
+  constructor(){}
 
-  switchLang(lang: string) {
-    this.translate.use(lang);
-  }
 }
