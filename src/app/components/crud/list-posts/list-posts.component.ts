@@ -114,7 +114,7 @@ export class ListPostsComponent implements OnInit {
   }
 
   onDelete(post: Article){
-    this.dialog.open(DeleteComponent, {data: {articleId: `${post.id}`}});
+    this.dialog.open(DeleteComponent, {data: {articleId: `${post.id}`, option: "deleteArticle"}});
   }
 
   toList(){

@@ -6,6 +6,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit',
@@ -40,7 +41,8 @@ export class EditComponent implements OnInit {
     private articleService: ArticleService,
     private snack: MatSnackBar,
     private readonly fBuilder: FormBuilder,
-    private readonly router: Router) {
+    private readonly router: Router,
+    private translateService: TranslateService) {
     const navigation = router.getCurrentNavigation();
     this.article = navigation?.extras?.state;
     this.reload();
@@ -105,7 +107,7 @@ export class EditComponent implements OnInit {
           this.router.navigate(['article/'+ post.id]);
           this.snack.open("Cover image updated.", "", { duration: 5000 });
         }else{
-          this.snack.open("Image exceeds its maximum permitted size of 2MB", "", { duration: 5000 });
+          this.snack.open(this.translateService.instant('ImgMaximumExceed') + " 2MB", "", { duration: 5000 });
         }
       }else{
         this.editPost(post.id, post);
@@ -113,7 +115,7 @@ export class EditComponent implements OnInit {
         //this.router.navigate(['list']);
       } 
     }else{
-      this.snack.open("Please fill in the blanks", "", { duration: 3000 });
+      this.snack.open(this.translateService.instant('FillBlanks'), "", { duration: 3000 });
     } 
   }
 

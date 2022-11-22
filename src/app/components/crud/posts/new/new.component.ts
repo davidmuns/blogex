@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -30,7 +31,8 @@ export class NewComponent implements OnInit {
     private tokenService: TokenService,
     private articleService: ArticleService,
     private toastrService: ToastrService,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService
   ) {
     this.initForm();
   }
@@ -52,7 +54,10 @@ export class NewComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    console.log('Test', this.translateService.instant('Caption'));
+    
+  }
 
 
   handleImage(event: any) {
@@ -74,11 +79,11 @@ export class NewComponent implements OnInit {
         this.uploadImage(this.image);
 
       } else {
-        this.snack.open("Image exceeds its maximum permitted size of 2MB", "",
+        this.snack.open(this.translateService.instant('ImgMaximumExceed') + " 2MB", "",
           { duration: 3000 });
       }
     } else {
-      this.snack.open("Please fill in the blanks and insert image", "",
+      this.snack.open(this.translateService.instant('FillBlanks'), "",
         { duration: 3000 });
     }
   }
@@ -91,7 +96,7 @@ export class NewComponent implements OnInit {
         // });
       },
       error: err => {
-        this.toastrService.error('Image exceeds its maximum permitted size of 1MB', '', {
+        this.toastrService.error(this.translateService.instant('ImgMaximumExceed') + " 2MB", '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
       }

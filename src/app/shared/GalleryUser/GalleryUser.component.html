@@ -2,7 +2,7 @@
   <div></div>
 
   <div>
-    <h2 mat-dialog-title>Gallery</h2>
+    <h2 mat-dialog-title>{{ 'Gallery' | translate }}</h2>
   </div>
   <div>
     <mat-icon mat-button mat-dialog-close class="close-btn">close</mat-icon>
@@ -26,7 +26,8 @@
           <button mat-stroked-button (click)="onCaption(imagen.id)" matTooltip="add caption">
             <mat-icon style="color: rgba(255, 255, 255);">add_box</mat-icon>
           </button>
-          <button mat-stroked-button color="warn" (click)="onDeleteImage(imagen.id)">
+          <!-- <button mat-stroked-button color="warn" (click)="onDeleteImage(imagen.id)"> -->
+            <button mat-stroked-button color="warn" (click)="onDeleteImage(imagen.id)">
             <mat-icon>delete</mat-icon>
           </button>
         </mat-card-actions>
@@ -39,7 +40,7 @@
 
   <div class="input-div mx-1 p-1 shadow-sm">
     <input type="file" class="file-input" id="customFile" (change)="handleImage($event)">
-    <label class="file-label" for="customFile" matTooltip="max 2MB">Select image</label>
+    <label class="file-label" for="customFile" matTooltip="max 2MB">{{ 'SelectImage' | translate }}</label>
   </div>
   <div class="mx-1">
     <img *ngIf="this.image" class="thumbnail" [src]="miniatura">

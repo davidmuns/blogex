@@ -1,7 +1,7 @@
 <form class="example-form" (submit)="selectArticle()">
   <div class="example1" appearance="fill">
     <input type="text"
-            placeholder="Search an article"
+            placeholder="{{ 'SearchArticle' | translate }}"
             aria-label="Number"
             matInput
             id="myControl"
@@ -28,7 +28,7 @@
 <form  #hideForm class="responsive-form" (submit)="selectArticle()">
   <div class="responsive-div" appearance="fill">
     <input type="text"
-            placeholder="Search an article"
+            placeholder="{{ 'SearchArticle' | translate }}"
             aria-label="Number"
             matInput
             id="myControl"

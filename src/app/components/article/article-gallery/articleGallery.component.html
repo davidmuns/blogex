@@ -1,13 +1,13 @@
-<h1 style="text-align: center;">Gallery</h1>
+<h1 style="text-align: center;">{{ 'Gallery' | translate }}</h1>
 <div style="display: flex; justify-content: center">
   <div>
     <button mat-button (click)="showGallery()">
-      <mat-icon>visibility</mat-icon> Show
+      <mat-icon>visibility</mat-icon> {{ 'Show' | translate }}
     </button>
   </div>
   <div>
     <button mat-button (click)="hideGallery()">
-      <mat-icon>visibility_off</mat-icon> Hide
+      <mat-icon>visibility_off</mat-icon> {{ "Hide" | translate }}
     </button>
   </div>
 </div>

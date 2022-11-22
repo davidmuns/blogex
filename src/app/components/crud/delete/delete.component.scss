@@ -1,17 +1,17 @@
 div {
-    padding: 0px 50px;
+    padding: 20px;
 
     @media(max-width: 450px) {
-        padding: 0px 15px;
+        padding: 0px;
     }
-
-    @media(max-width: 350px) {
-        padding: 0px 3px;
-    }
-
+}
+p {
+    text-align: center;
 }
 
 .material-icons {
+    display: flex;
+    justify-content: center;
     color: red;
     margin: 10px 30%;
     font-size: 70px;
