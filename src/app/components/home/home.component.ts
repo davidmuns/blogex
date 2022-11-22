@@ -22,21 +22,24 @@ export class HomeComponent implements OnInit, AfterViewInit {
   handleKey(event: any): void {
     this.onScroll()
   }
+  @HostListener('window: resize', ['$event'])
+  onResize(event: any): void{
+    this.innerWidth = event.target.innerWidth;
+    this.innerWidth < 500 ? this.hideSection = false : this.hideSection = true;
+  }
 
   public catchScroll!: any;
   private postActual!: any;
-  public hideSection: boolean = true;
+  public hideSection!: boolean;
+  private innerWidth!: any;
 
   constructor(
     private articleSvc: ArticleService,
     private renderer2: Renderer2
   ) { }
+
   ngOnInit(): void {
-    if(window.screen.width < 600){
-      this.hideSection = false;
-    }else{
-      this.hideSection = true;
-    }
+    window.innerWidth < 500 ? this.hideSection = false : this.hideSection = true;
   }
 
   ngAfterViewInit(): void {
