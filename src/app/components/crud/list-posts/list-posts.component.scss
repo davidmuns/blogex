@@ -93,6 +93,8 @@ mat-paginator{
 .estilsArt:hover {
   color: MediumSpringGreen;
   background-color: dimgray;
+  color: var(--lemon);
+  background-color: var(--accent);
 }
 button{
   background-color: rgba(230,230,230, 1);

@@ -21,7 +21,7 @@ export class SearchComponent implements OnInit {
 
   @ViewChild('hideForm') toForm!: ElementRef;
 
-  myControl = this.fb.control('', [Validators.minLength(2), Validators.required]);
+  myControl = this.fb.control('', [Validators.minLength(1), Validators.required]);
   options: string[] = [];
   allOptions: Article[] = [];
   filteredOptions!: Observable<string[]>;

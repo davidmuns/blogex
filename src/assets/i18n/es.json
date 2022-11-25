@@ -85,5 +85,8 @@
             "fill-blanks": "Por favor, introduce un nombre de usuario o un email",
             "pass-length": "La contraseña debe tener un mínimo de 6 caracteres"
         }
+    },
+    "front-articles": {
+        "last-articles": "Artículos más recientes"
     }
 }

@@ -7,10 +7,44 @@
             <!-- <button mat-raised-button class="color-button" (click)="signupDialog()">{{ 'Signup' | translate }}</button> -->
         </div>
         <ng-template #logged>
-            <button mat-raised-button class="color-button-blog" routerLink="/blog/{{ this.tokenSvc.getUsername() }}">{{ 'Blog' | translate }}</button>
+            <button mat-raised-button class="color-button-blog" routerLink="/blog/{{ this.tokenSvc.getUsername() }}">{{
+                'Blog' | translate }}</button>
         </ng-template>
     </div>
-    <div id="sky"></div>
+    <!-- <div id="sky"></div> -->
+    <div id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div id="sky" class="carousel-item active">
+                <img src="../../../../assets/img/clouds.jpg" alt="First slide">
+            </div>
+            <div id="sky" class="carousel-item">
+                <img src="../../../../assets/img/desert.jpg" alt="Second slide">
+            </div>
+            <div id="sky" class="carousel-item">
+                <img src="../../../../assets/img/capella.jpg" alt="Third slide">
+            </div>
+            <div id="sky" class="carousel-item">
+                <img src="../../../../assets/img/maldivas.jpg" alt="First slide">
+            </div>
+            <div id="sky" class="carousel-item">
+                <img src="../../../../assets/img/encantats.jpg" alt="First slide">
+            </div>
+            <div id="sky" class="carousel-item">
+                <img src="../../../../assets/img/yalta-castle.png" alt="First slide">
+            </div>
+            <div id="sky" class="carousel-item">
+                <img src="../../../../assets/img/hotel-vela.jpg" alt="First slide">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#sky" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#sky" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 
-    
+
 </div>

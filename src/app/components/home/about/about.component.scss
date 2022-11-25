@@ -21,7 +21,7 @@
         width: 100%;
         font-family: 'Libre Baskerville', serif;
         font-weight: 500;
-        color: white;
+        color: var(--lemon);
         font-weight: bold;
     }
 
@@ -29,13 +29,13 @@
         width: 49%;
         padding: 50px 4% 10px 0%;
         margin-left: 1%;
-        border-top: 1px solid white;
+        border-top: 1px solid var(--lemon);
 
         p {
             text-align: start;
             font-size: 1.4rem;
             line-height: 2.4rem;
-            color: white;
+            color: var(--lemon);
         }
 
         div {
@@ -45,7 +45,8 @@
             // display: flex;
             // justify-content: flex-start;
             .color-button {
-                background: #69F0AE;
+                //background: var(--greenCake);
+                background: var(--lemon);
                 box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
             }
 
@@ -56,7 +57,8 @@
 
         .color-button-blog {
             margin: 60px auto 0px;
-            background: #69F0AE;
+            // background: var(--greenCake);
+            background: var(--lemon);
             box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
             //margin: 60px 40% 0px;
 
@@ -69,10 +71,11 @@
     }
 
     #sky {
-        background: url('../../../../assets/clouds.jpg');
+        //background: url('../../../../assets/home.jpg');
         background-size: cover;
         width: 50%;
-        height: 300px;
+        height: 340px;
+        
     }
 }
 

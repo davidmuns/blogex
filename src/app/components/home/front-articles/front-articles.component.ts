@@ -1,3 +1,4 @@
+import { UtilsService } from './../../../shared/services/utils.service';
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { LoginComponent } from 'src/app/components/Auth/login/login.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -23,6 +24,7 @@ export class FrontArticlesComponent implements OnInit {
 
   constructor(private articleService: ArticleService,
     private router: Router,
+    private utilsService: UtilsService,
     private dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class FrontArticlesComponent implements OnInit {
   private getArticles() {
     this.articleService.getAll().subscribe({
       next: data => {
-        this.articles = data;
+        this.articles =  this.utilsService.sortArticlesById(data);
       },
       error: err => {
         console.log(err);
@@ -45,32 +47,7 @@ export class FrontArticlesComponent implements OnInit {
     this.router.navigate(['article/' + articleId]);
   }
 
-  // private getImagenes() {
-  //   this.articleService.getImages().subscribe({
-  //     next: (data: Imagen[]) => {
-  //       this.imagenesAll = data;
-  //     }
-  //   })
-  // }
+  
 
-  // onImgs(articleId: number) {
-  //   this.getImgsByArticleId(articleId);
-  //   this.imagenes = [];
-  // }
-
-  // private getImgsByArticleId(id: number) {
-  //   this.articleService.getImagesByArticleId(id).subscribe({
-  //     next: (data: Imagen[]) => {
-  //       this.imagenes = data;
-  //     },
-  //     error: err => {
-  //       console.log(err);
-  //     }
-  //   })
-  // }
-
-  // openGalery() {
-  //   this.dialog.open(LoginComponent);
-  // }
 
 }

@@ -84,5 +84,8 @@
             "fill-blanks": "Si us plau, introdueix un nom d'usuari o un email",
             "pass-length": "La contrasenya ha de tenir un mínim de 6 caracters"
         }
+    },
+    "front-articles": {
+        "last-articles": "Articles més recents"
     }
 }

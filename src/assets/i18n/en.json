@@ -84,7 +84,9 @@
             "fill-blanks": "Please fill in the blanks",
             "pass-length": "Password must have min 6 characters"
         }
+    },
+    "front-articles": {
+        "last-articles": "Latest articles"
     }
-
-   
+    
 }

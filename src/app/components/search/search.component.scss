@@ -23,7 +23,8 @@ input{
     font-size: 1rem;
     border: 0px;
     border-radius: 5px;
-    box-shadow:0px 0px 0px 2px inset #69F0AE;
+    // box-shadow:0px 0px 0px 2px inset var(--greenCake);
+    box-shadow:0px 0px 0px 2px inset var(--lemon);
     color: black;
     font-weight: 400;
     background-color: white;
@@ -33,11 +34,17 @@ input{
 }
 input:focus{
     background-color: #fbfdf1;
-    outline: 3px solid #C6FF00;
+    // outline: 3px solid var(--greenCake);
+    outline: 3px solid var(--lemon);
     box-shadow: none;
 }
 #searchButton, #searchHideButton{
     margin-left: 6px;
+    @media(max-width: 600px){
+        margin-left: 75px;
+        margin-right: 40px;
+        width: 50%;
+    }
 }
 #searchHideButton, .responsive-form{
     display: none;
@@ -56,7 +63,8 @@ input:focus{
         top: 0px;
         cursor: pointer;
         width: 100px;
-        border: 1px solid rgb(15, 222, 15);
+        //border: 1px solid rgb(15, 222, 15);
+        border: 1px solid var(--lemon);
         @media(max-width: 300px){
             width:60px;
         }

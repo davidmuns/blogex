@@ -59,15 +59,22 @@ h1{
         padding: 8px 0px;
         margin: 0px;
         font-size: .8rem;
+        color: rgba(255, 255, 255);
         span{
             cursor:pointer;
             font-size: .9rem;
             font-weight: 500;
         }
     }
+
+    p:hover {
+        color: var(--lemon);
+    }
+
     img{
         cursor: pointer;
     }
+   
 }
 
 // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
@@ -82,6 +89,7 @@ h1{
     img{
         cursor: pointer;
     }
+   
 }
 
 .main-container>article {

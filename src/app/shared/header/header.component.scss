@@ -5,7 +5,8 @@
     z-index: 1;
     background-color: var(--accent);//200
     margin-bottom: 10px;
-    color: #69F0AE;
+    // color: var(--greenCake);
+    color: var(--lemon);
    /*  @media(max-width: 600px){
         margin-bottom: 300px;
     }
@@ -33,13 +34,15 @@
         width:100px;
         margin-left: 15%;
         font-size: 1.8rem;
-        color: #69F0AE;
+        // color: var(--greenCake);
+        color: var(--lemon);
     }
     #logReg{
         width:80px;
         margin-left: 60px;
         a{
-            color: #69F0AE;
+            // color: var(--greenCake);
+            color: var(--lemon);
             font-size: .9rem;
             cursor: pointer;
         }
@@ -61,7 +64,8 @@
         width:130px;
         text-align: end;
         a{
-            color: #69F0AE;
+            // color: var(--greenCake);
+            color: var(--lemon);
             font-size: .9rem;
             cursor: pointer;
             text-decoration: none;
@@ -77,6 +81,34 @@
     border-bottom: 10px solid white;
     
 }
-.mat-menu-item{
-    font-weight: 500;
+// .mat-menu-item{
+//     font-weight: 500;
+// }
+
+.isLogged {
+    position: absolute;
+    margin-left: 40px;
+    width: 60px;
+    height: 50px;
+    border-radius: 10%;
+    cursor: pointer;
+
+    @media(max-width: 600px){
+        width: 50px;
+        height: 40px;
+    }
+
+}
+.notLogged {
+    position: absolute;
+    width: 60px;
+    height: 50px;
+    border-radius: 10%;
+    cursor: pointer;
+
+    @media(max-width: 600px){
+        width: 50px;
+        height: 40px;
+    }
+
 }

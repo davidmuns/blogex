@@ -5,9 +5,10 @@
     <button mat-menu-item id="menuHome" *ngIf="!this.tokenService.isLogged()">
       <mat-icon routerLink="/">home</mat-icon>
     </button>
-    
+    <img [ngClass]="{'isLogged': this.tokenService.isLogged(), 'notLogged': !this.tokenService.isLogged()}"
+      src="../../../assets/img/logo-blogex.jpg" alt="" routerLink="/">
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
-    *ngIf="this.tokenService.isLogged()">
+      *ngIf="this.tokenService.isLogged()">
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu id="matMenu">
@@ -19,7 +20,7 @@
       <button mat-menu-item routerLink="/blog/{{ this.tokenService.getUsername() }}">
         <mat-icon>book</mat-icon>
         {{ 'Blog' | translate }}
-      </button>  
+      </button>
       <mat-divider></mat-divider>
       <button mat-menu-item routerLink="/admin/new">
         <mat-icon>edit</mat-icon>
@@ -31,7 +32,7 @@
         {{ 'MyImages' | translate }}
       </button>
     </mat-menu>
-    
+
     <app-search></app-search>
     <!-- <h1 id="title">Blog de rutes</h1> -->
     <div id="logReg" *ngIf="this.tokenService.isLogged() === false; else logged">
@@ -41,7 +42,8 @@
     </div>
     <ng-template #logged>
       <div id="logOut" #isLoged>
-        <a *ngIf="!this.hideUsername" (click)="onLogout()">{{ 'Logout' | translate }} ({{ this.tokenService.getUsername() }})</a>
+        <a *ngIf="!this.hideUsername" (click)="onLogout()">{{ 'Logout' | translate }} ({{
+          this.tokenService.getUsername() }})</a>
         <a *ngIf="this.hideUsername" (click)="onLogout()">{{ 'Logout' | translate }}</a>
       </div>
     </ng-template>
