@@ -1,22 +1,24 @@
 form{
     width:280px;
-    padding: 0px 10px
+    padding: 0px 10px; 
 }
 h3{
+    color: var(--accent);
+    font-weight: bold;
     text-align: center;
     font-size: 1.6rem;
     padding: 10px;
 }
-button{
-    background: var(--primary);
-    color: white;
+button{   
+    background: var(--accent);
+    color: var(--lemon);
     width: 100%;
 }
 .link-signup{
     padding-top: 10px;
     font-size: .9rem;
     text-align: center;
-    color: var(--warnOrange);
+    color: var(--accent);
     cursor: pointer;
     
 }
@@ -34,7 +36,7 @@ button{
     margin: 0px;
     padding: 0px;
     font-size: .8rem;
-    color: var(--warnOrange);
+    color: var(--accent);
     cursor: pointer;
 }
 

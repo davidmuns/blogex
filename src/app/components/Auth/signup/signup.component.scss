@@ -4,14 +4,16 @@ form {
 }
 
 h3 {
+    color: var(--accent);
+    font-weight: bold;
     text-align: center;
     font-size: 1.6rem;
     padding: 10px;
 }
 
 button {
-    background: var(--primary);
-    color: white;
+    background: var(--accent);
+    color: var(--lemon);
     width: 100%;
 }
 
@@ -22,7 +24,7 @@ form>div {
 }
 
 form span {
-    color: var(--warnOrange);
+    color: var(--accent);
     cursor: pointer;
 }
 
