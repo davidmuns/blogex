@@ -1,5 +1,6 @@
 #toList{
   display: none;
+  color: var(--accent);
   @media(max-width: 800px){
     position: absolute;
     top:14px;

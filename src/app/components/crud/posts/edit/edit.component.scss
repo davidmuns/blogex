@@ -55,7 +55,7 @@ mat-card-content{
         cursor:pointer;
         
         .mat-icon{
-            color: var(--primary);
+            color: var(--accent);
             padding-top: 5px;
             width: 30px;
             height: 30px;
@@ -66,7 +66,7 @@ mat-card-content{
         background-color: rgba(230,230,240,0.8);
     }
     .custom-file-label:hover{
-        border: 1px solid var(--primary);
+        border: 1px solid var(--accent);
     }
 }
 #textarea{
@@ -76,12 +76,15 @@ mat-card-content{
     min-width: 130px;
     width: 30%;
     margin:10px 35%;
-    background-color: var(--primary);
-    color: white;
+    background-color: var(--accent);
+    color: var(--lemon);
     @media(max-width: 350px){
         margin:10px 5%;
         width:90%;
     }
+}
+#createButton:hover{
+    color: white;
 }
 #moreButton{
     margin-top: 20px;;
@@ -95,6 +98,7 @@ form h3{
 }
 #toNew{
     position: absolute;
+    color: var(--accent);
     top:14px;
     left: 75%;
     @media(max-width: 600px){

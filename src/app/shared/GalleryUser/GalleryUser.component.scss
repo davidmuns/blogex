@@ -41,8 +41,36 @@ img {
 
 }
 
+.delete-btn {
+  color: rgb(255, 71, 71);
+}
+
+.delete-btn:hover {
+  color: red;
+}
+
+.caption-btn {
+  color: var(--lemon);
+}
+
+.caption-btn:hover {
+  color: white;
+}
+
+.upload-icon:hover{
+  // background: var(--accent);
+  color: var(--lemon);
+}
+
+.caption-icon {
+  color: var(--lemon);
+}
+
+.caption-btn:hover {
+  color: white;
+}
 .file-label:hover {
-  color: #607d8b;
+  color: var(--accent);
 }
 
 .header {

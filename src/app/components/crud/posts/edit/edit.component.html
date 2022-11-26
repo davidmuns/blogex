@@ -1,6 +1,6 @@
 <mat-card class="example-card">
   <mat-card-title>{{ 'EditArticle' | translate }}</mat-card-title>
-  <button id="toNew" mat-stroked-button color="primary" (click)="toNew()">{{ 'New' | translate }} 
+  <button id="toNew" mat-stroked-button (click)="toNew()">{{ 'New' | translate }} 
     <span *ngIf="articleHtml == true">{{ 'Article' | translate }}</span>
   </button>
   <mat-card-content>

@@ -41,3 +41,12 @@ h1 {
 img {
     height: 200px;
 }
+
+mat-icon{
+    color: var(--lemon);
+}
+
+
+mat-icon:hover{
+    color: rgba(255, 255, 255);
+}
