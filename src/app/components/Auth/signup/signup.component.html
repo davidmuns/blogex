@@ -2,12 +2,12 @@
   <!-- [formGroup]="signupForm" (ngSubmit)="newUser(signupForm.value)"  formControlName="user"  formControlName="email"  formControlName="password" -->
   <h3>{{ 'Signup' | translate }}</h3>
   <p>
-    <mat-form-field appearance="fill">
+    <!-- <mat-form-field appearance="fill">
       <mat-label>{{ 'Name' | translate }}</mat-label>
       <input matInput placeholder="{{ 'Name' | translate }}" formControlName="nombre" required>
       <div *ngIf="signupForm.get('nombre')?.touched && signupForm.get('nombre')?.errors?.['required']" class="error">
         {{ 'Required' | translate}}</div>
-    </mat-form-field>
+    </mat-form-field> -->
   </p>
   <p>
     <mat-form-field appearance="fill">

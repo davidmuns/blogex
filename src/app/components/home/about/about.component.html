@@ -1,4 +1,36 @@
+
+
 <div class="container container-about shadow">
+    
+    <!-- <div *ngIf="this.carouselPositionTop" id="sky"></div> -->
+
+    <div *ngIf="this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="../../../../assets/img/desert.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img src="../../../../assets/img/maldivas.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img src="../../../../assets/img/yalta-castle.png" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img src="../../../../assets/img/hotel-vela.jpg" alt="First slide">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#sky" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#sky" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+
     <h2>{{ 'about.title' | translate }}</h2>
     <div id="text">
         <p>{{ 'about.text' | translate }} </p>
@@ -11,23 +43,17 @@
                 'Blog' | translate }}</button>
         </ng-template>
     </div>
-    <!-- <div id="sky"></div> -->
-    <div id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    
+    <!-- <div *ngIf="!this.carouselPositionTop" id="sky"></div> -->
+
+
+    <div *ngIf="!this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div id="sky" class="carousel-item active">
-                <img src="../../../../assets/img/clouds.jpg" alt="First slide">
-            </div>
-            <div id="sky" class="carousel-item">
                 <img src="../../../../assets/img/desert.jpg" alt="Second slide">
             </div>
             <div id="sky" class="carousel-item">
-                <img src="../../../../assets/img/capella.jpg" alt="Third slide">
-            </div>
-            <div id="sky" class="carousel-item">
                 <img src="../../../../assets/img/maldivas.jpg" alt="First slide">
-            </div>
-            <div id="sky" class="carousel-item">
-                <img src="../../../../assets/img/encantats.jpg" alt="First slide">
             </div>
             <div id="sky" class="carousel-item">
                 <img src="../../../../assets/img/yalta-castle.png" alt="First slide">
@@ -45,6 +71,4 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
-
 </div>
