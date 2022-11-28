@@ -1,92 +1,93 @@
 <h1 style="text-align: center;">{{ 'Gallery' | translate }}</h1>
 <div style="display: flex; justify-content: center">
-  <div>
-    <button mat-button (click)="showGallery()">
-      <mat-icon>visibility</mat-icon> {{ 'Show' | translate }}
-    </button>
-  </div>
-  <div>
-    <button mat-button (click)="hideGallery()">
-      <mat-icon>visibility_off</mat-icon> {{ "Hide" | translate }}
-    </button>
-  </div>
+	<div>
+		<button mat-button (click)="showGallery()">
+			<mat-icon>visibility</mat-icon> {{ 'Show' | translate }}
+		</button>
+	</div>
+	<div>
+		<button mat-button (click)="hideGallery()">
+			<mat-icon>visibility_off</mat-icon> {{ "Hide" | translate }}
+		</button>
+	</div>
 </div>
 
 <!-- IMAGES -->
 <div class="main-container">
-  <div *ngFor="let imagen of this.imagenes; let i = index">
+	<div *ngFor="let imagen of this.imagenes; let i = index">
 
-    <!-- https://animate.style/ -->
-    <mat-card class="example-card animate__animated animate__zoomIn" style="background-color: rgba(255, 255, 255, 0.09);">
-      <mat-card-header>
-        <!-- <div mat-card-avatar class="example-header-image"></div> -->
-        <!-- <mat-card-title>{{ imagen.article.title }}</mat-card-title> -->
-        <!-- <mat-card-subtitle>{{ imagen.caption  }}</mat-card-subtitle> -->
-      </mat-card-header>
-      <a type="button" matTooltip="Preview" matTooltipPosition="above" data-bs-toggle="modal"
-        data-bs-target="#exampleModal" style="cursor: pointer;" (click)="getIndex(i)">
-        <img mat-card-image [src]="imagen.url" alt="">
-      </a>
+		<!-- https://animate.style/ -->
+		<mat-card class="example-card animate__animated animate__zoomIn"
+			style="background-color: rgba(255, 255, 255, 0.09);">
+			<mat-card-header>
+				<!-- <div mat-card-avatar class="example-header-image"></div> -->
+				<!-- <mat-card-title>{{ imagen.article.title }}</mat-card-title> -->
+				<!-- <mat-card-subtitle>{{ imagen.caption  }}</mat-card-subtitle> -->
+			</mat-card-header>
+			<a type="button" matTooltip="Preview" matTooltipPosition="above" data-bs-toggle="modal"
+				data-bs-target="#exampleModal" style="cursor: pointer;" (click)="getIndex(i)">
+				<img mat-card-image [src]="imagen.url" alt="">
+			</a>
 
-      <mat-card-content>
-        <!-- <mat-card-title>{{ imagen.caption }}</mat-card-title> -->
-        <p style="color: white;">{{ imagen.caption }}</p>
-      </mat-card-content>
-      <mat-card-actions align="start">
-        <!-- <button mat-button routerLink="/add-image/{{ imagen.articleId }}">Add img</button> -->
-        <!-- <button mat-button (click)="onDeleteImage(imagen.id)">Delete</button> -->
-      </mat-card-actions>
-    </mat-card>
+			<mat-card-content>
+				<!-- <mat-card-title>{{ imagen.caption }}</mat-card-title> -->
+				<p style="color: white;">{{ imagen.caption }}</p>
+			</mat-card-content>
+			<mat-card-actions align="start">
+				<!-- <button mat-button routerLink="/add-image/{{ imagen.articleId }}">Add img</button> -->
+				<!-- <button mat-button (click)="onDeleteImage(imagen.id)">Delete</button> -->
+			</mat-card-actions>
+		</mat-card>
 
-  </div>
+	</div>
 </div>
 
 <!-- MODAL -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-  style="padding: 0px;">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content" style="height: 530px; background-color: transparent; border: none;">
-      <!-- <div class="modal-header">
+	style="padding: 0px;">
+	<div class="modal-dialog modal-xl">
+		<div class="modal-content" style="height: 530px; background-color: transparent; border: none;">
+			<!-- <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div> -->
-      <div class="modal-body">
+			<div class="modal-body">
 
-        <!-- CAROUSEL -->
-        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <!-- <div class="carousel-item active">
+				<!-- CAROUSEL -->
+				<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+					<div class="carousel-inner">
+						<!-- <div class="carousel-item active">
               <img src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg"
                 class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
             </div> -->
-            <div class="carousel-item" data-bs-interval="90000" *ngFor="let imagen of imagenes; let i = index"
-              [ngClass]="{'active': i == this.indice }">
-              <img [src]="imagen.url" class="d-block w-100" alt="...">
-              <div class="carousel-caption d-none d-md-block">
-                <h2 class="m-0"><strong>{{ imagen.caption }}</strong></h2>
-                <p class="m-0">image {{ i + 1 }} of {{ this.imagenes.length }}</p> 
-              </div>
-            </div>
-            <!-- <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == 0 }">
+						<div class="carousel-item" data-bs-interval="90000" *ngFor="let imagen of imagenes; let i = index"
+							[ngClass]="{'active': i == this.indice, '': i != this.indice}">
+							<img [src]="imagen.url" class="d-block w-100" alt="...">
+							<div class="carousel-caption d-none d-md-block">
+								<h2 class="m-0"><strong>{{ imagen.caption }}</strong></h2>
+								<p class="m-0">image {{ i + 1 }} of {{ this.imagenes.length }}</p>
+							</div>
+						</div>
+						<!-- <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == 0 }">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
             </div> -->
-          </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+						data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
 
-      </div>
-    </div>
-  </div>
+			</div>
+		</div>
+	</div>
 </div>

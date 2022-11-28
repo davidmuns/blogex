@@ -5,6 +5,7 @@ div {
         padding: 0px;
     }
 }
+
 p {
     text-align: center;
 }
@@ -18,19 +19,27 @@ p {
 }
 
 h3 {
+    color: var(--accent);
+    font-weight: bold;
     font-size: 1.6rem;
     text-align: center;
 }
 
-button {
-    color: white;
+p {
+    color: var(--accent);
 }
 
 button:nth-child(1) {
-    background-color: var(--accent);
+    background-color: var(--warnOrange);
+    color: white;
 }
 
 button:nth-child(2) {
-    background-color: var(--warnOrange);
+    background-color: var(--accent);
+    color: var(--lemon);
     margin-left: 20px;
+}
+
+button:hover:nth-child(2) {
+    color: white;
 }
