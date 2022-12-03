@@ -13,13 +13,20 @@ const BEARER = environment.BEARER;
 })
 export class ArticleInterceptorService implements HttpInterceptor {
 
-  constructor(private tokenService: TokenService) { }
+  constructor() { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let intReq = req;
-    const token = this.tokenService.getToken();
+    //const token = this.tokenService.getToken();
+    const token = 'ncqwoineonqvonuietghtu56525728'
     if (token != null) {
-      intReq = req.clone({ headers: req.headers.set(AUTHORIZATION, BEARER + token) });
+      intReq = req.clone({ headers: req.headers.set(AUTHORIZATION, token) });
+      intReq = req.clone({
+        setHeaders: {
+          'Authorization': BEARER + token,
+          'Content-Type': 'application/json'
+        }
+      });
     }
     return next.handle(intReq);
   }
