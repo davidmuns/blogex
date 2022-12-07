@@ -1,12 +1,10 @@
-import { Weather } from './../../shared/models/weather';
 import { ApiWeatherService } from './../../shared/services/apiWeather.service';
 import { TokenService } from 'src/app/shared/services/token.service';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
-
 
 @Component({
   selector: 'app-user-articles',
@@ -85,10 +83,13 @@ export class UserArticlesComponent implements OnInit {
     this.getWeather(lat, lon);
   }
 
+  // https://www.youtube.com/watch?v=vpq2FxNzgd4
   private getWeather(lat: number, lon: number) {
-    this.apiWeatherService.getWeather(lat, lon).subscribe((data: Weather) => {
-      this.temp = Math.round(data.main.temp);
-    })
+    this.apiWeatherService.getWeather2(lat, lon)
+      .then(resp => resp.json())
+      .then(data => {
+        this.temp = parseInt(data.main.temp);
+      });
   };
 
   // Store data in a article service variable

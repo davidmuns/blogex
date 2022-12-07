@@ -1,12 +1,10 @@
-import { Weather } from './../../shared/models/weather';
+import { HttpClient } from '@angular/common/http';
 import { ApiWeatherService } from './../../shared/services/apiWeather.service';
-import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { TokenService } from 'src/app/shared/services/token.service';
-
-
 
 @Component({
   selector: 'app-article',
@@ -24,8 +22,9 @@ export class ArticleComponent implements OnInit {
   post!: Article | undefined;
   idPost!: number;
   temp!: number;
-
+  
   constructor(
+    private http: HttpClient,
     private apiWeatherService: ApiWeatherService,
     private readonly route: ActivatedRoute,
     private articleSvc: ArticleService,
@@ -49,14 +48,17 @@ export class ArticleComponent implements OnInit {
     this.articleSvc.getArticle(id).subscribe(
       data => {
         this.post = data,
-        this.getWeather(this.post.latitude, this.post.longitude);
+          this.getWeather(this.post.latitude, this.post.longitude);
       });
   }
 
+  // https://www.youtube.com/watch?v=vpq2FxNzgd4
   private getWeather(lat: number, lon: number) {
-    this.apiWeatherService.getWeather(lat, lon).subscribe((data: Weather) => {
-      this.temp = Math.round(data.main.temp);
-    })
+    this.apiWeatherService.getWeather2(lat, lon)
+      .then(resp => resp.json())
+      .then(data => {
+        this.temp = parseInt(data.main.temp);
+      });
   };
 
   onEdit(post: any) {
