@@ -1,3 +1,5 @@
+import { Weather } from './../../shared/models/weather';
+import { ApiWeatherService } from './../../shared/services/apiWeather.service';
 import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
@@ -21,9 +23,10 @@ export class ArticleComponent implements OnInit {
 
   post!: Article | undefined;
   idPost!: number;
-  temp!: any;
+  temp!: number;
 
   constructor(
+    private apiWeatherService: ApiWeatherService,
     private readonly route: ActivatedRoute,
     private articleSvc: ArticleService,
     public tokenSvc: TokenService,
@@ -46,20 +49,15 @@ export class ArticleComponent implements OnInit {
     this.articleSvc.getArticle(id).subscribe(
       data => {
         this.post = data,
-          this.getWeather(data.latitude, data.longitude);
+        this.getWeather(this.post.latitude, this.post.longitude);
       });
   }
-  // https://www.youtube.com/watch?v=vpq2FxNzgd4
-  private getWeather(lat: number | undefined, lon: number | undefined) {
-    const apiKey = 'd0047952dfbeb9ec30622425fe11ed84';
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=es`)
-      .then(resp => resp.json())
-      .then(
-        data => {
-          this.temp = parseInt(data.main.temp);
-        }
-      )
-  }
+
+  private getWeather(lat: number, lon: number) {
+    this.apiWeatherService.getWeather(lat, lon).subscribe((data: Weather) => {
+      this.temp = Math.round(data.main.temp);
+    })
+  };
 
   onEdit(post: any) {
     this.navigationExtras.state = post;

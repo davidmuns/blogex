@@ -1,3 +1,5 @@
+import { Weather } from './../../shared/models/weather';
+import { ApiWeatherService } from './../../shared/services/apiWeather.service';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -28,6 +30,7 @@ export class UserArticlesComponent implements OnInit {
   isAdmin: boolean = false;
 
   constructor(
+    private apiWeatherService: ApiWeatherService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly articleSvc: ArticleService,
     private router: Router,
@@ -82,21 +85,16 @@ export class UserArticlesComponent implements OnInit {
     this.getWeather(lat, lon);
   }
 
+  private getWeather(lat: number, lon: number) {
+    this.apiWeatherService.getWeather(lat, lon).subscribe((data: Weather) => {
+      this.temp = Math.round(data.main.temp);
+    })
+  };
+
   // Store data in a article service variable
   onGoToMap(article: Article) {
     this.articleSvc.data = article;
     this.articleSvc.focusArticleOnMap = true;
     this.router.navigate(['home']);
-  }
-  // https://www.youtube.com/watch?v=vpq2FxNzgd4
-  private getWeather(lat: number | undefined, lon: number | undefined) {
-    const apiKey = 'd0047952dfbeb9ec30622425fe11ed84';
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=es`)
-      .then(resp => resp.json())
-      .then(
-        data => {
-          this.temp = parseInt(data.main.temp);
-        }
-      )
   }
 }
