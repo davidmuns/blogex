@@ -14,13 +14,16 @@ export class ArticleGalleryComponent implements OnInit {
 
   constructor(private articleSvc: ArticleService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    
+  }
 
   getIndex(index: number) {
     this.indice = index;
   }
 
   showGallery() {
+    console.log('articleId', this.articleId);
     this.getImgsByArticleId(this.articleId);
   }
 

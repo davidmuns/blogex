@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { TokenService } from 'src/app/shared/services/token.service';
+
+
 
 @Component({
   selector: 'app-article',
@@ -17,6 +19,7 @@ export class ArticleComponent implements OnInit {
     }
   };
 
+  @Output() eventEmitter = new EventEmitter<Article>(); 
   post!: Article | undefined;
   idPost!: number;
   temp!: any;
@@ -31,6 +34,13 @@ export class ArticleComponent implements OnInit {
   ngOnInit(): void {
     this.idPost = this.route.snapshot.params['id'];
     this.getArticleById(this.idPost);
+  }
+ 
+  // Store data in a article service variable
+  onGoToMap() {  
+    this.articleSvc.data = this.post;
+    this.articleSvc.focusArticleOnMap = true;
+    this.router.navigate(['home']);
   }
 
   private getArticleById(id: number) {

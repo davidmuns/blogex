@@ -3,8 +3,9 @@ import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
 
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output, OnInit } from '@angular/core';
 import { Imagen } from '../models/imagen';
+
 
 const ARTICLE_BASE_URL = environment.ARTICLE_BASE_URL;
 
@@ -13,6 +14,8 @@ const ARTICLE_BASE_URL = environment.ARTICLE_BASE_URL;
 })
 export class ArticleService {
 
+  data!: Article | undefined;
+  focusArticleOnMap: boolean = false;
   public fadeInOut: boolean = true;
 
   constructor(private httpClient: HttpClient) { }
@@ -78,3 +81,7 @@ export class ArticleService {
   }
 
 }
+function OutPut() {
+  throw new Error('Function not implemented.');
+}
+

@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
   users: "",
+  FRONT_BASE_URL: 'https://blogex.netlify.app/',
   PRODUCT_URL: 'https://blogexapp.herokuapp.com/producto/',
   AUTH_URL: 'https://blogexapp.herokuapp.com/auth/',
   EMAIL_PASSWORD_URL: 'https://blogexapp.herokuapp.com/email-password/',

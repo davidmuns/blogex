@@ -74,7 +74,6 @@ export class UserArticlesComponent implements OnInit {
     this.router.navigate(['admin/edit'], this.navigationExtras);
   }
 
-
   onPageChange(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.pageNumber = event.pageIndex + 1;
@@ -83,6 +82,12 @@ export class UserArticlesComponent implements OnInit {
     this.getWeather(lat, lon);
   }
 
+  // Store data in a article service variable
+  onGoToMap(article: Article) {
+    this.articleSvc.data = article;
+    this.articleSvc.focusArticleOnMap = true;
+    this.router.navigate(['home']);
+  }
   // https://www.youtube.com/watch?v=vpq2FxNzgd4
   private getWeather(lat: number | undefined, lon: number | undefined) {
     const apiKey = 'd0047952dfbeb9ec30622425fe11ed84';

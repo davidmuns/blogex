@@ -1,9 +1,12 @@
-import { Component, HostListener, AfterViewInit, ViewChild, ElementRef, Renderer2, Input, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { Component, HostListener, AfterViewInit, ViewChild, ElementRef, Renderer2, Input, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 import { Map, marker, MarkerClusterGroup, tileLayer } from 'leaflet';
-import  'leaflet.markercluster';
-import { Router } from '@angular/router';
+import 'leaflet.markercluster';
 import { ArticleService } from './../../shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
+
+const BASE_URL = environment.FRONT_BASE_URL;
 
 @Component({
   selector: 'app-home',
@@ -23,7 +26,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this.onScroll()
   }
   @HostListener('window: resize', ['$event'])
-  onResize(event: any): void{
+  onResize(event: any): void {
     this.innerWidth = event.target.innerWidth;
     this.innerWidth < 500 ? this.hideSection = false : this.hideSection = true;
   }
@@ -32,6 +35,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private postActual!: any;
   public hideSection!: boolean;
   private innerWidth!: any;
+  private lat = 42.40249;
+  private lon = 2.194332;
+  private zoom = 4;
 
   constructor(
     private articleSvc: ArticleService,
@@ -42,11 +48,24 @@ export class HomeComponent implements OnInit, AfterViewInit {
     window.innerWidth < 500 ? this.hideSection = false : this.hideSection = true;
   }
 
+  // Rendering map and popups for each item
   ngAfterViewInit(): void {
+    let map: Map;
+    let map2: Map;
+    let map3: Map;
 
-    const map = new Map('map').setView([41.40249, 2.194332], 4);
-    const map2 = new Map('map2').setView([42.40249, 2.194332], 5);
-    const map3 = new Map('map3').setView([42.40249, 2.194332], 13);
+    if (this.articleSvc.focusArticleOnMap) {
+      const lat: any = this.articleSvc.data?.latitude;
+      const lon: any = this.articleSvc.data?.longitude;
+      map = new Map('map').setView([lat, lon], 15);
+      map2 = new Map('map2').setView([lat, lon], 4);
+      map3 = new Map('map3').setView([lat, lon], 13);
+      this.articleSvc.focusArticleOnMap = false;
+    } else {
+      map = new Map('map').setView([this.lat, this.lon], this.zoom);
+      map2 = new Map('map2').setView([this.lat, this.lon], this.zoom);
+      map3 = new Map('map3').setView([this.lat, this.lon], 13);
+    }
 
     //Map1 code
     tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -63,9 +82,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
         res.map(point => {
           this.postActual = point;
           marker([point.latitude, point.longitude]).addTo(markers1).bindPopup(`
-        <a href="https://blogex.netlify.app/article/${point.id}">${point.title}</a>
+        <a href="${BASE_URL}article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
-        <a href="https://blogex.netlify.app/article/${point.id}"><img src="${point.imagenPortada}"></a>
+        <a href="${BASE_URL}article/${point.id}"><img src="${point.imagenPortada}"></a>
       `);
         });
         /* map.fitBounds([
@@ -73,7 +92,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         ]); */
       });
 
-      markers1.addTo(map);
+    markers1.addTo(map);
 
     //Map2 code
     tileLayer.wms("http://ows.mundialis.de/services/service?", {
@@ -89,16 +108,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
         res.map(point => {
           this.postActual = point;
           marker([point.latitude, point.longitude]).addTo(markers2).bindPopup(`
-        <a href="https://blogex.netlify.app/article/${point.id}">${point.title}</a>
+        <a href="${BASE_URL}article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
-        <a href="https://blogex.netlify.app/article/${point.id}"><img src="${point.imagenPortada}"></a>
+        <a href="${BASE_URL}article/${point.id}"><img src="${point.imagenPortada}"></a>
       `);
         });
         /* map2.fitBounds([
           ...res.map(point => [point.latitude, point.longitude] as [number, number])
         ]); */
       });
-      markers2.addTo(map2);
+    markers2.addTo(map2);
 
     //Map3 code
     tileLayer.wms("http://ows.mundialis.de/services/service?", {
@@ -114,16 +133,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
         res.map(point => {
           this.postActual = point;
           marker([point.latitude, point.longitude]).addTo(markers3).bindPopup(`
-        <a href="https://blogex.netlify.app/article/${point.id}">${point.title}</a>
+        <a href="${BASE_URL}article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
-        <a href="https://blogex.netlify.app/article/${point.id}"><img src="${point.imagenPortada}" class="imgMap"></a>
+        <a href="${BASE_URL}article/${point.id}"><img src="${point.imagenPortada}" class="imgMap"></a>
       `);
         });
         map3.fitBounds([
           ...res.map(point => [point.latitude, point.longitude] as [number, number])
         ]);
       });
-      markers3.addTo(map3);
+    markers3.addTo(map3);
   }
 
   //Click to map and enable zoom
@@ -144,8 +163,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   onScroll() {
     this.catchScroll = window.scrollY;
-    //console.log("CatchScroll: ", this.catchScroll);
-
     const asMap1 = this.toMap.nativeElement;
     const asMap2 = this.toMap2.nativeElement;
     const asMap3 = this.toMap3.nativeElement;

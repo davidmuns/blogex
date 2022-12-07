@@ -19,6 +19,10 @@
           (click)="onEdit(post)">
           <mat-icon>edit</mat-icon> {{ 'EditArticle' | translate }} 
         </button>
+        <button mat-stroked-button color="accent" id="editAutor"
+          (click)="onGoToMap()">
+          <mat-icon>room</mat-icon>
+        </button>   
       </div>
       <p>
         {{ post?.text1 }}

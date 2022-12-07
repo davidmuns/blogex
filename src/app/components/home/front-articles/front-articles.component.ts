@@ -29,7 +29,8 @@ export class FrontArticlesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getArticles();
-    // this.getImagenes();
+    // console.log(this.numbers2);
+    
   }
 
   private getArticles() {

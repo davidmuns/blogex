@@ -104,26 +104,4 @@ export class GalleryUserComponent implements OnInit {
     
   }
 
-  // onDeleteImage(imgId: string) {
-  //   this.articleService.deleteImage(imgId).subscribe({
-  //     next: (data: any) => {
-  //       this.toastrService.success(data.mensaje, '', {
-  //         timeOut: 3000, positionClass: 'toast-top-center'
-  //       });
-  //       //this.redirectTo(this.router.url);
-  //       //window.location.reload();
-  //       this.imagenes = [];
-  //       this.getImgsByArticleId(this.articleId);
-  //     },
-  //     error: err => {
-  //       console.log(err);
-  //     }
-  //   })
-  // }
-
-  // redirectTo(uri: string) {
-  //   this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-  //     this.router.navigate([uri]));
-  // }
-
 }

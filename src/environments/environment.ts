@@ -10,6 +10,8 @@ export const environment = {
   // EMAIL_PASSWORD_URL: 'http://localhost:8080/email-password/',
   // ARTICLE_BASE_URL: 'http://localhost:8080/article/',
   // IMG_BASE_URL: 'http://localhost:8080/imagen/',
+  FRONT_BASE_URL: 'https://blogex.netlify.app/',
+  // FRONT_BASE_URL: 'http://localhost:4200/',
   PRODUCT_URL: 'https://blogexapp.herokuapp.com/producto/',
   AUTH_URL: 'https://blogexapp.herokuapp.com/auth/',
   EMAIL_PASSWORD_URL: 'https://blogexapp.herokuapp.com/email-password/',

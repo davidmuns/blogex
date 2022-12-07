@@ -1,9 +1,12 @@
+import { environment } from 'src/environments/environment';
 import { Component, AfterViewInit, ViewChild, ElementRef, Renderer2, Input, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { Map, marker, tileLayer } from 'leaflet';
 import { Observable } from 'rxjs';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
+
+const BASE_URL = environment.FRONT_BASE_URL;
 
 @Component({
   selector: 'app-map',
@@ -17,19 +20,20 @@ export class MapComponent implements AfterViewInit {
   @ViewChild('map') mapa1!: ElementRef;
   @ViewChild('map2') mapa2!: ElementRef;
   @ViewChild('map3') mapa3!: ElementRef;
-  
 
   private postActual!: any;
 
   constructor(private readonly renderer2: Renderer2,
      private articleSvc: ArticleService,
      private router: Router) { }
-
+    
   ngAfterViewInit(): void {
-
+    
+    
     this.onScroll();
 
     const map = new Map('map').setView([42.40249, 2.194332], 13);
+    // const map = new Map('map').setView([-51.71892760927713, -58.74842236341812], 4);
     const map2 = new Map('map2').setView([42.40249, 2.194332], 13);
     const map3 = new Map('map3').setView([42.40249, 2.194332], 13);
 
@@ -50,7 +54,7 @@ export class MapComponent implements AfterViewInit {
       (res: Article[]) => {res.map(point => {
         this.postActual = point;
         marker([point.latitude, point.longitude]).addTo(map).bindPopup(`
-        <a href="https://blogex.netlify.app/${point.id}">${point.title}</a>
+        <a href="${BASE_URL }${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
         <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
       `);
@@ -64,7 +68,7 @@ export class MapComponent implements AfterViewInit {
       (res: Article[]) => {res.map(point => {
         this.postActual = point;
         marker([point.latitude, point.longitude]).addTo(map2).bindPopup(`
-        <a href="https://https://blogex.netlify.app/article/${point.id}">${point.title}</a>
+        <a href="${BASE_URL }article/${point.id}">${point.title}</a>
         <p class="text">${point.text1}</p>
         <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
       `);
