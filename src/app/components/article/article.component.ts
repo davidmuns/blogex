@@ -19,7 +19,6 @@ export class ArticleComponent implements OnInit {
     }
   };
 
-  @Output() eventEmitter = new EventEmitter<Article>(); 
   post!: Article | undefined;
   idPost!: number;
   temp!: any;
@@ -35,9 +34,9 @@ export class ArticleComponent implements OnInit {
     this.idPost = this.route.snapshot.params['id'];
     this.getArticleById(this.idPost);
   }
- 
+
   // Store data in a article service variable
-  onGoToMap() {  
+  onGoToMap() {
     this.articleSvc.data = this.post;
     this.articleSvc.focusArticleOnMap = true;
     this.router.navigate(['home']);
@@ -47,11 +46,11 @@ export class ArticleComponent implements OnInit {
     this.articleSvc.getArticle(id).subscribe(
       data => {
         this.post = data,
-        this.getWeather(data.latitude, data.longitude);
+          this.getWeather(data.latitude, data.longitude);
       });
   }
-   // https://www.youtube.com/watch?v=vpq2FxNzgd4
-   private getWeather(lat: number | undefined, lon: number | undefined) {
+  // https://www.youtube.com/watch?v=vpq2FxNzgd4
+  private getWeather(lat: number | undefined, lon: number | undefined) {
     const apiKey = 'd0047952dfbeb9ec30622425fe11ed84';
     fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&lang=es`)
       .then(resp => resp.json())
@@ -62,7 +61,7 @@ export class ArticleComponent implements OnInit {
       )
   }
 
-  onEdit(post: any){
+  onEdit(post: any) {
     this.navigationExtras.state = post;
     this.router.navigate(['admin/edit'], this.navigationExtras);
   }
