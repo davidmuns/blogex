@@ -29,6 +29,10 @@ img {
   height: 200px;
 }
 
+button:hover{
+  color: var(--lemon);
+}
+
 .carousel,
 .carousel-inner>.carousel-item>img {
   height: 650px;

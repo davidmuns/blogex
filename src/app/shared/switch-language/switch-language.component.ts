@@ -11,7 +11,7 @@ export class SwitchLanguageComponent implements OnInit {
   constructor(private translate:TranslateService) {
     translate.getBrowserLang();
     translate.addLangs(['ca', 'en', 'es']);
-    translate.setDefaultLang('en');
+    translate.setDefaultLang('ca');
    }
 
   ngOnInit(): void {

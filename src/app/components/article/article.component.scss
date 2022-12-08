@@ -1,25 +1,4 @@
-.carousel,
-.carousel-inner>.carousel-item>img {
-
-  height: 600px;
-}
-
-//Article card
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
-
-h2 {
-  position: relative;
-  top: -75px;
-  left: 0px;
-  z-index: 1;
-  height: 80px;
-  padding-top: 25px;
-  text-align: center;
-  font-size: 2.2rem;
-  background-color: white;
-  border-bottom: 2px solid dimgray;
-  background-color: silver;
-}
 
 #linkToHome {
   position: absolute;
@@ -38,8 +17,11 @@ h2 {
   }
 }
 
+button:hover{
+  color: var(--lemon);
+}
+
 .example-card {
-  // width:78%;
   max-width: 1000px;
   margin: 20px auto 100px;
   background-color: rgba(47, 47, 47, 1);
@@ -63,7 +45,6 @@ h2 {
   .imageMarc {
     border-top: 2px solid white;
     border-bottom: 1px solid white;
-    // max-height: 600px;
     overflow: hidden;
     width: 100%;
   }
@@ -111,7 +92,6 @@ mat-card-content {
   p {
     font-size: 1.1rem;
     padding: 30px 15px;
-    //text-indent: 30px;
     display: block;
     overflow: auto;
     white-space: pre-line;

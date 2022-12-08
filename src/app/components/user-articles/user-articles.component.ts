@@ -18,7 +18,8 @@ export class UserArticlesComponent implements OnInit {
       value: null
     }
   };
-
+  
+  filterByTitle = '';
   username!: string;
   public articles: Article[] = []
   public pageSizeOptions: number[] = [1];

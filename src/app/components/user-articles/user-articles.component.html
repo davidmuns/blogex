@@ -1,84 +1,67 @@
-<ng-container *ngIf="this.articles.length > 0; else noArticles">
-  <h2 *ngIf="this.tokenSvc.isAdmin(); else noAdmin">{{ 'BlogOf' | translate }} {{ this.username }}
+<h2 *ngIf="this.tokenSvc.isAdmin(); else noAdmin">{{ 'BlogOf' | translate }} {{ this.username }}
+  <div id="linkToHome" routerLink="/list">BlogEx.com</div>
+</h2>
+<ng-template #noAdmin>
+  <h2>{{ 'BlogOf' | translate }} {{ this.articles[0].usuario.nombreUsuario }}
     <div id="linkToHome" routerLink="/list">BlogEx.com</div>
   </h2>
-  <ng-template #noAdmin>
-    <h2>{{ 'BlogOf' | translate }} {{ this.articles[0].usuario.nombreUsuario }}
-      <div id="linkToHome" routerLink="/list">BlogEx.com</div><!-- class="animate__animated animate__fadeInRight" -->
-    </h2>
-  </ng-template>
+</ng-template>
 
-  <mat-paginator [length]="articles.length" [pageSize]="pageSize" aria-label="Select page" showFirstLastButtons
-    (page)="onPageChange($event)">
-  </mat-paginator>
+<mat-paginator class="top-paginator" [length]="articles.length" [pageSize]="pageSize" aria-label="Select page"
+  showFirstLastButtons (page)="onPageChange($event)">
+</mat-paginator>
 
-  <div *ngFor="let article of this.articles | paginate:pageSize:pageNumber">
+<div class="container d-flex" style="max-width: 270px;">
+  <input class="form-control" type="search" placeholder="{{ 'crud.list-temp.insert-tilte' | translate }}"
+    aria-label="Search" [(ngModel)]="this.filterByTitle">
+</div>
 
-    <div class="example-card">
-      <mat-card-header>
-        <!-- <div mat-card-avatar class="example-header-image"></div> -->
-        <div id="title-post">{{ article.title }} | {{ this.temp }}ºC</div>
-        <!-- <mat-card-subtitle>{{ article.id }}</mat-card-subtitle> -->
-      </mat-card-header>
-      <!-- <a (click)="onOpenGallery(article.id)" style="cursor: pointer;" matTooltip="gallery view"
-        matTooltipPosition="above">
-        <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
-      </a> -->
-      <div class="imageMarc">
-        <img mat-card-image [src]="article.imagenPortada" alt="{{ article.alt1 }}">
-      </div>
-      <mat-card-content>
-        <p id="footerImg">{{ article.alt1 }}</p>
-        <div class="autor">
-          <button *ngIf="article.usuario.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent"
-            id="editAutor" (click)="onEdit(article)">
-            <mat-icon>edit</mat-icon> {{ 'EditArticle' | translate }}
-          </button>
-          <button style="margin-bottom: 20px;" mat-stroked-button color="accent" id="editAutor" (click)="onGoToMap(article)">
-            <mat-icon>room</mat-icon>
-          </button>
-        </div>
-        <p>{{ article.text1 }}</p>
-      </mat-card-content>
-      <app-articleGallery [articleId]="article.id"></app-articleGallery>
-      <mat-card-actions align="end">
-        <!-- <button mat-button routerLink="/edit/{{ article.id }}">Edit</button> -->
-        <!-- <button mat-button (click)="onDeleteArticle(article.id)">Delete</button> -->
-        <!-- <button mat-button (click)="onImgs(article.id)">Galery</button> -->
-        <!-- <button mat-button routerLink="/add-image/{{ article.id }}">Add img</button> -->
-        <!-- <img class="image-thumbnail" style="max-width: 100px; border-radius: 5%;" [src]="miniatura" *ngIf="this.image" style="margin-top: 5px;">
-        <input type="file" accept=".png, .jpg, .jpeg" multiple id="inputUpload" formControlName="image" (change)="handleImage($event)"> -->
-        <!-- <button mat-button data-bs-toggle="modal" data-bs-target="#gallery" (click)="loadImgsByArticleId(article.id)"> -->
-        <!-- <button *ngIf="this.tokenService.isLogged()" mat-button matTooltip="edit article" matTooltipPosition="left"
-          (click)="onEdit(article)">
-          <mat-icon>article</mat-icon>
-        </button>
-        <button mat-button (click)="onOpenGallery(article.id)" matTooltip="gallery view">
-          <mat-icon>image</mat-icon>
-        </button> -->
-      </mat-card-actions>
+<ng-container *ngIf="this.articles.length; else noAdmin">
+  <div class="example-card"
+    *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber">
+    <mat-card-header>
+      <div class="example-header-image"></div>
+      <div id="title-post">{{ article.title }} | {{ this.temp }} ºC</div>
+    </mat-card-header>
+    <div class="imageMarc">
+      <img mat-card-image [src]="article.imagenPortada" alt="{{ article.alt1 }}">
     </div>
+    <mat-card-content>
+      <p id="footerImg">{{ article.alt1 }}</p>
+      <div class="autor">
+        <!-- <div id="autorLink">{{ 'CreatedBy' | translate }}:&nbsp;<span routerLink="/blog/{{ 'username' }}">
+              {{ 'username' }}</span></div>&nbsp;&nbsp;&nbsp; -->
+        <button *ngIf="article.usuario.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent"
+          id="editAutor">
+          <mat-icon>edit</mat-icon> {{ 'EditArticle' | translate }}
+        </button>
+        <button class="mx-2" mat-stroked-button color="accent" id="editAutor"
+          (click)="onGoToMap(article)">
+          <mat-icon>room</mat-icon> Map
+        </button>
+      </div>
+      <p>
+        {{ article.text1 }}
+      </p>
+    </mat-card-content>
+    <app-articleGallery [articleId]="article.id"></app-articleGallery>
+    <mat-card-actions>
+    </mat-card-actions>
   </div>
-  <mat-paginator [length]="articles.length" [pageSize]="pageSize" aria-label="Select page" showFirstLastButtons
-    (page)="onPageChange($event)">
-  </mat-paginator>
 </ng-container>
 
+<!-- <mat-paginator class="botton-paginator" [length]="articles.length" [pageSize]="pageSize" aria-label="Select page"
+  showFirstLastButtons (page)="onPageChange($event)">
+</mat-paginator> -->
+
+
 <ng-template #noArticles>
-  <!-- <h2>{{ 'BlogOf' | translate }} {{ this.tokenSvc.getUsername() }}</h2> -->
   <h2>{{ 'BlogOf' | translate }} {{this.tokenSvc.getUsername() }}
     <div id="linkToHome" class="animate__animated animate__fadeInRight" routerLink="/list">BlogEx.com</div>
   </h2>
-  <!-- <mat-icon class="animate__animated animate__fadeInLeft" routerLink="/">home</mat-icon>
-  <div *ngIf="this.tokenSvc.isLogged(); else notLogged" id="linkToHome"
-    class="animate__animated animate__fadeInRight" routerLink="/list">My Images</div>
-  <ng-template #notLogged>
-    <div id="linkToHome" class="animate__animated animate__fadeInRight" (click)="openDialog()">My Images</div>
-  </ng-template> -->
   <div>
     <mat-card class="example-card">
       <mat-card-header>
-        <!-- <mat-card-title>No articles</mat-card-title> -->
         <div id="title-post">No articles</div>
       </mat-card-header>
       <div class="imageMarc">
@@ -94,7 +77,6 @@
       </mat-card-actions>
     </mat-card>
   </div>
-
 </ng-template>
 
 <app-footer></app-footer>

@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
-h2{
+
+h2 {
     position: relative;
-    top:-75px;
-    left:0px;
+    top: -75px;
+    left: 0px;
     z-index: 1;
     height: auto;
     padding: 25px 0px 15px;
@@ -11,138 +12,152 @@ h2{
     background-color: white;
     border-bottom: 2px solid dimgray;
     background-color: silver;
-    @media(max-width:600px){
+
+    @media(max-width:600px) {
         font-size: 2rem;
     }
-    @media(max-width:355px){
+
+    @media(max-width:355px) {
         font-size: 1.8rem;
     }
 }
 
-mat-icon {
-    position: absolute;
-    top: 22px;
-    left: 20px;
-    z-index: 1;
-    cursor: pointer;
-
-    @media(max-width:500px){
-        top: 72px;
-    }
-
-    @media(max-width:297px){
-        top: 32px;
-    }
-
+button:hover {
+    color: var(--lemon);
 }
 
-mat-icon:hover {
-    color: #69F0AE;
-}
-
-#linkToHome{
+#linkToHome {
     position: absolute;
-    top:30px;
+    top: 30px;
     right: 4%;
     z-index: 1;
     color: var(--lemon);
     border-radius: 2px;
-    padding:0px 2px;
+    padding: 2px;
+
     height: 24px;
     display: flex;
-    align-items:center;
+    align-items: center;
     font-size: .9rem;
+
     background-color: var(--accent);
     transition: all .1s;
     cursor: pointer;
-    @media(max-width:600px){
-        top:auto;
-        margin-top: 20px;
-    }
-}
-.mat-paginator{
-    margin: -80px 0px 40px;
-    @media(max-width:600px){
-        margin: -70px 0px 30px;
+
+    @media(max-width:600px) {
+        top: 80px;
     }
 }
 
-.example-card{
-    //width:78%;
+.top-paginator {
+    margin: -80px 0px 0px;
+
+    @media(max-width:600px) {
+        margin: -30px 0px 0px;
+    }
+}
+
+.example-card {
     max-width: 1000px;
-    margin:-50px auto 100px;
-    background-color: rgba(47,47,47,1);
-    color:white;
+    margin: 20px auto 100px;
+    background-color: rgba(47, 47, 47, 1);
+    color: white;
     padding: 0px;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 1px 1px 6px #888888;
-    @media(max-width: 600px){    
-        width:100%;
+
+    @media(max-width: 600px) {
+        width: 100%;
     }
-    #title-post{
+
+    #title-post {
         font-size: 1.6rem;
         font-family: 'Libre Baskerville', serif;
         padding: 10px 10px 20px 15px;
         line-height: 2rem;
         height: auto;
     }
-    .imageMarc{
+
+    .imageMarc {
         border-top: 2px solid white;
         border-bottom: 1px solid white;
-        // max-height: 600px;
         overflow: hidden;
-        width:100%;
-    }
-    img{
-        margin:0px;
         width: 100%;
     }
-    #footerImg{
+
+    img {
+        width: 100%;
+        margin: 0px;
+    }
+
+    #footerImg {
         font-size: .8rem;
         padding: 10px;
         margin: 0px;
-    } 
+    }
 }
 
-mat-card-content{
-    .autor{
+.form-control {
+    width: 96%;
+    height: 35px;
+    padding: 0px .5rem;
+    font-size: 1rem;
+    border: 0px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 0px 1px inset var(--lemon);
+    color: black;
+    font-weight: 400;
+    background-color: white;
+    transition: all .2s;
+    margin-left: 2%;
+    vertical-align: middle;
+}
+
+.form-control:focus {
+    box-shadow: 0px 0px 0px 3px inset var(--lemon);
+    background-color: #fbfdf1;
+    outline: 3px solid var(--lemon);
+    box-shadow: none;
+}
+
+
+mat-card-content {
+    .autor {
         padding: 20px 15px 0px;
         display: flex;
         flex-direction: row;
-        #autorLink{
-          font-size: 1rem;
-          display: flex;
-          align-items: center;
-          span{
-            font-size: 1.1rem;
-            font-family: 'Libre Baskerville', serif;
-            text-transform: capitalize;
-            cursor: pointer;
-          }
+
+        #autorLink {
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+
+            span {
+                font-size: 1.1rem;
+                font-family: 'Libre Baskerville', serif;
+                text-transform: capitalize;
+                cursor: pointer;
+            }
         }
-        #editAutor{
-            width: 107px;
+
+        #autorLink:hover {
+            color: var(--lemon);
+        }
+
+        #editAutor {
             padding: 2px 5px;
-            text-align: end;
-            mat-icon{
-                position: absolute;
-                top:8px;
-                left:5px;
-                z-index: 0;
-            }
-            mat-icon:hover{
-                color: #ff4081;
-            }
         }
     }
-    p{
-    font-size: 1.1rem;
-    padding:30px 15px;
-    display: block;
-    overflow:auto;
-    white-space: pre-line;
-    @media(max-width:600px){
-        font-size: 1rem;
-    }
+
+    p {
+        font-size: 1.1rem;
+        padding: 30px 15px;
+        display: block;
+        overflow: auto;
+        white-space: pre-line;
+
+        @media(max-width:600px) {
+            font-size: 1rem;
+        }
     }
 }
