@@ -1,11 +1,6 @@
-<h2 *ngIf="this.tokenSvc.isAdmin(); else noAdmin">{{ 'BlogOf' | translate }} {{ this.username }}
+<h2>{{ 'BlogOf' | translate }} {{ this.username }}
   <div id="linkToHome" routerLink="/list">BlogEx.com</div>
 </h2>
-<ng-template #noAdmin>
-  <h2>{{ 'BlogOf' | translate }} {{ this.articles[0].usuario.nombreUsuario }}
-    <div id="linkToHome" routerLink="/list">BlogEx.com</div>
-  </h2>
-</ng-template>
 
 <mat-paginator class="top-paginator" [length]="articles.length" [pageSize]="pageSize" aria-label="Select page"
   showFirstLastButtons (page)="onPageChange($event)">
@@ -16,7 +11,7 @@
     aria-label="Search" [(ngModel)]="this.filterByTitle">
 </div>
 
-<ng-container *ngIf="this.articles.length; else noAdmin">
+<ng-container *ngIf="this.articles.length; else noArticles">
   <div class="example-card"
     *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber">
     <mat-card-header>
@@ -29,14 +24,11 @@
     <mat-card-content>
       <p id="footerImg">{{ article.alt1 }}</p>
       <div class="autor">
-        <!-- <div id="autorLink">{{ 'CreatedBy' | translate }}:&nbsp;<span routerLink="/blog/{{ 'username' }}">
-              {{ 'username' }}</span></div>&nbsp;&nbsp;&nbsp; -->
         <button *ngIf="article.usuario.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent"
           id="editAutor">
           <mat-icon>edit</mat-icon> {{ 'EditArticle' | translate }}
         </button>
-        <button class="mx-2" mat-stroked-button color="accent" id="editAutor"
-          (click)="onGoToMap(article)">
+        <button class="mx-2" mat-stroked-button color="accent" id="editAutor" (click)="onGoToMap(article)">
           <mat-icon>room</mat-icon> Map
         </button>
       </div>
@@ -56,26 +48,16 @@
 
 
 <ng-template #noArticles>
-  <h2>{{ 'BlogOf' | translate }} {{this.tokenSvc.getUsername() }}
-    <div id="linkToHome" class="animate__animated animate__fadeInRight" routerLink="/list">BlogEx.com</div>
-  </h2>
-  <div>
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div id="title-post">No articles</div>
-      </mat-card-header>
-      <div class="imageMarc">
-        <img mat-card-image src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg"
-          alt="blogex-logo">
-      </div>
-      <mat-card-content>
-      </mat-card-content>
-      <mat-card-actions align="end">
-        <button mat-button matTooltip="new article" matTooltipPosition="left" routerLink="/admin/new">
-          <mat-icon style="color: rgba(255, 255, 255);">article</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
+  <div class="example-card">
+    <mat-card-header>
+      <div class="example-header-image"></div>
+      <div id="title-post">No articles</div>
+    </mat-card-header>
+    <div class="imageMarc">
+      <img mat-card-image src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg">
+    </div>
+    <!-- <mat-card-content></mat-card-content>
+    <mat-card-actions></mat-card-actions> -->
   </div>
 </ng-template>
 
