@@ -27,7 +27,6 @@
     "Latitude": "Latitud",
     "Article": "Artículo",
     "Articles": "Artículos",
-    "Images": "Imágenes de",
     "Gallery": "Galeria",
     "Show": "Mostrar",
     "Hide": "Ocultar",
@@ -88,5 +87,11 @@
     },
     "front-articles": {
         "last-articles": "Artículos más recientes"
+    },
+    "crud": {
+        "list-temp": {
+            "insert-tilte": "Buscar por título",
+            "images": "Imágenes de"
+        }
     }
 }

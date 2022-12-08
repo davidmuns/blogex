@@ -1,12 +1,17 @@
-<h1>{{ 'Images' | translate }} {{ this.username }} </h1>
+<h1>{{ 'crud.list-temp.images' | translate }} {{ this.username }} </h1>
 
 <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
   aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
 </mat-paginator>
 
-<div *ngIf="this.articles.length > 0; else noArticles" class="container shadow">
+<div class="container d-flex" style="max-width: 270px;">
+  <input class="form-control" type="search" placeholder="{{ 'crud.list-temp.insert-tilte' | translate }}" aria-label="Search"
+      [(ngModel)]="this.filterByTitle">
+</div>
 
-  <div *ngFor="let article of this.articles | paginate:pageSize:pageNumber">
+<div class="container shadow" *ngIf="this.articles.length > 0; else noArticles">
+
+  <div *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber ">
     <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: #607D8B">
       <mat-card-header style="margin-bottom: 10px;">
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
@@ -52,5 +57,9 @@
     </div>
   </div>
 </ng-template>
+
+<mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+  aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+</mat-paginator>
 
 <app-footer></app-footer>

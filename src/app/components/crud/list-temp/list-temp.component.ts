@@ -1,12 +1,15 @@
 import { MatDialog } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
+
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+
 import { ArticleService } from './../../../shared/services/article.service';
 import { TokenService } from './../../../shared/services/token.service';
 import { Article } from './../../../shared/models/article';
-import { Component, OnInit } from '@angular/core';
 import { Imagen } from 'src/app/shared/models/imagen';
 import { GalleryUserComponent } from './../../../shared/GalleryUser/GalleryUser.component';
-import { PageEvent } from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-list-temp',
@@ -21,6 +24,7 @@ export class ListTempComponent implements OnInit {
     }
   };
 
+  filterByTitle = '';
   articles: Article[] = [];
   imagenes: Imagen[] = [];
   imgsByArticleId: Imagen[] = [];
@@ -28,7 +32,7 @@ export class ListTempComponent implements OnInit {
   miniatura!: Imagen;
   username!: string;
   articleId!: number;
-  public pageSizeOptions: number[] = [1, 3, 5];
+  public pageSizeOptions: number[] = [1, 3, 5, 9];
   public pageSize: number = 1;
   public pageNumber: number = 1;
   isAdmin: boolean = false;

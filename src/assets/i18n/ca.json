@@ -26,7 +26,6 @@
     "Latitude": "Latitud",
     "Article": "Article",
     "Articles": "Articles",
-    "Images": "Imatges de",
     "Gallery": "Galeria",
     "Show": "Mostrar",
     "Hide": "Ocultar",
@@ -87,5 +86,11 @@
     },
     "front-articles": {
         "last-articles": "Articles més recents"
+    },
+    "crud": {
+        "list-temp": {
+            "insert-tilte": "Buscar per títol",
+            "images": "Imatges de"
+        }
     }
 }

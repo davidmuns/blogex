@@ -1,11 +1,11 @@
 import { SwitchLanguageComponent } from './shared/switch-language/switch-language.component';
 import { CaptionComponent } from './shared/GalleryUser/caption/caption.component';
 import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
-import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -47,6 +47,8 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // MATERIAL
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
+import { SearchPipe } from './shared/pipes/search.pipe';
 
 
 @NgModule({
@@ -71,6 +73,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     ArticleGalleryComponent,
     CaptionComponent,
     PaginatePipe,
+    SearchPipe,
     AboutComponent
   ],
   imports: [
@@ -80,6 +83,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
     MaterialModule,
     MatButtonToggleModule,
     ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
     CrudModule,
     ToastrModule.forRoot(), // ToastrModule added
