@@ -23,7 +23,6 @@ export class ListTempComponent implements OnInit {
       value: null
     }
   };
-
   filterByTitle = '';
   articles: Article[] = [];
   imagenes: Imagen[] = [];
@@ -41,9 +40,7 @@ export class ListTempComponent implements OnInit {
     private readonly dialog: MatDialog,
     private tokenService: TokenService,
     private articleService: ArticleService,
-    private router: Router) {
-
-  }
+    private router: Router) {};
 
   ngOnInit(): void {
     this.username = this.tokenService.getUsername() as string;
@@ -54,12 +51,12 @@ export class ListTempComponent implements OnInit {
         this.getAllArticlesByUsername();
       }
     this.articles = [];
-  }
+  };
 
   onPageChange(event: PageEvent){
     this.pageSize = event.pageSize;
     this.pageNumber = event.pageIndex +1;
-  }
+  };
 
   private getAllArticles(){
     this.articleService.getAll().subscribe({
@@ -69,8 +66,8 @@ export class ListTempComponent implements OnInit {
       error: (err: any) => {
         console.log(err);
       }
-    })
-  }
+    });
+  };
 
   private getAllArticlesByUsername() {
     this.articleService.getArticlesByUsername(this.username).subscribe({
@@ -81,14 +78,14 @@ export class ListTempComponent implements OnInit {
         console.log(err);
       }
     });
-  }
+  };
 
   onOpenGallery(id: number) {
     this.dialog.open(GalleryUserComponent, { data: { articleId: id } });
-  }
+  };
 
   onEdit(post: Article){
     this.navigationExtras.state = post;
     this.router.navigate(['admin/edit'], this.navigationExtras);
   }
-}
+};

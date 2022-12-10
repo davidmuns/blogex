@@ -7,23 +7,18 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './articleGallery.component.html',
   styleUrls: ['./articleGallery.component.scss']
 })
-export class ArticleGalleryComponent implements OnInit {
+export class ArticleGalleryComponent {
   @Input('articleId') articleId!: number | undefined;
   imagenes: Imagen[] = [];
   indice!: number;
 
   constructor(private articleSvc: ArticleService) { }
 
-  ngOnInit() {
-    
-  }
-
   getIndex(index: number) {
     this.indice = index;
   }
 
   showGallery() {
-    console.log('articleId', this.articleId);
     this.getImgsByArticleId(this.articleId);
   }
 

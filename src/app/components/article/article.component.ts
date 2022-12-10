@@ -54,7 +54,7 @@ export class ArticleComponent implements OnInit {
 
   // https://www.youtube.com/watch?v=vpq2FxNzgd4
   private getWeather(lat: number, lon: number) {
-    this.apiWeatherService.getWeather2(lat, lon)
+    this.apiWeatherService.getWeather(lat, lon)
       .then(resp => resp.json())
       .then(data => {
         this.temp = parseInt(data.main.temp);

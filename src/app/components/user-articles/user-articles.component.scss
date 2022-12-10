@@ -57,6 +57,11 @@ button:hover {
     }
 }
 
+iframe{
+    width: 1000px;
+    height: 506px;
+}
+
 .example-card {
     max-width: 1000px;
     margin: 20px auto 100px;
@@ -66,9 +71,7 @@ button:hover {
     border-radius: 5px 5px 5px 5px;
     box-shadow: 1px 1px 6px #888888;
 
-    @media(max-width: 600px) {
-        width: 100%;
-    }
+   
 
     #title-post {
         font-size: 1.6rem;

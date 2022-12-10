@@ -23,8 +23,7 @@ export class EmailPasswordComponent implements OnInit {
     private readonly dialog: MatDialog,
     private readonly fb: FormBuilder,
     private toastr: ToastrService,
-    private translateService: TranslateService,
-    private router: Router
+    private translateService: TranslateService
   ) { }
 
   ngOnInit(): void {
