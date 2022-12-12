@@ -14,7 +14,25 @@
 
 <!-- IMAGES -->
 <div class="main-container">
-	<div *ngFor="let imagen of this.imagenes; let i = index">
+
+	<!-- <div>
+		<mat-card>
+			<mat-card-header>
+
+			</mat-card-header>
+			<youtube-player [videoId]="'aN-tgeyTOM8'">
+			</youtube-player>
+			<mat-card-content>
+
+			</mat-card-content>
+			<mat-card-actions>
+
+			</mat-card-actions>
+
+		</mat-card>
+	</div> -->
+
+	<div *ngFor="let imagen of (this.imagenes$ | async); let i = index">
 
 		<!-- https://animate.style/ -->
 		<mat-card class="example-card animate__animated animate__zoomIn"
@@ -44,13 +62,13 @@
 
 <!-- MODAL -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-	style="padding: 0px;">
+	style="padding: 0px;" data-bs-backdrop="static" data-bs-keyboard="false">
 	<div class="modal-dialog modal-xl">
-		<div class="modal-content" style="height: 530px; background-color: transparent; border: none;">
-			<!-- <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div> -->
+		<div class="modal-content" style="background-color: rgba(47, 47, 47, 1); border: none;">
+			<div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ '' }}</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" (click)="hideGallery()"></button>
+      </div>
 			<div class="modal-body">
 
 				<!-- CAROUSEL -->
@@ -63,12 +81,13 @@
             <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index">
               <img [src]="imagen.url" class="d-block w-100" alt="...">
             </div> -->
-						<div class="carousel-item" data-bs-interval="90000" *ngFor="let imagen of imagenes; let i = index"
+						<div class="carousel-item" data-bs-interval="90000"
+							*ngFor="let imagen of (this.imagenes$ | async); index as i; count as items"
 							[ngClass]="{'active': i == this.indice, '': i != this.indice}">
 							<img [src]="imagen.url" class="d-block w-100" alt="...">
 							<div class="carousel-caption d-none d-md-block">
 								<h2 class="m-0"><strong>{{ imagen.caption }}</strong></h2>
-								<p class="m-0">image {{ i + 1 }} of {{ this.imagenes.length }}</p>
+								<p class="m-0">image {{ i + 1 }} of {{ items }}</p>
 							</div>
 						</div>
 						<!-- <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == 0 }">
