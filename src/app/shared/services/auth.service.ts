@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Jwt } from '../models/jwt';
+import * as CryptoJS from 'crypto-js'; 
 
 const AUTH_URL = environment.AUTH_URL;
 
@@ -16,10 +16,19 @@ export class AuthService {
   constructor(private httpClient: HttpClient) { }
 
   public signupUser(user: User): Observable<any>{
+    user.email = user.email?.trim();
+    user.nombreUsuario = user.nombreUsuario?.trim();
+    user.password = user.password.trim();
     return this.httpClient.post<any>(AUTH_URL + 'nuevo', user);
   }
 
   public loginUser(login: Login): Observable<any> {
+    // ¿Encriptar password del lado del cliente? 
+    // https://www.youtube.com/watch?v=fzwkkZp5WcE
+    console.log(CryptoJS.AES.encrypt(login.password, 'pass').toString());
+    // login.password = CryptoJS.AES.encrypt(login.password, 'pass').toString();
+    login.nombreUsuario = login.nombreUsuario.trim();
+    login.password = login.password.trim();
     return this.httpClient.post<any>(AUTH_URL + 'login', login);
   }
 

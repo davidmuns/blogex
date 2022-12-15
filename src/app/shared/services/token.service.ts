@@ -70,8 +70,9 @@ export class TokenService {
 
   public logOut(): void {
     window.sessionStorage.clear();
-    // window.localStorage.clear();
-    this.router.navigate(['home']);
-    //window.location.reload();
+    window.localStorage.clear();
+    window.location.reload();
+    // this.router.navigate(['home']);
+    
   }
 }

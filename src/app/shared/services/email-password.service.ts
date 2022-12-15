@@ -20,6 +20,10 @@ export class EmailPasswordService {
   }
 
   public resetPassword(resetPassword: ResetPassword): Observable<any> {
+    resetPassword.newPassword = resetPassword.newPassword.trim();
+    console.log('pass:', resetPassword.newPassword);
+    
+    resetPassword.confirmPassword = resetPassword.confirmPassword.trim();
     return this.httpClient.post<any>(EMAIL_PASSWORD_URL + 'reset', resetPassword);
   }
 }
