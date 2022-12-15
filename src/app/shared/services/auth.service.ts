@@ -25,8 +25,7 @@ export class AuthService {
   public loginUser(login: Login): Observable<any> {
     // ¿Encriptar password del lado del cliente? 
     // https://www.youtube.com/watch?v=fzwkkZp5WcE
-    console.log(CryptoJS.AES.encrypt(login.password, 'pass').toString());
-    // login.password = CryptoJS.AES.encrypt(login.password, 'pass').toString();
+    // console.log(CryptoJS.AES.encrypt(login.password, 'pass').toString());
     login.nombreUsuario = login.nombreUsuario.trim();
     login.password = login.password.trim();
     return this.httpClient.post<any>(AUTH_URL + 'login', login);
