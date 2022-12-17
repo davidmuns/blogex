@@ -11,12 +11,14 @@
 </div>
 
 <mat-dialog-content class="mat-typography" style="background-color: #607d8b;">
+  <h1 class="mt-4 mb-0" style="text-align: center; color: rgba(255, 255, 255);">{{ this.imagenes.length }} {{
+    'crud.list-temp.images' | translate }} {{ this.article.title }}</h1>
   <div class="main-container">
-    <div *ngFor="let imagen of this.imagenes">
+    <div *ngFor="let imagen of this.imagenes; index as i">
       <mat-card class="example-card animate__animated animate__backInLeft"
         style="background-color: rgba(0, 0, 0, 0.4);">
         <mat-card-header class="mb-3">
-          <mat-card-title style="color: rgba(255, 255, 255);">{{ imagen.article.title }}</mat-card-title>
+          <mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
         </mat-card-header>
         <img mat-card-image [src]="imagen.url" alt="">
         <mat-card-content>

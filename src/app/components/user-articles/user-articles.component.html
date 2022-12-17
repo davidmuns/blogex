@@ -2,6 +2,8 @@
   <div id="linkToHome" routerLink="/list">BlogEx.com</div>
 </h2>
 
+<h1>{{ this.articles.length }} {{ 'Articles' | translate }}</h1>
+
 <mat-paginator class="top-paginator" [length]="articles.length" [pageSize]="pageSize" aria-label="Select page"
   showFirstLastButtons (page)="onPageChange($event)">
 </mat-paginator>

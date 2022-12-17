@@ -67,7 +67,7 @@
     "PleaseSelectImage": "Please select an image",
     "about": {
         "title": "Discover places around the world",
-        "text": "Here you can find articles about interesting places. Subscribe and create your personal blog. Make the people discover places you know."
+        "text": "Here you can find articles about interesting sites. Subscribe and create your personal blog. Make people discover the sites you know through your posts."
     },
     "auth": {
         "login": {
@@ -86,7 +86,7 @@
         }
     },
     "front-articles": {
-        "last-articles": "Latest articles"
+        "last-articles": "Latest posts"
     },
     "crud": {
         "list-temp": {

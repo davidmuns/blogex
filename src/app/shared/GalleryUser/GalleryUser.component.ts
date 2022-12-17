@@ -21,6 +21,7 @@ export class GalleryUserComponent implements OnInit {
 
   imagesByArticleId: Imagen[] = [];
   articles: Article[] = [];
+  article!: Article;
   imagenes: Imagen[] = [];
   image!: File;
   miniatura!: Imagen;
@@ -31,7 +32,7 @@ export class GalleryUserComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: { articleId: number },
     private readonly dialog: MatDialog,
     private snack: MatSnackBar,
-    private articleService: ArticleService,
+    private articleSvc: ArticleService,
     private toastrService: ToastrService,
     private translateService: TranslateService,
     private router: Router) { }
@@ -39,10 +40,15 @@ export class GalleryUserComponent implements OnInit {
   ngOnInit() {
     this.getImgsByArticleId(this.data.articleId);
     this.articleId = this.data.articleId;
+    this.getArticle();
+  }
+
+  private getArticle() {
+    this.articleSvc.getArticle(this.articleId).subscribe( data => this.article = data );
   }
 
   private getImgsByArticleId(id: number) {
-    this.articleService.getImagesByArticleId(id).subscribe({
+    this.articleSvc.getImagesByArticleId(id).subscribe({
       next: (data: Imagen[]) => {
         data.forEach(img => {
           this.imagenes.push(img);
@@ -67,7 +73,7 @@ export class GalleryUserComponent implements OnInit {
   }
 
   private addImage(image: File, articleId: number) {
-    this.articleService.addImageToArticle(image, articleId).subscribe({
+    this.articleSvc.addImageToArticle(image, articleId).subscribe({
       next: data => {
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'

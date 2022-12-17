@@ -68,7 +68,7 @@
     "PleaseSelectImage": "Por favor seleccionar una imagen",
     "about": {
         "title": "Descubre lugares del mundo",
-        "text": "Aquí puedes encontrar artículos sobre lugares interesantes. Suscríbete y crea tu blog personal. Haz que la gente descubra los lugares que conoces."
+        "text": "Aquí puedes encontrar artículos sobre sitios interesantes. Suscríbete y crea tu blog personal. Haz que la gente descubra los sitios que conoces a través de tus publicaciones."
     },
     "auth": {
         "login": {
@@ -87,7 +87,7 @@
         }
     },
     "front-articles": {
-        "last-articles": "Artículos más recientes"
+        "last-articles": "Publicaciones más recientes"
     },
     "crud": {
         "list-temp": {

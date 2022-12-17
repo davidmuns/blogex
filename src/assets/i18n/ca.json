@@ -67,7 +67,7 @@
     "PleaseSelectImage": "Si us plau seleccionar una imatge",
     "about": {
         "title": "Descobreix llocs del món",
-        "text": "Aquí pots trobar articles sobre llocs interessants. Subscriu-te i crea el teu blog personal. Fes que la gent descobreixi els llocs que coneixes."
+        "text": "Aquí pots trobar articles sobre llocs interessants. Subscriu-te i crea el teu bloc personal. Fes que la gent descobreixi els llocs que coneixes a través de les teves publicacions."
     },
     "auth": {
         "login": {
@@ -86,7 +86,7 @@
         }
     },
     "front-articles": {
-        "last-articles": "Articles més recents"
+        "last-articles": "Publicacions més recents"
     },
     "crud": {
         "list-temp": {
