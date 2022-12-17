@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   public catchScroll!: any;
-  private postActual!: any;
+  public postActual!: any;
   public hideSection!: boolean;
   private innerWidth!: any;
   private lat = 42.40249;

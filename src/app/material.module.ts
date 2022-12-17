@@ -16,6 +16,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 const myModule = [
   MatButtonModule,
@@ -32,7 +33,8 @@ const myModule = [
   MatTooltipModule,
   MatSnackBarModule,
   MatMenuModule,
-  MatDividerModule
+  MatDividerModule,
+  MatProgressSpinnerModule
 ];
 
 @NgModule({
