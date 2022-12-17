@@ -42,7 +42,7 @@ export class ListTempComponent implements OnInit {
     private articleService: ArticleService,
     private router: Router) {};
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.username = this.tokenService.getUsername() as string;
     this.isAdmin =this.tokenService.isAdmin();
       if(this.isAdmin){

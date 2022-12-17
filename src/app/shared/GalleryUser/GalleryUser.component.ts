@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { CaptionComponent } from './caption/caption.component';
 import { environment } from 'src/environments/environment';
@@ -21,7 +22,7 @@ export class GalleryUserComponent implements OnInit {
 
   imagesByArticleId: Imagen[] = [];
   articles: Article[] = [];
-  article!: Article;
+  article$!: Observable<Article>;
   imagenes: Imagen[] = [];
   image!: File;
   miniatura!: Imagen;
@@ -44,7 +45,7 @@ export class GalleryUserComponent implements OnInit {
   }
 
   private getArticle() {
-    this.articleSvc.getArticle(this.articleId).subscribe( data => this.article = data );
+    this.article$ = this.articleSvc.getArticle(this.articleId); 
   }
 
   private getImgsByArticleId(id: number) {
