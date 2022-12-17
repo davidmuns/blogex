@@ -54,11 +54,7 @@ export class NewComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void { 
-    console.log('Test', this.translateService.instant('Caption'));
-    
-  }
-
+  ngOnInit(): void { }
 
   handleImage(event: any) {
     this.image = event.target.files[0];
