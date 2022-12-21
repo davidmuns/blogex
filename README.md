@@ -1,8 +1,8 @@
-# Blogex 
+# Blogex App
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
 
-[website](https://blogex.netlify.app/home)
+- [website](https://blogex.netlify.app/home)
 
 ## Development server
 
