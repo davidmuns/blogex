@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,6 +20,7 @@ import { DeleteComponent } from '../../delete/delete.component';
 })
 export class GalleryVideosComponent implements OnInit {
 
+  urlForm!: FormGroup;
   imagesByArticleId: Imagen[] = [];
   articles: Article[] = [];
   article$!: Observable<Article>;
@@ -30,6 +32,7 @@ export class GalleryVideosComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { articleId: number },
+    private readonly fb: FormBuilder,
     private readonly dialog: MatDialog,
     private snack: MatSnackBar,
     private articleSvc: ArticleService,
@@ -39,10 +42,20 @@ export class GalleryVideosComponent implements OnInit {
 
   ngOnInit() {
     // this.getImgsByArticleId(this.data.articleId);
+    this.initform();
     this.articleId = this.data.articleId;
     this.getArticle();
   }
 
+  private initform(): void {
+    this.urlForm = this.fb.group({
+      caption: ['', Validators.required]
+    })
+  }
+  onSubmit(url: string) {
+    console.log(url);
+    
+  }
   private getArticle() {
     this.article$ = this.articleSvc.getArticle(this.articleId); 
   }

@@ -38,6 +38,22 @@
   </mat-dialog-content>
   
   <mat-dialog-actions align="end">
+
+    <div class="container">
+      <form [formGroup]="this.urlForm" (ngSubmit)="onSubmit(urlForm.value)">
+        <!-- <h3>{{ 'Add' | translate }} {{ 'Caption' | translate | lowercase}}</h3> -->
+        <!-- <p style="text-align: center; padding: 10px;">Enter the email address or username you use in this application. We will send you a link to reset your password.</p> -->
+        
+          <mat-form-field appearance="fill">
+            <mat-label>URL</mat-label>
+            <input matInput placeholder="url"
+              formControlName="caption" required>
+            <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
+          </mat-form-field>
+      
+        <button type="submit" mat-raised-button>Publicar</button>
+      </form>
+    </div>
   
     <!-- <div class="input-div mx-1 p-1 shadow-sm">
       <input type="file" class="file-input" id="customFile" (change)="handleImage($event)">
