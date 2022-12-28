@@ -17,6 +17,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ListVideosComponent } from './list-videos/list-videos.component';
 import { GalleryVideosComponent } from './list-videos/gallery-videos/gallery-videos.component';
 
+// Youtube
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+
 
 
 @NgModule({
@@ -30,6 +33,7 @@ import { GalleryVideosComponent } from './list-videos/gallery-videos/gallery-vid
     GalleryVideosComponent
   ],
   imports: [
+    NgxYoutubePlayerModule.forRoot(),
     CommonModule,
     CrudRoutingModule,
     EditModule,

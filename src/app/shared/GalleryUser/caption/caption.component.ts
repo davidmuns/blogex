@@ -42,7 +42,7 @@ export class CaptionComponent implements OnInit {
   //     });
   //   }
   // }
-  onSubmit(img: Imagen) {
+  onSubmit(img: Imagen) { 
     if(this.captionForm.valid){
       img.id = this.data.imgId;
       this.addCaption(img);

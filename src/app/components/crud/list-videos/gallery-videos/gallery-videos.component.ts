@@ -1,3 +1,4 @@
+import { VideoService } from './../../../../shared/services/video.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -29,9 +30,14 @@ export class GalleryVideosComponent implements OnInit {
   miniatura!: Imagen;
   username!: string;
   articleId!: number;
+  playerVars = {
+    cc_lang_pref: 'es'
+  }
+  id = 'LBW3ue9f29M';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { articleId: number },
+    public videoSvc: VideoService,
     private readonly fb: FormBuilder,
     private readonly dialog: MatDialog,
     private snack: MatSnackBar,
@@ -49,15 +55,19 @@ export class GalleryVideosComponent implements OnInit {
 
   private initform(): void {
     this.urlForm = this.fb.group({
-      caption: ['', Validators.required]
+      url: ['', Validators.required]
     })
   }
-  onSubmit(url: string) {
-    console.log(url);
-    
+  onSubmit(url: any) {
+    if(this.videoSvc.isValidUrl(url.url)){
+      this.videoSvc.urlIds.push(this.videoSvc.getUrlId(url.url));
+    }
+    console.log(this.videoSvc.urlIds.length);
+    this.dialog.closeAll();  
   }
+
   private getArticle() {
-    this.article$ = this.articleSvc.getArticle(this.articleId); 
+    this.article$ = this.articleSvc.getArticle(this.articleId);
   }
 
   private getImgsByArticleId(id: number) {
@@ -103,8 +113,8 @@ export class GalleryVideosComponent implements OnInit {
     })
   }
 
-  onDeleteImage(imgId: string){
-    this.dialog.open(DeleteComponent, {data: {imgId: `${imgId}`, articleId: this.articleId, option: "deleteImage"}});
+  onDeleteImage(imgId: string) {
+    this.dialog.open(DeleteComponent, { data: { imgId: `${imgId}`, articleId: this.articleId, option: "deleteImage" } });
   }
 
   onCaption(id: string) {
@@ -117,10 +127,10 @@ export class GalleryVideosComponent implements OnInit {
     fr.onload = (e: any) => {
       this.miniatura = e.target.result;
     }
-    if(this.image != null){
+    if (this.image != null) {
       fr.readAsDataURL(this.image);
     }
-    
+
   }
 
 }
