@@ -14,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { ListVideosComponent } from './list-videos/list-videos.component';
+import { GalleryVideosComponent } from './list-videos/gallery-videos/gallery-videos.component';
 
 
 
@@ -23,7 +25,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     ListPostsComponent,
     NewComponent,
     EditComponent,
-    DeleteComponent
+    DeleteComponent,
+    ListVideosComponent,
+    GalleryVideosComponent
   ],
   imports: [
     CommonModule,

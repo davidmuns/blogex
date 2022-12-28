@@ -8,6 +8,7 @@
     "The blog": "The blog of",
     "MyArticles": "Mis artículos",
     "MyImages": "Mis imágenes",
+    "my-videos": "Mis vídeos",
     "UsernameOrEmail": "Nombre de usuario o correo electrónico",
     "Username": "Nombre de usuario",
     "Password": "Contraseña",
@@ -90,9 +91,12 @@
         "last-articles": "Publicaciones más recientes"
     },
     "crud": {
-        "list-temp": {
+        "list-images": {
             "insert-tilte": "Buscar por título",
             "images": "Imágenes de"
+        },
+        "list-videos": {
+            "videos": "Vídeos de"
         }
     }
 }

@@ -1,21 +1,17 @@
-<h1>{{ 'crud.list-images.images' | translate }} {{ this.username }} </h1>
+<h1>{{ 'crud.list-videos.videos' | translate }} {{ this.username }} </h1>
 
 <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
   aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
 </mat-paginator>
 
-<div class="container d-flex" style="max-width: 270px;">
-  <input class="form-control" type="search" placeholder="{{ 'crud.list-images.insert-tilte' | translate }}" aria-label="Search"
-      [(ngModel)]="this.filterByTitle">
-</div>
 
 <div class="container shadow" *ngIf="this.articles.length > 0; else noArticles">
 
-  <div *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber ">
-    <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: #607D8B">
+  <div *ngFor="let article of this.articles">
+    <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: dimgray">
       <mat-card-header style="margin-bottom: 20px;">
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
-        <mat-card-title style="color: rgba(255, 255, 255);">{{ 'crud.list-images.images' | translate }} {{ article?.title }}</mat-card-title>
+        <mat-card-title style="color: rgba(255, 255, 255);">{{ 'crud.list-videos.videos' | translate }} {{ article?.title }}</mat-card-title>
         <!-- <mat-card-subtitle>{{ article.id }}</mat-card-subtitle> -->
       </mat-card-header>
       <a (click)="onOpenGallery(article.id)" style="cursor: pointer;">
@@ -31,7 +27,7 @@
         </button>
 
         <button mat-button (click)="onOpenGallery(article.id)" matTooltip="gallery view">
-          <mat-icon>image</mat-icon>
+          <mat-icon>movie_creation</mat-icon>
         </button>
       </mat-card-actions>
     </mat-card>
@@ -62,4 +58,4 @@
   aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
 </mat-paginator>
 
-<app-footer></app-footer>
+

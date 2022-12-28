@@ -7,6 +7,7 @@ import { ResetPasswordComponent } from './components/Auth/reset-password/reset-p
 import { HomeComponent } from './components/home/home.component';
 import { LogsGuard } from './shared/logs.guard';
 import { UserArticlesComponent } from './components/user-articles/user-articles.component';
+import { ListVideosComponent } from './components/crud/list-videos/list-videos.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -16,6 +17,7 @@ const routes: Routes = [
   //{path: 'edit/:articleid', component: EditTempComponent},
   {path: 'add-image/:articleid', component: AddImageComponent},
   {path: 'images', component: ListImagesComponent, canActivate: [LogsGuard]},
+  {path: 'videos', component: ListVideosComponent, canActivate: [LogsGuard]},
   {path: 'blog/:username', component: UserArticlesComponent}
 ]
 

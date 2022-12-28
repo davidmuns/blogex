@@ -1,22 +1,20 @@
-import { MatDialog } from '@angular/material/dialog';
+import { GalleryVideosComponent } from './gallery-videos/gallery-videos.component';
+import { GalleryUserComponent } from './../../../shared/GalleryUser/GalleryUser.component';
 import { PageEvent } from '@angular/material/paginator';
-
+import { ArticleService } from './../../../shared/services/article.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Imagen } from './../../../shared/models/imagen';
+import { Article } from './../../../shared/models/article';
+import { NavigationExtras, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
-
-import { ArticleService } from '../../../shared/services/article.service';
-import { TokenService } from '../../../shared/services/token.service';
-import { Article } from '../../../shared/models/article';
-import { Imagen } from 'src/app/shared/models/imagen';
-import { GalleryUserComponent } from '../../../shared/GalleryUser/GalleryUser.component';
-
+import { TokenService } from 'src/app/shared/services/token.service';
 
 @Component({
-  selector: 'app-list-images',
-  templateUrl: './list-images.component.html',
-  styleUrls: ['./list-images.component.scss']
+  selector: 'app-list-videos',
+  templateUrl: './list-videos.component.html',
+  styleUrls: ['./list-videos.component.scss']
 })
-export class ListImagesComponent implements OnInit {
+export class ListVideosComponent implements OnInit {
 
   navigationExtras: NavigationExtras = {
     state: {
@@ -40,25 +38,25 @@ export class ListImagesComponent implements OnInit {
     private readonly dialog: MatDialog,
     private tokenService: TokenService,
     private articleService: ArticleService,
-    private router: Router) {};
+    private router: Router) { };
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.username = this.tokenService.getUsername() as string;
-    this.isAdmin =this.tokenService.isAdmin();
-      if(this.isAdmin){
-        this.getAllArticles();
-      }else{
-        this.getAllArticlesByUsername();
-      }
+    this.isAdmin = this.tokenService.isAdmin();
+    if (this.isAdmin) {
+      this.getAllArticles();
+    } else {
+      this.getAllArticlesByUsername();
+    }
     this.articles = [];
   };
 
-  onPageChange(event: PageEvent){
+  onPageChange(event: PageEvent) {
     this.pageSize = event.pageSize;
-    this.pageNumber = event.pageIndex +1;
+    this.pageNumber = event.pageIndex + 1;
   };
 
-  private getAllArticles(){
+  private getAllArticles() {
     this.articleService.getAll().subscribe({
       next: (data: Article[]) => {
         this.articles = data;
@@ -81,11 +79,12 @@ export class ListImagesComponent implements OnInit {
   };
 
   onOpenGallery(id: number) {
-    this.dialog.open(GalleryUserComponent, { data: { articleId: id } });
+    this.dialog.open(GalleryVideosComponent, { data: { articleId: id } });
   };
 
-  onEdit(post: Article){
+  onEdit(post: Article) {
     this.navigationExtras.state = post;
     this.router.navigate(['admin/edit'], this.navigationExtras);
   };
-};
+
+}

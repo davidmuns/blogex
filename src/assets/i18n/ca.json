@@ -7,6 +7,7 @@
     "BlogOf": "El blog de",
     "MyArticles": "Els meus articles",
     "MyImages": "Les meves imatges",
+    "my-videos": "Els meus videos",
     "UsernameOrEmail": "Nom d'usuari o correu electrónic",
     "Username": "Nom d'usuari",
     "Password": "Contrasenya",
@@ -89,9 +90,12 @@
         "last-articles": "Publicacions més recents"
     },
     "crud": {
-        "list-temp": {
+        "list-images": {
             "insert-tilte": "Buscar per títol",
             "images": "Imatges de"
+        },
+        "list-videos": {
+            "videos": "Videos de"
         }
     }
 }
