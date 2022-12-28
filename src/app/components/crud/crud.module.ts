@@ -12,8 +12,6 @@ import { NewComponent } from './posts/new/new.component';
 import { EditComponent } from './posts/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
-import { EditTempComponent } from './posts/edit-temp/edit-temp.component';
-
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -25,8 +23,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     ListPostsComponent,
     NewComponent,
     EditComponent,
-    DeleteComponent,
-    EditTempComponent
+    DeleteComponent
   ],
   imports: [
     CommonModule,

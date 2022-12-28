@@ -1,6 +1,5 @@
 import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
-import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
-import { EditTempComponent } from './components/crud/posts/edit-temp/edit-temp.component';
+import { ListImagesComponent } from './components/crud/list-images/list-images.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ArticleComponent } from './components/article/article.component';
@@ -16,7 +15,7 @@ const routes: Routes = [
   {path: 'article/:id', component: ArticleComponent},
   //{path: 'edit/:articleid', component: EditTempComponent},
   {path: 'add-image/:articleid', component: AddImageComponent},
-  {path: 'list', component: ListTempComponent, canActivate: [LogsGuard]},
+  {path: 'images', component: ListImagesComponent, canActivate: [LogsGuard]},
   {path: 'blog/:username', component: UserArticlesComponent}
 ]
 

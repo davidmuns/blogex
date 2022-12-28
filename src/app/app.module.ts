@@ -47,7 +47,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // MATERIAL
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
+import { ListImagesComponent } from './components/crud/list-images/list-images.component';
 import { SearchPipe } from './shared/pipes/search.pipe';
 
 
@@ -64,7 +64,7 @@ import { SearchPipe } from './shared/pipes/search.pipe';
     SearchComponent,
     MapComponent,
     ArticleComponent,
-    ListTempComponent,
+    ListImagesComponent,
     AddImageComponent,
     FrontArticlesComponent,
     FooterComponent,
