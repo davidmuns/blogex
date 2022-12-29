@@ -1,3 +1,5 @@
+import { Video } from './../../../shared/models/video';
+import { VideoService } from './../../../shared/services/video.service';
 import { Observable } from 'rxjs';
 import { Imagen } from './../../../shared/models/imagen';
 import { ArticleService } from './../../../shared/services/article.service';
@@ -12,8 +14,14 @@ export class ArticleGalleryComponent {
   @Input('articleId') articleId!: number | undefined;
   imagenes$!: Observable<Imagen[]>;
   indice!: number;
+  videos$!: Observable<Video[]>;
+  playerVars = {
+    cc_lang_pref: 'es'
+  }
 
-  constructor(private articleSvc: ArticleService) { }
+  constructor(
+    private articleSvc: ArticleService,
+    private videoSvc: VideoService) { }
 
   getIndex(index: number) {
     this.indice = index;
@@ -21,14 +29,21 @@ export class ArticleGalleryComponent {
 
   showGallery() {
     this.getImgsByArticleId(this.articleId);
+    let articleId: any = this.articleId;
+    this.getVideosByArticleId(articleId);
   }
 
   private getImgsByArticleId(id: number | undefined) {
     this.imagenes$ = this.articleSvc.getImagesByArticleId(id);
   }
 
+  private getVideosByArticleId(id: number){
+    this.videos$ = this.videoSvc.getAllbyArticleId(id);
+  }
+
   hideGallery() {
     this.imagenes$ = new Observable();
+    this.videos$ = new Observable();
     window.scroll(0, 0);
   }
 

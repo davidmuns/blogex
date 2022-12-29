@@ -50,6 +50,8 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { ListImagesComponent } from './components/crud/list-images/list-images.component';
 import { SearchPipe } from './shared/pipes/search.pipe';
 
+// Youtube
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,7 @@ import { SearchPipe } from './shared/pipes/search.pipe';
     AboutComponent
   ],
   imports: [
+    NgxYoutubePlayerModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
