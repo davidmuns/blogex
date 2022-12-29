@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { Email } from '../models/email';
 
 
+
 const EMAIL_PASSWORD_URL = environment.EMAIL_PASSWORD_URL;
 
 @Injectable({

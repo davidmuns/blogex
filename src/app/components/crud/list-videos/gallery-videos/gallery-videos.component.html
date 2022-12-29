@@ -11,40 +11,33 @@
 </div>
 
 <mat-dialog-content class="mat-typography" style="background-color: #607d8b;">
-  <h1 class="mt-4 mb-0" style="text-align: center; color: rgba(255, 255, 255);">{{ this.videoSvc.urlIds.length }} {{
+  <h1 class="mt-4 mb-0" style="text-align: center; color: rgba(255, 255, 255);">{{ this.videos.length }} {{
     'crud.list-videos.videos' | translate }} {{ (this.article$ | async)?.title }}</h1>
   <div class="main-container">
 
-    <h2 style="text-align: center;">Videos</h2>
-    <div class="container" style="display: flex; justify-content:space-around; flex-wrap: wrap;">
-      <!-- <div class="my-3" *ngFor="let id of (this.ids$ | async)"> -->
-      <div class="my-3" *ngFor="let id of this.videoSvc.urlIds">
-        <youtube-player [videoId]="id" [playerVars]="this.playerVars" suggestedQuality="highres"
-          showBeforeIframeApiLoads="true">
+    <div *ngFor="let video of this.videos; index as i">
+      <mat-card class="example-card animate__animated animate__backInLeft"
+        style="background-color: rgba(0, 0, 0, 0.4);">
+        <mat-card-header class="mb-3">
+          <mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
+        </mat-card-header>
+        
+        <youtube-player [videoId]="video.youtubeId" [playerVars]="this.playerVars" suggestedQuality="highres"
+          showBeforeIframeApiLoads="true" [width]="270">
         </youtube-player>
-      </div>
-    </div>
 
-    <!-- <div *ngFor="let imagen of this.imagenes; index as i">
-        <mat-card class="example-card animate__animated animate__backInLeft"
-          style="background-color: rgba(0, 0, 0, 0.4);">
-          <mat-card-header class="mb-3">
-            <mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
-          </mat-card-header>
-          <img mat-card-image [src]="imagen.url" alt="">
-          <mat-card-content>
-            <p style="color: rgba(255, 255, 255);">{{ imagen.caption }}</p>
-          </mat-card-content>
-          <mat-card-actions align="end">
-            <button class="caption-btn" mat-stroked-button (click)="onCaption(imagen.id)" matTooltip="add caption">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button class="delete-btn" mat-stroked-button (click)="onDeleteImage(imagen.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
-          </mat-card-actions>
-        </mat-card>
-      </div> -->
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <!-- <button class="caption-btn" mat-stroked-button matTooltip="add caption">
+            <mat-icon>edit</mat-icon>
+          </button> -->
+          <button class="delete-btn" mat-stroked-button (click)="onDelete(video.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </div>
 </mat-dialog-content>
 
@@ -53,10 +46,9 @@
   <div class="container">
     <form [formGroup]="this.urlForm" (ngSubmit)="onSubmit(urlForm.value)">
 
-      <mat-form-field appearance="fill">
+      <mat-form-field class="mx-2" appearance="fill">
         <mat-label>Youtube url</mat-label>
-        <input matInput placeholder="Ex: https://www.youtube.com/watch?v=fYgq0cT7wCg" formControlName="url" required>
-
+        <input matInput placeholder="https://youtu.be/fYgq0cT7wCg" formControlName="url" required>
       </mat-form-field>
 
       <button type="submit" mat-raised-button>Publicar</button>

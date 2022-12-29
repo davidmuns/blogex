@@ -1,3 +1,4 @@
+import { Video } from './../../../../shared/models/video';
 import { VideoService } from './../../../../shared/services/video.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -7,11 +8,8 @@ import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
-import { CaptionComponent } from 'src/app/shared/GalleryUser/caption/caption.component';
 import { Article } from 'src/app/shared/models/article';
-import { Imagen } from 'src/app/shared/models/imagen';
 import { ArticleService } from 'src/app/shared/services/article.service';
-import { environment } from 'src/environments/environment';
 import { DeleteComponent } from '../../delete/delete.component';
 
 @Component({
@@ -22,18 +20,15 @@ import { DeleteComponent } from '../../delete/delete.component';
 export class GalleryVideosComponent implements OnInit {
 
   urlForm!: FormGroup;
-  imagesByArticleId: Imagen[] = [];
-  articles: Article[] = [];
   article$!: Observable<Article>;
-  imagenes: Imagen[] = [];
-  image!: File;
-  miniatura!: Imagen;
   username!: string;
   articleId!: number;
   playerVars = {
     cc_lang_pref: 'es'
   }
-  id = 'LBW3ue9f29M';
+  youtubeId = '';
+  videos: Video[] = [];
+  video!: Video;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { articleId: number },
@@ -47,9 +42,9 @@ export class GalleryVideosComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    // this.getImgsByArticleId(this.data.articleId);
     this.initform();
     this.articleId = this.data.articleId;
+    this.getVideos();
     this.getArticle();
   }
 
@@ -58,24 +53,25 @@ export class GalleryVideosComponent implements OnInit {
       url: ['', Validators.required]
     })
   }
-  onSubmit(url: any) {
-    if(this.videoSvc.isValidUrl(url.url)){
-      this.videoSvc.urlIds.push(this.videoSvc.getUrlId(url.url));
+  onSubmit(data: any) {
+    const isValidUrl = this.videoSvc.isValidUrl(data.url);
+    if (isValidUrl) {
+      this.youtubeId = this.videoSvc.getYoutubeId(data.url);
+      this.newVideo();
+      this.getVideos();
+    } else {
+      this.snack.open("url no válida", "", { duration: 5000 });
     }
-    console.log(this.videoSvc.urlIds.length);
-    this.dialog.closeAll();  
   }
 
   private getArticle() {
     this.article$ = this.articleSvc.getArticle(this.articleId);
   }
 
-  private getImgsByArticleId(id: number) {
-    this.articleSvc.getImagesByArticleId(id).subscribe({
-      next: (data: Imagen[]) => {
-        data.forEach(img => {
-          this.imagenes.push(img);
-        })
+  private getVideos() {
+    this.videoSvc.getAllbyArticleId(this.articleId).subscribe({
+      next: (data: Video[]) => {
+        this.videos = data;
       },
       error: err => {
         console.log(err);
@@ -83,54 +79,21 @@ export class GalleryVideosComponent implements OnInit {
     })
   }
 
-  onUpload() {
-    if (this.image != undefined) {
-      if (this.image.size < environment.IMG_MAX_SIZE) {
-        this.addImage(this.image, this.articleId);
-      } else {
-        this.snack.open(this.translateService.instant('ImgMaximumExceed') + " 2MB", "", { duration: 5000 });
-      }
-    } else {
-      this.snack.open(this.translateService.instant('PleaseSelectImage'), "", { duration: 5000 });
-    }
-  }
-
-  private addImage(image: File, articleId: number) {
-    this.articleSvc.addImageToArticle(image, articleId).subscribe({
+  private newVideo() {
+    this.video = { youtubeId: this.youtubeId, articleId: this.articleId }
+    this.videoSvc.save(this.video).subscribe({
       next: data => {
-        this.toastrService.success(data.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
-        this.imagenes = [];
-        this.getImgsByArticleId(this.articleId);
-        //this.redirectTo(this.router.url);
+        console.log(data);
+        this.snack.open("Video publicado", "", { duration: 5000 });
       },
       error: err => {
-        this.toastrService.error(err, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
+        console.log(err);
       }
     })
   }
 
-  onDeleteImage(imgId: string) {
-    this.dialog.open(DeleteComponent, { data: { imgId: `${imgId}`, articleId: this.articleId, option: "deleteImage" } });
-  }
-
-  onCaption(id: string) {
-    this.dialog.open(CaptionComponent, { data: { imgId: id } });
-  }
-
-  handleImage(event: any) {
-    this.image = event.target.files[0];
-    const fr = new FileReader();
-    fr.onload = (e: any) => {
-      this.miniatura = e.target.result;
-    }
-    if (this.image != null) {
-      fr.readAsDataURL(this.image);
-    }
-
+  onDelete(id: number | undefined) {
+    this.dialog.open(DeleteComponent, { data: { videoId: id, articleId: this.articleId, option: "deleteVideo" } });
   }
 
 }

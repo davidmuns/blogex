@@ -1,10 +1,11 @@
+import { GalleryVideosComponent } from './../list-videos/gallery-videos/gallery-videos.component';
+import { VideoService } from './../../../shared/services/video.service';
 import { GalleryUserComponent } from './../../../shared/GalleryUser/GalleryUser.component';
-import { Imagen } from './../../../shared/models/imagen';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { ToastrService, ToastrModule } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from 'src/app/shared/services/article.service';
 
 @Component({
@@ -16,11 +17,13 @@ export class DeleteComponent implements OnInit {
 
   durationInSeconds = 5;
 
-  constructor(private readonly dialog: MatDialog,
+  constructor(
+    private readonly dialog: MatDialog,
     private toastrService: ToastrService,
     private snack: MatSnackBar,
     private readonly articleSvc: ArticleService,
-    @Inject(MAT_DIALOG_DATA) public data: { articleId: number, imgId: string, option: string },
+    private videoSvc: VideoService,
+    @Inject(MAT_DIALOG_DATA) public data: { articleId: number, imgId: string, videoId: number, option: string },
     private readonly router: Router
   ) { }
 
@@ -29,8 +32,8 @@ export class DeleteComponent implements OnInit {
   onDeleteArticle() {
     this.articleSvc.deleteArticle(this.data.articleId).subscribe({
       next: data => {
-        this.snack.open("Article deleted", "",
-          { duration: 3000 });
+        console.log(data);
+        this.snack.open("Article deleted", "", { duration: 3000 });
         this.redirectTo(this.router.url);
         // this.router.navigate(['admin/new']);
       }
@@ -51,6 +54,19 @@ export class DeleteComponent implements OnInit {
       },
       error: err => {
         console.log(err);
+      }
+    })
+  }
+
+  onDeleteVideo(){
+    this.videoSvc.delete(this.data.videoId).subscribe({
+      next: data => {
+        console.log(data);
+        this.dialog.closeAll();
+        this.dialog.open(GalleryVideosComponent, { data: { articleId: this.data.articleId } });     
+      },
+      error: err => {
+        console.log(err);     
       }
     })
   }
