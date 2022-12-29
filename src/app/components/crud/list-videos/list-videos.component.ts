@@ -1,5 +1,4 @@
 import { GalleryVideosComponent } from './gallery-videos/gallery-videos.component';
-import { GalleryUserComponent } from './../../../shared/GalleryUser/GalleryUser.component';
 import { PageEvent } from '@angular/material/paginator';
 import { ArticleService } from './../../../shared/services/article.service';
 import { MatDialog } from '@angular/material/dialog';
