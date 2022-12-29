@@ -27,7 +27,7 @@
       <p id="footerImg">{{ article.alt1 }}</p>
       <div class="autor">
         <button *ngIf="article.usuario.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent"
-          id="editAutor">
+          id="editAutor" (click)="onEdit(article)">
           <mat-icon>edit</mat-icon> {{ 'EditArticle' | translate }}
         </button>
         <button class="mx-2" mat-stroked-button color="accent" id="editAutor" (click)="onGoToMap(article)">
