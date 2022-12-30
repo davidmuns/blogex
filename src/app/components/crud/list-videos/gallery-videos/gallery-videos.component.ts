@@ -60,7 +60,7 @@ export class GalleryVideosComponent implements OnInit {
       this.newVideo();
       this.getVideos();
     } else {
-      this.snack.open("url no válida", "", { duration: 5000 });
+      this.snack.open(this.translateService.instant('crud.list-videos.invalid-url'), "", { duration: 5000 });
     }
   }
 
@@ -84,7 +84,7 @@ export class GalleryVideosComponent implements OnInit {
     this.videoSvc.save(this.video).subscribe({
       next: data => {
         console.log(data);
-        this.snack.open("Video publicado", "", { duration: 5000 });
+        this.snack.open(this.translateService.instant('crud.list-videos.posted'), "", { duration: 5000 });
       },
       error: err => {
         console.log(err);

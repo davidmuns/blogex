@@ -45,7 +45,7 @@
     "CoverImage": "Imagen de portada",
     "SelectImage": "Selec. imagen",
     "ArticlesToEdit": "Artículos para editar",
-    "PublishArticle": "Publicar artículo",
+    "Publish": "Publicar",
     "Filter": "Filtrar",
     "Delete": "Eliminar",
     "SaveChanges": "Guardar cambios",
@@ -66,7 +66,7 @@
     "ItemsPage": "Elementos por página",
     "FillBlanks": "Por favor rellena los campos vacios e inserta una imagen",
     "ImgMaximumExceed": "Imagen excede tamaño máximo permitido de",
-    "PleaseSelectImage": "Por favor seleccionar una imagen",
+    "PleaseSelectImage": "Por favor selecciona una imagen",
     "about": {
         "title": "Descubre lugares del mundo",
         "text": "Aquí puedes encontrar artículos sobre sitios interesantes. Suscríbete y crea tu blog personal. Haz que la gente descubra los sitios que conoces a través de tus publicaciones, fotos y vídeos de youtube."
@@ -96,7 +96,9 @@
             "images": "Imágenes de"
         },
         "list-videos": {
-            "videos": "Vídeos de"
+            "videos": "Vídeos de",
+            "invalid-url": "Solamente son válidas las URLs de youtube",
+            "posted": "Video publicado"
         }
     }
 }

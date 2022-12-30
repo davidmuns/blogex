@@ -26,6 +26,9 @@ export class VideoService {
   }
 
   public isValidUrl(url: string): boolean {
+    if(!url.includes('.')){
+      return false;
+    }
     const case1 = url.split('=')[0].toUpperCase();
     const case2 = url.split('.')[1];  
     if (case1[case1.length - 1] === 'V' || case2.substring(0, 3) === 'be/') {

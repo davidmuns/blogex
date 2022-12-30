@@ -4,10 +4,14 @@
   aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
 </mat-paginator>
 
+<div class="container d-flex" style="max-width: 270px;">
+  <input class="form-control" type="search" placeholder="{{ 'crud.list-images.insert-tilte' | translate }}" aria-label="Search"
+      [(ngModel)]="this.filterByTitle">
+</div>
 
 <div class="container shadow" *ngIf="this.articles.length > 0; else noArticles">
 
-  <div *ngFor="let article of this.articles">
+  <div *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber">
     <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: dimgray">
       <mat-card-header style="margin-bottom: 20px;">
         <!-- <div mat-card-avatar class="example-header-image"></div> -->
@@ -57,5 +61,7 @@
 <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
   aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
 </mat-paginator>
+
+<app-footer></app-footer>
 
 

@@ -14,8 +14,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ListVideosComponent } from './list-videos/list-videos.component';
-import { GalleryVideosComponent } from './list-videos/gallery-videos/gallery-videos.component';
 
 // Youtube
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
@@ -28,9 +26,7 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
     ListPostsComponent,
     NewComponent,
     EditComponent,
-    DeleteComponent,
-    ListVideosComponent,
-    GalleryVideosComponent
+    DeleteComponent
   ],
   imports: [
     NgxYoutubePlayerModule.forRoot(),

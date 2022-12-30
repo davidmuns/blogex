@@ -44,7 +44,7 @@
     "CoverImage": "Imatge de portada",
     "SelectImage": "Selec. imatge",
     "ArticlesToEdit": "Articles per a editar",
-    "PublishArticle": "Publicar article",
+    "Publish": "Publicar",
     "Filter": "Filtrar",
     "Delete": "Eliminar",
     "SaveChanges": "Guardar canvis",
@@ -65,7 +65,7 @@
     "ItemsPage": "Elements per pàgina",
     "FillBlanks": "Si us plau, omple els camps buits i afegeix una imatge",
     "ImgMaximumExceed": "Imatge excedeix tamany màxim permés de",
-    "PleaseSelectImage": "Si us plau seleccionar una imatge",
+    "PleaseSelectImage": "Si us plau selecciona una imatge",
     "about": {
         "title": "Descobreix llocs del món",
         "text": "Aquí pots trobar articles sobre llocs interessants. Subscriu-te i crea el teu bloc personal. Fes que la gent descobreixi els llocs que coneixes a través de les teves publicacions, fotos i vídeos de youtube."
@@ -95,7 +95,9 @@
             "images": "Imatges de"
         },
         "list-videos": {
-            "videos": "Videos de"
+            "videos": "Vídeos de",
+            "invalid-url": "Només son vàlides las URLs de youtube",
+            "posted": "Video publicat"
         }
     }
 }

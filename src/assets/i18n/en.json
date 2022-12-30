@@ -44,7 +44,7 @@
     "CoverImage": "Cover image",
     "SelectImage": "Select image",
     "ArticlesToEdit": "Articles to edit",
-    "PublishArticle": "Publish article",
+    "Publish": "Publish",
     "Filter": "Filter",
     "Delete": "Delete",
     "SaveChanges": "Save changes",
@@ -95,7 +95,9 @@
             "images": "Images of"
         },
         "list-videos": {
-            "videos": "Videos of"
+            "videos": "Videos of",
+            "invalid-url": "Only youtube URLs are valid",
+            "posted": "Video posted"
         }
     }
 }

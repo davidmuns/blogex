@@ -1,3 +1,4 @@
+import { ListVideosComponent } from './components/crud/list-videos/list-videos.component';
 import { SwitchLanguageComponent } from './shared/switch-language/switch-language.component';
 import { CaptionComponent } from './shared/GalleryUser/caption/caption.component';
 import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
@@ -52,6 +53,7 @@ import { SearchPipe } from './shared/pipes/search.pipe';
 
 // Youtube
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { GalleryVideosComponent } from './components/crud/list-videos/gallery-videos/gallery-videos.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,9 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
     CaptionComponent,
     PaginatePipe,
     SearchPipe,
-    AboutComponent
+    AboutComponent,
+    ListVideosComponent,
+    GalleryVideosComponent
   ],
   imports: [
     NgxYoutubePlayerModule.forRoot(),
