@@ -1,67 +1,70 @@
-<h1>{{ 'crud.list-videos.videos' | translate }} {{ this.username }} </h1>
+<body>
+  <h1>{{ 'crud.list-videos.videos' | translate }} {{ this.username }} </h1>
 
-<mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-  aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
-</mat-paginator>
+  <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+  </mat-paginator>
 
-<div class="container d-flex" style="max-width: 270px;">
-  <input class="form-control" type="search" placeholder="{{ 'crud.list-images.insert-tilte' | translate }}" aria-label="Search"
-      [(ngModel)]="this.filterByTitle">
-</div>
-
-<div class="container shadow" *ngIf="this.articles.length > 0; else noArticles">
-
-  <div *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber">
-    <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: dimgray">
-      <mat-card-header style="margin-bottom: 20px;">
-        <!-- <div mat-card-avatar class="example-header-image"></div> -->
-        <mat-card-title style="color: rgba(255, 255, 255);">{{ 'crud.list-videos.videos' | translate }} {{ article?.title }}</mat-card-title>
-        <!-- <mat-card-subtitle>{{ article.id }}</mat-card-subtitle> -->
-      </mat-card-header>
-      <a (click)="onOpenGallery(article.id)" style="cursor: pointer;">
-        <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
-      </a>
-      <mat-card-content>
-        <!-- <p>{{ article.alt1 }}</p> -->
-        <!-- <p style="color: rgba(255, 255, 255);">{{ article.text1 }}</p> -->
-      </mat-card-content>
-      <mat-card-actions align="end">
-        <button mat-button matTooltip="{{ 'EditArticle' | translate }}"  matTooltipPosition="left" (click)="onEdit(article)">
-          <mat-icon>edit</mat-icon>
-        </button>
-
-        <button mat-button (click)="onOpenGallery(article.id)" matTooltip="gallery view">
-          <mat-icon>movie_creation</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
+  <div class="container d-flex" style="max-width: 270px; background-color: transparent;">
+    <input class="form-control" type="search" placeholder="{{ 'crud.list-images.insert-tilte' | translate }}"
+      aria-label="Search" [(ngModel)]="this.filterByTitle">
   </div>
-</div>
 
-<ng-template #noArticles>
-  <div class="container shadow">
-    <div>
-      <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: #607D8B">
-        <mat-card-header style="margin-bottom: 10px;">
-          <mat-card-title style="color: rgba(255, 255, 255);">No videos</mat-card-title>
-        </mat-card-header>  
-          <img mat-card-image src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg" alt="blogex-logo">
+  <div class="container shadow-lg" *ngIf="this.articles.length > 0; else noArticles">
+
+    <div *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber">
+      <mat-card class="example-card animate__animated animate__backInLeft">
+        <mat-card-header style="margin-bottom: 20px;">
+          <!-- <div mat-card-avatar class="example-header-image"></div> -->
+          <mat-card-title style="color: rgba(255, 255, 255);">{{ 'crud.list-videos.videos' | translate }} {{
+            article?.title }}</mat-card-title>
+          <!-- <mat-card-subtitle>{{ article.id }}</mat-card-subtitle> -->
+        </mat-card-header>
+        <a (click)="onOpenGallery(article.id)" style="cursor: pointer;">
+          <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
+        </a>
         <mat-card-content>
+          <!-- <p>{{ article.alt1 }}</p> -->
+          <!-- <p style="color: rgba(255, 255, 255);">{{ article.text1 }}</p> -->
         </mat-card-content>
         <mat-card-actions align="end">
-          <button mat-button matTooltip="{{ 'create-article' | translate }}" matTooltipPosition="left" routerLink="/admin/new">
-            <mat-icon style="color: rgba(255, 255, 255);">edit</mat-icon>
+          <button mat-button matTooltip="{{ 'EditArticle' | translate }}" matTooltipPosition="left"
+            (click)="onEdit(article)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-button (click)="onOpenGallery(article.id)" matTooltip="gallery view">
+            <mat-icon>movie_creation</mat-icon>
           </button>
         </mat-card-actions>
       </mat-card>
     </div>
   </div>
-</ng-template>
 
-<mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-  aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
-</mat-paginator>
+  <ng-template #noArticles>
+    <div class="container shadow">
+      <div>
+        <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: #607D8B">
+          <mat-card-header style="margin-bottom: 10px;">
+            <mat-card-title style="color: rgba(255, 255, 255);">No videos</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg"
+            alt="blogex-logo">
+          <mat-card-content>
+          </mat-card-content>
+          <mat-card-actions align="end">
+            <button mat-button matTooltip="{{ 'create-article' | translate }}" matTooltipPosition="left"
+              routerLink="/admin/new">
+              <mat-icon style="color: rgba(255, 255, 255);">edit</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </ng-template>
 
+  <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+  </mat-paginator>
+</body>
 <app-footer></app-footer>
-
-

@@ -1,12 +1,18 @@
 .example-card {
     max-width: 290px;
-
+    background-color: var(--bottle);
 }
 
 h1 {
-    color: var(--accent);
+    color: var(--bottle);
     // font-weight: bold;
+    margin-top: 30px;
     text-align: center;
+}
+
+body {
+    background-color: var(--cream);
+    margin-top: -15px;
 }
 
 .example-header-image {
@@ -16,6 +22,7 @@ h1 {
 
 // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
 .container {
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -66,7 +73,10 @@ mat-icon{
     color: var(--lemon);
 }
 
-
 mat-icon:hover{
     color: rgba(255, 255, 255);
+}
+
+mat-paginator {
+    background-color: transparent;
 }
