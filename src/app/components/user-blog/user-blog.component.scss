@@ -36,6 +36,12 @@ button:hover {
     color: var(--lemon);
 }
 
+.card-body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+
 #linkToHome {
     position: absolute;
     top: 30px;
@@ -67,11 +73,6 @@ button:hover {
     }
 }
 
-iframe {
-    width: 1000px;
-    height: 506px;
-}
-
 .example-card {
     max-width: 1000px;
     margin: 20px auto 100px;
@@ -84,11 +85,11 @@ iframe {
 
 
     #title-post {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
         font-family: 'Libre Baskerville', serif;
-        padding: 10px 10px 20px 15px;
-        line-height: 2rem;
-        height: auto;
+        // padding: 10px 10px 20px 15px;
+        // line-height: 2rem;
+        // height: auto;
     }
 
     .imageMarc {
@@ -134,43 +135,45 @@ iframe {
 }
 
 
-mat-card-content {
-    .autor {
-        padding: 20px 15px 0px;
-        display: flex;
-        flex-direction: row;
+// mat-card-content {
+//     .autor {
+//         padding: 20px 15px 0px;
+//         display: flex;
+//         flex-direction: row;
 
-        #autorLink {
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
+//         #autorLink {
+//             font-size: 1rem;
+//             display: flex;
+//             align-items: center;
 
-            span {
-                font-size: 1.1rem;
-                font-family: 'Libre Baskerville', serif;
-                text-transform: capitalize;
-                cursor: pointer;
-            }
-        }
+//             span {
+//                 font-size: 1.1rem;
+//                 font-family: 'Libre Baskerville', serif;
+//                 text-transform: capitalize;
+//                 cursor: pointer;
+//             }
+//         }
 
-        #autorLink:hover {
-            color: var(--lemon);
-        }
+//         #autorLink:hover {
+//             color: var(--lemon);
+//         }
 
-        #editAutor {
-            padding: 2px 5px;
-        }
-    }
+//         #editAutor {
+//             padding: 2px 5px;
+//         }
+//     }
 
-    p {
-        font-size: 1.1rem;
-        padding: 30px 15px;
-        display: block;
-        overflow: auto;
-        white-space: pre-line;
+//     p {
+//         font-size: 1.1rem;
+//         padding: 30px 15px;
+//         display: block;
+//         overflow: auto;
+//         white-space: pre-line;
 
-        @media(max-width:600px) {
-            font-size: 1rem;
-        }
-    }
-}
+//         @media(max-width:600px) {
+//             font-size: 1rem;
+//         }
+//     }
+// }
+
+

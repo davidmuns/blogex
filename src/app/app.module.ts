@@ -81,6 +81,7 @@ import { GalleryVideosComponent } from './components/crud/list-videos/gallery-vi
     GalleryVideosComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     NgxYoutubePlayerModule.forRoot(),
     BrowserModule,
     AppRoutingModule,

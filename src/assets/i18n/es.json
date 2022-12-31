@@ -100,5 +100,8 @@
             "invalid-url": "Solamente son válidas las URLs de youtube",
             "posted": "Video publicado"
         }
+    },
+    "user-blog": {
+        "see-more": "Ver más"
     }
 }

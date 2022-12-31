@@ -11,14 +11,13 @@ import { ListVideosComponent } from './components/crud/list-videos/list-videos.c
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent,  data: { animation: 'home'}},
   {path: 'reset-password/:token-password', component: ResetPasswordComponent},
-  {path: 'article/:id', component: ArticleComponent},
-  //{path: 'edit/:articleid', component: EditTempComponent},
+  {path: 'article/:id', component: ArticleComponent, data: { animation: 'article'}},
   {path: 'add-image/:articleid', component: AddImageComponent},
-  {path: 'images', component: ListImagesComponent, canActivate: [LogsGuard]},
-  {path: 'videos', component: ListVideosComponent, canActivate: [LogsGuard]},
-  {path: 'blog/:username', component: UserBlogComponent}
+  {path: 'images', component: ListImagesComponent, canActivate: [LogsGuard], data: { animation: 'images'}},
+  {path: 'videos', component: ListVideosComponent, canActivate: [LogsGuard], data: { animation: 'videos'}},
+  {path: 'blog/:username', component: UserBlogComponent, data: { animation: 'blog'}}
 ]
 
 @NgModule({

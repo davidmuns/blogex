@@ -99,5 +99,8 @@
             "invalid-url": "Només son vàlides las URLs de youtube",
             "posted": "Video publicat"
         }
+    },
+    "user-blog": {
+        "see-more": "Veure més"
     }
 }

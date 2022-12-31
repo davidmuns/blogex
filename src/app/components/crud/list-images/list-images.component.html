@@ -15,17 +15,16 @@
     <div *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber">
       <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: #607D8B">
         <mat-card-header style="margin-bottom: 20px;">
-          <!-- <div mat-card-avatar class="example-header-image"></div> -->
+
           <mat-card-title style="color: rgba(255, 255, 255);">{{ 'crud.list-images.images' | translate }} {{
             article?.title }}</mat-card-title>
-          <!-- <mat-card-subtitle>{{ article.id }}</mat-card-subtitle> -->
+
         </mat-card-header>
         <a (click)="onOpenGallery(article.id)" style="cursor: pointer;">
           <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
         </a>
         <mat-card-content>
-          <!-- <p>{{ article.alt1 }}</p> -->
-          <!-- <p style="color: rgba(255, 255, 255);">{{ article.text1 }}</p> -->
+
         </mat-card-content>
         <mat-card-actions align="end">
           <button mat-button matTooltip="{{ 'EditArticle' | translate }}" matTooltipPosition="left"

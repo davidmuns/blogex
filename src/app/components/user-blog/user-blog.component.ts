@@ -22,7 +22,7 @@ export class UserBlogComponent implements OnInit {
   filterByTitle = '';
   username!: string;
   public articles: Article[] = []
-  public pageSizeOptions: number[] = [1];
+  public pageSizeOptions: number[] = [9, 7, 5, 3, 1];
   public pageSize: number = 1;
   public pageNumber: number = 1;
   temp!: number;

@@ -99,5 +99,9 @@
             "invalid-url": "Only youtube URLs are valid",
             "posted": "Video posted"
         }
+    },
+    "user-blog": {
+        "see-more": "See more"
     }
+    
 }

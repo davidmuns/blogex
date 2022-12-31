@@ -4,8 +4,8 @@
 
 <h1>{{ this.articles.length }} {{ 'Articles' | translate }}</h1>
 
-<mat-paginator class="top-paginator" [length]="articles.length" [pageSize]="pageSize" aria-label="Select page"
-  showFirstLastButtons (page)="onPageChange($event)">
+<mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+  aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
 </mat-paginator>
 
 <div class="container d-flex" style="max-width: 270px;">
@@ -14,7 +14,7 @@
 </div>
 
 <ng-container *ngIf="this.articles.length; else noArticles">
-  <div class="example-card"
+  <!-- <div class="example-card"
     *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber">
     <mat-card-header>
       <div class="example-header-image"></div>
@@ -41,13 +41,28 @@
     <app-articleGallery [articleId]="article.id"></app-articleGallery>
     <mat-card-actions>
     </mat-card-actions>
+  </div> -->
+
+  <div class="example-card mb-5 animate__animated animate__backInLeft"
+    *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber"
+    style="width: 90%;">
+    <div class="row g-0">
+      <div class="col-sm-4 col-md-4">
+        <img [src]="article.imagenPortada" class="img-fluid rounded-start" alt="{{ article.alt1 }}">
+      </div>
+      <div class="col-sm-8 col-md-8">
+        <div class="card-body">
+          <h5 class="card-title mt-2" id="title-post">{{ article.title }}</h5>
+          <button class="m-0 p-2" mat-stroked-button color="accent" id="editAutor"
+            [routerLink]="['/article/', article.id]">
+            <mat-icon>visibility</mat-icon> {{ 'user-blog.see-more' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
+
 </ng-container>
-
-<!-- <mat-paginator class="botton-paginator" [length]="articles.length" [pageSize]="pageSize" aria-label="Select page"
-  showFirstLastButtons (page)="onPageChange($event)">
-</mat-paginator> -->
-
 
 <ng-template #noArticles>
   <div class="example-card">
@@ -57,13 +72,8 @@
     </mat-card-header>
     <div class="imageMarc">
       <img mat-card-image src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg">
-      <!-- <iframe width="883" height="498" src="https://www.youtube.com/embed/tiIqfNVvsHc" title="Pruebas unitarias con Angular 12" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-      <!-- <video class="container w-50" id="" preload="auto" controls>
-        <source src="http://static.videogular.com/assets/videos/videogular.mp4" type="video/mp4">
-      </video> -->
+
     </div>
-    <!-- <mat-card-content></mat-card-content>
-    <mat-card-actions></mat-card-actions> -->
   </div>
 </ng-template>
 
