@@ -37,7 +37,7 @@ import { ArticleGalleryComponent } from './components/article/article-gallery/ar
 import { interceptorProvider } from './interceptors/article-interceptor.service';
 import { FrontArticlesComponent } from './components/home/front-articles/front-articles.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { UserArticlesComponent } from './components/user-articles/user-articles.component';
+import { UserBlogComponent } from './components/user-blog/user-blog.component';
 import { PaginatePipe } from './shared/pipes/paginate.pipe';
 import { AboutComponent } from './components/home/about/about.component';
 
@@ -71,7 +71,7 @@ import { GalleryVideosComponent } from './components/crud/list-videos/gallery-vi
     AddImageComponent,
     FrontArticlesComponent,
     FooterComponent,
-    UserArticlesComponent,
+    UserBlogComponent,
     ArticleGalleryComponent,
     CaptionComponent,
     PaginatePipe,

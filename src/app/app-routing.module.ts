@@ -6,7 +6,7 @@ import { ArticleComponent } from './components/article/article.component';
 import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
 import { HomeComponent } from './components/home/home.component';
 import { LogsGuard } from './shared/logs.guard';
-import { UserArticlesComponent } from './components/user-articles/user-articles.component';
+import { UserBlogComponent } from './components/user-blog/user-blog.component';
 import { ListVideosComponent } from './components/crud/list-videos/list-videos.component';
 
 const routes: Routes = [
@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'add-image/:articleid', component: AddImageComponent},
   {path: 'images', component: ListImagesComponent, canActivate: [LogsGuard]},
   {path: 'videos', component: ListVideosComponent, canActivate: [LogsGuard]},
-  {path: 'blog/:username', component: UserArticlesComponent}
+  {path: 'blog/:username', component: UserBlogComponent}
 ]
 
 @NgModule({

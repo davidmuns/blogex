@@ -1,4 +1,4 @@
-import { ApiWeatherService } from './../../shared/services/apiWeather.service';
+import { ApiWeatherService } from '../../shared/services/apiWeather.service';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
@@ -8,10 +8,10 @@ import { ArticleService } from 'src/app/shared/services/article.service';
 
 @Component({
   selector: 'app-user-articles',
-  templateUrl: './user-articles.component.html',
-  styleUrls: ['./user-articles.component.scss']
+  templateUrl: './user-blog.component.html',
+  styleUrls: ['./user-blog.component.scss']
 })
-export class UserArticlesComponent implements OnInit {
+export class UserBlogComponent implements OnInit {
 
   navigationExtras: NavigationExtras = {
     state: {
