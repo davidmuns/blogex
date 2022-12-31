@@ -1,9 +1,9 @@
-import { ImageService } from './../../services/image.service';
-import { Imagen } from './../../models/imagen';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
+import { ImageService } from '../services/image.service';
+import { Imagen } from '../models/imagen';
 
 @Component({
   selector: 'app-caption',

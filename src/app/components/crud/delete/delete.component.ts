@@ -1,6 +1,6 @@
+import { GalleryImagesComponent } from './../list-images/gallery-images/gallery-images.component';
 import { GalleryVideosComponent } from './../list-videos/gallery-videos/gallery-videos.component';
 import { VideoService } from './../../../shared/services/video.service';
-import { GalleryUserComponent } from './../../../shared/GalleryUser/GalleryUser.component';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -50,7 +50,7 @@ export class DeleteComponent implements OnInit {
         //this.redirectTo(this.router.url);
         //window.location.reload();
         this.dialog.closeAll();
-        this.dialog.open(GalleryUserComponent, { data: { articleId: this.data.articleId } });
+        this.dialog.open(GalleryImagesComponent, { data: { articleId: this.data.articleId } });
       },
       error: err => {
         console.log(err);

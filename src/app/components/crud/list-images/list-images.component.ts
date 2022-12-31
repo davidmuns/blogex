@@ -1,3 +1,4 @@
+import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 
@@ -8,7 +9,6 @@ import { ArticleService } from '../../../shared/services/article.service';
 import { TokenService } from '../../../shared/services/token.service';
 import { Article } from '../../../shared/models/article';
 import { Imagen } from 'src/app/shared/models/imagen';
-import { GalleryUserComponent } from '../../../shared/GalleryUser/GalleryUser.component';
 
 
 @Component({
@@ -81,7 +81,7 @@ export class ListImagesComponent implements OnInit {
   };
 
   onOpenGallery(id: number) {
-    this.dialog.open(GalleryUserComponent, { data: { articleId: id } });
+    this.dialog.open(GalleryImagesComponent, { data: { articleId: id } });
   };
 
   onEdit(post: Article){

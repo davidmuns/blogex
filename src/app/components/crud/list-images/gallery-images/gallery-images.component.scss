@@ -1,0 +1,100 @@
+.example-card {
+    max-width: 290px;
+  
+  }
+  
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+  
+  // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
+  .main-container {
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .main-container>div {
+    // margin: 10px;
+    padding: 20px;
+  }
+  
+  img {
+    height: 200px;
+  }
+  
+  @media (max-width: 600px) {
+    img {
+      height: 130px;
+    }
+  }
+  
+  .file-input {
+    visibility: visible;
+    width: 0px;
+  }
+  
+  .file-label {
+    cursor: pointer;
+  
+  }
+  
+  .delete-btn {
+    color: rgb(255, 71, 71);
+  }
+  
+  .delete-btn:hover {
+    color: red;
+  }
+  
+  .caption-btn {
+    color: var(--lemon);
+  }
+  
+  .caption-btn:hover {
+    color: white;
+  }
+  
+  .upload-icon:hover{
+    // background: var(--accent);
+    color: var(--lemon);
+  }
+  
+  .caption-icon {
+    color: var(--lemon);
+  }
+  
+  .caption-btn:hover {
+    color: white;
+  }
+  .file-label:hover {
+    color: var(--accent);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .close-btn:hover {
+    color: #607d8b;
+  }
+  
+  .upload-icon:hover {
+    cursor: pointer;
+    color: #607d8b;
+  }
+  
+  .thumbnail {
+    width: 90px;
+    height: 70px;
+    border-radius: 5%;
+  
+    @media (max-width: 600px) {
+      width: 70px;
+      height: 50px;
+    }
+  
+  }

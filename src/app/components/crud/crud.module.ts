@@ -17,6 +17,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // Youtube
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { GalleryImagesComponent } from './list-images/gallery-images/gallery-images.component';
 
 
 
@@ -26,7 +27,8 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
     ListPostsComponent,
     NewComponent,
     EditComponent,
-    DeleteComponent
+    DeleteComponent,
+    GalleryImagesComponent
   ],
   imports: [
     NgxYoutubePlayerModule.forRoot(),
