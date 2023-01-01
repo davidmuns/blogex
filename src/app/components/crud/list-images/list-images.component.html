@@ -10,6 +10,12 @@
       aria-label="Search" [(ngModel)]="this.filterByTitle">
   </div>
 
+  <div class="container search d-flex" style="background-color: transparent;">
+    <button class="mx-2" mat-stroked-button routerLink="/videos">
+      {{ 'my-videos' | translate }} <mat-icon>fast_forward</mat-icon>
+    </button>
+  </div>
+
   <div class="container shadow-lg" *ngIf="this.articles.length > 0; else noArticles">
 
     <div *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber">
