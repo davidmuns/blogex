@@ -1,6 +1,6 @@
 <div>
   <div style="display: flex; justify-content: center;">
-    <button class="mx-2" mat-stroked-button color="accent" id="editAutor" [routerLink]="['/blog/', post?.usuario?.nombreUsuario]">
+    <button class="mx-2" mat-stroked-button id="editAutor" [routerLink]="['/blog/', post?.usuario?.nombreUsuario]">
       <mat-icon>fast_rewind</mat-icon> Blog {{ post?.usuario?.nombreUsuario }}
     </button>
   </div>
