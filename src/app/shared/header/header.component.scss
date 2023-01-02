@@ -39,7 +39,7 @@
         }
 
         .btn-login:hover {
-            color: ivory;
+            box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
         }
 
         @media(max-width: 374px){
@@ -60,7 +60,7 @@
         }
 
         .btn-logout:hover {
-            color: ivory;
+            box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
         }
 
         @media(max-width: 374px){
@@ -72,9 +72,11 @@
         }
     }
 }
+
 .toolbar{
     display: flex;
     justify-content: space-between;
+    box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
     // border-bottom: 10px solid white;  
 }
 
@@ -92,6 +94,11 @@
     }
 
 }
+
+.isLogged:hover {
+    box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
+}
+
 .notLogged {
     position: absolute;
     width: 60px;
@@ -103,5 +110,8 @@
         width: 50px;
         height: 40px;
     }
+}
 
+.notLogged:hover {
+    box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
 }

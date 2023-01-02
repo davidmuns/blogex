@@ -8,7 +8,6 @@
     left: 0px;
     margin-top: 664px;
     margin-bottom: 10px;
-    // width:100%;
     max-width: 1300px;
     padding: 0px 1% 10px;
     background: var(--accent);
@@ -42,31 +41,27 @@
             margin: 60px auto 0px;
 
             .color-button {
-                //background: var(--greenCake);
                 background: var(--lemon);
                 box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
             }
 
             .color-button:hover {
-                color: ivory;
+                box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
             }
         }
 
         .color-button-blog {
             margin: 60px auto 0px;
-            // background: var(--greenCake);
             background: var(--lemon);
             box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
-            //margin: 60px 40% 0px;
         }
 
         .color-button-blog:hover {
-            color: ivory;
+            box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
         }
     }
 
     #sky {
-        // background: url('../../../../assets/img/hotel-vela.jpg');
         background-size: cover;
         width: 50%;
         height: 340px;
@@ -83,10 +78,6 @@
 
             p {
                 text-align: center;
-
-                // @media(max-width: 640px) {
-                //     font-size: 1.1rem;
-                // }
             }
 
             div {

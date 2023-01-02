@@ -2,9 +2,14 @@ article {
     background-color: var(--accent);
     border-color: white;
     border-radius: 2%;
+    box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
 }
 
-.container-articles{
+article:hover {
+    box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
+}
+
+.container-articles {
     background-color: var(--cream);
     position: relative;
     top: 0px;
@@ -12,62 +17,73 @@ article {
     margin-bottom: 664px;
     z-index: 1;
     padding: 20px 20px 140px;
+
 }
-h1{
+
+h1 {
     padding-top: 10px;
     text-align: center;
     color: var(--accent);
     // font-weight: bold;
 }
+
 .example-card {
     width: 100%;
+
     // border: 1px solid rgb(220, 220, 220);
-    div{
+    div {
         height: 60px;
     }
-    div h3{
+
+    div h3 {
         font-size: .9rem;
         text-align: center;
-        margin:5px 0px;
+        margin: 5px 0px;
         cursor: pointer;
     }
-    a{
+
+    a {
         width: 100%;
         height: 180px;
         display: inline-block;
     }
-    img{
+
+    img {
         overflow: hidden;
-        background-size:cover;
-        height:160px;
+        background-size: cover;
+        height: 160px;
         width: 100%;
         margin-bottom: 0px;
     }
 }
-.mat-card-header-text{
+
+.mat-card-header-text {
     margin: 0px 4px;
 }
 
-#content{
-    padding: 2% ;
+#content {
+    padding: 2%;
+
     .example-header-image {
         background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
         background-size: cover;
-        width:20%;
+        width: 20%;
         height: 45px;
         border-radius: 50%;
-        float:left;
+        float: left;
     }
-    p{
-        width:76%;
-        display:flex;
+
+    p {
+        width: 76%;
+        display: flex;
         justify-content: center;
         padding: 8px 0px;
         margin: 0px;
         font-size: .8rem;
         color: rgba(255, 255, 255);
-        span{
-            cursor:pointer;
+
+        span {
+            cursor: pointer;
             font-size: .9rem;
             font-weight: 500;
         }
@@ -77,10 +93,10 @@ h1{
         color: var(--lemon);
     }
 
-    img{
+    img {
         cursor: pointer;
     }
-   
+
 }
 
 // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
@@ -93,10 +109,11 @@ h1{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    img{
+
+    img {
         cursor: pointer;
     }
-   
+
 }
 
 .main-container>article {
@@ -104,42 +121,50 @@ h1{
     margin: 80px 1%;
     padding: 0px;
 }
-@media(max-width: 900px){
-    .container-articles{
+
+@media(max-width: 900px) {
+    .container-articles {
         margin-top: 0px;
     }
-    .main-container{
+
+    .main-container {
         width: 100%;
         padding: 20px 0px;
         margin: 0px;
         height: 740px;
         overflow-y: hidden;
-        article{
+
+        article {
             width: 46%;
-            margin: 30px 2%; 
+            margin: 30px 2%;
         }
     }
 }
-@media(max-width: 500px){
-    .container-articles{
+
+@media(max-width: 500px) {
+    .container-articles {
         padding: 22px;
         margin-top: 0px;
         margin-bottom: 0px;
-        @media(max-width: 350px){
+
+        @media(max-width: 350px) {
             //margin-top: 200px;
             padding: 22px 0px;
         }
     }
-    .main-container{
+
+    .main-container {
         height: 1950px;
-        width:80%;
+        width: 80%;
         margin: 0px 10%;
-        @media(max-width: 420px){
-            width:100%;
+
+        @media(max-width: 420px) {
+            width: 100%;
             margin: 0px;
         }
-        article{
-            width:94%;
+
+        article {
+            width: 94%;
             margin: 10px 3%;
         }
     }

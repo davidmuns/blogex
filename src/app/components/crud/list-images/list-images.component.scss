@@ -1,11 +1,15 @@
 .example-card {
     max-width: 290px;
+    box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
+}
 
+.example-card:hover {
+    max-width: 290px;
+    box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
 }
 
 h1 {
     color: var(--bottle);
-    // font-weight: bold;
     margin-top: 30px;
     text-align: center;
 }
@@ -33,7 +37,6 @@ body {
     justify-content: center;
     margin-bottom: 30px;
     width: 100%;
-    border-radius: 1%;
     height: auto;
 
     @media(max-width: 565px){

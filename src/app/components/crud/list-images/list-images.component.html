@@ -16,7 +16,7 @@
     </button>
   </div>
 
-  <div class="container shadow-lg" *ngIf="this.articles.length > 0; else noArticles">
+  <div class="container shadow-lg rounded" *ngIf="this.articles.length > 0; else noArticles">
 
     <div *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber">
       <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: #607D8B">
