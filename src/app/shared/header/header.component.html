@@ -39,17 +39,13 @@
     </mat-menu>
 
     <app-search></app-search>
-    <!-- <h1 id="title">Blog de rutes</h1> -->
-    <div id="logReg" *ngIf="this.tokenService.isLogged() === false; else logged">
-      <a (click)="openDialog()">{{ 'Login' | translate }}</a>
-      <!-- <span>-&nbsp;&nbsp;</span>
-      <a (click)="signupDialog()">SIGN UP</a> -->
+    
+    <div id="logReg" *ngIf="!this.tokenService.isLogged(); else logged">
+      <button mat-raised-button class="btn-login" (click)="openDialog()">{{ 'Login' | translate }}</button>
     </div>
     <ng-template #logged>
       <div id="logOut" #isLoged>
-        <a *ngIf="!this.hideUsername" (click)="onLogout()">{{ 'Logout' | translate }} ({{
-          this.tokenService.getUsername() }})</a>
-        <a *ngIf="this.hideUsername" (click)="onLogout()">{{ 'Logout' | translate }}</a>
+        <button  mat-raised-button class="btn-logout" (click)="onLogout()">{{ 'Logout' | translate }}</button>
       </div>
     </ng-template>
   </mat-toolbar-row>
