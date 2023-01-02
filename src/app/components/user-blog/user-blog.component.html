@@ -48,7 +48,9 @@
     style="width: 90%;">
     <div class="row g-0">
       <div class="col-sm-4 col-md-4">
-        <img [src]="article.imagenPortada" class="img-fluid rounded-start" alt="{{ article.alt1 }}">
+        <a routerLink="/article/{{ article.id }}">
+          <img [src]="article.imagenPortada" class="img-fluid rounded-start" alt="{{ article.alt1 }}">
+        </a>
       </div>
       <div class="col-sm-8 col-md-8">
         <div class="card-body">
