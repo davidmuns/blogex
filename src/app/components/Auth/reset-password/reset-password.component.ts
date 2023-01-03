@@ -54,7 +54,7 @@ export class ResetPasswordComponent implements OnInit {
           setTimeout(() => { this.router.navigate(['']); }, 3000);
         },
         error: err => {
-          this.toastr.error(err.error.mensaje, '', {
+          this.toastr.error(this.translateService.instant('auth.reset-pass.no-match'), '', {
             timeOut: 3000, positionClass: 'toast-top-center'
           });
           this.resetForm.reset();

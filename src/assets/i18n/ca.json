@@ -72,18 +72,22 @@
     },
     "auth": {
         "login": {
-            "fill-blanks": "Si us plau, omple els camps buits"
+            "fill-blanks": "Si us plau, omple els camps buits",
+            "wrong-data": "No reconeixem el nom d´usuari o la contrasenya"
         },
         "signup": {
             "fill-blanks": "Si us plau, omple els camps buits",
-            "pass-length": "La contrasenya ha de tenir un mínim de 6 caracters"
+            "pass-length": "La contrasenya ha de tenir un mínim de 6 caracters",
+            "email-exists": "Aquest correu electrònic ja existeix",
+            "username-exists": "Aquest nom d´usuari ja existeix"
         },
         "email-send": {
             "fill-blanks": "Si us plau, introdueix un nom d'usuari o un email"
         },
         "reset-pass": {
             "fill-blanks": "Si us plau, introdueix un nom d'usuari o un email",
-            "pass-length": "La contrasenya ha de tenir un mínim de 6 caracters"
+            "pass-length": "La contrasenya ha de tenir un mínim de 6 caracters",
+            "no-match": "Les contrasenyes no coincideixen"
         }
     },
     "front-articles": {

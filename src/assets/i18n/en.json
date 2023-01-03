@@ -72,18 +72,22 @@
     },
     "auth": {
         "login": {
-            "fill-blanks": "Please fill in the blanks"
+            "fill-blanks": "Please fill in the blanks",
+            "wrong-data": "We do not recognize de user or password"
         },
         "signup": {
             "fill-blanks": "Please fill in the blanks",
-            "pass-length": "Password must have min 6 characters"
+            "pass-length": "Password must have min 6 characters",
+            "email-exists": "Email already exists",
+            "username-exists": "Username already exists"
         },
         "email-send": {
             "fill-blanks": "Please enter an email or username"
         },
         "reset-pass": {
             "fill-blanks": "Please fill in the blanks",
-            "pass-length": "Password must have min 6 characters"
+            "pass-length": "Password must have min 6 characters",
+            "no-match": "Passwords do not match"
         }
     },
     "front-articles": {

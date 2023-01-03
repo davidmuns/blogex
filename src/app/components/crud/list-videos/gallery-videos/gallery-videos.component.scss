@@ -1,91 +1,91 @@
+mat-dialog-content {}
+
 .example-card {
-    max-width: 500px;
-  
-  }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
-  
-  // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
-  .main-container {
-    padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .main-container>div {
-    padding: 20px;
-  }
+  max-width: 500px;
 
-  // form {
-  //   display: flex;
-  //   justify-content: space-around;
-  // }
-  
+}
 
-  @media (max-width: 400px) {
-   form {
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+// https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
+.main-container {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.main-container>div {
+  padding: 20px;
+}
+
+@media (max-width: 400px) {
+  form {
     display: flex;
     flex-direction: column;
-   }
   }
-  
-  .file-input {
-    visibility: visible;
-    width: 0px;
+
+  mat-dialog-content {
+    max-height: 320px;
   }
-  
-  .file-label {
-    cursor: pointer;
-  
-  }
-  
-  .delete-btn {
-    color: rgb(255, 71, 71);
-  }
-  
-  .delete-btn:hover {
-    color: red;
-  }
-  
-  .caption-btn {
-    color: var(--lemon);
-  }
-  
-  .caption-btn:hover {
-    color: white;
-  }
-  
-  .upload-icon:hover{
-    color: var(--lemon);
-  }
-  
-  .caption-icon {
-    color: var(--lemon);
-  }
-  
-  .caption-btn:hover {
-    color: white;
-  }
-  .file-label:hover {
-    color: var(--accent);
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .close-btn:hover {
-    color: #607d8b;
-  }
-  
-  .upload-icon:hover {
-    cursor: pointer;
-    color: #607d8b;
-  }
-  
-  
+
+}
+
+.file-input {
+  visibility: visible;
+  width: 0px;
+}
+
+.file-label {
+  cursor: pointer;
+
+}
+
+.delete-btn {
+  color: rgb(255, 71, 71);
+}
+
+.delete-btn:hover {
+  color: red;
+}
+
+.caption-btn {
+  color: var(--lemon);
+}
+
+.caption-btn:hover {
+  color: white;
+}
+
+.upload-icon:hover {
+  color: var(--lemon);
+}
+
+.caption-icon {
+  color: var(--lemon);
+}
+
+.caption-btn:hover {
+  color: white;
+}
+
+.file-label:hover {
+  color: var(--accent);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.close-btn:hover {
+  color: #607d8b;
+}
+
+.upload-icon:hover {
+  cursor: pointer;
+  color: #607d8b;
+}
