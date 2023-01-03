@@ -102,6 +102,12 @@
     },
     "user-blog": {
         "see-more": "See more"
+    },
+    "footer": {
+        "text": "Technology plays a fundamental role in our lives, it is a milestone in constant evolution. We use it in every context of our daily lives, without much reflection; and it has gone from being a luxury to becoming a necessity.",
+        "subscribe": "Subscribe",
+        "sign": "Sign up for our newsletter",
+        "address": "Email address"
     }
     
 }

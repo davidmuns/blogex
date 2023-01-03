@@ -73,6 +73,8 @@ button:hover {
     }
 }
 
+
+
 .example-card:hover {
     box-shadow: 6px 6px 6px #888888;
 }
@@ -85,7 +87,6 @@ button:hover {
     padding: 0px;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 1px 1px 6px #888888;
-
 
 
     #title-post {
@@ -137,6 +138,26 @@ button:hover {
     background-color: #fbfdf1;
     outline: 3px solid var(--lemon);
     box-shadow: none;
+}
+
+.no-articles-card {
+    max-width: 1000px;
+    margin: 20px auto 100px;
+    background-color: var(--darkGrey);
+    color: white;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 1px 6px #888888;
+
+    #title-post {
+        font-size: 1.3rem;
+        padding: 20px;
+        font-family: 'Libre Baskerville', serif;     
+    }
+ 
+    img {
+        width: 100%;
+        margin: 0px;
+    }
 }
 
 

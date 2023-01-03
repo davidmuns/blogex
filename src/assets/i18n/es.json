@@ -103,5 +103,11 @@
     },
     "user-blog": {
         "see-more": "Ver más"
+    },
+    "footer": {
+        "text": "La tecnología juega un papel fundamental en nuestras vidas, es un hito en constante evolución. La usamos en cada contexto de nuestro día a día, sin mucha reflexión; y ha pasado de ser un lujo a convertirse en una necesidad.",
+        "subscribe": "Subscríbete",
+        "sign": "Suscríbete a nuestro boletín",
+        "address": "Dirección de correo electrónico"
     }
 }
