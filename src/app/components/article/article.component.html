@@ -1,4 +1,4 @@
-<div>
+<body>
   <div style="display: flex; justify-content: center;">
     <button class="mx-2" mat-stroked-button id="editAutor" [routerLink]="['/blog/', post?.usuario?.nombreUsuario]">
       <mat-icon>fast_rewind</mat-icon> Blog {{ post?.usuario?.nombreUsuario }}
@@ -33,6 +33,6 @@
     <app-articleGallery [articleId]="post?.id"></app-articleGallery>
     <mat-card-actions></mat-card-actions>
   </div>
-</div>
+</body>
 
 <app-footer></app-footer>
