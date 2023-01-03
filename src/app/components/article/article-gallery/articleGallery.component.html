@@ -12,25 +12,27 @@
 	</div>
 </div>
 
-<!-- IMAGES -->
+<!-- IMAGES & VIDEOS-->
 <div class="main-container">
 
-	<!-- <div>
-		<mat-card>
+	<div *ngFor="let video of (this.videos$ | async); let i = index">
+
+		<!-- https://animate.style/ -->
+		<mat-card class="example-card animate__animated animate__zoomIn"
+			style="background-color: rgba(255, 255, 255, 0.09);">
 			<mat-card-header>
 
 			</mat-card-header>
-			<youtube-player [videoId]="'aN-tgeyTOM8'">
+			<youtube-player [videoId]="video.youtubeId" [playerVars]="this.playerVars" suggestedQuality="highres"
+				showBeforeIframeApiLoads="true" [width]="260">
 			</youtube-player>
+
 			<mat-card-content>
 
 			</mat-card-content>
-			<mat-card-actions>
-
-			</mat-card-actions>
-
 		</mat-card>
-	</div> -->
+
+	</div>
 
 	<div *ngFor="let imagen of (this.imagenes$ | async); let i = index">
 
@@ -58,6 +60,7 @@
 		</mat-card>
 
 	</div>
+
 </div>
 
 <!-- MODAL -->
@@ -66,21 +69,14 @@
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content" style="background-color: rgba(47, 47, 47, 1); border: none;">
 			<div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">{{ '' }}</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" (click)="hideGallery()"></button>
-      </div>
+				<h5 class="modal-title" id="exampleModalLabel">{{ '' }}</h5>
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"
+					(click)="hideGallery()"></button>
+			</div>
 			<div class="modal-body">
-
 				<!-- CAROUSEL -->
 				<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
 					<div class="carousel-inner">
-						<!-- <div class="carousel-item active">
-              <img src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg"
-                class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index">
-              <img [src]="imagen.url" class="d-block w-100" alt="...">
-            </div> -->
 						<div class="carousel-item" data-bs-interval="90000"
 							*ngFor="let imagen of (this.imagenes$ | async); index as i; count as items"
 							[ngClass]="{'active': i == this.indice, '': i != this.indice}">
@@ -90,9 +86,6 @@
 								<p class="m-0">image {{ i + 1 }} of {{ items }}</p>
 							</div>
 						</div>
-						<!-- <div class="carousel-item" *ngFor="let imagen of imagenes; let i = index" [ngClass]="{'active': i == 0 }">
-              <img [src]="imagen.url" class="d-block w-100" alt="...">
-            </div> -->
 					</div>
 					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
 						data-bs-slide="prev">
@@ -105,7 +98,6 @@
 						<span class="visually-hidden">Next</span>
 					</button>
 				</div>
-
 			</div>
 		</div>
 	</div>

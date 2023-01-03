@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditTempComponent } from './edit-temp.component';
+import { GalleryImagesComponent } from './gallery-images.component';
 
-describe('EditTempComponent', () => {
-  let component: EditTempComponent;
-  let fixture: ComponentFixture<EditTempComponent>;
+describe('GalleryImagesComponent', () => {
+  let component: GalleryImagesComponent;
+  let fixture: ComponentFixture<GalleryImagesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditTempComponent ]
+      declarations: [ GalleryImagesComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(EditTempComponent);
+    fixture = TestBed.createComponent(GalleryImagesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

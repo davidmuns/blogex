@@ -1,9 +1,9 @@
-import { ImageService } from './../../services/image.service';
-import { Imagen } from './../../models/imagen';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
+import { ImageService } from '../services/image.service';
+import { Imagen } from '../models/imagen';
 
 @Component({
   selector: 'app-caption',
@@ -42,7 +42,7 @@ export class CaptionComponent implements OnInit {
   //     });
   //   }
   // }
-  onSubmit(img: Imagen) {
+  onSubmit(img: Imagen) { 
     if(this.captionForm.valid){
       img.id = this.data.imgId;
       this.addCaption(img);

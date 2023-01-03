@@ -1,5 +1,6 @@
+import { CaptionComponent } from './shared/caption/caption.component';
+import { ListVideosComponent } from './components/crud/list-videos/list-videos.component';
 import { SwitchLanguageComponent } from './shared/switch-language/switch-language.component';
-import { CaptionComponent } from './shared/GalleryUser/caption/caption.component';
 import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
 
 import { NgModule } from '@angular/core';
@@ -36,8 +37,7 @@ import { ArticleGalleryComponent } from './components/article/article-gallery/ar
 import { interceptorProvider } from './interceptors/article-interceptor.service';
 import { FrontArticlesComponent } from './components/home/front-articles/front-articles.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { GalleryUserComponent } from './shared/GalleryUser/GalleryUser.component';
-import { UserArticlesComponent } from './components/user-articles/user-articles.component';
+import { UserBlogComponent } from './components/user-blog/user-blog.component';
 import { PaginatePipe } from './shared/pipes/paginate.pipe';
 import { AboutComponent } from './components/home/about/about.component';
 
@@ -47,9 +47,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // MATERIAL
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { ListTempComponent } from './components/crud/list-temp/list-temp.component';
+import { ListImagesComponent } from './components/crud/list-images/list-images.component';
 import { SearchPipe } from './shared/pipes/search.pipe';
 
+// Youtube
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { GalleryVideosComponent } from './components/crud/list-videos/gallery-videos/gallery-videos.component';
 
 @NgModule({
   declarations: [
@@ -64,19 +67,22 @@ import { SearchPipe } from './shared/pipes/search.pipe';
     SearchComponent,
     MapComponent,
     ArticleComponent,
-    ListTempComponent,
+    ListImagesComponent,
     AddImageComponent,
     FrontArticlesComponent,
     FooterComponent,
-    GalleryUserComponent,
-    UserArticlesComponent,
+    UserBlogComponent,
     ArticleGalleryComponent,
     CaptionComponent,
     PaginatePipe,
     SearchPipe,
-    AboutComponent
+    AboutComponent,
+    ListVideosComponent,
+    GalleryVideosComponent
   ],
   imports: [
+    BrowserAnimationsModule,
+    NgxYoutubePlayerModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

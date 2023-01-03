@@ -4,8 +4,8 @@
     <img [src]="imagen.url" alt="">
   </ng-container> -->
 
-  <section class="main-container shadow">
-    <article *ngFor="let article of this.articles | slice: numbers1 : numbers2 " style="background-color: #607D8B">
+  <section class="main-container shadow-lg rounded">
+    <article *ngFor="let article of this.articles | slice: numbers1 : numbers2">
       <div class="example-card">
         <div>
           <a (click)="onClick(article.id)">

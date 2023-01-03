@@ -1,0 +1,58 @@
+<div class="header">
+  <div></div>
+
+  <div>
+    <h2 mat-dialog-title>{{ 'Gallery' | translate }}</h2>
+  </div>
+  <div>
+    <mat-icon mat-button mat-dialog-close class="close-btn">close</mat-icon>
+  </div>
+
+</div>
+
+<mat-dialog-content class="mat-typography" style="background-color: #607d8b;">
+  <h1 class="mt-4 mb-0" style="text-align: center; color: rgba(255, 255, 255);">{{ this.videos.length }} {{
+    'crud.list-videos.videos' | translate }} {{ (this.article$ | async)?.title }}</h1>
+  <div class="main-container">
+
+    <div *ngFor="let video of this.videos; index as i">
+      <mat-card class="example-card animate__animated animate__backInLeft"
+        style="background-color: rgba(0, 0, 0, 0.4);">
+        <mat-card-header class="mb-3">
+          <mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
+        </mat-card-header>
+        
+        <youtube-player [videoId]="video.youtubeId" [playerVars]="this.playerVars" suggestedQuality="highres"
+          showBeforeIframeApiLoads="true" [width]="270">
+        </youtube-player>
+
+        <mat-card-content>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <!-- <button class="caption-btn" mat-stroked-button matTooltip="add caption">
+            <mat-icon>edit</mat-icon>
+          </button> -->
+          <button class="delete-btn" mat-stroked-button (click)="onDelete(video.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+  <div class="container">
+    <form [formGroup]="this.urlForm" (ngSubmit)="onSubmit(urlForm.value)">
+
+      <mat-form-field class="mx-2" appearance="fill">
+        <mat-label>Youtube url</mat-label>
+        <input matInput placeholder="https://youtu.be/fYgq0cT7wCg" formControlName="url" required>
+      </mat-form-field>
+
+      <button type="submit" mat-raised-button>{{ 'Publish' | translate }}</button>
+    </form>
+  </div>
+
+</mat-dialog-actions>

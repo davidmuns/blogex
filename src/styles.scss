@@ -5,9 +5,13 @@
 :root{
 --primary: #3F51B5;//500
 --accent: #607D8B;//400
+--bottle: #33582F;//400
+--cream: rgb(249, 243, 236);
+--darkGrey: rgba(47, 47, 47, 1);
 --warnBrown: #A52A2A;
 --warnOrange: #E64A19;
 --lemon: #D5F2B5;
+--pistachio: #9CDE4E;
 --greenCake: #69F0AE;
 }
 
@@ -37,7 +41,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow-x:
 .mat-menu-panel{
     min-width: 200px !important;
     max-width: 300px !important;
-    background-color: #a2f2ca !important;
+    background-color: var(--lemon) !important;
 }
 .mat-menu-item:hover{
     background-color: #607D8B !important;

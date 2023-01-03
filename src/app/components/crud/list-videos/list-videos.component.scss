@@ -1,12 +1,22 @@
 .example-card {
     max-width: 290px;
+    background-color: var(--bottle);
+    box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
+}
 
+.example-card:hover {
+    box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
 }
 
 h1 {
-    color: var(--accent);
-    // font-weight: bold;
+    color: var(--bottle);
+    margin-top: 30px;
     text-align: center;
+}
+
+body {
+    background-color: var(--cream);
+    margin-top: -15px;
 }
 
 .example-header-image {
@@ -16,12 +26,12 @@ h1 {
 
 // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
 .container {
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 30px;
     width: 100%;
-    border-radius: 1%;
     height: auto;
 
     @media(max-width: 565px){
@@ -66,7 +76,10 @@ mat-icon{
     color: var(--lemon);
 }
 
-
 mat-icon:hover{
     color: rgba(255, 255, 255);
+}
+
+mat-paginator {
+    background-color: transparent;
 }

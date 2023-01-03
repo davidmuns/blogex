@@ -1,8 +1,4 @@
-
-
-<div class="container container-about shadow">
-    
-    <!-- <div *ngIf="this.carouselPositionTop" id="sky"></div> -->
+<div class="container container-about shadow rounded">
 
     <div *ngIf="this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -29,23 +25,17 @@
         </button>
     </div>
 
-
-
     <h2>{{ 'about.title' | translate }}</h2>
     <div id="text">
         <p>{{ 'about.text' | translate }} </p>
         <div *ngIf="this.tokenSvc.isLogged() === false; else logged">
             <button mat-raised-button class="color-button" (click)="openDialog()">{{ 'Login' | translate }}</button>
-            <!-- <button mat-raised-button class="color-button" (click)="signupDialog()">{{ 'Signup' | translate }}</button> -->
         </div>
         <ng-template #logged>
             <button mat-raised-button class="color-button-blog" routerLink="/blog/{{ this.tokenSvc.getUsername() }}">{{
                 'Blog' | translate }}</button>
         </ng-template>
     </div>
-    
-    <!-- <div *ngIf="!this.carouselPositionTop" id="sky"></div> -->
-
 
     <div *ngIf="!this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel">
         <div class="carousel-inner">

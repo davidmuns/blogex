@@ -1,24 +1,23 @@
+import { CaptionComponent } from './../../../../shared/caption/caption.component';
 import { Observable } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
-import { CaptionComponent } from './caption/caption.component';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { Imagen } from './../models/imagen';
-import { Article } from './../models/article';
-import { ArticleService } from './../services/article.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { DeleteComponent } from 'src/app/components/crud/delete/delete.component';
-import { LowerCasePipe } from '@angular/common';
+import { Imagen } from 'src/app/shared/models/imagen';
+import { Article } from 'src/app/shared/models/article';
+import { ArticleService } from 'src/app/shared/services/article.service';
 
 @Component({
-  selector: 'app-GalleryUser',
-  templateUrl: './GalleryUser.component.html',
-  styleUrls: ['./GalleryUser.component.scss']
+  selector: 'app-gallery-images',
+  templateUrl: './gallery-images.component.html',
+  styleUrls: ['./gallery-images.component.scss']
 })
-export class GalleryUserComponent implements OnInit {
+export class GalleryImagesComponent implements OnInit {
 
   imagesByArticleId: Imagen[] = [];
   articles: Article[] = [];

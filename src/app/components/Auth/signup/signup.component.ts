@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { LoginComponent } from '../login/login.component';
@@ -22,7 +21,6 @@ export class SignupComponent implements OnInit {
     private readonly dialog: MatDialog,
     private readonly fb: FormBuilder,
     public authSvc: AuthService,
-    private readonly router: Router,
     private translateService: TranslateService,
     private toastr: ToastrService
   ) { }
@@ -33,21 +31,11 @@ export class SignupComponent implements OnInit {
 
   private initform(): void {
     this.signupForm = this.fb.group({
-      // nombre: ['', Validators.required],
       nombreUsuario: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     })
   }
-
-  //email = new FormControl('', [Validators.required, Validators.email]);
-
-  // getErrorMessage() {
-  //   if (this.email.hasError('required')) {
-  //     return 'You must enter a value';
-  //   }
-  //   return this.email.hasError('email') ? 'Not a valid email' : '';
-  // }
 
   signupOpen() {
     this.dialog.closeAll();
@@ -58,18 +46,21 @@ export class SignupComponent implements OnInit {
     if (this.signupForm.valid) {
       this.authSvc.signupUser(user).subscribe({
         next: (data) => {
-          console.log(data.mensaje);
           this.toastr.success(data.mensaje, '', {
             timeOut: 3000, positionClass: 'toast-top-center',
           });
           this.dialog.closeAll();
           this.dialog.open(LoginComponent);
-          //this.router.navigate(['admin/new']);
         },
 
         error: err => {
-          console.log(err.error.mensaje);
-          this.toastr.error(err.error.mensaje, '', {
+          let msg = '';
+          if(err.error.mensaje.includes('Email')){
+            msg = this.translateService.instant('auth.signup.email-exists');
+          } else {
+            msg = this.translateService.instant('auth.signup.username-exists');
+          }
+          this.toastr.error(msg, '', {
             timeOut: 3000, positionClass: 'toast-top-center',
           });
         }

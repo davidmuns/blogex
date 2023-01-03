@@ -1,6 +1,6 @@
 {
     "Login": "Iniciar sesión",
-    "Logout": "Salir",
+    "Logout": "Cerrar sesión",
     "Signup": "Registrarse",
     "Home": "Inicio",
     "Blog": "Mi blog",
@@ -8,6 +8,7 @@
     "The blog": "The blog of",
     "MyArticles": "Mis artículos",
     "MyImages": "Mis imágenes",
+    "my-videos": "Mis vídeos",
     "UsernameOrEmail": "Nombre de usuario o correo electrónico",
     "Username": "Nombre de usuario",
     "Password": "Contraseña",
@@ -44,7 +45,7 @@
     "CoverImage": "Imagen de portada",
     "SelectImage": "Selec. imagen",
     "ArticlesToEdit": "Artículos para editar",
-    "PublishArticle": "Publicar artículo",
+    "Publish": "Publicar",
     "Filter": "Filtrar",
     "Delete": "Eliminar",
     "SaveChanges": "Guardar cambios",
@@ -65,34 +66,52 @@
     "ItemsPage": "Elementos por página",
     "FillBlanks": "Por favor rellena los campos vacios e inserta una imagen",
     "ImgMaximumExceed": "Imagen excede tamaño máximo permitido de",
-    "PleaseSelectImage": "Por favor seleccionar una imagen",
+    "PleaseSelectImage": "Por favor selecciona una imagen",
     "about": {
         "title": "Descubre lugares del mundo",
-        "text": "Aquí puedes encontrar artículos sobre sitios interesantes. Suscríbete y crea tu blog personal. Haz que la gente descubra los sitios que conoces a través de tus publicaciones."
+        "text": "Aquí puedes encontrar artículos sobre sitios interesantes. Suscríbete y crea tu blog personal. Haz que la gente descubra los sitios que conoces a través de tus publicaciones, fotos y vídeos de youtube."
     },
     "auth": {
         "login": {
-            "fill-blanks": "Por favor, rellena los campos vacios"
+            "fill-blanks": "Por favor, rellena los campos vacios",
+            "wrong-data": "No reconocemos el nombre de usuario o la contraseña"
         },
         "signup": {
             "fill-blanks": "Por favor, rellena los campos vacios",
-            "pass-length": "La contraseña debe tener un mínimo de 6 caracteres"
+            "pass-length": "La contraseña debe tener un mínimo de 6 caracteres",
+            "email-exists": "Este correo electrónico ya existe",
+            "username-exists": "Este nombre de usuario ya existe"
         },
         "email-send": {
             "fill-blanks": "Por favor, introduce un nombre de usuario o un email"
         },
         "reset-pass": {
             "fill-blanks": "Por favor, introduce un nombre de usuario o un email",
-            "pass-length": "La contraseña debe tener un mínimo de 6 caracteres"
+            "pass-length": "La contraseña debe tener un mínimo de 6 caracteres",
+            "no-match": "Las contraseñas no coinciden"
         }
     },
     "front-articles": {
         "last-articles": "Publicaciones más recientes"
     },
     "crud": {
-        "list-temp": {
+        "list-images": {
             "insert-tilte": "Buscar por título",
             "images": "Imágenes de"
+        },
+        "list-videos": {
+            "videos": "Vídeos de",
+            "invalid-url": "Solamente son válidas las URLs de youtube",
+            "posted": "Video publicado"
         }
+    },
+    "user-blog": {
+        "see-more": "Ver más"
+    },
+    "footer": {
+        "text": "La tecnología juega un papel fundamental en nuestras vidas, es un hito en constante evolución. La usamos en cada contexto de nuestro día a día, sin mucha reflexión; y ha pasado de ser un lujo a convertirse en una necesidad.",
+        "subscribe": "Subscríbete",
+        "sign": "Suscríbete a nuestro boletín",
+        "address": "Dirección de correo electrónico"
     }
 }

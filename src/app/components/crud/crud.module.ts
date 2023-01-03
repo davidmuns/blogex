@@ -12,10 +12,12 @@ import { NewComponent } from './posts/new/new.component';
 import { EditComponent } from './posts/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
-import { EditTempComponent } from './posts/edit-temp/edit-temp.component';
-
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+// Youtube
+import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
+import { GalleryImagesComponent } from './list-images/gallery-images/gallery-images.component';
 
 
 
@@ -26,9 +28,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
     NewComponent,
     EditComponent,
     DeleteComponent,
-    EditTempComponent
+    GalleryImagesComponent
   ],
   imports: [
+    NgxYoutubePlayerModule.forRoot(),
     CommonModule,
     CrudRoutingModule,
     EditModule,

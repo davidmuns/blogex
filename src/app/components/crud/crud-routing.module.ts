@@ -10,8 +10,8 @@ const routes: Routes = [
   {
     path: '', component: CrudComponent, canActivate: [LogsGuard],
     children: [
-      { path: 'admin/new', loadChildren: () => NewModule },
-      { path: 'admin/edit', loadChildren: () => EditModule }
+      { path: 'admin/new', loadChildren: () => NewModule, data: { animation: 'admin/new'} },
+      { path: 'admin/edit', loadChildren: () => EditModule, data: { animation: 'admin/edit'} }
     ]
   }
 ];

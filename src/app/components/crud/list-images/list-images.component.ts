@@ -1,22 +1,22 @@
+import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 
-import { ArticleService } from './../../../shared/services/article.service';
-import { TokenService } from './../../../shared/services/token.service';
-import { Article } from './../../../shared/models/article';
+import { ArticleService } from '../../../shared/services/article.service';
+import { TokenService } from '../../../shared/services/token.service';
+import { Article } from '../../../shared/models/article';
 import { Imagen } from 'src/app/shared/models/imagen';
-import { GalleryUserComponent } from './../../../shared/GalleryUser/GalleryUser.component';
 
 
 @Component({
-  selector: 'app-list-temp',
-  templateUrl: './list-temp.component.html',
-  styleUrls: ['./list-temp.component.scss']
+  selector: 'app-list-images',
+  templateUrl: './list-images.component.html',
+  styleUrls: ['./list-images.component.scss']
 })
-export class ListTempComponent implements OnInit {
+export class ListImagesComponent implements OnInit {
 
   navigationExtras: NavigationExtras = {
     state: {
@@ -81,11 +81,11 @@ export class ListTempComponent implements OnInit {
   };
 
   onOpenGallery(id: number) {
-    this.dialog.open(GalleryUserComponent, { data: { articleId: id } });
+    this.dialog.open(GalleryImagesComponent, { data: { articleId: id } });
   };
 
   onEdit(post: Article){
     this.navigationExtras.state = post;
     this.router.navigate(['admin/edit'], this.navigationExtras);
-  }
+  };
 };

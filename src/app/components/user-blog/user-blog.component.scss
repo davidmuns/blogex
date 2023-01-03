@@ -4,7 +4,7 @@ h1 {
     margin: -80px 0px 0px;
     text-align: center;
     color: var(--accent);
-    // font-weight: bold;
+
     @media(max-width:600px) {
         margin: -80px 0px 0px;
     }
@@ -22,6 +22,7 @@ h2 {
     background-color: white;
     border-bottom: 2px solid dimgray;
     background-color: silver;
+    box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
 
     @media(max-width:600px) {
         font-size: 2rem;
@@ -36,6 +37,12 @@ button:hover {
     color: var(--lemon);
 }
 
+.card-body {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+}
+
 #linkToHome {
     position: absolute;
     top: 30px;
@@ -43,7 +50,8 @@ button:hover {
     z-index: 1;
     color: var(--lemon);
     border-radius: 2px;
-    padding: 2px;
+    padding: 5px;
+    box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
 
     height: 24px;
     display: flex;
@@ -59,6 +67,10 @@ button:hover {
     }
 }
 
+#linkToHome:hover {
+    box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
+}
+
 .top-paginator {
     margin: 10px 0px 0px;
 
@@ -67,28 +79,28 @@ button:hover {
     }
 }
 
-iframe {
-    width: 1000px;
-    height: 506px;
+
+
+.example-card:hover {
+    box-shadow: 6px 6px 6px #888888;
 }
 
 .example-card {
     max-width: 1000px;
     margin: 20px auto 100px;
-    background-color: rgba(47, 47, 47, 1);
+    background-color: var(--darkGrey);
     color: white;
     padding: 0px;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 1px 1px 6px #888888;
 
 
-
     #title-post {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
         font-family: 'Libre Baskerville', serif;
-        padding: 10px 10px 20px 15px;
-        line-height: 2rem;
-        height: auto;
+        // padding: 10px 10px 20px 15px;
+        // line-height: 2rem;
+        // height: auto;
     }
 
     .imageMarc {
@@ -100,6 +112,7 @@ iframe {
 
     img {
         width: 100%;
+        height: 180px;
         margin: 0px;
     }
 
@@ -133,44 +146,66 @@ iframe {
     box-shadow: none;
 }
 
+.no-articles-card {
+    max-width: 1000px;
+    margin: 20px auto 100px;
+    background-color: var(--darkGrey);
+    color: white;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 1px 1px 6px #888888;
 
-mat-card-content {
-    .autor {
-        padding: 20px 15px 0px;
-        display: flex;
-        flex-direction: row;
-
-        #autorLink {
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-
-            span {
-                font-size: 1.1rem;
-                font-family: 'Libre Baskerville', serif;
-                text-transform: capitalize;
-                cursor: pointer;
-            }
-        }
-
-        #autorLink:hover {
-            color: var(--lemon);
-        }
-
-        #editAutor {
-            padding: 2px 5px;
-        }
+    #title-post {
+        font-size: 1.3rem;
+        padding: 20px;
+        font-family: 'Libre Baskerville', serif;     
     }
-
-    p {
-        font-size: 1.1rem;
-        padding: 30px 15px;
-        display: block;
-        overflow: auto;
-        white-space: pre-line;
-
-        @media(max-width:600px) {
-            font-size: 1rem;
-        }
+ 
+    img {
+        width: 100%;
+        margin: 0px;
     }
 }
+
+
+// mat-card-content {
+//     .autor {
+//         padding: 20px 15px 0px;
+//         display: flex;
+//         flex-direction: row;
+
+//         #autorLink {
+//             font-size: 1rem;
+//             display: flex;
+//             align-items: center;
+
+//             span {
+//                 font-size: 1.1rem;
+//                 font-family: 'Libre Baskerville', serif;
+//                 text-transform: capitalize;
+//                 cursor: pointer;
+//             }
+//         }
+
+//         #autorLink:hover {
+//             color: var(--lemon);
+//         }
+
+//         #editAutor {
+//             padding: 2px 5px;
+//         }
+//     }
+
+//     p {
+//         font-size: 1.1rem;
+//         padding: 30px 15px;
+//         display: block;
+//         overflow: auto;
+//         white-space: pre-line;
+
+//         @media(max-width:600px) {
+//             font-size: 1rem;
+//         }
+//     }
+// }
+
+
