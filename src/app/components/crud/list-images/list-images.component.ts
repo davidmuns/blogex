@@ -80,8 +80,8 @@ export class ListImagesComponent implements OnInit {
     });
   };
 
-  onOpenGallery(id: number) {
-    this.dialog.open(GalleryImagesComponent, { data: { articleId: id } });
+  onOpenGallery(a: Article) {
+    this.dialog.open(GalleryImagesComponent, { data: { article: a } });
   };
 
   onEdit(post: Article){
