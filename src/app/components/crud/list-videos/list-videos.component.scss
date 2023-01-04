@@ -1,3 +1,12 @@
+button {
+    margin: 30px 0px 20px;
+    box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
+}
+
+button:hover {
+    box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
+}
+
 .example-card {
     max-width: 290px;
     background-color: var(--bottle);

@@ -79,8 +79,6 @@ button:hover {
     }
 }
 
-
-
 .example-card:hover {
     box-shadow: 6px 6px 6px #888888;
 }
@@ -101,6 +99,11 @@ button:hover {
         // padding: 10px 10px 20px 15px;
         // line-height: 2rem;
         // height: auto;
+    }
+
+    p {
+        font-size: .9rem;
+        font-family: 'Libre Baskerville', serif;
     }
 
     .imageMarc {
@@ -157,9 +160,9 @@ button:hover {
     #title-post {
         font-size: 1.3rem;
         padding: 20px;
-        font-family: 'Libre Baskerville', serif;     
+        font-family: 'Libre Baskerville', serif;
     }
- 
+
     img {
         width: 100%;
         margin: 0px;
@@ -207,5 +210,3 @@ button:hover {
 //         }
 //     }
 // }
-
-
