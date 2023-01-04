@@ -26,10 +26,9 @@ export class GalleryImagesComponent implements OnInit {
   image!: File;
   miniatura!: Imagen;
   username!: string;
-  articleId!: number;
-
+ 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { articleId: number },
+    @Inject(MAT_DIALOG_DATA) public data: { article: Article },
     private readonly dialog: MatDialog,
     private snack: MatSnackBar,
     private articleSvc: ArticleService,
@@ -38,13 +37,12 @@ export class GalleryImagesComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    this.getImgsByArticleId(this.data.articleId);
-    this.articleId = this.data.articleId;
+    this.getImgsByArticleId(this.data.article.id);
     this.getArticle();
   }
 
   private getArticle() {
-    this.article$ = this.articleSvc.getArticle(this.articleId); 
+    this.article$ = this.articleSvc.getArticle(this.data.article.id); 
   }
 
   private getImgsByArticleId(id: number) {
@@ -63,7 +61,7 @@ export class GalleryImagesComponent implements OnInit {
   onUpload() {
     if (this.image != undefined) {
       if (this.image.size < environment.IMG_MAX_SIZE) {
-        this.addImage(this.image, this.articleId);
+        this.addImage(this.image, this.data.article.id);
       } else {
         this.snack.open(this.translateService.instant('ImgMaximumExceed') + " 2MB", "", { duration: 5000 });
       }
@@ -79,7 +77,7 @@ export class GalleryImagesComponent implements OnInit {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
         this.imagenes = [];
-        this.getImgsByArticleId(this.articleId);
+        this.getImgsByArticleId(this.data.article.id);
         //this.redirectTo(this.router.url);
       },
       error: err => {
@@ -90,8 +88,8 @@ export class GalleryImagesComponent implements OnInit {
     })
   }
 
-  onDeleteImage(imgId: string){
-    this.dialog.open(DeleteComponent, {data: {imgId: `${imgId}`, articleId: this.articleId, option: "deleteImage"}});
+  onDeleteImage(id: string){
+    this.dialog.open(DeleteComponent, {data: {imgId: id, article: this.data.article, option: "deleteImage"}});
   }
 
   onCaption(id: string) {
