@@ -1,4 +1,4 @@
-.toolbarClass{
+.toolbarClass {
     position: relative;
     top: 0px;
     left: 0px;
@@ -6,33 +6,38 @@
     background-color: var(--accent);
     margin-bottom: 10px;
     color: var(--lemon);
-    mat-icon{
+
+    mat-icon {
         width: 40px;
     }
-    #menuHome{
+
+    #menuHome {
         width: 40px;
         padding: 0px;
         margin: 0px;
         height: 34px;
         border-radius: 20%;
-        .mat-icon{
+
+        .mat-icon {
             display: flex;
             justify-content: center;
-            @media(max-width: 210px){
+
+            @media(max-width: 210px) {
                 justify-content: start;
             }
         }
     }
-    #title{
-        width:100px;
+
+    #title {
+        width: 100px;
         margin-left: 15%;
         font-size: 1.8rem;
         color: var(--lemon);
     }
-    #logReg{
-        width:130px;
+
+    #logReg {
         text-align: end;
-        
+
         .btn-login {
             background-color: var(--lemon);
             box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
@@ -42,76 +47,61 @@
             box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
         }
 
-        @media(max-width: 374px){
+        @media(max-width: 410px) {
             .btn-login {
                 font-size: .7rem;
-                padding: 0px 8px 0px 8px;
+                padding: 0px 5px 0px 5px;
             }
-           
+
         }
     }
-    #logOut{
-        width:130px;
+
+    .logout {
         text-align: end;
+        font-size: 1.2rem;
+        color: var(--lemon);
+        box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
+        text-decoration: none;
+        border-radius: 7%;
+        cursor: pointer;
+    }
+
+    .logout:hover{
+        box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
+    }
+
     
-        .btn-logout {
-            background-color: var(--lemon);
-            box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
-        }
-
-        .btn-logout:hover {
-            box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
-        }
-
-        @media(max-width: 374px){
-            .btn-logout {   
-                font-size: .7rem;
-                padding: 0px 8px 0px 8px;
-            }
-           
+    @media(max-width: 400px) {
+        .logout {
+            font-size: .9rem;
         }
     }
+
 }
 
-.toolbar{
+.toolbar {
     display: flex;
     justify-content: space-between;
     box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
     // border-bottom: 10px solid white;  
 }
 
-.isLogged {
-    position: absolute;
-    margin-left: 40px;
+.logo {
+
     width: 60px;
     height: 50px;
     border-radius: 10%;
     cursor: pointer;
     box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
-    @media(max-width: 600px){
+
+    @media(max-width: 600px) {
         width: 50px;
         height: 40px;
     }
 
 }
 
-.isLogged:hover {
+.logo:hover {
     box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
 }
 
-.notLogged {
-    position: absolute;
-    width: 60px;
-    height: 50px;
-    border-radius: 10%;
-    cursor: pointer;
-    box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
-    @media(max-width: 600px){
-        width: 50px;
-        height: 40px;
-    }
-}
-
-.notLogged:hover {
-    box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
-}
