@@ -87,7 +87,7 @@
             "fill-blanks": "Por favor, introduce un nombre de usuario o un email"
         },
         "reset-pass": {
-            "fill-blanks": "Por favor, introduce un nombre de usuario o un email",
+            "fill-blanks": "Por favor, rellena los campos vacios",
             "pass-length": "La contraseña debe tener un mínimo de 6 caracteres",
             "no-match": "Las contraseñas no coinciden"
         }
