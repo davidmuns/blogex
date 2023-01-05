@@ -86,7 +86,7 @@
             "fill-blanks": "Si us plau, introdueix un nom d'usuari o un email"
         },
         "reset-pass": {
-            "fill-blanks": "Si us plau, introdueix un nom d'usuari o un email",
+            "fill-blanks": "Si us plau, omple els camps buits",
             "pass-length": "La contrasenya ha de tenir un mínim de 6 caracters",
             "no-match": "Les contrasenyes no coincideixen"
         }
