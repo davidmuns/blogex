@@ -69,7 +69,7 @@ export class GalleryImagesComponent implements OnInit {
       this.snack.open(this.translateService.instant('PleaseSelectImage'), "", { duration: 5000 });
     }
   }
-
+  
   private addImage(image: File, articleId: number) {
     this.articleSvc.addImageToArticle(image, articleId).subscribe({
       next: data => {
