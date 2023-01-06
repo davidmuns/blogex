@@ -75,7 +75,7 @@ export class NewComponent implements OnInit {
         this.uploadImage(this.image);
 
       } else {
-        this.snack.open(this.translateService.instant('ImgMaximumExceed') + " 2MB", "",
+        this.snack.open(this.translateService.instant('ImgMaximumExceed') + " 3MB", "",
           { duration: 3000 });
       }
     } else {
@@ -92,7 +92,7 @@ export class NewComponent implements OnInit {
         // });
       },
       error: err => {
-        this.toastrService.error(this.translateService.instant('ImgMaximumExceed') + " 2MB", '', {
+        this.toastrService.error(this.translateService.instant('ImgMaximumExceed') + " 3MB", '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
       }

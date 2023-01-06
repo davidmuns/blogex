@@ -63,7 +63,7 @@ export class GalleryImagesComponent implements OnInit {
       if (this.image.size < environment.IMG_MAX_SIZE) {
         this.addImage(this.image, this.data.article.id);
       } else {
-        this.snack.open(this.translateService.instant('ImgMaximumExceed') + " 2MB", "", { duration: 5000 });
+        this.snack.open(this.translateService.instant('ImgMaximumExceed') + " 3MB", "", { duration: 5000 });
       }
     } else {
       this.snack.open(this.translateService.instant('PleaseSelectImage'), "", { duration: 5000 });
