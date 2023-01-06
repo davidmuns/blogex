@@ -11,5 +11,5 @@ export const environment = {
   AUTHORIZATION: 'Authorization',
   BEARER: 'Bearer ',
   ARTICLES_LOCAL: './assets/articles.json',
-  IMG_MAX_SIZE: 2100000
+  IMG_MAX_SIZE: 3100000 // 3MB
 };
