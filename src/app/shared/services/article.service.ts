@@ -55,8 +55,6 @@ export class ArticleService {
   }
 
   public addImageToArticle(img: File, articleId: number): Observable<any> {
-    console.log('URL => ', ARTICLE_BASE_URL + `image/add/${articleId}`);
-    
     const formData = new FormData();
     formData.append('multipartFile', img);
     return this.httpClient.post<any>(ARTICLE_BASE_URL + `image/add/${articleId}`, formData);
