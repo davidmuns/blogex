@@ -39,4 +39,9 @@ export class AuthService {
   public refreshToken(jwt: Jwt): Observable<Jwt>{
     return this.httpClient.post<Jwt>(AUTH_URL + 'refresh', jwt);
   }
+
+  public deleteAccount(username: string): Observable<any>{
+    console.log(`${environment.USER_BASE_URL}delete/${username}`);
+    return this.httpClient.delete(`${environment.USER_BASE_URL}delete/${username}`)
+  }
 } 

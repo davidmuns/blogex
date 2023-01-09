@@ -24,17 +24,19 @@ export class TokenInterceptorService implements HttpInterceptor {
     if (token != null) {
       intReq = req.clone({ headers: req.headers.set(AUTHORIZATION, BEARER + token) });
     }
-    return next.handle(intReq).pipe(catchError((error: HttpErrorResponse) => {
-      // Si token ha expirado (status 401), refrescar token.
-      if(error.status === 401){
-        this.authSvc.refreshToken(new Jwt(token)).subscribe((data: Jwt) => {
-          this.tokenService.setToken(data.token);
-        });
-        return throwError(() => new Error());
-      }else{
-        return throwError(() => new Error('Something was wrong ...'));
-      }     
-    }));
+    return next.handle(intReq);
+    
+    // .pipe(catchError((error: HttpErrorResponse) => {
+    //   // Si token ha expirado (status 401), refrescar token.
+    //   if(error.status === 401){
+    //     this.authSvc.refreshToken(new Jwt(token)).subscribe((data: Jwt) => {
+    //       this.tokenService.setToken(data.token);
+    //     });
+    //     return throwError(() => new Error());
+    //   }else{
+    //     return throwError(() => new Error('Something was wrong ...'));
+    //   }     
+    // }));
   }
 }
 export const interceptorProvider = [{provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}];

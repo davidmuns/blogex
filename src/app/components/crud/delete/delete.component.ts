@@ -1,3 +1,5 @@
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { TokenService } from './../../../shared/services/token.service';
 import { Article } from 'src/app/shared/models/article';
 import { GalleryImagesComponent } from './../list-images/gallery-images/gallery-images.component';
 import { GalleryVideosComponent } from './../list-videos/gallery-videos/gallery-videos.component';
@@ -19,6 +21,8 @@ export class DeleteComponent implements OnInit {
   durationInSeconds = 5;
 
   constructor(
+    private tokenSvc: TokenService,
+    private authSvc: AuthService,
     private readonly dialog: MatDialog,
     private toastrService: ToastrService,
     private snack: MatSnackBar,
@@ -33,7 +37,6 @@ export class DeleteComponent implements OnInit {
   onDeleteArticle() {
     this.articleSvc.deleteArticle(this.data.article.id).subscribe({
       next: data => {
-        console.log(data);
         this.snack.open("Article deleted", "", { duration: 3000 });
         this.redirectTo(this.router.url);
         // this.router.navigate(['admin/new']);
@@ -70,6 +73,12 @@ export class DeleteComponent implements OnInit {
         console.log(err);     
       }
     })
+  }
+
+  onDeleteAccount(){
+    const username: string = this.tokenSvc.getUsername() as string;
+    this.authSvc.deleteAccount(username).subscribe( data => console.log(data));
+    this.tokenSvc.logOut();
   }
 
   redirectTo(uri: string) {
