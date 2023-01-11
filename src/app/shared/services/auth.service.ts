@@ -41,7 +41,6 @@ export class AuthService {
   }
 
   public deleteAccount(username: string): Observable<any>{
-    console.log(`${environment.USER_BASE_URL}delete/${username}`);
-    return this.httpClient.delete(`${environment.USER_BASE_URL}delete/${username}`)
+    return this.httpClient.delete(`${environment.USER_BASE_URL}${username}`)
   }
 } 

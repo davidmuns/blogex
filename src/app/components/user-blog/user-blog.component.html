@@ -14,35 +14,7 @@
 </div>
 
 <ng-container *ngIf="this.articles.length; else noArticles">
-  <!-- <div class="example-card"
-    *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber">
-    <mat-card-header>
-      <div class="example-header-image"></div>
-      <div id="title-post">{{ article.title }} | {{ this.temp }} ºC</div>
-    </mat-card-header>
-    <div class="imageMarc">
-      <img mat-card-image [src]="article.imagenPortada" alt="{{ article.alt1 }}">
-    </div>
-    <mat-card-content>
-      <p id="footerImg">{{ article.alt1 }}</p>
-      <div class="autor">
-        <button *ngIf="article.usuario.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent"
-          id="editAutor" (click)="onEdit(article)">
-          <mat-icon>edit</mat-icon> {{ 'EditArticle' | translate }}
-        </button>
-        <button class="mx-2" mat-stroked-button color="accent" id="editAutor" (click)="onGoToMap(article)">
-          <mat-icon>room</mat-icon> Map
-        </button>
-      </div>
-      <p>
-        {{ article.text1 }}
-      </p>
-    </mat-card-content>
-    <app-articleGallery [articleId]="article.id"></app-articleGallery>
-    <mat-card-actions>
-    </mat-card-actions>
-  </div> -->
-
+  
   <div class="example-card mb-5 animate__animated animate__backInLeft"
     *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber"
     style="width: 90%;">

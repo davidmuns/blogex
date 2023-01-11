@@ -113,5 +113,8 @@
         "subscribe": "Subscriu-te",
         "sign": "Subscriu-te al nostre butlletí",
         "address": "Adreça de correu electrònic"
-    }
+    },
+    "delete": {
+        "account": "compte"
+    } 
 }

@@ -113,6 +113,9 @@
         "subscribe": "Subscribe",
         "sign": "Sign up for our newsletter",
         "address": "Email address"
-    }
+    },
+    "delete": {
+        "account": "account"
+    } 
     
 }

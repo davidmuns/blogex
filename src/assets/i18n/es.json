@@ -114,5 +114,8 @@
         "subscribe": "Subscríbete",
         "sign": "Suscríbete a nuestro boletín",
         "address": "Dirección de correo electrónico"
-    }
+    },
+    "delete": {
+        "account": "cuenta"
+    } 
 }
