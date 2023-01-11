@@ -1,4 +1,6 @@
+import { Imagen } from "./imagen";
 import { Usuario } from "./usuario";
+import { Video } from "./video";
 
 export interface Article {
   id: number,
@@ -15,5 +17,7 @@ export interface Article {
   longitude: number,
   latitude: number,
   imagenPortada: string,
-  usuario: Usuario
+  usuario: Usuario,
+  imagenes:Imagen[],
+  videos: Video[]
 }

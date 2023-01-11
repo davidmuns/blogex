@@ -1,58 +1,67 @@
+// Shared components
 import { CaptionComponent } from './shared/caption/caption.component';
-import { ListVideosComponent } from './components/crud/list-videos/list-videos.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { HeaderComponent } from './shared/header/header.component';
 import { SwitchLanguageComponent } from './shared/switch-language/switch-language.component';
+
+// Auth components
+import { LoginComponent } from './components/Auth/login/login.component';
+import { SignupComponent } from './components/Auth/signup/signup.component';
+import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
+import { EmailPasswordComponent } from './components/Auth/email-password/email-password.component';
+
+// Home components
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/home/about/about.component';
+import { FrontArticlesComponent } from './components/home/front-articles/front-articles.component';
+
+// CRUD components
+import { ListImagesComponent } from './components/crud/list-images/list-images.component';
+import { ListVideosComponent } from './components/crud/list-videos/list-videos.component';
+import { GalleryVideosComponent } from './components/crud/list-videos/gallery-videos/gallery-videos.component';
 import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
 
+// Other components
+import { AppComponent } from './app.component';
+import { MapComponent } from './components/map/map.component';
+import { ArticleComponent } from './components/article/article.component';
+import { ArticleGalleryComponent } from './components/article/article-gallery/articleGallery.component';
+import { UserBlogComponent } from './components/user-blog/user-blog.component';
+import { SearchComponent } from './components/search/search.component';
+
+// Modules
+import { CrudModule } from './components/crud/crud.module';
+import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './material.module';
+
+// Interceptors
+import { interceptorProvider } from './interceptors/token-interceptor.service';
+
+// Pipes
+import { SearchPipe } from './shared/pipes/search.pipe';
+import { PaginatePipe } from './shared/pipes/paginate.pipe';
+
+// Angular
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './components/home/home.component';
-
-
-import { CrudModule } from './components/crud/crud.module';
-
-import { HeaderComponent } from './shared/header/header.component';
-import { LoginComponent } from './components/Auth/login/login.component';
-import { SignupComponent } from './components/Auth/signup/signup.component';
-import { SearchComponent } from './components/search/search.component';
-
-
-
-import { EmailPasswordComponent } from './components/Auth/email-password/email-password.component';
-
-
-import { MaterialModule } from './material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
-import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
-import { MapComponent } from './components/map/map.component';
-import { ArticleComponent } from './components/article/article.component';
-import { ArticleGalleryComponent } from './components/article/article-gallery/articleGallery.component';
 
+// ####### EXTERNAL LIBRARIES ######
 
-import { interceptorProvider } from './interceptors/article-interceptor.service';
-import { FrontArticlesComponent } from './components/home/front-articles/front-articles.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { UserBlogComponent } from './components/user-blog/user-blog.component';
-import { PaginatePipe } from './shared/pipes/paginate.pipe';
-import { AboutComponent } from './components/home/about/about.component';
-
-
+// Translate
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // MATERIAL
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
-import { ListImagesComponent } from './components/crud/list-images/list-images.component';
-import { SearchPipe } from './shared/pipes/search.pipe';
 
 // Youtube
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
-import { GalleryVideosComponent } from './components/crud/list-videos/gallery-videos/gallery-videos.component';
+
+// Toastr
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [

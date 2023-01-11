@@ -1,3 +1,4 @@
+import { Jwt } from './../models/jwt';
 import { Login } from './../models/login';
 import { User } from './../models/user';
 import { Injectable } from '@angular/core';
@@ -33,5 +34,13 @@ export class AuthService {
 
   public getUserByTokenPassword(tokenPassword: string): Observable<any> {
     return this.httpClient.get<any>(AUTH_URL + 'user/' + tokenPassword);
+  }
+
+  public refreshToken(jwt: Jwt): Observable<Jwt>{
+    return this.httpClient.post<Jwt>(AUTH_URL + 'refresh', jwt);
+  }
+
+  public deleteAccount(username: string): Observable<any>{
+    return this.httpClient.delete(`${environment.USER_BASE_URL}${username}`)
   }
 } 

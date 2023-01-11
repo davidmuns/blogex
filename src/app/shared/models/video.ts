@@ -1,5 +1,6 @@
+import { Article } from 'src/app/shared/models/article';
 export interface Video {
     id?: number;
     youtubeId: string;
-    articleId: number;
+    article: Article;
 }

@@ -7,7 +7,6 @@ import { NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { DeleteComponent } from '../delete/delete.component';
-import { transition } from '@angular/animations';
 
 export interface PeriodicElement {
   title: string
@@ -113,8 +112,8 @@ export class ListPostsComponent implements OnInit {
     this.toList();
   }
 
-  onDelete(post: Article){
-    this.dialog.open(DeleteComponent, {data: {articleId: `${post.id}`, option: "deleteArticle"}});
+  onDelete(a: Article){
+    this.dialog.open(DeleteComponent, {data: {article: a, option: "deleteArticle"}});
   }
 
   toList(){

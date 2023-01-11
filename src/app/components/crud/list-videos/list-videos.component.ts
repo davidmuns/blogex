@@ -77,8 +77,8 @@ export class ListVideosComponent implements OnInit {
     });
   };
 
-  onOpenGallery(id: number) {
-    this.dialog.open(GalleryVideosComponent, { data: { articleId: id } });
+  onOpenGallery(a: Article) {
+    this.dialog.open(GalleryVideosComponent, { data: { article: a } });
   };
 
   onEdit(post: Article) {

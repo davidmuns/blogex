@@ -22,7 +22,6 @@ export class GalleryVideosComponent implements OnInit {
   urlForm!: FormGroup;
   article$!: Observable<Article>;
   username!: string;
-  articleId!: number;
   playerVars = {
     cc_lang_pref: 'es'
   }
@@ -31,7 +30,7 @@ export class GalleryVideosComponent implements OnInit {
   video!: Video;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { articleId: number },
+    @Inject(MAT_DIALOG_DATA) public data: { article: Article },
     public videoSvc: VideoService,
     private readonly fb: FormBuilder,
     private readonly dialog: MatDialog,
@@ -43,7 +42,6 @@ export class GalleryVideosComponent implements OnInit {
 
   ngOnInit() {
     this.initform();
-    this.articleId = this.data.articleId;
     this.getVideos();
     this.getArticle();
   }
@@ -65,11 +63,11 @@ export class GalleryVideosComponent implements OnInit {
   }
 
   private getArticle() {
-    this.article$ = this.articleSvc.getArticle(this.articleId);
+    this.article$ = this.articleSvc.getArticle(this.data.article.id);
   }
 
   private getVideos() {
-    this.videoSvc.getAllbyArticleId(this.articleId).subscribe({
+    this.videoSvc.getAllbyArticleId(this.data.article.id).subscribe({
       next: (data: Video[]) => {
         this.videos = data;
       },
@@ -80,7 +78,7 @@ export class GalleryVideosComponent implements OnInit {
   }
 
   private newVideo() {
-    this.video = { youtubeId: this.youtubeId, articleId: this.articleId }
+    this.video = { youtubeId: this.youtubeId, article: this.data.article }
     this.videoSvc.save(this.video).subscribe({
       next: data => {
         console.log(data);
@@ -93,7 +91,7 @@ export class GalleryVideosComponent implements OnInit {
   }
 
   onDelete(id: number | undefined) {
-    this.dialog.open(DeleteComponent, { data: { videoId: id, articleId: this.articleId, option: "deleteVideo" } });
+    this.dialog.open(DeleteComponent, { data: { videoId: id, article: this.data.article, option: "deleteVideo" } });
   }
 
 }

@@ -1,12 +1,10 @@
 import { UtilsService } from './../../../shared/services/utils.service';
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
-import { LoginComponent } from 'src/app/components/Auth/login/login.component';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Imagen } from './../../../shared/models/imagen';
 import { ArticleService } from './../../../shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
-import { Router, NavigationExtras } from '@angular/router';
-import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-front-articles',
@@ -29,8 +27,7 @@ export class FrontArticlesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getArticles();
-    // console.log(this.numbers2);
-    
+   
   }
 
   private getArticles() {
@@ -47,8 +44,4 @@ export class FrontArticlesComponent implements OnInit {
   onClick(articleId: number) {
     this.router.navigate(['article/' + articleId]);
   }
-
-  
-
-
 }

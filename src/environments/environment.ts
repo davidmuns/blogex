@@ -10,6 +10,7 @@ export const environment = {
   // EMAIL_PASSWORD_URL: 'http://localhost:8080/email-password/',
   // ARTICLE_BASE_URL: 'http://localhost:8080/article/',
   // IMG_BASE_URL: 'http://localhost:8080/imagen/',
+  // USER_BASE_URL: 'http://localhost:8080/user/',
   // VIDEO_BASE_URL: 'http://localhost:8080/video/',
   // FRONT_BASE_URL: 'http://localhost:4200/',
   FRONT_BASE_URL: 'https://blogex.netlify.app/',
@@ -18,11 +19,12 @@ export const environment = {
   EMAIL_PASSWORD_URL: 'https://blogexapp.herokuapp.com/email-password/',
   ARTICLE_BASE_URL: 'https://blogexapp.herokuapp.com/article/',
   IMG_BASE_URL: 'https://blogexapp.herokuapp.com/imagen/',
+  USER_BASE_URL: 'https://blogexapp.herokuapp.com/user/',
   VIDEO_BASE_URL: 'https://blogexapp.herokuapp.com/video/',
   AUTHORIZATION: 'Authorization',
   BEARER: 'Bearer ',
   ARTICLES_LOCAL: './assets/articles.json',
-  IMG_MAX_SIZE: 2100000
+  IMG_MAX_SIZE: 3100000 // 3MB
 };
 
 /*

@@ -7,6 +7,7 @@
     "BlogOf": "El blog de",
     "MyArticles": "Els meus articles",
     "MyImages": "Les meves imatges",
+    "images": "Imatges",
     "my-videos": "Els meus videos",
     "UsernameOrEmail": "Nom d'usuari o correu electrónic",
     "Username": "Nom d'usuari",
@@ -85,7 +86,7 @@
             "fill-blanks": "Si us plau, introdueix un nom d'usuari o un email"
         },
         "reset-pass": {
-            "fill-blanks": "Si us plau, introdueix un nom d'usuari o un email",
+            "fill-blanks": "Si us plau, omple els camps buits",
             "pass-length": "La contrasenya ha de tenir un mínim de 6 caracters",
             "no-match": "Les contrasenyes no coincideixen"
         }
@@ -112,5 +113,8 @@
         "subscribe": "Subscriu-te",
         "sign": "Subscriu-te al nostre butlletí",
         "address": "Adreça de correu electrònic"
-    }
+    },
+    "delete": {
+        "account": "compte"
+    } 
 }

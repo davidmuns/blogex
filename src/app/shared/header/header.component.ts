@@ -1,3 +1,4 @@
+import { DeleteComponent } from './../../components/crud/delete/delete.component';
 import { TokenService } from './../services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -54,6 +55,10 @@ export class HeaderComponent implements OnInit {
 
   onLogout(){
     this.tokenService.logOut();
+  }
+
+  onDeleteAccount(){
+    this.dialog.open(DeleteComponent, {data: {option: "deleteAccount"}});
   }
 
 }

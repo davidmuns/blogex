@@ -8,6 +8,7 @@
     "The blog": "The blog of",
     "MyArticles": "Mis artículos",
     "MyImages": "Mis imágenes",
+    "images": "Imágenes",
     "my-videos": "Mis vídeos",
     "UsernameOrEmail": "Nombre de usuario o correo electrónico",
     "Username": "Nombre de usuario",
@@ -86,7 +87,7 @@
             "fill-blanks": "Por favor, introduce un nombre de usuario o un email"
         },
         "reset-pass": {
-            "fill-blanks": "Por favor, introduce un nombre de usuario o un email",
+            "fill-blanks": "Por favor, rellena los campos vacios",
             "pass-length": "La contraseña debe tener un mínimo de 6 caracteres",
             "no-match": "Las contraseñas no coinciden"
         }
@@ -113,5 +114,8 @@
         "subscribe": "Subscríbete",
         "sign": "Suscríbete a nuestro boletín",
         "address": "Dirección de correo electrónico"
-    }
+    },
+    "delete": {
+        "account": "cuenta"
+    } 
 }

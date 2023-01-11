@@ -79,9 +79,8 @@ button:hover {
     }
 }
 
-
-
 .example-card:hover {
+    max-width: 1025px;
     box-shadow: 6px 6px 6px #888888;
 }
 
@@ -94,13 +93,14 @@ button:hover {
     border-radius: 5px 5px 5px 5px;
     box-shadow: 1px 1px 6px #888888;
 
-
     #title-post {
         font-size: 1.3rem;
         font-family: 'Libre Baskerville', serif;
-        // padding: 10px 10px 20px 15px;
-        // line-height: 2rem;
-        // height: auto;
+    }
+
+    p {
+        font-size: .9rem;
+        font-family: 'Libre Baskerville', serif;
     }
 
     .imageMarc {
@@ -157,55 +157,11 @@ button:hover {
     #title-post {
         font-size: 1.3rem;
         padding: 20px;
-        font-family: 'Libre Baskerville', serif;     
+        font-family: 'Libre Baskerville', serif;
     }
- 
+
     img {
         width: 100%;
         margin: 0px;
     }
 }
-
-
-// mat-card-content {
-//     .autor {
-//         padding: 20px 15px 0px;
-//         display: flex;
-//         flex-direction: row;
-
-//         #autorLink {
-//             font-size: 1rem;
-//             display: flex;
-//             align-items: center;
-
-//             span {
-//                 font-size: 1.1rem;
-//                 font-family: 'Libre Baskerville', serif;
-//                 text-transform: capitalize;
-//                 cursor: pointer;
-//             }
-//         }
-
-//         #autorLink:hover {
-//             color: var(--lemon);
-//         }
-
-//         #editAutor {
-//             padding: 2px 5px;
-//         }
-//     }
-
-//     p {
-//         font-size: 1.1rem;
-//         padding: 30px 15px;
-//         display: block;
-//         overflow: auto;
-//         white-space: pre-line;
-
-//         @media(max-width:600px) {
-//             font-size: 1rem;
-//         }
-//     }
-// }
-
-

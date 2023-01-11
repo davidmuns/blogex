@@ -10,7 +10,7 @@
       aria-label="Search" [(ngModel)]="this.filterByTitle">
   </div>
 
-  <div class="container search d-flex" style="background-color: transparent;">
+  <div class="d-flex" style="background-color: transparent; justify-content: center;">
     <button class="mx-2" mat-stroked-button  routerLink="/images">
       <mat-icon>fast_rewind</mat-icon> {{ 'MyImages' | translate }}
     </button>
@@ -24,7 +24,7 @@
           <mat-card-title style="color: rgba(255, 255, 255);">{{ 'crud.list-videos.videos' | translate }} {{
             article?.title }}</mat-card-title>
         </mat-card-header>
-        <a (click)="onOpenGallery(article.id)" style="cursor: pointer;">
+        <a (click)="onOpenGallery(article)" style="cursor: pointer;">
           <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
         </a>
         <mat-card-content>
@@ -35,7 +35,7 @@
             <mat-icon>edit</mat-icon>
           </button>
 
-          <button mat-button (click)="onOpenGallery(article.id)" matTooltip="gallery view">
+          <button mat-button (click)="onOpenGallery(article)" matTooltip="gallery view">
             <mat-icon>movie_creation</mat-icon>
           </button>
         </mat-card-actions>

@@ -1,3 +1,6 @@
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { TokenService } from './../../../shared/services/token.service';
+import { Article } from 'src/app/shared/models/article';
 import { GalleryImagesComponent } from './../list-images/gallery-images/gallery-images.component';
 import { GalleryVideosComponent } from './../list-videos/gallery-videos/gallery-videos.component';
 import { VideoService } from './../../../shared/services/video.service';
@@ -18,21 +21,22 @@ export class DeleteComponent implements OnInit {
   durationInSeconds = 5;
 
   constructor(
+    private tokenSvc: TokenService,
+    private authSvc: AuthService,
     private readonly dialog: MatDialog,
     private toastrService: ToastrService,
     private snack: MatSnackBar,
     private readonly articleSvc: ArticleService,
     private videoSvc: VideoService,
-    @Inject(MAT_DIALOG_DATA) public data: { articleId: number, imgId: string, videoId: number, option: string },
+    @Inject(MAT_DIALOG_DATA) public data: { article: Article, imgId: string, videoId: number, option: string },
     private readonly router: Router
   ) { }
 
   ngOnInit(): void {}
 
   onDeleteArticle() {
-    this.articleSvc.deleteArticle(this.data.articleId).subscribe({
+    this.articleSvc.deleteArticle(this.data.article.id).subscribe({
       next: data => {
-        console.log(data);
         this.snack.open("Article deleted", "", { duration: 3000 });
         this.redirectTo(this.router.url);
         // this.router.navigate(['admin/new']);
@@ -50,7 +54,7 @@ export class DeleteComponent implements OnInit {
         //this.redirectTo(this.router.url);
         //window.location.reload();
         this.dialog.closeAll();
-        this.dialog.open(GalleryImagesComponent, { data: { articleId: this.data.articleId } });
+        this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
       },
       error: err => {
         console.log(err);
@@ -63,12 +67,18 @@ export class DeleteComponent implements OnInit {
       next: data => {
         console.log(data);
         this.dialog.closeAll();
-        this.dialog.open(GalleryVideosComponent, { data: { articleId: this.data.articleId } });     
+        this.dialog.open(GalleryVideosComponent, { data: { article: this.data.article } });     
       },
       error: err => {
         console.log(err);     
       }
     })
+  }
+
+  onDeleteAccount(){
+    const username: string = this.tokenSvc.getUsername() as string;
+    this.authSvc.deleteAccount(username).subscribe( data => console.log(data));
+    this.tokenSvc.logOut();
   }
 
   redirectTo(uri: string) {
