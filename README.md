@@ -1,6 +1,10 @@
 # Blogex App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6. 
+
+Blogex  is a web App (under construction) that allows you to create a personal blog in order to publish articles related to places around the world you have visited and want to share. This App utilizes Leaflet that is the leading open-source JavaScript library for mobile-friendly interactive maps.
+
+The Frontend is developed in TypeScript and Angular and the Backend in Java and Spring Boot with MySQL as the database allows signup users to employ CRUD operations, Create, Read, Update and Delete articles.
 
 - [website](https://blogex.netlify.app/home)
 
