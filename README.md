@@ -1,6 +1,6 @@
 # Blogex App
 
-Blogex  es una aplicación web (en construcción) que te permite crear un blog personal para publicar artículos relacionados con los lugares del mundo que has visitado y deseas compartir. Esta aplicación utiliza Leaflet, la biblioteca JavaScript de código abierto líder en mapas interactivos para móviles.
+Blogex  es una aplicación web que te permite crear un blog personal para publicar artículos relacionados con los lugares del mundo que has visitado y deseas compartir. Esta aplicación utiliza Leaflet, la biblioteca JavaScript de código abierto líder en mapas interactivos para móviles.
 
 El Frontend está desarrollado en TypeScript y Angular y el Backend en Java y Spring Boot con MySQL como base de datos que permite a los usuarios registrados realizar operaciones CRUD, Crear, Leer, Actualizar y Borrar artículos.
 
