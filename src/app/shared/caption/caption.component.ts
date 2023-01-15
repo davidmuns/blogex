@@ -31,17 +31,6 @@ export class CaptionComponent implements OnInit {
     })
   }
 
-  // onSubmit(img: Imagen) {
-  //   if(this.captionForm.valid){
-  //     img.id = this.data.imgId;
-  //     console.log('Imagen:', img);
-  //     this.dialog.closeAll();
-  //   }else{
-  //     this.toastr.error('Please, enter an email or username.', '', {
-  //       timeOut: 3000, positionClass: 'toast-top-center'
-  //     });
-  //   }
-  // }
   onSubmit(img: Imagen) { 
     if(this.captionForm.valid){
       img.id = this.data.imgId;
