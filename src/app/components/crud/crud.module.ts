@@ -19,7 +19,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { GalleryImagesComponent } from './list-images/gallery-images/gallery-images.component';
 
-
+// TinyMCE doc: https://www.tiny.cloud/docs/tinymce/6/angular-pm/
+// youtube tutorial: https://www.youtube.com/watch?v=YqEDASVUEPc&list=PLSVW22jAG8pCwwM3tjSMfwBKYIS6_fP-F&index=1
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { GalleryImagesComponent } from './list-images/gallery-images/gallery-ima
     GalleryImagesComponent
   ],
   imports: [
+    EditorModule,
     NgxYoutubePlayerModule.forRoot(),
     CommonModule,
     CrudRoutingModule,

@@ -26,9 +26,7 @@
           <mat-icon>room</mat-icon> Map
         </button>   
       </div>
-      <p>
-        {{ post?.text1 }}
-      </p>
+      <p [innerHTML]="post?.text1"></p>
     </mat-card-content>
     <app-articleGallery [articleId]="post?.id"></app-articleGallery>
     <mat-card-actions></mat-card-actions>

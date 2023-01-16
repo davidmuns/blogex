@@ -13,12 +13,10 @@
             {{ 'TitleLength' | translate }}</div>
         </mat-form-field>
       </p>
-
       <div *ngFor="let view of viewForm">
         <div class="containerFile">
           <label>{{ 'CoverImage' | translate }} (max 3MB):</label><br>
           <div *ngIf="this.image" style="margin-top: 5px;">
-            <!-- <h5>Vista previa</h5> -->
             <div>
               <img class="image-thumbnail" style="max-width: 100px; border-radius: 5%;" [src]="miniatura">
             </div>
@@ -37,14 +35,15 @@
           </mat-form-field>
         </p>
         <p>
-          <mat-form-field class="input-width" appearance="fill">
+          <mat-label>{{ 'Text' | translate }}:</mat-label><br><br>
+          <!-- <mat-form-field class="input-width" appearance="fill">
             <mat-label>{{ 'Text' | translate }}</mat-label>
             <textarea matInput id="textarea" formControlName="text{{ view }}"
               placeholder="{{ 'Text' | translate }}"></textarea>
-          </mat-form-field>
+          </mat-form-field> -->
+          <editor formControlName="text{{ view }}" [init]="{plugins:'link'}"></editor>
         </p>
       </div>
-
       <h3 matTooltip="Introduce the coordinates to see this route on the map" matTooltipPosition="right">{{ 'Coordinates' | translate }}:
       </h3>
       <table class="example-full-width" cellspacing="0">
@@ -63,8 +62,6 @@
           </td>
         </tr>
       </table>
-
-      <!-- <button id="moreButton" mat-stroked-button color="accent" (click)="moreImgs()">{{ buttonTag }}</button> -->
       <button id="createButton" type="submit" mat-raised-button>{{ 'SaveChanges' | translate }}</button>
     </form>
   </mat-card-content>
