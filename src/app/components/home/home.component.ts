@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
           this.postActual = point;
           marker([point.latitude, point.longitude]).addTo(markers1).bindPopup(`
         <a href="${BASE_URL}article/${point.id}">${point.title}</a>
-        <p class="text">${point.text1}</p>
+        <p class="text mt-1"></p>
         <a href="${BASE_URL}article/${point.id}"><img src="${point.imagenPortada}"></a>
       `);
         });
@@ -109,7 +109,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
           this.postActual = point;
           marker([point.latitude, point.longitude]).addTo(markers2).bindPopup(`
         <a href="${BASE_URL}article/${point.id}">${point.title}</a>
-        <p class="text">${point.text1}</p>
+        <p class="text mt-1"></p>
         <a href="${BASE_URL}article/${point.id}"><img src="${point.imagenPortada}"></a>
       `);
         });
@@ -134,7 +134,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
           this.postActual = point;
           marker([point.latitude, point.longitude]).addTo(markers3).bindPopup(`
         <a href="${BASE_URL}article/${point.id}">${point.title}</a>
-        <p class="text">${point.text1}</p>
+        <p class="text mt-1"></p>
         <a href="${BASE_URL}article/${point.id}"><img src="${point.imagenPortada}" class="imgMap"></a>
       `);
         });
