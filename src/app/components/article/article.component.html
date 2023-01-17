@@ -1,22 +1,22 @@
 <body>
   <div style="display: flex; justify-content: center;">
-    <button class="mx-2" mat-stroked-button id="editAutor" [routerLink]="['/blog/', post?.usuario?.nombreUsuario]">
-      <mat-icon>fast_rewind</mat-icon> Blog {{ post?.usuario?.nombreUsuario }}
+    <button class="mx-2" mat-stroked-button id="editAutor" [routerLink]="['/blog/', post.usuario.nombreUsuario]">
+      <mat-icon>fast_rewind</mat-icon> Blog {{ post.usuario.nombreUsuario }}
     </button>
   </div>
   <div class="example-card">
     <mat-card-header>
       <div class="example-header-image"></div>
-      <div id="title-post">{{ post?.title }} | {{ this.temp }} ºC</div>
+      <div id="title-post">{{ post.title }} | {{ this.temp }} ºC</div>
     </mat-card-header>
     <div class="imageMarc">
-      <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.alt1 }}">
+      <img mat-card-image [src]="post.imagenPortada" alt="{{ post.alt1 }}">
     </div>
     <mat-card-content>
-      <p id="footerImg">{{ post?.alt1 }}</p>
+      <p id="footerImg">{{ post.alt1 }}</p>
       <div class="autor">
-        <div id="autorLink">Blogger:&nbsp;<span routerLink="/blog/{{ post?.usuario?.nombreUsuario }}">
-            {{ post?.usuario?.nombreUsuario }}</span></div>&nbsp;&nbsp;&nbsp;
+        <div id="autorLink">Blogger:&nbsp;<span routerLink="/blog/{{ post.usuario.nombreUsuario }}">
+            {{ post.usuario.nombreUsuario }}</span></div>&nbsp;&nbsp;&nbsp;
         <button *ngIf="post?.usuario?.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent" id="editAutor"
           (click)="onEdit(post)">
           <mat-icon>edit</mat-icon> {{ 'EditArticle' | translate }} 
@@ -26,9 +26,11 @@
           <mat-icon>room</mat-icon> Map
         </button>   
       </div>
-      <p [innerHTML]="post?.text1"></p>
+      <!-- <p>{{ post.text1 | safeHtml }}</p> -->
+      <!-- <p [innerHTML]="post.text1"></p> -->
+      <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(post.text1)"></p>
     </mat-card-content>
-    <app-articleGallery [articleId]="post?.id"></app-articleGallery>
+    <app-articleGallery [articleId]="post.id"></app-articleGallery>
     <mat-card-actions></mat-card-actions>
   </div>
 </body>

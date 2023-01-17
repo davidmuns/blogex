@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ApiWeatherService } from './../../shared/services/apiWeather.service';
 import { Component, OnInit } from '@angular/core';
@@ -5,6 +6,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { TokenService } from 'src/app/shared/services/token.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-article',
@@ -19,12 +21,12 @@ export class ArticleComponent implements OnInit {
     }
   };
 
-  post!: Article | undefined;
+  post!: Article;
   idPost!: number;
   temp!: number;
   
   constructor(
-    private http: HttpClient,
+    public sanitizer: DomSanitizer,
     private apiWeatherService: ApiWeatherService,
     private readonly route: ActivatedRoute,
     private articleSvc: ArticleService,

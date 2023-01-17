@@ -1,3 +1,4 @@
+import { SafeHtmlPipe } from './shared/pipes/safehtml.pipe';
 // Shared components
 import { CaptionComponent } from './shared/caption/caption.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -85,6 +86,7 @@ import { ToastrModule } from 'ngx-toastr';
     CaptionComponent,
     PaginatePipe,
     SearchPipe,
+    SafeHtmlPipe,
     AboutComponent,
     ListVideosComponent,
     GalleryVideosComponent
