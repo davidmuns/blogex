@@ -76,11 +76,24 @@ export class SearchComponent implements OnInit {
     return this.uniqueChars.filter(option => option.toLowerCase().includes(filterValue));
   }
 
-  selectArticle() {
+  selectArticle(value: string) {
+    for (let i = 0; i < this.allOptions.length; i++) {
+      if (this.allOptions[i].title == value) {
+        this.articleId = this.allOptions[i].id;
+        this.router.navigate(['article', this.articleId]);
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+      }
+    }
+  }
+
+  submitArticle() {
     for (let i = 0; i < this.allOptions.length; i++) {
       if (this.allOptions[i].title == this.myControl.value) {
         this.articleId = this.allOptions[i].id;
         this.router.navigate(['article', this.articleId]);
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
       }
     }
   }

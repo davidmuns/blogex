@@ -1,6 +1,18 @@
-# Blogex
+# Blogex App
+
+Blogex  es una aplicación web que te permite crear un blog personal para publicar artículos relacionados con los lugares del mundo que has visitado y deseas compartir. Esta aplicación utiliza Leaflet, la biblioteca JavaScript de código abierto líder en mapas interactivos para móviles.
+
+El Frontend está desarrollado en TypeScript y Angular y el Backend en Java y Spring Boot con MySQL como base de datos que permite a los usuarios registrados realizar operaciones CRUD, Crear, Leer, Actualizar y Borrar artículos.
+
+##############################################################
+
+Blogex  is a web App that allows you to create a personal blog in order to publish articles related to places around the world you have visited and want to share. This App utilizes Leaflet that is the leading open-source JavaScript library for mobile-friendly interactive maps.
+
+The Frontend is developed in TypeScript and Angular and the Backend in Java and Spring Boot with MySQL as the database allows signup users to employ CRUD operations, Create, Read, Update and Delete articles.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
+
+- [website](https://blogex.netlify.app/home)
 
 ## Development server
 

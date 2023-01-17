@@ -1,4 +1,4 @@
-<form class="example-form" (submit)="selectArticle()">
+<form class="example-form" (submit)="submitArticle()">
   <div class="example1" appearance="fill">
     <input type="text"
             placeholder="{{ 'SearchArticle' | translate }}"
@@ -8,24 +8,24 @@
             [formControl]="myControl"
             [matAutocomplete]="auto"
             fontIcon="search">
-            <button (click)="selectArticle()" mat-stroked-button id="searchButton">
+            <!-- <button mat-stroked-button id="searchButton">
               <mat-icon>search</mat-icon>
-            </button>
+            </button> -->
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-        {{option}}
+        <p (click)="selectArticle(option)">{{option}}</p>
       </mat-option>
     </mat-autocomplete>
   </div>
 </form>
 
 <!-- Button to open/hide input of mobile format -->
-<button id="searchHideButton" (click)="openSelect()" mat-stroked-button>
+<!-- <button id="searchHideButton" (click)="openSelect()" mat-stroked-button>
   <mat-icon>search</mat-icon>
-</button>
+</button> -->
 
 <!-- Form of mobile format -->
-<form  #hideForm class="responsive-form" (submit)="selectArticle()">
+<!-- <form  #hideForm class="responsive-form" (submit)="selectArticle()">
   <div class="responsive-div" appearance="fill">
     <input type="text"
             placeholder="{{ 'SearchArticle' | translate }}"
@@ -41,4 +41,4 @@
       </mat-option>
     </mat-autocomplete>
   </div>
-</form>
+</form> -->
