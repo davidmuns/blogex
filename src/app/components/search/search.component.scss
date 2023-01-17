@@ -2,7 +2,7 @@
     margin: 10px auto;
     width: 300px;
     @media(max-width: 600px){
-        display: none;
+        width:100px;
     }
 }
 .example1{
@@ -32,6 +32,7 @@ input{
     margin-left: 2%;
     vertical-align: middle;
 }
+
 input:focus{
     background-color: #fbfdf1;
     // outline: 3px solid var(--greenCake);
@@ -41,9 +42,7 @@ input:focus{
 #searchButton, #searchHideButton{
     margin-left: 6px;
     @media(max-width: 600px){
-        margin-left: 75px;
-        margin-right: 40px;
-        width: 50%;
+        display:none;
     }
 }
 #searchHideButton, .responsive-form{
@@ -92,9 +91,9 @@ input:focus{
     }
     input{
         position: absolute;
-        top: 22px;
-        left: 2%;
-        width: 87%;
+        top: 12px;
+        left: 21%;
+        width: 48%;
     }
 }
 @media(min-width: 600px){
