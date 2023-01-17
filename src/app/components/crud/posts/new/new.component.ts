@@ -16,6 +16,8 @@ import { Article } from 'src/app/shared/models/article';
 })
 export class NewComponent implements OnInit {
 
+   // tinymce text editor config
+  editorConfig = environment.EDITOR_CONFIG;
   image!: File;
   images: File[] = [];
   miniatura!: File;
@@ -62,7 +64,7 @@ export class NewComponent implements OnInit {
     fr.onload = (e: any) => {
       this.miniatura = e.target.result;
     }
-    if(this.image != null){
+    if (this.image != null) {
       fr.readAsDataURL(this.image);
     }
   }

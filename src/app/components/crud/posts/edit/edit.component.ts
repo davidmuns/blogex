@@ -25,13 +25,14 @@ export class EditComponent implements OnInit {
     }
   }
 
+  // tinymce text editor config
+  editorConfig = environment.EDITOR_CONFIG;
   public editPostForm!: FormGroup;
   public viewForm: any = [1];
   public flag: number = 1;
   public buttonTag: string = "One More";
   public article: any = null;
   public image!: File;
-  //public imageOriginal: any;
   public miniatura!: File;
   public articleHtml!: boolean;
   public innerWidth: any;
@@ -50,12 +51,6 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //Check if there is some image and if not place it
-    // this.image = this.imageOriginal;
-    // if (this.imageOriginal !== '') {
-    //   this.imageOriginal = this.article.img1;
-    // }
-    //If the post is not empty, fill the fields of the form
     if (typeof this.article !== 'undefined') {
       this.editPostForm.patchValue(this.article);
     } else {

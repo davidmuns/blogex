@@ -41,7 +41,7 @@
             <textarea matInput id="textarea" formControlName="text{{ view }}"
               placeholder="{{ 'Text' | translate }}"></textarea>
           </mat-form-field> -->
-          <editor formControlName="text{{ view }}" [init]="{plugins:'link'}"></editor>
+          <editor formControlName="text{{ view }}" [init]="this.editorConfig"></editor>
         </p>
       </div>
       <h3 matTooltip="Introduce the coordinates to see this route on the map" matTooltipPosition="right">{{ 'Coordinates' | translate }}:

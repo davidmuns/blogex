@@ -12,5 +12,23 @@ export const environment = {
   AUTHORIZATION: 'Authorization',
   BEARER: 'Bearer ',
   ARTICLES_LOCAL: './assets/articles.json',
-  IMG_MAX_SIZE: 3100000 // 3MB
+  IMG_MAX_SIZE: 3100000, // 3MB
+  // tinymce text editor config
+  EDITOR_CONFIG: {
+    plugins: [
+      'advlist autolink lists link image charmap print preview anchor',
+      'searchreplace visualblocks code fullscreen',
+      'insertdatetime media table paste code help wordcount'
+    ],
+    menubar: true, // defaults to false on mobile phones
+    // toolbar: false,
+    toolbar: 'undo redo | formatselect | ' +
+      'bold italic backcolor | alignleft aligncenter ' +
+      'alignright alignjustify | bullist numlist outdent indent | ' +
+      'removeformat | help',
+    mobile: {
+      theme: 'mobile',
+      plugins: 'lists'
+    }
+  }
 };
