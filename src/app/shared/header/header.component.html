@@ -1,4 +1,4 @@
-<mat-toolbar class="toolbarClass">
+<!-- <mat-toolbar class="toolbarClass">
 
   <mat-toolbar-row class="toolbar">
     <img class="logo" src="../../../assets/img/logo-blogex.jpg" alt="" routerLink="home">
@@ -8,6 +8,7 @@
     <div id="logReg" *ngIf="!this.tokenService.isLogged(); else logged">
       <button mat-raised-button class="btn-login" (click)="openDialog()">{{ 'Login' | translate }}</button>
     </div>
+    
 
     <ng-template #logged>
       <div>
@@ -16,10 +17,10 @@
     </ng-template>
 
   </mat-toolbar-row>
-</mat-toolbar>
+</mat-toolbar> -->
 
 <!-- MENU -->
-<mat-menu #menu id="matMenu">
+<!-- <mat-menu #menu id="matMenu">
   <button mat-menu-item routerLink="home">
     <mat-icon>home</mat-icon>
     {{ 'Home' | translate }}
@@ -50,12 +51,113 @@
     {{ 'Logout' | translate }}
   </button>
   <mat-divider></mat-divider>
-  <button mat-menu-item>
-    
+  <button mat-menu-item>  
   </button>
   <mat-divider></mat-divider>
   <button mat-menu-item (click)="onDeleteAccount()">
     <mat-icon>delete</mat-icon>
     Eliminar cuenta
+  </button>
+</mat-menu> -->
+
+<mat-toolbar class="toolbarClass">
+
+  <mat-toolbar-row class="toolbar">
+    <img class="logo" src="../../../assets/img/logo-blogex.jpg" alt="" routerLink="home">
+  
+    <app-search></app-search>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="!this.tokenService.isLogged(); else logged">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <ng-template #logged>
+      <div>
+        <a class="logout" [matMenuTriggerFor]="menu">{{ this.tokenService.getUsername() }}</a>
+      </div>   
+    </ng-template>
+    
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<!-- MENU -->
+<mat-menu id="matMenu" #menu>
+  <!-- HOME BUTTON -->
+  <button mat-menu-item routerLink="home">
+    <mat-icon>home</mat-icon>
+    {{ 'Home' | translate }}
+  </button>
+  <mat-divider></mat-divider>
+
+  <!-- MY BLOG BUTTON -->
+  <button mat-menu-item routerLink="/blog/{{ this.tokenService.getUsername() }}" *ngIf="this.tokenService.isLogged()">
+    <mat-icon>book</mat-icon>
+    {{ 'Blog' | translate }}
+  </button>
+  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
+
+  <!-- MY ARTICLES BUTTON -->
+  <button mat-menu-item routerLink="/admin/new" *ngIf="this.tokenService.isLogged()">
+    <mat-icon>edit</mat-icon>
+    {{ 'MyArticles' | translate }}
+  </button>
+  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
+
+  <!-- MY IMAGES BUTTON -->
+  <button mat-menu-item routerLink="/images" *ngIf="this.tokenService.isLogged()">
+    <mat-icon>image</mat-icon>
+    {{ 'MyImages' | translate }}
+  </button>
+  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
+
+  <!-- MY VIDEOS BUTTON -->
+  <button mat-menu-item routerLink="/videos" *ngIf="this.tokenService.isLogged()">
+    <mat-icon>movie_creation</mat-icon>
+    {{ 'my-videos' | translate }}
+  </button>
+  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
+
+  <!-- LANGUAGE BUTTON -->
+  <button mat-menu-item (click)="onSwitchLang('ca')">
+    <mat-icon>language</mat-icon>
+    <img [src]="this.urlFlags.catalonia" alt="catalan-flag" title="català" width="25" height="25">&nbsp;&nbsp;&nbsp;Català
+  </button>
+  <mat-divider></mat-divider>
+
+  <!-- LANGUAGE BUTTON -->
+  <button mat-menu-item (click)="onSwitchLang('es')">
+    <mat-icon>language</mat-icon>
+    <img [src]="this.urlFlags.spain" alt="catalan-flag" title="català" width="20" height="20">&nbsp;&nbsp;&nbsp;Castellano
+  </button>
+  <mat-divider></mat-divider>
+
+  <!-- LANGUAGE BUTTON -->
+  <button mat-menu-item (click)="onSwitchLang('en')">
+    <mat-icon>language</mat-icon>
+    <img [src]="this.urlFlags.england" alt="catalan-flag" title="català" width="25" height="25">&nbsp;&nbsp;&nbsp;English
+  </button>
+  <mat-divider></mat-divider>
+
+  <!-- LOGIN BUTTON -->
+  <button mat-menu-item routerLink="/images" (click)="openDialog()" *ngIf="!this.tokenService.isLogged()">
+    <mat-icon>login</mat-icon>
+    {{ 'Login' | translate }}
+  </button>
+
+  <!-- LOGOUT BUTTON -->
+  <button mat-menu-item routerLink="/images" (click)="onLogout()" *ngIf="this.tokenService.isLogged()">
+    <mat-icon>logout</mat-icon>
+    {{ 'Logout' | translate }}
+  </button>
+  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
+  
+  <!-- FAKE BUTTON -->
+  <button mat-menu-item *ngIf="this.tokenService.isLogged()"></button>
+  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
+
+  <!-- DELETE USER BUTTON -->
+  <button mat-menu-item (click)="onDeleteAccount()" *ngIf="this.tokenService.isLogged()">
+    <mat-icon>delete</mat-icon>
+    {{ 'Delete' | translate }} {{ 'delete.account' | translate }}
   </button>
 </mat-menu>

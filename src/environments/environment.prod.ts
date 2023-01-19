@@ -20,15 +20,18 @@ export const environment = {
       'searchreplace visualblocks code fullscreen',
       'insertdatetime media table paste code help wordcount'
     ],
-    menubar: true, // defaults to false on mobile phones
-    // toolbar: false,
+    // menubar: true,  defaults to false on mobile phones
+    // toolbar: true,
     toolbar: 'undo redo | formatselect | ' +
       'bold italic backcolor | alignleft aligncenter ' +
       'alignright alignjustify | bullist numlist outdent indent | ' +
       'removeformat | help',
+    theme: 'silver',
     mobile: {
+      menubar: true,
       theme: 'mobile',
-      plugins: 'lists'
+      plugins: 'autosave lists autolink',
+      toolbar: 'undo bold italic styleselect'
     }
   }
 };

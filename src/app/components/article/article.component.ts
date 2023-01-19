@@ -21,6 +21,7 @@ export class ArticleComponent implements OnInit {
     }
   };
 
+  backgroundColor = '#757573';
   post!: Article;
   idPost!: number;
   temp!: number;
