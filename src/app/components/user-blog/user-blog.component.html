@@ -53,4 +53,8 @@
   </div>
 </ng-template>
 
+<mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+  aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+</mat-paginator>
+
 <app-footer></app-footer>

@@ -28,8 +28,8 @@ export class ListVideosComponent implements OnInit {
   miniatura!: Imagen;
   username!: string;
   articleId!: number;
-  public pageSizeOptions: number[] = [1, 3, 5, 9];
-  public pageSize: number = 1;
+  public pageSizeOptions: number[] = [2, 4, 8, 10];
+  public pageSize: number = 4;
   public pageNumber: number = 1;
   isAdmin: boolean = false;
 
