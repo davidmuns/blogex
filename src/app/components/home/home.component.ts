@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     if (this.articleSvc.focusArticleOnMap) {
       const lat: any = this.articleSvc.data?.latitude;
       const lon: any = this.articleSvc.data?.longitude;
-      map = new Map('map').setView([lat, lon], 15);
+      map = new Map('map').setView([lat, lon], 13);
       map2 = new Map('map2').setView([lat, lon], 4);
       map3 = new Map('map3').setView([lat, lon], 13);
       this.articleSvc.focusArticleOnMap = false;
