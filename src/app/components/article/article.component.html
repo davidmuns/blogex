@@ -1,7 +1,7 @@
 <body>
   <div style="display: flex; justify-content: center;">
-    <button class="mx-2" mat-stroked-button id="editAutor" [routerLink]="['/blog/', post.usuario.nombreUsuario]">
-      <mat-icon>fast_rewind</mat-icon> Blog {{ post.usuario.nombreUsuario }}
+    <button class="mx-2" mat-stroked-button id="editAutor" [routerLink]="['/blog/', this.username]">
+      <mat-icon>fast_rewind</mat-icon> Blog {{ this.username }}
     </button>
   </div>
   <div class="example-card">
@@ -16,9 +16,9 @@
     <mat-card-content>
       <p id="footerImg">{{ post.alt1 }}</p>
       <div class="autor">
-        <div id="autorLink">Blogger:&nbsp;<span routerLink="/blog/{{ post.usuario.nombreUsuario }}">
-            {{ post.usuario.nombreUsuario }}</span></div>&nbsp;&nbsp;&nbsp;
-        <button *ngIf="post?.usuario?.nombreUsuario == this.tokenSvc.getUsername()" mat-stroked-button color="accent" id="editAutor"
+        <div id="autorLink">Blogger:&nbsp;<span routerLink="/blog/{{ this.username }}">
+            {{ this.username }}</span></div>&nbsp;&nbsp;&nbsp;
+        <button *ngIf="this.username == this.tokenSvc.getUsername()" mat-stroked-button color="accent" id="editAutor"
           (click)="onEdit(post)">
           <mat-icon>edit</mat-icon> {{ 'EditArticle' | translate }} 
         </button>
@@ -29,7 +29,7 @@
       </div>
       <!-- <p>{{ post.text1 | safeHtml }}</p> -->
       <!-- <p [innerHTML]="post.text1"></p> -->
-      <p [innerHTML]="sanitizer.bypassSecurityTrustHtml(post.text1)"></p>
+      <p [innerHTML]="this.sanitizer.bypassSecurityTrustHtml(post.text1)"></p>
     </mat-card-content>
     <app-articleGallery [articleId]="post.id"></app-articleGallery>
     <mat-card-actions></mat-card-actions>

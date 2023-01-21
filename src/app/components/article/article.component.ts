@@ -25,6 +25,7 @@ export class ArticleComponent implements OnInit {
   post!: Article;
   idPost!: number;
   temp!: number;
+  username!: string;
   
   constructor(
     public sanitizer: DomSanitizer,
@@ -51,6 +52,7 @@ export class ArticleComponent implements OnInit {
     this.articleSvc.getArticle(id).subscribe(
       data => {
         this.post = data,
+        this.username = data.usuario.nombreUsuario;
           this.getWeather(this.post.latitude, this.post.longitude);
       });
   }

@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { TranslateService } from '@ngx-translate/core';
 import { DeleteComponent } from './../../components/crud/delete/delete.component';
 import { TokenService } from './../services/token.service';
@@ -15,7 +16,7 @@ import { ArticleService } from '../services/article.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  
+
   urlFlags = {
     catalonia: 'https://rinconhispanico.com/image/cache/catalog/Banderas/1200px-Flag_of_Catalonia.svg-500x500.png',
     spain: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Flag_of_Spain_%28Civil%29.svg/2560px-Flag_of_Spain_%28Civil%29.svg.png',
@@ -27,7 +28,7 @@ export class HeaderComponent implements OnInit {
   logged: boolean = false;
 
   constructor(
-    private translate:TranslateService,
+    private translate: TranslateService,
     public dialog: MatDialog,
     public tokenService: TokenService,
     public router: Router,
@@ -40,9 +41,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getArticles();
-    if(window.screen.width < 750){
+    if (window.screen.width < 750) {
       this.hideUsername = true;
-    }else{
+    } else {
       this.hideUsername = false;
     }
   }
@@ -65,12 +66,12 @@ export class HeaderComponent implements OnInit {
     this.dialog.open(SignupComponent);
   }
 
-  onLogout(){
+  onLogout() {
     this.tokenService.logOut();
   }
 
-  onDeleteAccount(){
-    this.dialog.open(DeleteComponent, {data: {option: "deleteAccount"}});
+  onDeleteAccount() {
+    this.dialog.open(DeleteComponent, { data: { option: "deleteAccount" } });
   }
 
   onSwitchLang(lang: string) {
