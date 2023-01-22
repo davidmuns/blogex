@@ -54,12 +54,6 @@ export class NewComponent implements OnInit {
       img1: ['', Validators.required],
       alt1: ['', Validators.required],
       text1: ['', Validators.required],
-      img2: [''],
-      alt2: [''],
-      text2: [''],
-      img3: [''],
-      alt3: [''],
-      text3: [''],
       longitude: ['', Validators.required],
       latitude: ['', Validators.required]
     })

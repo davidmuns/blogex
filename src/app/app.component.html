@@ -1,7 +1,4 @@
 <app-header></app-header>
-<app-switch-language></app-switch-language>
-<!-- <router-outlet (activate)="onActivate()"></router-outlet> -->
-
 <main [@routeAnimations]="prepareRoute(outlet)">
     <router-outlet (activate)="onActivate()" #outlet="outlet"></router-outlet>
 </main>

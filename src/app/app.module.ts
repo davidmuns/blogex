@@ -3,7 +3,6 @@ import { SafeHtmlPipe } from './shared/pipes/safehtml.pipe';
 import { CaptionComponent } from './shared/caption/caption.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { SwitchLanguageComponent } from './shared/switch-language/switch-language.component';
 
 // Auth components
 import { LoginComponent } from './components/Auth/login/login.component';
@@ -71,7 +70,6 @@ import { ToastrModule } from 'ngx-toastr';
     HeaderComponent,
     LoginComponent,
     SignupComponent,
-    SwitchLanguageComponent,
     EmailPasswordComponent,
     ResetPasswordComponent,
     SearchComponent,
