@@ -80,4 +80,8 @@ export class HeaderComponent implements OnInit {
     this.tinyEditorSvc.setLanguageInEditorConfig(lang);
   }
 
+  onHome(){
+    this.router.navigate(['home']);
+  }
+
 }
