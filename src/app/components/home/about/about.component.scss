@@ -26,19 +26,19 @@
 
     #text {
         width: 49%;
-        padding: 50px 4% 10px 0%;
+        padding: 30px 4% 10px 0%;
         margin-left: 1%;
         border-top: 1px solid var(--lemon);
 
         p {
             text-align: start;
-            font-size: 1.4rem;
-            line-height: 2.4rem;
+            font-size: 1.2rem;
+            line-height: 1.8rem;
             color: var(--lemon);
         }
 
         div {
-            margin: 60px auto 0px;
+            margin: 40px auto 0px;
 
             .color-button {
                 background: var(--lemon);
@@ -51,7 +51,7 @@
         }
 
         .color-button-blog {
-            margin: 60px auto 0px;
+            margin: 10px auto 0px;
             background: var(--lemon);
             box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
         }
@@ -64,12 +64,12 @@
     #sky {
         background-size: cover;
         width: 50%;
-        height: 340px;
+        // height: 340px;
 
     }
 }
 
-@media(max-width:900px) {
+@media(max-width:930px) {
     .container-about {
         margin-top: 540px;
 
@@ -77,13 +77,15 @@
             padding-top: 20px;
 
             p {
-                text-align: center;
+                // text-align: center;
+                font-size: 1.2rem;
+                line-height: 1.6rem;
             }
 
             div {
                 margin-top: 30px;
                 display: flex;
-                justify-content: center;
+                // justify-content: center;
 
             }
 
@@ -92,16 +94,34 @@
             }
         }
 
+    }
 
+}
+
+@media(max-width:770px) {
+    .container-about {
+
+        #text {
+            padding-top: 20px;
+
+            p {
+                font-size: 1.1rem;
+                line-height: 1.6rem;
+            }
+
+            .color-button-blog {
+                margin: 20px 40% 0px;
+            }
+        }
 
     }
 
 }
 
-@media(max-width: 697px) {
+@media(max-width: 749px) {
     .container-about {
         margin-top: 450px;
-        height: auto;
+        // height: auto;
 
         h2 {
             font-size: 1.8rem;
@@ -116,15 +136,15 @@
             margin-bottom: 20px;
 
             p {
-                font-size: 1.2rem;
+                // font-size: 1rem;
                 text-align: center;
             }
 
             div {
                 display: flex;
                 justify-content: center;
-
             }
+
 
             .color-button-blog {
                 margin: 5px 40% 0px;
@@ -135,25 +155,26 @@
             background-size: cover;
             width: 100%;
             margin-top: 10px;
-            margin-bottom: 50px;          
+            // margin-bottom: 20px;
         }
     }
 }
 
 
-@media(max-width: 400px) {
+@media(max-width: 650px) {
     .container-about {
         h2 {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             margin: 15px;
         }
+
         #text {
             text-align: center;
             width: 100%;
             margin-bottom: 20px;
 
             p {
-                font-size: 1.1rem;
+                // font-size: 1rem;
                 text-align: center;
             }
 
@@ -163,9 +184,9 @@
             }
 
             .color-button-blog {
-                margin: 5px 40% 0px;
+                margin: 25px 40% 0px;
             }
-        } 
-       
+        }
+
     }
 }

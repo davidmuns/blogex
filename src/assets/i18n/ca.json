@@ -69,7 +69,7 @@
     "PleaseSelectImage": "Si us plau selecciona una imatge",
     "about": {
         "title": "Descobreix llocs del món",
-        "text": "Aquí pots trobar articles sobre llocs interessants. Subscriu-te i crea el teu bloc personal. Fes que la gent descobreixi els llocs que coneixes a través de les teves publicacions, fotos i vídeos de youtube."
+        "text": "<p>Benvingut a <strong>Blogex</strong>, un espai de creació de continguts on trobaràs articles sobre llocs interessants.</p>Registra't, crea el teu bloc personal amb els teus propis articles i personalitza'ls amb la nova eina d'edició de textos intuïtiva i fàcil d'utilitzar.</p>Fes que la gent descobreixi els llocs que coneixes a través de les teves publicacions, fotos i vídeos de youtube."
     },
     "auth": {
         "login": {

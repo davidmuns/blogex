@@ -36,7 +36,7 @@ export class AboutComponent implements OnInit {
     this.getScreenWidth = window.innerWidth;
     this.getScreenHeight = window.innerHeight;
 
-    if(this.getScreenWidth < 697){
+    if(this.getScreenWidth < 749){
       this.carouselPositionTop = true;
     }else{
       this.carouselPositionTop = false;

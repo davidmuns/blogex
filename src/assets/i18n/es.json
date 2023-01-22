@@ -70,7 +70,7 @@
     "PleaseSelectImage": "Por favor selecciona una imagen",
     "about": {
         "title": "Descubre lugares del mundo",
-        "text": "Aquí puedes encontrar artículos sobre sitios interesantes. Suscríbete y crea tu blog personal. Haz que la gente descubra los sitios que conoces a través de tus publicaciones, fotos y vídeos de youtube."
+        "text": "<p>Bienvenido a <strong>Blogex</strong>, un espacio de creación de contenidos donde encontrarás artículos sobre sitios interesantes.</p><p>Regístrate, crea tu blog personal con tus propios artículos y personalízalos con la nueva herramienta de edición de textos intuitiva y fácil de usar.</p>Haz que la gente descubra los sitios que conoces a través de tus publicaciones, fotos y vídeos de youtube."
     },
     "auth": {
         "login": {
