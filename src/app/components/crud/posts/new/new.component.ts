@@ -39,9 +39,13 @@ export class NewComponent implements OnInit {
     private translateService: TranslateService
   ) {
     this.initForm();
-    tinyEditorSvc.getEditorConfigSubject().subscribe(config => {
+    tinyEditorSvc.getEditorConfig().subscribe((config:any) => {
       this.editorConfig = config;
     });
+  }
+
+  ngOnInit(): void {
+   
   }
 
   private initForm(): void {
@@ -59,10 +63,6 @@ export class NewComponent implements OnInit {
       longitude: ['', Validators.required],
       latitude: ['', Validators.required]
     })
-  }
-
-  ngOnInit(): void {
-   
   }
 
   handleImage(event: any) {

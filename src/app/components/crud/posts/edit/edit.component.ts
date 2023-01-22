@@ -46,7 +46,7 @@ export class EditComponent implements OnInit {
     private readonly fBuilder: FormBuilder,
     private readonly router: Router,
     private translateService: TranslateService) {
-    tinyEditorSvc.getEditorConfigSubject().subscribe(config => {
+    tinyEditorSvc.getEditorConfig().subscribe((config:any) => {
       this.editorConfig = config;
     });
     const navigation = router.getCurrentNavigation();

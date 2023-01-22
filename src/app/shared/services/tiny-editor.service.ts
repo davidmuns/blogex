@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TinyEditorService {
   
-  private editorConfigSubject = new BehaviorSubject<any>({
+  private editorConfig = new BehaviorSubject<any>({
     plugins: [
       'advlist autolink lists link image charmap print preview anchor',
       'searchreplace visualblocks code fullscreen',
@@ -26,13 +26,13 @@ export class TinyEditorService {
   
   constructor() { }
 
-  public getEditorConfigSubject(){
-    return this.editorConfigSubject.asObservable();
+  public getEditorConfig(): Observable<any>{
+    return this.editorConfig.asObservable();
   }
 
-  public setLanguageInEditorConfigSubject(language: string){
-    this.editorConfigSubject.next({
-      ...this.editorConfigSubject.value,
+  public setLanguageInEditorConfig(language: string){
+    this.editorConfig.next({
+      ...this.editorConfig.value,
       language
      });
   }
