@@ -1,5 +1,3 @@
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
 import { ApiWeatherService } from './../../shared/services/apiWeather.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
@@ -22,11 +20,11 @@ export class ArticleComponent implements OnInit {
   };
 
   backgroundColor = '#757573';
-  post!: Article;
+  post!: Article | undefined;
   idPost!: number;
   temp!: number;
   username!: string;
-  
+ 
   constructor(
     public sanitizer: DomSanitizer,
     private apiWeatherService: ApiWeatherService,

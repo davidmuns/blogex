@@ -8,13 +8,13 @@
   <!-- <div class="example-card" [style.backgroundColor]="this.backgroundColor"> -->
     <mat-card-header>
       <div class="example-header-image"></div>
-      <div id="title-post">{{ post.title }} | {{ this.temp }} ºC</div>
+      <div id="title-post">{{ post?.title }} | {{ this.temp }} ºC</div>
     </mat-card-header>
     <div class="imageMarc">
-      <img mat-card-image [src]="post.imagenPortada" alt="{{ post.alt1 }}">
+      <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.alt1 }}">
     </div>
     <mat-card-content>
-      <p id="footerImg">{{ post.alt1 }}</p>
+      <p id="footerImg">{{ post?.alt1 }}</p>
       <div class="autor">
         <div id="autorLink">Blogger:&nbsp;<span routerLink="/blog/{{ this.username }}">
             {{ this.username }}</span></div>&nbsp;&nbsp;&nbsp;
@@ -27,11 +27,10 @@
           <mat-icon>room</mat-icon> Map
         </button>   
       </div>
-      <!-- <p>{{ post.text1 | safeHtml }}</p> -->
-      <!-- <p [innerHTML]="post.text1"></p> -->
-      <p [innerHTML]="this.sanitizer.bypassSecurityTrustHtml(post.text1)"></p>
+      <p [innerHTML]="post?.text1 | safeHtml">
+      <!-- <p [innerHTML]="this.sanitizer.bypassSecurityTrustHtml(this.postContent)"></p> -->
     </mat-card-content>
-    <app-articleGallery [articleId]="post.id"></app-articleGallery>
+    <app-articleGallery [articleId]="post?.id"></app-articleGallery>
     <mat-card-actions></mat-card-actions>
   </div>
 </body>
