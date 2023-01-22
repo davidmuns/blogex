@@ -63,7 +63,7 @@
 <mat-toolbar class="toolbarClass">
 
   <mat-toolbar-row class="toolbar">
-    <img class="logo" src="../../../assets/img/logo-blogex.jpg" alt="" routerLink="home">
+    <img class="logo" src="../../../assets/img/logo-blogex.jpg" alt="" (click)="onHome()">
   
     <app-search></app-search>
 
@@ -83,7 +83,7 @@
 <!-- MENU -->
 <mat-menu id="matMenu" #menu>
   <!-- HOME BUTTON -->
-  <button mat-menu-item routerLink="home">
+  <button mat-menu-item (click)="onHome()">
     <mat-icon>home</mat-icon>
     {{ 'Home' | translate }}
   </button>
