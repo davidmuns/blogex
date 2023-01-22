@@ -1,3 +1,4 @@
+import { TinyEditorService } from './../services/tiny-editor.service';
 import { environment } from 'src/environments/environment';
 import { TranslateService } from '@ngx-translate/core';
 import { DeleteComponent } from './../../components/crud/delete/delete.component';
@@ -28,6 +29,7 @@ export class HeaderComponent implements OnInit {
   logged: boolean = false;
 
   constructor(
+    private tinyEditorSvc: TinyEditorService,
     private translate: TranslateService,
     public dialog: MatDialog,
     public tokenService: TokenService,
@@ -76,6 +78,7 @@ export class HeaderComponent implements OnInit {
 
   onSwitchLang(lang: string) {
     this.translate.use(lang);
+    this.tinyEditorSvc.setLanguageInEditorConfigSubject(lang);
   }
 
 }

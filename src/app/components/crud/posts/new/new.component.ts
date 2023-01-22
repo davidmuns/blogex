@@ -1,3 +1,4 @@
+import { TinyEditorService } from './../../../../shared/services/tiny-editor.service';
 import { TranslateService } from '@ngx-translate/core';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -16,8 +17,6 @@ import { Article } from 'src/app/shared/models/article';
 })
 export class NewComponent implements OnInit {
 
-   // tinymce text editor config
-  editorConfig = environment.EDITOR_CONFIG;
   image!: File;
   images: File[] = [];
   miniatura!: File;
@@ -26,8 +25,11 @@ export class NewComponent implements OnInit {
   public viewForm: any = [1];
   public flag: number = 1;
   public buttonTag: string = "One More";
+  // tinymce text editor config variable
+  editorConfig: any;
 
   constructor(
+    tinyEditorSvc: TinyEditorService,
     private snack: MatSnackBar,
     private readonly fBuilder: FormBuilder,
     private tokenService: TokenService,
@@ -37,6 +39,9 @@ export class NewComponent implements OnInit {
     private translateService: TranslateService
   ) {
     this.initForm();
+    tinyEditorSvc.getEditorConfigSubject().subscribe(config => {
+      this.editorConfig = config;
+    });
   }
 
   private initForm(): void {
@@ -56,7 +61,9 @@ export class NewComponent implements OnInit {
     })
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+   
+  }
 
   handleImage(event: any) {
     this.image = event.target.files[0];

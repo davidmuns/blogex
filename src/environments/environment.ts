@@ -25,24 +25,6 @@ export const environment = {
   BEARER: 'Bearer ',
   ARTICLES_LOCAL: './assets/articles.json',
   IMG_MAX_SIZE: 3100000, // 3MB
-  // tinymce text editor config
-  EDITOR_CONFIG: {
-    plugins: [
-      'advlist autolink lists link image charmap print preview anchor',
-      'searchreplace visualblocks code fullscreen',
-      'insertdatetime media table paste code help wordcount'
-    ],
-    language: 'es',
-    toolbar: 'undo redo | fontselect fontsizeselect | ' +
-      'bold italic underline | forecolor backcolor | alignleft aligncenter ' +
-      'alignright alignjustify | formatselect | bullist numlist outdent indent | ' +
-      'removeformat | help',
-    // theme: 'silver',
-    mobile: {
-      menubar: true,
-      // theme: 'mobile'
-    }
-  }
 };
 
 /*

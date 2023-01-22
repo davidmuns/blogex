@@ -1,10 +1,11 @@
+import { TinyEditorService } from './../../../../shared/services/tiny-editor.service';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Toast, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -16,17 +17,17 @@ import { TranslateService } from '@ngx-translate/core';
 export class EditComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
-  onResize(event: any): void{
+  onResize(event: any): void {
     this.innerWidth = event.target.innerWidth;
-    if(this.innerWidth > 420){
+    if (this.innerWidth > 420) {
       this.articleHtml = true;
-    }else{
+    } else {
       this.articleHtml = false;
     }
   }
 
-  // tinymce text editor config
-  editorConfig = environment.EDITOR_CONFIG;
+  // tinymce text editor config avriable
+  editorConfig: any;
   public editPostForm!: FormGroup;
   public viewForm: any = [1];
   public flag: number = 1;
@@ -38,12 +39,16 @@ export class EditComponent implements OnInit {
   public innerWidth: any;
 
   constructor(
+    tinyEditorSvc: TinyEditorService,
     private toastrService: ToastrService,
     private articleService: ArticleService,
     private snack: MatSnackBar,
     private readonly fBuilder: FormBuilder,
     private readonly router: Router,
     private translateService: TranslateService) {
+    tinyEditorSvc.getEditorConfigSubject().subscribe(config => {
+      this.editorConfig = config;
+    });
     const navigation = router.getCurrentNavigation();
     this.article = navigation?.extras?.state;
     this.reload();
@@ -56,15 +61,14 @@ export class EditComponent implements OnInit {
     } else {
       this.router.navigate(['admin/new']);
     }
-    
+
     this.innerWidth = window.innerWidth;
-    if(this.innerWidth > 420){
+    if (this.innerWidth > 420) {
       this.articleHtml = true;
-    }else{
+    } else {
       this.articleHtml = false;
     }
   }
-
   //Reload the page to bring more forms
   reload() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -94,28 +98,28 @@ export class EditComponent implements OnInit {
   }
 
   onSubmit(post: Article) {
-    if(this.editPostForm.valid){
+    if (this.editPostForm.valid) {
       if (this.image != undefined) {
-        if(this.image.size <= environment.IMG_MAX_SIZE){
+        if (this.image.size <= environment.IMG_MAX_SIZE) {
           this.editPost(post.id, post);
           this.uploadImage(this.image);
-          this.router.navigate(['article/'+ post.id]);
+          this.router.navigate(['article/' + post.id]);
           this.snack.open("Cover image updated.", "", { duration: 5000 });
-        }else{
+        } else {
           this.snack.open(this.translateService.instant('ImgMaximumExceed') + " 2MB", "", { duration: 5000 });
         }
-      }else{
+      } else {
         this.editPost(post.id, post);
-        this.router.navigate(['article/'+ post.id]);
+        this.router.navigate(['article/' + post.id]);
         //this.router.navigate(['list']);
-      } 
-    }else{
+      }
+    } else {
       this.snack.open(this.translateService.instant('FillBlanks'), "", { duration: 3000 });
-    } 
+    }
   }
 
   private editPost(id: number, post: Article) {
-    if(this.editPostForm.valid){
+    if (this.editPostForm.valid) {
       this.articleService.updateArticle(post.id, post).subscribe({
         next: data => {
           this.toastrService.success(data.mensaje, '', {
@@ -152,10 +156,10 @@ export class EditComponent implements OnInit {
     fr.onload = (e: any) => {
       this.miniatura = e.target.result;
     }
-    if(this.image != null){
+    if (this.image != null) {
       fr.readAsDataURL(this.image);
     }
-    
+
   }
 
 }
