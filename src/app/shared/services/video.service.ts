@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
-const VIDEO_BASE_URL = environment.VIDEO_BASE_URL;
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +13,15 @@ export class VideoService {
   constructor(private http: HttpClient) { }
 
   public getAllbyArticleId(articleId: number):Observable<Video[]> {
-    return this.http.get<Video[]>(VIDEO_BASE_URL + 'list/' + articleId);
+    return this.http.get<Video[]>(environment.BACKEND_BASE_URL + 'video/list/' + articleId);
   }
 
   public save(video: Video): Observable<any> {
-    return this.http.post<any>(VIDEO_BASE_URL + 'add', video);
+    return this.http.post<any>(environment.BACKEND_BASE_URL + 'video/add', video);
   }
 
   public delete(id: number): Observable<any> {
-    return this.http.delete<any>(VIDEO_BASE_URL + 'delete/' + id);
+    return this.http.delete<any>(environment.BACKEND_BASE_URL + 'video/delete/' + id);
   }
 
   public isValidUrl(url: string): boolean {

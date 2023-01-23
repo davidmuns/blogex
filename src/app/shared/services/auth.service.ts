@@ -7,8 +7,6 @@ import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import * as CryptoJS from 'crypto-js'; 
 
-const AUTH_URL = environment.AUTH_URL;
-
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +18,7 @@ export class AuthService {
     user.email = user.email?.trim();
     user.nombreUsuario = user.nombreUsuario?.trim();
     user.password = user.password.trim();
-    return this.httpClient.post<any>(AUTH_URL + 'nuevo', user);
+    return this.httpClient.post<any>(environment.BACKEND_BASE_URL + 'auth/nuevo', user);
   }
 
   public loginUser(login: Login): Observable<any> {
@@ -29,18 +27,18 @@ export class AuthService {
     // console.log(CryptoJS.AES.encrypt(login.password, 'pass').toString());
     login.nombreUsuario = login.nombreUsuario.trim();
     login.password = login.password.trim();
-    return this.httpClient.post<any>(AUTH_URL + 'login', login);
+    return this.httpClient.post<any>(environment.BACKEND_BASE_URL + 'auth/login', login);
   }
 
   public getUserByTokenPassword(tokenPassword: string): Observable<any> {
-    return this.httpClient.get<any>(AUTH_URL + 'user/' + tokenPassword);
+    return this.httpClient.get<any>(environment.BACKEND_BASE_URL + 'auth/user/' + tokenPassword);
   }
 
   public refreshToken(jwt: Jwt): Observable<Jwt>{
-    return this.httpClient.post<Jwt>(AUTH_URL + 'refresh', jwt);
+    return this.httpClient.post<Jwt>(environment.BACKEND_BASE_URL  + 'auth/refresh', jwt);
   }
 
   public deleteAccount(username: string): Observable<any>{
-    return this.httpClient.delete(`${environment.USER_BASE_URL}${username}`)
+    return this.httpClient.delete(environment.BACKEND_BASE_URL + 'user/' + username)
   }
 } 

@@ -3,11 +3,9 @@ import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
 
 import { HttpClient } from '@angular/common/http';
-import { EventEmitter, Injectable, Output, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Imagen } from '../models/imagen';
 
-
-const ARTICLE_BASE_URL = environment.ARTICLE_BASE_URL;
 
 @Injectable({
   providedIn: 'root'
@@ -21,51 +19,51 @@ export class ArticleService {
   constructor(private httpClient: HttpClient) { }
 
   public getArticle(articleId: Number): Observable<Article> {
-    return this.httpClient.get<Article>(ARTICLE_BASE_URL + 'one/' + articleId);
+    return this.httpClient.get<Article>(environment.BACKEND_BASE_URL + 'article/one/' + articleId);
   }
 
   public getArticlesByUsername(username: string): Observable<Article[]> {
-    return this.httpClient.get<Article[]>(ARTICLE_BASE_URL + 'list/' + username);
+    return this.httpClient.get<Article[]>(environment.BACKEND_BASE_URL + 'article/list/' + username);
   }
 
   public getAll(): Observable<Article[]> {
-    return this.httpClient.get<Article[]>(ARTICLE_BASE_URL + 'list');
+    return this.httpClient.get<Article[]>(environment.BACKEND_BASE_URL + 'article/list');
   }
 
   public createArticle(post: Article, username: string): Observable<any> {
-    return this.httpClient.post<any>(ARTICLE_BASE_URL + 'create/' + username, post);
+    return this.httpClient.post<any>(environment.BACKEND_BASE_URL + 'article/create/' + username, post);
   }
 
   public updateArticle(articleId: number, article: Article): Observable<any> {
-    return this.httpClient.put<any>(ARTICLE_BASE_URL + 'update/' + articleId, article);
+    return this.httpClient.put<any>(environment.BACKEND_BASE_URL + 'article/update/' + articleId, article);
   }
 
   public deleteArticle(articleId: number): Observable<any> {
-    return this.httpClient.delete<any>(ARTICLE_BASE_URL + 'delete/' + articleId);
+    return this.httpClient.delete<any>(environment.BACKEND_BASE_URL + 'article/delete/' + articleId);
   }
 
   public deleteImage(imgId: string): Observable<any> {
-    return this.httpClient.delete<any>(ARTICLE_BASE_URL + 'delete/image/' + imgId);
+    return this.httpClient.delete<any>(environment.BACKEND_BASE_URL + 'article/delete/image/' + imgId);
   }
 
   public uploadImage(img: File): Observable<any> {
     const formData = new FormData();
     formData.append('multipartFile', img);
-    return this.httpClient.post<any>(ARTICLE_BASE_URL + 'image/upload', formData);
+    return this.httpClient.post<any>(environment.BACKEND_BASE_URL + 'article/image/upload', formData);
   }
 
   public addImageToArticle(img: File, articleId: number): Observable<any> {
     const formData = new FormData();
     formData.append('multipartFile', img);
-    return this.httpClient.post<any>(ARTICLE_BASE_URL + `image/add/${articleId}`, formData);
+    return this.httpClient.post<any>(environment.BACKEND_BASE_URL + `article/image/add/${articleId}`, formData);
   }
 
   public getImagesByArticleId(articleId: number | undefined): Observable<Imagen[]> {
-    return this.httpClient.get<Imagen[]>(ARTICLE_BASE_URL + 'image/list/' + articleId);
+    return this.httpClient.get<Imagen[]>(environment.BACKEND_BASE_URL + 'article/image/list/' + articleId);
   }
 
   public getImages(): Observable<Imagen[]> {
-    return this.httpClient.get<Imagen[]>(ARTICLE_BASE_URL + 'image/list/');
+    return this.httpClient.get<Imagen[]>(environment.BACKEND_BASE_URL + 'article/image/list/');
   }
 
   public getArticles(): Observable<Article[]> {
@@ -80,8 +78,5 @@ export class ArticleService {
     return this.httpClient.get<Article>(environment.ARTICLES_LOCAL + title);
   }
 
-}
-function OutPut() {
-  throw new Error('Function not implemented.');
 }
 
