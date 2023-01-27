@@ -1,14 +1,26 @@
-form{
-    width:280px;
-    padding: 0px 10px; 
+form {
+    width: 280px;
+    padding: 0px 10px;
+
 }
-h3{
+
+h3 {
     color: var(--accent);
     font-weight: bold;
     text-align: center;
     font-size: 1.6rem;
     padding: 10px;
 }
+
+img {
+    width: 50%;
+    margin: 15px 0px 15px 70px;
+
+    @media(max-width: 400px) {
+        margin: 15px 0px 15px 60px;
+    }
+}
+
 button {
     background: var(--accent);
     color: var(--lemon);
@@ -23,17 +35,19 @@ button:hover {
     box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
 }
 
-.link-signup{
+.link-signup {
     padding-top: 10px;
     font-size: .9rem;
     text-align: center;
     color: var(--accent);
     cursor: pointer;
-    
+
 }
-.link-signup:hover{
+
+.link-signup:hover {
     text-decoration: underline;
 }
+
 .forgot-pass {
     font-size: .8rem;
     text-align: center;
@@ -49,18 +63,21 @@ button:hover {
     cursor: pointer;
 }
 
-.send-email:hover{
+.send-email:hover {
     text-decoration: underline;
 }
-.mat-form-field{
-    width:100%
+
+.mat-form-field {
+    width: 100%
 }
-@media(max-width: 400px){
-    form{
+
+@media(max-width: 400px) {
+    form {
         padding: 0px;
         width: 220px;
-        @media(max-width: 220px){
-            width:140px;
+
+        @media(max-width: 220px) {
+            width: 140px;
         }
     }
 }

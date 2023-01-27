@@ -1,20 +1,23 @@
 <form [formGroup]="this.loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <img src="../../../../assets/img/user.png" alt="">
     <h3>{{ 'Login' | translate }}</h3>
     <p>
-    <mat-form-field appearance="fill">
-      <mat-label>{{ 'UsernameOrEmail' | translate }}</mat-label>
-      <input class="inputLogin" matInput placeholder="{{ 'UsernameOrEmail' | translate }}" formControlName="nombreUsuario" required>
-    </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>{{ 'UsernameOrEmail' | translate }}</mat-label>
+            <input class="inputLogin" matInput placeholder="{{ 'UsernameOrEmail' | translate }}"
+                formControlName="nombreUsuario" required>
+        </mat-form-field>
     </p>
 
     <p>
-    <mat-form-field appearance="fill">
-        <mat-label>{{ 'Password' | translate }}</mat-label>
-        <input class="inputLogin" matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
-        <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </div>
-    </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>{{ 'Password' | translate }}</mat-label>
+            <input class="inputLogin" matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+            <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </div>
+        </mat-form-field>
     </p>
 
     <button mat-raised-button>{{ 'Login' | translate }}</button>

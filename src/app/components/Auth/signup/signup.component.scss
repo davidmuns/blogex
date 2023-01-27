@@ -11,6 +11,15 @@ h3 {
     padding: 10px;
 }
 
+img {
+    width: 50%;
+    margin: 15px 0px 15px 70px;
+
+    @media(max-width: 400px) {
+        margin: 15px 0px 15px 60px;
+    }
+}
+
 button {
     background: var(--accent);
     color: var(--lemon);
@@ -48,14 +57,17 @@ form span:hover {
 .mat-form-field {
     width: 100%;
 }
-@media(max-width: 400px){
-    form{
+
+@media(max-width: 400px) {
+    form {
         padding: 0px;
         width: 220px;
-        @media(max-width: 220px){
-            width:140px;
+
+        @media(max-width: 220px) {
+            width: 140px;
         }
-        div{
+
+        div {
             padding: 20px 10px 0px 10px;
         }
     }
