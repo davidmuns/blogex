@@ -116,5 +116,9 @@
     },
     "delete": {
         "account": "compte"
-    } 
+    },
+    "article": {
+        "exist": "Article amb aquest id no existeix",
+        "close": "tancar"
+    }
 }

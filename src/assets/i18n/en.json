@@ -116,6 +116,10 @@
     },
     "delete": {
         "account": "account"
-    } 
+    },
+    "article": {
+        "exist": "Article with this id does not exist",
+        "close": "close"
+    }
     
 }

@@ -1,3 +1,6 @@
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 import { ApiWeatherService } from './../../shared/services/apiWeather.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
@@ -12,6 +15,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./article.component.scss']
 })
 export class ArticleComponent implements OnInit {
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
 
   navigationExtras: NavigationExtras = {
     state: {
@@ -24,8 +29,11 @@ export class ArticleComponent implements OnInit {
   idPost!: number;
   temp!: number;
   username!: string;
- 
+
   constructor(
+    private toastr: ToastrService,
+    private snack: MatSnackBar,
+    private translateService: TranslateService,
     public sanitizer: DomSanitizer,
     private apiWeatherService: ApiWeatherService,
     private readonly route: ActivatedRoute,
@@ -35,7 +43,12 @@ export class ArticleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.idPost = this.route.snapshot.params['id'];
+    this.route.paramMap.subscribe(resp => {
+      if (resp.get('id') !== null) {
+        this.idPost = parseInt(resp.get('id') as string);
+      }
+    })
+    // this.idPost = this.route.snapshot.params['id'];
     this.getArticleById(this.idPost);
   }
 
@@ -47,12 +60,21 @@ export class ArticleComponent implements OnInit {
   }
 
   private getArticleById(id: number) {
-    this.articleSvc.getArticle(id).subscribe(
-      data => {
+    this.articleSvc.getArticle(id).subscribe({
+      next: data => {
         this.post = data,
-        this.username = data.usuario.nombreUsuario;
-          this.getWeather(this.post.latitude, this.post.longitude);
-      });
+          this.username = data.usuario.nombreUsuario;
+        this.getWeather(this.post.latitude, this.post.longitude);
+      },
+      error: err => {
+        this.snack.open(this.translateService.instant('article.exist'), this.translateService.instant('article.close'), {
+          duration: 3000,
+          horizontalPosition: this.horizontalPosition,
+          verticalPosition: this.verticalPosition,
+        });
+        this.router.navigate(['']);    
+      }
+    });
   }
 
   // https://www.youtube.com/watch?v=vpq2FxNzgd4

@@ -47,7 +47,12 @@ export class UserBlogComponent implements OnInit {
   };
 
   private getAllArticlesByUsername() {
-    this.username = this.activatedRoute.snapshot.paramMap.get('username') as string;
+    this.activatedRoute.paramMap.subscribe(resp => {
+      if (resp.get('username') !== null) {
+        this.username = resp.get('username') as string;
+      }
+    })
+    // this.username = this.activatedRoute.snapshot.paramMap.get('username') as string;
     this.articleSvc.getArticlesByUsername(this.username).subscribe(
       (data: Article[]) => {
         this.articles = data

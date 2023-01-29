@@ -117,5 +117,9 @@
     },
     "delete": {
         "account": "cuenta"
-    } 
+    },
+    "article": {
+        "exist": "Artículo con este id no existe",
+        "close": "cerrar"
+    }
 }

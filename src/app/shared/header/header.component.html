@@ -139,13 +139,13 @@
   <mat-divider></mat-divider>
 
   <!-- LOGIN BUTTON -->
-  <button mat-menu-item routerLink="/images" (click)="openDialog()" *ngIf="!this.tokenService.isLogged()">
+  <button mat-menu-item (click)="openDialog()" *ngIf="!this.tokenService.isLogged()">
     <mat-icon>login</mat-icon>
     {{ 'Login' | translate }}
   </button>
 
   <!-- LOGOUT BUTTON -->
-  <button mat-menu-item routerLink="/images" (click)="onLogout()" *ngIf="this.tokenService.isLogged()">
+  <button mat-menu-item (click)="onLogout()" *ngIf="this.tokenService.isLogged()">
     <mat-icon>logout</mat-icon>
     {{ 'Logout' | translate }}
   </button>
