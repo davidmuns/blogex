@@ -1,3 +1,4 @@
+import { UtilsService } from './../../../shared/services/utils.service';
 import { GalleryVideosComponent } from './gallery-videos/gallery-videos.component';
 import { PageEvent } from '@angular/material/paginator';
 import { ArticleService } from './../../../shared/services/article.service';
@@ -34,6 +35,7 @@ export class ListVideosComponent implements OnInit {
   isAdmin: boolean = false;
 
   constructor(
+    private utilsSvc: UtilsService,
     private readonly dialog: MatDialog,
     private tokenService: TokenService,
     private articleService: ArticleService,
@@ -69,7 +71,7 @@ export class ListVideosComponent implements OnInit {
   private getAllArticlesByUsername() {
     this.articleService.getArticlesByUsername(this.username).subscribe({
       next: (data: Article[]) => {
-        this.articles = data;
+        this.articles = this.utilsSvc.sortArticlesAlphabeticallyByTitle(data);
       },
       error: (err: any) => {
         console.log(err);

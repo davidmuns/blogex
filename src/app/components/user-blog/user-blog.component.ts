@@ -1,3 +1,5 @@
+import { TranslateService } from '@ngx-translate/core';
+import { UtilsService } from './../../shared/services/utils.service';
 import { ApiWeatherService } from '../../shared/services/apiWeather.service';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,13 +14,17 @@ import { ArticleService } from 'src/app/shared/services/article.service';
   styleUrls: ['./user-blog.component.scss']
 })
 export class UserBlogComponent implements OnInit {
-
+  sortBy = '';
+  orderOptions = [
+    { value: 'title', viewValue: this.translateSvc.instant('user-blog.title') },
+    { value: 'date', viewValue: this.translateSvc.instant('user-blog.date') },
+  ];
+  
   navigationExtras: NavigationExtras = {
     state: {
       value: null
     }
   };
-  
   filterByTitle = '';
   username!: string;
   public articles: Article[] = []
@@ -29,11 +35,13 @@ export class UserBlogComponent implements OnInit {
   isAdmin: boolean = false;
 
   constructor(
+    private utilsSvc: UtilsService,
     private apiWeatherService: ApiWeatherService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly articleSvc: ArticleService,
     private router: Router,
-    public tokenSvc: TokenService
+    public tokenSvc: TokenService,
+    private translateSvc: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -55,7 +63,13 @@ export class UserBlogComponent implements OnInit {
     // this.username = this.activatedRoute.snapshot.paramMap.get('username') as string;
     this.articleSvc.getArticlesByUsername(this.username).subscribe(
       (data: Article[]) => {
-        this.articles = data
+        if(this.sortBy === 'title')
+          this.articles = this.utilsSvc.sortArticlesAlphabeticallyByTitle(data);
+        else if(this.sortBy === 'date'){
+          this.articles = this.utilsSvc.sortArticlesById(data);
+        }else{
+          this.articles = data;
+        }
         if (this.articles.length > 0) {
           let lon = this.articles[this.pageNumber - 1].longitude;
           let lat = this.articles[this.pageNumber - 1].latitude;
@@ -103,5 +117,9 @@ export class UserBlogComponent implements OnInit {
     this.articleSvc.data = article;
     this.articleSvc.focusArticleOnMap = true;
     this.router.navigate(['home']);
+  }
+
+  onSortBy(){
+    this.getAllArticlesByUsername();
   }
 }

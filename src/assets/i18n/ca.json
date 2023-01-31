@@ -106,7 +106,11 @@
         }
     },
     "user-blog": {
-        "see-more": "Veure més"
+        "see-more": "Veure més",
+        "sort": "Ordenar per",
+        "date": "Data",
+        "title": "Titol",
+        "none": "No ordenar"
     },
     "footer": {
         "text": "La tecnologia juga un paper fonamental a les nostres vides, és una fita en constant evolució. La fem servir en cada context del nostre dia a dia, sense gaire reflexió; i ha passat de ser un luxe a esdevenir una necessitat.",

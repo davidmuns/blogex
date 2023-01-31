@@ -1,9 +1,10 @@
+import { UtilsService } from './../../../shared/services/utils.service';
 import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
 import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 
 import { ArticleService } from '../../../shared/services/article.service';
 import { TokenService } from '../../../shared/services/token.service';
@@ -35,11 +36,14 @@ export class ListImagesComponent implements OnInit {
   public pageSize: number = 4;
   public pageNumber: number = 1;
   isAdmin: boolean = false;
+  sort: boolean = false;
 
   constructor(
+    private utilsSvc: UtilsService,
     private readonly dialog: MatDialog,
     private tokenService: TokenService,
     private articleService: ArticleService,
+    private activatedRoute: ActivatedRoute,
     private router: Router) {};
 
   ngOnInit(): void { 
@@ -61,6 +65,7 @@ export class ListImagesComponent implements OnInit {
   private getAllArticles(){
     this.articleService.getAll().subscribe({
       next: (data: Article[]) => {
+        if(this.router)
         this.articles = data;
       },
       error: (err: any) => {
@@ -72,7 +77,7 @@ export class ListImagesComponent implements OnInit {
   private getAllArticlesByUsername() {
     this.articleService.getArticlesByUsername(this.username).subscribe({
       next: (data: Article[]) => {
-        this.articles = data;
+        this.articles = this.utilsSvc.sortArticlesAlphabeticallyByTitle(data);
       },
       error: (err: any) => {
         console.log(err);
@@ -88,4 +93,9 @@ export class ListImagesComponent implements OnInit {
     this.navigationExtras.state = post;
     this.router.navigate(['admin/edit'], this.navigationExtras);
   };
+
+  onSort(){
+    this.sort = true;
+    this.getAllArticlesByUsername()
+  }
 };
