@@ -1,3 +1,4 @@
+import { ArticleService } from 'src/app/shared/services/article.service';
 import { TranslateService } from '@ngx-translate/core';
 import { UtilsService } from './../../shared/services/utils.service';
 import { ApiWeatherService } from '../../shared/services/apiWeather.service';
@@ -6,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
-import { ArticleService } from 'src/app/shared/services/article.service';
 
 @Component({
   selector: 'app-user-articles',

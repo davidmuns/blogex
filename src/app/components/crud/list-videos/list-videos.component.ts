@@ -1,7 +1,7 @@
+import { ArticleService } from './../../../shared/services/article.service';
 import { UtilsService } from './../../../shared/services/utils.service';
 import { GalleryVideosComponent } from './gallery-videos/gallery-videos.component';
 import { PageEvent } from '@angular/material/paginator';
-import { ArticleService } from './../../../shared/services/article.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Imagen } from './../../../shared/models/imagen';
 import { Article } from './../../../shared/models/article';
