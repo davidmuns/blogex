@@ -2,17 +2,21 @@
   <div id="linkToHome" routerLink="/admin/new">BlogEx.com</div>
 </h2>
 
+<!-- Title -->
 <h1>{{ this.articles.length }} {{ 'Articles' | translate }}</h1>
 
+<!-- Paginator -->
 <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
   aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
 </mat-paginator>
 
+<!-- Search field -->
 <div class="container d-flex" style="max-width: 270px;">
   <input class="form-control" type="search" placeholder="{{ 'crud.list-images.insert-tilte' | translate }}"
     aria-label="Search" [(ngModel)]="this.filterByTitle">
 </div>
 
+ <!-- Sort selector -->
 <div class="container" style="display: flex; justify-content: center; margin-top: 20px;">
   
   <mat-form-field appearance="fill">
@@ -29,6 +33,7 @@
   
 </div>
 
+<!-- Show this container if there are articles -->
 <ng-container *ngIf="this.articles.length; else noArticles">
 
   <div class="example-card mb-5 animate__animated animate__backInLeft"
@@ -56,6 +61,7 @@
 
 </ng-container>
 
+<!-- Show this container if there are NO articles -->
 <ng-template #noArticles>
   <div class="no-articles-card">
     <mat-card-header>
@@ -69,6 +75,7 @@
   </div>
 </ng-template>
 
+<!-- Paginator -->
 <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
   aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
 </mat-paginator>
