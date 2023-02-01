@@ -18,8 +18,7 @@ export class UserBlogComponent implements OnInit {
   orderOptions = [
     { value: 'title', viewValue: this.translateSvc.instant('user-blog.title') },
     { value: 'date', viewValue: this.translateSvc.instant('user-blog.date') },
-  ];
-  
+  ]; 
   navigationExtras: NavigationExtras = {
     state: {
       value: null
@@ -63,13 +62,7 @@ export class UserBlogComponent implements OnInit {
     // this.username = this.activatedRoute.snapshot.paramMap.get('username') as string;
     this.articleSvc.getArticlesByUsername(this.username).subscribe(
       (data: Article[]) => {
-        if(this.sortBy === 'title')
-          this.articles = this.utilsSvc.sortArticlesAlphabeticallyByTitle(data);
-        else if(this.sortBy === 'date'){
-          this.articles = this.utilsSvc.sortArticlesById(data);
-        }else{
-          this.articles = data;
-        }
+        this.articles = this.utilsSvc.sortArticlesBy(data, this.sortBy);
         if (this.articles.length > 0) {
           let lon = this.articles[this.pageNumber - 1].longitude;
           let lat = this.articles[this.pageNumber - 1].latitude;
@@ -82,7 +75,7 @@ export class UserBlogComponent implements OnInit {
   private getAllArticles() {
     this.articleSvc.getAll().subscribe({
       next: (data: Article[]) => {
-        this.articles = data;
+        this.articles = this.utilsSvc.sortArticlesBy(data, this.sortBy);
       },
       error: (err: any) => {
         console.log(err);
@@ -117,9 +110,13 @@ export class UserBlogComponent implements OnInit {
     this.articleSvc.data = article;
     this.articleSvc.focusArticleOnMap = true;
     this.router.navigate(['home']);
-  }
+  };
 
   onSortBy(){
-    this.getAllArticlesByUsername();
-  }
-}
+    if (this.isAdmin) {
+      this.getAllArticles();
+    } else {
+      this.getAllArticlesByUsername();
+    };
+  };
+};

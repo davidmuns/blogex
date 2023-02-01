@@ -1,29 +1,51 @@
 <body>
+  <!-- Title -->
   <h1>{{ 'crud.list-images.images' | translate }} {{ this.username }} </h1>
 
+  <!-- Paginator -->
   <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
     aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
   </mat-paginator>
 
+  <!-- Search field -->
   <div class="container search d-flex" style="background-color: transparent;">
     <input class="form-control" type="search" placeholder="{{ 'crud.list-images.insert-tilte' | translate }}"
       aria-label="Search" [(ngModel)]="this.filterByTitle">
   </div>
 
+  <!-- Sort selector -->
+  <div style="display: flex; justify-content: center; margin-top: 20px;">
+
+    <mat-form-field appearance="fill">
+      <mat-label>{{ 'user-blog.sort' | translate }}</mat-label>
+      <mat-select [(ngModel)]="this.sortBy">
+        <a (click)="onSortBy()" style="cursor: pointer; text-decoration: none;">
+          <mat-option>{{ 'user-blog.none' | translate }}</mat-option>
+          <mat-option *ngFor="let order of orderOptions" [value]="order.value">
+            {{ order.viewValue }}
+          </mat-option>
+        </a>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+  
+  <!-- Button goto videos -->
   <div class="d-flex" style="background-color: transparent; justify-content: center;">
     <button mat-stroked-button routerLink="/videos">
       {{ 'my-videos' | translate }} <mat-icon>fast_forward</mat-icon>
     </button>
   </div>
 
+  <!-- Show this container if there are articles -->
   <div class="container shadow-lg rounded" *ngIf="this.articles.length > 0; else noArticles">
 
     <div *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber">
       <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: #607D8B">
         <mat-card-header style="margin-bottom: 20px;">
 
-          <mat-card-title style="color: rgba(255, 255, 255);">{{ 'crud.list-images.images' | translate }} {{
-            article?.title }}</mat-card-title>
+          <mat-card-title style="color: rgba(255, 255, 255);">{{ 'crud.list-images.images' | translate }}: <span>{{
+            article?.title }}</span></mat-card-title>
 
         </mat-card-header>
         <a (click)="onOpenGallery(article)" style="cursor: pointer;">
@@ -46,6 +68,7 @@
     </div>
   </div>
 
+  <!-- Show this container if there are NO articles -->
   <ng-template #noArticles>
     <div class="container shadow">
       <div>

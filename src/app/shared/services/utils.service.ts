@@ -8,6 +8,19 @@ export class UtilsService {
 
   constructor() { }
 
+  public sortArticlesBy(articles: Article[], option: string): Article[] {
+    switch (option) {
+      case 'title':
+        return articles = this.sortArticlesAlphabeticallyByTitle(articles);
+        break;
+      case 'date':
+        return articles = this.sortArticlesById(articles);
+        break;
+      default:
+        return articles;
+    }
+  }
+
   public sortArticlesAlphabeticallyByTitle(articles: Article[]): Article[] {
     return articles
       .sort((article1, article2) => {
@@ -16,6 +29,6 @@ export class UtilsService {
   }
 
   public sortArticlesById(articles: Article[]): Article[] {
-    return articles.sort((article1, article2) =>Number(article2.id) - Number(article1.id));
+    return articles.sort((article1, article2) => Number(article2.id) - Number(article1.id));
   }
 }

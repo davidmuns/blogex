@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { ArticleService } from './../../../shared/services/article.service';
 import { UtilsService } from './../../../shared/services/utils.service';
 import { GalleryVideosComponent } from './gallery-videos/gallery-videos.component';
@@ -15,7 +16,11 @@ import { TokenService } from 'src/app/shared/services/token.service';
   styleUrls: ['./list-videos.component.scss']
 })
 export class ListVideosComponent implements OnInit {
-
+  sortBy = '';
+  orderOptions = [
+    { value: 'title', viewValue: this.translateSvc.instant('user-blog.title') },
+    { value: 'date', viewValue: this.translateSvc.instant('user-blog.date') },
+  ];
   navigationExtras: NavigationExtras = {
     state: {
       value: null
@@ -35,6 +40,7 @@ export class ListVideosComponent implements OnInit {
   isAdmin: boolean = false;
 
   constructor(
+    private translateSvc: TranslateService,
     private utilsSvc: UtilsService,
     private readonly dialog: MatDialog,
     private tokenService: TokenService,
@@ -60,7 +66,7 @@ export class ListVideosComponent implements OnInit {
   private getAllArticles() {
     this.articleService.getAll().subscribe({
       next: (data: Article[]) => {
-        this.articles = data;
+        this.articles = this.utilsSvc.sortArticlesBy(data, this.sortBy);
       },
       error: (err: any) => {
         console.log(err);
@@ -71,7 +77,7 @@ export class ListVideosComponent implements OnInit {
   private getAllArticlesByUsername() {
     this.articleService.getArticlesByUsername(this.username).subscribe({
       next: (data: Article[]) => {
-        this.articles = this.utilsSvc.sortArticlesAlphabeticallyByTitle(data);
+        this.articles = this.utilsSvc.sortArticlesBy(data, this.sortBy);
       },
       error: (err: any) => {
         console.log(err);
@@ -88,4 +94,11 @@ export class ListVideosComponent implements OnInit {
     this.router.navigate(['admin/edit'], this.navigationExtras);
   };
 
+  onSortBy() {
+    if (this.isAdmin) {
+      this.getAllArticles();
+    } else {
+      this.getAllArticlesByUsername();
+    };
+  }
 }
