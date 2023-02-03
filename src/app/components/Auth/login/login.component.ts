@@ -1,3 +1,4 @@
+import { User } from 'src/app/shared/models/user';
 import { TranslateService } from '@ngx-translate/core';
 import { EmailPasswordComponent } from '../email-password/email-password.component';
 import { Router } from '@angular/router';
@@ -17,6 +18,7 @@ import { TokenService } from 'src/app/shared/services/token.service';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
+  signupForm!: FormGroup;
   hide: boolean = true;
 
   constructor(
@@ -37,12 +39,17 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       nombreUsuario: ['', Validators.required],
       password: ['', Validators.required]
-    })
+    });
+    this.signupForm = this.fb.group({
+      nombreUsuario: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
+    });
   }
 
   signupOpen() {
     this.dialog.closeAll();
-    this.dialog.open(SignupComponent);
+    this.dialog.open(LoginComponent);
   }
 
   emailOpen() {
@@ -50,7 +57,7 @@ export class LoginComponent implements OnInit {
     this.dialog.open(EmailPasswordComponent);
   }
 
-  onSubmit(login: Login) {
+  onLogin(login: Login) {
     if (this.loginForm.valid) {
       this.authSvc.loginUser(login).subscribe({
         next: data => {
@@ -70,6 +77,36 @@ export class LoginComponent implements OnInit {
       });
     } else {
       this.toastr.error(this.translateService.instant('auth.login.fill-blanks'), '', {
+        timeOut: 3000, positionClass: 'toast-top-center',
+      });
+    }
+  }
+
+  onSignup(user: User) {
+    if (this.signupForm.valid) {
+      this.authSvc.signupUser(user).subscribe({
+        next: (data) => {
+          this.toastr.success(data.mensaje, '', {
+            timeOut: 3000, positionClass: 'toast-top-center',
+          });
+          this.dialog.closeAll();
+          this.dialog.open(LoginComponent);
+        },
+
+        error: err => {
+          let msg = '';
+          if(err.error.mensaje.includes('Email')){
+            msg = this.translateService.instant('auth.signup.email-exists');
+          } else {
+            msg = this.translateService.instant('auth.signup.username-exists');
+          }
+          this.toastr.error(msg, '', {
+            timeOut: 3000, positionClass: 'toast-top-center',
+          });
+        }
+      });
+    } else {
+      this.toastr.error(this.translateService.instant('auth.signup.fill-blanks'), '', {
         timeOut: 3000, positionClass: 'toast-top-center',
       });
     }

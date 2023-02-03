@@ -1,7 +1,38 @@
-form {
-    width: 280px;
-    padding: 0px 10px;
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    // background-color: azure;
+}
 
+.login {
+    width: 100%;
+    max-width: 330px;
+    text-align: center;
+}
+
+img {
+    width: 50%;
+}
+
+.input-witdh {
+    width: 80%;
+}
+
+span {
+    color: var(--accent);
+    cursor: pointer;
+}
+
+form span:hover {
+    text-decoration: underline;
+}
+
+.goto-login {
+    padding: 10px 20px 0px 20px;
+    font-size: .8rem;
+    text-align: center;
 }
 
 h3 {
@@ -9,29 +40,20 @@ h3 {
     font-weight: bold;
     text-align: center;
     font-size: 1.6rem;
-    padding: 10px;
-}
-
-img {
-    width: 50%;
-    margin: 15px 0px 15px 70px;
-
-    @media(max-width: 400px) {
-        margin: 15px 0px 15px 60px;
-    }
 }
 
 button {
     background: var(--accent);
     color: var(--lemon);
-    width: 100%;
+    width: 80%;
+    height: 45px;
     box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 button:hover {
-    background: var(--accent);
-    color: var(--lemon);
-    width: 100%;
     box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
 }
 
@@ -67,17 +89,8 @@ button:hover {
     text-decoration: underline;
 }
 
-.mat-form-field {
-    width: 100%
-}
-
-@media(max-width: 400px) {
-    form {
-        padding: 0px;
-        width: 220px;
-
-        @media(max-width: 220px) {
-            width: 140px;
-        }
+@media (max-width: 450px) {
+    h3 {
+        font-size: 1.3rem;
     }
 }

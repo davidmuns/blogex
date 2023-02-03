@@ -51,8 +51,6 @@ export class DeleteComponent implements OnInit {
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        //this.redirectTo(this.router.url);
-        //window.location.reload();
         this.dialog.closeAll();
         this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
       },
@@ -78,6 +76,7 @@ export class DeleteComponent implements OnInit {
   onDeleteAccount(){
     const username: string = this.tokenSvc.getUsername() as string;
     this.authSvc.deleteAccount(username).subscribe( data => console.log(data));
+    this.dialog.closeAll();
     this.tokenSvc.logOut();
   }
 
