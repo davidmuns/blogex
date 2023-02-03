@@ -39,7 +39,6 @@ export class DeleteComponent implements OnInit {
       next: data => {
         this.snack.open("Article deleted", "", { duration: 3000 });
         this.redirectTo(this.router.url);
-        // this.router.navigate(['admin/new']);
       }
     });
     this.dialog.closeAll();
@@ -51,33 +50,32 @@ export class DeleteComponent implements OnInit {
         this.toastrService.success(data.mensaje, '', {
           timeOut: 3000, positionClass: 'toast-top-center'
         });
-        //this.redirectTo(this.router.url);
-        //window.location.reload();
-        this.dialog.closeAll();
+        
         this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
       },
       error: err => {
         console.log(err);
       }
-    })
+    });
+    this.dialog.closeAll();
   }
 
   onDeleteVideo(){
     this.videoSvc.delete(this.data.videoId).subscribe({
       next: data => {
-        console.log(data);
-        this.dialog.closeAll();
         this.dialog.open(GalleryVideosComponent, { data: { article: this.data.article } });     
       },
       error: err => {
         console.log(err);     
       }
-    })
+    });
+    this.dialog.closeAll();
   }
 
   onDeleteAccount(){
     const username: string = this.tokenSvc.getUsername() as string;
     this.authSvc.deleteAccount(username).subscribe( data => console.log(data));
+    this.dialog.closeAll();
     this.tokenSvc.logOut();
   }
 
