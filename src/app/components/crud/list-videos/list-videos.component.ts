@@ -1,14 +1,20 @@
+// Services
 import { TranslateService } from '@ngx-translate/core';
 import { ArticleService } from './../../../shared/services/article.service';
 import { UtilsService } from './../../../shared/services/utils.service';
-import { GalleryVideosComponent } from './gallery-videos/gallery-videos.component';
+import { TokenService } from 'src/app/shared/services/token.service';
+// Material
 import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
+// Models
 import { Imagen } from './../../../shared/models/imagen';
 import { Article } from './../../../shared/models/article';
+// Angular
 import { NavigationExtras, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { TokenService } from 'src/app/shared/services/token.service';
+// Components 
+import { GalleryVideosComponent } from './gallery-videos/gallery-videos.component';
+
 
 @Component({
   selector: 'app-list-videos',

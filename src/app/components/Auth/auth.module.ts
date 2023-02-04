@@ -1,5 +1,3 @@
-import { FooterComponent } from './../../shared/footer/footer.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
 // Components
 import { EmailPasswordComponent } from './email-password/email-password.component';
 import { LoginComponent } from 'src/app/components/Auth/login/login.component';
