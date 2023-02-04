@@ -1,6 +1,6 @@
+import { EmailPasswordComponent } from 'src/app/components/auth/email-password/email-password.component';
 import { User } from 'src/app/shared/models/user';
 import { TranslateService } from '@ngx-translate/core';
-import { EmailPasswordComponent } from '../email-password/email-password.component';
 import { Router } from '@angular/router';
 import { Login } from '../../../shared/models/login';
 import { Component, OnInit } from '@angular/core';
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
 
   emailOpen() {
     this.dialog.closeAll();
-    this.dialog.open(EmailPasswordComponent);
+    this.dialog.open(EmailPasswordComponent)
   }
 
   onLogin(login: Login) {

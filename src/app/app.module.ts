@@ -9,10 +9,10 @@ import { AboutComponent } from './components/home/about/about.component';
 import { FrontArticlesComponent } from './components/home/front-articles/front-articles.component';
 
 // CRUD components
-import { ListImagesComponent } from './components/crud/list-images/list-images.component';
-import { ListVideosComponent } from './components/crud/list-videos/list-videos.component';
-import { GalleryVideosComponent } from './components/crud/list-videos/gallery-videos/gallery-videos.component';
 import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
+
+// Auth components
+import { ResetPasswordComponent } from './components/auth/reset-password/reset-password.component';
 
 // Other components
 import { AppComponent } from './app.component';
@@ -21,13 +21,12 @@ import { ArticleComponent } from './components/article/article.component';
 import { ArticleGalleryComponent } from './components/article/article-gallery/articleGallery.component';
 import { UserBlogComponent } from './components/user-blog/user-blog.component';
 import { SearchComponent } from './components/search/search.component';
-import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
 
 // Modules
 import { CrudModule } from './components/crud/crud.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
-import { AuthModule } from './components/Auth/auth.module';
+import { AuthModule } from './components/auth/auth.module';
 
 // Interceptors
 import { interceptorProvider } from './interceptors/token-interceptor.service';
@@ -57,9 +56,12 @@ import { ToastrModule } from 'ngx-toastr';
 
 // Internationalitation
 import { InternationalitazionModule } from './internationalitazion.module';
+import { ArtcileCardsComponent } from './components/crud/article-cards/article-cards.component';
+import { GalleryVideosComponent } from './components/crud/article-cards/gallery-videos/gallery-videos.component';
 
 @NgModule({
   declarations: [
+    AddImageComponent,
     ResetPasswordComponent,
     AppComponent,
     HomeComponent,
@@ -67,8 +69,7 @@ import { InternationalitazionModule } from './internationalitazion.module';
     SearchComponent,
     MapComponent,
     ArticleComponent,
-    ListImagesComponent,
-    AddImageComponent,
+    ArtcileCardsComponent,
     FrontArticlesComponent,
     FooterComponent,
     UserBlogComponent,
@@ -78,7 +79,6 @@ import { InternationalitazionModule } from './internationalitazion.module';
     SearchPipe,
     SafeHtmlPipe,
     AboutComponent,
-    ListVideosComponent,
     GalleryVideosComponent
   ],
   imports: [

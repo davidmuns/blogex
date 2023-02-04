@@ -30,13 +30,6 @@
 
   </div>
   
-  <!-- Button goto videos -->
-  <!-- <div class="d-flex" style="background-color: transparent; justify-content: center;">
-    <button mat-stroked-button routerLink="/videos">
-      {{ 'my-videos' | translate }} <mat-icon>fast_forward</mat-icon>
-    </button>
-  </div> -->
-
   <!-- Show this container if there are articles -->
   <div class="container shadow-lg rounded" *ngIf="this.articles.length > 0; else noArticles">
 
@@ -77,7 +70,7 @@
       <div>
         <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: #607D8B">
           <mat-card-header style="margin-bottom: 10px;">
-            <mat-card-title style="color: rgba(255, 255, 255);">No images</mat-card-title>
+            <mat-card-title style="color: rgba(255, 255, 255);">No articles</mat-card-title>
           </mat-card-header>
           <img mat-card-image src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg"
             alt="blogex-logo">

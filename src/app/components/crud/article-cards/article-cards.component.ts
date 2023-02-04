@@ -1,27 +1,28 @@
 // Services
 import { TranslateService } from '@ngx-translate/core';
-import { ArticleService } from './../../../shared/services/article.service';
-import { UtilsService } from './../../../shared/services/utils.service';
-import { TokenService } from 'src/app/shared/services/token.service';
+import { UtilsService } from '../../../shared/services/utils.service';
+import { ArticleService } from '../../../shared/services/article.service';
+import { TokenService } from '../../../shared/services/token.service';
 // Material
-import { PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
 // Models
-import { Imagen } from './../../../shared/models/imagen';
-import { Article } from './../../../shared/models/article';
+import { Article } from '../../../shared/models/article';
+import { Imagen } from 'src/app/shared/models/imagen';
 // Angular
-import { NavigationExtras, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 // Components 
+import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
 import { GalleryVideosComponent } from './gallery-videos/gallery-videos.component';
 
 
 @Component({
-  selector: 'app-list-videos',
-  templateUrl: './list-videos.component.html',
-  styleUrls: ['./list-videos.component.scss']
+  selector: 'app-article-cards',
+  templateUrl: './article-cards.component.html',
+  styleUrls: ['./article-cards.component.scss']
 })
-export class ListVideosComponent implements OnInit {
+export class ArtcileCardsComponent implements OnInit {
   sortBy = '';
   orderOptions = [
     { value: 'title', viewValue: this.translateSvc.instant('user-blog.title') },
@@ -44,6 +45,7 @@ export class ListVideosComponent implements OnInit {
   public pageSize: number = 4;
   public pageNumber: number = 1;
   isAdmin: boolean = false;
+  sort: boolean = false;
 
   constructor(
     private translateSvc: TranslateService,
@@ -91,8 +93,12 @@ export class ListVideosComponent implements OnInit {
     });
   };
 
-  onOpenGallery(a: Article) {
+  onOpenVideosGallery(a: Article) {
     this.dialog.open(GalleryVideosComponent, { data: { article: a } });
+  };
+
+  onOpenImagesGallery(a: Article) {
+    this.dialog.open(GalleryImagesComponent, { data: { article: a } });
   };
 
   onEdit(post: Article) {
@@ -107,4 +113,4 @@ export class ListVideosComponent implements OnInit {
       this.getAllArticlesByUsername();
     };
   }
-}
+};

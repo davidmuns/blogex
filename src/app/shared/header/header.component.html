@@ -1,65 +1,3 @@
-<!-- <mat-toolbar class="toolbarClass">
-
-  <mat-toolbar-row class="toolbar">
-    <img class="logo" src="../../../assets/img/logo-blogex.jpg" alt="" routerLink="home">
-  
-    <app-search></app-search>
-
-    <div id="logReg" *ngIf="!this.tokenService.isLogged(); else logged">
-      <button mat-raised-button class="btn-login" (click)="openDialog()">{{ 'Login' | translate }}</button>
-    </div>
-    
-
-    <ng-template #logged>
-      <div>
-        <a [matMenuTriggerFor]="menu" class="logout">{{ this.tokenService.getUsername() }}</a>
-      </div>   
-    </ng-template>
-
-  </mat-toolbar-row>
-</mat-toolbar> -->
-
-<!-- MENU -->
-<!-- <mat-menu #menu id="matMenu">
-  <button mat-menu-item routerLink="home">
-    <mat-icon>home</mat-icon>
-    {{ 'Home' | translate }}
-  </button>
-  <mat-divider></mat-divider>
-  <button mat-menu-item routerLink="/blog/{{ this.tokenService.getUsername() }}">
-    <mat-icon>book</mat-icon>
-    {{ 'Blog' | translate }}
-  </button>
-  <mat-divider></mat-divider>
-  <button mat-menu-item routerLink="/admin/new">
-    <mat-icon>edit</mat-icon>
-    {{ 'MyArticles' | translate }}
-  </button>
-  <mat-divider></mat-divider>
-  <button mat-menu-item routerLink="/images">
-    <mat-icon>image</mat-icon>
-    {{ 'MyImages' | translate }}
-  </button>
-  <mat-divider></mat-divider>
-  <button mat-menu-item routerLink="/videos">
-    <mat-icon>movie_creation</mat-icon>
-    {{ 'my-videos' | translate }}
-  </button>
-  <mat-divider></mat-divider>
-  <button mat-menu-item routerLink="/images" (click)="onLogout()">
-    <mat-icon>exit_to_app</mat-icon>
-    {{ 'Logout' | translate }}
-  </button>
-  <mat-divider></mat-divider>
-  <button mat-menu-item>  
-  </button>
-  <mat-divider></mat-divider>
-  <button mat-menu-item (click)="onDeleteAccount()">
-    <mat-icon>delete</mat-icon>
-    Eliminar cuenta
-  </button>
-</mat-menu> -->
-
 <mat-toolbar class="toolbarClass">
 
   <mat-toolbar-row class="toolbar">
@@ -109,13 +47,6 @@
     {{ 'header.my-articles' | translate }}
   </button>
   <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
-
-  <!-- MY VIDEOS BUTTON -->
-  <!-- <button mat-menu-item routerLink="/videos" *ngIf="this.tokenService.isLogged()">
-    <mat-icon>movie_creation</mat-icon>
-    {{ 'my-videos' | translate }}
-  </button>
-  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider> -->
 
   <!-- LANGUAGE BUTTON -->
   <button mat-menu-item (click)="onSwitchLang('ca')">

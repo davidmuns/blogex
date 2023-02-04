@@ -1,4 +1,3 @@
-import { ListImagesComponent } from './list-images/list-images.component';
 // Components
 import { CrudComponent } from './crud.component';
 import { ListPostsComponent } from './list-posts/list-posts.component';
@@ -6,7 +5,6 @@ import { NewComponent } from './posts/new/new.component';
 import { EditComponent } from './posts/edit/edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
-import { GalleryImagesComponent } from './list-images/gallery-images/gallery-images.component';
 
 // Modules
 import { InternationalitazionModule } from './../../internationalitazion.module';
@@ -23,6 +21,7 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 // TinyMCE doc: https://www.tiny.cloud/docs/tinymce/6/angular-pm/
 // youtube tutorial: https://www.youtube.com/watch?v=YqEDASVUEPc&list=PLSVW22jAG8pCwwM3tjSMfwBKYIS6_fP-F&index=1
 import { EditorModule } from '@tinymce/tinymce-angular';
+import { GalleryImagesComponent } from './article-cards/gallery-images/gallery-images.component';
 
 @NgModule({
   declarations: [

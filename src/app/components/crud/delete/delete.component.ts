@@ -1,15 +1,20 @@
+// Services
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { TokenService } from './../../../shared/services/token.service';
-import { Article } from 'src/app/shared/models/article';
-import { GalleryImagesComponent } from './../list-images/gallery-images/gallery-images.component';
-import { GalleryVideosComponent } from './../list-videos/gallery-videos/gallery-videos.component';
-import { VideoService } from './../../../shared/services/video.service';
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from 'src/app/shared/services/article.service';
+import { VideoService } from './../../../shared/services/video.service';
+// Components
+import { GalleryImagesComponent } from '../article-cards/gallery-images/gallery-images.component';
+import { GalleryVideosComponent } from '../article-cards/gallery-videos/gallery-videos.component';
+// Angular
+import { Component, Inject, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+// Material
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+// Models
+import { Article } from 'src/app/shared/models/article';
 
 @Component({
   selector: 'app-delete',
