@@ -1,19 +1,19 @@
 <div class="body">
     <div class="login">
         <mat-tab-group mat-align-tabs="start" animationDuration="500ms">
-            <!-- TAB LOGIN -->
+            <!-- LOGIN TAB -->
             <mat-tab label="{{ 'Login' | translate | uppercase }}">
                 <form [formGroup]="this.loginForm" (ngSubmit)="onLogin(loginForm.value)">
                     <img src="../../../../assets/img/user.png" alt="user-image" style="margin-top: 20px;">
                     <br><br>
                     <h3>{{ 'Login' | translate }}</h3>
-                    <!-- INPUT EMAIL OR USERNAME -->
+                    <!-- EMAIL OR USERNAME INPUT -->
                     <mat-form-field class="input-witdh" appearance="fill">
                         <mat-label>{{ 'UsernameOrEmail' | translate }}</mat-label>
                         <input matInput placeholder="{{ 'UsernameOrEmail' | translate }}"
                             formControlName="nombreUsuario" required>
                     </mat-form-field>
-                     <!-- INPUT PASSWORD -->
+                     <!-- PASSWORD INPUT -->
                     <mat-form-field class="input-witdh" appearance="fill">
                         <mat-label>{{ 'Password' | translate }}</mat-label>
                         <input matInput [type]="hide ? 'password' : 'text'" placeholder="{{ 'Password' | translate }}"
@@ -28,7 +28,7 @@
                             class="error">{{ 'Required' | translate }}</div>
                     </mat-form-field>
                     <br>
-                    <!-- BUTTON LOGIN -->
+                    <!-- LOGIN BUTTON -->
                     <button type="submit" class="input-witdh button" mat-raised-button>
                         {{ 'Login' | translate }}
                     </button>
@@ -37,13 +37,13 @@
                     <div class="send-email" (click)="emailOpen()">{{ 'SendEmail' | translate }}</div>
                 </form>
             </mat-tab>
-            <!-- TAB SIGNUP -->
+            <!-- SIGNUP TAB -->
             <mat-tab label="{{ 'Signup' | translate | uppercase }}">
                 <form [formGroup]="this.signupForm" (ngSubmit)="onSignup(signupForm.value)">
                     <img src="../../../../assets/img/user.png" alt="user-image" style="margin-top: 20px;">
                     <br><br>
                     <h3>{{ 'Signup' | translate }}</h3>
-                    <!-- INPUT USERNAME -->
+                    <!-- USERNAME INPUT -->
                     <mat-form-field class="input-witdh" appearance="fill">
                         <mat-label>{{ 'Username' | translate }}</mat-label>
                         <input matInput placeholder="{{ 'Username' | translate }}" formControlName="nombreUsuario"
@@ -51,7 +51,7 @@
                         <div *ngIf="signupForm.get('nombreUsuario')?.touched && signupForm.get('nombreUsuario')?.errors?.['required']"
                             class="error">{{ 'Required' | translate}}</div>
                     </mat-form-field>
-                    <!-- INPUT EMAIL -->
+                    <!-- EMAIL INPUT -->
                     <mat-form-field class="input-witdh" appearance="fill">
                         <mat-label>{{ 'Email' | translate }}</mat-label>
                         <input matInput placeholder="{{ 'Email' | translate }}" formControlName="email" required>
@@ -63,7 +63,7 @@
                             class="error">
                             {{ 'Required' | translate}}</div>
                     </mat-form-field>
-                    <!-- INPUT PASSWORD -->
+                    <!-- PASSWORD INPUT -->
                     <mat-form-field class="input-witdh" appearance="fill">
                         <mat-label>{{ 'Password' | translate }}</mat-label>
                         <input matInput [type]="hide ? 'password' : 'text'" placeholder="{{ 'Password' | translate }}"
@@ -78,7 +78,7 @@
                             class="error">{{ 'Required' | translate }}</div>
                     </mat-form-field>
                     <br>
-                    <!-- BUTTON SIGNUP -->
+                    <!-- SIGNUP BUTTON -->
                     <button type="submit" mat-raised-button class="input-witdh button">
                         {{ 'Signup' | translate }}
                     </button>

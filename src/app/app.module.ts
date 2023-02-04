@@ -6,7 +6,6 @@ import { HeaderComponent } from './shared/header/header.component';
 
 // Auth components
 import { LoginComponent } from './components/Auth/login/login.component';
-import { SignupComponent } from './components/Auth/signup/signup.component';
 import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
 import { EmailPasswordComponent } from './components/Auth/email-password/email-password.component';
 
@@ -69,7 +68,6 @@ import { ToastrModule } from 'ngx-toastr';
     HomeComponent,
     HeaderComponent,
     LoginComponent,
-    SignupComponent,
     EmailPasswordComponent,
     ResetPasswordComponent,
     SearchComponent,

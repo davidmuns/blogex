@@ -2,7 +2,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { LoginComponent } from '../../Auth/login/login.component';
-import { SignupComponent } from '../../Auth/signup/signup.component';
 
 @Component({
   selector: 'app-about',
@@ -25,10 +24,6 @@ export class AboutComponent implements OnInit {
 
   openDialog(){
     this.dialog.open(LoginComponent)
-  }
-
-  signupDialog(){
-    this.dialog.open(SignupComponent)
   }
 
   @HostListener('window:resize', ['$event'])
