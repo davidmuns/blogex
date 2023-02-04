@@ -17,9 +17,6 @@ export const slider: AnimationTriggerMetadata =
         transition('blog => article', slideTo(side1)),
         transition('article => blog', slideTo(side2)),
 
-        transition('images => videos', slideTo(side1)),
-        transition('videos => images', slideTo(side2)),
-      
     ]);
 
 function slideTo(direction: string) {
