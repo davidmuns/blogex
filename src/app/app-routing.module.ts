@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent,  data: { animation: 'home'}},
   {path: 'article/:id', component: ArticleComponent, data: { animation: 'article'}},
   {path: 'add-image/:articleid', component: AddImageComponent},
-  {path: 'articles', component: ArtcileCardsComponent, canActivate: [LogsGuard], data: { animation: 'images'}},
+  {path: 'articles', component: ArtcileCardsComponent, canActivate: [LogsGuard]},
   {path: 'blog/:username', component: UserBlogComponent, data: { animation: 'blog'}}
 ]
 
