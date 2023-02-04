@@ -11,7 +11,7 @@ import { Article } from '../../../shared/models/article';
 import { Imagen } from 'src/app/shared/models/imagen';
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 // Components 
 import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
 

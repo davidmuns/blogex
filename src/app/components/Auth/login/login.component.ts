@@ -4,7 +4,7 @@ import { EmailPasswordComponent } from '../email-password/email-password.compone
 import { Router } from '@angular/router';
 import { Login } from '../../../shared/models/login';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { ToastrService } from 'ngx-toastr';

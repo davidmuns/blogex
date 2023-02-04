@@ -1,13 +1,7 @@
-import { SafeHtmlPipe } from './shared/pipes/safehtml.pipe';
 // Shared components
 import { CaptionComponent } from './shared/caption/caption.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
-
-// Auth components
-import { LoginComponent } from './components/Auth/login/login.component';
-import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
-import { EmailPasswordComponent } from './components/Auth/email-password/email-password.component';
 
 // Home components
 import { HomeComponent } from './components/home/home.component';
@@ -27,11 +21,13 @@ import { ArticleComponent } from './components/article/article.component';
 import { ArticleGalleryComponent } from './components/article/article-gallery/articleGallery.component';
 import { UserBlogComponent } from './components/user-blog/user-blog.component';
 import { SearchComponent } from './components/search/search.component';
+import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
 
 // Modules
 import { CrudModule } from './components/crud/crud.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
+import { AuthModule } from './components/Auth/auth.module';
 
 // Interceptors
 import { interceptorProvider } from './interceptors/token-interceptor.service';
@@ -39,19 +35,16 @@ import { interceptorProvider } from './interceptors/token-interceptor.service';
 // Pipes
 import { SearchPipe } from './shared/pipes/search.pipe';
 import { PaginatePipe } from './shared/pipes/paginate.pipe';
+import { SafeHtmlPipe } from './shared/pipes/safehtml.pipe';
 
 // Angular
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // ####### EXTERNAL LIBRARIES ######
-
-// Translate
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // MATERIAL
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -62,14 +55,15 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 // Toastr
 import { ToastrModule } from 'ngx-toastr';
 
+// Internationalitation
+import { InternationalitazionModule } from './internationalitazion.module';
+
 @NgModule({
   declarations: [
+    ResetPasswordComponent,
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    LoginComponent,
-    EmailPasswordComponent,
-    ResetPasswordComponent,
     SearchComponent,
     MapComponent,
     ArticleComponent,
@@ -88,6 +82,8 @@ import { ToastrModule } from 'ngx-toastr';
     GalleryVideosComponent
   ],
   imports: [
+    InternationalitazionModule,
+    AuthModule,
     BrowserAnimationsModule,
     NgxYoutubePlayerModule.forRoot(),
     BrowserModule,
@@ -100,20 +96,9 @@ import { ToastrModule } from 'ngx-toastr';
     HttpClientModule,
     CrudModule,
     ToastrModule.forRoot(), // ToastrModule added
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpTranslateLoader,
-        deps: [HttpClient]
-      }
-    })
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 
-// AOT compilation support
-export function httpTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http);
-}

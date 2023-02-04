@@ -3,7 +3,6 @@ import { ListImagesComponent } from './components/crud/list-images/list-images.c
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ArticleComponent } from './components/article/article.component';
-import { ResetPasswordComponent } from './components/Auth/reset-password/reset-password.component';
 import { HomeComponent } from './components/home/home.component';
 import { LogsGuard } from './shared/logs.guard';
 import { UserBlogComponent } from './components/user-blog/user-blog.component';
@@ -12,7 +11,6 @@ import { ListVideosComponent } from './components/crud/list-videos/list-videos.c
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent,  data: { animation: 'home'}},
-  {path: 'reset-password/:token-password', component: ResetPasswordComponent},
   {path: 'article/:id', component: ArticleComponent, data: { animation: 'article'}},
   {path: 'add-image/:articleid', component: AddImageComponent},
   {path: 'images', component: ListImagesComponent, canActivate: [LogsGuard], data: { animation: 'images'}},

@@ -1,9 +1,8 @@
+import { Email } from './../../../shared/models/Email';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Email } from '../../../shared/models/email';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
 import { EmailPasswordService } from 'src/app/shared/services/email-password.service';
 import { TranslateService } from '@ngx-translate/core';
 
