@@ -1,3 +1,4 @@
+import { GalleryVideosComponent } from './../list-videos/gallery-videos/gallery-videos.component';
 // Services
 import { TranslateService } from '@ngx-translate/core';
 import { UtilsService } from './../../../shared/services/utils.service';
@@ -91,7 +92,11 @@ export class ListImagesComponent implements OnInit {
     });
   };
 
-  onOpenGallery(a: Article) {
+  onOpenVideosGallery(a: Article) {
+    this.dialog.open(GalleryVideosComponent, { data: { article: a } });
+  };
+
+  onOpenImagesGallery(a: Article) {
     this.dialog.open(GalleryImagesComponent, { data: { article: a } });
   };
 

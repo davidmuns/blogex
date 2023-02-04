@@ -96,26 +96,26 @@
   </button>
   <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
 
-  <!-- MY ARTICLES BUTTON -->
+  <!-- ARTICLE EDITOR BUTTON -->
   <button mat-menu-item routerLink="/admin/new" *ngIf="this.tokenService.isLogged()">
     <mat-icon>edit</mat-icon>
-    {{ 'MyArticles' | translate }}
+    {{ 'header.articles-editor' | translate }}
   </button>
   <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
 
-  <!-- MY IMAGES BUTTON -->
-  <button mat-menu-item routerLink="/images" *ngIf="this.tokenService.isLogged()">
-    <mat-icon>image</mat-icon>
-    {{ 'MyImages' | translate }}
+  <!-- MY ARTICLES BUTTON -->
+  <button mat-menu-item routerLink="/articles" *ngIf="this.tokenService.isLogged()">
+    <mat-icon>article</mat-icon>
+    {{ 'header.my-articles' | translate }}
   </button>
   <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
 
   <!-- MY VIDEOS BUTTON -->
-  <button mat-menu-item routerLink="/videos" *ngIf="this.tokenService.isLogged()">
+  <!-- <button mat-menu-item routerLink="/videos" *ngIf="this.tokenService.isLogged()">
     <mat-icon>movie_creation</mat-icon>
     {{ 'my-videos' | translate }}
   </button>
-  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
+  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider> -->
 
   <!-- LANGUAGE BUTTON -->
   <button mat-menu-item (click)="onSwitchLang('ca')">

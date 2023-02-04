@@ -67,6 +67,10 @@
     "FillBlanks": "Si us plau, omple els camps buits i afegeix una imatge",
     "ImgMaximumExceed": "Imatge excedeix tamany màxim permés de",
     "PleaseSelectImage": "Si us plau selecciona una imatge",
+    "header": {
+        "articles-editor": "Editor d´articles",
+        "my-articles": "Els meus articles"
+    },
     "about": {
         "title": "Descobreix llocs del món",
         "text": "<p>Benvingut a <strong>Blogex</strong>, un espai de creació de continguts on trobaràs articles sobre llocs interessants.</p>Registra't, crea el teu blog personal amb els teus propis articles i personalitza'ls amb la nova eina d'edició de textos intuïtiva i fàcil d'utilitzar.</p>Fes que la gent descobreixi els llocs que coneixes a través de les teves publicacions, fotos i vídeos de youtube."
@@ -95,8 +99,13 @@
         "last-articles": "Publicacions més recents"
     },
     "crud": {
-        "list-images": {
-            "insert-tilte": "Buscar per títol",
+        "article-card": {
+            "articles-of": "Articles de",
+            "search": "Buscar per títol",
+            "video-tool-tip": "Galeria de vídeos",
+            "image-tool-tip": "Galería d´imatges"
+        },
+        "image-list": {
             "images": "Imatges de"
         },
         "list-videos": {

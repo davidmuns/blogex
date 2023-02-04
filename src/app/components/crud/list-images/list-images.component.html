@@ -1,6 +1,6 @@
 <body>
   <!-- Title -->
-  <h1>{{ 'crud.list-images.images' | translate }} {{ this.username }} </h1>
+  <h1>{{ 'crud.article-card.articles-of' | translate }} {{ this.username }} </h1>
 
   <!-- Paginator -->
   <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
@@ -9,7 +9,7 @@
 
   <!-- Search field -->
   <div class="container search d-flex" style="background-color: transparent;">
-    <input class="form-control" type="search" placeholder="{{ 'crud.list-images.insert-tilte' | translate }}"
+    <input class="form-control" type="search" placeholder="{{ 'crud.article-card.search' | translate }}"
       aria-label="Search" [(ngModel)]="this.filterByTitle">
   </div>
 
@@ -31,11 +31,11 @@
   </div>
   
   <!-- Button goto videos -->
-  <div class="d-flex" style="background-color: transparent; justify-content: center;">
+  <!-- <div class="d-flex" style="background-color: transparent; justify-content: center;">
     <button mat-stroked-button routerLink="/videos">
       {{ 'my-videos' | translate }} <mat-icon>fast_forward</mat-icon>
     </button>
-  </div>
+  </div> -->
 
   <!-- Show this container if there are articles -->
   <div class="container shadow-lg rounded" *ngIf="this.articles.length > 0; else noArticles">
@@ -44,13 +44,13 @@
       <mat-card class="example-card animate__animated animate__backInLeft" style="background-color: #607D8B">
         <mat-card-header style="margin-bottom: 20px;">
 
-          <mat-card-title style="color: rgba(255, 255, 255);">{{ 'crud.list-images.images' | translate }}: <span>{{
+          <mat-card-title style="color: rgba(255, 255, 255);"><span>{{
             article?.title }}</span></mat-card-title>
 
         </mat-card-header>
-        <a (click)="onOpenGallery(article)" style="cursor: pointer;">
-          <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
-        </a>
+        <!-- <a (click)="onOpenGallery(article)" style="cursor: pointer;"> -->
+          <img mat-card-image [src]="article.imagenPortada" alt="Imagen de protada">
+        <!-- </a> -->
         <mat-card-content>
 
         </mat-card-content>
@@ -60,7 +60,10 @@
             <mat-icon>edit</mat-icon>
           </button>
 
-          <button mat-button (click)="onOpenGallery(article)" matTooltip="gallery view">
+          <button mat-button matTooltip="{{ 'crud.article-card.video-tool-tip' | translate }}" (click)="onOpenVideosGallery(article)" matTooltip="gallery view">
+            <mat-icon>movie_creation</mat-icon>
+          </button>
+          <button mat-button matTooltip="{{ 'crud.article-card.image-tool-tip' | translate }}" (click)="onOpenImagesGallery(article)" matTooltip="gallery view">
             <mat-icon>image</mat-icon>
           </button>
         </mat-card-actions>

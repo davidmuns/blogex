@@ -5,6 +5,7 @@
     "Home": "Home page",
     "Blog": "My blog",
     "BlogOf": "The blog of",
+    "articles-editor": "Articles editor",
     "MyArticles": "My articles",
     "MyImages": "My images",
     "images": "Images",
@@ -15,7 +16,7 @@
     "ResetPass": "Reset password",
     "NewPass": "New password",
     "ConfirmPass": "Confirm password",
-    "ConfirmChangePass": "Change password", 
+    "ConfirmChangePass": "Change password",
     "ChangePass": "Changing password for",
     "Name": "Name",
     "Email": "Email",
@@ -67,6 +68,10 @@
     "FillBlanks": "Please fill in the blanks and insert image",
     "ImgMaximumExceed": "Image exceeds its maximum permitted size of",
     "PleaseSelectImage": "Please select an image",
+    "header": {
+        "articles-editor": "Articles editor",
+        "my-articles": "My articles"
+    },
     "about": {
         "title": "Discover places around the world",
         "text": "<p>Welcome to <strong>Blogex</strong>, a content creation space where you will find articles about interesting sites.</p><p>Sign up, create your personal blog with your own articles and customize them with the new intuitive and easy to use text editing tool.</p>Make people discover the sites you know through your posts, photos and youtube videos."
@@ -95,12 +100,17 @@
         "last-articles": "Latest posts"
     },
     "crud": {
-        "list-images": {
-            "insert-tilte": "Search by title",
-            "images": "Images of"
+        "article-card": {
+            "articles-of": "Articles of",
+            "search": "Search by title",
+            "video-tool-tip": "video gallery",
+            "image-tool-tip": "image gallery"
+        },
+        "image-list": {
+            "images": "Images from"
         },
         "list-videos": {
-            "videos": "Videos of",
+            "videos": "Videos from",
             "invalid-url": "Only youtube URLs are valid",
             "posted": "Video posted"
         }
@@ -111,7 +121,6 @@
         "date": "Date",
         "title": "Title",
         "none": "None"
-
     },
     "footer": {
         "text": "Technology plays a fundamental role in our lives, it is a milestone in constant evolution. We use it in every context of our daily lives, without much reflection; and it has gone from being a luxury to becoming a necessity.",
@@ -126,5 +135,4 @@
         "exist": "Article with this id does not exist",
         "close": "close"
     }
-    
 }

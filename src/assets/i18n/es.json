@@ -68,6 +68,10 @@
     "FillBlanks": "Por favor rellena los campos vacios e inserta una imagen",
     "ImgMaximumExceed": "Imagen excede tamaño máximo permitido de",
     "PleaseSelectImage": "Por favor selecciona una imagen",
+    "header": {
+        "articles-editor": "Editor de artículos",
+        "my-articles": "Mis artículos"
+    },
     "about": {
         "title": "Descubre lugares del mundo",
         "text": "<p>Bienvenido a <strong>Blogex</strong>, un espacio de creación de contenidos donde encontrarás artículos sobre sitios interesantes.</p><p>Regístrate, crea tu blog personal con tus propios artículos y personalízalos con la nueva herramienta de edición de textos intuitiva y fácil de usar.</p>Haz que la gente descubra los sitios que conoces a través de tus publicaciones, fotos y vídeos de youtube."
@@ -96,8 +100,13 @@
         "last-articles": "Publicaciones más recientes"
     },
     "crud": {
-        "list-images": {
-            "insert-tilte": "Buscar por título",
+        "article-card": {
+            "articles-of": "Artículos de",
+            "search": "Buscar por título",
+            "video-tool-tip": "Galeria de vídeos",
+            "image-tool-tip": "Galería de imágenes"
+        },
+        "image-list": {
             "images": "Imágenes de"
         },
         "list-videos": {
