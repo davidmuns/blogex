@@ -1,6 +1,6 @@
 // Components
 import { EmailPasswordComponent } from './email-password/email-password.component';
-import { LoginComponent } from 'src/app/components/Auth/login/login.component';
+import { LoginComponent } from '../auth/login/login.component';
 import { AuthComponent } from './auth.component';
 
 // Modules
