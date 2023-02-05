@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TokenService } from 'src/app/shared/services/token.service';
-import { LoginComponent } from '../../Auth/login/login.component';
+import { LoginComponent } from '../../auth/login/login.component';
 
 @Component({
   selector: 'app-about',
