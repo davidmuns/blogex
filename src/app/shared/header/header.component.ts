@@ -1,10 +1,10 @@
+import { LoginComponent } from '../../components/auth/login/login.component';
 import { TinyEditorService } from './../services/tiny-editor.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DeleteComponent } from './../../components/crud/delete/delete.component';
 import { TokenService } from './../services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { LoginComponent } from 'src/app/components/Auth/login/login.component';
 import { Router } from '@angular/router';
 import { Article } from '../models/article';
 import { ArticleService } from '../services/article.service';
