@@ -31,7 +31,6 @@ export class ArticleComponent implements OnInit {
   username!: string;
 
   constructor(
-    private toastr: ToastrService,
     private snack: MatSnackBar,
     private translateService: TranslateService,
     public sanitizer: DomSanitizer,

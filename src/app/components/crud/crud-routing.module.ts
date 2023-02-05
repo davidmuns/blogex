@@ -1,3 +1,4 @@
+import { HomeComponent } from './../home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LogsGuard } from 'src/app/shared/logs.guard';
@@ -13,7 +14,9 @@ const routes: Routes = [
       { path: 'admin/new', loadChildren: () => NewModule, data: { animation: 'admin/new'} },
       { path: 'admin/edit', loadChildren: () => EditModule, data: { animation: 'admin/edit'} }
     ]
-  }
+  },
+  // https://youtu.be/nC-do8ceLWY?list=PL4vWncexIMYvaYdepQvyryGBhIHU-Sd04&t=774
+  { path: '**', component: HomeComponent }
 ];
 
 @NgModule({

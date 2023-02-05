@@ -8,12 +8,12 @@ import { UserBlogComponent } from './components/user-blog/user-blog.component';
 import { ArtcileCardsComponent } from './components/crud/article-cards/article-cards.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home', component: HomeComponent,  data: { animation: 'home'}},
-  {path: 'article/:id', component: ArticleComponent, data: { animation: 'article'}},
-  {path: 'add-image/:articleid', component: AddImageComponent},
-  {path: 'articles', component: ArtcileCardsComponent, canActivate: [LogsGuard]},
-  {path: 'blog/:username', component: UserBlogComponent, data: { animation: 'blog'}}
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, data: { animation: 'home' } },
+  { path: 'article/:id', component: ArticleComponent, data: { animation: 'article' } },
+  { path: 'add-image/:articleid', component: AddImageComponent },
+  { path: 'articles', component: ArtcileCardsComponent, canActivate: [LogsGuard] },
+  { path: 'blog/:username', component: UserBlogComponent, data: { animation: 'blog' } }
 ]
 
 @NgModule({

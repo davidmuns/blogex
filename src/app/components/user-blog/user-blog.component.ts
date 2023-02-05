@@ -54,6 +54,7 @@ export class UserBlogComponent implements OnInit {
   };
 
   private getAllArticlesByUsername() {
+    // https://youtu.be/nC-do8ceLWY?list=PL4vWncexIMYvaYdepQvyryGBhIHU-Sd04&t=313
     this.activatedRoute.paramMap.subscribe(resp => {
       if (resp.get('username') !== null) {
         this.username = resp.get('username') as string;
