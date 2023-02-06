@@ -78,7 +78,6 @@ export class GalleryImagesComponent implements OnInit {
         });
         this.imagenes = [];
         this.getImgsByArticleId(this.data.article.id);
-        //this.redirectTo(this.router.url);
       },
       error: err => {
         this.toastrService.error(err, '', {

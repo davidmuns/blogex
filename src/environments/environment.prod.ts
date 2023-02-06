@@ -5,6 +5,5 @@ export const environment = {
   BACKEND_BASE_URL: 'https://blogexapp.herokuapp.com/',
   AUTHORIZATION: 'Authorization',
   BEARER: 'Bearer ',
-  ARTICLES_LOCAL: './assets/articles.json',
   IMG_MAX_SIZE: 3100000, // 3MB
 };

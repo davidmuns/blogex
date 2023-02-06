@@ -4,9 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
@@ -36,9 +34,7 @@ export class GalleryVideosComponent implements OnInit {
     private readonly dialog: MatDialog,
     private snack: MatSnackBar,
     private articleSvc: ArticleService,
-    private toastrService: ToastrService,
-    private translateService: TranslateService,
-    private router: Router) { }
+    private translateService: TranslateService) { }
 
   ngOnInit() {
     this.initform();
