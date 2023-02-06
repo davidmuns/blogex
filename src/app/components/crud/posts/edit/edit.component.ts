@@ -105,7 +105,6 @@ export class EditComponent implements OnInit {
       } else {
         this.editPost(post.id, post);
         this.router.navigate(['article/' + post.id]);
-        //this.router.navigate(['list']);
       }
     } else {
       this.snack.open(this.translateService.instant('FillBlanks'), "", { duration: 3000 });
@@ -132,9 +131,6 @@ export class EditComponent implements OnInit {
   private uploadImage(image: File) {
     this.articleService.uploadImage(image).subscribe({
       next: data => {
-        // this.toastrService.success(data.mensaje, '', {
-        //   timeOut: 1000, positionClass: 'toast-top-center'
-        // });
       },
       error: err => {
         this.toastrService.error(err.error.mensaje, '', {

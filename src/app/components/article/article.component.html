@@ -5,7 +5,6 @@
     </button>
   </div>
   <div class="example-card">
-  <!-- <div class="example-card" [style.backgroundColor]="this.backgroundColor"> -->
     <mat-card-header>
       <div class="example-header-image"></div>
       <div id="title-post">{{ post?.title }} | {{ this.temp }} ºC</div>
@@ -28,7 +27,6 @@
         </button>   
       </div>
       <p [innerHTML]="post?.text1 | safeHtml">
-      <!-- <p [innerHTML]="this.sanitizer.bypassSecurityTrustHtml(this.postContent)"></p> -->
     </mat-card-content>
     <app-articleGallery [articleId]="post?.id"></app-articleGallery>
     <mat-card-actions></mat-card-actions>

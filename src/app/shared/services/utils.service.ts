@@ -6,26 +6,28 @@ import { Injectable } from '@angular/core';
 })
 export class UtilsService {
 
-  constructor() { }
-
   public sortArticlesBy(articles: Article[], option: string): Article[] {
+
     switch (option) {
       case 'title':
-        return articles = this.sortArticlesAlphabeticallyByTitle(articles);
-        break;
+        return this.sortArticlesAlphabeticallyByTitle(articles);
       case 'date':
-        return articles = this.sortArticlesById(articles);
-        break;
+        return this.sortArticlesById(articles); 
       default:
         return articles;
     }
   }
 
   public sortArticlesAlphabeticallyByTitle(articles: Article[]): Article[] {
-    return articles
-      .sort((article1, article2) => {
-        return article1.title === article2.title ? 0 : article1.title > article2.title ? 1 : -1;
-      })
+    return articles.sort((article1, article2) => {
+      let result = 0;
+      if (article1.title > article2.title) {
+        result = 1;
+      } else if (article1.title < article2.title) {
+        result = -1;
+      }
+      return result;
+    });
   }
 
   public sortArticlesById(articles: Article[]): Article[] {

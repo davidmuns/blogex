@@ -14,12 +14,9 @@ export class TokenService {
   public setToken(token: string): void {
     window.sessionStorage.removeItem(TOKEN_KEY);
     window.sessionStorage.setItem(TOKEN_KEY, token);
-    // window.localStorage.removeItem(TOKEN_KEY);
-    // window.localStorage.setItem(TOKEN_KEY, token);
   }
 
   public getToken(): string {
-    // return localStorage.getItem(TOKEN_KEY) as string;
     return window.sessionStorage.getItem(TOKEN_KEY) as string;
   }
 
@@ -71,8 +68,6 @@ export class TokenService {
   public logOut(): void {
     window.sessionStorage.clear();
     window.localStorage.clear();
-    // window.location.reload();
-    this.router.navigate(['home']);
-    
+    this.router.navigate(['home']);   
   }
 }

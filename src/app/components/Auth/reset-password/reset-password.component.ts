@@ -58,7 +58,6 @@ export class ResetPasswordComponent implements OnInit {
             timeOut: 3000, positionClass: 'toast-top-center'
           });
           this.resetForm.reset();
-          // setTimeout(() => {  window.location.reload(); }, 3000);
         }
       });
     

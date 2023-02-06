@@ -1,6 +1,5 @@
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { ToastrService } from 'ngx-toastr';
 import { ApiWeatherService } from './../../shared/services/apiWeather.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
@@ -47,7 +46,6 @@ export class ArticleComponent implements OnInit {
         this.idPost = parseInt(resp.get('id') as string);
       }
     })
-    // this.idPost = this.route.snapshot.params['id'];
     this.getArticleById(this.idPost);
   }
 
@@ -61,7 +59,7 @@ export class ArticleComponent implements OnInit {
   private getArticleById(id: number) {
     this.articleSvc.getArticle(id).subscribe({
       next: data => {
-        this.post = data,
+        this.post = data;
           this.username = data.usuario.nombreUsuario;
         this.getWeather(this.post.latitude, this.post.longitude);
       },

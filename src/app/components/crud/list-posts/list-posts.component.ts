@@ -56,7 +56,6 @@ export class ListPostsComponent implements OnInit {
 
   ngOnInit(): void {
     this.username =this.tokenService.getUsername() as string;
-    // this.articleSvc.getArticlesByUsername(username).subscribe(posts => this.dataSource.data = posts);
     this.innerWidth = window.innerWidth;
     this.isAdmin =this.tokenService.isAdmin();
   
@@ -119,8 +118,7 @@ export class ListPostsComponent implements OnInit {
   toList(){
     const listPosts = this.asList.nativeElement;
     this.showHidePosts = !this.showHidePosts;
-    //this.articleSvc.fadeInOut = !this.articleSvc.fadeInOut;
-    if(this.showHidePosts == true){
+    if(this.showHidePosts){
       this.renderer2.setStyle(listPosts, 'height', '1200px');
       this.renderer2.setStyle(listPosts, 'transition', 'all 1s')
     }else{

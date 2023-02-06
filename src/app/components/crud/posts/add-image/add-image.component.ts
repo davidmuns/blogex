@@ -2,14 +2,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from './../../../../shared/services/article.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-add-image',
   templateUrl: './add-image.component.html',
   styleUrls: ['./add-image.component.scss']
 })
-export class AddImageComponent implements OnInit {
+export class AddImageComponent  {
   imageForm!: FormGroup;
   miniatura!: File;
   image!: File;
@@ -21,9 +21,6 @@ export class AddImageComponent implements OnInit {
     private router: Router
   ) {
     this.initForm();
-  }
-
-  ngOnInit() {
   }
 
   onSubmit(usless: any) {

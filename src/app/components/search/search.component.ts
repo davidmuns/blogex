@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Observable, pipe } from 'rxjs';
+import { Observable } from 'rxjs';
 import { debounceTime, map, startWith } from 'rxjs/operators';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
@@ -47,50 +47,38 @@ export class SearchComponent implements OnInit {
     );
   }
 
-  /*  onQueryChanged(query: string = ''){
-     if(this.debounceTimer) clearTimeout(this.debounceTimer);
-
-     this.debounceTimer = setTimeout(() => {
-       this.articleSvc.getAll()
-       .subscribe(res => {
-         this.allOptions = res;
-         this.allOptions.map(x =>{ this.options.push(x.title);
-         });
-       });
-     }, 500)
-   } */
-
   private _filter(value: string): string[] {
-    //console.log("Control: ", this.myControl.status);
     const filterValue = value.toLowerCase();
     if (this.myControl.valid) {
       this.articleSvc.getAll()
         .subscribe(res => {
           this.allOptions = res;
-          this.allOptions.map(x => {
+          this.options = [];
+          this.allOptions.forEach(x => {
             this.options.push(x.title);
-            this.uniqueChars = [...new Set(this.options)];
           });
+          this.uniqueChars = [...new Set(this.options)];
         });
     }
     return this.uniqueChars.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   selectArticle(value: string) {
-    for (let i = 0; i < this.allOptions.length; i++) {
-      if (this.allOptions[i].title == value) {
-        this.articleId = this.allOptions[i].id;
+    for (const option of this.allOptions) {
+      if (option.title === value) {
+        this.articleId = option.id;
         this.router.navigate(['article', this.articleId]);
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
+        break;
       }
     }
   }
 
   submitArticle() {
-    for (let i = 0; i < this.allOptions.length; i++) {
-      if (this.allOptions[i].title == this.myControl.value) {
-        this.articleId = this.allOptions[i].id;
+    for (const option of this.allOptions) {
+      if (option.title === this.myControl.value) {
+        this.articleId = option.id;
         this.router.navigate(['article', this.articleId]);
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
@@ -101,7 +89,7 @@ export class SearchComponent implements OnInit {
   openSelect() {
     this.mostrar = !this.mostrar;
     const asForm = this.toForm.nativeElement;
-    if (this.mostrar == true) {
+    if (this.mostrar) {
       this.renderer2.setStyle(asForm, 'display', 'block');
     } else {
       this.renderer2.setStyle(asForm, 'display', 'none');

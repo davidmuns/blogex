@@ -35,11 +35,6 @@
         </p>
         <p>
           <mat-label>{{ 'Text' | translate }}:</mat-label><br><br>
-          <!-- <mat-form-field class="input-width" appearance="fill">
-            <mat-label>{{ 'Text' | translate }}</mat-label>
-            <textarea matInput id="textarea" formControlName="text{{ view }}"
-              placeholder="{{ 'Text' | translate }}"></textarea>
-          </mat-form-field> -->
           <editor formControlName="text{{ view }}" [init]="this.editorConfig"></editor>
         </p>
       </div>

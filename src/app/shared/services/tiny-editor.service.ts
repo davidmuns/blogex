@@ -24,8 +24,6 @@ export class TinyEditorService {
     }
   });
   
-  constructor() { }
-
   public getEditorConfig(): Observable<any>{
     return this.editorConfig.asObservable();
   }

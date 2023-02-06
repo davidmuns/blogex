@@ -16,7 +16,7 @@ export class ArticleService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public getArticle(articleId: Number): Observable<Article> {
+  public getArticle(articleId: number): Observable<Article> {
     return this.httpClient.get<Article>(environment.BACKEND_BASE_URL + 'article/one/' + articleId);
   }
 

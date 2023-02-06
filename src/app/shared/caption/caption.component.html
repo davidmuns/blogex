@@ -1,14 +1,13 @@
 <div class="container">
-    <form [formGroup]="this.captionForm" (ngSubmit)="onSubmit(captionForm.value)">
-      <h3>{{ 'Add' | translate }} {{ 'Caption' | translate | lowercase}}</h3>
-      <!-- <p style="text-align: center; padding: 10px;">Enter the email address or username you use in this application. We will send you a link to reset your password.</p> -->
-      <p>
-        <mat-form-field appearance="fill">
-          <mat-label>{{ 'Caption' | translate }}</mat-label>
-          <input matInput placeholder="{{ 'Insert' | translate }} {{ 'Caption' | translate | lowercase }}" formControlName="caption" required>
-          <!-- <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error> -->
-        </mat-form-field>
-      </p>
-      <button type="submit" mat-raised-button>{{ 'Set' | translate }} {{ 'Caption' | translate | lowercase }}</button>
-    </form>
-  </div>
+  <form [formGroup]="this.captionForm" (ngSubmit)="onSubmit(captionForm.value)">
+    <h3>{{ 'Add' | translate }} {{ 'Caption' | translate | lowercase}}</h3>
+    <p>
+      <mat-form-field appearance="fill">
+        <mat-label>{{ 'Caption' | translate }}</mat-label>
+        <input matInput placeholder="{{ 'Insert' | translate }} {{ 'Caption' | translate | lowercase }}"
+          formControlName="caption" required>
+      </mat-form-field>
+    </p>
+    <button type="submit" mat-raised-button>{{ 'Set' | translate }} {{ 'Caption' | translate | lowercase }}</button>
+  </form>
+</div>

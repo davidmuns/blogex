@@ -8,7 +8,7 @@ import { VideoService } from './../../../shared/services/video.service';
 import { GalleryImagesComponent } from '../article-cards/gallery-images/gallery-images.component';
 import { GalleryVideosComponent } from '../article-cards/gallery-videos/gallery-videos.component';
 // Angular
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 // Material
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -21,7 +21,7 @@ import { Article } from 'src/app/shared/models/article';
   templateUrl: './delete.component.html',
   styleUrls: ['./delete.component.scss']
 })
-export class DeleteComponent implements OnInit {
+export class DeleteComponent {
 
   durationInSeconds = 5;
 
@@ -37,14 +37,11 @@ export class DeleteComponent implements OnInit {
     private readonly router: Router
   ) { }
 
-  ngOnInit(): void {}
-
   onDeleteArticle() {
     this.articleSvc.deleteArticle(this.data.article.id).subscribe({
       next: data => {
         this.snack.open("Article deleted", "", { duration: 3000 });
         this.redirectTo(this.router.url);
-        // this.router.navigate(['admin/new']);
       }
     });
     this.dialog.closeAll();

@@ -1,8 +1,6 @@
 import { environment } from 'src/environments/environment';
-import { Component, AfterViewInit, ViewChild, ElementRef, Renderer2, Input, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, AfterViewInit, ViewChild, ElementRef, Renderer2, Input } from '@angular/core';
 import { Map, marker, tileLayer } from 'leaflet';
-import { Observable } from 'rxjs';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 
@@ -24,63 +22,47 @@ export class MapComponent implements AfterViewInit {
   private postActual!: any;
 
   constructor(private readonly renderer2: Renderer2,
-     private articleSvc: ArticleService,
-     private router: Router) { }
-    
+    private articleSvc: ArticleService) { }
+
   ngAfterViewInit(): void {
-    
-    
+
     this.onScroll();
 
     const map = new Map('map').setView([42.40249, 2.194332], 13);
-    // const map = new Map('map').setView([-51.71892760927713, -58.74842236341812], 4);
     const map2 = new Map('map2').setView([42.40249, 2.194332], 13);
-    const map3 = new Map('map3').setView([42.40249, 2.194332], 13);
-
+   
     tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 20,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     tileLayer.wms("http://ows.mundialis.de/services/service?", {
-    layers: 'Dark',
-    maxZoom: 13,
-    format: 'image/png',
-    transparent: true,
-    attribution: "Weather data © 2012 IEM Nexrad"
+      layers: 'Dark',
+      maxZoom: 13,
+      format: 'image/png',
+      transparent: true,
+      attribution: "Weather data © 2012 IEM Nexrad"
     }).addTo(map2);
 
     this.articleSvc.getAll().subscribe(
-      (res: Article[]) => {res.map(point => {
-        this.postActual = point;
-        marker([point.latitude, point.longitude]).addTo(map).bindPopup(`
-        <a href="${BASE_URL }${point.id}">${point.title}</a>
-        <p class="text">${point.text1}</p>
-        <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
-      `);
+      (res: Article[]) => {
+        res.forEach(point => {
+          this.postActual = point;
+          marker([point.latitude, point.longitude]).addTo(map2).bindPopup(`
+          <a href="${BASE_URL}article/${point.id}">${point.title}</a>
+          <p class="text">${point.text1}</p>
+          <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
+        `);
+        });
+        map2.fitBounds([
+          ...res.map(point => [point.latitude, point.longitude] as [number, number])
+        ]);
       });
-      map.fitBounds([
-        ...res.map(point => [point.latitude, point.longitude] as [number, number])
-      ]);
-    });
 
-    this.articleSvc.getAll().subscribe(
-      (res: Article[]) => {res.map(point => {
-        this.postActual = point;
-        marker([point.latitude, point.longitude]).addTo(map2).bindPopup(`
-        <a href="${BASE_URL }article/${point.id}">${point.title}</a>
-        <p class="text">${point.text1}</p>
-        <img src="${point.imagenPortada}" (mouseover)="initWindow(${point.id})">
-      `);
-      });
-      map2.fitBounds([
-        ...res.map(point => [point.latitude, point.longitude] as [number, number])
-      ]);
-    });
   }
 
   //Click to map and enable zoom
-  removeCapa(){
+  removeCapa() {
     const asCapa = this.toCapa.nativeElement;
     this.renderer2.setStyle(asCapa, 'width', '0px');
     this.renderer2.setStyle(asCapa, 'width', '0px');
@@ -92,12 +74,12 @@ export class MapComponent implements AfterViewInit {
     const asMap1 = this.mapa1.nativeElement;
     const asMap2 = this.mapa2.nativeElement;
     const asMap3 = this.mapa3.nativeElement;
-    if(this.valueScroll > 300 && this.valueScroll < 600){
+    if (this.valueScroll > 300 && this.valueScroll < 600) {
       this.renderer2.setStyle(asMap1, 'display', 'none');
       this.renderer2.setStyle(asMap2, 'display', 'block');
       this.renderer2.setStyle(asMap3, 'display', 'none');
     }
-    if(this.valueScroll > 600){
+    if (this.valueScroll > 600) {
       this.renderer2.setStyle(asMap1, 'display', 'none');
       this.renderer2.setStyle(asMap2, 'display', 'none');
       this.renderer2.setStyle(asMap3, 'display', 'block');

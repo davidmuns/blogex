@@ -18,14 +18,14 @@
           <label>{{ 'CoverImage' | translate }} (max 3MB):</label><br>
           <div *ngIf="this.image" style="margin-top: 5px;">
             <div>
-              <img class="image-thumbnail" style="max-width: 100px; border-radius: 5%;" [src]="miniatura">
+              <img class="image-thumbnail" style="max-width: 100px; border-radius: 5%;" [src]="miniatura" alt="">
             </div>
           </div>
           <div class="custom-file">
             <input type="file" class="custom-file-input" accept=".png, .jpg, .jpeg" multiple id="inputUpload" formControlName="img{{ view }}"
               (change)="handleImage1($event)">
             <label class="custom-file-label" for="inputUpload"><mat-icon>upload</mat-icon>&nbsp;&nbsp;{{ 'SelectImage' | translate }}</label>
-            <img class="prev-image" [src]="article?.img1">
+            <img class="prev-image" [src]="article?.img1" alt="{{ article.alt1 }}">
           </div>
         </div>
         <p>
@@ -36,11 +36,6 @@
         </p>
         <p>
           <mat-label>{{ 'Text' | translate }}:</mat-label><br><br>
-          <!-- <mat-form-field class="input-width" appearance="fill">
-            <mat-label>{{ 'Text' | translate }}</mat-label>
-            <textarea matInput id="textarea" formControlName="text{{ view }}"
-              placeholder="{{ 'Text' | translate }}"></textarea>
-          </mat-form-field> -->
           <editor formControlName="text{{ view }}" [init]="this.editorConfig"></editor>
         </p>
       </div>

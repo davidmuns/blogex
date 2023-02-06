@@ -7,6 +7,7 @@ div {
 }
 
 p {
+    color: var(--accent);
     text-align: center;
 }
 
@@ -23,10 +24,6 @@ h3 {
     font-weight: bold;
     font-size: 1.6rem;
     text-align: center;
-}
-
-p {
-    color: var(--accent);
 }
 
 button:nth-child(1) {

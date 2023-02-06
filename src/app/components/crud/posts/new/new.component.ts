@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from './../../../../shared/services/article.service';
 import { TokenService } from './../../../../shared/services/token.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Article } from 'src/app/shared/models/article';
 
@@ -15,7 +15,7 @@ import { Article } from 'src/app/shared/models/article';
   templateUrl: './new.component.html',
   styleUrls: ['./new.component.scss']
 })
-export class NewComponent implements OnInit {
+export class NewComponent {
 
   image!: File;
   images: File[] = [];
@@ -42,10 +42,6 @@ export class NewComponent implements OnInit {
     tinyEditorSvc.getEditorConfig().subscribe((config:any) => {
       this.editorConfig = config;
     });
-  }
-
-  ngOnInit(): void {
-   
   }
 
   private initForm(): void {
@@ -90,9 +86,7 @@ export class NewComponent implements OnInit {
   private uploadImage(image: File) {
     this.articleService.uploadImage(image).subscribe({
       next: data => {
-        // this.toastrService.success(data.mensaje, '', {
-        //   timeOut: 1000, positionClass: 'toast-top-center'
-        // });
+       
       },
       error: err => {
         this.toastrService.error(this.translateService.instant('ImgMaximumExceed') + " 3MB", '', {

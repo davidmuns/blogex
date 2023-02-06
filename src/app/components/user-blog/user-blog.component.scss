@@ -19,7 +19,6 @@ h2 {
     padding: 25px 0px 15px;
     text-align: center;
     font-size: 2.2rem;
-    background-color: white;
     border-bottom: 2px solid dimgray;
     background-color: silver;
     box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
@@ -143,7 +142,6 @@ button:hover {
     box-shadow: 0px 0px 0px 3px inset var(--lemon);
     background-color: #fbfdf1;
     outline: 3px solid var(--lemon);
-    box-shadow: none;
 }
 
 .no-articles-card {
