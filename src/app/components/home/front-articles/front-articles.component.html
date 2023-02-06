@@ -1,8 +1,5 @@
 <div class="container-articles">
   <h1>{{ 'front-articles.last-articles' | translate }}</h1>
-  <!-- <ng-container *ngFor="let imagen of this.imagenes">
-    <img [src]="imagen.url" alt="">
-  </ng-container> -->
 
   <section class="main-container shadow-lg rounded">
     <article *ngFor="let article of this.articles | slice: numbers1 : numbers2">
@@ -12,20 +9,17 @@
             <h3 style="color: rgba(255, 255, 255);">{{ article.title }}</h3>
           </a>
         </div>
-        <a (click)="onClick(article.id)">
-          <img [src]="article.imagenPortada" alt="{{ article.alt1 }}">
+        <a routerLink="/article/{{ article.id }}" style="cursor: pointer;">
+          <img [src]="article.imagenPortada" alt="{{ article.alt1 }}"
+            title="{{ 'user-blog.goto-article' | translate }}">
         </a>
         <div id="content">
-          <!-- <div class="example-header-image"></div> -->
-          <!-- <mat-icon routerLink="/blog/{{ article.usuario.nombreUsuario }}" style="cursor: pointer;"
-            matTooltip="Blog {{ article.usuario.nombreUsuario }}">perm_identity
-          </mat-icon> -->
-          <p>{{ 'Author' | translate }}: &nbsp;<span routerLink="/blog/{{ article.usuario.nombreUsuario }}">{{ article.usuario.nombreUsuario
+
+          <p>{{ 'Author' | translate }}: &nbsp;<span routerLink="/blog/{{ article.usuario.nombreUsuario }}">{{
+              article.usuario.nombreUsuario
               }}</span></p>
         </div>
-        <!--  <mat-card-actions>
-          <button mat-button (click)="onImgs(article.id)">img</button>
-        </mat-card-actions> -->
+
       </div>
 
     </article>

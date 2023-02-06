@@ -29,7 +29,7 @@
     </mat-form-field>
 
   </div>
-  
+
   <!-- Show this container if there are articles -->
   <div class="container shadow-lg rounded" *ngIf="this.articles.length > 0; else noArticles">
 
@@ -38,12 +38,13 @@
         <mat-card-header style="margin-bottom: 20px;">
 
           <mat-card-title style="color: rgba(255, 255, 255);"><span>{{
-            article?.title }}</span></mat-card-title>
+              article?.title }}</span></mat-card-title>
 
         </mat-card-header>
-        <!-- <a (click)="onOpenGallery(article)" style="cursor: pointer;"> -->
-          <img mat-card-image [src]="article.imagenPortada" alt="Imagen de protada">
-        <!-- </a> -->
+        <a routerLink="/article/{{ article.id }}" style="cursor: pointer;">
+          <img mat-card-image [src]="article.imagenPortada" alt="Imagen de protada"
+            title="{{ 'user-blog.goto-article' | translate }}">
+        </a>
         <mat-card-content>
 
         </mat-card-content>
@@ -53,10 +54,12 @@
             <mat-icon>edit</mat-icon>
           </button>
 
-          <button mat-button matTooltip="{{ 'crud.article-card.video-tool-tip' | translate }}" (click)="onOpenVideosGallery(article)" matTooltip="gallery view">
+          <button mat-button matTooltip="{{ 'crud.article-card.video-tool-tip' | translate }}"
+            (click)="onOpenVideosGallery(article)" matTooltip="gallery view">
             <mat-icon>movie_creation</mat-icon>
           </button>
-          <button mat-button matTooltip="{{ 'crud.article-card.image-tool-tip' | translate }}" (click)="onOpenImagesGallery(article)" matTooltip="gallery view">
+          <button mat-button matTooltip="{{ 'crud.article-card.image-tool-tip' | translate }}"
+            (click)="onOpenImagesGallery(article)" matTooltip="gallery view">
             <mat-icon>image</mat-icon>
           </button>
         </mat-card-actions>
