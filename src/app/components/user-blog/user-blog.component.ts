@@ -1,7 +1,6 @@
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { TranslateService } from '@ngx-translate/core';
 import { UtilsService } from './../../shared/services/utils.service';
-import { ApiWeatherService } from '../../shared/services/apiWeather.service';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
@@ -18,7 +17,7 @@ export class UserBlogComponent implements OnInit {
   orderOptions = [
     { value: 'title', viewValue: this.translateSvc.instant('user-blog.title') },
     { value: 'date', viewValue: this.translateSvc.instant('user-blog.date') },
-  ]; 
+  ];
   navigationExtras: NavigationExtras = {
     state: {
       value: null
@@ -35,7 +34,6 @@ export class UserBlogComponent implements OnInit {
 
   constructor(
     private utilsSvc: UtilsService,
-    private apiWeatherService: ApiWeatherService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly articleSvc: ArticleService,
     private router: Router,
@@ -59,16 +57,10 @@ export class UserBlogComponent implements OnInit {
       if (resp.get('username') !== null) {
         this.username = resp.get('username') as string;
       }
-    })
-    // this.username = this.activatedRoute.snapshot.paramMap.get('username') as string;
+    });
     this.articleSvc.getArticlesByUsername(this.username).subscribe(
       (data: Article[]) => {
         this.articles = this.utilsSvc.sortArticlesBy(data, this.sortBy);
-        if (this.articles.length > 0) {
-          let lon = this.articles[this.pageNumber - 1].longitude;
-          let lat = this.articles[this.pageNumber - 1].latitude;
-          this.getWeather(lat, lon);
-        }
       }
     )
   }
@@ -92,19 +84,7 @@ export class UserBlogComponent implements OnInit {
   onPageChange(event: PageEvent) {
     this.pageSize = event.pageSize;
     this.pageNumber = event.pageIndex + 1;
-    let lon = this.articles[this.pageNumber - 1].longitude;
-    let lat = this.articles[this.pageNumber - 1].latitude;
-    this.getWeather(lat, lon);
   }
-
-  // https://www.youtube.com/watch?v=vpq2FxNzgd4
-  private getWeather(lat: number, lon: number) {
-    this.apiWeatherService.getWeather(lat, lon)
-      .then(resp => resp.json())
-      .then(data => {
-        this.temp = parseInt(data.main.temp);
-      });
-  };
 
   // Store data in a article service variable
   onGoToMap(article: Article) {
@@ -113,7 +93,7 @@ export class UserBlogComponent implements OnInit {
     this.router.navigate(['home']);
   };
 
-  onSortBy(){
+  onSortBy() {
     if (this.isAdmin) {
       this.getAllArticles();
     } else {

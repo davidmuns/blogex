@@ -1,5 +1,5 @@
 <h2>{{ 'BlogOf' | translate }} {{ this.username }}
-  <div id="linkToHome" routerLink="/admin/new">BlogEx.com</div>
+    <div id="linkToHome" routerLink="/admin/new">BlogEx.com</div>
 </h2>
 
 <!-- Title -->
@@ -7,78 +7,78 @@
 
 <!-- Paginator -->
 <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-  aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
 </mat-paginator>
 
 <!-- Search field -->
 <div class="container d-flex" style="max-width: 270px;">
-  <input class="form-control" type="search" placeholder="{{ 'crud.article-card.search' | translate }}"
-    aria-label="Search" [(ngModel)]="this.filterByTitle">
+    <input class="form-control" type="search" placeholder="{{ 'crud.article-card.search' | translate }}"
+        aria-label="Search" [(ngModel)]="this.filterByTitle">
 </div>
 
 <!-- Sort selector -->
 <div class="container" style="display: flex; justify-content: center; margin-top: 20px;">
 
-  <mat-form-field appearance="fill">
-    <mat-label>{{ 'user-blog.sort' | translate }}</mat-label>
-    <mat-select [(ngModel)]="this.sortBy">
-      <a (click)="onSortBy()" style="cursor: pointer; text-decoration: none;">
-        <mat-option>{{ 'user-blog.none' | translate }}</mat-option>
-        <mat-option *ngFor="let order of orderOptions" [value]="order.value">
-          {{ order.viewValue }}
-        </mat-option>
-      </a>
-    </mat-select>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>{{ 'user-blog.sort' | translate }}</mat-label>
+        <mat-select [(ngModel)]="this.sortBy">
+            <a (click)="onSortBy()" style="cursor: pointer; text-decoration: none;">
+                <mat-option>{{ 'user-blog.none' | translate }}</mat-option>
+                <mat-option *ngFor="let order of orderOptions" [value]="order.value">
+                    {{ order.viewValue }}
+                </mat-option>
+            </a>
+        </mat-select>
+    </mat-form-field>
 
 </div>
 
 <!-- Show this container if there are articles -->
 <ng-container *ngIf="this.articles.length; else noArticles">
 
-  <div class="example-card mb-5 animate__animated animate__backInLeft"
-    *ngFor="let article of this.articles |  search:this.filterByTitle | paginate:pageSize:pageNumber"
-    style="width: 90%;">
-    <div class="row g-0">
-      <div class="col-sm-4 col-md-4">
-        <a routerLink="/article/{{ article.id }}" style="cursor: pointer;">
-          <img mat-card-image class="img-fluid rounded-start" [src]="article.imagenPortada" alt="Imagen de protada"
-            title="{{ 'user-blog.goto-article' | translate }}">
-        </a>
-      </div>
-      <div class="col-sm-8 col-md-8">
-        <div class="card-body">
-          <h5 class="card-title mt-2" id="title-post">{{ article.title }}</h5>
-          <button class="m-0 p-2" mat-stroked-button color="accent" id="editAutor"
-            [routerLink]="['/article/', article.id]">
-            <mat-icon>visibility</mat-icon> {{ 'user-blog.see-more' | translate }}
-          </button>
+    <div class="example-card mb-5 animate__animated animate__backInLeft"
+        *ngFor="let article of this.articles |  search:this.filterByTitle | paginate:pageSize:pageNumber"
+        style="width: 90%;">
+        <div class="row g-0">
+            <div class="col-sm-4 col-md-4">
+                <a routerLink="/article/{{ article.id }}" style="cursor: pointer;">
+                    <img mat-card-image class="img-fluid rounded-start" [src]="article.imagenPortada"
+                        alt="Imagen de protada" title="{{ 'user-blog.goto-article' | translate }}">
+                </a>
+            </div>
+            <div class="col-sm-8 col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title mt-2" id="title-post">{{ article.title }}</h5>
+                    <button class="m-0 p-2" mat-stroked-button color="accent" id="editAutor"
+                        [routerLink]="['/article/', article.id]">
+                        <mat-icon>visibility</mat-icon> {{ 'user-blog.see-more' | translate }}
+                    </button>
+                </div>
+                <p class="mx-3">Videos: {{ article.videos.length }}</p>
+                <p class="mx-3">{{ 'images' | translate }}: {{ article.imagenes.length }}</p>
+            </div>
         </div>
-        <p class="mx-3">Videos: {{ article.videos.length }}</p>
-        <p class="mx-3">{{ 'images' | translate }}: {{ article.imagenes.length }}</p>
-      </div>
     </div>
-  </div>
 
 </ng-container>
 
 <!-- Show this container if there are NO articles -->
 <ng-template #noArticles>
-  <div class="no-articles-card">
-    <mat-card-header>
-      <div class="example-header-image"></div>
-      <div id="title-post">No articles</div>
-    </mat-card-header>
-    <div class="imageMarc">
-      <img mat-card-image src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg" alt="">
-
+    <div class="no-articles-card">
+        <mat-card-header>
+            <div class="example-header-image"></div>
+            <div id="title-post">No articles</div>
+        </mat-card-header>
+        <div class="imageMarc">
+            <img mat-card-image src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg"
+                alt="">
+        </div>
     </div>
-  </div>
 </ng-template>
 
 <!-- Paginator -->
 <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-  aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
 </mat-paginator>
 
 <app-footer></app-footer>
