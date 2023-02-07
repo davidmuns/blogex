@@ -70,7 +70,7 @@
   <mat-divider></mat-divider>
 
   <!-- LOGIN BUTTON -->
-  <button mat-menu-item (click)="openDialog()" *ngIf="!this.tokenService.isLogged()">
+  <button mat-menu-item (click)="openLogin()" *ngIf="!this.tokenService.isLogged()">
     <mat-icon>login</mat-icon>
     {{ 'Login' | translate }}
   </button>

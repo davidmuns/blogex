@@ -1,8 +1,8 @@
+import { UtilsService } from './../../../shared/services/utils.service';
 import { Email } from './../../../shared/models/Email';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { Component } from '@angular/core';
 import { EmailPasswordService } from 'src/app/shared/services/email-password.service';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -11,52 +11,39 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './email-password.component.html',
   styleUrls: ['./email-password.component.scss']
 })
-export class EmailPasswordComponent implements OnInit {
+export class EmailPasswordComponent {
 
-  emailForm!: FormGroup;
+  emailForm: FormGroup = this.fb.group({
+    emailTo: ['', Validators.required]
+  })
   emailONombreUsuario!: string;
   emailDto!: Email;
 
   constructor(
+    private utilsSvc: UtilsService,
     private emailPasswordService: EmailPasswordService,
     private readonly dialog: MatDialog,
     private readonly fb: FormBuilder,
-    private toastr: ToastrService,
     private translateService: TranslateService
-  ) { }
-
-  ngOnInit(): void {
-    this.initform();
-  }
-
-  private initform(): void {
-    this.emailForm = this.fb.group({
-      emailTo: ['', Validators.required]
-    })
-  }
+  ) { };
 
   onSubmit(email: Email) {
-    if(this.emailForm.valid){
+    if (this.emailForm.valid) {
       this.sendEmail(email);
-    }else{
-      this.toastr.error(this.translateService.instant('auth.email-send.fill-blanks'), '', {
-        timeOut: 3000, positionClass: 'toast-top-center'
-      });
-    }
-  }
+    } else {
+      const msg = this.translateService.instant('auth.email-send.fill-blanks');
+      this.utilsSvc.showSnackBar(msg, 5000)
+    };
+  };
 
-  private sendEmail(email: Email){
+  private sendEmail(email: Email) {
     this.emailPasswordService.sendEmail(email).subscribe({
       next: data => {
-        this.toastr.success(data.mensaje, '', {
-          timeOut: 5000, positionClass: 'toast-top-center'
-        });
+        this.utilsSvc.showSnackBar(data.mensaje, 5000);
         this.dialog.closeAll();
       },
       error: err => {
-        this.toastr.error(err.error.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
+        this.utilsSvc.showSnackBar(err.error.mensaje, 5000);
       }
     });
   }

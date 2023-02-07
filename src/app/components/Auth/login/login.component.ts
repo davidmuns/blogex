@@ -1,3 +1,4 @@
+import { UtilsService } from './../../../shared/services/utils.service';
 import { EmailPasswordComponent } from 'src/app/components/auth/email-password/email-password.component';
 import { User } from 'src/app/shared/models/user';
 import { TranslateService } from '@ngx-translate/core';
@@ -7,7 +8,6 @@ import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { ToastrService } from 'ngx-toastr';
 import { TokenService } from 'src/app/shared/services/token.service';
 
 @Component({
@@ -21,13 +21,13 @@ export class LoginComponent implements OnInit {
   hide: boolean = true;
 
   constructor(
+    private utilsSvc: UtilsService,
     private readonly dialog: MatDialog,
     private readonly fb: FormBuilder,
     private authSvc: AuthService,
     private tokenService: TokenService,
     private readonly router: Router,
-    private translateService: TranslateService,
-    private toastr: ToastrService
+    private translateService: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -61,53 +61,44 @@ export class LoginComponent implements OnInit {
       this.authSvc.loginUser(login).subscribe({
         next: data => {
           this.tokenService.setToken(data.token);
-          this.toastr.success(`Welcome again ${login.nombreUsuario}!`, '', {
-            timeOut: 3000, positionClass: 'toast-top-center'
-          });
           this.dialog.closeAll();
+          const msg = `Bienvenido de nuevo ${login.nombreUsuario}!`;
+          this.utilsSvc.showSnackBar(msg, 5000);
           this.router.navigate(['admin/new']);
         },
         error: err => {
-          this.toastr.error(this.translateService.instant('auth.login.wrong-data'), '', {
-            timeOut: 3000, positionClass: 'toast-top-center'
-          });
+          const msg = this.translateService.instant('auth.login.wrong-data');
+          this.utilsSvc.showSnackBar(msg, 5000);
           this.loginForm.reset();
         }
       });
     } else {
-      this.toastr.error(this.translateService.instant('auth.login.fill-blanks'), '', {
-        timeOut: 3000, positionClass: 'toast-top-center',
-      });
-    }
-  }
+      const msg = this.translateService.instant('auth.login.fill-blanks');
+      this.utilsSvc.showSnackBar(msg, 5000);
+    };
+  };
 
   onSignup(user: User) {
     if (this.signupForm.valid) {
       this.authSvc.signupUser(user).subscribe({
         next: (data) => {
-          this.toastr.success(data.mensaje, '', {
-            timeOut: 3000, positionClass: 'toast-top-center',
-          });
+          this.utilsSvc.showSnackBar(data.mensaje, 3000);
           this.dialog.closeAll();
           this.dialog.open(LoginComponent);
         },
-
         error: err => {
           let msg = '';
-          if(err.error.mensaje.includes('Email')){
+          if (err.error.mensaje.includes('Email')) {
             msg = this.translateService.instant('auth.signup.email-exists');
           } else {
             msg = this.translateService.instant('auth.signup.username-exists');
           }
-          this.toastr.error(msg, '', {
-            timeOut: 3000, positionClass: 'toast-top-center',
-          });
+          this.utilsSvc.showSnackBar(msg, 3000);
         }
       });
     } else {
-      this.toastr.error(this.translateService.instant('auth.signup.fill-blanks'), '', {
-        timeOut: 3000, positionClass: 'toast-top-center',
-      });
-    }
-  }
-}
+      const msg = this.translateService.instant('auth.signup.fill-blanks');
+      this.utilsSvc.showSnackBar(msg, 3000);
+    };
+  };
+};

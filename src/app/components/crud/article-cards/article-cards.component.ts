@@ -77,7 +77,7 @@ export class ArtcileCardsComponent implements OnInit {
         this.articles = this.utilsSvc.sortArticlesBy(data, this.sortBy);
       },
       error: (err: any) => {
-        console.log(err);
+       this.utilsSvc.showSnackBar(err.error.message, 3000);
       }
     });
   };
@@ -88,7 +88,7 @@ export class ArtcileCardsComponent implements OnInit {
         this.articles = this.utilsSvc.sortArticlesBy(data, this.sortBy);
       },
       error: (err: any) => {
-        console.log(err);
+        this.utilsSvc.showSnackBar(err.error.message, 3000);
       }
     });
   };
