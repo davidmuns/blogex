@@ -1,3 +1,4 @@
+import { UtilsService } from './../../../shared/services/utils.service';
 import { TranslateService } from '@ngx-translate/core';
 import { User } from 'src/app/shared/models/user';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -6,7 +7,6 @@ import { ResetPassword } from './../../../shared/models/reset-password';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-reset-password',
@@ -20,10 +20,10 @@ export class ResetPasswordComponent implements OnInit {
   user!: User | null | undefined;
 
   constructor(
+    private utilsSvc: UtilsService,
     private readonly fb: FormBuilder,
     private emailPasswordService: EmailPasswordService,
     private readonly router: Router,
-    private toastr: ToastrService,
     private activatedRoute: ActivatedRoute,
     private translateService: TranslateService,
     private authService: AuthService
@@ -48,26 +48,23 @@ export class ResetPasswordComponent implements OnInit {
       resetPassword.tokenPassword = this.tokenPassword;
       this.emailPasswordService.resetPassword(resetPassword).subscribe({
         next: data => {
-          this.toastr.success(data.mensaje + ' Redirecting to home...', '', {
-            timeOut: 3000, positionClass: 'toast-top-center'
-          });
+          const msg = data.mensaje + ' Redirigiendo a página de inicio...';
+          this.utilsSvc.showSnackBar(msg, 5000);
           setTimeout(() => { this.router.navigate(['']); }, 3000);
         },
         error: err => {
-          this.toastr.error(this.translateService.instant('auth.reset-pass.no-match'), '', {
-            timeOut: 3000, positionClass: 'toast-top-center'
-          });
+          const msg = this.translateService.instant('auth.reset-pass.no-match');
+          this.utilsSvc.showSnackBar(msg, 5000);
           this.resetForm.reset();
         }
       });
     
     }else {
-      this.toastr.error(this.translateService.instant('auth.reset-pass.fill-blanks'), '', {
-        timeOut: 3000, positionClass: 'toast-top-center',
-      });
-    }
+      const msg = this.translateService.instant('auth.reset-pass.fill-blanks');
+      this.utilsSvc.showSnackBar(msg, 3000);
+    };
 
-  }
+  };
 
   private getUser(tokenPassword: string) {
     this.authService.getUserByTokenPassword(tokenPassword).subscribe({
@@ -75,10 +72,8 @@ export class ResetPasswordComponent implements OnInit {
         this.user = data;
       },
       error: err => {
-        this.toastr.error(err.error.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
+        this.utilsSvc.showSnackBar(err.error.mensaje, 5000);
       }
-    })
-  }
-}
+    });
+  };
+};

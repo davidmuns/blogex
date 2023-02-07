@@ -1,7 +1,6 @@
+import { UtilsService } from './../../../../shared/services/utils.service';
 import { TinyEditorService } from './../../../../shared/services/tiny-editor.service';
 import { environment } from 'src/environments/environment';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { ToastrService } from 'ngx-toastr';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -23,10 +22,10 @@ export class EditComponent implements OnInit {
       this.articleHtml = true;
     } else {
       this.articleHtml = false;
-    }
-  }
+    };
+  };
 
-  // tinymce text editor config avriable
+  // tinymce text editor config variable
   editorConfig: any;
   public editPostForm!: FormGroup;
   public viewForm: any = [1];
@@ -39,10 +38,9 @@ export class EditComponent implements OnInit {
   public innerWidth: any;
 
   constructor(
+    private utilsSvc: UtilsService,
     tinyEditorSvc: TinyEditorService,
-    private toastrService: ToastrService,
     private articleService: ArticleService,
-    private snack: MatSnackBar,
     private readonly fBuilder: FormBuilder,
     private readonly router: Router,
     private translateService: TranslateService) {
@@ -53,31 +51,32 @@ export class EditComponent implements OnInit {
     this.article = navigation?.extras?.state;
     this.reload();
     this.initForm();
-  }
+  };
 
   ngOnInit(): void {
     if (typeof this.article !== 'undefined') {
       this.editPostForm.patchValue(this.article);
     } else {
       this.router.navigate(['admin/new']);
-    }
+    };
 
     this.innerWidth = window.innerWidth;
     if (this.innerWidth > 420) {
       this.articleHtml = true;
     } else {
       this.articleHtml = false;
-    }
-  }
+    };
+  };
+
   //Reload the page to bring more forms
   reload() {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.router.onSameUrlNavigation = 'reload';
-  }
+  };
 
   toNew() {
     this.router.navigate(['admin/new']);
-  }
+  };
 
   private initForm(): void {
     this.editPostForm = this.fBuilder.group({
@@ -88,68 +87,61 @@ export class EditComponent implements OnInit {
       text1: ['', Validators.required],
       longitude: ['', Validators.required],
       latitude: ['', Validators.required]
-    })
-  }
+    });
+  };
 
   onSubmit(post: Article) {
+    let msg = '';
     if (this.editPostForm.valid) {
       if (this.image != undefined) {
         if (this.image.size <= environment.IMG_MAX_SIZE) {
           this.editPost(post.id, post);
           this.uploadImage(this.image);
           this.router.navigate(['article/' + post.id]);
-          this.snack.open("Cover image updated.", "", { duration: 5000 });
+          this.utilsSvc.showSnackBar("Cover image updated", 5000);
         } else {
-          this.snack.open(this.translateService.instant('ImgMaximumExceed') + " 2MB", "", { duration: 5000 });
-        }
+          msg = this.translateService.instant('ImgMaximumExceed') + " 3MB";
+          this.utilsSvc.showSnackBar(msg, 5000);
+        };
       } else {
         this.editPost(post.id, post);
         this.router.navigate(['article/' + post.id]);
-      }
+      };
     } else {
-      this.snack.open(this.translateService.instant('FillBlanks'), "", { duration: 3000 });
-    }
-  }
+      msg = this.translateService.instant('FillBlanks');
+          this.utilsSvc.showSnackBar(msg, 5000);
+    };
+  };
 
   private editPost(id: number, post: Article) {
     if (this.editPostForm.valid) {
       this.articleService.updateArticle(post.id, post).subscribe({
         next: data => {
-          this.toastrService.success(data.mensaje, '', {
-            timeOut: 3000, positionClass: 'toast-top-center',
-          });
+         this.utilsSvc.showSnackBar(data.mensaje, 5000);
         },
         error: err => {
-          this.toastrService.error(err.error.mensaje, '', {
-            timeOut: 3000, positionClass: 'toast-top-center',
-          });
+          this.utilsSvc.showSnackBar(err.error.mensaje, 5000);
         }
-      })
-    }
-  }
+      });
+    };
+  };
 
   private uploadImage(image: File) {
     this.articleService.uploadImage(image).subscribe({
-      next: data => {
-      },
       error: err => {
-        this.toastrService.error(err.error.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
+        this.utilsSvc.showSnackBar(err.error.mensaje, 5000);
       }
-    })
-  }
+    });
+  };
 
   handleImage1(event: any) {
     this.image = event.target.files[0];
     const fr = new FileReader();
     fr.onload = (e: any) => {
       this.miniatura = e.target.result;
-    }
+    };
     if (this.image != null) {
       fr.readAsDataURL(this.image);
-    }
-
-  }
-
-}
+    };
+  };
+};
