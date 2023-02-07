@@ -16,7 +16,6 @@ import { ResetPasswordComponent } from './components/auth/reset-password/reset-p
 
 // Other components
 import { AppComponent } from './app.component';
-import { MapComponent } from './components/map/map.component';
 import { ArticleComponent } from './components/article/article.component';
 import { ArticleGalleryComponent } from './components/article/article-gallery/articleGallery.component';
 import { UserBlogComponent } from './components/user-blog/user-blog.component';
@@ -67,7 +66,6 @@ import { GalleryVideosComponent } from './components/crud/article-cards/gallery-
     HomeComponent,
     HeaderComponent,
     SearchComponent,
-    MapComponent,
     ArticleComponent,
     ArtcileCardsComponent,
     FrontArticlesComponent,
