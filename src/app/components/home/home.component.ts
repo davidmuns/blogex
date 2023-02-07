@@ -1,6 +1,5 @@
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Component, HostListener, AfterViewInit, ViewChild, ElementRef, Renderer2, Input, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
+import { Component, HostListener, AfterViewInit, ViewChild, ElementRef, Renderer2, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Map, marker, MarkerClusterGroup, tileLayer } from 'leaflet';
 import 'leaflet.markercluster';
 import { ArticleService } from './../../shared/services/article.service';
@@ -28,7 +27,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   @HostListener('window: resize', ['$event'])
   onResize(event: any): void {
     this.innerWidth = event.target.innerWidth;
-    this.innerWidth < 500 ? this.hideSection = false : this.hideSection = true;
+    this.hideSection = this.innerWidth < 500 ? false : true;
   }
 
   public catchScroll!: any;
@@ -45,7 +44,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    window.innerWidth < 500 ? this.hideSection = false : this.hideSection = true;
+    this.hideSection = window.innerWidth < 500 ? false : true;
   }
 
   // Rendering map and popups for each item
@@ -79,7 +78,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     this.articleSvc.getAll().subscribe(
       (res: Article[]) => {
-        res.map(point => {
+        res.forEach(point => {
           this.postActual = point;
           marker([point.latitude, point.longitude]).addTo(markers1).bindPopup(`
         <a href="${BASE_URL}article/${point.id}">${point.title}</a>
@@ -105,7 +104,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     this.articleSvc.getAll().subscribe(
       (res: Article[]) => {
-        res.map(point => {
+        res.forEach(point => {
           this.postActual = point;
           marker([point.latitude, point.longitude]).addTo(markers2).bindPopup(`
         <a href="${BASE_URL}article/${point.id}">${point.title}</a>
@@ -130,7 +129,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     this.articleSvc.getAll().subscribe(
       (res: Article[]) => {
-        res.map(point => {
+        res.forEach(point => {
           this.postActual = point;
           marker([point.latitude, point.longitude]).addTo(markers3).bindPopup(`
         <a href="${BASE_URL}article/${point.id}">${point.title}</a>

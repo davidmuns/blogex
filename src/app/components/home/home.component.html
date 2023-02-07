@@ -9,36 +9,9 @@
 </div>
 
 <app-about></app-about>
-<app-front-articles *ngIf="hideSection == true" [numbers1]="0" [numbers2]="4"></app-front-articles>
-<app-front-articles *ngIf="hideSection == true" [numbers1]="4" [numbers2]="12"></app-front-articles>
-<app-front-articles *ngIf="hideSection == false" [numbers1]="0" [numbers2]="8"></app-front-articles>
-<!-- <div id="marge"></div> -->
+<app-front-articles *ngIf="hideSection" [numbers1]="0" [numbers2]="4"></app-front-articles>
+<app-front-articles *ngIf="hideSection" [numbers1]="4" [numbers2]="12"></app-front-articles>
+<app-front-articles *ngIf="!hideSection" [numbers1]="0" [numbers2]="8"></app-front-articles>
+
 <app-footer></app-footer>
-<!-- <h1 style="text-align: center;">ARTICLES</h1>
-<ng-container *ngFor="let imagen of this.imagenes">
-  <img [src]="imagen.url" alt="">
-</ng-container>
 
-<div class="main-container">
-  <div *ngFor="let article of this.articles">
-
-    <mat-card class="example-card">
-      <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{ article.title }}</mat-card-title>
-        <mat-card-subtitle>id {{ article.id }}</mat-card-subtitle>
-      </mat-card-header> -->
-<!-- <a (click)="onClick(article.id)" style="cursor: pointer;">
-        <img mat-card-image [src]="article.imagenPortada" alt="Photo of a Shiba Inu">
-      </a>
-      <mat-card-content>
-        <p>{{ article.title}}</p> -->
-<!-- <p>{{ article.text1 }}</p> -->
-<!-- </mat-card-content>
-      <mat-card-actions>  -->
-<!-- <button mat-button (click)="onImgs(article.id)">img</button> -->
-<!-- </mat-card-actions>
-    </mat-card>
-
-  </div>
-</div> -->
