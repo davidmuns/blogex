@@ -134,6 +134,6 @@
     },
     "article": {
         "exist": "Article with this id does not exist",
-        "close": "close"
+        "close": "Close"
     }
 }

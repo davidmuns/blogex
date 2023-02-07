@@ -1,13 +1,11 @@
+import { UtilsService } from './../../../../shared/services/utils.service';
 import { Video } from './../../../../shared/models/video';
 import { VideoService } from './../../../../shared/services/video.service';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
 import { Article } from 'src/app/shared/models/article';
-import { ArticleService } from 'src/app/shared/services/article.service';
 import { DeleteComponent } from '../../delete/delete.component';
 
 @Component({
@@ -17,36 +15,26 @@ import { DeleteComponent } from '../../delete/delete.component';
 })
 export class GalleryVideosComponent implements OnInit {
 
-  urlForm!: FormGroup;
-  article$!: Observable<Article>;
-  username!: string;
-  playerVars = {
-    cc_lang_pref: 'es'
-  }
+  urlForm = this.fb.group({ url: ['', Validators.required] });
+  article = this.data.article;
+  articleId = this.article.id;
+  playerVars = { controls: 1 };
   youtubeId = '';
   videos: Video[] = [];
   video!: Video;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article },
+    private utilsSvc: UtilsService,
     public videoSvc: VideoService,
     private readonly fb: FormBuilder,
     private readonly dialog: MatDialog,
-    private snack: MatSnackBar,
-    private articleSvc: ArticleService,
-    private translateService: TranslateService) { }
+    private translateService: TranslateService) { };
 
   ngOnInit() {
-    this.initform();
     this.getVideos();
-    this.getArticle();
-  }
+  };
 
-  private initform(): void {
-    this.urlForm = this.fb.group({
-      url: ['', Validators.required]
-    })
-  }
   onSubmit(data: any) {
     const isValidUrl = this.videoSvc.isValidUrl(data.url);
     if (isValidUrl) {
@@ -54,40 +42,36 @@ export class GalleryVideosComponent implements OnInit {
       this.newVideo();
       this.getVideos();
     } else {
-      this.snack.open(this.translateService.instant('crud.list-videos.invalid-url'), "", { duration: 5000 });
+      const msg = this.translateService.instant('crud.list-videos.invalid-url');
+      this.utilsSvc.showSnackBar(msg, 3000);
     }
-  }
-
-  private getArticle() {
-    this.article$ = this.articleSvc.getArticle(this.data.article.id);
-  }
+  };
 
   private getVideos() {
-    this.videoSvc.getAllbyArticleId(this.data.article.id).subscribe({
+    this.videoSvc.getAllbyArticleId(this.articleId).subscribe({
       next: (data: Video[]) => {
         this.videos = data;
       },
       error: err => {
-        console.log(err);
+        this.utilsSvc.showSnackBar(err.error.message, 3000);
       }
     })
-  }
+  };
 
   private newVideo() {
-    this.video = { youtubeId: this.youtubeId, article: this.data.article }
+    this.video = { youtubeId: this.youtubeId, article: this.article }
     this.videoSvc.save(this.video).subscribe({
       next: data => {
-        console.log(data);
-        this.snack.open(this.translateService.instant('crud.list-videos.posted'), "", { duration: 5000 });
+        const msg = this.translateService.instant('crud.list-videos.posted');
+        this.utilsSvc.showSnackBar(msg, 3000);
       },
       error: err => {
-        console.log(err);
+        this.utilsSvc.showSnackBar(err.error.message, 3000);
       }
     })
-  }
+  };
 
   onDelete(id: number | undefined) {
-    this.dialog.open(DeleteComponent, { data: { videoId: id, article: this.data.article, option: "deleteVideo" } });
-  }
-
-}
+    this.dialog.open(DeleteComponent, { data: { videoId: id, article: this.article, option: "deleteVideo" } });
+  };
+};

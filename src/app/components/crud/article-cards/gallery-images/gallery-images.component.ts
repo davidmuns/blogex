@@ -1,16 +1,18 @@
-import { CaptionComponent } from './../../../../shared/caption/caption.component';
-import { Observable } from 'rxjs';
+// Services
+import { UtilsService } from './../../../../shared/services/utils.service';
+import { ArticleService } from 'src/app/shared/services/article.service';
 import { TranslateService } from '@ngx-translate/core';
-import { environment } from 'src/environments/environment';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+// Components
+import { CaptionComponent } from './../../../../shared/caption/caption.component';
 import { DeleteComponent } from 'src/app/components/crud/delete/delete.component';
+// Angular
+import { environment } from 'src/environments/environment';
+import { Component, Inject, OnInit } from '@angular/core';
+// Material
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+// Models
 import { Imagen } from 'src/app/shared/models/imagen';
 import { Article } from 'src/app/shared/models/article';
-import { ArticleService } from 'src/app/shared/services/article.service';
 
 @Component({
   selector: 'app-gallery-images',
@@ -21,7 +23,8 @@ export class GalleryImagesComponent implements OnInit {
 
   imagesByArticleId: Imagen[] = [];
   articles: Article[] = [];
-  article$!: Observable<Article>;
+  article = this.data.article;
+  articleId = this.article.id;
   imagenes: Imagen[] = [];
   image!: File;
   miniatura!: Imagen;
@@ -29,71 +32,62 @@ export class GalleryImagesComponent implements OnInit {
  
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article },
+    private utilsSvc: UtilsService,
     private readonly dialog: MatDialog,
-    private snack: MatSnackBar,
     private articleSvc: ArticleService,
-    private toastrService: ToastrService,
-    private translateService: TranslateService,
-    private router: Router) { }
+    private translateService: TranslateService) { }
 
   ngOnInit() {
-    this.getImgsByArticleId(this.data.article.id);
-    this.getArticle();
-  }
-
-  private getArticle() {
-    this.article$ = this.articleSvc.getArticle(this.data.article.id); 
-  }
+    this.getImgsByArticleId(this.articleId);
+  };
 
   private getImgsByArticleId(id: number) {
     this.articleSvc.getImagesByArticleId(id).subscribe({
       next: (data: Imagen[]) => {
         data.forEach(img => {
           this.imagenes.push(img);
-        })
+        });
       },
       error: err => {
-        console.log(err);
+        this.utilsSvc.showSnackBar(err.error.message, 5000);
       }
-    })
-  }
+    });
+  };
 
   onUpload() {
     if (this.image != undefined) {
       if (this.image.size < environment.IMG_MAX_SIZE) {
         this.addImage(this.image, this.data.article.id);
       } else {
-        this.snack.open(this.translateService.instant('ImgMaximumExceed') + " 3MB", "", { duration: 5000 });
+        const msg = this.translateService.instant('ImgMaximumExceed') + " 3MB";
+        this.utilsSvc.showSnackBar(msg, 5000);
       }
     } else {
-      this.snack.open(this.translateService.instant('PleaseSelectImage'), "", { duration: 5000 });
-    }
-  }
+      const msg = this.translateService.instant('PleaseSelectImage');
+      this.utilsSvc.showSnackBar(msg, 5000);
+    };
+  };
   
   private addImage(image: File, articleId: number) {
     this.articleSvc.addImageToArticle(image, articleId).subscribe({
       next: data => {
-        this.toastrService.success(data.mensaje, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
+        this.utilsSvc.showSnackBar(data.mensaje, 3000);
         this.imagenes = [];
         this.getImgsByArticleId(this.data.article.id);
       },
       error: err => {
-        this.toastrService.error(err, '', {
-          timeOut: 3000, positionClass: 'toast-top-center'
-        });
+        this.utilsSvc.showSnackBar(err.error.message, 5000);
       }
-    })
-  }
+    });
+  };
 
   onDeleteImage(id: string){
-    this.dialog.open(DeleteComponent, {data: {imgId: id, article: this.data.article, option: "deleteImage"}});
-  }
+    this.dialog.open(DeleteComponent, {data: {imgId: id, article: this.article, option: "deleteImage"}});
+  };
 
   onCaption(id: string) {
     this.dialog.open(CaptionComponent, { data: { imgId: id } });
-  }
+  };
 
   handleImage(event: any) {
     this.image = event.target.files[0];
@@ -103,8 +97,6 @@ export class GalleryImagesComponent implements OnInit {
     }
     if(this.image != null){
       fr.readAsDataURL(this.image);
-    }
-    
-  }
-
-}
+    }   
+  };
+};

@@ -133,6 +133,6 @@
     },
     "article": {
         "exist": "Article amb aquest id no existeix",
-        "close": "tancar"
+        "close": "Tancar"
     }
 }
