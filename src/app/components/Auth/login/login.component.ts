@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
         },
         error: err => {
           const msg = this.translateService.instant('auth.login.wrong-data');
-          this.utilsSvc.showSnackBar(msg, 5000);
+          this.utilsSvc.showSnackBar(msg, 10000);
           this.loginForm.reset();
         }
       });
@@ -79,15 +79,16 @@ export class LoginComponent implements OnInit {
   };
 
   onSignup(user: User) {
+    let msg = '';
     if (this.signupForm.valid) {
       this.authSvc.signupUser(user).subscribe({
         next: (data) => {
-          this.utilsSvc.showSnackBar(data.mensaje, 3000);
           this.dialog.closeAll();
           this.dialog.open(LoginComponent);
+          msg = this.translateService.instant('auth.login.user-saved');
+          this.utilsSvc.showSnackBar(msg, 10000);
         },
         error: err => {
-          let msg = '';
           if (err.error.mensaje.includes('Email')) {
             msg = this.translateService.instant('auth.signup.email-exists');
           } else {

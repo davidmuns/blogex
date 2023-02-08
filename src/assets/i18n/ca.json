@@ -78,7 +78,8 @@
     "auth": {
         "login": {
             "fill-blanks": "Si us plau, omple els camps buits",
-            "wrong-data": "No reconeixem el nom d´usuari o la contrasenya"
+            "wrong-data": "No reconeixem el nom d´usuari, el correu electrònic o la contrasenya. Si us plau, comprova que les teves dades són correctes o registra't primer si encara no tens un compte.",
+            "user-saved": "Usuari registrat amb èxit. Si us plau, introdueix les teves dades per iniciar sessió."
         },
         "signup": {
             "fill-blanks": "Si us plau, omple els camps buits",

@@ -2,7 +2,7 @@
     <div class="login">
         <mat-tab-group mat-align-tabs="start" animationDuration="500ms">
             <!-- LOGIN TAB -->
-            <mat-tab label="{{ 'Login' | translate | uppercase }}">
+            <mat-tab class="custom-tab-label" label="{{ 'Login' | translate | uppercase }}">
                 <form [formGroup]="this.loginForm" (ngSubmit)="onLogin(loginForm.value)">
                     <img src="../../../../assets/img/user.png" alt="user-image" style="margin-top: 20px;">
                     <br><br>
@@ -37,7 +37,7 @@
                 </form>
             </mat-tab>
             <!-- SIGNUP TAB -->
-            <mat-tab label="{{ 'Signup' | translate | uppercase }}">
+            <mat-tab class="custom-tab-label" label="{{ 'Signup' | translate | uppercase }}">
                 <form [formGroup]="this.signupForm" (ngSubmit)="onSignup(signupForm.value)">
                     <img src="../../../../assets/img/user.png" alt="user-image" style="margin-top: 20px;">
                     <br><br>

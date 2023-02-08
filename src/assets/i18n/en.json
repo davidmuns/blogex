@@ -79,7 +79,8 @@
     "auth": {
         "login": {
             "fill-blanks": "Please fill in the blanks",
-            "wrong-data": "We do not recognize de user or password"
+            "wrong-data": "We do not recognize de user, email or password. Please, check that your details are correct or singup first if you do not have an account yet.",
+            "user-saved": "User successfully registered. Please enter your login details."
         },
         "signup": {
             "fill-blanks": "Please fill in the blanks",
