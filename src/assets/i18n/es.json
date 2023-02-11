@@ -137,7 +137,8 @@
         "account": "cuenta",
         "confirm":"¿Estás seguro de querer continuar? Si le das a aceptar eliminarás todas tus publicaciones, fotos y vídeos.",
         "insert-username": "Por favor, introduce tu nombre de usuario para cancelar la cuenta:",
-        "wrong-username": "Lo sentimos pero no reconocemos el nombre de usuario."
+        "wrong-username": "Lo sentimos pero no reconocemos el nombre de usuario.",
+        "canceled": "ha sido cancelada"
     },
     "article": {
         "exist": "Artículo con este id no existe",

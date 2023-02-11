@@ -74,22 +74,26 @@ export class DeleteComponent {
     })
   };
 
-  onDeleteAccount() {   
+  onDeleteAccount() {
+    // Open dialog window before deleting
     const confirm = window.confirm(this.translateSvc.instant('delete.confirm'));
     let username: any;
     
+    // Open new dialog window to get the username introduced by user
     if (confirm) username = window.prompt(this.translateSvc.instant('delete.insert-username'));
-       
+    
+    // Show snackbar in case of confirmation and the user name does not match and the user has not canceled
     if (confirm && username != this.username && username != null) {
       const msg = this.translateSvc.instant('delete.wrong-username')
-      this.utisSvc.showSnackBar(msg, 3000);
+      this.utisSvc.showSnackBar(msg, 5000);
     };
 
+    // Delete account in case the username of the session is the same as the user name entered by the user.
     if (username === this.username) {
       this.authSvc.deleteAccount(this.username).subscribe({
         next: resp => {
           this.tokenSvc.logOut();
-          const msg = `Usuario ${username} eliminado`;
+          const msg = this.translateSvc.instant('delete.account') + ` "${ username }" ` + this.translateSvc.instant('delete.canceled');
           this.utisSvc.showSnackBar(msg, 5000);
         },
         error: err => {
