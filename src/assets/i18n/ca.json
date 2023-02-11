@@ -133,11 +133,11 @@
         "address": "Adreça de correu electrònic"
     },
     "delete": {
-        "account": "compte",
+        "account": "comte",
         "confirm":"Estàs segur de voler continuar? Si li dones a acceptar eliminaràs totes les teves publicacions, fotos i vídeos.",
-        "insert-username": "Si us plau, Introdueix el teu nom d'usuari per cancel·lar el compte:",
+        "insert-username": "Si us plau, introdueix el teu nom d'usuari per cancel·lar el compte:",
         "wrong-username": "Ho sentim, però no reconeixem el nom d'usuari.",
-        "canceled": "ha estat cancelada"
+        "canceled": "ha estat cancel·lat"
     },
     "article": {
         "exist": "Article amb aquest id no existeix",
