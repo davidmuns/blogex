@@ -70,7 +70,10 @@
     "PleaseSelectImage": "Por favor selecciona una imagen",
     "header": {
         "articles-editor": "Editor de artículos",
-        "my-articles": "Mis artículos"
+        "my-articles": "Mis artículos",
+        "spanish": "Castellano",
+        "catalan": "Catalán",
+        "english": "Inglés"
     },
     "about": {
         "title": "Descubre lugares del mundo",
@@ -131,7 +134,10 @@
         "address": "Dirección de correo electrónico"
     },
     "delete": {
-        "account": "cuenta"
+        "account": "cuenta",
+        "confirm":"¿Estás seguro de querer continuar? Si le das a aceptar eliminarás todas tus publicaciones, fotos y vídeos.",
+        "insert-username": "Por favor, introduce tu nombre de usuario para cancelar la cuenta:",
+        "wrong-username": "Lo sentimos pero no reconocemos el nombre de usuario."
     },
     "article": {
         "exist": "Artículo con este id no existe",

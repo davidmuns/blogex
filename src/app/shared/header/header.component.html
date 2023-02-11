@@ -51,21 +51,24 @@
   <!-- LANGUAGE BUTTON -->
   <button mat-menu-item (click)="onSwitchLang('ca')">
     <mat-icon>language</mat-icon>
-    <img [src]="this.urlFlags.catalonia" alt="catalan-flag" title="català" width="25" height="25">&nbsp;&nbsp;&nbsp;Català
+    <img [src]="this.urlFlags.catalonia" alt="catalan-flag" title="català" width="25" height="25">
+    {{ 'header.catalan' | translate }}
   </button>
   <mat-divider></mat-divider>
 
   <!-- LANGUAGE BUTTON -->
   <button mat-menu-item (click)="onSwitchLang('es')">
     <mat-icon>language</mat-icon>
-    <img [src]="this.urlFlags.spain" alt="catalan-flag" title="català" width="20" height="20">&nbsp;&nbsp;&nbsp;Castellano
+    <img [src]="this.urlFlags.spain" alt="catalan-flag" title="català" width="20" height="20">
+    {{ 'header.spanish' | translate }}
   </button>
   <mat-divider></mat-divider>
 
   <!-- LANGUAGE BUTTON -->
   <button mat-menu-item (click)="onSwitchLang('en')">
     <mat-icon>language</mat-icon>
-    <img [src]="this.urlFlags.england" alt="catalan-flag" title="català" width="25" height="25">&nbsp;&nbsp;&nbsp;English
+    <img [src]="this.urlFlags.england" alt="catalan-flag" title="català" width="25" height="25">
+    {{ 'header.english' | translate }}
   </button>
   <mat-divider></mat-divider>
 

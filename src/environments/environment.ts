@@ -6,7 +6,7 @@ export const environment = {
   production: true,
   users: "",
   // FRONT_BASE_URL: 'http://localhost:4200/',
-  // BASE_URL: 'http://localhost:8080/',
+  // BACKEND_BASE_URL: 'http://localhost:8080/',
   FRONT_BASE_URL: 'https://blogex.netlify.app/',
   BACKEND_BASE_URL: 'https://blogexapp.herokuapp.com/',
   AUTHORIZATION: 'Authorization',
@@ -21,4 +21,3 @@ export const environment = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/plugins/zone-error';  // Included with Angular CLI.

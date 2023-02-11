@@ -69,7 +69,10 @@
     "PleaseSelectImage": "Si us plau selecciona una imatge",
     "header": {
         "articles-editor": "Editor d´articles",
-        "my-articles": "Els meus articles"
+        "my-articles": "Els meus articles",
+        "spanish": "Castellà",
+        "catalan": "Català",
+        "english": "Anglès"
     },
     "about": {
         "title": "Descobreix llocs del món",
@@ -130,7 +133,10 @@
         "address": "Adreça de correu electrònic"
     },
     "delete": {
-        "account": "compte"
+        "account": "compte",
+        "confirm":"Estàs segur de voler continuar? Si li dones a acceptar eliminaràs totes les teves publicacions, fotos i vídeos.",
+        "insert-username": "Si us plau, Introdueix el teu nom d'usuari per cancel·lar el compte:",
+        "wrong-username": "Ho sentim, però no reconeixem el nom d'usuari."
     },
     "article": {
         "exist": "Article amb aquest id no existeix",

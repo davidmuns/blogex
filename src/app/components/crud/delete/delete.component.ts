@@ -4,6 +4,7 @@ import { TokenService } from './../../../shared/services/token.service';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { VideoService } from './../../../shared/services/video.service';
 import { UtilsService } from './../../../shared/services/utils.service';
+import { TranslateService } from '@ngx-translate/core';
 // Components
 import { GalleryImagesComponent } from '../article-cards/gallery-images/gallery-images.component';
 import { GalleryVideosComponent } from '../article-cards/gallery-videos/gallery-videos.component';
@@ -23,6 +24,7 @@ import { Article } from 'src/app/shared/models/article';
 export class DeleteComponent {
 
   durationInSeconds = 5;
+  username: string = this.tokenSvc.getUsername() as string;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article, imgId: string, videoId: number, option: string },
@@ -32,7 +34,8 @@ export class DeleteComponent {
     private readonly dialog: MatDialog,
     private readonly articleSvc: ArticleService,
     private videoSvc: VideoService,
-    private readonly router: Router
+    private readonly router: Router,
+    private translateSvc: TranslateService
   ) { }
 
   onDeleteArticle() {
@@ -71,19 +74,30 @@ export class DeleteComponent {
     })
   };
 
-  onDeleteAccount() {
-    const username: string = this.tokenSvc.getUsername() as string;
-    this.authSvc.deleteAccount(username).subscribe({
-      next: resp => {
-        this.dialog.closeAll();
-        this.tokenSvc.logOut();
-        const msg = `Usuario ${username} eliminado`;
-        this.utisSvc.showSnackBar(msg, 5000);
-      },
-      error: err => {
-        this.utisSvc.showSnackBar(err.error.message, 5000);
-      }
-    });
+  onDeleteAccount() {   
+    const confirm = window.confirm(this.translateSvc.instant('delete.confirm'));
+    let username: any;
+    
+    if (confirm) username = window.prompt(this.translateSvc.instant('delete.insert-username'));
+       
+    if (confirm && username != this.username && username != null) {
+      const msg = this.translateSvc.instant('delete.wrong-username')
+      this.utisSvc.showSnackBar(msg, 3000);
+    };
+
+    if (username === this.username) {
+      this.authSvc.deleteAccount(this.username).subscribe({
+        next: resp => {
+          this.tokenSvc.logOut();
+          const msg = `Usuario ${username} eliminado`;
+          this.utisSvc.showSnackBar(msg, 5000);
+        },
+        error: err => {
+          this.utisSvc.showSnackBar(err.error.message, 5000);
+        }
+      });
+    };
+    this.dialog.closeAll();
   };
 
   redirectTo(uri: string) {
