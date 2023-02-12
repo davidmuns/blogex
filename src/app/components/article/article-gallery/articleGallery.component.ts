@@ -28,12 +28,11 @@ export class ArticleGalleryComponent {
   }
 
   showGallery() {
-    this.getImgsByArticleId(this.articleId);
-    let articleId: any = this.articleId;
-    this.getVideosByArticleId(articleId);
+    this.getImgsByArticleId(this.articleId as number);
+    this.getVideosByArticleId(this.articleId as number);
   }
 
-  private getImgsByArticleId(id: number | undefined) {
+  private getImgsByArticleId(id: number) {
     this.imagenes$ = this.articleSvc.getImagesByArticleId(id);
   }
 
