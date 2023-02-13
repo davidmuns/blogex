@@ -86,13 +86,6 @@ export class UserBlogComponent implements OnInit {
     this.pageNumber = event.pageIndex + 1;
   }
 
-  // Store data in a article service variable
-  onGoToMap(article: Article) {
-    this.articleSvc.data = article;
-    this.articleSvc.focusArticleOnMap = true;
-    this.router.navigate(['home']);
-  };
-
   onSortBy() {
     if (this.isAdmin) {
       this.getAllArticles();
