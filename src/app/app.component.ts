@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { filter } from 'rxjs';
 import { slider } from './route-animations';
+declare let gtag: any;
 
 @Component({
   selector: 'app-root',
@@ -11,6 +13,21 @@ import { slider } from './route-animations';
 })
 export class AppComponent {
   title = 'blogex';
+
+  constructor(router: Router){
+    // https://youtu.be/Q2RTJxhBLkQ
+    // Google analytics
+    const navEndEvents$ = router.events
+    .pipe(
+      filter(event => event instanceof NavigationEnd)
+    );
+
+    navEndEvents$.subscribe((event: any) => {
+      gtag('config', 'G-36QJW1606N', {
+        'page-path': event.urlAfterRedirects
+      });
+    });
+  }
 
   onActivate(){
     window.scroll(0, 0);
