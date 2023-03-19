@@ -71,7 +71,7 @@
 				<!-- CAROUSEL -->
 				<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
 					<div class="carousel-inner">
-						<div class="carousel-item" data-bs-interval="90000"
+						<div class="carousel-item"  data-bs-interval="2000"
 							*ngFor="let imagen of (this.imagenes$ | async); index as i; count as items"
 							[ngClass]="{'active': i == this.indice, '': i != this.indice}">
 							<img [src]="imagen.url" class="d-block w-100" alt="...">
