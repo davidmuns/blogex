@@ -7,13 +7,14 @@ import { TokenService } from './../services/token.service';
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent  {
+export class HeaderComponent {
 
   urlFlags = {
     catalonia: 'https://wallpapercave.com/wp/wp2240009.png',
@@ -37,9 +38,9 @@ export class HeaderComponent  {
   openLogin() {
     this.dialog.open(LoginComponent);
   }
-  
+
   onLogout() {
-    const msg = `Hasta pronto ${ this.tokenService.getUsername() }!!`;
+    const msg = `Hasta pronto ${this.tokenService.getUsername()}!!`;
     this.utilsSvc.showSnackBar(msg, 5000);
     this.tokenService.logOut();
   }
@@ -53,8 +54,12 @@ export class HeaderComponent  {
     this.tinyEditorSvc.setLanguageInEditorConfig(lang);
   }
 
-  onHome(){
+  onHome() {
     this.router.navigate(['home']);
   }
 
+  // https://www.concretepage.com/angular-material/angular-material-open-menu-on-hover
+  openMenu(menuTrigger: MatMenuTrigger) {
+    menuTrigger.openMenu();
+  }
 }

@@ -2,19 +2,21 @@
 
   <mat-toolbar-row class="toolbar">
     <img class="logo" src="../../../assets/img/logo-blogex.jpg" alt="" (click)="onHome()">
-  
+
     <app-search></app-search>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="!this.tokenService.isLogged(); else logged">
+    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"
+      (mouseover)="openMenu(menuTrigger)" *ngIf="!this.tokenService.isLogged(); else logged">
       <mat-icon>menu</mat-icon>
     </button>
 
     <ng-template #logged>
       <div>
-        <a class="logout" [matMenuTriggerFor]="menu">{{ this.tokenService.getUsername() }}</a>
-      </div>   
+        <a class="logout" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"
+        (mouseover)="openMenu(menuTrigger)">{{ this.tokenService.getUsername() }}</a>
+      </div>
     </ng-template>
-    
+
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -84,7 +86,7 @@
     {{ 'Logout' | translate }}
   </button>
   <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
-  
+
   <!-- FAKE BUTTON -->
   <button mat-menu-item *ngIf="this.tokenService.isLogged()"></button>
   <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
