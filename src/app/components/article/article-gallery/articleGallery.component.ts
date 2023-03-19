@@ -3,14 +3,15 @@ import { VideoService } from './../../../shared/services/video.service';
 import { Observable } from 'rxjs';
 import { Imagen } from './../../../shared/models/imagen';
 import { ArticleService } from './../../../shared/services/article.service';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-articleGallery',
   templateUrl: './articleGallery.component.html',
   styleUrls: ['./articleGallery.component.scss']
 })
-export class ArticleGalleryComponent {
+export class ArticleGalleryComponent implements OnInit {
   @Input('articleId') articleId!: number | undefined;
   imagenes$!: Observable<Imagen[]>;
   indice!: number;
@@ -22,6 +23,10 @@ export class ArticleGalleryComponent {
   constructor(
     private articleSvc: ArticleService,
     private videoSvc: VideoService) { }
+
+  ngOnInit(): void {
+    AOS.init();
+  }
 
   getIndex(index: number) {
     this.indice = index;

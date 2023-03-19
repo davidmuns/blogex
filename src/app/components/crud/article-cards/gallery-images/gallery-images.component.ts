@@ -13,6 +13,8 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 // Models
 import { Imagen } from 'src/app/shared/models/imagen';
 import { Article } from 'src/app/shared/models/article';
+// Animate on scroll library => https://michalsnik.github.io/aos/
+import AOS from 'aos';
 
 @Component({
   selector: 'app-gallery-images',
@@ -38,6 +40,7 @@ export class GalleryImagesComponent implements OnInit {
     private translateService: TranslateService) { }
 
   ngOnInit() {
+    AOS.init();
     this.getImgsByArticleId(this.articleId);
   };
 

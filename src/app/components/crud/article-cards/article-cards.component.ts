@@ -15,6 +15,8 @@ import { Router, NavigationExtras } from '@angular/router';
 // Components 
 import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
 import { GalleryVideosComponent } from './gallery-videos/gallery-videos.component';
+// Animate on scroll library => https://michalsnik.github.io/aos/
+import AOS from 'aos';
 
 
 @Component({
@@ -56,6 +58,7 @@ export class ArtcileCardsComponent implements OnInit {
     private router: Router) { };
 
   ngOnInit(): void {
+    AOS.init();
     this.username = this.tokenService.getUsername() as string;
     this.isAdmin = this.tokenService.isAdmin();
     if (this.isAdmin) {

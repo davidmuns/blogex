@@ -36,7 +36,7 @@
 <!-- Show this container if there are articles -->
 <ng-container *ngIf="this.articles.length; else noArticles">
 
-    <div class="example-card mb-5 animate__animated animate__backInLeft"
+    <div class="example-card mb-5" data-aos="fade-up" data-aos-duration="1000"
         *ngFor="let article of this.articles |  search:this.filterByTitle | paginate:pageSize:pageNumber"
         style="width: 90%;">
         <div class="row g-0">
@@ -64,7 +64,7 @@
 
 <!-- Show this container if there are NO articles -->
 <ng-template #noArticles>
-    <div class="no-articles-card">
+    <div class="no-articles-card" data-aos="fade-up" data-aos-duration="3000">
         <mat-card-header>
             <div class="example-header-image"></div>
             <div id="title-post">No articles</div>

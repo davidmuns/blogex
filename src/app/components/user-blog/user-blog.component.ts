@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-user-articles',
@@ -42,6 +43,7 @@ export class UserBlogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    AOS.init();
     this.username = this.tokenSvc.getUsername() as string;
     this.isAdmin = this.tokenSvc.isAdmin();
     if (this.isAdmin) {

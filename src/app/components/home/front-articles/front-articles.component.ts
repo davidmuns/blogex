@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Imagen } from './../../../shared/models/imagen';
 import { Article } from 'src/app/shared/models/article';
 import { Router } from '@angular/router';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-front-articles',
@@ -27,7 +28,7 @@ export class FrontArticlesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getArticles();
-   
+    AOS.init();
   }
 
   private getArticles() {

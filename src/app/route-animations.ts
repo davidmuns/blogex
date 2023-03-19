@@ -13,10 +13,8 @@ const side2: string = 'left';
 
 export const slider: AnimationTriggerMetadata =
     trigger('routeAnimations', [
-
         transition('blog => article', slideTo(side1)),
-        transition('article => blog', slideTo(side2)),
-
+        transition('article => blog', slideTo(side2))
     ]);
 
 function slideTo(direction: string) {

@@ -15,7 +15,7 @@
 <!-- IMAGES & VIDEOS-->
 <div class="main-container">
 
-	<div *ngFor="let video of (this.videos$ | async); let i = index">
+	<div *ngFor="let video of (this.videos$ | async); let i = index" data-aos="fade-up" data-aos-duration="1000">
 
 		<!-- https://animate.style/ -->
 		<mat-card class="example-card animate__animated animate__zoomIn"
@@ -34,10 +34,33 @@
 
 	</div>
 
-	<div *ngFor="let imagen of (this.imagenes$ | async); let i = index">
+	<!-- <div *ngFor="let imagen of (this.imagenes$ | async); let i = index">
 
-		<!-- https://animate.style/ -->
+		https://animate.style/
 		<mat-card class="example-card animate__animated animate__zoomIn"
+			style="background-color: rgba(255, 255, 255, 0.09);">
+			<mat-card-header>
+				
+			</mat-card-header>
+			<a type="button" matTooltip="Preview" matTooltipPosition="above" data-bs-toggle="modal"
+				data-bs-target="#exampleModal" style="cursor: pointer;" (click)="getIndex(i)">
+				<img mat-card-image [src]="imagen.url" alt="">
+			</a>
+
+			<mat-card-content>
+				
+				<p style="color: white;">{{ imagen.caption }}</p>
+			</mat-card-content>
+			<mat-card-actions align="start">
+				
+			</mat-card-actions>
+		</mat-card>
+
+	</div> -->
+
+	<div *ngFor="let imagen of (this.imagenes$ | async); let i = index" data-aos="fade-up" data-aos-duration="1000">
+
+		<mat-card class="example-card"
 			style="background-color: rgba(255, 255, 255, 0.09);">
 			<mat-card-header>
 				
