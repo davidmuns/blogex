@@ -15,10 +15,12 @@
 <!-- IMAGES & VIDEOS-->
 <div class="main-container">
 
-	<div *ngFor="let video of (this.videos$ | async); let i = index" data-aos="fade-up" data-aos-duration="1000">
+	<!-- VIDEOS -->
+	<div *ngFor="let video of (this.videos$ | async); let i = index"
+		[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
 
 		<!-- https://animate.style/ -->
-		<mat-card class="example-card animate__animated animate__zoomIn">
+		<mat-card class="example-card">
 			<mat-card-header>
 
 			</mat-card-header>
@@ -33,11 +35,13 @@
 
 	</div>
 
-	<div *ngFor="let imagen of (this.imagenes$ | async); let i = index" data-aos="fade-up" data-aos-duration="1000">
+	<!-- IMAGES -->
+	<div *ngFor="let imagen of (this.imagenes$ | async); let i = index"
+		[attr.data-aos]="i % 2 === 0 ? 'fade-left' : 'fade-right'" data-aos-duration="1500">
 
 		<mat-card class="example-card">
 			<mat-card-header>
-				
+
 			</mat-card-header>
 			<a type="button" matTooltip="Preview" matTooltipPosition="above" data-bs-toggle="modal"
 				data-bs-target="#exampleModal" style="cursor: pointer;" (click)="getIndex(i)">
@@ -45,11 +49,11 @@
 			</a>
 
 			<mat-card-content>
-				
+
 				<p style="color: white;">{{ imagen.caption }}</p>
 			</mat-card-content>
 			<mat-card-actions align="start">
-				
+
 			</mat-card-actions>
 		</mat-card>
 
@@ -71,7 +75,7 @@
 				<!-- CAROUSEL -->
 				<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
 					<div class="carousel-inner">
-						<div class="carousel-item"  data-bs-interval="2000"
+						<div class="carousel-item" data-bs-interval="2000"
 							*ngFor="let imagen of (this.imagenes$ | async); index as i; count as items"
 							[ngClass]="{'active': i == this.indice, '': i != this.indice}">
 							<img [src]="imagen.url" class="d-block w-100" alt="...">

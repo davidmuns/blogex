@@ -36,8 +36,8 @@
 <!-- Show this container if there are articles -->
 <ng-container *ngIf="this.articles.length; else noArticles">
 
-    <div class="example-card mb-5" data-aos="fade-up" data-aos-duration="1000"
-        *ngFor="let article of this.articles |  search:this.filterByTitle | paginate:pageSize:pageNumber"
+    <div class="example-card mb-5" data-aos="fade-up" data-aos-duration="1500" 
+        *ngFor="let article of this.articles  |  search:this.filterByTitle | paginate:pageSize:pageNumber; index as i"
         style="width: 90%;">
         <div class="row g-0">
             <div class="col-sm-4 col-md-4">

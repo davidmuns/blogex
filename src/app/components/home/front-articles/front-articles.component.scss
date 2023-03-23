@@ -100,10 +100,16 @@ h1 {
 }
 
 // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
+// https://www.youtube.com/watch?v=Ur1KWMoFZrs
 .main-container {
     padding: 20px;
     max-width: 1300px;
-    background-color: white;
+    // background-color: white;
+    background-image: linear-gradient(rgba(2, 7, 12, 0.1), rgba(2, 7, 12, 0.1)), url('../../../../assets/img/wallhaven-kx98xd.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
     margin: 0px auto;
     height: auto;
     display: flex;
@@ -169,3 +175,10 @@ h1 {
         }
     }
 }
+
+// .video {
+//     position: absolute;
+//     right: 0;
+//     bottom: 0;
+//     z-index: -2;
+// }

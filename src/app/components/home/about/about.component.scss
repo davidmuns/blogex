@@ -30,7 +30,7 @@
         border-top: 1px solid var(--lemon);
 
         p {
-            text-align: start;
+            text-align: justify;
             font-size: 1.2rem;
             line-height: 1.8rem;
             color: var(--lemon);
@@ -74,7 +74,7 @@
             padding-top: 20px;
 
             p {
-                // text-align: center;
+                text-align: justify;
                 font-size: 1.2rem;
                 line-height: 1.6rem;
             }
@@ -102,6 +102,7 @@
             padding-top: 20px;
 
             p {
+                text-align: justify;
                 font-size: 1.1rem;
                 line-height: 1.6rem;
             }
@@ -128,13 +129,13 @@
         }
 
         #text {
-            text-align: center;
+            // text-align: justify;
             width: 100%;
             margin-bottom: 20px;
 
             p {
                 // font-size: 1rem;
-                text-align: center;
+                text-align: justify;
             }
 
             div {
@@ -166,13 +167,12 @@
         }
 
         #text {
-            text-align: center;
             width: 100%;
             margin-bottom: 20px;
 
             p {
                 // font-size: 1rem;
-                text-align: center;
+                text-align: justify;
             }
 
             div {

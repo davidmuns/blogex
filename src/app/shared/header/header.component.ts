@@ -36,7 +36,9 @@ export class HeaderComponent {
   }
 
   openLogin() {
-    this.dialog.open(LoginComponent);
+    this.dialog.open(LoginComponent, {
+      enterAnimationDuration: '1000ms'
+    });
   }
 
   onLogout() {

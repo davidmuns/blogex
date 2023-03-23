@@ -46,14 +46,19 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
   signupOpen() {
     this.dialog.closeAll();
-    this.dialog.open(LoginComponent);
+    this.dialog.open(LoginComponent, {
+      enterAnimationDuration: '1000ms'
+    });
   }
 
   emailOpen() {
     this.dialog.closeAll();
-    this.dialog.open(EmailPasswordComponent)
+    this.dialog.open(EmailPasswordComponent, {
+      enterAnimationDuration: '1000ms'
+    })
   }
 
   onLogin(login: Login) {

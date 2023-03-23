@@ -23,7 +23,9 @@ export class AboutComponent implements OnInit {
   }
 
   openDialog(){
-    this.dialog.open(LoginComponent)
+    this.dialog.open(LoginComponent, {
+      enterAnimationDuration: '1000ms'
+    });
   }
 
   @HostListener('window:resize', ['$event'])
