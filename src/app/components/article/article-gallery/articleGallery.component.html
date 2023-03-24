@@ -37,7 +37,7 @@
 
 	<!-- IMAGES -->
 	<div *ngFor="let imagen of (this.imagenes$ | async); let i = index"
-		[attr.data-aos]="i % 2 === 0 ? 'fade-left' : 'fade-right'" data-aos-duration="1500">
+		[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
 
 		<mat-card class="example-card">
 			<mat-card-header>

@@ -31,7 +31,7 @@
   </div>
 
   <!-- Show this container if there are articles -->
-  <div class="container shadow-lg rounded" *ngIf="this.articles.length > 0; else noArticles">
+  <div class="container cont-cards mb-4 rounded " *ngIf="this.articles.length > 0; else noArticles">
 
     <div *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber; index as i" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1500">
       <mat-card class="example-card" style="background-color: #607D8B">

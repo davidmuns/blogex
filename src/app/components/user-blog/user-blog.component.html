@@ -33,35 +33,36 @@
 
 </div>
 
-<!-- Show this container if there are articles -->
-<ng-container *ngIf="this.articles.length; else noArticles">
+<div class="container body pt-5 pb-4 mb-4 rounded ">
+    <!-- Show this container if there are articles -->
+    <ng-container *ngIf="this.articles.length; else noArticles">
 
-    <div class="example-card mb-5" data-aos="fade-up" data-aos-duration="1500" 
-        *ngFor="let article of this.articles  |  search:this.filterByTitle | paginate:pageSize:pageNumber; index as i"
-        style="width: 90%;">
-        <div class="row g-0">
-            <div class="col-sm-4 col-md-4">
-                <a routerLink="/article/{{ article.id }}" style="cursor: pointer;">
-                    <img mat-card-image class="img-fluid rounded-start" [src]="article.imagenPortada"
-                        alt="Imagen de protada" title="{{ 'user-blog.goto-article' | translate }}">
-                </a>
-            </div>
-            <div class="col-sm-8 col-md-8">
-                <div class="card-body">
-                    <h5 class="card-title mt-2" id="title-post">{{ article.title }}</h5>
-                    <button class="m-0 p-2" mat-stroked-button color="accent" id="editAutor"
-                        [routerLink]="['/article/', article.id]">
-                        <mat-icon>visibility</mat-icon> {{ 'user-blog.see-more' | translate }}
-                    </button>
+        <div class="example-card mb-5" data-aos="fade-up" data-aos-duration="1500"
+            *ngFor="let article of this.articles  |  search:this.filterByTitle | paginate:pageSize:pageNumber; index as i"
+            style="width: 90%;">
+            <div class="row g-0">
+                <div class="col-sm-4 col-md-4">
+                    <a routerLink="/article/{{ article.id }}" style="cursor: pointer;">
+                        <img mat-card-image class="img-fluid rounded-start" [src]="article.imagenPortada"
+                            alt="Imagen de protada" title="{{ 'user-blog.goto-article' | translate }}">
+                    </a>
                 </div>
-                <p class="mx-3">Videos: {{ article.videos.length }}</p>
-                <p class="mx-3">{{ 'images' | translate }}: {{ article.imagenes.length }}</p>
+                <div class="col-sm-8 col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title mt-2" id="title-post">{{ article.title }}</h5>
+                        <button class="m-0 p-2" mat-stroked-button color="accent" id="editAutor"
+                            [routerLink]="['/article/', article.id]">
+                            <mat-icon>visibility</mat-icon> {{ 'user-blog.see-more' | translate }}
+                        </button>
+                    </div>
+                    <p class="mx-3">Videos: {{ article.videos.length }}</p>
+                    <p class="mx-3">{{ 'images' | translate }}: {{ article.imagenes.length }}</p>
+                </div>
             </div>
         </div>
-    </div>
 
-</ng-container>
-
+    </ng-container>
+</div>
 <!-- Show this container if there are NO articles -->
 <ng-template #noArticles>
     <div class="no-articles-card" data-aos="fade-up" data-aos-duration="3000">

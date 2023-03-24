@@ -41,6 +41,9 @@ span {
     color: var(--lemon);
 }
 
+.cont-cards {
+    box-shadow: 6px 6px 6px rgb(15, 15, 15);
+}
 
 // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
 .container {
@@ -50,6 +53,7 @@ span {
     justify-content: center;
     width: 100%;
     height: auto;
+    
 
     @media(max-width: 565px) {
         width: 95%;
