@@ -2,4 +2,7 @@
 <main [@routeAnimations]="prepareRoute(outlet)">
     <router-outlet (activate)="onActivate()" #outlet="outlet"></router-outlet>
 </main>
-<button *ngIf="this.show" mat-mini-fab color="accent" (click)="onActivate()"><mat-icon>arrow_upward</mat-icon></button>
+<div></div>
+<button *ngIf="this.show" mat-mini-fab color="accent" (click)="onActivate()">
+    <mat-icon>arrow_upward</mat-icon>
+</button>
