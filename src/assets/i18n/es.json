@@ -73,7 +73,8 @@
         "my-articles": "Mis artículos",
         "spanish": "Castellano",
         "catalan": "Catalán",
-        "english": "Inglés"
+        "english": "Inglés",
+        "help": "Información de ayuda"
     },
     "about": {
         "title": "Descubre lugares del mundo",
@@ -143,5 +144,14 @@
     "article": {
         "exist": "Artículo con este id no existe",
         "close": "Cerrar"
+    },
+    "info": {
+        "help": "Ayuda",
+        "account": "Crear cuenta de usuario",
+        "pass": "Restablecer contraseña",
+        "create": "Crear artículo",
+        "update": "Actualizar artículo",
+        "delete": "Eliminar cuenta de usuario",
+        "add": "Añadir imágenes y vídeos"
     }
 }

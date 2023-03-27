@@ -73,7 +73,8 @@
         "my-articles": "My articles",
         "spanish": "Spanish",
         "catalan": "Catalan",
-        "english": "English"
+        "english": "English",
+        "help": "Help info"
     },
     "about": {
         "title": "Discover places around the world",
@@ -143,5 +144,14 @@
     "article": {
         "exist": "Article with this id does not exist",
         "close": "Close"
+    },
+    "info": {
+        "help": "Help",
+        "account": "Create user account",
+        "pass": "Reset password",
+        "create": "Create new article",
+        "update": "Update article",
+        "delete": "Delete account",
+        "add": "Add images and videos"
     }
 }

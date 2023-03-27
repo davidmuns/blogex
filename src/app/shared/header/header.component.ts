@@ -1,3 +1,4 @@
+import { InfoAppComponent } from './../../components/info-app/info-app.component';
 import { UtilsService } from './../services/utils.service';
 import { LoginComponent } from '../../components/auth/login/login.component';
 import { TinyEditorService } from './../services/tiny-editor.service';
@@ -60,6 +61,9 @@ export class HeaderComponent {
     this.router.navigate(['home']);
   }
 
+  onHelp(){
+    this.dialog.open(InfoAppComponent);
+  }
   // https://www.concretepage.com/angular-material/angular-material-open-menu-on-hover
   openMenu(menuTrigger: MatMenuTrigger) {
     menuTrigger.openMenu();

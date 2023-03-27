@@ -72,7 +72,8 @@
         "my-articles": "Els meus articles",
         "spanish": "Castellà",
         "catalan": "Català",
-        "english": "Anglès"
+        "english": "Anglès",
+        "help": "Informació d´ajuda"
     },
     "about": {
         "title": "Descobreix llocs del món",
@@ -142,5 +143,14 @@
     "article": {
         "exist": "Article amb aquest id no existeix",
         "close": "Tancar"
+    },
+    "info": {
+        "help": "Ajuda",
+        "account": "Crear compte d´usuari",
+        "pass": "Restablir contrasenya",
+        "create": "Crear article",
+        "update": "Actualitzar article",
+        "delete": "Eliminar compte d´usuari",
+        "add": "Afegir imatges i vídeos"
     }
 }

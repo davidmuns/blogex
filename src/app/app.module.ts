@@ -20,6 +20,7 @@ import { ArticleComponent } from './components/article/article.component';
 import { ArticleGalleryComponent } from './components/article/article-gallery/articleGallery.component';
 import { UserBlogComponent } from './components/user-blog/user-blog.component';
 import { SearchComponent } from './components/search/search.component';
+import { InfoAppComponent } from './components/info-app/info-app.component';
 
 // Modules
 import { CrudModule } from './components/crud/crud.module';
@@ -77,7 +78,8 @@ import { GalleryVideosComponent } from './components/crud/article-cards/gallery-
     SearchPipe,
     SafeHtmlPipe,
     AboutComponent,
-    GalleryVideosComponent
+    GalleryVideosComponent,
+    InfoAppComponent
   ],
   imports: [
     InternationalitazionModule,

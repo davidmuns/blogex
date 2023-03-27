@@ -5,15 +5,15 @@
 
     <app-search></app-search>
 
-    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"
-      (mouseover)="openMenu(menuTrigger)" *ngIf="!this.tokenService.isLogged(); else logged">
+    <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger" (mouseover)="openMenu(menuTrigger)"
+      *ngIf="!this.tokenService.isLogged(); else logged">
       <mat-icon>menu</mat-icon>
     </button>
 
     <ng-template #logged>
       <div>
         <a class="logout" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"
-        (mouseover)="openMenu(menuTrigger)">{{ this.tokenService.getUsername() }}</a>
+          (mouseover)="openMenu(menuTrigger)">{{ this.tokenService.getUsername() }}</a>
       </div>
     </ng-template>
 
@@ -71,6 +71,13 @@
     <mat-icon>language</mat-icon>
     <img [src]="this.urlFlags.england" alt="catalan-flag" title="català" width="25" height="25">
     {{ 'header.english' | translate }}
+  </button>
+  <mat-divider></mat-divider>
+
+  <!-- INFO BUTTON -->
+  <button mat-menu-item (click)="onHelp()">
+    <mat-icon>help</mat-icon>
+    {{ 'header.help' | translate }}
   </button>
   <mat-divider></mat-divider>
 
