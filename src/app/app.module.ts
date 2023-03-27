@@ -21,6 +21,8 @@ import { ArticleGalleryComponent } from './components/article/article-gallery/ar
 import { UserBlogComponent } from './components/user-blog/user-blog.component';
 import { SearchComponent } from './components/search/search.component';
 import { InfoAppComponent } from './components/info-app/info-app.component';
+import { ArtcileCardsComponent } from './components/crud/article-cards/article-cards.component';
+import { GalleryVideosComponent } from './components/crud/article-cards/gallery-videos/gallery-videos.component';
 
 // Modules
 import { CrudModule } from './components/crud/crud.module';
@@ -56,8 +58,6 @@ import { ToastrModule } from 'ngx-toastr';
 
 // Internationalitation
 import { InternationalitazionModule } from './internationalitazion.module';
-import { ArtcileCardsComponent } from './components/crud/article-cards/article-cards.component';
-import { GalleryVideosComponent } from './components/crud/article-cards/gallery-videos/gallery-videos.component';
 
 @NgModule({
   declarations: [
