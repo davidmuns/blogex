@@ -5,12 +5,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ArticleComponent } from './article.component';
 import { UtilsService } from 'src/app/shared/services/utils.service';
-import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { ArticleService } from 'src/app/shared/services/article.service';
-import { ActivatedRoute, NavigationExtras, ParamMap, Router, convertToParamMap } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { NO_ERRORS_SCHEMA } from '@angular/compiler';
 import { SafeHtmlPipe } from 'src/app/shared/pipes/safehtml.pipe';
-import { Subject, of } from 'rxjs';
+import { of } from 'rxjs';
 
 
 const usuario: Usuario = {
@@ -49,12 +49,7 @@ describe('ArticleComponent', () => {
       declarations: [ArticleComponent, SafeHtmlPipe],
       imports: [
         HttpClientTestingModule,
-        TranslateModule.forRoot({
-          loader: {
-            provide: TranslateLoader,
-            useClass: TranslateFakeLoader,
-          },
-        })
+        TranslateModule.forRoot()
       ],
       providers: [
         { provide: UtilsService, useValue: utilsSvcSpyObj },
