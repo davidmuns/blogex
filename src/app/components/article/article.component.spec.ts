@@ -7,10 +7,10 @@ import { ArticleComponent } from './article.component';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 import { TranslateFakeLoader, TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { ArticleService } from 'src/app/shared/services/article.service';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, NavigationExtras, ParamMap, Router, convertToParamMap } from '@angular/router';
 import { NO_ERRORS_SCHEMA } from '@angular/compiler';
 import { SafeHtmlPipe } from 'src/app/shared/pipes/safehtml.pipe';
-import { of } from 'rxjs';
+import { Subject, of } from 'rxjs';
 
 
 const usuario: Usuario = {
@@ -39,10 +39,12 @@ describe('ArticleComponent', () => {
   let routerSpyObj: jasmine.SpyObj<Router>;
   let utilsSvcSpyObj: jasmine.SpyObj<UtilsService>;
 
+
   beforeEach(async () => {
     articleSvcSpyObj = jasmine.createSpyObj<ArticleService>('ArticleService', ['getArticle']);
     routerSpyObj = jasmine.createSpyObj<Router>('Router', ['navigate']);
     utilsSvcSpyObj = jasmine.createSpyObj<UtilsService>('UtilsService', ['showSnackBar']);
+
     await TestBed.configureTestingModule({
       declarations: [ArticleComponent, SafeHtmlPipe],
       imports: [
@@ -75,6 +77,7 @@ describe('ArticleComponent', () => {
   });
 
   it("Method ngOnInit shoud get an article", () => {
+    
     articleSvcSpyObj.getArticle.and.returnValue(of(article));
     component.ngOnInit();
     expect(component.post?.title).toEqual('Barcelona');
