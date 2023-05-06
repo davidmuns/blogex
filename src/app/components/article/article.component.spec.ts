@@ -8,7 +8,7 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
-import { NO_ERRORS_SCHEMA } from '@angular/compiler';
+import { NO_ERRORS_SCHEMA } from "@angular/core";
 import { SafeHtmlPipe } from 'src/app/shared/pipes/safehtml.pipe';
 import { of } from 'rxjs';
 
