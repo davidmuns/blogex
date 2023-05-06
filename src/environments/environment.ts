@@ -5,13 +5,13 @@
 export const environment = {
   production: true,
   users: "",
-  FRONT_BASE_URL: 'http://localhost:4200/',
-  BACKEND_BASE_URL: 'http://localhost:8080/',
-  // FRONT_BASE_URL: 'https://blogex.netlify.app/',
-  // BACKEND_BASE_URL: 'https://blogexapp.herokuapp.com/',
+  // FRONT_BASE_URL: 'http://localhost:4200/',
+  // BACKEND_BASE_URL: 'http://localhost:8080/',
+  FRONT_BASE_URL: 'https://blogex.netlify.app/',
+  BACKEND_BASE_URL: 'https://blogexapp.herokuapp.com/',
   AUTHORIZATION: 'Authorization',
   BEARER: 'Bearer ',
-  IMG_MAX_SIZE: 3100000, // 3MB
+  IMG_MAX_SIZE: 5000000, // 3MB
 };
 
 /*
