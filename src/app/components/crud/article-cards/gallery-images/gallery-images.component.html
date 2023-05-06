@@ -41,7 +41,7 @@
 
   <div class="input-div mx-1 p-1 shadow-sm">
     <input type="file" class="file-input" id="customFile" (change)="handleImage($event)">
-    <label class="file-label" for="customFile" matTooltip="max 3MB">{{ 'SelectImage' | translate }}</label>
+    <label class="file-label" for="customFile" matTooltip="max 5MB">{{ 'SelectImage' | translate }}</label>
   </div>
   <div class="mx-1">
     <img *ngIf="this.image" class="thumbnail" [src]="miniatura" alt="">
