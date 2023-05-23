@@ -82,7 +82,7 @@ export class EditComponent implements OnInit {
     this.editPostForm = this.fBuilder.group({
       id: ['', Validators.required],
       title: ['', [Validators.required, Validators.maxLength(60)]],
-      img1: [''],
+      //img1: [''],
       alt1: ['', Validators.required],
       text1: ['', Validators.required],
       longitude: ['', Validators.required],
@@ -93,14 +93,14 @@ export class EditComponent implements OnInit {
   onSubmit(post: Article) {
     let msg = '';
     if (this.editPostForm.valid) {
-      if (this.image != undefined) {
+      if (this.image != undefined) {  
         if (this.image.size <= environment.IMG_MAX_SIZE) {
           this.editPost(post.id, post);
           this.uploadImage(this.image);
           this.router.navigate(['article/' + post.id]);
           this.utilsSvc.showSnackBar("Cover image updated", 5000);
         } else {
-          msg = this.translateService.instant('ImgMaximumExceed') + " 3MB";
+          msg = this.translateService.instant('ImgMaximumExceed') + " 5MB";
           this.utilsSvc.showSnackBar(msg, 5000);
         };
       } else {

@@ -28,8 +28,11 @@ export class ArticleService {
     return this.httpClient.get<Article[]>(environment.BACKEND_BASE_URL + 'article/list');
   }
 
-  public createArticle(post: Article, username: string): Observable<any> {
-    return this.httpClient.post<any>(environment.BACKEND_BASE_URL + 'article/create/' + username, post);
+  public createArticle(post: Article, username: string, img: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('multipartFile', img);
+    formData.append('articleJsonStr', JSON.stringify(post));
+    return this.httpClient.post<any>(environment.BACKEND_BASE_URL + 'article/create/' + username, formData);
   }
 
   public updateArticle(articleId: number, article: Article): Observable<any> {

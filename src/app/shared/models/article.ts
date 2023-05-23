@@ -5,7 +5,7 @@ import { Video } from "./video";
 export interface Article {
   id: number,
   title: string,
-  img1?: File,
+  //img1?: File,
   alt1: string,
   text1: string,
   longitude: number,

@@ -45,7 +45,6 @@ export class NewComponent {
   private initForm(): void {
     this.newPostForm = this.fBuilder.group({
       title: ['', [Validators.required, Validators.maxLength(60)]],
-      img1: ['', Validators.required],
       alt1: ['', Validators.required],
       text1: ['', Validators.required],
       longitude: ['', Validators.required],
@@ -64,16 +63,14 @@ export class NewComponent {
     };
   };
 
-  onSubmit(post: Article) {
+  onSubmit(post: Article) { 
     let msg = '';
-    if (this.newPostForm.valid) {
+    if (this.newPostForm.valid && this.image != null) {
       if (this.image.size <= environment.IMG_MAX_SIZE) {
         const username = this.tokenService.getUsername() as string;
-        this.createArticle(post, username);
-        this.uploadImage(this.image);
-
+        this.createArticle(post, username, this.image);
       } else {
-        msg = this.translateService.instant('ImgMaximumExceed') + " 3MB";
+        msg = this.translateService.instant('ImgMaximumExceed') + " 5MB";
         this.utilsSvc.showSnackBar(msg, 3000);
       }
     } else {
@@ -82,18 +79,9 @@ export class NewComponent {
     };
   };
 
-  private uploadImage(image: File) {
-    this.articleService.uploadImage(image).subscribe({
-      error: err => {
-        const msg = this.translateService.instant('ImgMaximumExceed') + " 3MB";
-        this.utilsSvc.showSnackBar(msg, 3000);
-      }
-    });
-  };
-
-  private createArticle(post: Article, username: string) {
+  private createArticle(post: Article, username: string, img: File) {
     if (this.newPostForm.valid) {
-      this.articleService.createArticle(post, username).subscribe({
+      this.articleService.createArticle(post, username, img).subscribe({
         next: data => {
           this.utilsSvc.showSnackBar(data.mensaje, 3000);
           this.redirectTo(this.router.url);
