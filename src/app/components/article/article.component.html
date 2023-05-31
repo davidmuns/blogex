@@ -6,8 +6,12 @@
   </div>
   <div class="example-card">
     <mat-card-header>
-      <div class="example-header-image"></div>
-      <div id="title-post">{{ post?.title }} | {{ this.temp }} ºC</div>
+      <div class="header-container">
+        <div id="title-post">{{ post?.title }}</div><span id="title-post" padding="10px 15px 20px 0px">|</span>
+        <div>
+          <span class="temperature">{{ this.temp }} ºC</span><img class="weather-icon" src="{{ this.iconUrl }}" alt="">
+        </div>
+      </div>
     </mat-card-header>
     <div class="imageMarc">
       <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.alt1 }}">
@@ -34,3 +38,4 @@
 </body>
 
 <app-footer></app-footer>
+

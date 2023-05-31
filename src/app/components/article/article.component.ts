@@ -26,6 +26,7 @@ export class ArticleComponent implements OnInit {
   idPost!: number;
   temp!: number;
   username!: string;
+  iconUrl: string = ''; 
 
   constructor(
     private utilsSvc: UtilsService,
@@ -70,10 +71,14 @@ export class ArticleComponent implements OnInit {
   }
 
   // https://www.youtube.com/watch?v=vpq2FxNzgd4
-  private getWeather(lat: number, lon: number) {
-    this.apiWeatherService.getWeather(lat, lon)
+  private async getWeather(lat: number, lon: number) {
+     await this.apiWeatherService.getWeather(lat, lon)
       .then(resp => resp.json())
-      .then(data => this.temp = parseInt(data.main.temp));
+      .then(data => {
+        const iconCode = data.weather[0].icon;
+        this.iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`
+        this.temp = parseInt(data.main.temp);
+      });
   };
 
   onEdit(post: any) {
@@ -81,3 +86,5 @@ export class ArticleComponent implements OnInit {
     this.router.navigate(['admin/edit'], this.navigationExtras);
   }
 }
+
+

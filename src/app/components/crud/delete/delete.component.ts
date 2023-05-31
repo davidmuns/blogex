@@ -28,7 +28,7 @@ export class DeleteComponent {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article, imgId: string, videoId: number, option: string },
-    private utisSvc: UtilsService,
+    private utilsSvc: UtilsService,
     private tokenSvc: TokenService,
     private authSvc: AuthService,
     private readonly dialog: MatDialog,
@@ -41,7 +41,7 @@ export class DeleteComponent {
   onDeleteArticle() {
     this.articleSvc.deleteArticle(this.data.article.id).subscribe({
       next: data => {
-        this.utisSvc.showSnackBar(data.mensaje, 5000);
+        this.utilsSvc.showSnackBar(data.mensaje, 5000);
         this.redirectTo(this.router.url);
       }
     });
@@ -53,10 +53,10 @@ export class DeleteComponent {
       next: (data: any) => {
         this.dialog.closeAll();
         this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
-        this.utisSvc.showSnackBar(data.mensaje, 5000);
+        this.utilsSvc.showSnackBar(data.mensaje, 5000);
       },
       error: err => {
-        this.utisSvc.showSnackBar(err.error.message, 5000);
+        this.utilsSvc.showSnackBar(err.error.message, 5000);
       }
     })
   };
@@ -66,10 +66,10 @@ export class DeleteComponent {
       next: data => {
         this.dialog.closeAll();
         this.dialog.open(GalleryVideosComponent, { data: { article: this.data.article } });
-        this.utisSvc.showSnackBar(data.mensaje, 5000);
+        this.utilsSvc.showSnackBar(data.mensaje, 5000);
       },
       error: err => {
-        this.utisSvc.showSnackBar(err.error.message, 5000);
+        this.utilsSvc.showSnackBar(err.error.message, 5000);
       }
     })
   };
@@ -85,7 +85,7 @@ export class DeleteComponent {
     // Show snackbar in case of confirmation and the user name does not match and the user has not canceled
     if (confirm && username != this.username && username != null) {
       const msg = this.translateSvc.instant('delete.wrong-username')
-      this.utisSvc.showSnackBar(msg, 5000);
+      this.utilsSvc.showSnackBar(msg, 5000);
     };
 
     // Delete account in case the username of the session is the same as the user name entered by the user.
@@ -94,10 +94,10 @@ export class DeleteComponent {
         next: resp => {
           this.tokenSvc.logOut();
           const msg = this.translateSvc.instant('delete.account') + ` "${ username }" ` + this.translateSvc.instant('delete.canceled');
-          this.utisSvc.showSnackBar(msg, 5000);
+          this.utilsSvc.showSnackBar(msg, 5000);
         },
         error: err => {
-          this.utisSvc.showSnackBar(err.error.message, 5000);
+          this.utilsSvc.showSnackBar(err.error.message, 5000);
         }
       });
     };

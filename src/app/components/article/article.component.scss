@@ -44,6 +44,13 @@ button:hover{
     width: 100%;
   }
 
+  .header-container {
+    display: flex; /* Activa el modo flexbox */
+    flex-wrap: wrap;
+    align-items: baseline; /* Alinea verticalmente los elementos en el centro */
+    justify-content: flex-start; /* Alinea horizontalmente los elementos en el centro */
+  }
+
   #title-post {
     font-size: 1.6rem;
     font-family: 'Libre Baskerville', serif;
@@ -51,12 +58,26 @@ button:hover{
     line-height: 2rem;
     height: auto;
   }
+  .temperature {
+    font-size: 1.2rem;
+    font-family: 'Libre Baskerville', serif;
+    padding: 10px 0px 20px 15px;
+    line-height: 2rem;
+    height: auto;
+
+  }
 
   .imageMarc {
     border-top: 2px solid white;
     border-bottom: 1px solid white;
     overflow: hidden;
     width: 100%;
+  }
+
+  .weather-icon {
+    width: fit-content; /* Permite que el contenedor se ajuste al tamaño de la imagen */
+    max-width: 100%; /* Evita que el contenedor sea más grande que el tamaño original de la imagen */
+    margin: 0; /* Centra el contenedor horizontalmente */
   }
 
   img {
@@ -111,3 +132,4 @@ mat-card-content {
     }
   }
 }
+
