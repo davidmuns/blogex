@@ -28,8 +28,9 @@
         <button class="mx-2" mat-stroked-button color="accent" id="editAutor"
           (click)="onGoToMap()">
           <mat-icon>room</mat-icon> Map
-        </button>   
+        </button>
       </div>
+      <p>{{ 'article.date' | translate }}: {{ post?.date | formatDate }}</p>
       <p [innerHTML]="post?.text1 | safeHtml">
     </mat-card-content>
     <app-articleGallery [articleId]="post?.id"></app-articleGallery>

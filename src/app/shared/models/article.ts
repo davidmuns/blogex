@@ -10,6 +10,7 @@ export interface Article {
   text1: string,
   longitude: number,
   latitude: number,
+  date: string,
   imagenPortada: string,
   usuario: Usuario,
   imagenes:Imagen[],

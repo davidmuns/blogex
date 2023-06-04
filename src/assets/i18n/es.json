@@ -143,7 +143,8 @@
     },
     "article": {
         "exist": "Artículo con este id no existe",
-        "close": "Cerrar"
+        "close": "Cerrar",
+        "date": "Fecha de creación"
     },
     "info": {
         "help": "Ayuda",

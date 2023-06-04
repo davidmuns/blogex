@@ -142,7 +142,8 @@
     },
     "article": {
         "exist": "Article amb aquest id no existeix",
-        "close": "Tancar"
+        "close": "Tancar",
+        "date": "Data de creació"
     },
     "info": {
         "help": "Ajuda",

@@ -37,6 +37,7 @@ import { interceptorProvider } from './interceptors/token-interceptor.service';
 import { SearchPipe } from './shared/pipes/search.pipe';
 import { PaginatePipe } from './shared/pipes/paginate.pipe';
 import { SafeHtmlPipe } from './shared/pipes/safehtml.pipe';
+import { FormatDatePipe } from './shared/pipes/formatdate.pipe';
 
 // Angular
 import { NgModule } from '@angular/core';
@@ -59,6 +60,7 @@ import { ToastrModule } from 'ngx-toastr';
 // Internationalitation
 import { InternationalitazionModule } from './internationalitazion.module';
 
+
 @NgModule({
   declarations: [
     AddImageComponent,
@@ -76,6 +78,7 @@ import { InternationalitazionModule } from './internationalitazion.module';
     CaptionComponent,
     PaginatePipe,
     SearchPipe,
+    FormatDatePipe,
     SafeHtmlPipe,
     AboutComponent,
     GalleryVideosComponent,
