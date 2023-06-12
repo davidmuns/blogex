@@ -28,7 +28,7 @@ export class EditComponent implements OnInit {
   // tinymce text editor config variable
   editorConfig: any;
   public editPostForm!: FormGroup;
-  public viewForm: any = [1];
+  // public viewForm: any = [1];
   public flag: number = 1;
   public buttonTag: string = "One More";
   public article: any = null;

@@ -21,7 +21,7 @@ export class NewComponent {
   miniatura!: File;
 
   public newPostForm!: FormGroup;
-  public viewForm: any = [1];
+  // public viewForm: any = [1];
   public flag: number = 1;
   public buttonTag: string = "One More";
   // tinymce text editor config variable

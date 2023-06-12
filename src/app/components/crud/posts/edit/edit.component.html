@@ -14,7 +14,7 @@
             {{ 'TitleLength' | translate }}</div>
         </mat-form-field>
       </p>
-      <div *ngFor="let view of viewForm">
+      <!-- <div *ngFor="let view of viewForm"> -->
         <div class="containerFile">
           <label>{{ 'CoverImage' | translate }} (max 5MB):</label><br>
           <div *ngIf="this.image" style="margin-top: 5px;">
@@ -24,7 +24,7 @@
           </div>
           <div class="custom-file">
             <input type="file" class="custom-file-input" accept=".png, .jpg, .jpeg" multiple id="inputUpload"
-              formControlName="img{{ view }}" (change)="handleImage1($event)">
+              formControlName="img" (change)="handleImage1($event)">
             <label class="custom-file-label" for="inputUpload"><mat-icon>upload</mat-icon>&nbsp;&nbsp;{{ 'SelectImage' |
               translate }}</label>
             <!-- OJO NO BORRAR ESTE CÓDIGO COMENTADO !! -->
@@ -41,7 +41,7 @@
           <mat-label>{{ 'Text' | translate }}:</mat-label><br><br>
           <editor formControlName="content" [init]="this.editorConfig"></editor>
         </p>
-      </div>
+      <!-- </div> -->
       <h3 matTooltip="Introduce the coordinates to see this route on the map" matTooltipPosition="right">{{
         'Coordinates' | translate }}:
       </h3>
