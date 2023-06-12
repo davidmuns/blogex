@@ -34,12 +34,12 @@
         <p>
           <mat-form-field class="input-width" appearance="fill">
             <mat-label>{{ 'Caption' | translate }}</mat-label>
-            <input matInput formControlName="alt{{ view }}" placeholder="{{ 'Caption' | translate }}">
+            <input matInput formControlName="caption" placeholder="{{ 'Caption' | translate }}">
           </mat-form-field>
         </p>
         <p>
           <mat-label>{{ 'Text' | translate }}:</mat-label><br><br>
-          <editor formControlName="text{{ view }}" [init]="this.editorConfig"></editor>
+          <editor formControlName="content" [init]="this.editorConfig"></editor>
         </p>
       </div>
       <h3 matTooltip="Introduce the coordinates to see this route on the map" matTooltipPosition="right">{{

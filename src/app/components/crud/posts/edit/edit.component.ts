@@ -83,8 +83,8 @@ export class EditComponent implements OnInit {
       id: ['', Validators.required],
       title: ['', [Validators.required, Validators.maxLength(60)]],
       //img1: [''],
-      alt1: ['', Validators.required],
-      text1: ['', Validators.required],
+      caption: ['', Validators.required],
+      content: ['', Validators.required],
       longitude: ['', Validators.required],
       latitude: ['', Validators.required]
     });

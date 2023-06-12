@@ -14,10 +14,10 @@
       </div>
     </mat-card-header>
     <div class="imageMarc">
-      <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.alt1 }}">
+      <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.caption }}">
     </div>
     <mat-card-content>
-      <p id="footerImg">{{ post?.alt1 }}</p>
+      <p id="footerImg">{{ post?.caption }}</p>
       <div class="autor">
         <div id="autorLink">Blogger:&nbsp;<span routerLink="/blog/{{ this.username }}">
             {{ this.username }}</span></div>&nbsp;&nbsp;&nbsp;
@@ -31,7 +31,7 @@
         </button>
       </div>
       <p>{{ 'article.date' | translate }}: {{ post?.date | formatDate }}</p>
-      <p [innerHTML]="post?.text1 | safeHtml">
+      <p [innerHTML]="post?.content | safeHtml">
     </mat-card-content>
     <app-articleGallery [articleId]="post?.id"></app-articleGallery>
     <mat-card-actions></mat-card-actions>
