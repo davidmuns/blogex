@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private innerWidth!: any;
   private lat = 42.40249;
   private lon = 2.194332;
-  private zoom = 4;
+  private zoom = 3;
 
   constructor(
     private articleSvc: ArticleService,
