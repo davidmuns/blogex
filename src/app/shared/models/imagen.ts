@@ -6,4 +6,5 @@ export interface Imagen {
     caption: string;
     articleId: number;
     article: Article;
+    data: string;
 }

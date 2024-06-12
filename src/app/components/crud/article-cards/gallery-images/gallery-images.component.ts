@@ -15,6 +15,7 @@ import { Imagen } from 'src/app/shared/models/imagen';
 import { Article } from 'src/app/shared/models/article';
 // Animate on scroll library => https://michalsnik.github.io/aos/
 import AOS from 'aos';
+import {DomSanitizer} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-gallery-images',
@@ -31,9 +32,11 @@ export class GalleryImagesComponent implements OnInit {
   image!: File;
   miniatura!: Imagen;
   username!: string;
- 
+  images: { id: number; name: string; url: any; }[] = [];
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article },
+    private sanitizer: DomSanitizer,
     private utilsSvc: UtilsService,
     private readonly dialog: MatDialog,
     private articleSvc: ArticleService,
@@ -48,6 +51,10 @@ export class GalleryImagesComponent implements OnInit {
     this.articleSvc.getImagesByArticleId(id).subscribe({
       next: (data: Imagen[]) => {
         data.forEach(img => {
+          console.log("Type of img => ", typeof img.data);
+          // let objectURL = 'data:image/jpeg;base64,' + img.data;
+          // img.url2 = this.getSafeUrl(objectURL);
+          // console.log("Imagen => ", img);
           this.imagenes.push(img);
         });
       },
@@ -56,6 +63,10 @@ export class GalleryImagesComponent implements OnInit {
       }
     });
   };
+
+  public getSafeUrl(url: string) {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
 
   onUpload() {
     if (this.image != undefined) {
@@ -71,7 +82,7 @@ export class GalleryImagesComponent implements OnInit {
       this.utilsSvc.showSnackBar(msg, 5000);
     };
   };
-  
+
   private addImage(image: File, articleId: number) {
     this.articleSvc.addImageToArticle(image, articleId).subscribe({
       next: data => {
@@ -101,6 +112,6 @@ export class GalleryImagesComponent implements OnInit {
     }
     if(this.image != null){
       fr.readAsDataURL(this.image);
-    }   
+    }
   };
 };

@@ -20,7 +20,7 @@
         <mat-card-header class="mb-3">
           <mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image [src]="imagen.url" alt="image">
+        <img mat-card-image [src]="'data:image/jpeg;base64,' + imagen.data" alt="image">
         <mat-card-content>
           <p style="color: rgba(255, 255, 255);">{{ imagen.caption }}</p>
         </mat-card-content>

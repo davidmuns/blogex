@@ -45,7 +45,7 @@
 			</mat-card-header>
 			<a type="button" matTooltip="Preview" matTooltipPosition="above" data-bs-toggle="modal"
 				data-bs-target="#exampleModal" style="cursor: pointer;" (click)="getIndex(i)">
-				<img mat-card-image [src]="imagen.url" alt="">
+				<img mat-card-image [src]="'data:image/jpeg;base64,' + imagen.data" alt="">
 			</a>
 
 			<mat-card-content>
@@ -78,7 +78,7 @@
 						<div class="carousel-item" data-bs-interval="2000"
 							*ngFor="let imagen of (this.imagenes$ | async); index as i; count as items"
 							[ngClass]="{'active': i == this.indice, '': i != this.indice}">
-							<img [src]="imagen.url" class="d-block w-100" alt="...">
+							<img [src]="'data:image/jpeg;base64,' + imagen.data" class="d-block w-100" alt="...">
 							<div class="carousel-caption d-none d-md-block">
 								<h2 class="m-0"><strong>{{ imagen.caption }}</strong></h2>
 								<p class="m-0">image {{ i + 1 }} of {{ items }}</p>
