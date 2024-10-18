@@ -1,13 +1,17 @@
 <form class="example-form" (submit)="submitArticle()">
   <div class="example1" appearance="fill">
     <input type="text"
-            placeholder="{{ 'SearchArticle' | translate }}"
-            aria-label="Number"
-            matInput
-            id="myControl"
-            [formControl]="myControl"
-            [matAutocomplete]="auto"
-            fontIcon="search">
+           placeholder="{{ 'SearchArticle' | translate }}"
+           aria-label="Number"
+           matInput
+           id="myControl"
+           [formControl]="myControl"
+           [matAutocomplete]="auto"
+           fontIcon="search">
+    <!-- Ícono de borrar -->
+    <button *ngIf="myControl.value" mat-icon-button class="clear-button" aria-label="Clear" (click)="clearInput()">
+      <mat-icon>close</mat-icon>
+    </button>
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
         <p (click)="selectArticle(option)">{{option}}</p>

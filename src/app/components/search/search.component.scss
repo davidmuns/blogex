@@ -90,10 +90,10 @@ input:focus{
         display:none;
     }
     input{
-        position: absolute;
+        position: none;
         top: 12px;
         left: 21%;
-        width: 48%;
+        width: 50%;
     }
 }
 @media(min-width: 600px){

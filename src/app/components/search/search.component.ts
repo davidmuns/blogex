@@ -47,6 +47,11 @@ export class SearchComponent implements OnInit {
     );
   }
 
+clearInput(): void {
+  this.myControl.reset();  // O también puedes usar this.myControl.setValue('') para borrar el contenido.
+}
+
+
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
     if (this.myControl.valid) {
