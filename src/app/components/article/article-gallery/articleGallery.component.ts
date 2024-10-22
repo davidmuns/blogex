@@ -42,7 +42,7 @@ export class ArticleGalleryComponent implements OnInit {
   }
 
   private getVideosByArticleId(id: number){
-    this.videos$ = this.videoSvc.getAllbyArticleId(id);
+    this.videos$ = this.videoSvc.getAllByArticleId(id);
   }
 
   hideGallery() {

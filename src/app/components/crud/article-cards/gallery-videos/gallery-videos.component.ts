@@ -48,7 +48,7 @@ export class GalleryVideosComponent implements OnInit {
   };
 
   private getVideos() {
-    this.videoSvc.getAllbyArticleId(this.articleId).subscribe({
+    this.videoSvc.getAllByArticleId(this.articleId).subscribe({
       next: (data: Video[]) => {
         this.videos = data;
       },

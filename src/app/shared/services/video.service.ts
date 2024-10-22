@@ -11,7 +11,7 @@ export class VideoService {
 
   constructor(private http: HttpClient) { }
 
-  public getAllbyArticleId(articleId: number): Observable<Video[]> {
+  public getAllByArticleId(articleId: number): Observable<Video[]> {
     return this.http.get<Video[]>(environment.BACKEND_BASE_URL + 'video/list/' + articleId);
   }
 
