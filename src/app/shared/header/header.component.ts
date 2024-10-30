@@ -29,11 +29,12 @@ export class HeaderComponent {
     private translate: TranslateService,
     public dialog: MatDialog,
     public tokenService: TokenService,
-    public router: Router
+    public router: Router,
+    private translateService: TranslateService
   ) {
     translate.getBrowserLang();
     translate.addLangs(['ca', 'en', 'es']);
-    translate.setDefaultLang('ca');
+    translate.setDefaultLang('es');
   }
 
   openLogin() {
@@ -43,7 +44,7 @@ export class HeaderComponent {
   }
 
   onLogout() {
-    const msg = `Hasta pronto ${this.tokenService.getUsername()}!!`;
+    const msg = `${this.translateService.instant('header.see-you')} ${this.tokenService.getUsername()}!!`;
     this.utilsSvc.showSnackBar(msg, 5000);
     this.tokenService.logOut();
   }

@@ -73,7 +73,8 @@
         "spanish": "Castellà",
         "catalan": "Català",
         "english": "Anglès",
-        "help": "Informació d´ajuda"
+        "help": "Informació d´ajuda",
+        "see-you": "Fins aviat"
     },
     "about": {
         "title": "Descobreix llocs del món",
@@ -83,7 +84,8 @@
         "login": {
             "fill-blanks": "Si us plau, omple els camps buits",
             "wrong-data": "No reconeixem el nom d´usuari, el correu electrònic o la contrasenya. Si us plau, comprova que les teves dades són correctes o registra't primer si encara no tens un compte.",
-            "user-saved": "Usuari registrat amb èxit. Si us plau, introdueix les teves dades per iniciar sessió."
+            "user-saved": "Usuari registrat amb èxit. Si us plau, introdueix les teves dades per iniciar sessió.",
+            "welcome": "Benvingut de nou"
         },
         "signup": {
             "fill-blanks": "Si us plau, omple els camps buits",

@@ -74,7 +74,8 @@
         "spanish": "Spanish",
         "catalan": "Catalan",
         "english": "English",
-        "help": "Help info"
+        "help": "Help info",
+        "see-you": "See you soon"
     },
     "about": {
         "title": "Discover places around the world",
@@ -84,7 +85,8 @@
         "login": {
             "fill-blanks": "Please fill in the blanks",
             "wrong-data": "We do not recognize de user, email or password. Please, check that your details are correct or singup first if you do not have an account yet.",
-            "user-saved": "User successfully registered. Please enter your login details."
+            "user-saved": "User successfully registered. Please enter your login details.",
+            "welcome": "Welcome again"
         },
         "signup": {
             "fill-blanks": "Please fill in the blanks",

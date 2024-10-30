@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
         next: data => {
           this.tokenService.setToken(data.token);
           this.dialog.closeAll();
-          const msg = `Bienvenido de nuevo ${login.nombreUsuario}!`;
+          const msg = `${this.translateService.instant('auth.login.welcome')} ${login.nombreUsuario}!`;
           this.utilsSvc.showSnackBar(msg, 5000);
           this.router.navigate(['admin/new']);
         },

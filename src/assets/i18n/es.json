@@ -74,7 +74,8 @@
         "spanish": "Castellano",
         "catalan": "Catalán",
         "english": "Inglés",
-        "help": "Información de ayuda"
+        "help": "Información de ayuda",
+        "see-you": "Hasta pronto"
     },
     "about": {
         "title": "Descubre lugares del mundo",
@@ -84,7 +85,8 @@
         "login": {
             "fill-blanks": "Por favor, rellena los campos vacios",
             "wrong-data": "No reconocemos el nombre de usuario, el correo electrónico o la contraseña. Por favor, comprueba que tus datos son correctos o regístrate primero si todavía no tienes una cuenta.",
-            "user-saved": "Usuario registrado con éxito. Por favor, introduce tus datos para iniciar sesión."
+            "user-saved": "Usuario registrado con éxito. Por favor, introduce tus datos para iniciar sesión.",
+            "welcome": "Bienvenido de nuevo"
         },
         "signup": {
             "fill-blanks": "Por favor, rellena los campos vacios",
