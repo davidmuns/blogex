@@ -90,7 +90,7 @@
         },
         "signup": {
             "fill-blanks": "Please fill in the blanks",
-            "pass-length": "Password must have min 6 characters",
+            "pass-length": "The password must be at least 8 characters long and must contain both numbers and letters",
             "email-exists": "Email already exists",
             "username-exists": "Username already exists"
         },
@@ -99,7 +99,7 @@
         },
         "reset-pass": {
             "fill-blanks": "Please fill in the blanks",
-            "pass-length": "Password must have min 6 characters",
+            "pass-length": "The password must be at least 8 characters long and must contain both numbers and letters",
             "no-match": "Passwords do not match"
         }
     },
