@@ -92,7 +92,8 @@
             "fill-blanks": "Please fill in the blanks",
             "pass-length": "The password must be at least 8 characters long and must contain both numbers and letters",
             "email-exists": "Email already exists",
-            "username-exists": "Username already exists"
+            "username-exists": "Username already exists",
+            "invalid-email": "Must be a valid email"
         },
         "email-send": {
             "fill-blanks": "Please enter an email or username"

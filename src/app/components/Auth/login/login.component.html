@@ -10,26 +10,26 @@
                     <!-- EMAIL OR USERNAME INPUT -->
                     <mat-form-field class="input-witdh" appearance="fill">
                         <mat-label>{{ 'UsernameOrEmail' | translate }}</mat-label>
-                        <input matInput placeholder="{{ 'UsernameOrEmail' | translate }}"
-                            formControlName="nombreUsuario" required>
+                        <input matInput placeholder="{{ 'UsernameOrEmail' | translate }}" formControlName="nombreUsuario">
+                        <div class="error" *ngIf="loginForm.get('nombreUsuario')?.touched && loginForm.get('nombreUsuario')?.hasError('required')">
+                            {{ 'Required' | translate }}
+                        </div>
                     </mat-form-field>
                      <!-- PASSWORD INPUT -->
                     <mat-form-field class="input-witdh" appearance="fill">
                         <mat-label>{{ 'Password' | translate }}</mat-label>
                         <input matInput [type]="hide ? 'password' : 'text'" placeholder="{{ 'Password' | translate }}"
                             formControlName="password" required>
-                        <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                            [attr.aria-pressed]="hide">
+                        <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </div>
-                        <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.errors?.['minlength']"
-                            class="error">{{ 'auth.signup.pass-length' | translate }}</div>
-                        <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.errors?.['required']"
-                            class="error">{{ 'Required' | translate }}</div>
+                        <div class="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">
+                            {{ 'Required' | translate }}
+                        </div>
                     </mat-form-field>
                     <br>
                     <!-- LOGIN BUTTON -->
-                    <button type="submit" class="input-witdh button" mat-raised-button>
+                    <button type="submit" class="input-witdh button" mat-raised-button [disabled]="loginForm.invalid">
                         {{ 'Login' | translate }}
                     </button>
                     <div class="forgot-pass">{{ 'Forgot' | translate }}</div>
@@ -45,20 +45,18 @@
                     <!-- USERNAME INPUT -->
                     <mat-form-field class="input-witdh" appearance="fill">
                         <mat-label>{{ 'Username' | translate }}</mat-label>
-                        <input matInput placeholder="{{ 'Username' | translate }}" formControlName="nombreUsuario"
-                            required>
-                        <div *ngIf="signupForm.get('nombreUsuario')?.touched && signupForm.get('nombreUsuario')?.errors?.['required']"
+                        <input matInput placeholder="{{ 'Username' | translate }}" formControlName="nombreUsuario">
+                        <div *ngIf="signupForm.get('nombreUsuario')?.touched && signupForm.get('nombreUsuario')?.hasError('required')"
                             class="error">{{ 'Required' | translate}}</div>
                     </mat-form-field>
                     <!-- EMAIL INPUT -->
                     <mat-form-field class="input-witdh" appearance="fill">
                         <mat-label>{{ 'Email' | translate }}</mat-label>
-                        <input matInput placeholder="{{ 'Email' | translate }}" formControlName="email" required>
-                        <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.errors?.['email']"
-                            class="error">
-                            Invalid
-                            email</div>
-                        <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.errors?.['required']"
+                        <input matInput placeholder="{{ 'Email' | translate }}" formControlName="email">
+                        <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.hasError('email')" class="error">
+                            {{ 'auth.signup.invalid-email' | translate }}
+                        </div>
+                        <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.hasError('required')"
                             class="error">
                             {{ 'Required' | translate}}</div>
                     </mat-form-field>
@@ -66,19 +64,19 @@
                     <mat-form-field class="input-witdh" appearance="fill">
                         <mat-label>{{ 'Password' | translate }}</mat-label>
                         <input matInput [type]="hide ? 'password' : 'text'" placeholder="{{ 'Password' | translate }}"
-                            formControlName="password" required>
+                            formControlName="password">
                         <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                             [attr.aria-pressed]="hide">
                             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                         </div>
-                        <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.errors?.['minlength']"
+                        <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.hasError('pattern')"
                             class="error">{{ 'auth.signup.pass-length' | translate }}</div>
-                        <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.errors?.['required']"
+                        <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.hasError('required')"
                             class="error">{{ 'Required' | translate }}</div>
                     </mat-form-field>
                     <br>
                     <!-- SIGNUP BUTTON -->
-                    <button type="submit" mat-raised-button class="input-witdh button">
+                    <button type="submit" mat-raised-button class="input-witdh button" [disabled]="signupForm.invalid">
                         {{ 'Signup' | translate }}
                     </button>
                     <div class="goto-login">{{ 'AlreadyAndAccount' | translate }}<span (click)="signupOpen()">&nbsp;

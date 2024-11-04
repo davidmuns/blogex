@@ -91,7 +91,8 @@
             "fill-blanks": "Si us plau, omple els camps buits",
             "pass-length": "La contrasenya ha de tenir com a mínim 8 caracters i ha de contenir números i lletres",
             "email-exists": "Aquest correu electrònic ja existeix",
-            "username-exists": "Aquest nom d´usuari ja existeix"
+            "username-exists": "Aquest nom d´usuari ja existeix",
+            "invalid-email": "Ha de ser un correu electrónic vàlid"
         },
         "email-send": {
             "fill-blanks": "Si us plau, introdueix un nom d'usuari o un email"
