@@ -89,7 +89,7 @@
         },
         "signup": {
             "fill-blanks": "Si us plau, omple els camps buits",
-            "pass-length": "La contrasenya ha de tenir com a mínim 8 caràcters i ha de contenir números i lletres",
+            "pass-length": "La contrasenya ha de tenir com a mínim 8 caracters i ha de contenir números i lletres",
             "email-exists": "Aquest correu electrònic ja existeix",
             "username-exists": "Aquest nom d´usuari ja existeix"
         },
@@ -98,7 +98,7 @@
         },
         "reset-pass": {
             "fill-blanks": "Si us plau, omple els camps buits",
-            "pass-length": "La contrasenya ha de tenir com a mínim 8 caràcters i ha de contenir números i lletres",
+            "pass-length": "La contrasenya ha de tenir com a mínim 8 caracters i ha de contenir números i lletres",
             "no-match": "Les contrasenyes no coincideixen"
         }
     },

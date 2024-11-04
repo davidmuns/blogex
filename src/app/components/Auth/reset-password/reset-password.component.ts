@@ -5,8 +5,15 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { EmailPasswordService } from 'src/app/shared/services/email-password.service';
 import { ResetPassword } from './../../../shared/models/reset-password';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+
+export const passwordsMustBeEqual: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+  const newPassword = group.get('newPassword') as FormControl;
+  const passwordConfirm = group.get('confirmPassword') as FormControl;
+
+  return newPassword.value === passwordConfirm.value ? null : { passwordsMustBeEqual: true };
+};
 
 @Component({
   selector: 'app-reset-password',
@@ -36,10 +43,12 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   private initform(): void {
-    this.resetForm = this.fb.group({
-      newPassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]]
-    })
+    this.resetForm = new FormGroup(
+      {
+      newPassword: new FormControl("", [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]),
+      confirmPassword: new FormControl("", Validators.required)
+      }, 
+      passwordsMustBeEqual)
   }
 
   onSubmit(resetPassword: ResetPassword) {
