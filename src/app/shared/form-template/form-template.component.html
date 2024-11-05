@@ -1,53 +1,54 @@
-<div class="body">
-    <div class="login">
-        <!-- LOGIN FORM -->
-        <form [formGroup]="this.form" (ngSubmit)="onSubmit()">
-            <img src="../../../../assets/img/user.png" alt="user-image" style="margin-top: 20px;"><br><br>
-            <h3>{{ formType === 'login' ? ('Login' | translate) : ('Signup' | translate) }}</h3>
-            <!-- EMAIL OR USERNAME INPUT -->
-            <mat-form-field class="input-witdh" appearance="fill">
-                <mat-label>{{ 'UsernameOrEmail' | translate }}</mat-label>
-                <input matInput placeholder="{{ 'UsernameOrEmail' | translate }}" formControlName="nombreUsuario">
-                <div class="error"
-                    *ngIf="form.get('nombreUsuario')?.touched && form.get('nombreUsuario')?.hasError('required')">
-                    {{ 'Required' | translate }}
-                </div>
-            </mat-form-field>
-            <!-- EMAIL INPUT -->
-            <mat-form-field *ngIf="this.formType === 'signup'" class="input-witdh" appearance="fill">
-                <mat-label>{{ 'Email' | translate }}</mat-label>
-                <input matInput placeholder="{{ 'Email' | translate }}" formControlName="email">
-                <div *ngIf="form.get('email')?.touched && form.get('email')?.hasError('email')" class="error">
-                    {{ 'auth.signup.invalid-email' | translate }}
-                </div>
-                <div *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')"
-                    class="error">
-                    {{ 'Required' | translate}}</div>
-            </mat-form-field>
-            <!-- PASSWORD INPUT -->
-            <mat-form-field class="input-witdh" appearance="fill">
-                <mat-label>{{ 'Password' | translate }}</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" placeholder="{{ 'Password' | translate }}" formControlName="password" required>
-                <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </div>
-                <div class="error" *ngIf="form.get('password')?.touched && form.get('password')?.hasError('required')">
-                    {{ 'Required' | translate }}
-                </div>
-                <div *ngIf="form.get('password')?.touched && form.get('password')?.hasError('pattern')"
-                    class="error">{{ 'auth.signup.pass-length' | translate }}
-                </div>
-            </mat-form-field>
-            <br>
-            <!-- SUBMIT BUTTON -->
-            <button type="submit" class="input-width button" mat-raised-button [disabled]="form.invalid">
-                {{ formType === 'login' ? ('Login' | translate) : ('Signup' | translate) }}
-            </button>
-            <div *ngIf="this.formType === 'login'" class="forgot-pass">{{ 'Forgot' | translate }}</div>
-            <div *ngIf="this.formType === 'login'" class="send-email" (click)="emailOpen()">{{ 'SendEmail' | translate }}</div>
-            <div *ngIf="this.formType === 'signup'" class="goto-login">{{ 'AlreadyAndAccount' | translate }}
-                <span (click)="signupOpen()">&nbsp;{{ 'Login' | translate }}</span>
-            </div>
-        </form>
+<!-- FORM -->
+<form [formGroup]="this.form" (ngSubmit)="onSubmit()">
+    <img src="../../../../assets/img/user.png" alt="user-image" style="margin-top: 20px;"><br><br>
+    <h3>{{ formType === 'login' ? ('Login' | translate) : ('Signup' | translate) }}</h3>
+    <!-- EMAIL OR USERNAME INPUT -->
+    <mat-form-field class="input-witdh" appearance="fill">
+        <mat-label>{{ formType === 'login' ? ('UsernameOrEmail' | translate) : ('Username' | translate) }}</mat-label>
+        <input 
+            matInput
+            placeholder="{{ formType === 'login' ? ('UsernameOrEmail' | translate) : ('Username' | translate) }}"
+            formControlName="nombreUsuario">
+        <div class="error"
+            *ngIf="form.get('nombreUsuario')?.touched && form.get('nombreUsuario')?.hasError('required')">
+            {{ 'Required' | translate }}
+        </div>
+    </mat-form-field>
+    <!-- EMAIL INPUT -->
+    <mat-form-field *ngIf="this.formType === 'signup'" class="input-witdh" appearance="fill">
+        <mat-label>{{ 'Email' | translate }}</mat-label>
+        <input matInput placeholder="{{ 'Email' | translate }}" formControlName="email">
+        <div *ngIf="form.get('email')?.touched && form.get('email')?.hasError('email')" class="error">
+            {{ 'auth.signup.invalid-email' | translate }}
+        </div>
+        <div *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')" class="error">
+            {{ 'Required' | translate}}</div>
+    </mat-form-field>
+    <!-- PASSWORD INPUT -->
+    <mat-form-field class="input-witdh" appearance="fill">
+        <mat-label>{{ 'Password' | translate }}</mat-label>
+        <input 
+            matInput [type]="hide ? 'password' : 'text'" placeholder="{{ 'Password' | translate }}"
+            formControlName="password">
+        <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </div>
+        <div class="error" *ngIf="form.get('password')?.touched && form.get('password')?.hasError('required')">
+            {{ 'Required' | translate }}
+        </div>
+        <div *ngIf="form.get('password')?.touched && form.get('password')?.hasError('pattern')" class="error">{{
+            'auth.signup.pass-length' | translate }}
+        </div>
+    </mat-form-field>
+    <br>
+    <!-- SUBMIT BUTTON -->
+    <button type="submit" class="input-width button" mat-raised-button [disabled]="form.invalid">
+        {{ formType === 'login' ? ('Login' | translate) : ('Signup' | translate) }}
+    </button>
+    <div *ngIf="this.formType === 'login'" class="forgot-pass">{{ 'Forgot' | translate }}</div>
+    <div *ngIf="this.formType === 'login'" class="send-email" (click)="emailOpen()">{{ 'SendEmail' | translate }}</div>
+    <div *ngIf="this.formType === 'signup'" class="goto-login">{{ 'AlreadyAndAccount' | translate }}
+        <span (click)="signupOpen()">&nbsp;{{ 'Login' | translate }}</span>
     </div>
-</div>
+</form>
