@@ -34,10 +34,13 @@
                 <div class="error" *ngIf="form.get('password')?.touched && form.get('password')?.hasError('required')">
                     {{ 'Required' | translate }}
                 </div>
+                <div *ngIf="form.get('password')?.touched && form.get('password')?.hasError('pattern')"
+                    class="error">{{ 'auth.signup.pass-length' | translate }}
+                </div>
             </mat-form-field>
             <br>
             <!-- SUBMIT BUTTON -->
-            <button type="submit" class="input-width button" mat-raised-button>
+            <button type="submit" class="input-width button" mat-raised-button [disabled]="form.invalid">
                 {{ formType === 'login' ? ('Login' | translate) : ('Signup' | translate) }}
             </button>
             <div *ngIf="this.formType === 'login'" class="forgot-pass">{{ 'Forgot' | translate }}</div>

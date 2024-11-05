@@ -15,7 +15,6 @@ import { LoginComponent } from 'src/app/components/auth/login/login.component';
   styleUrls: ['./form-template.component.scss']
 })
 export class FormTemplateComponent implements OnInit {
-
   @Input() formType: string = '';
   protected form!: FormGroup;
   protected hide: boolean = true;
@@ -31,59 +30,71 @@ export class FormTemplateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.initform();
+    if (this.formType === 'login') {
+      this.initFormLogin();
+    } else if (this.formType === 'signup') {
+      this.initFormSignup();
+    } else {
+      alert("option: " + this.formType + 'does not exist')
+    }
   }
 
-  private initform(): void {
+  private initFormLogin() {
+    this.form = this.fb.group({
+      nombreUsuario: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  private initFormSignup() {
+    this.form = this.fb.group({
+      nombreUsuario: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]]
+    });
+  }
+
+  onSubmit() {
     switch (this.formType) {
       case 'login': {
-        this.form = this.fb.group({
-          nombreUsuario: ['', Validators.required],
-          password: ['', Validators.required]
-        });
+        this.login();
         break;
       }
       case 'signup': {
-        this.form = this.fb.group({
-          nombreUsuario: ['', Validators.required],
-          email: ['', [Validators.required, Validators.email]],
-          password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]]
-        });
+        this.signup();
         break;
       }
       default: {
-        alert("option: " + this.formType + 'does not exist')
+        alert("form type: " + this.formType + ' does not exist')
         break;
       }
     }
   }
 
-  onSubmit() {
-    switch(this.formType) {
-      case 'login': {
-        if (this.form.valid) {
-          this.authSvc.loginUser(this.form.value).subscribe({
-            next: data => {
-              this.tokenSvc.setToken(data.token);
-              this.dialog.closeAll();
-              const msg = `${this.translateSvc.instant('auth.login.welcome')} ${this.form.value.nombreUsuario}!`;
-              this.utilsSvc.showSnackBar(msg, 5000);
-              this.router.navigate(['admin/new']);
-            },
-            error: err => {
-              const msg = this.translateSvc.instant('auth.login.wrong-data');
-              this.utilsSvc.showSnackBar(msg, 10000);
-              this.form.reset();
-            }
-          });
-        } else {
-          const msg = this.translateSvc.instant('auth.login.fill-blanks');
+  private login() {
+    if (this.form.valid) {
+      this.authSvc.loginUser(this.form.value).subscribe({
+        next: data => {
+          this.tokenSvc.setToken(data.token);
+          this.dialog.closeAll();
+          const msg = `${this.translateSvc.instant('auth.login.welcome')} ${this.form.value.nombreUsuario}!`;
           this.utilsSvc.showSnackBar(msg, 5000);
-        };
-        break;
-      }
-      case 'signup': {
-        let msg = '';
+          this.router.navigate(['admin/new']);
+        },
+        error: err => {
+          const msg = this.translateSvc.instant('auth.login.wrong-data');
+          this.utilsSvc.showSnackBar(msg, 10000);
+          this.form.reset();
+        }
+      });
+    } else {
+      const msg = this.translateSvc.instant('auth.login.fill-blanks');
+      this.utilsSvc.showSnackBar(msg, 5000);
+    };
+  }
+
+  private signup() {
+    let msg = '';
     if (this.form.valid) {
       this.authSvc.signupUser(this.form.value).subscribe({
         next: (data) => {
@@ -105,14 +116,6 @@ export class FormTemplateComponent implements OnInit {
       const msg = this.translateSvc.instant('auth.signup.fill-blanks');
       this.utilsSvc.showSnackBar(msg, 3000);
     };
-        break;
-      }
-      default: {
-        alert("option: " + this.formType + 'does not exist')
-        break;
-      }
-    }
-    
   }
 
   emailOpen() {
@@ -128,5 +131,4 @@ export class FormTemplateComponent implements OnInit {
       enterAnimationDuration: '1000ms'
     });
   }
-
 }
