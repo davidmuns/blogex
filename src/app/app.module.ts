@@ -1,3 +1,4 @@
+import { FormTemplateModule } from './shared/form-template/form-template.module';
 // Shared components
 import { CaptionComponent } from './shared/caption/caption.component';
 import { FooterComponent } from './shared/footer/footer.component';
@@ -99,6 +100,7 @@ import { InternationalitazionModule } from './internationalitazion.module';
     HttpClientModule,
     CrudModule,
     ToastrModule.forRoot(), // ToastrModule added
+    FormTemplateModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

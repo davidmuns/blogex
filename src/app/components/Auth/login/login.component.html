@@ -3,54 +3,25 @@
         <mat-tab-group mat-align-tabs="start" animationDuration="500ms">
             <!-- LOGIN TAB -->
             <mat-tab class="custom-tab-label" label="{{ 'Login' | translate | uppercase }}">
-                <form [formGroup]="this.loginForm" (ngSubmit)="onLogin(loginForm.value)">
-                    <img src="../../../../assets/img/user.png" alt="user-image" style="margin-top: 20px;">
-                    <br><br>
-                    <h3>{{ 'Login' | translate }}</h3>
-                    <!-- EMAIL OR USERNAME INPUT -->
-                    <mat-form-field class="input-witdh" appearance="fill">
-                        <mat-label>{{ 'UsernameOrEmail' | translate }}</mat-label>
-                        <input matInput placeholder="{{ 'UsernameOrEmail' | translate }}" formControlName="nombreUsuario">
-                        <div class="error" *ngIf="loginForm.get('nombreUsuario')?.touched && loginForm.get('nombreUsuario')?.hasError('required')">
-                            {{ 'Required' | translate }}
-                        </div>
-                    </mat-form-field>
-                     <!-- PASSWORD INPUT -->
-                    <mat-form-field class="input-witdh" appearance="fill">
-                        <mat-label>{{ 'Password' | translate }}</mat-label>
-                        <input matInput [type]="hide ? 'password' : 'text'" placeholder="{{ 'Password' | translate }}"
-                            formControlName="password" required>
-                        <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                        </div>
-                        <div class="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')">
-                            {{ 'Required' | translate }}
-                        </div>
-                    </mat-form-field>
-                    <br>
-                    <!-- LOGIN BUTTON -->
-                    <button type="submit" class="input-witdh button" mat-raised-button [disabled]="loginForm.invalid">
-                        {{ 'Login' | translate }}
-                    </button>
-                    <div class="forgot-pass">{{ 'Forgot' | translate }}</div>
-                    <div class="send-email" (click)="emailOpen()">{{ 'SendEmail' | translate }}</div>
-                </form>
+                <app-form-template [formType]="'login'"></app-form-template>
+                
             </mat-tab>
             <!-- SIGNUP TAB -->
             <mat-tab class="custom-tab-label" label="{{ 'Signup' | translate | uppercase }}">
-                <form [formGroup]="this.signupForm" (ngSubmit)="onSignup(signupForm.value)">
-                    <img src="../../../../assets/img/user.png" alt="user-image" style="margin-top: 20px;">
+                <app-form-template [formType]="'signup'"></app-form-template>
+                <!-- <form [formGroup]="this.signupForm" (ngSubmit)="onSignup(signupForm.value)"> -->
+                    <!-- <img src="../../../../assets/img/user.png" alt="user-image" style="margin-top: 20px;">
                     <br><br>
-                    <h3>{{ 'Signup' | translate }}</h3>
+                    <h3>{{ 'Signup' | translate }}</h3> -->
                     <!-- USERNAME INPUT -->
-                    <mat-form-field class="input-witdh" appearance="fill">
+                    <!-- <mat-form-field class="input-witdh" appearance="fill">
                         <mat-label>{{ 'Username' | translate }}</mat-label>
                         <input matInput placeholder="{{ 'Username' | translate }}" formControlName="nombreUsuario">
                         <div *ngIf="signupForm.get('nombreUsuario')?.touched && signupForm.get('nombreUsuario')?.hasError('required')"
                             class="error">{{ 'Required' | translate}}</div>
-                    </mat-form-field>
+                    </mat-form-field> -->
                     <!-- EMAIL INPUT -->
-                    <mat-form-field class="input-witdh" appearance="fill">
+                    <!-- <mat-form-field class="input-witdh" appearance="fill">
                         <mat-label>{{ 'Email' | translate }}</mat-label>
                         <input matInput placeholder="{{ 'Email' | translate }}" formControlName="email">
                         <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.hasError('email')" class="error">
@@ -59,9 +30,9 @@
                         <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.hasError('required')"
                             class="error">
                             {{ 'Required' | translate}}</div>
-                    </mat-form-field>
+                    </mat-form-field> -->
                     <!-- PASSWORD INPUT -->
-                    <mat-form-field class="input-witdh" appearance="fill">
+                    <!-- <mat-form-field class="input-witdh" appearance="fill">
                         <mat-label>{{ 'Password' | translate }}</mat-label>
                         <input matInput [type]="hide ? 'password' : 'text'" placeholder="{{ 'Password' | translate }}"
                             formControlName="password">
@@ -74,15 +45,15 @@
                         <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.hasError('required')"
                             class="error">{{ 'Required' | translate }}</div>
                     </mat-form-field>
-                    <br>
+                    <br> -->
                     <!-- SIGNUP BUTTON -->
-                    <button type="submit" mat-raised-button class="input-witdh button" [disabled]="signupForm.invalid">
+                    <!-- <button type="submit" mat-raised-button class="input-witdh button" [disabled]="signupForm.invalid">
                         {{ 'Signup' | translate }}
                     </button>
                     <div class="goto-login">{{ 'AlreadyAndAccount' | translate }}<span (click)="signupOpen()">&nbsp;
                             {{ 'Login' | translate }}</span>
-                    </div>
-                </form>
+                    </div> -->
+                <!-- </form> -->
             </mat-tab>
         </mat-tab-group>
     </div>

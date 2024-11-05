@@ -1,0 +1,132 @@
+import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
+import { MatDialog } from '@angular/material/dialog';
+import { EmailPasswordComponent } from 'src/app/components/auth/email-password/email-password.component';
+import { AuthService } from '../services/auth.service';
+import { TokenService } from '../services/token.service';
+import { UtilsService } from '../services/utils.service';
+import { Router } from '@angular/router';
+import { LoginComponent } from 'src/app/components/auth/login/login.component';
+
+@Component({
+  selector: 'app-form-template',
+  templateUrl: './form-template.component.html',
+  styleUrls: ['./form-template.component.scss']
+})
+export class FormTemplateComponent implements OnInit {
+
+  @Input() formType: string = '';
+  protected form!: FormGroup;
+  protected hide: boolean = true;
+
+  constructor(
+    private readonly translateSvc: TranslateService,
+    private readonly fb: FormBuilder,
+    private readonly dialog: MatDialog,
+    private readonly authSvc: AuthService,
+    private readonly tokenSvc: TokenService,
+    private readonly utilsSvc: UtilsService,
+    private readonly router: Router,
+  ) { }
+
+  ngOnInit(): void {
+    this.initform();
+  }
+
+  private initform(): void {
+    switch (this.formType) {
+      case 'login': {
+        this.form = this.fb.group({
+          nombreUsuario: ['', Validators.required],
+          password: ['', Validators.required]
+        });
+        break;
+      }
+      case 'signup': {
+        this.form = this.fb.group({
+          nombreUsuario: ['', Validators.required],
+          email: ['', [Validators.required, Validators.email]],
+          password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]]
+        });
+        break;
+      }
+      default: {
+        alert("option: " + this.formType + 'does not exist')
+        break;
+      }
+    }
+  }
+
+  onSubmit() {
+    switch(this.formType) {
+      case 'login': {
+        if (this.form.valid) {
+          this.authSvc.loginUser(this.form.value).subscribe({
+            next: data => {
+              this.tokenSvc.setToken(data.token);
+              this.dialog.closeAll();
+              const msg = `${this.translateSvc.instant('auth.login.welcome')} ${this.form.value.nombreUsuario}!`;
+              this.utilsSvc.showSnackBar(msg, 5000);
+              this.router.navigate(['admin/new']);
+            },
+            error: err => {
+              const msg = this.translateSvc.instant('auth.login.wrong-data');
+              this.utilsSvc.showSnackBar(msg, 10000);
+              this.form.reset();
+            }
+          });
+        } else {
+          const msg = this.translateSvc.instant('auth.login.fill-blanks');
+          this.utilsSvc.showSnackBar(msg, 5000);
+        };
+        break;
+      }
+      case 'signup': {
+        let msg = '';
+    if (this.form.valid) {
+      this.authSvc.signupUser(this.form.value).subscribe({
+        next: (data) => {
+          this.dialog.closeAll();
+          this.dialog.open(LoginComponent);
+          msg = this.translateSvc.instant('auth.login.user-saved');
+          this.utilsSvc.showSnackBar(msg, 10000);
+        },
+        error: err => {
+          if (err.error.mensaje.includes('Email')) {
+            msg = this.translateSvc.instant('auth.signup.email-exists');
+          } else {
+            msg = this.translateSvc.instant('auth.signup.username-exists');
+          }
+          this.utilsSvc.showSnackBar(msg, 3000);
+        }
+      });
+    } else {
+      const msg = this.translateSvc.instant('auth.signup.fill-blanks');
+      this.utilsSvc.showSnackBar(msg, 3000);
+    };
+        break;
+      }
+      default: {
+        alert("option: " + this.formType + 'does not exist')
+        break;
+      }
+    }
+    
+  }
+
+  emailOpen() {
+    this.dialog.closeAll();
+    this.dialog.open(EmailPasswordComponent, {
+      enterAnimationDuration: '1000ms'
+    })
+  }
+
+  signupOpen() {
+    this.dialog.closeAll();
+    this.dialog.open(LoginComponent, {
+      enterAnimationDuration: '1000ms'
+    });
+  }
+
+}
