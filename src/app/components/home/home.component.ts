@@ -4,6 +4,7 @@ import { Map, marker, MarkerClusterGroup, tileLayer } from 'leaflet';
 import 'leaflet.markercluster';
 import { ArticleService } from './../../shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
+import { Router } from '@angular/router';
 
 const BASE_URL = environment.FRONT_BASE_URL;
 
@@ -39,6 +40,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   private zoom = 3;
 
   constructor(
+    private router: Router,
     private articleSvc: ArticleService,
     private renderer2: Renderer2
   ) { }
@@ -75,24 +77,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     const markers1 = new MarkerClusterGroup();
     const markers2 = new MarkerClusterGroup();
     const markers3 = new MarkerClusterGroup();
-
-    this.articleSvc.getAll().subscribe(
-      (res: Article[]) => {
-        res.forEach(point => {
-          this.postActual = point;
-          marker([point.latitude, point.longitude]).addTo(markers1).bindPopup(`
-        <a href="${BASE_URL}article/${point.id}">${point.title}</a>
-        <p class="text mt-1"></p>
-        <a href="${BASE_URL}article/${point.id}"><img src="${point.imagenPortada}"></a>
-      `);
-        });
-        /* map.fitBounds([
-          ...res.map(point => [point.latitude, point.longitude] as [number, number])
-        ]); */
-      });
-
+  
+    this.popUpArticlesOnMap(markers1);
     markers1.addTo(map);
-
+    
     //Map2 code
     tileLayer.wms("http://ows.mundialis.de/services/service?", {
       layers: 'Dark',
@@ -102,22 +90,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
       attribution: "Weather data © 2012 IEM Nexrad"
     }).addTo(map2);
 
-    this.articleSvc.getAll().subscribe(
-      (res: Article[]) => {
-        res.forEach(point => {
-          this.postActual = point;
-          marker([point.latitude, point.longitude]).addTo(markers2).bindPopup(`
-        <a href="${BASE_URL}article/${point.id}">${point.title}</a>
-        <p class="text mt-1"></p>
-        <a href="${BASE_URL}article/${point.id}"><img src="${point.imagenPortada}"></a>
-      `);
-        });
-        /* map2.fitBounds([
-          ...res.map(point => [point.latitude, point.longitude] as [number, number])
-        ]); */
-      });
+    this.popUpArticlesOnMap(markers2);
     markers2.addTo(map2);
-
+    
     //Map3 code
     tileLayer.wms("http://ows.mundialis.de/services/service?", {
       layers: 'OSM-Overlay-WMS',
@@ -126,24 +101,50 @@ export class HomeComponent implements OnInit, AfterViewInit {
       transparent: true,
       attribution: "Weather data © 2012 IEM Nexrad"
     }).addTo(map3);
-
-    this.articleSvc.getAll().subscribe(
-      (res: Article[]) => {
-        res.forEach(point => {
-          this.postActual = point;
-          marker([point.latitude, point.longitude]).addTo(markers3).bindPopup(`
-        <a href="${BASE_URL}article/${point.id}">${point.title}</a>
-        <p class="text mt-1"></p>
-        <a href="${BASE_URL}article/${point.id}"><img src="${point.imagenPortada}" class="imgMap"></a>
-      `);
-        });
-        map3.fitBounds([
-          ...res.map(point => [point.latitude, point.longitude] as [number, number])
-        ]);
-      });
+    
+    this.popUpArticlesOnMap(markers3);
     markers3.addTo(map3);
   }
 
+  private popUpArticlesOnMap(markers: MarkerClusterGroup): void{
+    this.articleSvc.getAll().subscribe((res: Article[]) => {
+      res.forEach(point => {
+        this.postActual = point;
+        const popupContent = `
+          <a href="#" class="article-link" data-id="${point.id}">${point.title}</a>
+          <p class="text mt-1"></p>
+          <a href="#" class="article-link" data-id="${point.id}">
+            <img class="image-link" src="${point.imagenPortada}" alt="${point.title}">
+          </a>
+        `;
+        const popup = marker([point.latitude, point.longitude]).addTo(markers).bindPopup(popupContent);
+        popup.on('popupopen', (e) => {
+          const popupContainer = e.popup.getElement();
+          // Selecciona el enlace del título y la imagen por separado y aplica el evento
+          const linkElements = popupContainer?.querySelectorAll('.article-link');
+          const imageElement = popupContainer?.querySelector('.image-link');
+          // Listener para enlaces
+          linkElements?.forEach(link => {
+            link.addEventListener('click', (event: Event) => {
+              event.preventDefault();
+              const id = (event.currentTarget as HTMLElement).getAttribute('data-id');
+              if (id) {
+                this.router.navigate([`/article/${id}`]);
+              }
+            });
+          });
+          // Listener específico para la imagen
+          imageElement?.addEventListener('click', (event: Event) => {
+            event.preventDefault();
+            const id = imageElement.getAttribute('data-id');
+            if (id) {
+              this.router.navigate([`/article/${id}`]);
+            }
+          });
+        });
+      });
+    });
+  }
   //Click to map and enable zoom
   removeCapa() {
     const asCapa = this.toCapa.nativeElement;
@@ -181,5 +182,4 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this.renderer2.setStyle(asMap3, 'display', 'block');
     }
   }
-
 }
