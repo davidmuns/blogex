@@ -112,10 +112,12 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.postActual = point;
         const popupContent = `
           <a href="#" class="article-link" data-id="${point.id}">${point.title}</a>
-          <p class="text mt-1"></p>
+          <br><br>
           <a href="#" class="article-link" data-id="${point.id}">
             <img class="image-link" src="${point.imagenPortada}" alt="${point.title}">
           </a>
+          <br>
+          <p class="text">${ point.caption }</p>
         `;
         const popup = marker([point.latitude, point.longitude]).addTo(markers).bindPopup(popupContent);
         popup.on('popupopen', (e) => {
