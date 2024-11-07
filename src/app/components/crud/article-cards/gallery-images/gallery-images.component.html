@@ -40,7 +40,7 @@
 <mat-dialog-actions align="end">
 
   <div class="input-div mx-1 p-1 shadow-sm">
-    <input type="file" class="file-input" id="customFile" (change)="handleImage($event)">
+    <input type="file" class="file-input" accept="image/*" id="customFile" (change)="handleImage($event)">
     <label class="file-label" for="customFile" matTooltip="max 5MB">{{ 'SelectImage' | translate }}</label>
   </div>
   <div class="mx-1">
