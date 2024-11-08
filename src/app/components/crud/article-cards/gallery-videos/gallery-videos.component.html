@@ -41,16 +41,16 @@
 
 <mat-dialog-actions align="end">
 
-  <div class="container">
-    <form [formGroup]="this.urlForm" (ngSubmit)="onSubmit(urlForm.value)">
-
-      <mat-form-field class="mx-2" appearance="fill">
-        <mat-label>Youtube url</mat-label>
-        <input matInput placeholder="https://youtu.be/fYgq0cT7wCg" formControlName="url" required>
-      </mat-form-field>
-
-      <button type="submit" mat-raised-button>{{ 'Publish' | translate }}</button>
-    </form>
+  <div class="input-div mx-1 p-1 shadow-sm">
+    <input type="file" class="file-input" accept="video/*" id="customFile" (change)="handleImage($event)">
+    <label class="file-label" for="customFile" matTooltip="max 5MB">{{ 'SelectImage' | translate }}</label>
+  </div>
+  <div class="mx-1">
+    <img *ngIf="this.file" class="thumbnail" [src]="miniatura" alt="">
+  </div>
+  <div class="upload-icon p-1 shadow-sm">
+    <mat-icon class="upload-icon" mat-button mat-stroked-button (click)="onUpload()" matTooltip="upload image"
+      matTooltipPosition="above">upload</mat-icon>
   </div>
 
 </mat-dialog-actions>
