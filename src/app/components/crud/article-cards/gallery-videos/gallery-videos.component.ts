@@ -26,6 +26,7 @@ export class GalleryVideosComponent implements OnInit {
   video!: Video;
   file!: File;
   miniatura!: Imagen;
+  videoUrl: string = 'C:/Users/LENOVO/Desktop/videos/1a561ab1-81d7-4981-9eea-41a089011197-Video de WhatsApp 2024-11-04 a las 13.34.13_c687393c.mp4'
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article },

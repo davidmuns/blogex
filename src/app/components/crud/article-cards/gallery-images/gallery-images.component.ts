@@ -28,8 +28,8 @@ export class GalleryImagesComponent implements OnInit {
   article = this.data.article;
   articleId = this.article.id;
   imagenes: Imagen[] = [];
-  image!: File;
-  miniatura!: Imagen;
+  image!: File | null;
+  miniatura!: Imagen | null;
   username!: string;
  
   constructor(
@@ -61,6 +61,8 @@ export class GalleryImagesComponent implements OnInit {
     if (this.image != undefined) {
       if (this.image.size < environment.IMG_MAX_SIZE) {
         this.addImage(this.image, this.data.article.id);
+        this.miniatura = null;
+        this.image = null;
       } else {
         const size = environment.IMG_MAX_SIZE / 1000000;
         const msg = this.translateService.instant('ImgMaximumExceed') + " " +  size + "MB";
