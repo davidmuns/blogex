@@ -28,8 +28,8 @@ export class GalleryImagesComponent implements OnInit {
   article = this.data.article;
   articleId = this.article.id;
   imagenes: Imagen[] = [];
-  image!: File;
-  miniatura!: Imagen;
+  image!: File | null;
+  miniatura!: Imagen | null;
   username!: string;
  
   constructor(
@@ -77,6 +77,8 @@ export class GalleryImagesComponent implements OnInit {
       next: data => {
         this.utilsSvc.showSnackBar(data.mensaje, 3000);
         this.imagenes = [];
+        this.miniatura = null;
+        this.image = null;
         this.getImgsByArticleId(this.data.article.id);
       },
       error: err => {

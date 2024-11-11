@@ -14,7 +14,7 @@ import { DeleteComponent } from '../../delete/delete.component';
   styleUrls: ['./gallery-videos.component.scss']
 })
 export class GalleryVideosComponent implements OnInit {
-
+  
   urlForm = this.fb.group({ url: ['', Validators.required] });
   article = this.data.article;
   articleId = this.article.id;
@@ -25,22 +25,21 @@ export class GalleryVideosComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article },
-    private utilsSvc: UtilsService,
+    private readonly utilsSvc: UtilsService,
     public videoSvc: VideoService,
     private readonly fb: FormBuilder,
     private readonly dialog: MatDialog,
-    private translateService: TranslateService) { };
+    private readonly translateService: TranslateService) { };
 
   ngOnInit() {
     this.getVideos();
   };
-
+  
   onSubmit(data: any) {
     const isValidUrl = this.videoSvc.isValidUrl(data.url);
     if (isValidUrl) {
       this.youtubeId = this.videoSvc.getYoutubeId(data.url);
       this.newVideo();
-      this.getVideos();
     } else {
       const msg = this.translateService.instant('crud.list-videos.invalid-url');
       this.utilsSvc.showSnackBar(msg, 3000);
@@ -64,6 +63,9 @@ export class GalleryVideosComponent implements OnInit {
       next: data => {
         const msg = this.translateService.instant('crud.list-videos.posted');
         this.utilsSvc.showSnackBar(msg, 3000);
+        this.videos = [];
+        this.urlForm.reset();
+        this.getVideos();
       },
       error: err => {
         this.utilsSvc.showSnackBar(err.error.message, 3000);
