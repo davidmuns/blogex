@@ -31,6 +31,7 @@ export class GalleryImagesComponent implements OnInit {
   image!: File | null;
   miniatura!: Imagen | null;
   username!: string;
+  uploading = false;
  
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article },
@@ -73,12 +74,14 @@ export class GalleryImagesComponent implements OnInit {
   };
   
   private addImage(image: File, articleId: number) {
+    this.uploading = true;
     this.articleSvc.addImageToArticle(image, articleId).subscribe({
       next: data => {
-        this.utilsSvc.showSnackBar(data.mensaje, 3000);
+        this.uploading = false;
         this.imagenes = [];
         this.miniatura = null;
         this.image = null;
+        this.utilsSvc.showSnackBar(data.mensaje, 3000);
         this.getImgsByArticleId(this.data.article.id);
       },
       error: err => {

@@ -38,15 +38,16 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-
-  <div class="input-div mx-1 p-1 shadow-sm">
+  <div *ngIf="uploading" class="spinner"></div>
+  <!-- <mat-spinner class="spinner" *ngIf="uploading"></mat-spinner> -->
+  <div *ngIf="!uploading" class="input-div mx-1 p-1 shadow-sm">
     <input type="file" class="file-input" accept="image/*" id="customFile" (change)="handleImage($event)">
     <label class="file-label" for="customFile" matTooltip="max 5MB">{{ 'SelectImage' | translate }}</label>
   </div>
-  <div class="mx-1">
+  <div *ngIf="!uploading" class="mx-1">
     <img *ngIf="this.image" class="thumbnail" [src]="miniatura" alt="">
   </div>
-  <div class="upload-icon p-1 shadow-sm">
+  <div *ngIf="!uploading" class="upload-icon p-1 shadow-sm">
     <mat-icon class="upload-icon" mat-button mat-stroked-button (click)="onUpload()" matTooltip="upload image"
       matTooltipPosition="above">upload</mat-icon>
   </div>
