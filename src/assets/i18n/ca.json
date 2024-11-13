@@ -7,7 +7,7 @@
     "BlogOf": "El blog de",
     "MyArticles": "Els meus articles",
     "MyImages": "Les meves imatges",
-    "images": "Imatges",
+    "images": "Arxius",
     "my-videos": "Els meus videos",
     "UsernameOrEmail": "Nom d'usuari o correu electrónic",
     "Username": "Nom d'usuari",
@@ -43,7 +43,8 @@
     "EditArticle": "Editar",
     "create-article": "Crear article",
     "CoverImage": "Imatge de portada",
-    "SelectImage": "Selec. imatge",
+    "SelectImage": "Imatge",
+    "SelectVideo": "Video",
     "ArticlesToEdit": "Articles per a editar",
     "Publish": "Publicar",
     "Filter": "Filtrar",
@@ -66,7 +67,7 @@
     "ItemsPage": "Elements per pàgina",
     "FillBlanks": "Si us plau, omple els camps buits i afegeix una imatge",
     "ImgMaximumExceed": "Imatge excedeix tamany màxim permés de",
-    "PleaseSelectImage": "Si us plau selecciona una imatge",
+    "PleaseSelectImage": "Si us plau selecciona un archiu abans de pujar-lo",
     "header": {
         "articles-editor": "Editor d´articles",
         "my-articles": "Els meus articles",
@@ -110,14 +111,15 @@
         "article-card": {
             "articles-of": "Articles de",
             "search": "Buscar per títol",
-            "video-tool-tip": "Galeria de vídeos",
-            "image-tool-tip": "Galería d´imatges"
+            "video-tool-tip": "Vídeos de youtube",
+            "image-tool-tip": "Els meus arxius",
+            "upload-icon-tool-tip": "Pujar arxiu"
         },
         "image-list": {
-            "images": "Imatges de"
+            "images": "Arxius de"
         },
         "list-videos": {
-            "videos": "Vídeos de",
+            "videos": "Youtube vídeos de",
             "invalid-url": "Només son vàlides las URLs de youtube",
             "posted": "Video publicat"
         }

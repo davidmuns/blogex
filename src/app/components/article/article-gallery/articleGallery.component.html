@@ -45,8 +45,14 @@
 			</mat-card-header>
 			<a type="button" matTooltip="Preview" matTooltipPosition="above" data-bs-toggle="modal"
 				data-bs-target="#exampleModal" style="cursor: pointer;" (click)="getIndex(i)">
-				<img mat-card-image [src]="imagen.url" alt="">
+				<img *ngIf="imagen.fileType =='image'" mat-card-image [src]="imagen.url" alt="">
 			</a>
+			<video *ngIf="imagen.fileType =='video'" mat-card-image
+				width="215"
+				[src]="imagen.url"
+				title="video"
+				controls>
+			</video>
 
 			<mat-card-content>
 

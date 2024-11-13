@@ -7,8 +7,8 @@
     "BlogOf": "El blog de",
     "The blog": "The blog of",
     "MyArticles": "Mis artículos",
-    "MyImages": "Mis imágenes",
-    "images": "Imágenes",
+    "MyImages": "Mis archivos",
+    "images": "Archivos",
     "my-videos": "Mis vídeos",
     "UsernameOrEmail": "Nombre de usuario o correo electrónico",
     "Username": "Nombre de usuario",
@@ -44,7 +44,8 @@
     "EditArticle": "Editar",
     "create-article": "Crear artículo",
     "CoverImage": "Imagen de portada",
-    "SelectImage": "Selec. imagen",
+    "SelectImage": "Imagen",
+    "SelectVideo": "Vídeo",
     "ArticlesToEdit": "Artículos para editar",
     "Publish": "Publicar",
     "Filter": "Filtrar",
@@ -67,7 +68,7 @@
     "ItemsPage": "Elementos por página",
     "FillBlanks": "Por favor rellena los campos vacios e inserta una imagen",
     "ImgMaximumExceed": "Imagen excede tamaño máximo permitido de",
-    "PleaseSelectImage": "Por favor selecciona una imagen",
+    "PleaseSelectImage": "Por favor selecciona un archivo antes de subirlo",
     "header": {
         "articles-editor": "Editor de artículos",
         "my-articles": "Mis artículos",
@@ -111,14 +112,15 @@
         "article-card": {
             "articles-of": "Artículos de",
             "search": "Buscar por título",
-            "video-tool-tip": "Galeria de vídeos",
-            "image-tool-tip": "Galería de imágenes"
+            "video-tool-tip": "Vídeos de Youtube",
+            "image-tool-tip": "Mis archivos",
+            "upload-icon-tool-tip": "Subir archivo"
         },
         "image-list": {
-            "images": "Imágenes de"
+            "images": "Archivos de"
         },
         "list-videos": {
-            "videos": "Vídeos de",
+            "videos": "Youtube vídeos de",
             "invalid-url": "Solamente son válidas las URLs de youtube",
             "posted": "Video publicado"
         }

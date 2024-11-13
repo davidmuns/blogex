@@ -20,7 +20,14 @@
         <mat-card-header class="mb-3">
           <mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image [src]="imagen.url" alt="image">
+        <img *ngIf="imagen.fileType =='image'" mat-card-image [src]="imagen.url" alt="">
+        <video *ngIf="imagen.fileType =='video'"
+          mat-card-image
+          width="215"
+          [src]="imagen.url"
+          title="video"
+          controls>
+        </video>
         <mat-card-content>
           <p style="color: rgba(255, 255, 255);">{{ imagen.caption }}</p>
         </mat-card-content>
@@ -41,14 +48,18 @@
   <div *ngIf="uploading" class="spinner"></div>
   <!-- <mat-spinner class="spinner" *ngIf="uploading"></mat-spinner> -->
   <div *ngIf="!uploading" class="input-div mx-1 p-1 shadow-sm">
-    <input type="file" class="file-input" accept="image/*" id="customFile" (change)="handleImage($event)">
-    <label class="file-label" for="customFile" matTooltip="max 5MB">{{ 'SelectImage' | translate }}</label>
+    <input type="file" class="file-input" accept="image/*" id="customImage" (change)="handleImage($event)">
+    <label class="file-label" for="customImage" matTooltip="max 5MB">{{ 'SelectImage' | translate }}</label>
+  </div>
+  <div *ngIf="!uploading" class="input-div mx-1 p-1 shadow-sm">
+    <input type="file" class="file-input" accept="video/*" id="customVideo" (change)="handleImage($event)">
+    <label class="file-label" for="customVideo" matTooltip="max 5MB">{{ 'SelectVideo' | translate }}</label>
   </div>
   <div *ngIf="!uploading" class="mx-1">
     <img *ngIf="this.image" class="thumbnail" [src]="miniatura" alt="">
   </div>
   <div *ngIf="!uploading" class="upload-icon p-1 shadow-sm">
-    <mat-icon class="upload-icon" mat-button mat-stroked-button (click)="onUpload()" matTooltip="upload image"
+    <mat-icon class="upload-icon" mat-button mat-stroked-button (click)="onUpload()" matTooltip="{{ 'crud.article-card.upload-icon-tool-tip' | translate }}"
       matTooltipPosition="above">upload</mat-icon>
   </div>
 
