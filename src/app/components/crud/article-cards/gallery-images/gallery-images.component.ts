@@ -28,8 +28,7 @@ export class GalleryImagesComponent implements OnInit {
   article = this.data.article;
   articleId = this.article.id;
   imagenes: Imagen[] = [];
-  image!: File | null;
-  miniatura!: Imagen | null;
+  image!: File;
   username!: string;
   uploading = false;
  
@@ -45,44 +44,49 @@ export class GalleryImagesComponent implements OnInit {
     this.getImgsByArticleId(this.articleId);
   };
 
-  private getImgsByArticleId(id: number) {
-    this.articleSvc.getImagesByArticleId(id).subscribe({
-      next: (data: Imagen[]) => {
-        data.forEach(img => {
-          console.log("IMAGE => ", img);
-          
-          this.imagenes.push(img);
-        });
-      },
-      error: err => {
-        this.utilsSvc.showSnackBar(err.error.message, 5000);
-      }
-    });
+  handleImage(event: any) {
+    this.image = event.target.files[0];
+    this.onUpload(); 
   };
 
   onUpload() {
-    if (this.image != undefined) {
+    if(this.image.type.startsWith('image')){
       if (this.image.size < environment.IMG_MAX_SIZE) {
         this.addImage(this.image, this.data.article.id);
       } else {
         const size = environment.IMG_MAX_SIZE / 1000000;
-        const msg = this.translateService.instant('ImgMaximumExceed') + " " +  size + "MB";
-        this.utilsSvc.showSnackBar(msg, 5000);
+        const msg = this.translateService.instant('ImgMaximumExceed') + " (" +  size + " MB)";
+        this.utilsSvc.showSnackBar(msg, 10000);
+        this.dialog.closeAll();
       }
-    } else {
-      const msg = this.translateService.instant('PleaseSelectImage');
-      this.utilsSvc.showSnackBar(msg, 5000);
-    };
+    }
+
+    if(this.image.type.startsWith('video')){
+      if (this.image.size < environment.VIDEO_MAX_SIZE) {
+        this.addImage(this.image, this.data.article.id);
+      } else {
+        const size = environment.VIDEO_MAX_SIZE / 1000000;
+        const msg = this.translateService.instant('VideoMaximumExceed') + " (" +  size + " MB)";
+        this.utilsSvc.showSnackBar(msg, 10000);
+        this.dialog.closeAll();
+      }
+    }
   };
   
+  onDeleteImage(id: string){
+    this.dialog.open(DeleteComponent, {data: {imgId: id, article: this.article, option: "deleteImage"}});
+  };
+
+  onCaption(id: string) {
+    this.dialog.open(CaptionComponent, { data: { imgId: id } });
+  };
+
   private addImage(image: File, articleId: number) {
     this.uploading = true;
     this.articleSvc.addImageToArticle(image, articleId).subscribe({
       next: data => {
         this.uploading = false;
         this.imagenes = [];
-        this.miniatura = null;
-        this.image = null;
         this.utilsSvc.showSnackBar(data.mensaje, 3000);
         this.getImgsByArticleId(this.data.article.id);
       },
@@ -92,22 +96,17 @@ export class GalleryImagesComponent implements OnInit {
     });
   };
 
-  onDeleteImage(id: string){
-    this.dialog.open(DeleteComponent, {data: {imgId: id, article: this.article, option: "deleteImage"}});
-  };
-
-  onCaption(id: string) {
-    this.dialog.open(CaptionComponent, { data: { imgId: id } });
-  };
-
-  handleImage(event: any) {
-    this.image = event.target.files[0];
-    const fr = new FileReader();
-    fr.onload = (e: any) => {
-      this.miniatura = e.target.result;
-    }
-    if(this.image != null){
-      fr.readAsDataURL(this.image);
-    }   
+  private getImgsByArticleId(id: number) {
+    this.articleSvc.getImagesByArticleId(id).subscribe({
+      next: (data: Imagen[]) => {
+        data.forEach(img => {
+          console.log("IMAGE => ", img);
+          this.imagenes.push(img);
+        });
+      },
+      error: err => {
+        this.utilsSvc.showSnackBar(err.error.message, 5000);
+      }
+    });
   };
 };

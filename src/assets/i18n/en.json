@@ -59,7 +59,7 @@
     "Set": "Set",
     "Insert": "Insert",
     "Cancel": "Cancel",
-    "Image": "Image",
+    "Image": "File",
     "YouSure": "Are you sure?",
     "Undone": "This action cannot be undone",
     "List": "List",
@@ -67,7 +67,8 @@
     "NoCoincidence": "There is no coincidence with",
     "ItemsPage": "Items per page",
     "FillBlanks": "Please fill in the blanks and insert image",
-    "ImgMaximumExceed": "Image exceeds its maximum permitted size of",
+    "ImgMaximumExceed": "Image size exceeds maximum allowed",
+    "VideoMaximumExceed": "Video size exceeds maximum allowed",
     "PleaseSelectImage": "Please select file before uploading",
     "header": {
         "articles-editor": "Articles editor",
@@ -114,7 +115,8 @@
             "search": "Search by title",
             "video-tool-tip": "Youtube videos",
             "image-tool-tip": "My files",
-            "upload-icon-tool-tip": "Upload file"
+            "upload-icon-tool-tip": "Upload",
+            "uploading-icon-tool-tip": "Uploading ..."
         },
         "image-list": {
             "images": "Files of"

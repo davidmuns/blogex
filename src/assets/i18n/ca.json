@@ -58,7 +58,7 @@
     "Set": "Establir",
     "Insert": "Afegir",
     "Cancel": "Cancel·lar",
-    "Image": "Imatge",
+    "Image": "Arxiu",
     "YouSure": "Estàs segur?",
     "Undone": "Aquesta acció no es pot desfer",
     "List": "Llista",
@@ -66,7 +66,8 @@
     "NoCoincidence": "No hi ha coincidencias amb",
     "ItemsPage": "Elements per pàgina",
     "FillBlanks": "Si us plau, omple els camps buits i afegeix una imatge",
-    "ImgMaximumExceed": "Imatge excedeix tamany màxim permés de",
+    "ImgMaximumExceed": "Imatge excedeix tamany màxim permés",
+    "VideoMaximumExceed": "Video excedeix tamany màxim permés",
     "PleaseSelectImage": "Si us plau selecciona un archiu abans de pujar-lo",
     "header": {
         "articles-editor": "Editor d´articles",
@@ -113,7 +114,8 @@
             "search": "Buscar per títol",
             "video-tool-tip": "Vídeos de youtube",
             "image-tool-tip": "Els meus arxius",
-            "upload-icon-tool-tip": "Pujar arxiu"
+            "upload-icon-tool-tip": "Pujar",
+            "uploading-icon-tool-tip": "Pujant ..."
         },
         "image-list": {
             "images": "Arxius de"

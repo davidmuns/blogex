@@ -24,6 +24,7 @@
         <video *ngIf="imagen.fileType =='video'"
           mat-card-image
           width="215"
+          height="200"
           [src]="imagen.url"
           title="video"
           controls>
@@ -46,21 +47,16 @@
 
 <mat-dialog-actions align="end">
   <div *ngIf="uploading" class="spinner"></div>
-  <!-- <mat-spinner class="spinner" *ngIf="uploading"></mat-spinner> -->
+  <div *ngIf="!uploading" class="input-div mx-1 p-1">{{ 'crud.article-card.upload-icon-tool-tip' | translate }}: </div>
+  <div *ngIf="uploading" class="input-div mx-1 p-1">{{ 'crud.article-card.uploading-icon-tool-tip' | translate }}</div>
+   <!-- IMAGE INPUT -->
   <div *ngIf="!uploading" class="input-div mx-1 p-1 shadow-sm">
     <input type="file" class="file-input" accept="image/*" id="customImage" (change)="handleImage($event)">
-    <label class="file-label" for="customImage" matTooltip="max 5MB">{{ 'SelectImage' | translate }}</label>
+    <label class="file-label" for="customImage" matTooltip="max 10MB">{{ 'SelectImage' | translate }}</label>
   </div>
+  <!-- VIDEO INPUT -->
   <div *ngIf="!uploading" class="input-div mx-1 p-1 shadow-sm">
     <input type="file" class="file-input" accept="video/*" id="customVideo" (change)="handleImage($event)">
-    <label class="file-label" for="customVideo" matTooltip="max 5MB">{{ 'SelectVideo' | translate }}</label>
+    <label class="file-label" for="customVideo" matTooltip="max 100MB">{{ 'SelectVideo' | translate }}</label>
   </div>
-  <div *ngIf="!uploading" class="mx-1">
-    <img *ngIf="this.image" class="thumbnail" [src]="miniatura" alt="">
-  </div>
-  <div *ngIf="!uploading" class="upload-icon p-1 shadow-sm">
-    <mat-icon class="upload-icon" mat-button mat-stroked-button (click)="onUpload()" matTooltip="{{ 'crud.article-card.upload-icon-tool-tip' | translate }}"
-      matTooltipPosition="above">upload</mat-icon>
-  </div>
-
 </mat-dialog-actions>

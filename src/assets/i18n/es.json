@@ -59,7 +59,7 @@
     "Set": "Establecer",
     "Insert": "Insertar",
     "Cancel": "Cancelar",
-    "Image": "Imagen",
+    "Image": "Archivo",
     "YouSure": "¿Estás seguro?",
     "Undone": "Esta acción no se puede deshacer",
     "List": "Lista",
@@ -67,7 +67,8 @@
     "NoCoincidence": "No hay coincidencias con",
     "ItemsPage": "Elementos por página",
     "FillBlanks": "Por favor rellena los campos vacios e inserta una imagen",
-    "ImgMaximumExceed": "Imagen excede tamaño máximo permitido de",
+    "ImgMaximumExceed": "Imagen excede tamaño máximo permitido",
+    "VideoMaximumExceed": "Video excede tamaño máximo permitido",
     "PleaseSelectImage": "Por favor selecciona un archivo antes de subirlo",
     "header": {
         "articles-editor": "Editor de artículos",
@@ -114,7 +115,8 @@
             "search": "Buscar por título",
             "video-tool-tip": "Vídeos de Youtube",
             "image-tool-tip": "Mis archivos",
-            "upload-icon-tool-tip": "Subir archivo"
+            "upload-icon-tool-tip": "Subir",
+            "uploading-icon-tool-tip": "Subiendo ..."
         },
         "image-list": {
             "images": "Archivos de"

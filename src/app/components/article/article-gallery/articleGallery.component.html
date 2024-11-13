@@ -49,6 +49,7 @@
 			</a>
 			<video *ngIf="imagen.fileType =='video'" mat-card-image
 				width="215"
+				height="200"
 				[src]="imagen.url"
 				title="video"
 				controls>
@@ -84,7 +85,15 @@
 						<div class="carousel-item" data-bs-interval="2000"
 							*ngFor="let imagen of (this.imagenes$ | async); index as i; count as items"
 							[ngClass]="{'active': i == this.indice, '': i != this.indice}">
-							<img [src]="imagen.url" class="d-block w-100" alt="...">
+							<img *ngIf="imagen.fileType === 'image'" [src]="imagen.url" class="d-block w-100" alt="...">
+							<video *ngIf="imagen.fileType =='video'"
+								mat-card-image
+								width="215"
+								height="200"
+								[src]="imagen.url"
+								title="video"
+								controls>
+							</video>
 							<div class="carousel-caption d-none d-md-block">
 								<h2 class="m-0"><strong>{{ imagen.caption }}</strong></h2>
 								<p class="m-0">image {{ i + 1 }} of {{ items }}</p>
