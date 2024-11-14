@@ -34,7 +34,7 @@ export class FrontArticlesComponent implements OnInit {
   private getArticles() {
     this.articleService.getAll().subscribe({
       next: data => {
-        this.articles =  this.utilsService.sortArticlesById(data);
+        this.articles =  this.utilsService.sortArticlesByDate(data);
       },
       error: err => {
         console.log(err);

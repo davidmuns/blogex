@@ -2,9 +2,6 @@
   <h1>{{ 'front-articles.last-articles' | translate }}</h1>
 
   <section class="main-container shadow rounded">
-    <!-- <video autoplay loop muted playsInline>
-      <source class="video" src="../../../../assets/img/608d6881-b9a5-4ea9-aa8d-165bae3f43ec.mp4" type="video/mp4">
-    </video> -->
     <article *ngFor="let article of this.articles | slice: numbers1 : numbers2" data-aos="fade-up" data-aos-duration="1000">
       <div class="example-card">
         <div>

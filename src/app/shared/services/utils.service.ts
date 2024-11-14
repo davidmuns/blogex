@@ -8,8 +8,9 @@ import { Injectable } from '@angular/core';
 })
 export class UtilsService {
 
-  constructor(private snack: MatSnackBar,
-    private translateSvc: TranslateService){};
+  constructor(
+    private readonly snack: MatSnackBar,
+    private readonly translateSvc: TranslateService){};
 
   public sortArticlesBy(articles: Article[], option: string): Article[] {
 
@@ -17,7 +18,7 @@ export class UtilsService {
       case 'title':
         return this.sortArticlesAlphabeticallyByTitle(articles);
       case 'date':
-        return this.sortArticlesById(articles); 
+        return this.sortArticlesByDate(articles); 
       default:
         return articles;
     }
@@ -35,10 +36,12 @@ export class UtilsService {
     });
   }
 
-  public sortArticlesById(articles: Article[]): Article[] {
-    return articles.sort((article1, article2) => Number(article2.id) - Number(article1.id));
-  };
-
+  public sortArticlesByDate(articles: Article[]): Article[] {
+    return articles.sort(
+      (article1: Article, article2: Article) => new Date(article2.date).getTime() - new Date(article1.date).getTime()
+    );
+  }
+  
   public showSnackBar(msg: string, duration: number) {
     const action = this.translateSvc.instant('article.close');
     this.snack.open(msg, action, {
