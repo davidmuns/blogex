@@ -37,13 +37,14 @@
 
 	</div>
 	<!-- IMAGES -->
-	<div *ngFor="let imagen of (this.imagenes$ | async); let i = index"
+	<div *ngFor="let imagen of (this.imagenes$ | async ); let i = index"
 		[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
 
 		<mat-card class="example-card">
 			<mat-card-header [ngClass]="{'mb-3': imagen.fileType === 'image'}">
 				<mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }} {{ 'crud.article-card.image-tool-tip' | translate }}</mat-card-title>
 			</mat-card-header>
+		
 			<mat-card-content>
 				<a 
 					type="button" 

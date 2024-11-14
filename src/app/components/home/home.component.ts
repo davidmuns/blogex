@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     } else {
       map = new Map('map').setView([this.lat, this.lon], this.zoom);
       map2 = new Map('map2').setView([this.lat, this.lon], this.zoom);
-      map3 = new Map('map3').setView([this.lat, this.lon], 13);
+      map3 = new Map('map3').setView([this.lat, this.lon], 3);
     }
 
     //Map1 code
