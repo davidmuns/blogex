@@ -60,6 +60,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 // Internationalitation
 import { InternationalitazionModule } from './internationalitazion.module';
+import { SortFileByTypePipe } from './shared/pipes/sort-file-by-type.pipe';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import { InternationalitazionModule } from './internationalitazion.module';
     SearchPipe,
     FormatDatePipe,
     SafeHtmlPipe,
+    SortFileByTypePipe,
     AboutComponent,
     GalleryVideosComponent,
     InfoAppComponent

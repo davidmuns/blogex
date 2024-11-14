@@ -131,7 +131,10 @@
         "see-more": "See more",
         "sort": "Sort by",
         "date": "Date",
-        "title": "Title",
+        "title-az": "Title (A-Z)",
+        "title-za": "Title (Z-A)",
+        "older": "Date (oldest first)",
+        "newer": "Date (newest first)",
         "none": "None",
         "goto-article": "Go to article"
     },

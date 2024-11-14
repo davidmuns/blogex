@@ -27,8 +27,10 @@ import AOS from 'aos';
 export class ArtcileCardsComponent implements OnInit {
   sortBy = '';
   orderOptions = [
-    { value: 'title', viewValue: this.translateSvc.instant('user-blog.title') },
-    { value: 'date', viewValue: this.translateSvc.instant('user-blog.date') },
+    { value: 'title-az', viewValue: this.translateSvc.instant('user-blog.title-az') },
+    { value: 'title-za', viewValue: this.translateSvc.instant('user-blog.title-za') },
+    { value: 'older', viewValue: this.translateSvc.instant('user-blog.older') },
+    { value: 'newer', viewValue: this.translateSvc.instant('user-blog.newer') },
   ];
   navigationExtras: NavigationExtras = {
     state: {

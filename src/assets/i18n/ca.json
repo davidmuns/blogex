@@ -130,7 +130,10 @@
         "see-more": "Veure més",
         "sort": "Ordenar per",
         "date": "Data",
-        "title": "Titol",
+        "title-az": "Títol (A-Z)",
+        "title-za": "Títol (Z-A)",
+        "older": "Data (Més antic primer)",
+        "newer": "Data (Més recent primer)",
         "none": "No ordenar",
         "goto-article": "Anar a l´article"
     },

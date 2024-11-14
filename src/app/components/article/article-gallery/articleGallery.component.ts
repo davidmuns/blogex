@@ -1,3 +1,5 @@
+import { SortFileByTypePipe } from './../../../shared/pipes/sort-file-by-type.pipe';
+import { UtilsService } from './../../../shared/services/utils.service';
 import { Video } from './../../../shared/models/video';
 import { VideoService } from './../../../shared/services/video.service';
 import { Observable } from 'rxjs';
@@ -13,7 +15,7 @@ import AOS from 'aos';
 })
 export class ArticleGalleryComponent implements OnInit {
   @Input('articleId') articleId!: number | undefined;
-  imagenes$!: Observable<Imagen[]>;
+  imagenes: Imagen[] = [];
   indice!: number;
   videos$!: Observable<Video[]>;
   playerVars = {
@@ -22,6 +24,7 @@ export class ArticleGalleryComponent implements OnInit {
 
   constructor(
     private articleSvc: ArticleService,
+    private utilsSvc: UtilsService,
     private videoSvc: VideoService) { }
 
   ngOnInit(): void {
@@ -38,7 +41,11 @@ export class ArticleGalleryComponent implements OnInit {
   }
 
   private getImgsByArticleId(id: number) {
-    this.imagenes$ = this.articleSvc.getImagesByArticleId(id);
+    this.articleSvc.getImagesByArticleId(id).subscribe({
+      next: data => {
+        this.imagenes = this.utilsSvc.sortFilesByType(data);
+      }
+    })
   }
 
   private getVideosByArticleId(id: number){
@@ -46,7 +53,7 @@ export class ArticleGalleryComponent implements OnInit {
   }
 
   hideGallery() {
-    this.imagenes$ = new Observable();
+    this.imagenes = [];
     this.videos$ = new Observable();
     window.scroll(0, 0);
   }
