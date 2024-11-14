@@ -14,49 +14,50 @@
 
 <!-- IMAGES & VIDEOS-->
 <div class="main-container">
-
 	<!-- VIDEOS -->
 	<div *ngFor="let video of (this.videos$ | async); let i = index"
 		[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
-
+		
+		<h2 *ngIf="i == 0" style="text-align: center;">{{ 'crud.article-card.video-tool-tip' | translate }}</h2>
+		
 		<!-- https://animate.style/ -->
 		<mat-card class="example-card">
+			
 			<mat-card-header>
-
+				<mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
 			</mat-card-header>
-			<youtube-player [videoId]="video.youtubeId" [playerVars]="this.playerVars" suggestedQuality="highres"
-				showBeforeIframeApiLoads="true" [width]="260">
-			</youtube-player>
-
+			
 			<mat-card-content>
-
+				<youtube-player [videoId]="video.youtubeId" [playerVars]="this.playerVars" suggestedQuality="highres"
+					showBeforeIframeApiLoads="true" [width]="260">
+				</youtube-player>
 			</mat-card-content>
+		
 		</mat-card>
 
 	</div>
-
 	<!-- IMAGES -->
 	<div *ngFor="let imagen of (this.imagenes$ | async); let i = index"
 		[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
 
-		<mat-card class="example-card">
-			<mat-card-header>
+		<h2 *ngIf="i == 0" style="text-align: center;">{{ 'crud.article-card.image-tool-tip' | translate }}</h2>
 
+		<mat-card class="example-card">
+			<mat-card-header [ngClass]="{'mb-3': imagen.fileType === 'image'}">
+				<mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
 			</mat-card-header>
 			<a type="button" matTooltip="Preview" matTooltipPosition="above" data-bs-toggle="modal"
 				data-bs-target="#exampleModal" style="cursor: pointer;" (click)="getIndex(i)">
 				<img *ngIf="imagen.fileType =='image'" mat-card-image [src]="imagen.url" alt="">
 			</a>
-			<video *ngIf="imagen.fileType =='video'" mat-card-image
-				width="215"
-				height="200"
-				[src]="imagen.url"
-				title="video"
-				controls>
-			</video>
-
 			<mat-card-content>
-
+				<video *ngIf="imagen.fileType =='video'"
+					width="250"
+					height=""
+					[src]="imagen.url"
+					title="video"
+					controls>
+				</video>
 				<p style="color: white;">{{ imagen.caption }}</p>
 			</mat-card-content>
 			<mat-card-actions align="start">

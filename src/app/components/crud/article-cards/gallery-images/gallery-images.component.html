@@ -15,23 +15,26 @@
     'crud.image-list.images' | translate }} {{ this.article.title }}</h1>
   <div class="main-container">
     <div *ngFor="let imagen of this.imagenes; index as i">
+      
       <mat-card class="example-card animate__animated animate__backInLeft"
         style="background-color: rgba(0, 0, 0, 0.4);">
-        <mat-card-header class="mb-3">
+        
+        <mat-card-header [ngClass]="{'mb-3': imagen.fileType === 'image'}">
           <mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
         </mat-card-header>
-        <img *ngIf="imagen.fileType =='image'" mat-card-image [src]="imagen.url" alt="">
-        <video *ngIf="imagen.fileType =='video'"
-          mat-card-image
-          width="215"
-          height="200"
+        
+        <mat-card-content>
+          <img *ngIf="imagen.fileType =='image'" mat-card-image [src]="imagen.url" [alt]="imagen.url">
+          <video *ngIf="imagen.fileType =='video'"      
+          width="250"
+          height=""
           [src]="imagen.url"
           title="video"
           controls>
         </video>
-        <mat-card-content>
           <p style="color: rgba(255, 255, 255);">{{ imagen.caption }}</p>
         </mat-card-content>
+
         <mat-card-actions align="end">
           <button class="caption-btn" mat-stroked-button (click)="onCaption(imagen.id)" matTooltip="add caption">
             <mat-icon>edit</mat-icon>
@@ -40,6 +43,7 @@
             <mat-icon>delete</mat-icon>
           </button>
         </mat-card-actions>
+
       </mat-card>
     </div>
   </div>

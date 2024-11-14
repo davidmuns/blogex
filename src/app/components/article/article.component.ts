@@ -6,8 +6,6 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { TokenService } from 'src/app/shared/services/token.service';
-import { DomSanitizer } from '@angular/platform-browser';
-
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -29,14 +27,13 @@ export class ArticleComponent implements OnInit {
   iconUrl: string = ''; 
 
   constructor(
-    private utilsSvc: UtilsService,
-    private translateService: TranslateService,
-    public sanitizer: DomSanitizer,
-    private apiWeatherService: ApiWeatherService,
+    private readonly utilsSvc: UtilsService,
+    private readonly translateService: TranslateService,
+    private readonly apiWeatherService: ApiWeatherService,
     private readonly route: ActivatedRoute,
-    private articleSvc: ArticleService,
+    private readonly articleSvc: ArticleService,
     public tokenSvc: TokenService,
-    private router: Router
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
