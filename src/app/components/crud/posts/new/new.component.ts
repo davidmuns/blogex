@@ -19,6 +19,7 @@ export class NewComponent {
   image!: File;
   images: File[] = [];
   miniatura!: File;
+  uploading = false;
 
   public newPostForm!: FormGroup;
   // public viewForm: any = [1];
@@ -80,9 +81,11 @@ export class NewComponent {
   };
 
   private createArticle(post: Article, username: string, img: File) {
+    this.uploading = true;
     if (this.newPostForm.valid) {
       this.articleService.createArticle(post, username, img).subscribe({
         next: data => {
+          this.uploading = false;
           this.utilsSvc.showSnackBar(data.mensaje, 3000);
           this.redirectTo(this.router.url);
         },

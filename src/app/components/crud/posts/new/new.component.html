@@ -1,6 +1,10 @@
 <mat-card #newArticle class="example-card">
   <mat-card-title>{{ 'NewArticle' | translate }}</mat-card-title>
-  <mat-card-content>
+  <div *ngIf="uploading" class="spinner-container">
+    <div class="spinner"></div>
+    <div>{{ 'crud.article-card.uploading-icon-tool-tip' | translate }}</div>
+  </div>
+  <mat-card-content *ngIf="!uploading">
     <form [formGroup]="newPostForm" (ngSubmit)="onSubmit(newPostForm.value)">
       <p>
         <mat-form-field class="input-width" appearance="fill">

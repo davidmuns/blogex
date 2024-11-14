@@ -1,3 +1,4 @@
+import { UtilsService } from './../../../shared/services/utils.service';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -32,6 +33,7 @@ export class ListPostsComponent implements OnInit {
   public innerWidth: any;
   isAdmin: boolean = false;
   username!: string;
+  uploading = false;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('list') asList!: ElementRef;
@@ -51,7 +53,8 @@ export class ListPostsComponent implements OnInit {
     private readonly router: Router,
     private readonly dialog: MatDialog,
     private readonly articleSvc: ArticleService,
-    private readonly renderer2: Renderer2
+    private readonly renderer2: Renderer2,
+    private readonly utilsSvc: UtilsService
     ) { }
 
   ngOnInit(): void {
@@ -73,9 +76,11 @@ export class ListPostsComponent implements OnInit {
   }
 
   private getAllArticles(){
+    this.uploading = true;
     this.articleSvc.getAll().subscribe({
       next: (data: Article[]) => {
-        this.dataSource.data = data;
+        this.uploading = false;
+        this.dataSource.data = this.utilsSvc.sortArticlesByNewer(data);
       },
       error: (err: any) => {
         console.log(err);
@@ -85,9 +90,11 @@ export class ListPostsComponent implements OnInit {
 
   private getAllArticlesByUsername() {
     this.username = this.tokenService.getUsername() as string;
+    this.uploading = true;
     this.articleSvc.getArticlesByUsername(this.username).subscribe({
       next: (data: Article[]) => {
-        this.dataSource.data = data;
+        this.uploading = false;
+        this.dataSource.data = this.utilsSvc.sortArticlesByNewer(data);
       },
       error: (err: any) => {
         console.log(err);

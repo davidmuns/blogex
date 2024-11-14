@@ -1,5 +1,5 @@
 <div class="container">
-<button id="toList" mat-stroked-button (click)="toList()" >{{ 'List' | translate }}
+<button *ngIf="!uploading" id="toList" mat-stroked-button (click)="toList()" >{{ 'List' | translate }}
   <span *ngIf="articleHtml == true">{{ 'Of' | translate }} {{ 'Articles' | translate | lowercase }}</span></button>
 <div #list class="inside">
   <h3>{{ 'ArticlesToEdit' | translate}}</h3>

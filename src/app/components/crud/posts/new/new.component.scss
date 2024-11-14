@@ -1,61 +1,73 @@
-mat-card{
+mat-card {
     position: absolute;
     top: 74px;
     width: 67%;
     margin: 0px 1%;
-    padding:0px;
-    @media(max-width:800px){
-        width:90%;
+    padding: 0px;
+
+    @media(max-width:800px) {
+        width: 90%;
         margin: 0px 5%;
     }
 }
-mat-card-title{
+
+mat-card-title {
     text-align: center;
     padding: 20px 0px;
     font-size: 1.7rem;
-    @media(max-width:800px){
+
+    @media(max-width:800px) {
         text-align: start;
         font-size: 1.4rem;
         margin-left: 10px;
     }
 }
-mat-card-content{
-    padding:10px 30px;
-    @media(max-width: 600px){
+
+mat-card-content {
+    padding: 10px 30px;
+
+    @media(max-width: 600px) {
         padding-left: 10px;
     }
 }
-.input-width{
-    width:100%;
+
+.input-width {
+    width: 100%;
 }
+
 .input-coordinates {
-    @media(max-width: 500px){
+    @media(max-width: 500px) {
         width: 170px;
     }
-    @media(max-width: 400px){
+
+    @media(max-width: 400px) {
         width: 120px;
     }
-    @media(max-width: 300px){
+
+    @media(max-width: 300px) {
         width: 80px;
     }
-    
+
 }
-.containerFile{
+
+.containerFile {
     margin: 20px 0px;
-    #inputUpload{
+
+    #inputUpload {
         visibility: visible;
         width: 0px;
     }
-    .custom-file-label{
+
+    .custom-file-label {
         border: 1px solid silver;
         margin-top: 10px;
-        width:155px;
+        width: 155px;
         height: 44px;
         font-size: 1rem;
         border-radius: 4px;
-        cursor:pointer;
-        
-        .mat-icon{
+        cursor: pointer;
+
+        .mat-icon {
             color: var(--accent);
             padding-top: 5px;
             width: 30px;
@@ -63,50 +75,58 @@ mat-card-content{
             font-size: 30px;
         }
     }
-    .custom-file-label:active{
-        background-color: rgba(230,230,240,0.8);
+
+    .custom-file-label:active {
+        background-color: rgba(230, 230, 240, 0.8);
     }
-    .custom-file-label:hover{
+
+    .custom-file-label:hover {
         border: 1px solid var(--accent);
     }
 }
-#textarea{
-    height:70px;
+
+#textarea {
+    height: 70px;
 }
-#createButton{
+
+#createButton {
     min-width: 130px;
     width: 30%;
-    margin:10px 35%;
+    margin: 10px 35%;
     background-color: var(--accent);
     color: var(--lemon);
-    @media(max-width: 350px){
-        margin:10px 5%;
-        width:90%;
+
+    @media(max-width: 350px) {
+        margin: 10px 5%;
+        width: 90%;
     }
 }
 
-#createButton:hover{
+#createButton:hover {
     color: white;
 }
 
-#moreButton{
+#moreButton {
     margin-top: 20px;
 }
-form h3{
-    width:100px;
+
+form h3 {
+    width: 100px;
 }
-#toEdit{
+
+#toEdit {
     position: absolute;
-    top:14px;
+    top: 14px;
     left: 75%
 }
-.error{
-    color:red;
+
+.error {
+    color: red;
     font-size: .8rem;
 }
 
 .input-coordinates {
-    @media(max-width: 500px){
+    @media(max-width: 500px) {
         width: 130px;
     }
 }

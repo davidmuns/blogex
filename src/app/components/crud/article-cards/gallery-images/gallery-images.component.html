@@ -49,17 +49,18 @@
   </div>
 </mat-dialog-content>
 
-<mat-dialog-actions align="end">
-  <div *ngIf="uploading" class="spinner"></div>
-  <div *ngIf="!uploading" class="input-div mx-1 p-1">{{ 'crud.article-card.upload-icon-tool-tip' | translate }}: </div>
-  <div *ngIf="uploading" class="input-div mx-1 p-1">{{ 'crud.article-card.uploading-icon-tool-tip' | translate }}</div>
-   <!-- IMAGE INPUT -->
-  <div *ngIf="!uploading" class="input-div mx-1 p-1 shadow-sm">
+<div *ngIf="uploading" class="spinner-container">
+  <div class="spinner"></div>
+  <div>{{ 'crud.article-card.uploading-icon-tool-tip' | translate }}</div>
+</div>
+
+<mat-dialog-actions *ngIf="!uploading" align="end">
+  <div class="input-div mx-1 p-1 shadow-sm">
     <input type="file" class="file-input" accept="image/*" id="customImage" (change)="handleImage($event)">
     <label class="file-label" for="customImage" matTooltip="max 10MB">{{ 'SelectImage' | translate }}</label>
   </div>
   <!-- VIDEO INPUT -->
-  <div *ngIf="!uploading" class="input-div mx-1 p-1 shadow-sm">
+  <div class="input-div mx-1 p-1 shadow-sm">
     <input type="file" class="file-input" accept="video/*" id="customVideo" (change)="handleImage($event)">
     <label class="file-label" for="customVideo" matTooltip="max 100MB">{{ 'SelectVideo' | translate }}</label>
   </div>
