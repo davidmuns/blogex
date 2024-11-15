@@ -2,7 +2,6 @@
 import { CaptionComponent } from './shared/caption/caption.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { SortSelectorComponent } from './shared/sort-selector/sort-selector.component';
 
 // Home components
 import { HomeComponent } from './components/home/home.component';
@@ -30,7 +29,7 @@ import { CrudModule } from './components/crud/crud.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { AuthModule } from './components/auth/auth.module';
-import { FormTemplateModule } from './shared/form-template/form-template.module';
+import { SharedModule } from './shared/shared.module';
 
 // Interceptors
 import { interceptorProvider } from './interceptors/token-interceptor.service';
@@ -102,7 +101,7 @@ import { InternationalitazionModule } from './internationalitazion.module';
     HttpClientModule,
     CrudModule,
     ToastrModule.forRoot(), // ToastrModule added
-    FormTemplateModule
+    SharedModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

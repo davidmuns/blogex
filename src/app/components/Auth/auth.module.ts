@@ -10,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from 'src/app/material.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormTemplateModule } from "../../shared/form-template/form-template.module";
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { FormTemplateModule } from "../../shared/form-template/form-template.mod
     MaterialModule,
     ReactiveFormsModule,
     InternationalitazionModule,
-    FormTemplateModule
+    SharedModule
 ]
 })
 export class AuthModule { }

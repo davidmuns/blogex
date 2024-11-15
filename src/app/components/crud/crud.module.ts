@@ -22,7 +22,7 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 // youtube tutorial: https://www.youtube.com/watch?v=YqEDASVUEPc&list=PLSVW22jAG8pCwwM3tjSMfwBKYIS6_fP-F&index=1
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { GalleryImagesComponent } from './article-cards/gallery-images/gallery-images.component';
-import { FormTemplateModule } from "../../shared/form-template/form-template.module";
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,7 @@ import { FormTemplateModule } from "../../shared/form-template/form-template.mod
     MaterialModule,
     ReactiveFormsModule,
     InternationalitazionModule,
-    FormTemplateModule
+    SharedModule
 ]
 })
 export class CrudModule { }
