@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { Article } from '../models/article';
 
 @Component({
   selector: 'app-sort-selector',
@@ -8,17 +9,21 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class SortSelectorComponent implements OnInit {
 
-  sortBy = '';
-  orderOptions = [
-    { value: 'title-az', viewValue: this.translateSvc.instant('user-blog.title-az') },
-    { value: 'title-za', viewValue: this.translateSvc.instant('user-blog.title-za') },
-    { value: 'older', viewValue: this.translateSvc.instant('user-blog.older') },
-    { value: 'newer', viewValue: this.translateSvc.instant('user-blog.newer') },
+  @Output() selectedOption = new EventEmitter<string>();
+  option = '';
+  sortOptions = [
+    { value: 'title-az', text: this.translateSvc.instant('user-blog.title-az') },
+    { value: 'title-za', text: this.translateSvc.instant('user-blog.title-za') },
+    { value: 'older', text: this.translateSvc.instant('user-blog.older') },
+    { value: 'newer', text: this.translateSvc.instant('user-blog.newer') },
   ];
 
   constructor( private readonly translateSvc: TranslateService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  onSortBy(){
+    this.selectedOption.emit(this.option);
   }
 
 }

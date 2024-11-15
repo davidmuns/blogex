@@ -4,7 +4,7 @@ import { UtilsService } from './../../shared/services/utils.service';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import AOS from 'aos';
 
@@ -15,23 +15,12 @@ import AOS from 'aos';
 })
 export class UserBlogComponent implements OnInit {
   sortBy = '';
-  orderOptions = [
-    { value: 'title-az', viewValue: this.translateSvc.instant('user-blog.title-az') },
-    { value: 'title-za', viewValue: this.translateSvc.instant('user-blog.title-za') },
-    { value: 'older', viewValue: this.translateSvc.instant('user-blog.older') },
-    { value: 'newer', viewValue: this.translateSvc.instant('user-blog.newer') },
-  ];
-  navigationExtras: NavigationExtras = {
-    state: {
-      value: null
-    }
-  };
   filterByTitle = '';
   username!: string;
-  public articles: Article[] = []
-  public pageSizeOptions: number[] = [2, 4, 8, 10];
-  public pageSize: number = 4;
-  public pageNumber: number = 1;
+  articles: Article[] = []
+  pageSizeOptions: number[] = [2, 4, 8, 10];
+  pageSize: number = 4;
+  pageNumber: number = 1;
   temp!: number;
   isAdmin: boolean = false;
 
@@ -54,6 +43,20 @@ export class UserBlogComponent implements OnInit {
       this.getAllArticlesByUsername();
     };
   };
+
+  onSortBy(selectedOption: string) {
+    this.sortBy = selectedOption;
+    if (this.isAdmin) {
+      this.getAllArticles();
+    } else {
+      this.getAllArticlesByUsername();
+    };
+  };
+
+  onPageChange(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.pageNumber = event.pageIndex + 1;
+  }
 
   private getAllArticlesByUsername() {
     // https://youtu.be/nC-do8ceLWY?list=PL4vWncexIMYvaYdepQvyryGBhIHU-Sd04&t=313
@@ -79,22 +82,4 @@ export class UserBlogComponent implements OnInit {
       }
     })
   }
-
-  onEdit(post: any) {
-    this.navigationExtras.state = post;
-    this.router.navigate(['admin/edit'], this.navigationExtras);
-  }
-
-  onPageChange(event: PageEvent) {
-    this.pageSize = event.pageSize;
-    this.pageNumber = event.pageIndex + 1;
-  }
-
-  onSortBy() {
-    if (this.isAdmin) {
-      this.getAllArticles();
-    } else {
-      this.getAllArticlesByUsername();
-    };
-  };
 };

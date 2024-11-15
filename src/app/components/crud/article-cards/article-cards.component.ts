@@ -1,5 +1,4 @@
 // Services
-import { TranslateService } from '@ngx-translate/core';
 import { UtilsService } from '../../../shared/services/utils.service';
 import { ArticleService } from '../../../shared/services/article.service';
 import { TokenService } from '../../../shared/services/token.service';
@@ -25,13 +24,8 @@ import AOS from 'aos';
   styleUrls: ['./article-cards.component.scss']
 })
 export class ArtcileCardsComponent implements OnInit {
+  
   sortBy = '';
-  orderOptions = [
-    { value: 'title-az', viewValue: this.translateSvc.instant('user-blog.title-az') },
-    { value: 'title-za', viewValue: this.translateSvc.instant('user-blog.title-za') },
-    { value: 'older', viewValue: this.translateSvc.instant('user-blog.older') },
-    { value: 'newer', viewValue: this.translateSvc.instant('user-blog.newer') },
-  ];
   navigationExtras: NavigationExtras = {
     state: {
       value: null
@@ -45,14 +39,13 @@ export class ArtcileCardsComponent implements OnInit {
   miniatura!: Imagen;
   username!: string;
   articleId!: number;
-  public pageSizeOptions: number[] = [2, 4, 8, 10];
-  public pageSize: number = 4;
-  public pageNumber: number = 1;
+  pageSizeOptions: number[] = [2, 4, 8, 10];
+  pageSize: number = 4;
+  pageNumber: number = 1;
   isAdmin: boolean = false;
   sort: boolean = false;
 
   constructor(
-    private translateSvc: TranslateService,
     private utilsSvc: UtilsService,
     private readonly dialog: MatDialog,
     private tokenService: TokenService,
@@ -111,7 +104,8 @@ export class ArtcileCardsComponent implements OnInit {
     this.router.navigate(['admin/edit'], this.navigationExtras);
   };
 
-  onSortBy() {
+  onSortBy(optionSelected: string) {
+    this.sortBy = optionSelected;
     if (this.isAdmin) {
       this.getAllArticles();
     } else {
