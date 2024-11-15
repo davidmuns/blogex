@@ -8,7 +8,7 @@
     <input matInput id="filter" (keyup)="applyFilter($event)" #input>
   </mat-form-field>
   <div class="mb-3"></div>
-    <app-sort-selector></app-sort-selector>
+    <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Name Column -->
       <ng-container matColumnDef="titol">

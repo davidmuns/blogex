@@ -34,6 +34,7 @@ export class ListPostsComponent implements OnInit {
   isAdmin: boolean = false;
   username!: string;
   uploading = false;
+  sortBy = '';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('list') asList!: ElementRef;
@@ -75,12 +76,21 @@ export class ListPostsComponent implements OnInit {
     }
   }
 
+  onSortBy(optionSelected: string) {
+    this.sortBy = optionSelected;
+    if (this.isAdmin) {
+      this.getAllArticles();
+    } else {
+      this.getAllArticlesByUsername();
+    };
+  }
+
   private getAllArticles(){
     this.uploading = true;
     this.articleSvc.getAll().subscribe({
       next: (data: Article[]) => {
         this.uploading = false;
-        this.dataSource.data = data;
+        this.dataSource.data = this.utilsSvc.sortArticlesBy(data, this.sortBy);
       },
       error: (err: any) => {
         console.log(err);
@@ -94,7 +104,7 @@ export class ListPostsComponent implements OnInit {
     this.articleSvc.getArticlesByUsername(this.username).subscribe({
       next: (data: Article[]) => {
         this.uploading = false;
-        this.dataSource.data = data;
+        this.dataSource.data = this.utilsSvc.sortArticlesBy(data, this.sortBy);
       },
       error: (err: any) => {
         console.log(err);
