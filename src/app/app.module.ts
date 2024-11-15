@@ -86,7 +86,6 @@ import { InternationalitazionModule } from './internationalitazion.module';
     AboutComponent,
     GalleryVideosComponent,
     InfoAppComponent,
-    SortSelectorComponent
   ],
   imports: [
     InternationalitazionModule,
