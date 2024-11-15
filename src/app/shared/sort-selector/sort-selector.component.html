@@ -1,0 +1,11 @@
+<mat-form-field appearance="fill">
+    <mat-label>{{ 'user-blog.sort' | translate }}</mat-label>
+    <mat-select [(ngModel)]="this.sortBy">
+        <a style="cursor: pointer; text-decoration: none;">
+            <mat-option>{{ 'user-blog.none' | translate }}</mat-option>
+            <mat-option *ngFor="let order of orderOptions" [value]="order.value">
+                {{ order.viewValue }}
+            </mat-option>
+        </a>
+    </mat-select>
+</mat-form-field>

@@ -21,10 +21,9 @@ export class FrontArticlesComponent implements OnInit {
   imagenes: Imagen[] = [];
   imagenesAll: Imagen[] = [];
 
-  constructor(private articleService: ArticleService,
-    private router: Router,
-    private utilsService: UtilsService,
-    private dialog: MatDialog) { }
+  constructor(
+    private readonly articleService: ArticleService,
+    private readonly router: Router) { }
 
   ngOnInit(): void {
     this.getArticles();
@@ -34,7 +33,7 @@ export class FrontArticlesComponent implements OnInit {
   private getArticles() {
     this.articleService.getAll().subscribe({
       next: data => {
-        this.articles =  this.utilsService.sortArticlesByNewer(data);
+        this.articles = data;
       },
       error: err => {
         console.log(err);

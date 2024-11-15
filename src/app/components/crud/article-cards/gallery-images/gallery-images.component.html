@@ -55,6 +55,7 @@
 </div>
 
 <mat-dialog-actions *ngIf="!uploading" align="end">
+  <div class="input-div mx-1 p-1">{{ 'crud.article-card.upload-icon-tool-tip' | translate }}: </div>
   <div class="input-div mx-1 p-1 shadow-sm">
     <input type="file" class="file-input" accept="image/*" id="customImage" (change)="handleImage($event)">
     <label class="file-label" for="customImage" matTooltip="max 10MB">{{ 'SelectImage' | translate }}</label>

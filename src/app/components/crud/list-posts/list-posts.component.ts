@@ -80,7 +80,7 @@ export class ListPostsComponent implements OnInit {
     this.articleSvc.getAll().subscribe({
       next: (data: Article[]) => {
         this.uploading = false;
-        this.dataSource.data = this.utilsSvc.sortArticlesByNewer(data);
+        this.dataSource.data = data;
       },
       error: (err: any) => {
         console.log(err);
@@ -94,7 +94,7 @@ export class ListPostsComponent implements OnInit {
     this.articleSvc.getArticlesByUsername(this.username).subscribe({
       next: (data: Article[]) => {
         this.uploading = false;
-        this.dataSource.data = this.utilsSvc.sortArticlesByNewer(data);
+        this.dataSource.data = data;
       },
       error: (err: any) => {
         console.log(err);

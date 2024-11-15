@@ -1,8 +1,8 @@
-import { FormTemplateModule } from './shared/form-template/form-template.module';
 // Shared components
 import { CaptionComponent } from './shared/caption/caption.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { SortSelectorComponent } from './shared/sort-selector/sort-selector.component';
 
 // Home components
 import { HomeComponent } from './components/home/home.component';
@@ -30,6 +30,7 @@ import { CrudModule } from './components/crud/crud.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { AuthModule } from './components/auth/auth.module';
+import { FormTemplateModule } from './shared/form-template/form-template.module';
 
 // Interceptors
 import { interceptorProvider } from './interceptors/token-interceptor.service';
@@ -39,6 +40,7 @@ import { SearchPipe } from './shared/pipes/search.pipe';
 import { PaginatePipe } from './shared/pipes/paginate.pipe';
 import { SafeHtmlPipe } from './shared/pipes/safehtml.pipe';
 import { FormatDatePipe } from './shared/pipes/formatdate.pipe';
+import { SortFileByTypePipe } from './shared/pipes/sort-file-by-type.pipe';
 
 // Angular
 import { NgModule } from '@angular/core';
@@ -60,8 +62,6 @@ import { ToastrModule } from 'ngx-toastr';
 
 // Internationalitation
 import { InternationalitazionModule } from './internationalitazion.module';
-import { SortFileByTypePipe } from './shared/pipes/sort-file-by-type.pipe';
-
 
 @NgModule({
   declarations: [
@@ -85,7 +85,8 @@ import { SortFileByTypePipe } from './shared/pipes/sort-file-by-type.pipe';
     SortFileByTypePipe,
     AboutComponent,
     GalleryVideosComponent,
-    InfoAppComponent
+    InfoAppComponent,
+    SortSelectorComponent
   ],
   imports: [
     InternationalitazionModule,
