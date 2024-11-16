@@ -1,5 +1,5 @@
 <div class="container">
-<button *ngIf="!uploading" id="toList" mat-stroked-button (click)="toList()" >{{ 'List' | translate }}
+<button id="toList" mat-stroked-button (click)="toList()" >{{ 'List' | translate }}
   <span *ngIf="articleHtml == true">{{ 'Of' | translate }} {{ 'Articles' | translate | lowercase }}</span></button>
 <div #list class="inside">
   <h3>{{ 'ArticlesToEdit' | translate}}</h3>
@@ -9,7 +9,7 @@
   </mat-form-field>
   <div class="mb-3"></div>
     <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="position: relative; z-index: 2;">
       <!-- Name Column -->
       <ng-container matColumnDef="titol">
         <th mat-header-cell *matHeaderCellDef> {{ 'Title' | translate }} </th>

@@ -37,7 +37,7 @@
             <input matInput formControlName="caption" placeholder="Information about the picture">
           </mat-form-field>
         </p>
-        <p>
+        <p style="position: relative; z-index: 1;">
           <mat-label>{{ 'Text' | translate }}:</mat-label><br><br>
           <editor formControlName="content" [init]="this.editorConfig"></editor>
         </p>

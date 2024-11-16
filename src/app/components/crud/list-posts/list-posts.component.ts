@@ -33,7 +33,6 @@ export class ListPostsComponent implements OnInit {
   public innerWidth: any;
   isAdmin: boolean = false;
   username!: string;
-  uploading = false;
   sortBy = '';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -86,10 +85,8 @@ export class ListPostsComponent implements OnInit {
   }
 
   private getAllArticles(){
-    this.uploading = true;
     this.articleSvc.getAll().subscribe({
       next: (data: Article[]) => {
-        this.uploading = false;
         this.dataSource.data = this.utilsSvc.sortArticlesBy(data, this.sortBy);
       },
       error: (err: any) => {
@@ -100,10 +97,8 @@ export class ListPostsComponent implements OnInit {
 
   private getAllArticlesByUsername() {
     this.username = this.tokenService.getUsername() as string;
-    this.uploading = true;
     this.articleSvc.getArticlesByUsername(this.username).subscribe({
       next: (data: Article[]) => {
-        this.uploading = false;
         this.dataSource.data = this.utilsSvc.sortArticlesBy(data, this.sortBy);
       },
       error: (err: any) => {
@@ -131,7 +126,7 @@ export class ListPostsComponent implements OnInit {
   onDelete(a: Article){
     this.dialog.open(DeleteComponent, {data: {article: a, option: "deleteArticle"}});
   }
-
+   
   toList(){
     const listPosts = this.asList.nativeElement;
     this.showHidePosts = !this.showHidePosts;
