@@ -3,6 +3,8 @@
   <span *ngIf="articleHtml == true">{{ 'Of' | translate }} {{ 'Articles' | translate | lowercase }}</span></button>
 <div #list class="inside">
   <h3>{{ 'ArticlesToEdit' | translate}}</h3>
+  <mat-paginator [pageSize]="6" [pageSizeOptions]="[0, 2, 4, 6]" showFirstLastButtons>
+  </mat-paginator>
   <mat-form-field appearance="standard">
     <mat-label for="labelFilter">{{ 'Filter' | translate }}</mat-label>
     <input matInput id="filter" (keyup)="applyFilter($event)" #input>
@@ -34,8 +36,5 @@
         <td class="mat-cell" colspan="4">{{ "NoCoincidence" | translate }} "{{input.value}}"</td>
       </tr>
     </table>
-
-    <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10]" showFirstLastButtons>
-    </mat-paginator>
   </div>
 </div>
