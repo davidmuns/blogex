@@ -15,7 +15,7 @@ declare let gtag: any;
 export class AppComponent {
   title = 'blogex';
   show: boolean = false;
-  starShowing = 2500;
+  starShowing = 500;
 
   constructor(router: Router) {
     // https://youtu.be/Q2RTJxhBLkQ
