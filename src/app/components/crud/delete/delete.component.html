@@ -1,20 +1,17 @@
-<div>
-    <span class="material-icons">warning</span>
-    <h3>{{ 'YouSure' | translate }}</h3>
-    <mat-card-content style="text-align: center;">
-      <p>{{ 'Undone' | translate }}</p>
-    </mat-card-content>
-    <mat-card-actions *ngIf="!uploading">
-      <button *ngIf="this.data.option === 'deleteArticle'" mat-button (click)="onDeleteArticle()">{{ 'Delete' | translate }} {{ 'Article' | translate | lowercase}}</button>
-      <button *ngIf="this.data.option === 'deleteImage'" mat-button (click)="onDeleteImage()">{{ 'Delete' | translate }} {{ 'Image' | translate | lowercase }}</button>
-      <button *ngIf="this.data.option === 'deleteVideo'" mat-button (click)="onDeleteVideo()">{{ 'Delete' | translate }} video</button>
-      <button *ngIf="this.data.option === 'deleteAccount'" mat-button (click)="onDeleteAccount()">{{ 'Delete' | translate }} {{ 'delete.account' | translate }}</button>
-      <button mat-button (click)="cancel()">{{ 'Cancel' | translate }}</button>
-    </mat-card-actions>
-</div>
+<span class="material-icons">warning</span>
+<h3>{{ 'YouSure' | translate }}</h3>
+<mat-card-content style="text-align: center;">
+  <p>{{ 'Undone' | translate }}</p>
+</mat-card-content>
+<mat-card-actions *ngIf="!uploading">
+  <span *ngFor="let deleteOption of deleteOptions; index as i">
+    <button *ngIf="data.option === deleteOption.value" mat-button (click)="onDelete()" class="delete-btn">
+      {{ 'Delete' | translate }} {{ deleteOption.viewValue | lowercase }}
+    </button>
+  </span>
+  <button class="cancel-btn" mat-button (click)="cancel()">{{ 'Cancel' | translate }}</button>
+</mat-card-actions>
 <div *ngIf="uploading" class="spinner-container">
   <div class="spinner"></div>
   <div>{{ 'crud.article-card.deleting-icon-tool-tip' | translate }}</div>
 </div>
-
-

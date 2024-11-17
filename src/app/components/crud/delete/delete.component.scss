@@ -30,17 +30,17 @@ h3 {
 
 }
 
-button:nth-child(1) {
+.delete-btn {
     background-color: var(--warnOrange);
     color: white;
 }
 
-button:nth-child(2) {
+.cancel-btn {
     background-color: var(--accent);
     color: var(--lemon);
     margin-left: 20px;
 }
 
-button:hover:nth-child(2) {
+.cancel-btn:hover {
     color: white;
 }

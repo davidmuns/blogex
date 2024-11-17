@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { GalleryImagesComponent } from '../article-cards/gallery-images/gallery-images.component';
 import { GalleryVideosComponent } from '../article-cards/gallery-videos/gallery-videos.component';
 // Angular
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 // Material
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -21,8 +21,14 @@ import { Article } from 'src/app/shared/models/article';
   templateUrl: './delete.component.html',
   styleUrls: ['./delete.component.scss']
 })
-export class DeleteComponent {
+export class DeleteComponent implements OnInit {
 
+  deleteOptions = [
+    { value: 'deleteArticle', viewValue: this.translateSvc.instant('Article') },
+    { value: 'deleteImage', viewValue: this.translateSvc.instant('Image') },
+    { value: 'deleteVideo', viewValue: this.translateSvc.instant('Video') },
+    { value: 'deleteAccount', viewValue: this.translateSvc.instant('delete.account') },
+  ];
   durationInSeconds = 5;
   username: string = this.tokenSvc.getUsername() as string;
   uploading = false;
@@ -39,7 +45,28 @@ export class DeleteComponent {
     private translateSvc: TranslateService
   ) { }
 
-  onDeleteArticle() {
+  ngOnInit(): void { }
+
+  onDelete() {
+    switch (this.data.option) {
+      case 'deleteArticle':
+        this.deleteArticle();
+        break;
+      case 'deleteImage':
+        this.deleteImage();
+        break;
+      case 'deleteVideo':
+        this.deleteVideo();
+        break;
+      case 'deleteAccount':
+        this.deleteAccount();
+        break;
+      default:
+        console.log("No option avalivable");
+    }
+  }
+
+  deleteArticle() {
     this.uploading = true;
     this.articleSvc.deleteArticle(this.data.article.id).subscribe({
       next: data => {
@@ -51,7 +78,7 @@ export class DeleteComponent {
     });
   }
 
-  onDeleteImage() {
+  deleteImage() {
     this.uploading = true;
     this.articleSvc.deleteImage(this.data.imgId).subscribe({
       next: (data: any) => {
@@ -66,7 +93,7 @@ export class DeleteComponent {
     })
   };
 
-  onDeleteVideo() {
+  deleteVideo() {
     this.uploading = true;
     this.videoSvc.delete(this.data.videoId).subscribe({
       next: data => {
@@ -81,14 +108,14 @@ export class DeleteComponent {
     })
   };
 
-  onDeleteAccount() {
+  deleteAccount() {
     // Open dialog window before deleting
     const confirm = window.confirm(this.translateSvc.instant('delete.confirm'));
     let username: any;
-    
+
     // Open new dialog window to get the username introduced by user
     if (confirm) username = window.prompt(this.translateSvc.instant('delete.insert-username'));
-    
+
     // Show snackbar in case of confirmation and the user name does not match and the user has not canceled
     if (confirm && username != this.username && username != null) {
       const msg = this.translateSvc.instant('delete.wrong-username')
@@ -101,7 +128,7 @@ export class DeleteComponent {
       this.authSvc.deleteAccount(this.username).subscribe({
         next: resp => {
           this.tokenSvc.logOut();
-          const msg = this.translateSvc.instant('delete.account') + ` "${ username }" ` + this.translateSvc.instant('delete.canceled');
+          const msg = this.translateSvc.instant('delete.account') + ` "${username}" ` + this.translateSvc.instant('delete.canceled');
           this.uploading = false;
           this.dialog.closeAll();
           this.utilsSvc.showSnackBar(msg, 5000);
