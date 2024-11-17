@@ -116,7 +116,8 @@
             "video-tool-tip": "Youtube videos",
             "image-tool-tip": "User files",
             "upload-icon-tool-tip": "Upload",
-            "uploading-icon-tool-tip": "Uploading ..."
+            "uploading-icon-tool-tip": "Uploading ...",
+            "deleting-icon-tool-tip": "Deleting ..."
         },
         "image-list": {
             "images": "Files of"

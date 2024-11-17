@@ -25,6 +25,7 @@ export class DeleteComponent {
 
   durationInSeconds = 5;
   username: string = this.tokenSvc.getUsername() as string;
+  uploading = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article, imgId: string, videoId: number, option: string },
@@ -39,18 +40,22 @@ export class DeleteComponent {
   ) { }
 
   onDeleteArticle() {
+    this.uploading = true;
     this.articleSvc.deleteArticle(this.data.article.id).subscribe({
       next: data => {
+        this.uploading = false;
         this.utilsSvc.showSnackBar(data.mensaje, 5000);
+        this.dialog.closeAll();
         this.redirectTo(this.router.url);
       }
     });
-    this.dialog.closeAll();
   }
 
   onDeleteImage() {
+    this.uploading = true;
     this.articleSvc.deleteImage(this.data.imgId).subscribe({
       next: (data: any) => {
+        this.uploading = false;
         this.dialog.closeAll();
         this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
         this.utilsSvc.showSnackBar(data.mensaje, 5000);
@@ -62,8 +67,10 @@ export class DeleteComponent {
   };
 
   onDeleteVideo() {
+    this.uploading = true;
     this.videoSvc.delete(this.data.videoId).subscribe({
       next: data => {
+        this.uploading = false;
         this.dialog.closeAll();
         this.dialog.open(GalleryVideosComponent, { data: { article: this.data.article } });
         this.utilsSvc.showSnackBar(data.mensaje, 5000);
@@ -90,10 +97,13 @@ export class DeleteComponent {
 
     // Delete account in case the username of the session is the same as the user name entered by the user.
     if (username === this.username) {
+      this.uploading = true;
       this.authSvc.deleteAccount(this.username).subscribe({
         next: resp => {
           this.tokenSvc.logOut();
           const msg = this.translateSvc.instant('delete.account') + ` "${ username }" ` + this.translateSvc.instant('delete.canceled');
+          this.uploading = false;
+          this.dialog.closeAll();
           this.utilsSvc.showSnackBar(msg, 5000);
         },
         error: err => {
@@ -101,7 +111,6 @@ export class DeleteComponent {
         }
       });
     };
-    this.dialog.closeAll();
   };
 
   redirectTo(uri: string) {

@@ -4,13 +4,17 @@
     <mat-card-content style="text-align: center;">
       <p>{{ 'Undone' | translate }}</p>
     </mat-card-content>
-    <mat-card-actions>
+    <mat-card-actions *ngIf="!uploading">
       <button *ngIf="this.data.option === 'deleteArticle'" mat-button (click)="onDeleteArticle()">{{ 'Delete' | translate }} {{ 'Article' | translate | lowercase}}</button>
       <button *ngIf="this.data.option === 'deleteImage'" mat-button (click)="onDeleteImage()">{{ 'Delete' | translate }} {{ 'Image' | translate | lowercase }}</button>
       <button *ngIf="this.data.option === 'deleteVideo'" mat-button (click)="onDeleteVideo()">{{ 'Delete' | translate }} video</button>
       <button *ngIf="this.data.option === 'deleteAccount'" mat-button (click)="onDeleteAccount()">{{ 'Delete' | translate }} {{ 'delete.account' | translate }}</button>
       <button mat-button (click)="cancel()">{{ 'Cancel' | translate }}</button>
     </mat-card-actions>
+</div>
+<div *ngIf="uploading" class="spinner-container">
+  <div class="spinner"></div>
+  <div>{{ 'crud.article-card.deleting-icon-tool-tip' | translate }}</div>
 </div>
 
 
