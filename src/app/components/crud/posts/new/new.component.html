@@ -16,7 +16,7 @@
         </mat-form-field>
       </p>
         <div class="containerFile">
-          <label>{{ 'CoverImage' | translate }} (max 5MB):</label><br>
+          <label>{{ 'CoverImage' | translate }} (max 10MB):</label><br>
           <div *ngIf="this.image" style="margin-top: 5px;">
             <div>
               <img class="image-thumbnail" style="max-width: 100px; border-radius: 5%;" [src]="miniatura">
@@ -24,7 +24,7 @@
           </div>
           <div class="custom-file">
             <input type="file" class="custom-file-input" accept=".png, .jpg, .jpeg" multiple id="inputUpload"
-              (change)="handleImage($event)">
+              (change)="handleImageOnNewForm($event)">
             <label class="custom-file-label" for="inputUpload">
               <mat-icon>upload</mat-icon>&nbsp;&nbsp;{{ 'SelectImage' | translate }}
             </label>

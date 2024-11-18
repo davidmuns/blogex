@@ -16,7 +16,7 @@ import { Article } from 'src/app/shared/models/article';
 })
 export class NewComponent {
 
-  image!: File;
+  image!: File | null;
   images: File[] = [];
   miniatura!: File;
   uploading = false;
@@ -53,16 +53,54 @@ export class NewComponent {
     });
   };
 
-  handleImage(event: any) {
+  // handleImageOnNewForm(event: any) {
+  //   this.image = event.target.files[0];
+
+  //    if (!this.image?.type?.startsWith('image/')) {
+  //     let msg = this.translateService.instant('crud.article-card.valid-img');
+  //     this.utilsSvc.showSnackBar(msg, 3000);
+  //     event.target.value = '';
+  //     return;
+  //   }
+  //   const fr = new FileReader();
+  //   fr.onload = (e: any) => {
+  //     this.miniatura = e.target.result;
+  //   };
+  //   if (this.image != null) {
+  //     fr.readAsDataURL(this.image);
+  //   };
+  // };
+
+  handleImageOnNewForm(event: any): void {
+    
     this.image = event.target.files[0];
+    if (!this.image?.type?.startsWith('image/')) {
+      let msg = this.translateService.instant('crud.article-card.valid-img');
+      this.utilsSvc.showSnackBar(msg, 3000);
+      this.image = null;
+      event.target.value = null;
+      return;
+    }
+    const img = new Image();
     const fr = new FileReader();
+    // Leer y verificar orientación
     fr.onload = (e: any) => {
-      this.miniatura = e.target.result;
+      img.src = e.target.result;
+      img.onload = () => {
+        if (img.height > img.width) {
+          let msg = this.translateService.instant('crud.article-card.cover-img-orientation');
+          this.utilsSvc.showSnackBar(msg, 3000);
+          this.image = null;
+          event.target.value = null;
+          return;
+        }
+        // Asignar miniatura si la orientación es válida
+        this.miniatura = e.target.result;
+      };
+      
     };
-    if (this.image != null) {
-      fr.readAsDataURL(this.image);
-    };
-  };
+    fr.readAsDataURL(this.image);
+  }
 
   onSubmit(post: Article) { 
     let msg = '';

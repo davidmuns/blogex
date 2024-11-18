@@ -117,7 +117,10 @@
             "image-tool-tip": "Archivos del usuario",
             "upload-icon-tool-tip": "Subir",
             "uploading-icon-tool-tip": "Subiendo ...",
-            "deleting-icon-tool-tip": "Eliminando ..."
+            "deleting-icon-tool-tip": "Eliminando ...",
+            "cover-img-orientation": "No se permiten imágenes verticales en la portada del artículo",
+            "valid-img": "Por favor, selecciona un archivo de imagen válido",
+            "valid-video": "Por favor, selecciona un archivo de video válido"
         },
         "image-list": {
             "images": "Archivos de"

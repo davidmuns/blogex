@@ -117,7 +117,10 @@
             "image-tool-tip": "User files",
             "upload-icon-tool-tip": "Upload",
             "uploading-icon-tool-tip": "Uploading ...",
-            "deleting-icon-tool-tip": "Deleting ..."
+            "deleting-icon-tool-tip": "Deleting ...",
+            "cover-img-orientation": "Vertical images are not allowed on the article cover",
+            "valid-img": "Please select a valid image file",
+            "valid-video": "Please select a valid video file"
         },
         "image-list": {
             "images": "Files of"

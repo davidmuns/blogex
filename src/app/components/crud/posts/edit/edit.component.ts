@@ -32,7 +32,7 @@ export class EditComponent implements OnInit {
   public flag: number = 1;
   public buttonTag: string = "One More";
   public article: any = null;
-  public image!: File;
+  public image!: File | null;
   public miniatura!: File;
   public articleHtml!: boolean;
   public innerWidth: any;
@@ -134,14 +134,43 @@ export class EditComponent implements OnInit {
     });
   };
 
-  handleImage1(event: any) {
+  // handleImageOriginal(event: any) {
+  //   this.image = event.target.files[0];
+  //   const fr = new FileReader();
+  //   fr.onload = (e: any) => {
+  //     this.miniatura = e.target.result;
+  //   };
+  //   if (this.image != null) {
+  //     fr.readAsDataURL(this.image);
+  //   };
+  // };
+
+  handleImageOnEditForm(event: any): void {
     this.image = event.target.files[0];
+    if (!this.image?.type?.startsWith('image/')) {
+      let msg = this.translateService.instant('crud.article-card.valid-img');
+      this.utilsSvc.showSnackBar(msg, 3000);
+      this.image = null;
+      event.target.value = null;
+      return;
+    }
+    const img = new Image();
     const fr = new FileReader();
+    // Leer y verificar orientación
     fr.onload = (e: any) => {
-      this.miniatura = e.target.result;
+      img.src = e.target.result;
+      img.onload = () => {
+        if (img.height > img.width) {
+          let msg = this.translateService.instant('crud.article-card.cover-img-orientation');
+          this.utilsSvc.showSnackBar(msg, 3000);
+          this.image = null;
+          event.target.value = null;
+          return;
+        }
+        // Asignar miniatura si la orientación es válida
+        this.miniatura = e.target.result;
+      };
     };
-    if (this.image != null) {
-      fr.readAsDataURL(this.image);
-    };
-  };
+    fr.readAsDataURL(this.image);
+  }
 };
