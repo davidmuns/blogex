@@ -53,8 +53,8 @@ export class ArticleGalleryComponent implements OnInit {
   }
 
   hideGallery() {
-    // this.imagenes = [];
-    // this.videos$ = new Observable();
+    this.imagenes = [];
+    this.videos$ = new Observable();
     // window.scroll(0, 0);
   }
 
