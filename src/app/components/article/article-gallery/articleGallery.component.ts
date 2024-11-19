@@ -23,6 +23,7 @@ export class ArticleGalleryComponent implements OnInit {
   playerVars = {
     cc_lang_pref: 'es'
   }
+  isZoomed: boolean = false;
 
   constructor(
     private articleSvc: ArticleService,
@@ -51,8 +52,8 @@ export class ArticleGalleryComponent implements OnInit {
     }
   }
 
-   // Cierra el modal
-   closeCarousel(): void {
+  // Cierra el modal
+  closeCarousel(): void {
     this.isModalOpen = false;
   }
 
@@ -69,6 +70,10 @@ export class ArticleGalleryComponent implements OnInit {
   showGallery() {
     this.getImgsByArticleId(this.articleId as number);
     this.getVideosByArticleId(this.articleId as number);
+  }
+
+  toggleZoom(): void {
+    this.isZoomed = !this.isZoomed; // Alterna entre activar y desactivar el zoom
   }
 
   private getImgsByArticleId(id: number) {

@@ -3,10 +3,9 @@
   background-color: rgba(255, 255, 255, 0.09);
   box-shadow: 3px 3px 3px 3px black;
 }
-// .example-card:hover {
-//   box-shadow: 3px 6px 6px 3px black;
-//   opacity: 30%;
-// }
+.example-card:hover {
+  transform: scale(1.02); /* Añade un ligero zoom al pasar el ratón por encima */
+}
 h1{
   text-transform: capitalize;
 }
@@ -136,7 +135,14 @@ button:hover{
 .carousel-image {
   max-width: 100%;
   height: auto;
+  border-radius: 8px;
+  cursor: pointer;
 }
+
+.carousel-image.zoom {
+  transform: scale(1.5); /* Escala la imagen al 150% */
+}
+
 
 .carousel-control {
   position: absolute;
