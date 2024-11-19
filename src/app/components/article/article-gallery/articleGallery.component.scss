@@ -111,7 +111,7 @@ button:hover{
   position: relative;
   max-width: 800px;
   width: 90%;
-  background: white;
+  background: rgba(255, 255, 255, 0.09);
   padding: 20px;
   border-radius: 8px;
   text-align: center;
@@ -145,7 +145,7 @@ button:hover{
   border: none;
   font-size: 36px;
   cursor: pointer;
-  color: #007bff;
+  color: #525456;
   transform: translateY(-50%);
   user-select: none;
 }
