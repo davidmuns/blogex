@@ -16,7 +16,9 @@ import AOS from 'aos';
 export class ArticleGalleryComponent implements OnInit {
   @Input('articleId') articleId!: number | undefined;
   imagenes: Imagen[] = [];
-  indice!: number;
+  urlmages: string[] = [];
+  isModalOpen: boolean = false;
+  indice: number = 0;
   videos$!: Observable<Video[]>;
   playerVars = {
     cc_lang_pref: 'es'
@@ -33,6 +35,35 @@ export class ArticleGalleryComponent implements OnInit {
 
   getIndex(index: number) {
     this.indice = index;
+    // Filtrar solo las imágenes
+    const imageFiles = this.imagenes.filter(file => file.fileType === 'image');
+
+    // Crear la lista de URLs de las imágenes
+    this.urlmages = imageFiles.map(file => file.url);
+
+    // Obtener la URL del archivo seleccionado
+    const clickedFile = this.imagenes[index];
+
+    // Verificar si el archivo es una imagen y encontrar su índice en la lista filtrada
+    if (clickedFile.fileType === 'image') {
+      this.indice = imageFiles.findIndex(file => file.id === clickedFile.id); // Encuentra el índice dentro de las imágenes
+      this.isModalOpen = true; // Abre el modal
+    }
+  }
+
+   // Cierra el modal
+   closeCarousel(): void {
+    this.isModalOpen = false;
+  }
+
+  // Navega a la imagen anterior
+  prevImage(): void {
+    this.indice = (this.indice - 1 + this.urlmages.length) % this.urlmages.length;
+  }
+
+  // Navega a la siguiente imagen
+  nextImage(): void {
+    this.indice = (this.indice + 1) % this.urlmages.length;
   }
 
   showGallery() {
@@ -48,7 +79,7 @@ export class ArticleGalleryComponent implements OnInit {
     })
   }
 
-  private getVideosByArticleId(id: number){
+  private getVideosByArticleId(id: number) {
     this.videos$ = this.videoSvc.getAllByArticleId(id);
   }
 

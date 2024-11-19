@@ -72,12 +72,24 @@
 
 		</div>
 	
-
+		<!-- Modal con el Carousel -->
+	<div id="modal" class="modal" [class.active]="isModalOpen">
+		<div class="modal-content">
+			<span class="close" (click)="closeCarousel()">&times;</span>
+			<div class="carousel">
+				<button class="carousel-control prev" (click)="prevImage()">&#10094;</button>
+				<img [src]="urlmages[indice]" class="carousel-image" alt="Carousel Image">
+				<button class="carousel-control next" (click)="nextImage()">&#10095;</button>
+			</div>
+			  <!-- Botón adicional para cerrar el modal -->
+			  <button class="close-modal-btn" (click)="closeCarousel()">Cerrar</button>
+		</div>
+	</div>
 
 </div>
 
 <!-- MODAL -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
 	style="padding: 0px;" data-bs-backdrop="static" data-bs-keyboard="false">
 	<div class="modal-dialog modal-xl">
 		<div class="modal-content" style="background-color: rgba(47, 47, 47, 1); border: none;">
@@ -87,8 +99,8 @@
 					(click)="hideGallery()"></button>
 			</div>
 			<div class="modal-body">
-				<!-- CAROUSEL -->
-				<!-- <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel"> -->
+				
+				<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
 					<div class="carousel-inner">
 						<div class="carousel-item" data-bs-interval="2000"
 							*ngFor="let imagen of imagenes; index as i; count as items"
@@ -108,7 +120,7 @@
 							</div>
 						</div>
 					</div>
-					<!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
 						data-bs-slide="prev">
 						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 						<span class="visually-hidden">Previous</span>
@@ -117,9 +129,9 @@
 						data-bs-slide="next">
 						<span class="carousel-control-next-icon" aria-hidden="true"></span>
 						<span class="visually-hidden">Next</span>
-					</button> -->
+					</button>
 				</div>
 			</div>
 		</div>
 	</div>
-<!-- </div> -->
+</div> -->
