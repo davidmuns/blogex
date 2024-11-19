@@ -12,7 +12,7 @@ export class TinyEditorService {
       'searchreplace visualblocks code fullscreen',
       'insertdatetime media table paste code help wordcount'
     ],
-    language: 'ca',
+    language: 'es',
     toolbar: 'undo redo | fontselect fontsizeselect | ' +
       'bold italic underline | forecolor backcolor | alignleft aligncenter ' +
       'alignright alignjustify | formatselect | bullist numlist outdent indent | ' +
