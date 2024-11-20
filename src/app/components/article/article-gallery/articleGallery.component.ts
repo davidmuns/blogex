@@ -15,6 +15,7 @@ import AOS from 'aos';
 })
 export class ArticleGalleryComponent implements OnInit {
   @Input('articleId') articleId!: number | undefined;
+  @Input('username') username!: string;
   imagenes: Imagen[] = [];
   urlmages: string[] = [];
   isModalOpen: boolean = false;
@@ -24,17 +25,28 @@ export class ArticleGalleryComponent implements OnInit {
     cc_lang_pref: 'es'
   }
   isZoomed: boolean = false;
-
+  
   constructor(
-    private articleSvc: ArticleService,
-    private utilsSvc: UtilsService,
-    private videoSvc: VideoService) { }
+    private readonly articleSvc: ArticleService,
+    private readonly utilsSvc: UtilsService,
+    private readonly videoSvc: VideoService) { }
 
   ngOnInit(): void {
     AOS.init();
   }
 
-  getIndex(index: number) {
+  showGallery() {
+    this.getImgsByArticleId(this.articleId as number);
+    this.getVideosByArticleId(this.articleId as number);
+  }
+
+  hideGallery() {
+    this.imagenes = [];
+    this.videos$ = new Observable();
+    // window.scroll(0, 0);
+  }
+
+  openModal(index: number) {
     this.indice = index;
     // Filtrar solo las imágenes
     const imageFiles = this.imagenes.filter(file => file.fileType === 'image');
@@ -67,11 +79,6 @@ export class ArticleGalleryComponent implements OnInit {
     this.indice = (this.indice + 1) % this.urlmages.length;
   }
 
-  showGallery() {
-    this.getImgsByArticleId(this.articleId as number);
-    this.getVideosByArticleId(this.articleId as number);
-  }
-
   toggleZoom(): void {
     this.isZoomed = !this.isZoomed; // Alterna entre activar y desactivar el zoom
   }
@@ -87,11 +94,4 @@ export class ArticleGalleryComponent implements OnInit {
   private getVideosByArticleId(id: number) {
     this.videos$ = this.videoSvc.getAllByArticleId(id);
   }
-
-  hideGallery() {
-    this.imagenes = [];
-    this.videos$ = new Observable();
-    // window.scroll(0, 0);
-  }
-
 }

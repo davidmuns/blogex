@@ -18,7 +18,7 @@
 	<!-- IMAGES -->
 		<div *ngFor="let imagen of imagenes; let i = index"
 			[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
-			<h1 *ngIf="i == 0" style="text-align: center;">{{ imagenes.length }} {{ 'crud.article-card.image-tool-tip' | translate }}</h1>
+			<h2 *ngIf="i == 0" style="text-align: center;">{{ username }} {{ 'Files' | translate }} ({{ imagenes.length }})</h2>
 			<mat-card class="example-card">
 				<mat-card-header [ngClass]="{'mb-3': imagen.fileType === 'image'}">
 					<mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
@@ -32,7 +32,7 @@
 						data-bs-toggle="modal"
 						data-bs-target="#exampleModal" 
 						style="cursor: pointer;" 
-						(click)="getIndex(i)">
+						(click)="openModal(i)">
 							<img *ngIf="imagen.fileType =='image'" mat-card-image [src]="imagen.url" alt="">
 					</a>
 					<video *ngIf="imagen.fileType =='video'"
@@ -54,7 +54,7 @@
 		<!-- VIDEOS -->
 	<div *ngFor="let video of (this.videos$ | async); let i = index"
 	[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
-	<h1 *ngIf="i == 0" style="text-align: center;">{{ (videos$ | async)?.length }} {{ 'crud.article-card.video-tool-tip' | translate }}</h1>
+	<h1 *ngIf="i == 0" style="text-align: center;">{{ 'crud.article-card.video-tool-tip' | translate }} ({{ (videos$ | async)?.length }}) </h1>
 	<!-- <h2 *ngIf="i == 0" style="text-align: center;">{{ 'crud.article-card.video-tool-tip' | translate }}</h2> -->
 	
 	<!-- https://animate.style/ -->

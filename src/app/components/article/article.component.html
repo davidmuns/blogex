@@ -33,7 +33,7 @@
       <p>{{ 'article.date' | translate }}: {{ post?.date | formatDate }}</p>
       <p [innerHTML]="post?.content | safeHtml">
     </mat-card-content>
-    <app-articleGallery [articleId]="post?.id"></app-articleGallery>
+    <app-articleGallery [articleId]="post?.id" [username]="username"></app-articleGallery>
     <mat-card-actions></mat-card-actions>
   </div>
 </body>
