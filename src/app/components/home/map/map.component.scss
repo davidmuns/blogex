@@ -1,0 +1,106 @@
+/* .example-card {
+    max-width: 250px;
+
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+// https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
+.main-container {
+    padding: 20px;
+    // border: 10px solid gray;
+    // background-color: rgb(126, 234, 253);
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 620px;
+}
+
+.main-container>div {
+    margin: 10px;
+    padding: 20px;
+}
+.imgmap{
+    width: 50px;
+}*/
+
+mat-spinner{
+    position: fixed;
+    top:35vh;
+    left:45vw;
+}
+#capa1{
+    position: fixed;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+} 
+.capa{
+    position: fixed;
+    top: 60px;
+    left:0px;
+    height: 100%;
+    width:100%;
+    z-index: 0;
+    cursor: auto;
+}
+#map{
+    position: sticky;
+    position:-webkit-sticky;
+    top: 0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    display: block;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+#map2{
+    position: sticky;
+    position:-webkit-sticky;
+    top: 0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    display: block;
+}
+#map3{
+    position: sticky;
+    position:-webkit-sticky;
+    top: 0px;
+    left:0px;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+    display: block;
+}
+#message{
+    z-index: -2;
+    position: fixed;
+    top:75px;
+    left: 10px;
+}
+#marge{
+    margin-top: 664px;
+}
+@media(max-width: 600px){
+    #map2{
+        display: none;
+    }
+    #map3{
+        display:none;
+    }
+    #marge{
+        margin:0px;
+    }
+}
