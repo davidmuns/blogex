@@ -1,5 +1,9 @@
 <div class="container-articles">
   <h1>{{ 'front-articles.last-articles' | translate }}</h1>
+  <!-- Sort selector -->
+  <div class="container" style="display: flex; justify-content: center; margin-top: 20px;">
+    <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
+  </div>
 
   <section class="main-container shadow rounded">
     <article *ngFor="let article of this.articles | slice: numbers1 : numbers2" data-aos="fade-up" data-aos-duration="1000">

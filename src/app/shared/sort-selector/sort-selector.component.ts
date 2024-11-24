@@ -33,7 +33,8 @@ export class SortSelectorComponent implements OnInit, OnDestroy {
       { value: 'title-az', text: this.translateSvc.instant('user-blog.title-az') },
       { value: 'title-za', text: this.translateSvc.instant('user-blog.title-za') },
       { value: 'older', text: this.translateSvc.instant('user-blog.older') },
-      { value: 'newer', text: this.translateSvc.instant('user-blog.newer') }
+      { value: 'newer', text: this.translateSvc.instant('user-blog.newer') },
+      { value: 'more-files', text: this.translateSvc.instant('Popular') },
     ];
   }
 

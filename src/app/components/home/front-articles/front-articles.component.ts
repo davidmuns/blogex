@@ -20,9 +20,11 @@ export class FrontArticlesComponent implements OnInit {
   articles: Article[] = [];
   imagenes: Imagen[] = [];
   imagenesAll: Imagen[] = [];
+  sortBy = '';
 
   constructor(
     private readonly articleService: ArticleService,
+    private readonly utilsSvc: UtilsService,
     private readonly router: Router) { }
 
   ngOnInit(): void {
@@ -30,10 +32,15 @@ export class FrontArticlesComponent implements OnInit {
     AOS.init();
   }
 
+  onSortBy(selectedOption: string) {
+    this.sortBy = selectedOption;
+    this.getArticles();
+  };
+
   private getArticles() {
     this.articleService.getAll().subscribe({
       next: data => {
-        this.articles = data;
+        this.articles = this.utilsSvc.sortArticlesBy(data, this.sortBy);
       },
       error: err => {
         console.log(err);

@@ -17,7 +17,7 @@ export class UtilsService {
 
   constructor(
     private readonly snack: MatSnackBar,
-    private readonly translateSvc: TranslateService){};
+    private readonly translateSvc: TranslateService) { };
 
   public sortArticlesBy(articles: Article[], orderBy: string): Article[] {
 
@@ -27,9 +27,11 @@ export class UtilsService {
       case 'title-za':
         return this.sortArticlesByTitleZA(articles);
       case 'older':
-        return this.sortArticlesByOlder(articles); 
+        return this.sortArticlesByOlder(articles);
       case 'newer':
-        return this.sortArticlesByNewer(articles); 
+        return this.sortArticlesByNewer(articles);
+      case 'more-files':
+        return this.sortArticlesByFiles(articles);
       default:
         return articles;
     }
@@ -55,10 +57,16 @@ export class UtilsService {
     );
   }
 
+  public sortArticlesByFiles(articles: Article[]): Article[] {
+    return articles.sort(
+      (article1: Article, article2: Article) => article2.imagenes.length - article1.imagenes.length
+    );
+  }
+
   public sortFilesByType(files: Imagen[]): Imagen[] {
     return files.sort((file1, file2) => file2.fileType.localeCompare(file1.fileType));
   }
-  
+
   public showSnackBar(msg: string, duration: number) {
     const action = this.translateSvc.instant('article.close');
     this.snack.open(msg, action, {
