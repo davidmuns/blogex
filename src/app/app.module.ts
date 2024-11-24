@@ -61,6 +61,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 // Internationalitation
 import { InternationalitazionModule } from './internationalitazion.module';
+import { HomeModule } from './components/home/home.module';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,6 @@ import { InternationalitazionModule } from './internationalitazion.module';
     SearchComponent,
     ArticleComponent,
     ArtcileCardsComponent,
-    FrontArticlesComponent,
     FooterComponent,
     UserBlogComponent,
     ArticleGalleryComponent,
@@ -82,7 +82,6 @@ import { InternationalitazionModule } from './internationalitazion.module';
     FormatDatePipe,
     SafeHtmlPipe,
     SortFileByTypePipe,
-    AboutComponent,
     GalleryVideosComponent,
     InfoAppComponent,
   ],
@@ -101,7 +100,8 @@ import { InternationalitazionModule } from './internationalitazion.module';
     HttpClientModule,
     CrudModule,
     ToastrModule.forRoot(), // ToastrModule added
-    SharedModule
+    SharedModule,
+    HomeModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]
