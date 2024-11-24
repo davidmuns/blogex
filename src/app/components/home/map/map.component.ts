@@ -15,8 +15,8 @@ import 'leaflet.markercluster';
 export class MapComponent implements AfterViewInit {
   @ViewChild('capa') toCapa!: ElementRef;
   @ViewChild('map') toMap!: ElementRef;
-  @ViewChild('map2') toMap2!: ElementRef;
-  @ViewChild('map3') toMap3!: ElementRef;
+  // @ViewChild('map2') toMap2!: ElementRef;
+  // @ViewChild('map3') toMap3!: ElementRef;
 
   @HostListener('document:scroll', ['$event'])
   handleKey(event: any): void {
@@ -37,20 +37,20 @@ export class MapComponent implements AfterViewInit {
   // Rendering map and popups for each item
   ngAfterViewInit(): void {
     let map: Map;
-    let map2: Map;
-    let map3: Map;
+    // let map2: Map;
+    // let map3: Map;
 
     if (this.articleSvc.focusArticleOnMap) {
       const lat: any = this.articleSvc.data?.latitude;
       const lon: any = this.articleSvc.data?.longitude;
       map = new Map('map').setView([lat, lon], 13);
-      map2 = new Map('map2').setView([lat, lon], 4);
-      map3 = new Map('map3').setView([lat, lon], 13);
+      // map2 = new Map('map2').setView([lat, lon], 4);
+      // map3 = new Map('map3').setView([lat, lon], 13);
       this.articleSvc.focusArticleOnMap = false;
     } else {
       map = new Map('map').setView([this.lat, this.lon], this.zoom);
-      map2 = new Map('map2').setView([this.lat, this.lon], this.zoom);
-      map3 = new Map('map3').setView([this.lat, this.lon], 3);
+      // map2 = new Map('map2').setView([this.lat, this.lon], this.zoom);
+      // map3 = new Map('map3').setView([this.lat, this.lon], 3);
     }
 
     //Map1 code
@@ -60,35 +60,35 @@ export class MapComponent implements AfterViewInit {
     }).addTo(map);
 
     const markers1 = new MarkerClusterGroup();
-    const markers2 = new MarkerClusterGroup();
-    const markers3 = new MarkerClusterGroup();
+    // const markers2 = new MarkerClusterGroup();
+    // const markers3 = new MarkerClusterGroup();
   
     this.popUpArticlesOnMap(markers1);
     markers1.addTo(map);
     
     //Map2 code
-    tileLayer.wms("http://ows.mundialis.de/services/service?", {
-      layers: 'Dark',
-      maxZoom: 13,
-      format: 'image/png',
-      transparent: true,
-      attribution: "Weather data © 2012 IEM Nexrad"
-    }).addTo(map2);
+    // tileLayer.wms("http://ows.mundialis.de/services/service?", {
+    //   layers: 'Dark',
+    //   maxZoom: 13,
+    //   format: 'image/png',
+    //   transparent: true,
+    //   attribution: "Weather data © 2012 IEM Nexrad"
+    // }).addTo(map2);
 
-    this.popUpArticlesOnMap(markers2);
-    markers2.addTo(map2);
+    // this.popUpArticlesOnMap(markers2);
+    // markers2.addTo(map2);
     
     //Map3 code
-    tileLayer.wms("http://ows.mundialis.de/services/service?", {
-      layers: 'OSM-Overlay-WMS',
-      maxZoom: 13,
-      format: 'image/png',
-      transparent: true,
-      attribution: "Weather data © 2012 IEM Nexrad"
-    }).addTo(map3);
+    // tileLayer.wms("http://ows.mundialis.de/services/service?", {
+    //   layers: 'OSM-Overlay-WMS',
+    //   maxZoom: 13,
+    //   format: 'image/png',
+    //   transparent: true,
+    //   attribution: "Weather data © 2012 IEM Nexrad"
+    // }).addTo(map3);
     
-    this.popUpArticlesOnMap(markers3);
-    markers3.addTo(map3);
+    // this.popUpArticlesOnMap(markers3);
+    // markers3.addTo(map3);
   }
 
   private popUpArticlesOnMap(markers: MarkerClusterGroup): void{
@@ -151,22 +151,22 @@ export class MapComponent implements AfterViewInit {
   onScroll() {
     this.catchScroll = window.scrollY;
     const asMap1 = this.toMap.nativeElement;
-    const asMap2 = this.toMap2.nativeElement;
-    const asMap3 = this.toMap3.nativeElement;
+    // const asMap2 = this.toMap2.nativeElement;
+    // const asMap3 = this.toMap3.nativeElement;
     if (this.catchScroll > 0 && this.catchScroll < 800) {
       this.renderer2.setStyle(asMap1, 'display', 'block');
-      this.renderer2.setStyle(asMap2, 'display', 'none');
-      this.renderer2.setStyle(asMap3, 'display', 'none');
+      // this.renderer2.setStyle(asMap2, 'display', 'none');
+      // this.renderer2.setStyle(asMap3, 'display', 'none');
     }
     if (this.catchScroll > 800 && this.catchScroll < 2700) {
       this.renderer2.setStyle(asMap1, 'display', 'none');
-      this.renderer2.setStyle(asMap2, 'display', 'block');
-      this.renderer2.setStyle(asMap3, 'display', 'none');
+      // this.renderer2.setStyle(asMap2, 'display', 'block');
+      // this.renderer2.setStyle(asMap3, 'display', 'none');
     }
     if (this.catchScroll > 2700) {
       this.renderer2.setStyle(asMap1, 'display', 'none');
-      this.renderer2.setStyle(asMap2, 'display', 'none');
-      this.renderer2.setStyle(asMap3, 'display', 'block');
+      // this.renderer2.setStyle(asMap2, 'display', 'none');
+      // this.renderer2.setStyle(asMap3, 'display', 'block');
     }
   }
 

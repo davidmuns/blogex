@@ -1,32 +1,11 @@
-/* .example-card {
-    max-width: 250px;
-
+.map-container{
+    height: 600px;
+    margin-top: -5px;
+    #map{
+        height: 100%;
+        width: 100%;
+    }
 }
-
-.example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-}
-
-// https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
-.main-container {
-    padding: 20px;
-    // border: 10px solid gray;
-    // background-color: rgb(126, 234, 253);
-    height: auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 620px;
-}
-
-.main-container>div {
-    margin: 10px;
-    padding: 20px;
-}
-.imgmap{
-    width: 50px;
-}*/
 
 mat-spinner{
     position: fixed;
@@ -87,7 +66,7 @@ mat-spinner{
 #message{
     z-index: -2;
     position: fixed;
-    top:75px;
+    top: 150px;
     left: 10px;
 }
 #marge{
