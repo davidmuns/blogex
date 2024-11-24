@@ -7,6 +7,8 @@ import { InternationalitazionModule } from 'src/app/internationalitazion.module'
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AppRoutingModule } from 'src/app/app-routing.module';
 import { MapComponent } from './map/map.component';
+import { HomeComponent } from './home.component';
+import { MaterialModule } from 'src/app/material.module';
 
 
 @NgModule({
@@ -14,6 +16,7 @@ import { MapComponent } from './map/map.component';
     AboutComponent,
     FrontArticlesComponent,
     MapComponent,
+    HomeComponent,
   ],
   imports: [
     CommonModule,
@@ -21,6 +24,7 @@ import { MapComponent } from './map/map.component';
     FormsModule,
     SharedModule,
     AppRoutingModule,
+    MaterialModule
   ],
   exports: [
     FrontArticlesComponent,
