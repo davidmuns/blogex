@@ -4,6 +4,7 @@ import { ArticleService } from 'src/app/shared/services/article.service';
 import { Map, marker, MarkerClusterGroup, tileLayer } from 'leaflet';
 import { Article } from 'src/app/shared/models/article';
 import 'leaflet.markercluster';
+import L from 'leaflet';
 
 
 @Component({
@@ -15,9 +16,6 @@ import 'leaflet.markercluster';
 export class MapComponent implements AfterViewInit {
   @ViewChild('capa') toCapa!: ElementRef;
   @ViewChild('map') toMap!: ElementRef;
-  // @ViewChild('map2') toMap2!: ElementRef;
-  // @ViewChild('map3') toMap3!: ElementRef;
-
   @HostListener('document:scroll', ['$event'])
   handleKey(event: any): void {
     this.onScroll()
@@ -27,6 +25,20 @@ export class MapComponent implements AfterViewInit {
   private readonly lat = 42.40249;
   private readonly lon = 2.194332;
   private readonly zoom = 3;
+  selectedMapType: string = 'osm'; // Tipo de mapa por defecto
+  private map: L.Map | undefined;
+  layers: { [key: string]: L.TileLayer } = {};
+
+  // Cambiar el tipo de mapa según la selección
+  onMapTypeChange() {
+    if (this.map) {
+      // Eliminar todas las capas actuales
+      Object.values(this.layers).forEach((layer) => this.map!.removeLayer(layer));
+
+      // Agregar la capa seleccionada
+      this.layers[this.selectedMapType].addTo(this.map);
+    }
+  }
 
   constructor(
     private readonly router: Router,
@@ -36,59 +48,52 @@ export class MapComponent implements AfterViewInit {
 
   // Rendering map and popups for each item
   ngAfterViewInit(): void {
-    let map: Map;
-    // let map2: Map;
-    // let map3: Map;
-
     if (this.articleSvc.focusArticleOnMap) {
       const lat: any = this.articleSvc.data?.latitude;
       const lon: any = this.articleSvc.data?.longitude;
-      map = new Map('map').setView([lat, lon], 13);
-      // map2 = new Map('map2').setView([lat, lon], 4);
-      // map3 = new Map('map3').setView([lat, lon], 13);
+      this.map = new Map('map').setView([lat, lon], 13);
       this.articleSvc.focusArticleOnMap = false;
     } else {
-      map = new Map('map').setView([this.lat, this.lon], this.zoom);
-      // map2 = new Map('map2').setView([this.lat, this.lon], this.zoom);
-      // map3 = new Map('map3').setView([this.lat, this.lon], 3);
+      this.map = new Map('map').setView([this.lat, this.lon], this.zoom);
     }
 
-    //Map1 code
-    tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 20,
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    this.layers = {
+      osm: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap contributors',
+      }),
+      satellite: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
+        layers: 'Dark',
+        maxZoom: 13,
+        format: 'image/png',
+        transparent: true,
+        attribution: "Weather data © 2012 IEM Nexrad"
+      }),
+      terrain: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
+        layers: 'OSM-Overlay-WMS',
+        maxZoom: 13,
+        format: 'image/png',
+        transparent: true,
+        attribution: "Weather data © 2012 IEM Nexrad"
+      }),
+      geography: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
+        layers: 'TOPO-OSM-WMS',
+        maxZoom: 13,
+        format: 'image/png',
+        transparent: true,
+        attribution: "Weather data © 2012 IEM Nexrad"
+      }),
+    };
+
+    // Agregar la capa inicial
+    this.layers['osm'].addTo(this.map);
 
     const markers1 = new MarkerClusterGroup();
-    // const markers2 = new MarkerClusterGroup();
-    // const markers3 = new MarkerClusterGroup();
+   
   
     this.popUpArticlesOnMap(markers1);
-    markers1.addTo(map);
-    
-    //Map2 code
-    // tileLayer.wms("http://ows.mundialis.de/services/service?", {
-    //   layers: 'Dark',
-    //   maxZoom: 13,
-    //   format: 'image/png',
-    //   transparent: true,
-    //   attribution: "Weather data © 2012 IEM Nexrad"
-    // }).addTo(map2);
-
-    // this.popUpArticlesOnMap(markers2);
-    // markers2.addTo(map2);
-    
-    //Map3 code
-    // tileLayer.wms("http://ows.mundialis.de/services/service?", {
-    //   layers: 'OSM-Overlay-WMS',
-    //   maxZoom: 13,
-    //   format: 'image/png',
-    //   transparent: true,
-    //   attribution: "Weather data © 2012 IEM Nexrad"
-    // }).addTo(map3);
-    
-    // this.popUpArticlesOnMap(markers3);
-    // markers3.addTo(map3);
+    markers1.addTo(this.map);
+  
   }
 
   private popUpArticlesOnMap(markers: MarkerClusterGroup): void{

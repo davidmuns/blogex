@@ -8,6 +8,33 @@
     <div id="message">{{ 'ClickMap' | translate }}</div>
 </div> -->
 
+<div class="container rounded" style="display: flex; justify-content: center; margin-top: 5px; margin-bottom: 5px;">
+    <form>
+        <label>
+            <input type="radio" name="mapType" value="osm" [(ngModel)]="selectedMapType" (change)="onMapTypeChange()" />
+            OpenStreetMap
+        </label>
+        
+        <label>
+            <input type="radio" name="mapType" value="satellite" [(ngModel)]="selectedMapType"
+                (change)="onMapTypeChange()" />
+            Satélite
+        </label>
+       
+        <label>
+            <input type="radio" name="mapType" value="terrain" [(ngModel)]="selectedMapType"
+                (change)="onMapTypeChange()" />
+            Terreno
+        </label>
+     
+        <label>
+            <input type="radio" name="mapType" value="geography" [(ngModel)]="selectedMapType"
+                (change)="onMapTypeChange()" />
+            Geography
+        </label>
+    </form>
+</div>
+
 <div class="map-container" (click)="removeCapa()" (dblclick)="outMap()">
     <div #capa class="capa"></div>
     <div #map id="map"></div>
