@@ -1,0 +1,49 @@
+<h3>Seleccione el tipo de mapa</h3>
+<form>
+  <label>
+    <input
+      type="radio"
+      name="mapType"
+      value="osm"
+      [(ngModel)]="selectedMapType"
+      (change)="onMapTypeChange()"
+    />
+    OpenStreetMap
+  </label>
+
+  <label>
+    <input
+      type="radio"
+      name="mapType"
+      value="satellite"
+      [(ngModel)]="selectedMapType"
+      (change)="onMapTypeChange()"
+    />
+    Satélite
+  </label>
+
+  <label>
+    <input
+      type="radio"
+      name="mapType"
+      value="terrain"
+      [(ngModel)]="selectedMapType"
+      (change)="onMapTypeChange()"
+    />
+    Terreno
+  </label>
+  <label>
+    <input
+      type="radio"
+      name="mapType"
+      value="geography"
+      [(ngModel)]="selectedMapType"
+      (change)="onMapTypeChange()"
+    />
+    Geography
+  </label>
+</form>
+
+<!-- Contenedor del mapa -->
+<div id="map" style="height: 600px; width: 100%;"></div>
+

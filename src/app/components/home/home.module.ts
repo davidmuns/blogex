@@ -9,6 +9,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { MapComponent } from './map/map.component';
 import { HomeComponent } from './home.component';
 import { MaterialModule } from 'src/app/material.module';
+import { MapSelectorComponent } from './map-selector/map-selector.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { MaterialModule } from 'src/app/material.module';
     FrontArticlesComponent,
     MapComponent,
     HomeComponent,
+    MapSelectorComponent,
   ],
   imports: [
     CommonModule,
