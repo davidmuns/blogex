@@ -16,29 +16,15 @@ import L from 'leaflet';
 export class MapComponent implements AfterViewInit {
   @ViewChild('capa') toCapa!: ElementRef;
   @ViewChild('map') toMap!: ElementRef;
-  @HostListener('document:scroll', ['$event'])
-  handleKey(event: any): void {
-    this.onScroll()
-  }
-  public catchScroll!: any;
+  
+ 
   public postActual!: any;
   private readonly lat = 42.40249;
   private readonly lon = 2.194332;
   private readonly zoom = 3;
-  selectedMapType: string = 'osm'; // Tipo de mapa por defecto
-  private map: L.Map | undefined;
+ 
+
   layers: { [key: string]: L.TileLayer } = {};
-
-  // Cambiar el tipo de mapa según la selección
-  onMapTypeChange() {
-    if (this.map) {
-      // Eliminar todas las capas actuales
-      Object.values(this.layers).forEach((layer) => this.map!.removeLayer(layer));
-
-      // Agregar la capa seleccionada
-      this.layers[this.selectedMapType].addTo(this.map);
-    }
-  }
 
   constructor(
     private readonly router: Router,
@@ -48,35 +34,36 @@ export class MapComponent implements AfterViewInit {
 
   // Rendering map and popups for each item
   ngAfterViewInit(): void {
+    let map: Map;
     if (this.articleSvc.focusArticleOnMap) {
       const lat: any = this.articleSvc.data?.latitude;
       const lon: any = this.articleSvc.data?.longitude;
-      this.map = new Map('map').setView([lat, lon], 13);
+      map = new Map('map').setView([lat, lon], 13);
       this.articleSvc.focusArticleOnMap = false;
     } else {
-      this.map = new Map('map').setView([this.lat, this.lon], this.zoom);
+      map = new Map('map').setView([this.lat, this.lon], this.zoom);
     }
 
     this.layers = {
-      osm: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      map1: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,
         attribution: '© OpenStreetMap contributors',
       }),
-      satellite: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
+      map2: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
         layers: 'Dark',
         maxZoom: 13,
         format: 'image/png',
         transparent: true,
         attribution: "Weather data © 2012 IEM Nexrad"
       }),
-      terrain: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
+      map3: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
         layers: 'OSM-Overlay-WMS',
         maxZoom: 13,
         format: 'image/png',
         transparent: true,
         attribution: "Weather data © 2012 IEM Nexrad"
       }),
-      geography: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
+      map4: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
         layers: 'TOPO-OSM-WMS',
         maxZoom: 13,
         format: 'image/png',
@@ -84,15 +71,12 @@ export class MapComponent implements AfterViewInit {
         attribution: "Weather data © 2012 IEM Nexrad"
       }),
     };
-
+    L.control.layers(this.layers).addTo(map);
     // Agregar la capa inicial
-    this.layers['osm'].addTo(this.map);
-
-    const markers1 = new MarkerClusterGroup();
-   
-  
-    this.popUpArticlesOnMap(markers1);
-    markers1.addTo(this.map);
+    this.layers['map1'].addTo(map);
+    const markers = new MarkerClusterGroup();
+    this.popUpArticlesOnMap(markers);
+    markers.addTo(map);
   
   }
 
@@ -152,27 +136,4 @@ export class MapComponent implements AfterViewInit {
     this.renderer2.setStyle(asCapa, 'display', 'block');
     this.renderer2.setStyle(asMap1, 'zIndex', '-2');
   }
-
-  onScroll() {
-    this.catchScroll = window.scrollY;
-    const asMap1 = this.toMap.nativeElement;
-    // const asMap2 = this.toMap2.nativeElement;
-    // const asMap3 = this.toMap3.nativeElement;
-    if (this.catchScroll > 0 && this.catchScroll < 800) {
-      this.renderer2.setStyle(asMap1, 'display', 'block');
-      // this.renderer2.setStyle(asMap2, 'display', 'none');
-      // this.renderer2.setStyle(asMap3, 'display', 'none');
-    }
-    if (this.catchScroll > 800 && this.catchScroll < 2700) {
-      this.renderer2.setStyle(asMap1, 'display', 'none');
-      // this.renderer2.setStyle(asMap2, 'display', 'block');
-      // this.renderer2.setStyle(asMap3, 'display', 'none');
-    }
-    if (this.catchScroll > 2700) {
-      this.renderer2.setStyle(asMap1, 'display', 'none');
-      // this.renderer2.setStyle(asMap2, 'display', 'none');
-      // this.renderer2.setStyle(asMap3, 'display', 'block');
-    }
-  }
-
 }
