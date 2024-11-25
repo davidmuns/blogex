@@ -16,13 +16,13 @@ import L from 'leaflet';
 export class MapComponent implements AfterViewInit {
   @ViewChild('capa') toCapa!: ElementRef;
   @ViewChild('map') toMap!: ElementRef;
-  
- 
+
+
   public postActual!: any;
   private readonly lat = 42.40249;
   private readonly lon = 2.194332;
   private readonly zoom = 3;
- 
+
 
   layers: { [key: string]: L.TileLayer } = {};
 
@@ -46,29 +46,42 @@ export class MapComponent implements AfterViewInit {
 
     this.layers = {
       map1: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
+        maxZoom: 18,
+        minZoom: 1,
         attribution: '© OpenStreetMap contributors',
       }),
       map2: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
         layers: 'Dark',
-        maxZoom: 13,
+        maxZoom: 18,
+        minZoom: 1,
         format: 'image/png',
         transparent: true,
         attribution: "Weather data © 2012 IEM Nexrad"
       }),
       map3: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
         layers: 'OSM-Overlay-WMS',
-        maxZoom: 13,
+        maxZoom: 18,
+        minZoom: 1,
         format: 'image/png',
         transparent: true,
         attribution: "Weather data © 2012 IEM Nexrad"
       }),
-      map4: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
-        layers: 'TOPO-OSM-WMS',
-        maxZoom: 13,
-        format: 'image/png',
-        transparent: true,
-        attribution: "Weather data © 2012 IEM Nexrad"
+      // map4: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
+      //   layers: 'TOPO-OSM-WMS',
+      //   maxZoom: 13,
+      //   format: 'image/png',
+      //   transparent: true,
+      //   attribution: "Weather data © 2012 IEM Nexrad"
+      // }),
+      map4: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+        maxZoom: 18,
+        minZoom: 1,
+        attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+      }),
+      map5: L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        minZoom: 1,
+        attribution: '&copy; OpenStreetMap contributors, Tiles courtesy of OpenTopoMap.org'
       }),
     };
     // https://leafletjs.com/examples/wms/wms.html
@@ -78,10 +91,10 @@ export class MapComponent implements AfterViewInit {
     const markers = new MarkerClusterGroup();
     this.popUpArticlesOnMap(markers);
     markers.addTo(map);
-  
+
   }
 
-  private popUpArticlesOnMap(markers: MarkerClusterGroup): void{
+  private popUpArticlesOnMap(markers: MarkerClusterGroup): void {
     this.articleSvc.getAll().subscribe((res: Article[]) => {
       res.forEach(point => {
         this.postActual = point;
@@ -92,7 +105,7 @@ export class MapComponent implements AfterViewInit {
             <img class="image-link" src="${point.imagenPortada}" alt="${point.title}">
           </a>
           <br>
-          <p class="text">${ point.caption }</p>
+          <p class="text">${point.caption}</p>
         `;
         const popup = marker([point.latitude, point.longitude]).addTo(markers).bindPopup(popupContent);
         popup.on('popupopen', (e) => {

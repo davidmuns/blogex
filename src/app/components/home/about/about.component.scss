@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
+img {
+    // width: 200%;
+    // height: auto;
+}
+
 .container-about {
     display: flex;
     flex-wrap: wrap;
@@ -8,7 +13,7 @@
     left: 0px;
     // margin-top: 664px;
     margin-bottom: 10px;
-    max-width: 1300px;
+    // max-width: 1300px;
     padding: 0px 1% 10px;
     background: var(--accent);
 
