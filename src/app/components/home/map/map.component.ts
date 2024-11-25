@@ -71,6 +71,7 @@ export class MapComponent implements AfterViewInit {
         attribution: "Weather data © 2012 IEM Nexrad"
       }),
     };
+    // https://leafletjs.com/examples/wms/wms.html
     L.control.layers(this.layers).addTo(map);
     // Agregar la capa inicial
     this.layers['map1'].addTo(map);
