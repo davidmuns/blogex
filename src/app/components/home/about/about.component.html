@@ -1,6 +1,6 @@
 <div class="container-about shadow rounded">
 
-    <div *ngIf="this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div *ngIf="this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2500">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="../../../../assets/img/acantilados.jpg" alt="Second slide">
@@ -40,7 +40,7 @@
         </ng-template>
     </div>
 
-    <div *ngIf="!this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div *ngIf="!this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2500">
         <div class="carousel-inner">
             <div id="sky" class="carousel-item active">
                 <img src="../../../../assets/img/acantilados.jpg" alt="Second slide">
