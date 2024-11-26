@@ -1,17 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
+img {
+    // width: 200%;
+    // height: auto;
+}
+
 .container-about {
     display: flex;
     flex-wrap: wrap;
     position: relative;
     top: 0px;
     left: 0px;
-    margin-top: 664px;
-    margin-bottom: 10px;
-    max-width: 1300px;
-    padding: 0px 1% 10px;
+    // margin-top: 800px;
+    // margin-bottom: 10px;
+    // max-width: 1300px;
+    padding: 0px 5% 25px;
     background: var(--accent);
-
+   
     h2 {
         padding: 30px 0px;
         margin: 0px;
@@ -68,7 +73,6 @@
 
 @media(max-width:930px) {
     .container-about {
-        margin-top: 540px;
 
         #text {
             padding-top: 20px;
@@ -116,10 +120,10 @@
 
 }
 
-@media(max-width: 749px) {
+@media(max-width: 700px) {
     .container-about {
-        margin-top: 450px;
-        // height: auto;
+        // margin-top: 600px;
+        padding: 0px 1% 10px;
 
         h2 {
             font-size: 1.8rem;
