@@ -1,7 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ArticleService } from 'src/app/shared/services/article.service';
-import { Map, marker, MarkerClusterGroup, tileLayer } from 'leaflet';
+import { Map, marker, MarkerClusterGroup, Renderer, tileLayer } from 'leaflet';
 import { Article } from 'src/app/shared/models/article';
 import 'leaflet.markercluster';
 import L from 'leaflet';
