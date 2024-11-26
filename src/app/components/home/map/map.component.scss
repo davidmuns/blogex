@@ -69,7 +69,7 @@ mat-spinner{
 #message{
     color: red;
     z-index: -2;
-    position: fixed;
+    position: absolute;
     top: 150px;
     left: 10px;
 }
