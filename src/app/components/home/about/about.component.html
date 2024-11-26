@@ -27,8 +27,9 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-
+   
     <h2>{{ 'about.title' | translate }}</h2>
+  
     <div id="text">
         <p [innerHTML]="'about.text' | translate"></p>
         <div *ngIf="this.tokenSvc.isLogged() === false; else logged">
@@ -38,6 +39,7 @@
             <button mat-raised-button class="color-button-blog" routerLink="/blog/{{ this.tokenSvc.getUsername() }}">{{
                 'Blog' | translate }}</button>
         </ng-template>
+        
     </div>
 
     <div *ngIf="!this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2500">
