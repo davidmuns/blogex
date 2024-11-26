@@ -12,9 +12,9 @@ img {
     top: 0px;
     left: 0px;
     // margin-top: 664px;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
     // max-width: 1300px;
-    padding: 0px 1% 10px;
+    padding: 0px 5% 25px;
     background: var(--accent);
 
     h2 {
@@ -123,8 +123,7 @@ img {
 
 @media(max-width: 749px) {
     .container-about {
-        // margin-top: 450px;
-        // height: auto;
+        padding: 0px 1% 10px;
 
         h2 {
             font-size: 1.8rem;
