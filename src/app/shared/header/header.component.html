@@ -13,7 +13,7 @@
     <ng-template #logged>
       <div>
         <a class="logout" [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"
-          (mouseover)="openMenu(menuTrigger)">{{ this.tokenService.getUsername() }}</a>
+          (mouseover)="openMenu(menuTrigger)">{{tokenService.getUsername()?.charAt(0)?.toUpperCase() }}</a>
       </div>
     </ng-template>
 
@@ -69,7 +69,7 @@
   <!-- LANGUAGE BUTTON -->
   <button mat-menu-item (click)="onSwitchLang('en')">
     <mat-icon>language</mat-icon>
-    <img [src]="this.urlFlags.england" alt="catalan-flag" title="català" width="25" height="25">
+    <img [src]="this.urlFlags.england" alt="catalan-flag" title="català" width="20" height="20">
     {{ 'header.english' | translate }}
   </button>
   <mat-divider></mat-divider>
