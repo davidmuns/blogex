@@ -146,7 +146,7 @@ img {
     /* Ajusta el tamaño según necesites */
     height: 35px;
     /* Igual al ancho para mantener el círculo */
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--darkGrey);
     background-color: var(--lemon);
     /* Cambia el color de fondo si es necesario */
@@ -158,5 +158,9 @@ img {
 }
 
 .logout:hover {
+    box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
+}
+
+button:hover{
     box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
 }

@@ -10,12 +10,12 @@
       <button mat-icon-button [matMenuTriggerFor]="user" aria-label="Settings" *ngIf="!this.tokenService.isLogged(); else logged">
         <mat-icon>account_circle</mat-icon>
       </button>
-      <!-- BUTTON LANGUAGGE -->
+      <!-- BUTTON LANGUAGE -->
       <button mat-icon-button aria-label="Settings" [matMenuTriggerFor]="language">
         <mat-icon>language</mat-icon>
       </button>
       <!-- BUTTON MENU -->
-      <button mat-icon-button [matMenuTriggerFor]="menu" #menuTrigger="matMenuTrigger"
+      <button mat-icon-button [matMenuTriggerFor]="home_menu" #menuTrigger="matMenuTrigger"
         (mouseover)="openMenu(menuTrigger)">
         <mat-icon>menu</mat-icon>
       </button>
@@ -32,7 +32,7 @@
 
 
 <!-- MENU USER -->
-<mat-menu id="matMenu" #user>
+<mat-menu #user>
   <!-- MY BLOG BUTTON -->
   <button mat-menu-item routerLink="/blog/{{ this.tokenService.getUsername() }}" *ngIf="this.tokenService.isLogged()">
     <mat-icon>book</mat-icon>
@@ -72,35 +72,34 @@
   </button>
 </mat-menu>
 
-<!-- MENU LANGUAGGE -->
-<mat-menu id="matMenu" #language>
-  <!-- LANGUAGE BUTTON -->
+<!-- MENU LANGUAGE -->
+<mat-menu #language>
+  <!-- CATALAN -->
   <button mat-menu-item (click)="onSwitchLang('ca')">
-    <mat-icon>language</mat-icon>
+    <mat-icon></mat-icon>
     <img [src]="this.urlFlags.catalonia" alt="catalan-flag" title="català" width="20" height="20">
     Català
   </button>
   <mat-divider></mat-divider>
 
-  <!-- LANGUAGE BUTTON -->
+  <!-- SPANISH -->
   <button mat-menu-item (click)="onSwitchLang('es')">
-    <mat-icon>language</mat-icon>
+    <mat-icon></mat-icon>
     <img [src]="this.urlFlags.spain" alt="spain-flag" title="català" width="20" height="20">
     Español
   </button>
   <mat-divider></mat-divider>
 
-  <!-- LANGUAGE BUTTON -->
+  <!-- ENGLISH -->
   <button mat-menu-item (click)="onSwitchLang('en')">
-    <mat-icon>language</mat-icon>
+    <mat-icon></mat-icon>
     <img [src]="this.urlFlags.england" alt="catalan-flag" title="català" width="20" height="20">
     English
   </button>
-  <mat-divider></mat-divider>
 </mat-menu>
 
 <!-- MENU HOME -->
-<mat-menu id="matMenu" #menu>
+<mat-menu #home_menu>
   <!-- HOME BUTTON -->
   <button mat-menu-item (click)="onHome()">
     <mat-icon>home</mat-icon>
