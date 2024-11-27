@@ -1,7 +1,8 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, OnInit, Renderer2, ViewChild, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ArticleService } from 'src/app/shared/services/article.service';
-import { Map, marker, MarkerClusterGroup, Renderer, tileLayer } from 'leaflet';
+import { Map, marker, MarkerClusterGroup } from 'leaflet';
 import { Article } from 'src/app/shared/models/article';
 import 'leaflet.markercluster';
 import L from 'leaflet';
@@ -13,7 +14,7 @@ import L from 'leaflet';
   styleUrls: ['./map.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MapComponent implements AfterViewInit {
+export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('capa') toCapa!: ElementRef;
   @ViewChild('map') toMap!: ElementRef;
 
@@ -22,9 +23,9 @@ export class MapComponent implements AfterViewInit {
   private readonly lat = 42.40249;
   private readonly lon = 2.194332;
   private readonly zoom = 3;
-
-
-  layers: { [key: string]: L.TileLayer } = {};
+  private layers: { [key: string]: L.TileLayer } = {};
+  private article: Article | undefined = undefined;
+  subscription: Subscription | null = null;
 
   constructor(
     private readonly router: Router,
@@ -32,27 +33,22 @@ export class MapComponent implements AfterViewInit {
     private readonly renderer2: Renderer2
   ) { }
 
+  ngOnInit(): void {
+    this.subscription = this.articleSvc.articleSubject$.subscribe(article => this.article = article);
+  }
+
   // Rendering map and popups for each item
   ngAfterViewInit(): void {
     let map: Map;
-    if (this.articleSvc.focusArticleOnMap) {
-      const lat: any = this.articleSvc.data?.latitude;
-      const lon: any = this.articleSvc.data?.longitude;
-      map = new Map('map').setView([lat, lon], 13);
-      this.articleSvc.focusArticleOnMap = false;
-    } else {
-      map = new Map('map').setView([this.lat, this.lon], this.zoom);
-    }
-
     this.layers = {
       map1: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
+        maxZoom: 19,
         minZoom: 1,
         attribution: '© OpenStreetMap contributors',
       }),
       map2: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
         layers: 'Dark',
-        maxZoom: 18,
+        maxZoom: 14,
         minZoom: 1,
         format: 'image/png',
         transparent: true,
@@ -60,7 +56,7 @@ export class MapComponent implements AfterViewInit {
       }),
       map3: L.tileLayer.wms("http://ows.mundialis.de/services/service?", {
         layers: 'OSM-Overlay-WMS',
-        maxZoom: 18,
+        maxZoom: 14,
         minZoom: 1,
         format: 'image/png',
         transparent: true,
@@ -74,16 +70,25 @@ export class MapComponent implements AfterViewInit {
       //   attribution: "Weather data © 2012 IEM Nexrad"
       // }),
       map4: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-        maxZoom: 18,
+        maxZoom: 19,
         minZoom: 1,
         attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
       }),
       map5: L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
+        maxZoom: 17,
         minZoom: 1,
         attribution: '&copy; OpenStreetMap contributors, Tiles courtesy of OpenTopoMap.org'
       }),
     };
+    if (this.article) {
+      const lat: any = this.article.latitude;
+      const lon: any = this.article.longitude;
+      map = new Map('map').setView([lat, lon], 16);
+      this.layers['map4'].addTo(map);
+      this.articleSvc.setArticleSubject(undefined);
+    } else {
+      map = new Map('map').setView([this.lat, this.lon], this.zoom);
+    }
     // https://leafletjs.com/examples/wms/wms.html
     L.control.layers(this.layers).addTo(map);
     // Agregar la capa inicial
@@ -149,5 +154,13 @@ export class MapComponent implements AfterViewInit {
     const asMap1 = this.toMap.nativeElement;
     this.renderer2.setStyle(asCapa, 'display', 'block');
     this.renderer2.setStyle(asMap1, 'zIndex', '-2');
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      console.log("SUBSCRIPTION => ", this.subscription);
+      this.subscription.unsubscribe();
+      this.subscription = null; // Limpieza adicional
+    }
   }
 }

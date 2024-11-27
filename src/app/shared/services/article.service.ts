@@ -1,5 +1,5 @@
 import { Article } from './../models/article';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -10,11 +10,14 @@ import { Imagen } from '../models/imagen';
 })
 export class ArticleService {
 
-  data!: Article | undefined;
-  focusArticleOnMap: boolean = false;
-  public fadeInOut: boolean = true;
+  private readonly articleSubject = new BehaviorSubject<Article | undefined>(undefined);
+  articleSubject$ = this.articleSubject.asObservable();
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private readonly httpClient: HttpClient) { }
+
+  setArticleSubject(article: Article | undefined){
+    this.articleSubject.next(article);
+  }
 
   public getArticle(articleId: number): Observable<Article> {
     return this.httpClient.get<Article>(environment.BACKEND_BASE_URL + 'article/one/' + articleId);

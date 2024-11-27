@@ -19,7 +19,6 @@ export class ArticleComponent implements OnInit {
     }
   };
 
-  backgroundColor = '#757573';
   post!: Article | undefined;
   idPost!: number;
   temp!: number;
@@ -47,8 +46,7 @@ export class ArticleComponent implements OnInit {
 
   // Store data in a article service variable
   onGoToMap() {
-    this.articleSvc.data = this.post;
-    this.articleSvc.focusArticleOnMap = true;
+    this.articleSvc.setArticleSubject(this.post);
     this.router.navigate(['home']);
   }
 
