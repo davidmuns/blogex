@@ -1,17 +1,27 @@
 <span class="material-icons">warning</span>
+
 <h3>{{ 'YouSure' | translate }}</h3>
+
 <mat-card-content style="text-align: center;">
   <p>{{ 'Undone' | translate }}</p>
 </mat-card-content>
-<mat-card-actions *ngIf="!uploading">
-  <span *ngFor="let deleteOption of deleteOptions; index as i">
-    <button *ngIf="data.option === deleteOption.value" mat-button (click)="onDelete()" class="delete-btn">
-      {{ 'Delete' | translate }} {{ deleteOption.viewValue | lowercase }}
-    </button>
-  </span>
-  <button class="cancel-btn" mat-button (click)="cancel()">{{ 'Cancel' | translate }}</button>
-</mat-card-actions>
+
 <div *ngIf="uploading" class="spinner-container">
   <div class="spinner"></div>
   <div>{{ 'crud.article-card.deleting-icon-tool-tip' | translate }}</div>
 </div>
+
+<mat-card-actions *ngIf="!uploading">
+  <ng-container *ngFor="let button of buttons">
+    <ng-container *ngIf="data.option === button.option">
+      <button
+        type="button"
+        class="delete-btn"
+        mat-button 
+        (click)="button.action()">
+        {{ 'Delete' | translate }} {{ button.text | lowercase }}
+      </button>
+    </ng-container>
+  </ng-container>
+  <button class="cancel-btn" mat-button (click)="cancel()">{{ 'Cancel' | translate }}</button>
+</mat-card-actions>

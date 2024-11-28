@@ -23,11 +23,11 @@ import { Article } from 'src/app/shared/models/article';
 })
 export class DeleteComponent implements OnInit {
 
-  deleteOptions = [
-    { value: 'deleteArticle', viewValue: this.translateSvc.instant('Article') },
-    { value: 'deleteImage', viewValue: this.translateSvc.instant('Image') },
-    { value: 'deleteVideo', viewValue: this.translateSvc.instant('Video') },
-    { value: 'deleteAccount', viewValue: this.translateSvc.instant('delete.account') },
+  buttons = [
+    { option: 'deleteArticle', text: this.translateSvc.instant('Article'), action: () => this.deleteArticle() },
+    { option: 'deleteImage', text: this.translateSvc.instant('Image'), action: () => this.deleteImage() },
+    { option: 'deleteVideo', text: this.translateSvc.instant('Video'), action: () => this.deleteVideo() },
+    { option: 'deleteAccount', text: this.translateSvc.instant('delete.account'), action: () => this.deleteAccount() },
   ];
   durationInSeconds = 5;
   username: string = this.tokenSvc.getUsername() as string;
@@ -35,36 +35,17 @@ export class DeleteComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article, imgId: string, videoId: number, option: string },
-    private utilsSvc: UtilsService,
+    private readonly utilsSvc: UtilsService,
     private tokenSvc: TokenService,
-    private authSvc: AuthService,
+    private readonly authSvc: AuthService,
     private readonly dialog: MatDialog,
     private readonly articleSvc: ArticleService,
-    private videoSvc: VideoService,
+    private readonly videoSvc: VideoService,
     private readonly router: Router,
-    private translateSvc: TranslateService
+    private readonly translateSvc: TranslateService
   ) { }
 
   ngOnInit(): void { }
-
-  onDelete() {
-    switch (this.data.option) {
-      case 'deleteArticle':
-        this.deleteArticle();
-        break;
-      case 'deleteImage':
-        this.deleteImage();
-        break;
-      case 'deleteVideo':
-        this.deleteVideo();
-        break;
-      case 'deleteAccount':
-        this.deleteAccount();
-        break;
-      default:
-        console.log("No option avalivable");
-    }
-  }
 
   deleteArticle() {
     this.uploading = true;
