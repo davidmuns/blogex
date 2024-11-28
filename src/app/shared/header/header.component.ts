@@ -5,7 +5,7 @@ import { TinyEditorService } from './../services/tiny-editor.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DeleteComponent } from './../../components/crud/delete/delete.component';
 import { TokenService } from './../services/token.service';
-import { Component } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -15,13 +15,16 @@ import { MatMenuTrigger } from '@angular/material/menu';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
 
   urlFlags = {
     catalonia: 'https://wallpapercave.com/wp/wp2240009.png',
     spain: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/1200px-Bandera_de_Espa%C3%B1a.svg.png',
     england: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Flag_of_the_United_Kingdom_%281-1%29.svg'
   }
+  private getScreenWidth: any;
+  private getScreenHeight: any;
+  isMobile = false
 
   constructor(
     private utilsSvc: UtilsService,
@@ -35,6 +38,11 @@ export class HeaderComponent {
     translate.getBrowserLang();
     translate.addLangs(['ca', 'en', 'es']);
     translate.setDefaultLang('es');
+  }
+
+  ngOnInit(): void {
+    this.getScreenWidth = window.innerWidth;
+    this.getScreenHeight = window.innerHeight;
   }
 
   openLogin() {
@@ -68,5 +76,17 @@ export class HeaderComponent {
   // https://www.concretepage.com/angular-material/angular-material-open-menu-on-hover
   openMenu(menuTrigger: MatMenuTrigger) {
     // menuTrigger.openMenu();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.getScreenWidth = window.innerWidth;
+    this.getScreenHeight = window.innerHeight;
+
+    if(this.getScreenWidth < 700){
+      this.isMobile = true;
+    }else{
+      this.isMobile = false;
+    }
   }
 }

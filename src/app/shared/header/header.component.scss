@@ -121,7 +121,7 @@ img {
 .toolbar .buttons {
     display: flex;
     /* Asegura que los botones estén en línea */
-    gap: 8px;
+    gap: 30px;
     /* Espacio entre los botones */
 }
 
@@ -153,6 +153,7 @@ img {
     // box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
     text-decoration: none;
     border-radius: 50%;
+    border: none;
     /* Hace que el div sea circular */
     cursor: pointer;
 }
@@ -161,6 +162,10 @@ img {
     box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
 }
 
-button:hover{
+button:hover {
     box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
+}
+
+::ng-deep .mat-tooltip {
+    font-size: 18px;
 }
