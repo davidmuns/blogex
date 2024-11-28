@@ -92,11 +92,17 @@ export class ArtcileCardsComponent implements OnInit {
   };
 
   onOpenVideosGallery(a: Article) {
-    this.dialog.open(GalleryVideosComponent, { data: { article: a } });
+    this.dialog.open(GalleryVideosComponent, { 
+      data: { article: a },
+      exitAnimationDuration: '500ms' 
+    });
   };
 
   onOpenImagesGallery(a: Article) {
-    this.dialog.open(GalleryImagesComponent, { data: { article: a } });
+    this.dialog.open(GalleryImagesComponent, { 
+      data: { article: a },
+      exitAnimationDuration: '500ms'
+    });
   };
 
   onEdit(post: Article) {

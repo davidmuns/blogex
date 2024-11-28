@@ -74,6 +74,10 @@ export class GalleryVideosComponent implements OnInit {
   };
 
   onDelete(id: number | undefined) {
-    this.dialog.open(DeleteComponent, { data: { videoId: id, article: this.article, option: "deleteVideo" } });
+    this.dialog.open(DeleteComponent, { 
+      data: { videoId: id, article: this.article, option: "deleteVideo" },
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms'
+    });
   };
 };

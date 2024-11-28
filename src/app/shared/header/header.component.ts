@@ -67,7 +67,8 @@ export class HeaderComponent implements OnInit {
 
   openLogin() {
     this.dialog.open(LoginComponent, {
-      enterAnimationDuration: '1000ms'
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms'
     });
   }
 
@@ -78,7 +79,11 @@ export class HeaderComponent implements OnInit {
   }
 
   onDeleteAccount() {
-    this.dialog.open(DeleteComponent, { data: { option: "deleteAccount" } });
+    this.dialog.open(DeleteComponent, {
+      data: { option: "deleteAccount" },
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms'
+    });
   }
 
   onSwitchLang(lang: string) {
@@ -91,7 +96,10 @@ export class HeaderComponent implements OnInit {
   }
 
   onHelp() {
-    this.dialog.open(InfoAppComponent);
+    this.dialog.open(InfoAppComponent, {
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms' 
+    });
   }
   // https://www.concretepage.com/angular-material/angular-material-open-menu-on-hover
   openMenu(menuTrigger: MatMenuTrigger) {

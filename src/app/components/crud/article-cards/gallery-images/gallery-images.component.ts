@@ -74,11 +74,19 @@ export class GalleryImagesComponent implements OnInit {
   };
   
   onDeleteImage(id: string){
-    this.dialog.open(DeleteComponent, {data: {imgId: id, article: this.article, option: "deleteImage"}});
+    this.dialog.open(DeleteComponent, {
+      data:  {imgId: id, article: this.article, option: "deleteImage" },
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms'
+    });
   };
 
   onCaption(id: string) {
-    this.dialog.open(CaptionComponent, { data: { imgId: id } });
+    this.dialog.open(CaptionComponent, { 
+      data: { imgId: id, article: this.article },
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms'
+    });
   };
 
   private addImage(image: File, articleId: number) {

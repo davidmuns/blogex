@@ -128,6 +128,12 @@ export class DeleteComponent implements OnInit {
 
   cancel() {
     this.dialog.closeAll();
+    if(this.data.option === 'deleteImage'){
+      this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
+    }
+    if(this.data.option === 'deleteVideo'){
+      this.dialog.open(GalleryVideosComponent, { data: { article: this.data.article } });
+    }
   };
 
 }

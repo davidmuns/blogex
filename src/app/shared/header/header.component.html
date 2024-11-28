@@ -5,8 +5,9 @@
     <img class="logo" src="../../../assets/img/logo-blogex.jpg" alt="logo-blogex" (click)="onHome()">
 
     <app-search></app-search>
-
+    
     <div class="buttons">
+      <!-- HEADER BUTTONS IF NOT MOBILE-->
       <ng-container *ngIf="!isMobile; else mobile">
         <!-- HOME BUTTON -->
         <button mat-icon-button aria-label="home" (click)="onHome()">
@@ -20,14 +21,14 @@
         <button mat-icon-button aria-label="language" [matMenuTriggerFor]="language_menu">
           <mat-icon>language</mat-icon>
         </button>
-        <!-- USER BUTTON -->
+        <!--NOT LOGGED USER BUTTON -->
         <ng-container *ngIf="!tokenService.isLogged(); else loggedButton">
           <button mat-icon-button aria-label="user" (click)="openLogin()">
             <mat-icon>account_circle</mat-icon>
           </button>
         </ng-container>
       </ng-container>
-      <!-- MOBILE VIEW -->
+      <!-- HEADER BUTTONS IF MOBILE-->
       <ng-template #mobile>
         <ng-container *ngIf="!tokenService.isLogged(); else loggedButton">
           <button mat-icon-button [matMenuTriggerFor]="user_menu" #menuTrigger="matMenuTrigger"
@@ -36,7 +37,7 @@
           </button>
         </ng-container>
       </ng-template>
-      <!-- LOGGED BUTTON -->
+      <!-- USER LOGGED BUTTON -->
       <ng-template #loggedButton>
         <button class="logout" matTooltip="{{ tokenService.getUsername() }}" [matMenuTriggerFor]="user_menu"
           #menuTrigger="matMenuTrigger" (mouseover)="openMenu(menuTrigger)">
@@ -51,73 +52,75 @@
 
 <!-- USER MENU -->
 <mat-menu #user_menu>
-   <!-- HOME BUTTON -->
-  <button mat-menu-item (click)="onHome()" *ngIf="isMobile">
-    <mat-icon>home</mat-icon>
-    {{ 'Home' | translate }}
-  </button>
-  <mat-divider *ngIf="isMobile"></mat-divider>
- 
-  <!-- MY BLOG BUTTON -->
-  <button mat-menu-item routerLink="/blog/{{ this.tokenService.getUsername() }}" *ngIf="this.tokenService.isLogged()">
-    <mat-icon>book</mat-icon>
-    {{ 'Blog' | translate }}
-  </button>
-  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
-
-  <!-- ARTICLE EDITOR BUTTON -->
-  <button mat-menu-item routerLink="/admin/new" *ngIf="this.tokenService.isLogged()">
-    <mat-icon>edit</mat-icon>
-    {{ 'header.articles-editor' | translate }}
-  </button>
-  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
-
-  <!-- MY ARTICLES BUTTON -->
-  <button mat-menu-item routerLink="/articles" *ngIf="this.tokenService.isLogged()">
-    <mat-icon>article</mat-icon>
-    {{ 'header.my-articles' | translate }}
-  </button>
-  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
-
-  <!-- LANGUAGE BUTTONS IF MOBILE -->
+  <!-- MENU BUTTONS IF MOBILE -->
   <ng-container *ngIf="isMobile">
+    <!-- HOME BUTTON -->
+    <button mat-menu-item (click)="onHome()">
+      <mat-icon>home</mat-icon>
+      {{ 'Home' | translate }}
+    </button>
+    <mat-divider></mat-divider>
+     <!-- INFO BUTTON -->
+    <button mat-menu-item (click)="onHelp()">
+      <mat-icon>help</mat-icon>
+      {{ 'header.help' | translate }}
+    </button>
+    <mat-divider></mat-divider>
+    <!-- LANGUAGE BUTTONS -->
     <ng-container *ngFor="let context of contexts">
       <ng-template 
-      *ngTemplateOutlet="languageButtonTemplate; 
-      context: { lang: context.lang, flag: context.flagUrl, title: context.title, label: context.label, width: context.width, height: context.height}">
-    </ng-template>
+        *ngTemplateOutlet="languageButtonTemplate; 
+        context: { 
+          lang: context.lang, 
+          flag: context.flagUrl, 
+          title: context.title, 
+          label: context.label, 
+          width: context.width, 
+          height: context.height}">
+      </ng-template>
     </ng-container>
+    <!-- LOGIN BUTTON -->
+    <button mat-menu-item (click)="openLogin()" *ngIf="!this.tokenService.isLogged()">
+      <mat-icon>login</mat-icon>
+      {{ 'Login' | translate }}
+    </button>
   </ng-container>
 
-  <!-- INFO BUTTON -->
-  <button mat-menu-item (click)="onHelp()" *ngIf="isMobile">
-    <mat-icon>help</mat-icon>
-    {{ 'header.help' | translate }}
-  </button>
-  <mat-divider *ngIf="isMobile"></mat-divider>
-
-  <!-- LOGIN BUTTON -->
-  <button mat-menu-item (click)="openLogin()" *ngIf="!this.tokenService.isLogged() && isMobile">
-    <mat-icon>login</mat-icon>
-    {{ 'Login' | translate }}
-  </button>
-
-  <!-- LOGOUT BUTTON -->
-  <button mat-menu-item (click)="onLogout()" *ngIf="this.tokenService.isLogged()">
-    <mat-icon>logout</mat-icon>
-    {{ 'Logout' | translate }}
-  </button>
-  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
-
-  <!-- FAKE BUTTON -->
-  <button mat-menu-item *ngIf="this.tokenService.isLogged()"></button>
-  <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
-
-  <!-- DELETE USER BUTTON -->
-  <button mat-menu-item (click)="onDeleteAccount()" *ngIf="this.tokenService.isLogged()">
-    <mat-icon>delete</mat-icon>
-    {{ 'Delete' | translate }} {{ 'delete.account' | translate }}
-  </button>
+  <!-- MENU BUTTONS IF LOGGED -->
+  <ng-container *ngIf="this.tokenService.isLogged()">
+      <!-- MY BLOG BUTTON -->
+    <button mat-menu-item routerLink="/blog/{{ this.tokenService.getUsername() }}">
+      <mat-icon>book</mat-icon>
+      {{ 'Blog' | translate }}
+    </button>
+    <mat-divider></mat-divider>
+    <!-- ARTICLE EDITOR BUTTON -->
+    <button mat-menu-item routerLink="/admin/new">
+      <mat-icon>edit</mat-icon>
+      {{ 'header.articles-editor' | translate }}
+    </button>
+    <mat-divider></mat-divider>
+    <!-- MY ARTICLES BUTTON -->
+    <button mat-menu-item routerLink="/articles">
+      <mat-icon>article</mat-icon>
+      {{ 'header.my-articles' | translate }}
+    </button>
+    <mat-divider></mat-divider>
+    <!-- LOGOUT BUTTON -->
+    <button mat-menu-item (click)="onLogout()">
+      <mat-icon>logout</mat-icon>
+      {{ 'Logout' | translate }}
+    </button>
+    <mat-divider></mat-divider>
+     <!-- FAKE BUTTON -->
+    <button mat-menu-item></button>
+    <mat-divider></mat-divider>
+    <!-- DELETE USER BUTTON -->
+    <button mat-menu-item (click)="onDeleteAccount()">
+      <mat-icon>delete</mat-icon>
+      {{ 'Delete' | translate }} {{ 'delete.account' | translate }}
+    </button>
+  </ng-container>
 </mat-menu>
 
 <!-- LANGUAGE MENU -->
@@ -125,9 +128,15 @@
   <!-- LANGUAGE BUTTONS -->
   <ng-container *ngFor="let context of contexts; index as i">
     <ng-template 
-      *ngTemplateOutlet="languageButtonTemplate; 
-      context: { lang: context.lang, flag: context.flagUrl, title: context.title, label: context.label, width: context.width, height: context.height}">
-    </ng-template>
+    *ngTemplateOutlet="languageButtonTemplate; 
+    context: { 
+      lang: context.lang, 
+      flag: context.flagUrl, 
+      title: context.title, 
+      label: context.label, 
+      width: context.width, 
+      height: context.height}">
+  </ng-template>
     <mat-divider *ngIf="i < contexts.length - 1"></mat-divider>
   </ng-container>
 </mat-menu>

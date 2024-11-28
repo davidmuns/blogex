@@ -124,7 +124,11 @@ export class ListPostsComponent implements OnInit {
   }
 
   onDelete(a: Article){
-    this.dialog.open(DeleteComponent, {data: {article: a, option: "deleteArticle"}});
+    this.dialog.open(DeleteComponent, { 
+      data: {article: a, option: "deleteArticle"},
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms'
+    });
   }
    
   toList(){
