@@ -23,17 +23,16 @@ export class HeaderComponent implements OnInit {
     england: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Flag_of_the_United_Kingdom_%281-1%29.svg'
   }
   private getScreenWidth: any;
-  private getScreenHeight: any;
   isMobile = false
 
   constructor(
-    private utilsSvc: UtilsService,
-    private tinyEditorSvc: TinyEditorService,
-    private translate: TranslateService,
+    private readonly utilsSvc: UtilsService,
+    private readonly tinyEditorSvc: TinyEditorService,
+    private readonly translate: TranslateService,
     public dialog: MatDialog,
     public tokenService: TokenService,
     public router: Router,
-    private translateService: TranslateService
+    private readonly translateService: TranslateService
   ) {
     translate.getBrowserLang();
     translate.addLangs(['ca', 'en', 'es']);
@@ -41,8 +40,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getScreenWidth = window.innerWidth;
-    this.getScreenHeight = window.innerHeight;
+    this.setMobileScreen();
   }
 
   openLogin() {
@@ -70,7 +68,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['home']);
   }
 
-  onHelp(){
+  onHelp() {
     this.dialog.open(InfoAppComponent);
   }
   // https://www.concretepage.com/angular-material/angular-material-open-menu-on-hover
@@ -80,12 +78,14 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
-    this.getScreenWidth = window.innerWidth;
-    this.getScreenHeight = window.innerHeight;
+    this.setMobileScreen();
+  }
 
-    if(this.getScreenWidth < 700){
+  setMobileScreen() {
+    this.getScreenWidth = window.innerWidth;
+    if (this.getScreenWidth < 700) {
       this.isMobile = true;
-    }else{
+    } else {
       this.isMobile = false;
     }
   }
