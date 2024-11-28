@@ -51,13 +51,13 @@
 
 <!-- USER MENU -->
 <mat-menu #user_menu>
-  <!-- HOME BUTTON -->
+   <!-- HOME BUTTON -->
   <button mat-menu-item (click)="onHome()" *ngIf="isMobile">
     <mat-icon>home</mat-icon>
     {{ 'Home' | translate }}
   </button>
   <mat-divider *ngIf="isMobile"></mat-divider>
-
+ 
   <!-- MY BLOG BUTTON -->
   <button mat-menu-item routerLink="/blog/{{ this.tokenService.getUsername() }}" *ngIf="this.tokenService.isLogged()">
     <mat-icon>book</mat-icon>
@@ -79,10 +79,13 @@
   </button>
   <mat-divider *ngIf="this.tokenService.isLogged()"></mat-divider>
 
-  <!-- BOTONES DE IDIOMA -->
+  <!-- LANGUAGE BUTTONS IF MOBILE -->
   <ng-container *ngIf="isMobile">
-    <ng-container *ngFor="let cont of contexts">
-      <ng-template *ngTemplateOutlet="languageButtonTemplate; context: { lang: cont.lang, flag: cont.flagUrl, title: cont.title, label: cont.label }"></ng-template>
+    <ng-container *ngFor="let context of contexts">
+      <ng-template 
+      *ngTemplateOutlet="languageButtonTemplate; 
+      context: { lang: context.lang, flag: context.flagUrl, title: context.title, label: context.label, width: context.width, height: context.height}">
+    </ng-template>
     </ng-container>
   </ng-container>
 
@@ -120,17 +123,20 @@
 <!-- LANGUAGE MENU -->
 <mat-menu #language_menu>
   <!-- LANGUAGE BUTTONS -->
-  <ng-container *ngFor="let cont of contexts; index as i">
-    <ng-template *ngTemplateOutlet="languageButtonTemplate; context: { lang: cont.lang, flag: cont.flagUrl, title: cont.title, label: cont.label }"></ng-template>
+  <ng-container *ngFor="let context of contexts; index as i">
+    <ng-template 
+      *ngTemplateOutlet="languageButtonTemplate; 
+      context: { lang: context.lang, flag: context.flagUrl, title: context.title, label: context.label, width: context.width, height: context.height}">
+    </ng-template>
     <mat-divider *ngIf="i < contexts.length - 1"></mat-divider>
   </ng-container>
 </mat-menu>
 
-<!-- LANGUAGE BUTTONS TEMPLATE -->
-<ng-template #languageButtonTemplate let-lang="lang" let-flag="flag" let-title="title" let-label="label">
+<!-- LANGUAGE BUTTON TEMPLATE -->
+<ng-template #languageButtonTemplate let-lang="lang" let-flag="flag" let-title="title" let-label="label" let-width="width" let-height="height">
   <button mat-menu-item (click)="onSwitchLang(lang)">
     <mat-icon *ngIf="isMobile">language</mat-icon>
-    <img [src]="flag" [alt]="title + '-flag'" [title]="title" width="20" height="20">
+    <img [src]="flag" [alt]="title + '-flag'" [title]="title" [width]="width" [height]="height">
     {{ label }}
   </button>
   <mat-divider *ngIf="isMobile"></mat-divider>

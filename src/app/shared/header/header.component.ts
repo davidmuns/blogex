@@ -5,7 +5,7 @@ import { TinyEditorService } from './../services/tiny-editor.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DeleteComponent } from './../../components/crud/delete/delete.component';
 import { TokenService } from './../services/token.service';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -17,28 +17,35 @@ import { MatMenuTrigger } from '@angular/material/menu';
 })
 export class HeaderComponent implements OnInit {
 
+  private getScreenWidth: any;
+  isMobile = false
+ 
   contexts = [
     {
       lang: 'ca',
       flagUrl: 'https://wallpapercave.com/wp/wp2240009.png',
       title: 'Català',
-      label: 'Català'
+      label: 'Català',
+      width: '20',
+      height: '20'
     },
     {
       lang: 'es',
       flagUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/1200px-Bandera_de_Espa%C3%B1a.svg.png',
       title: 'Español',
-      label: 'Español'
+      label: 'Español',
+      width: '20',
+      height: '20'
     },
     {
       lang: 'en',
       flagUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Flag_of_the_United_Kingdom_%281-1%29.svg',
       title: 'English',
-      label: 'English'
+      label: 'English',
+      width: '20',
+      height: '20'
     },
   ]
-  private getScreenWidth: any;
-  isMobile = false
 
   constructor(
     private readonly utilsSvc: UtilsService,
