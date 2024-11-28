@@ -17,11 +17,26 @@ import { MatMenuTrigger } from '@angular/material/menu';
 })
 export class HeaderComponent implements OnInit {
 
-  urlFlags = {
-    catalonia: 'https://wallpapercave.com/wp/wp2240009.png',
-    spain: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/1200px-Bandera_de_Espa%C3%B1a.svg.png',
-    england: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Flag_of_the_United_Kingdom_%281-1%29.svg'
-  }
+  contexts = [
+    {
+      lang: 'ca',
+      flagUrl: 'https://wallpapercave.com/wp/wp2240009.png',
+      title: 'Català',
+      label: 'Català'
+    },
+    {
+      lang: 'es',
+      flagUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bandera_de_Espa%C3%B1a.svg/1200px-Bandera_de_Espa%C3%B1a.svg.png',
+      title: 'Español',
+      label: 'Español'
+    },
+    {
+      lang: 'en',
+      flagUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/aa/Flag_of_the_United_Kingdom_%281-1%29.svg',
+      title: 'English',
+      label: 'English'
+    },
+  ]
   private getScreenWidth: any;
   isMobile = false
 
