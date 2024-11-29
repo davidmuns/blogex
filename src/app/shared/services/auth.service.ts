@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import * as CryptoJS from 'crypto-js'; 
+import * as CryptoJS from 'crypto-js';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class AuthService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public signupUser(user: User): Observable<any>{
+  public signupUser(user: User): Observable<any> {
     user.email = user.email?.trim();
     user.nombreUsuario = user.nombreUsuario?.trim();
     user.password = user.password.trim();
@@ -34,11 +34,15 @@ export class AuthService {
     return this.httpClient.get<any>(environment.BACKEND_BASE_URL + 'auth/user/' + tokenPassword);
   }
 
-  public refreshToken(jwt: Jwt): Observable<Jwt>{
-    return this.httpClient.post<Jwt>(environment.BACKEND_BASE_URL  + 'auth/refresh', jwt);
+  public getUserByUsername(username: string): Observable<User> {
+    return this.httpClient.get<any>(environment.BACKEND_BASE_URL + 'user/' + username);
   }
 
-  public deleteAccount(username: string): Observable<any>{
+  public refreshToken(jwt: Jwt): Observable<Jwt> {
+    return this.httpClient.post<Jwt>(environment.BACKEND_BASE_URL + 'auth/refresh', jwt);
+  }
+
+  public deleteAccount(username: string): Observable<any> {
     return this.httpClient.delete(environment.BACKEND_BASE_URL + 'user/' + username)
   }
 } 
