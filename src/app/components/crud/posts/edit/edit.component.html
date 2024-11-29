@@ -1,7 +1,7 @@
 <mat-card class="example-card">
   <mat-card-title>{{ 'EditArticle' | translate }}</mat-card-title>
   <button id="toNew" mat-stroked-button (click)="toNew()">{{ 'New' | translate }}
-    <span *ngIf="articleHtml == true">{{ 'Article' | translate }}</span>
+    <!-- <span *ngIf="articleHtml == true">{{ 'Article' | translate }}</span> -->
   </button>
   <mat-card-content>
     <form [formGroup]="editPostForm" (ngSubmit)="onSubmit(editPostForm.value)">
