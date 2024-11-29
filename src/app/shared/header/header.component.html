@@ -107,7 +107,7 @@
     </button>
     <mat-divider></mat-divider>
      <!-- MY ACCOUNT BUTTON -->
-     <button mat-menu-item routerLink="/blog/{{ this.tokenService.getUsername() }}">
+     <button mat-menu-item routerLink="/my-account">
       <mat-icon>person</mat-icon>
       My account
     </button>
@@ -116,9 +116,7 @@
     <button mat-menu-item (click)="onLogout()">
       <mat-icon>logout</mat-icon>
       {{ 'Logout' | translate }}
-    </button>
-    <mat-divider></mat-divider>
-    
+    </button> 
     <!-- DELETE USER BUTTON -->
     <!-- <button mat-menu-item (click)="onDeleteAccount()">
       <mat-icon style="color: red;">delete</mat-icon>

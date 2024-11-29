@@ -62,6 +62,7 @@ import { ToastrModule } from 'ngx-toastr';
 // Internationalitation
 import { InternationalitazionModule } from './internationalitazion.module';
 import { HomeModule } from './components/home/home.module';
+import { MyAccountComponent } from './components/my-account/my-account.component';
 
 @NgModule({
   declarations: [
@@ -82,6 +83,7 @@ import { HomeModule } from './components/home/home.module';
     SortFileByTypePipe,
     GalleryVideosComponent,
     InfoAppComponent,
+    MyAccountComponent,
   ],
   imports: [
     InternationalitazionModule,
