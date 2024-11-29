@@ -106,20 +106,24 @@
       {{ 'header.my-articles' | translate }}
     </button>
     <mat-divider></mat-divider>
+     <!-- MY ACCOUNT BUTTON -->
+     <button mat-menu-item routerLink="/blog/{{ this.tokenService.getUsername() }}">
+      <mat-icon>person</mat-icon>
+      My account
+    </button>
+    <mat-divider></mat-divider>
     <!-- LOGOUT BUTTON -->
     <button mat-menu-item (click)="onLogout()">
       <mat-icon>logout</mat-icon>
       {{ 'Logout' | translate }}
     </button>
     <mat-divider></mat-divider>
-     <!-- FAKE BUTTON -->
-    <button mat-menu-item></button>
-    <mat-divider></mat-divider>
+    
     <!-- DELETE USER BUTTON -->
-    <button mat-menu-item (click)="onDeleteAccount()">
+    <!-- <button mat-menu-item (click)="onDeleteAccount()">
       <mat-icon style="color: red;">delete</mat-icon>
       {{ 'Delete' | translate }} {{ 'delete.account' | translate }}
-    </button>
+    </button> -->
   </ng-container>
 </mat-menu>
 
