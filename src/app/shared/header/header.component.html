@@ -2,7 +2,7 @@
 
   <mat-toolbar-row class="toolbar">
 
-    <img class="logo" src="../../../assets/img/logo-blogex.jpg" alt="logo-blogex" (click)="onHome()">
+    <img class="logo" src="../../../assets/img/logo-blogex.jpg" alt="logo-blogex" (click)="onHome()" matTooltip="{{ 'Home' | translate }}" >
 
     <app-search></app-search>
     
@@ -11,15 +11,15 @@
       <ng-container *ngIf="!isMobile; else mobile">
         <!-- HOME BUTTON -->
         <button mat-icon-button aria-label="home" (click)="onHome()">
-          <mat-icon>home</mat-icon>
+          <mat-icon matTooltip="{{ 'Home' | translate }}">home</mat-icon>
         </button>
         <!-- INFO BUTTON -->
         <button mat-icon-button aria-label="info" (click)="onHelp()">
-          <mat-icon>help</mat-icon>
+          <mat-icon matTooltip="{{ 'info.help' | translate }}">help</mat-icon>
         </button>
         <!-- LANGUAGE BUTTON -->
         <button mat-icon-button aria-label="language" [matMenuTriggerFor]="language_menu">
-          <mat-icon>language</mat-icon>
+          <mat-icon matTooltip="{{ 'Language' | translate }}">language</mat-icon>
         </button>
         <!--NOT LOGGED USER BUTTON -->
         <ng-container *ngIf="!tokenService.isLogged(); else loggedButton">
@@ -117,7 +117,7 @@
     <mat-divider></mat-divider>
     <!-- DELETE USER BUTTON -->
     <button mat-menu-item (click)="onDeleteAccount()">
-      <mat-icon>delete</mat-icon>
+      <mat-icon style="color: red;">delete</mat-icon>
       {{ 'Delete' | translate }} {{ 'delete.account' | translate }}
     </button>
   </ng-container>

@@ -1,4 +1,5 @@
 {
+    "Language": "Language",
     "Login": "Login",
     "Logout": "Logout",
     "Signup": "Signup",
@@ -63,9 +64,10 @@
     "Files": "Files",
     "YouSure": "Are you sure?",
     "Undone": "This action cannot be undone",
-    "List": "List",
+    "List": "My ist",
     "Of": "of",
     "NoCoincidence": "There is no coincidence with",
+    "ClickToEdit": "Click to edit",
     "ItemsPage": "Items per page",
     "FillBlanks": "Please fill in the blanks and insert image",
     "ImgMaximumExceed": "Image size exceeds maximum allowed",
@@ -73,7 +75,7 @@
     "PleaseSelectImage": "Please select file before uploading",
     "header": {
         "articles-editor": "Articles editor",
-        "my-articles": "My files",
+        "my-articles": "My articles",
         "spanish": "Spanish",
         "catalan": "Catalan",
         "english": "English",
@@ -124,12 +126,15 @@
             "valid-video": "Please select a valid video file"
         },
         "image-list": {
-            "images": "Files of"
+            "images": "Files of",
+            "posted": "File posted",
+            "deleted": "File deleted"
         },
         "list-videos": {
             "videos": "Youtube videos of",
             "invalid-url": "Only youtube URLs are valid",
-            "posted": "Video posted"
+            "posted": "Video posted",
+            "deleted": "Video deleted"
         }
     },
     "user-blog": {

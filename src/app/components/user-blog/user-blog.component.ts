@@ -18,8 +18,8 @@ export class UserBlogComponent implements OnInit {
   filterByTitle = '';
   username!: string;
   articles: Article[] = []
-  pageSizeOptions: number[] = [2, 4, 8, 10];
-  pageSize: number = 4;
+  pageSizeOptions: number[] = [5, 10, 15, 20, 25];
+  pageSize: number = 10;
   pageNumber: number = 1;
   temp!: number;
   isAdmin: boolean = false;

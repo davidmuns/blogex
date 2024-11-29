@@ -1,100 +1,3 @@
-// .toolbarClass {
-//     position: relative;
-//     top: 0px;
-//     left: 0px;
-//     z-index: 1;
-//     background-color: var(--accent);
-//     margin-bottom: 10px;
-//     color: var(--lemon);
-
-//     mat-icon {
-//         width: 40px;
-//     }
-
-//     #menuHome {
-//         width: 40px;
-//         padding: 0px;
-//         margin: 0px;
-//         height: 34px;
-//         border-radius: 20%;
-
-//         .mat-icon {
-//             display: flex;
-//             justify-content: center;
-
-//             @media(max-width: 210px) {
-//                 justify-content: start;
-//             }
-//         }
-//     }
-
-//     #title {
-//         width: 100px;
-//         margin-left: 15%;
-//         font-size: 1.8rem;
-//         color: var(--lemon);
-//     }
-
-//     #logReg {
-//         text-align: end;
-
-//         .btn-login {
-//             background-color: var(--lemon);
-//             box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
-//         }
-
-//         .btn-login:hover {
-//             box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
-//         }
-
-//         @media(max-width: 410px) {
-//             .btn-login {
-//                 font-size: .7rem;
-//                 padding: 0px 5px 0px 5px;
-//             }
-
-//         }
-//     }
-
-//     .logout {
-//         display: flex;
-//         justify-content: center;
-//         align-items: center;
-//         text-align: center;
-//         width: 35px;
-//         /* Ajusta el tamaño según necesites */
-//         height: 35px;
-//         /* Igual al ancho para mantener el círculo */
-//         font-size: 1.2rem;
-//         color: var(--darkGrey);
-//         background-color: var(--lemon);
-//         /* Cambia el color de fondo si es necesario */
-//         box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
-//         text-decoration: none;
-//         border-radius: 50%;
-//         /* Hace que el div sea circular */
-//         cursor: pointer;
-//     }
-
-//     .logout:hover {
-//         box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
-//     }
-
-
-//     @media(max-width: 400px) {
-//         .logout {
-//             font-size: .9rem;
-//         }
-//     }
-
-// }
-
-// .toolbar {
-//     display: flex;
-//     justify-content: space-between;
-//     box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
-//     // border-bottom: 10px solid white;  
-// }
 
 mat-icon {
  font-size: 25px;
@@ -122,21 +25,21 @@ img {
     border-radius: 50%;
 }
 
-.toolbar .buttons {
-    display: flex;
-    /* Asegura que los botones estén en línea */
-    gap: 25px;
-    /* Espacio entre los botones */
-}
-
 .toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: var(--accent);
     color: var(--lemon);
-    padding: 40px 85px 40px 85px;
+    padding: 40px 85px 45px 85px;
     z-index: 1;
+}
+
+.toolbar .buttons {
+    display: flex;
+    /* Asegura que los botones estén en línea */
+    gap: 25px;
+    /* Espacio entre los botones */
 }
 
 @media(max-width: 900px) {
@@ -148,6 +51,12 @@ img {
 @media(max-width: 500px) {
     .toolbar {
         padding: 35px;
+    }
+}
+
+@media(max-width: 425px) {
+    .toolbar {
+        padding: 35px 27px 35px 27px;
     }
 }
 
@@ -176,5 +85,5 @@ button:hover {
 }
 
 ::ng-deep .mat-tooltip {
-    font-size: 16px;
+    font-size: 14px;
 }

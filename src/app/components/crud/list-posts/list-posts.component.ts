@@ -49,7 +49,7 @@ export class ListPostsComponent implements OnInit {
   }
 
   constructor(
-    private tokenService: TokenService,
+    private readonly tokenService: TokenService,
     private readonly router: Router,
     private readonly dialog: MatDialog,
     private readonly articleSvc: ArticleService,

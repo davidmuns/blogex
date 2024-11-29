@@ -95,7 +95,8 @@ export class GalleryImagesComponent implements OnInit {
       next: data => {
         this.uploading = false;
         this.imagenes = [];
-        this.utilsSvc.showSnackBar(data.mensaje, 3000);
+        const msg = this.translateService.instant('crud.image-list.posted');
+        this.utilsSvc.showSnackBar(msg, 3000);
         this.getImgsByArticleId(this.data.article.id);
       },
       error: err => {

@@ -1,7 +1,8 @@
 {
-    "Login": "Iniciar sessió",
-    "Logout": "Tancar sessió",
-    "Signup": "Registrar-se",
+    "Language": "Idioma",
+    "Login": "Inicia sessió",
+    "Logout": "Tanca sessió",
+    "Signup": "Registra´t",
     "Home": "Pàgina d´inici",
     "Blog": "Blog",
     "BlogOf": "El blog de",
@@ -33,7 +34,7 @@
     "Hide": "Ocultar",
     "Create": "Crear un compte",
     "Forgot": "Has oblidat la teva contrasenya?",
-    "SendEmail": "Enviar correu electrónic",
+    "SendEmail": "Envia´m correu electrónic",
     "AlreadyAndAccount": "Ja tens un compte?",
     "Required": "Requerit",
     "TextPassword": "Introdueix el correu electrónic o el nom d'usuari que utilitzes en aquesta aplicació. T'enviarem un enllaç perque puguis establir una nova contrasenya.",
@@ -62,9 +63,10 @@
     "Files": "Arxius",
     "YouSure": "Estàs segur?",
     "Undone": "Aquesta acció no es pot desfer",
-    "List": "Llista",
+    "List": "La meva llista",
     "Of": "de",
     "NoCoincidence": "No hi ha coincidencias amb",
+    "ClickToEdit": "Click per a editar",
     "ItemsPage": "Elements per pàgina",
     "FillBlanks": "Si us plau, omple els camps buits i afegeix una imatge",
     "ImgMaximumExceed": "Imatge excedeix tamany màxim permés",
@@ -72,7 +74,7 @@
     "PleaseSelectImage": "Si us plau selecciona un archiu abans de pujar-lo",
     "header": {
         "articles-editor": "Editor d´articles",
-        "my-articles": "Els meus arxius",
+        "my-articles": "Els meus articles",
         "spanish": "Castellà",
         "catalan": "Català",
         "english": "Anglès",
@@ -122,12 +124,15 @@
             "valid-video": "Si us plau, seleccioneu un fitxer de vídeo vàlid"
         },
         "image-list": {
-            "images": "Arxius de"
+            "images": "Arxius de",
+            "posted": "Arxiu publicat",
+            "deleted": "Arxiu eliminat"
         },
         "list-videos": {
             "videos": "Youtube vídeos de",
             "invalid-url": "Només son vàlides las URLs de youtube",
-            "posted": "Video publicat"
+            "posted": "Video publicat",
+            "deleted": "Video eliminat"
         }
     },
     "user-blog": {

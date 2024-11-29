@@ -39,18 +39,18 @@ export class ArtcileCardsComponent implements OnInit {
   miniatura!: Imagen;
   username!: string;
   articleId!: number;
-  pageSizeOptions: number[] = [2, 4, 8, 10];
-  pageSize: number = 4;
+  pageSizeOptions: number[] = [5, 10, 15, 20, 25];
+  pageSize: number = 10;
   pageNumber: number = 1;
   isAdmin: boolean = false;
   sort: boolean = false;
 
   constructor(
-    private utilsSvc: UtilsService,
+    private readonly utilsSvc: UtilsService,
     private readonly dialog: MatDialog,
-    private tokenService: TokenService,
-    private articleService: ArticleService,
-    private router: Router) { };
+    private readonly tokenService: TokenService,
+    private readonly articleService: ArticleService,
+    private readonly router: Router) { };
 
   ngOnInit(): void {
     AOS.init();

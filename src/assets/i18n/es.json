@@ -1,7 +1,8 @@
 {
-    "Login": "Iniciar sesión",
-    "Logout": "Cerrar sesión",
-    "Signup": "Registrarse",
+    "Language": "Idioma",
+    "Login": "Inicia sesión",
+    "Logout": "Cierra sesión",
+    "Signup": "Regístrate",
     "Home": "Página de inicio",
     "Blog": "Mi blog",
     "BlogOf": "El blog de",
@@ -34,7 +35,7 @@
     "Hide": "Ocultar",
     "Create": "Crear una cuenta",
     "Forgot": "¿Olvidaste tu contraseña?",
-    "SendEmail": "Enviar correo electrónico",
+    "SendEmail": "Envíame un correo electrónico",
     "AlreadyAndAccount": "¿Ya tienes una cuenta?",
     "Required": "Requerido",
     "TextPassword": "Introduce el correo electrónico o el nombre de usuario que utilizas en esta aplicación. Te enviaremos un enlace para que establezcas una nueva contraseña.",
@@ -63,9 +64,10 @@
     "Files": "Archivos",
     "YouSure": "¿Estás seguro?",
     "Undone": "Esta acción no se puede deshacer",
-    "List": "Lista",
+    "List": "Mi lista",
     "Of": "de",
     "NoCoincidence": "No hay coincidencias con",
+    "ClickToEdit": "Click para editar",
     "ItemsPage": "Elementos por página",
     "FillBlanks": "Por favor rellena los campos vacios e inserta una imagen",
     "ImgMaximumExceed": "Imagen excede tamaño máximo permitido",
@@ -73,7 +75,7 @@
     "PleaseSelectImage": "Por favor selecciona un archivo antes de subirlo",
     "header": {
         "articles-editor": "Editor de artículos",
-        "my-articles": "Mis archivos",
+        "my-articles": "Mis artículos",
         "spanish": "Castellano",
         "catalan": "Catalán",
         "english": "Inglés",
@@ -124,12 +126,15 @@
             "valid-video": "Por favor, selecciona un archivo de video válido"
         },
         "image-list": {
-            "images": "Archivos de"
+            "images": "Archivos de",
+            "posted": "Archivo publicado",
+            "deleted": "Archivo eliminado"
         },
         "list-videos": {
             "videos": "Youtube vídeos de",
             "invalid-url": "Solamente son válidas las URLs de youtube",
-            "posted": "Video publicado"
+            "posted": "Video publicado",
+            "deleted": "Video eliminado"
         }
     },
     "user-blog": {

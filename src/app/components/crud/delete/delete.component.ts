@@ -66,7 +66,8 @@ export class DeleteComponent implements OnInit {
         this.uploading = false;
         this.dialog.closeAll();
         this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
-        this.utilsSvc.showSnackBar(data.mensaje, 5000);
+        const msg = this.translateSvc.instant('crud.image-list.deleted');
+        this.utilsSvc.showSnackBar(msg, 5000);
       },
       error: err => {
         this.utilsSvc.showSnackBar(err.error.message, 5000);
@@ -81,7 +82,8 @@ export class DeleteComponent implements OnInit {
         this.uploading = false;
         this.dialog.closeAll();
         this.dialog.open(GalleryVideosComponent, { data: { article: this.data.article } });
-        this.utilsSvc.showSnackBar(data.mensaje, 5000);
+        const msg = this.translateSvc.instant('crud.list-videos.deleted');
+        this.utilsSvc.showSnackBar(msg, 5000);
       },
       error: err => {
         this.utilsSvc.showSnackBar(err.error.message, 5000);

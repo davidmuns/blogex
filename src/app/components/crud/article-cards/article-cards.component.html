@@ -31,13 +31,13 @@
         </mat-card-header>
         <a routerLink="/article/{{ article.id }}" style="cursor: pointer;">
           <img mat-card-image [src]="article.imagenPortada" alt="Imagen de protada"
-            title="{{ 'user-blog.goto-article' | translate }}">
+          mat-button matTooltip="{{ 'user-blog.goto-article' | translate }}" matTooltipPosition="above">
         </a>
         <mat-card-content>
 
         </mat-card-content>
         <mat-card-actions align="end">
-          <button mat-button matTooltip="{{ 'EditArticle' | translate }}" matTooltipPosition="left"
+          <button mat-button matTooltip="{{ 'EditArticle' | translate }}"
             (click)="onEdit(article)">
             <mat-icon>edit</mat-icon>
           </button>
