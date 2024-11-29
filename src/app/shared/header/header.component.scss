@@ -96,6 +96,10 @@
 //     // border-bottom: 10px solid white;  
 // }
 
+mat-icon {
+ font-size: 25px;
+}
+
 .logo {
     width: 60px;
     height: 50px;
@@ -103,7 +107,7 @@
     cursor: pointer;
     box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
 
-    @media(max-width: 600px) {
+    @media(max-width: 500px) {
         width: 50px;
         height: 40px;
     }
@@ -121,20 +125,30 @@ img {
 .toolbar .buttons {
     display: flex;
     /* Asegura que los botones estén en línea */
-    gap: 30px;
+    gap: 25px;
     /* Espacio entre los botones */
 }
 
 .toolbar {
     display: flex;
     justify-content: space-between;
-    /* Espacia elementos principales: logo, búsqueda y botones */
     align-items: center;
     background-color: var(--accent);
-    /* Azul Material Design */
     color: var(--lemon);
-    padding: 0 16px;
+    padding: 50px 85px 50px 85px;
     z-index: 1;
+}
+
+@media(max-width: 900px) {
+    .toolbar {
+        padding: 50px 50px 50px 50px;
+    }
+}
+
+@media(max-width: 500px) {
+    .toolbar {
+        padding: 35px;
+    }
 }
 
 .logout {
@@ -143,18 +157,13 @@ img {
     align-items: center;
     text-align: center;
     width: 35px;
-    /* Ajusta el tamaño según necesites */
     height: 35px;
-    /* Igual al ancho para mantener el círculo */
     font-size: 1rem;
     color: var(--darkGrey);
     background-color: var(--lemon);
-    /* Cambia el color de fondo si es necesario */
-    // box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
     text-decoration: none;
     border-radius: 50%;
     border: none;
-    /* Hace que el div sea circular */
     cursor: pointer;
 }
 

@@ -1,8 +1,8 @@
 .example-form{
     margin: 10px auto;
     width: 300px;
-    @media(max-width: 600px){
-        width:100px;
+    @media(max-width: 470px){
+        width: 140px;
     }
 }
 .example1{
@@ -11,7 +11,7 @@
     @media(max-width:1200px){
         margin: 10px 34%;
     }
-    @media(max-width:900px){
+    @media(max-width:1000px){
         margin: 10px 20% 10px 6%;
         width: 230px;
     }
@@ -41,7 +41,7 @@ input:focus{
 }
 #searchButton, #searchHideButton{
     margin-left: 6px;
-    @media(max-width: 600px){
+    @media(max-width: 470px){
         display:none;
     }
 }
@@ -53,7 +53,7 @@ input:focus{
     margin: 10px auto;
     width: 90%;
 }
-@media(max-width: 600px){
+@media(max-width: 470px){
     #searchHideButton, .responsive-form{
         display: block;
     }
@@ -93,7 +93,7 @@ input:focus{
         position: responsive;
         top: 12px;
         left: 21%;
-        width: 35%;
+        width: 45%;
     }
 }
 @media(min-width: 600px){
