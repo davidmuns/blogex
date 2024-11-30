@@ -5,8 +5,7 @@
 
 mat-card {
   max-width: 800px;
-  height: 530px;
-  // margin: 20px auto;
+  height: 600px;
   padding: 16px;
 }
 
@@ -17,13 +16,19 @@ mat-card {
 
 .body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
   height: 100%;
+  min-height: 70vh;
 }
 
 .login {
+  flex: 1;
+  // display: flex;
+  // justify-content: center;
+  align-items: center;
   width: 100%;
   max-width: 700px;
   // text-align: center;
@@ -59,4 +64,3 @@ button:hover {
 ::ng-deep .mat-tab-label-content {
   font-size: 16px;
 }
-
