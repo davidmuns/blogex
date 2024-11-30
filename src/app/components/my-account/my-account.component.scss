@@ -53,8 +53,13 @@ button {
   background: var(--accent);
   color: var(--lemon);
   // height: 45px;
-  box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
+  // box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
   // margin: 10px auto 0px auto;
+}
+.set-pass-btn {
+  background-color: silver;
+  color: var(--accent);
+  // box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
 }
 
 button:hover {

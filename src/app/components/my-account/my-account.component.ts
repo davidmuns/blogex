@@ -66,7 +66,7 @@ export class MyAccountComponent implements OnInit {
     });
   }
 
-  emailOpen() {
+  onSetPassword() {
     this.dialog.closeAll();
     this.dialog.open(EmailPasswordComponent, {
       enterAnimationDuration: '500ms',

@@ -1,4 +1,10 @@
 {
+    "updateUsernameWarm": "username cannot be changed",
+    "Optional": "Optional",
+    "PersonalInformation": "Personal information",
+    "Account": "Account",
+    "CancelAccount": "Cancel my account",
+    "cancelAccountWarm": "Your account will be immediately disabled upon cancellation, and all associated assets will be permanently deleted. Once deleted, these assets cannot be recovered.",
     "Language": "Language",
     "Login": "Login",
     "Logout": "Logout",

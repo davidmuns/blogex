@@ -1,46 +1,45 @@
 <div class="body">
     <div class="login">
         <mat-tab-group mat-align-tabs="start" animationDuration="500ms">
-            <!-- LOGIN TAB -->
-            <mat-tab class="custom-tab-label" label="{{ 'Personal information' | translate }}">
+            <!-- PERSONAL INFORMATION TAB -->
+            <mat-tab class="custom-tab-label" label="{{ 'PersonalInformation' | translate }}">
                 <mat-card>
-                    <mat-card-title class="title">Personal information</mat-card-title>
+                    <mat-card-title class="title">{{ 'Name' | translate }}</mat-card-title>
                     <mat-card-content>
                         <form [formGroup]="form" (ngSubmit)="onSubmit()">
                            
-                             <h4>Name (Optional)</h4>
+                             <h4>{{ 'Name' | translate }} ({{ 'Optional' | translate }})</h4>
                             <mat-form-field appearance="fill" class="full-width">
-                                <mat-label>Name</mat-label>
-                                <input matInput formControlName="nombre" placeholder="Ingrese su nombre">
+                                <mat-label>{{ 'Name' | translate }}</mat-label>
+                                <input matInput formControlName="nombre" placeholder="{{ 'Name' | translate }}">
                                 <mat-error *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">
                                     El username es obligatorio.
                                 </mat-error>
                             </mat-form-field>
-                            <h4>Username</h4>
+                            <h4>{{ 'Username' | translate }}</h4>
                             <mat-form-field appearance="fill" class="full-width">
-                                <mat-label>Username</mat-label>
-                                <input matInput formControlName="nombreUsuario" placeholder="Ingrese su usuario" required>
-                                <mat-error *ngIf="form.get('nombreUsuario')?.invalid && form.get('nombreUsuario')?.touched">
+                                <mat-label>{{ 'Username' | translate }}</mat-label>
+                                <input matInput formControlName="nombreUsuario" placeholder="Ingrese su usuario" matTooltip="{{ 'updateUsernameWarm' | translate }}">
+                                <!-- <mat-error *ngIf="form.get('nombreUsuario')?.invalid && form.get('nombreUsuario')?.touched">
                                     El username es obligatorio.
-                                </mat-error>
+                                </mat-error> -->
                             </mat-form-field>
-                            <h4>Email</h4>
-                           
+                            <h4>{{ 'Email' | translate }}</h4>
                             <mat-form-field appearance="fill" class="full-width" disabled>
-                                <mat-label>Email</mat-label>
-                                <input matInput type="email" formControlName="email" placeholder="Ingrese su email" required>
+                                <mat-label>{{ 'Email' | translate }}</mat-label>
+                                <input matInput type="email" formControlName="email" placeholder="{{ 'Email' | translate }}" required>
                                 <mat-error *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
-                                    Ingrese un email válido.
+                                    {{ 'auth.signup.invalid-email' | translate }}
                                 </mat-error>
                             </mat-form-field>
                 
                 
                             <div class="buttons-container">
                                 <button mat-raised-button type="submit" [disabled]="!form.valid">
-                                    Save changes
+                                    {{ 'SaveChanges' | translate }}
                                 </button>
-                                <button mat-raised-button type="button" (click)="emailOpen()">
-                                    Set password
+                                <button class="set-pass-btn" mat-raised-button type="button" (click)="onSetPassword()">
+                                    {{ 'ConfirmChangePass' | translate }}
                                 </button>
                 
                             </div>
@@ -53,17 +52,17 @@
                     </mat-card-actions>
                 </mat-card>
             </mat-tab>
-            <!-- SIGNUP TAB -->
+            <!-- ACCOUNT TAB -->
             <mat-tab class="custom-tab-label" label="{{ 'Account' | translate }}">
                 <mat-card>
-                    <mat-card-title class="title mb-2">Cancel account</mat-card-title>
+                    <mat-card-title class="title mb-2"> {{ 'CancelAccount' | translate }}</mat-card-title>
                     <p>
-                        Your account will be immediately disabled upon cancellation, and all associated assets will be permanently deleted. Once deleted, these assets cannot be recovered.
+                        {{ 'cancelAccountWarm' | translate }}
                     </p> 
                     <mat-card-content>
                         <div class="buttons-container mb-2">
                             <button class="cancel-btn" mat-raised-button type="button" (click)="onDeleteAccount()">
-                               Cancel my account
+                                {{ 'CancelAccount' | translate }}
                             </button>
                                  
                         </div>

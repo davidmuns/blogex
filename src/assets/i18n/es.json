@@ -1,4 +1,10 @@
 {
+    "updateUsernameWarm": "El nombre de usuario no se puede cambiar",
+    "Optional": "Opcional",
+    "PersonalInformation": "Información personal",
+    "Account": "Cuenta",
+    "CancelAccount": "Cancelar mi cuenta",
+    "cancelAccountWarm": "Su cuenta se desactivará inmediatamente tras la cancelación, y todos los activos archivos se eliminarán de forma permanente. Una vez eliminados, estos archivos no podrán recuperarse.",
     "Language": "Idioma",
     "Login": "Inicia sesión",
     "Logout": "Cierra sesión",
