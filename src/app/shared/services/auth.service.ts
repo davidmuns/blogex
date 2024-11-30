@@ -30,6 +30,11 @@ export class AuthService {
     return this.httpClient.post<any>(environment.BACKEND_BASE_URL + 'auth/login', login);
   }
 
+  public updateUser(userId: number, user: User): Observable<any>{
+    user.email = user.email?.trim();
+    return this.httpClient.put<any>(environment.BACKEND_BASE_URL + `user/${ userId } `, user);  
+  }
+
   public getUserByTokenPassword(tokenPassword: string): Observable<any> {
     return this.httpClient.get<any>(environment.BACKEND_BASE_URL + 'auth/user/' + tokenPassword);
   }

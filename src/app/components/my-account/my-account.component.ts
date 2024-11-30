@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { EmailPasswordComponent } from '../auth/email-password/email-password.component';
 import { DeleteComponent } from '../crud/delete/delete.component';
+import { User } from 'src/app/shared/models/user';
+import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
   selector: 'app-my-account',
@@ -13,19 +15,22 @@ import { DeleteComponent } from '../crud/delete/delete.component';
 })
 export class MyAccountComponent implements OnInit {
   protected form!: FormGroup;
-  
+  private user!: User;
+
   constructor(
     private readonly fb: FormBuilder,
     private readonly authSvc: AuthService,
     private readonly tokenSvc: TokenService,
     private readonly dialog: MatDialog,
+    private readonly utilsSvc: UtilsService
   ) { }
-  
+
   ngOnInit(): void {
     const username = this.tokenSvc.getUsername();
-    if( username != null){
+    if (username != null) {
       this.authSvc.getUserByUsername(username).subscribe({
-        next: data => {
+        next: (data: User) => {
+          this.user = data;
           this.form.patchValue(data)
         }
       })
@@ -34,18 +39,23 @@ export class MyAccountComponent implements OnInit {
   }
 
   private initForm() {
-   
     this.form = this.fb.group({
       nombre: [''],
       nombreUsuario: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
     });
     this.form.get('nombreUsuario')?.disable();
-    this.form.get('email')?.disable();
   }
 
-  onSubmit(){
-   console.log("UPDATE USER ", this.form.value);
+  onSubmit() {
+    this.authSvc.updateUser(this.user.id, this.form.value).subscribe({
+      next: data => {
+        this.utilsSvc.showSnackBar(data.mensaje, 5000);
+      },
+      error: err => {
+        this.utilsSvc.showSnackBar(err.error.mensaje, 5000);
+      },
+    })
   }
 
   onDeleteAccount() {

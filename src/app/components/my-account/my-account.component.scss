@@ -55,3 +55,8 @@ button {
 button:hover {
   box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
 }
+
+::ng-deep .mat-tab-label-content {
+  font-size: 16px;
+}
+
