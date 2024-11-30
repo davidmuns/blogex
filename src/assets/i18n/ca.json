@@ -1,9 +1,10 @@
 {
+    "MyAccount": "El meu compte",
     "updateUsernameWarm": "El nom d´usuari no es por canviar",
     "Optional": "Opcional",
     "PersonalInformation": "Informació personal",
     "Account": "Compte",
-    "CancelAccount": "Cancelar el meu compte",
+    "CancelAccount": "Cancel·lar el meu compte",
     "cancelAccountWarm": "El vostre compte es desactivarà immediatament després de la cancel·lació, i tots els actius fitxers s'eliminaran de forma permanent. Un cop eliminats, aquests fitxers no es podran recuperar.",
     "Language": "Idioma",
     "Login": "Inicia sessió",
