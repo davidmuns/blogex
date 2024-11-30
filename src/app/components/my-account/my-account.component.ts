@@ -2,6 +2,9 @@ import { TokenService } from 'src/app/shared/services/token.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { EmailPasswordComponent } from '../auth/email-password/email-password.component';
+import { DeleteComponent } from '../crud/delete/delete.component';
 
 @Component({
   selector: 'app-my-account',
@@ -14,7 +17,8 @@ export class MyAccountComponent implements OnInit {
   constructor(
     private readonly fb: FormBuilder,
     private readonly authSvc: AuthService,
-    private readonly tokenSvc: TokenService
+    private readonly tokenSvc: TokenService,
+    private readonly dialog: MatDialog,
   ) { }
   
   ngOnInit(): void {
@@ -30,15 +34,34 @@ export class MyAccountComponent implements OnInit {
   }
 
   private initForm() {
+   
     this.form = this.fb.group({
       nombre: [''],
       nombreUsuario: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
     });
+    this.form.get('nombreUsuario')?.disable();
+    this.form.get('email')?.disable();
   }
 
   onSubmit(){
    console.log("UPDATE USER ", this.form.value);
+  }
+
+  onDeleteAccount() {
+    this.dialog.open(DeleteComponent, {
+      data: { option: "deleteAccount" },
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms'
+    });
+  }
+
+  emailOpen() {
+    this.dialog.closeAll();
+    this.dialog.open(EmailPasswordComponent, {
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms'
+    })
   }
 }
 
