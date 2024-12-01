@@ -1,7 +1,4 @@
 mat-card {
-    // position: absolute;
-    // top: 84px;
-    // width: 67%;
     height: 800px;
     margin: 0px 1%;
     padding: 0px;
@@ -18,7 +15,6 @@ mat-card-title {
     font-size: 1.7rem;
 
     @media(max-width:800px) {
-        text-align: start;
         font-size: 1.4rem;
         margin-left: 10px;
     }

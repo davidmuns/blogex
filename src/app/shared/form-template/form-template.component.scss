@@ -80,14 +80,18 @@ button:hover {
     }
 }
 
-::ng-deep .mat-tab-label {
-    font-size: 0.8rem;
+// ::ng-deep .mat-tab-label {
+//     font-size: 0.8rem;
 
-    @media (max-width: 450px) {
-        font-size: 0.6rem;
-        text-align: center;
-    }
-}
+//     @media (max-width: 450px) {
+//         font-size: 0.6rem;
+//         text-align: center;
+//     }
+// }
+
+::ng-deep .mat-tab-label-content {
+    font-size: 14px;
+  }
 
 .error {
     color: black;

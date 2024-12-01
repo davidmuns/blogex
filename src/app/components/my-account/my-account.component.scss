@@ -1,10 +1,10 @@
 .full-width {
-  width: 80%;
+  width: 100%;
   margin-bottom: 20px;
 }
 
 mat-card {
-  max-width: 800px;
+  max-width: 1000px;
   height: 600px;
   padding: 16px;
 }
@@ -30,7 +30,7 @@ mat-card {
   // justify-content: center;
   align-items: center;
   width: 100%;
-  max-width: 700px;
+  max-width: 1000px;
   // text-align: center;
 }
 
