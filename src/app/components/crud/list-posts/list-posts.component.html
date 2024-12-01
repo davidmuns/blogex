@@ -10,7 +10,7 @@
       <input matInput id="filter" (keyup)="applyFilter($event)" #input>
     </mat-form-field>
     <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style="position: relative; z-index: 2;">
+    <table mat-table [dataSource]="dataSource">
       <!-- Name Column -->
       <ng-container matColumnDef="titol">
         <th mat-header-cell *matHeaderCellDef> {{ 'Title' | translate }} </th>
