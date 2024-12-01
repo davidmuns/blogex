@@ -1,9 +1,6 @@
 <div class="container">
-  <!-- <button id="toList" mat-stroked-button (click)="toList()">{{ 'List' | translate }}
-    <span *ngIf="articleHtml == true"></span>
-  </button> -->
   <div #list class="inside">
-    <h3>{{ 'ArticlesToEdit' | translate}}</h3>
+    <h3>{{ 'ArticlesToEdit' | translate}} ({{ dataSource.data.length }})</h3>
     <mat-paginator [pageSize]="8" [pageSizeOptions]="[2, 4, 6, 8, 10]" showFirstLastButtons></mat-paginator>
     <mat-form-field appearance="standard" class="mb-3">
       <mat-label for="labelFilter">{{ 'Filter' | translate }}</mat-label>
@@ -30,7 +27,7 @@
         <th mat-header-cell *matHeaderCellDef> {{ 'Delete' | translate }} </th>
         <td mat-cell *matCellDef="let element">
           <button mat-stroked-button color="warn" (click)="onDelete(element)">
-            <mat-icon matTooltip="delete">delete</mat-icon>
+            <mat-icon>delete</mat-icon>
           </button>
         </td>
       </ng-container>

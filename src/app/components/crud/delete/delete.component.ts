@@ -99,16 +99,16 @@ export class DeleteComponent implements OnInit {
     // Open new dialog window to get the username introduced by user
     if (confirm) username = window.prompt(this.translateSvc.instant('delete.insert-username'));
 
-    // Show snackbar in case of confirmation and the user name does not match and the user has not canceled
-    if (confirm && username != this.username && username != null) {
+    // Show snackbar
+    if (confirm && (username != this.username) && (username != null) && !this.tokenSvc.isAdmin()) {
       const msg = this.translateSvc.instant('delete.wrong-username')
       this.utilsSvc.showSnackBar(msg, 5000);
     };
 
     // Delete account in case the username of the session is the same as the user name entered by the user.
-    if (username === this.username) {
+    if ((username === this.username) || this.tokenSvc.isAdmin()) {
       this.uploading = true;
-      this.authSvc.deleteAccount(this.username).subscribe({
+      this.authSvc.deleteAccount(username).subscribe({
         next: resp => {
           this.tokenSvc.logOut();
           const msg = this.translateSvc.instant('delete.account') + ` "${username}" ` + this.translateSvc.instant('delete.canceled');

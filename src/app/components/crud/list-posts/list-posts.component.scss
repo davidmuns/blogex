@@ -1,33 +1,4 @@
-#toList{
-  display: none;
-  color: var(--accent);
-  @media(max-width: 800px){
-    position: absolute;
-    top:14px;
-    left: 40%;
-    display: block;
-  }
-  @media(max-width: 450px){
-    position: absolute;
-    top:14px;
-    left: 38%;
-    display: block;
-  }
-  @media(max-width: 500px){
-    position: absolute;
-    top: 14px;
-    left: 51%;
-    display: block;
-  }
-  span{
-    padding-bottom: 2px;
-  }
-}
 .container{
-  // position: absolute;
-  // top: 84px;
-  // left:69%;
-  // width:30%;
   height: 900px;
   margin: 0px;
   @media(max-width: 800px){
@@ -51,39 +22,26 @@
 }
 .inside{
   height: 100vh;
-  // overflow-y: hidden;
-  @media(max-width: 800px){
-    // height: 0px;
-  }
-  @media(min-width: 800px){
-    // height: 100vh !important;
-  }
 }
+
 h3{
   text-align: center;
+  margin: 30px 0px 10px 0px;
   font-size: 1.4rem;
-  font-weight: 400;
-  margin-top: 15px;
-  @media(max-width: 800px){
-    text-align: start;
-    z-index: 2;
-    font-size: 1rem;
-    background-color: white;
-  }
 }
+
 table {
   width: 100%;
   background-color: Gainsboro;
 } 
 mat-form-field mat-label{
   font-size: 14pt;
-  //color: rgba(30,40,180,1);
 }
 .mat-form-field {
   padding: 0px 3%;
   font-size: 14px;
   width: 94%;
-  background: rgba(240,240,240, 1);;
+  background: rgba(240,240,240, 1);
 }
 mat-paginator{
   width:100%;
@@ -93,8 +51,6 @@ mat-paginator{
   transition: all 0.4s;
 }
 .estilsArt:hover {
-  color: MediumSpringGreen;
-  background-color: dimgray;
   color: var(--lemon);
   background-color: var(--accent);
 }

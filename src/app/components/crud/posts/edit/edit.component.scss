@@ -22,12 +22,7 @@ mat-card {
 mat-card-title {
     text-align: center;
     padding: 20px 0px;
-    font-size: 1.7rem;
-
-    @media(max-width:800px) {
-        font-size: 1.4rem;
-        margin-left: 10px;
-    }
+    font-size: 1.4rem;
 }
 
 mat-card-content {

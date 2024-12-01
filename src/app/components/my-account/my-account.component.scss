@@ -39,31 +39,39 @@ mat-card {
   color: white;
 }
 
-.title {
-  font-size: 17px;
-  margin-top: 20px;
-  margin-top: 20px;
+mat-card-title {
+  text-align: center;
+  padding: 20px 0px;
+  font-size: 1.4rem;
+
+  @media(max-width:800px) {
+      font-size: 1.4rem;
+      margin-left: 10px;
+  }
 }
 
 p {
   font-size: 12px;
 }
 
-button {
+.save-btn {
   background: var(--accent);
   color: var(--lemon);
-  // height: 45px;
-  // box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
-  // margin: 10px auto 0px auto;
 }
+
+.save-btn:hover {
+  background-color: silver;
+  color: var(--accent);
+}
+
 .set-pass-btn {
   background-color: silver;
   color: var(--accent);
-  // box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
 }
 
-button:hover {
-  box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
+.set-pass-btn:hover{
+  color: var(--lemon);
+  background-color: var(--accent);
 }
 
 ::ng-deep .mat-tab-label-content {
