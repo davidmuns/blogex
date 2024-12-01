@@ -24,10 +24,11 @@
   }
 }
 .container{
-  position: absolute;
-  top: 84px;
+  // position: absolute;
+  // top: 84px;
   left:69%;
-  width:30%;
+  // width:30%;
+  height: 800px;
   margin: 0px;
   @media(max-width: 800px){
     left:0px;
@@ -50,12 +51,12 @@
 }
 .inside{
   height: 100vh;
-  overflow-y: hidden;
+  // overflow-y: hidden;
   @media(max-width: 800px){
-    height: 0px;
+    // height: 0px;
   }
   @media(min-width: 800px){
-    height: 100vh !important;
+    // height: 100vh !important;
   }
 }
 h3{

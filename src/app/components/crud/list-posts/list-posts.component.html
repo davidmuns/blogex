@@ -1,9 +1,10 @@
 <div class="container">
-  <button id="toList" mat-stroked-button (click)="toList()">{{ 'List' | translate }}
-    <span *ngIf="articleHtml == true"></span></button>
+  <!-- <button id="toList" mat-stroked-button (click)="toList()">{{ 'List' | translate }}
+    <span *ngIf="articleHtml == true"></span>
+  </button> -->
   <div #list class="inside">
     <h3>{{ 'ArticlesToEdit' | translate}}</h3>
-    <mat-paginator [pageSize]="6" [pageSizeOptions]="[0, 2, 4, 6]" showFirstLastButtons></mat-paginator>
+    <mat-paginator [pageSize]="8" [pageSizeOptions]="[2, 4, 6, 8, 10]" showFirstLastButtons></mat-paginator>
     <mat-form-field appearance="standard" class="mb-3">
       <mat-label for="labelFilter">{{ 'Filter' | translate }}</mat-label>
       <input matInput id="filter" (keyup)="applyFilter($event)" #input>

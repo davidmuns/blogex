@@ -63,6 +63,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { InternationalitazionModule } from './internationalitazion.module';
 import { HomeModule } from './components/home/home.module';
 import { MyAccountComponent } from './components/my-account/my-account.component';
+import { GroupFormRoutingModule } from './components/crud/posts/group-form/group-form-routing.module';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,8 @@ import { MyAccountComponent } from './components/my-account/my-account.component
     CrudModule,
     ToastrModule.forRoot(), // ToastrModule added
     SharedModule,
-    HomeModule
+    HomeModule,
+    GroupFormRoutingModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

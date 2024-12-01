@@ -75,7 +75,7 @@ export class EditComponent implements OnInit {
   };
 
   toNew() {
-    this.router.navigate(['admin/new']);
+    this.router.navigate(['group-form']);
   };
 
   private initForm(): void {

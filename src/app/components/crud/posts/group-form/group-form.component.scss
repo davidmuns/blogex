@@ -1,0 +1,20 @@
+.body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    height: 100%;
+    min-height: 120vh;
+}
+
+.mat-group-container {
+    flex: 1;
+    // display: flex;
+    // justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    // text-align: center;
+}
+

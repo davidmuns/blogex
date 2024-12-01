@@ -23,6 +23,7 @@ import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { GalleryImagesComponent } from './article-cards/gallery-images/gallery-images.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { GroupFormComponent } from './posts/group-form/group-form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     NewComponent,
     EditComponent,
     DeleteComponent,
-    GalleryImagesComponent
+    GalleryImagesComponent,
+    GroupFormComponent
   ],
   imports: [
     EditorModule,

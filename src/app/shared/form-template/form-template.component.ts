@@ -79,7 +79,7 @@ export class FormTemplateComponent implements OnInit {
           this.dialog.closeAll();
           const msg = `${this.translateSvc.instant('auth.login.welcome')} ${this.form.value.nombreUsuario}!`;
           this.utilsSvc.showSnackBar(msg, 5000);
-          this.router.navigate(['admin/new']);
+          this.router.navigate(['group-form']);
         },
         error: err => {
           const msg = this.translateSvc.instant('auth.login.wrong-data');

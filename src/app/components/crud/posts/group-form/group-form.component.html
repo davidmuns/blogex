@@ -1,0 +1,13 @@
+<div class="body">
+    <div class="mat-group-container">
+        <mat-tab-group mat-align-tabs="start" animationDuration="500ms">
+            <mat-tab class="custom-tab-label" label="{{ 'NewArticle' | translate }}">
+                <app-new></app-new>
+            </mat-tab>
+            <mat-tab class="custom-tab-label" label="{{ 'ArticlesToEdit' | translate}}">
+                <app-list-posts></app-list-posts>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+</div>
+<app-footer></app-footer>
