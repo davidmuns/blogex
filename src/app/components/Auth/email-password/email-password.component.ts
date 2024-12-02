@@ -18,6 +18,7 @@ export class EmailPasswordComponent {
   })
   emailONombreUsuario!: string;
   emailDto!: Email;
+  uploading = false;
 
   constructor(
     private utilsSvc: UtilsService,
@@ -37,13 +38,20 @@ export class EmailPasswordComponent {
   };
 
   private sendEmail(email: Email) {
+    this.uploading = true;
     this.emailPasswordService.sendEmail(email).subscribe({
       next: data => {
-        this.utilsSvc.showSnackBar(data.mensaje, 5000);
+        this.uploading = false;
+        console.log(this.emailForm.value);
+        
+        const msg = this.translateService.instant('auth.email-send.valid') + ' ' + email.emailTo;
+        this.utilsSvc.showSnackBar(msg, 7000)
         this.dialog.closeAll();
       },
       error: err => {
-        this.utilsSvc.showSnackBar(err.error.mensaje, 5000);
+        this.uploading = false;
+        const msg = this.translateService.instant('auth.email-send.incorrect');
+        this.utilsSvc.showSnackBar(msg, 7000)
       }
     });
   }

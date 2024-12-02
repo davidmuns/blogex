@@ -57,9 +57,9 @@ export class ResetPasswordComponent implements OnInit {
       resetPassword.tokenPassword = this.tokenPassword;
       this.emailPasswordService.resetPassword(resetPassword).subscribe({
         next: data => {
-          const msg = data.mensaje + ' Redirigiendo a página de inicio...';
+          const msg = this.translateService.instant('auth.reset-pass.valid');
           this.utilsSvc.showSnackBar(msg, 5000);
-          setTimeout(() => { this.router.navigate(['']); }, 3000);
+          setTimeout(() => { this.router.navigate(['']); }, 5000);
         },
         error: err => {
           const msg = this.translateService.instant('auth.reset-pass.no-match');

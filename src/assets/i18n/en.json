@@ -108,12 +108,15 @@
             "invalid-email": "Must be a valid email"
         },
         "email-send": {
-            "fill-blanks": "Please enter an email or username"
+            "fill-blanks": "Please enter an email or username",
+            "incorrect": "The email/username you entered is incorrect. Verify your credentials.",
+            "valid": "We have sent you an email to"
         },
         "reset-pass": {
             "fill-blanks": "Please fill in the blanks",
             "pass-length": "The password must be at least 8 characters long and must contain both numbers and letters",
-            "no-match": "Passwords do not match"
+            "no-match": "Passwords do not match",
+            "valid": "Password successfully modified. Redirecting to home page..."
         }
     },
     "front-articles": {

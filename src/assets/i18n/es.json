@@ -109,12 +109,15 @@
             "invalid-email": "Debe ser un correo electrónico válido"
         },
         "email-send": {
-            "fill-blanks": "Por favor, introduce un nombre de usuario o un email"
+            "fill-blanks": "Por favor, introduce un nombre de usuario o un email",
+             "incorrect": "La dirección de correo electrónico o el nombre de usuario introducidos son incorrectos. Verifica tus credenciales.",
+             "valid": "Te hemos enviado un correo electrónico a"
         },
         "reset-pass": {
             "fill-blanks": "Por favor, rellena los campos vacios",
             "pass-length": "La contraseña debe tener como mínimo 8 caracteres y debe contener números y letras",
-            "no-match": "Las contraseñas no coinciden"
+            "no-match": "Las contraseñas no coinciden",
+            "valid": "Contraseña modificada con éxito. Redirigiendo a la página de inicio..."
         }
     },
     "front-articles": {
@@ -127,7 +130,7 @@
             "video-tool-tip": "Vídeos de Youtube",
             "image-tool-tip": "Archivos del usuario",
             "upload-icon-tool-tip": "Subir",
-            "uploading-icon-tool-tip": "Subiendo ...",
+            "uploading-icon-tool-tip": "Enviando ...",
             "deleting-icon-tool-tip": "Eliminando ...",
             "cover-img-orientation": "No se permiten imágenes verticales en la portada del artículo",
             "valid-img": "Por favor, selecciona un archivo de imagen válido",

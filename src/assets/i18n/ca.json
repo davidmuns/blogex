@@ -108,12 +108,15 @@
             "invalid-email": "Ha de ser un correu electrónic vàlid"
         },
         "email-send": {
-            "fill-blanks": "Si us plau, introdueix un nom d'usuari o un email"
+            "fill-blanks": "Si us plau, introdueix un nom d'usuari o un email",
+            "incorrect": "L'adreça de correu electrònic o el nom d´usuari introduïts són incorrectes. Verifica les teves credencials.",
+            "valid": "T'hem enviat un correu electrònic a"
         },
         "reset-pass": {
             "fill-blanks": "Si us plau, omple els camps buits",
             "pass-length": "La contrasenya ha de tenir com a mínim 8 caracters i ha de contenir números i lletres",
-            "no-match": "Les contrasenyes no coincideixen"
+            "no-match": "Les contrasenyes no coincideixen",
+              "valid": "Contrasenya modificada amb èxit. Redirigint a la pàgina d'inici..."
         }
     },
     "front-articles": {
@@ -126,6 +129,7 @@
             "video-tool-tip": "Vídeos de youtube",
             "image-tool-tip": "Arxius del usuari",
             "upload-icon-tool-tip": "Pujar",
+            "uploading-icon-tool-tip": "Enviant ...",
             "deleting-icon-tool-tip": "Eliminant ...",
             "cover-img-orientation": "No es permeten imatges verticals a la portada de l'article",
             "valid-img": "Si us plau, seleccioneu un fitxer d'imatge vàlid",
