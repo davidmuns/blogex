@@ -34,7 +34,7 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
-    this.subscription = this.articleSvc.articleSubject$.subscribe(article => this.article = article);
+    this.subscription = this.articleSvc.article$.subscribe(article => this.article = article);
   }
 
   // Rendering map and popups for each item
@@ -158,7 +158,7 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     if (this.subscription) {
-      console.log("SUBSCRIPTION => ", this.subscription);
+      // console.log("SUBSCRIPTION => ", this.subscription);
       this.subscription.unsubscribe();
       this.subscription = null; // Limpieza adicional
     }

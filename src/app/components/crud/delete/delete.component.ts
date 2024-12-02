@@ -103,6 +103,7 @@ export class DeleteComponent implements OnInit {
     if (confirm && (username != this.username) && (username != null) && !this.tokenSvc.isAdmin()) {
       const msg = this.translateSvc.instant('delete.wrong-username')
       this.utilsSvc.showSnackBar(msg, 5000);
+      this.dialog.closeAll();
     };
 
     // Delete account in case the username of the session is the same as the user name entered by the user.

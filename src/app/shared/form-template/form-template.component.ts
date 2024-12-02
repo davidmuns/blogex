@@ -109,7 +109,7 @@ export class FormTemplateComponent implements OnInit {
           } else {
             msg = this.translateSvc.instant('auth.signup.username-exists');
           }
-          this.utilsSvc.showSnackBar(msg, 3000);
+          this.utilsSvc.showSnackBar(err.error.mensaje, 3000);
         }
       });
     } else {

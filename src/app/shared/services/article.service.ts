@@ -11,7 +11,7 @@ import { Imagen } from '../models/imagen';
 export class ArticleService {
 
   private readonly articleSubject = new BehaviorSubject<Article | undefined>(undefined);
-  articleSubject$ = this.articleSubject.asObservable();
+  article$ = this.articleSubject.asObservable();
 
   constructor(private readonly httpClient: HttpClient) { }
 
