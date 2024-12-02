@@ -1,12 +1,5 @@
 {
     "CreateArticle": "Crear article",
-    "MyAccount": "El meu compte",
-    "updateUsernameWarm": "El nom d´usuari no es por canviar",
-    "Optional": "Opcional",
-    "PersonalInformation": "Informació personal",
-    "Account": "Compte",
-    "CancelAccount": "Cancel·lar el meu compte",
-    "cancelAccountWarm": "El vostre compte es desactivarà immediatament després de la cancel·lació, i tots els actius fitxers s'eliminaran de forma permanent. Un cop eliminats, aquests fitxers no es podran recuperar.",
     "Language": "Idioma",
     "Login": "Inicia sessió",
     "Logout": "Tanca sessió",
@@ -80,6 +73,17 @@
     "ImgMaximumExceed": "Imatge excedeix tamany màxim permés",
     "VideoMaximumExceed": "Video excedeix tamany màxim permés",
     "PleaseSelectImage": "Si us plau selecciona un archiu abans de pujar-lo",
+    "myAccount": {
+        "error": "Ja existeix un compte amb aquest correu electrònic",
+        "valid": "Hem actualitzat la teva informació personal",
+        "myAccount": "El meu compte",
+        "updateUsernameWarm": "El nom d´usuari no es por canviar",
+        "Optional": "Opcional",
+        "PersonalInformation": "Informació personal",
+        "Account": "Compte",
+        "CancelAccount": "Cancel·lar el meu compte",
+        "cancelAccountWarm": "El vostre compte es desactivarà immediatament després de la cancel·lació, i tots els actius fitxers s'eliminaran de forma permanent. Un cop eliminats, aquests fitxers no es podran recuperar."
+    },
     "header": {
         "articles-editor": "Editor d´articles",
         "my-articles": "Els meus articles",

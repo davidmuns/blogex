@@ -1,3 +1,4 @@
+import { TranslateService } from '@ngx-translate/core';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -22,7 +23,8 @@ export class MyAccountComponent implements OnInit {
     private readonly authSvc: AuthService,
     private readonly tokenSvc: TokenService,
     private readonly dialog: MatDialog,
-    private readonly utilsSvc: UtilsService
+    private readonly utilsSvc: UtilsService,
+    private readonly translateSvc: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -48,12 +50,15 @@ export class MyAccountComponent implements OnInit {
   }
 
   onSubmit() {
+    let msg = '';
     this.authSvc.updateUser(this.user.id, this.form.value).subscribe({
       next: data => {
-        this.utilsSvc.showSnackBar(data.mensaje, 5000);
+        msg = this.translateSvc.instant('myAccount.valid');
+        this.utilsSvc.showSnackBar(msg, 3000);
       },
       error: err => {
-        this.utilsSvc.showSnackBar(err.error.mensaje, 5000);
+        msg = this.translateSvc.instant('myAccount.error');
+        this.utilsSvc.showSnackBar(msg, 3000);
       },
     })
   }

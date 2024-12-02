@@ -1,12 +1,5 @@
 {
     "CreateArticle": "Crear artículo",
-    "MyAccount": "Mi cuenta",
-    "updateUsernameWarm": "El nombre de usuario no se puede cambiar",
-    "Optional": "Opcional",
-    "PersonalInformation": "Información personal",
-    "Account": "Cuenta",
-    "CancelAccount": "Cancelar mi cuenta",
-    "cancelAccountWarm": "Su cuenta se desactivará inmediatamente tras la cancelación, y todos los activos archivos se eliminarán de forma permanente. Una vez eliminados, estos archivos no podrán recuperarse.",
     "Language": "Idioma",
     "Login": "Inicia sesión",
     "Logout": "Cierra sesión",
@@ -81,6 +74,17 @@
     "ImgMaximumExceed": "Imagen excede tamaño máximo permitido",
     "VideoMaximumExceed": "Video excede tamaño máximo permitido",
     "PleaseSelectImage": "Por favor selecciona un archivo antes de subirlo",
+    "myAccount": {
+        "error": "Ya existe una cuenta con este correo electrónico",
+        "valid": "Hemos actualizado tu información personal",
+        "myAccount": "Mi cuenta",
+        "updateUsernameWarm": "El nombre de usuario no se puede cambiar",
+        "Optional": "Opcional",
+        "PersonalInformation": "Información personal",
+        "Account": "Cuenta",
+        "CancelAccount": "Cancelar mi cuenta",
+        "cancelAccountWarm": "Su cuenta se desactivará inmediatamente tras la cancelación, y todos los activos archivos se eliminarán de forma permanente. Una vez eliminados, estos archivos no podrán recuperarse."
+    },
     "header": {
         "articles-editor": "Editor de artículos",
         "my-articles": "Mis artículos",

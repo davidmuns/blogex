@@ -2,13 +2,13 @@
     <div class="login">
         <mat-tab-group mat-align-tabs="center" animationDuration="500ms">
             <!-- PERSONAL INFORMATION TAB -->
-            <mat-tab class="custom-tab-label" label="{{ 'PersonalInformation' | translate }}">
+            <mat-tab class="custom-tab-label" label="{{ 'myAccount.PersonalInformation' | translate }}">
                 <mat-card>
-                    <mat-card-title>{{ 'PersonalInformation' | translate }}</mat-card-title>
+                    <mat-card-title>{{ 'myAccount.PersonalInformation' | translate }}</mat-card-title>
                     <mat-card-content>
                         <form [formGroup]="form" (ngSubmit)="onSubmit()">
                            
-                             <h4>{{ 'Name' | translate }} ({{ 'Optional' | translate }})</h4>
+                             <h4>{{ 'Name' | translate }} ({{ 'myAccount.Optional' | translate }})</h4>
                             <mat-form-field appearance="fill" class="full-width">
                                 <mat-label>{{ 'Name' | translate }}</mat-label>
                                 <input matInput formControlName="nombre" placeholder="{{ 'Name' | translate }}">
@@ -19,7 +19,7 @@
                             <h4>{{ 'Username' | translate }}</h4>
                             <mat-form-field appearance="fill" class="full-width">
                                 <mat-label>{{ 'Username' | translate }}</mat-label>
-                                <input matInput formControlName="nombreUsuario" placeholder="Ingrese su usuario" matTooltip="{{ 'updateUsernameWarm' | translate }}">
+                                <input matInput formControlName="nombreUsuario" placeholder="Ingrese su usuario" matTooltip="{{ 'myAccount.updateUsernameWarm' | translate }}">
                                 <!-- <mat-error *ngIf="form.get('nombreUsuario')?.invalid && form.get('nombreUsuario')?.touched">
                                     El username es obligatorio.
                                 </mat-error> -->
@@ -53,16 +53,16 @@
                 </mat-card>
             </mat-tab>
             <!-- ACCOUNT TAB -->
-            <mat-tab class="custom-tab-label" label="{{ 'Account' | translate }}">
+            <mat-tab class="custom-tab-label" label="{{ 'myAccount.Account' | translate }}">
                 <mat-card>
-                    <mat-card-title class="title mb-2"> {{ 'CancelAccount' | translate }}</mat-card-title>
+                    <mat-card-title class="title mb-2"> {{ 'myAccount.CancelAccount' | translate }}</mat-card-title>
                     <p>
-                        {{ 'cancelAccountWarm' | translate }}
+                        {{ 'myAccount.cancelAccountWarm' | translate }}
                     </p> 
                     <mat-card-content>
                         <div class="buttons-container mb-2">
                             <button class="cancel-btn" mat-raised-button type="button" (click)="onDeleteAccount()">
-                                {{ 'CancelAccount' | translate }}
+                                {{ 'myAccount.CancelAccount' | translate }}
                             </button>
                                  
                         </div>
@@ -78,7 +78,5 @@
             </mat-tab>
         </mat-tab-group>
     </div>
-    <!-- <app-footer></app-footer> -->
 </div>
-
 <app-footer></app-footer>

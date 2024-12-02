@@ -1,11 +1,5 @@
 {
     "CreateArticle": "Create article",
-    "MyAccount": "My account",
-    "Optional": "Optional",
-    "PersonalInformation": "Personal information",
-    "Account": "Account",
-    "CancelAccount": "Cancel my account",
-    "cancelAccountWarm": "Your account will be immediately disabled upon cancellation, and all associated assets will be permanently deleted. Once deleted, these assets cannot be recovered.",
     "Language": "Language",
     "Login": "Login",
     "Logout": "Logout",
@@ -80,6 +74,16 @@
     "ImgMaximumExceed": "Image size exceeds maximum allowed",
     "VideoMaximumExceed": "Video size exceeds maximum allowed",
     "PleaseSelectImage": "Please select file before uploading",
+    "myAccount": {
+        "error": "An account with this email already exists",
+        "valid": "Your personal information has been updated",
+        "myAccount": "My account",
+        "Optional": "Optional",
+        "PersonalInformation": "Personal information",
+        "Account": "Account",
+        "CancelAccount": "Cancel my account",
+        "cancelAccountWarm": "Your account will be immediately disabled upon cancellation, and all associated assets will be permanently deleted. Once deleted, these assets cannot be recovered."
+    },
     "header": {
         "articles-editor": "Articles editor",
         "my-articles": "My articles",
