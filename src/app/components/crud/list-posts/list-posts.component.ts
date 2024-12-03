@@ -36,6 +36,7 @@ export class ListPostsComponent implements OnInit {
   username!: string;
   sortBy = '';
   isZoomed!: number | null;
+  inputValue: string = '';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('list') asList!: ElementRef;
@@ -75,6 +76,11 @@ export class ListPostsComponent implements OnInit {
     } else {
       this.articleHtml = false;
     }
+  }
+
+  clearField(): void {
+    this.dataSource.filter = '';
+    this.inputValue = '';
   }
 
   // Alterna el zoom al hacer clic en una imagen
@@ -134,7 +140,9 @@ export class ListPostsComponent implements OnInit {
   onEdit(post: Article) {
     this.dialog.open(EditComponent, { 
       data: { article: post },
-      exitAnimationDuration: '500ms' 
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+      
     });
     // this.navigationExtras.state = post;
     // this.router.navigate(['admin/edit'], this.navigationExtras);

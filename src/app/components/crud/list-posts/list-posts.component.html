@@ -2,11 +2,20 @@
   <div #list class="inside">
     <h3>{{ 'ArticlesToEdit' | translate}} ({{ dataSource.data.length }})</h3>
     <mat-paginator [pageSize]="8" [pageSizeOptions]="[2, 4, 6, 8, 10]" showFirstLastButtons></mat-paginator>
-    <mat-form-field appearance="standard" class="mb-3">
-      <mat-label for="labelFilter">{{ 'Filter' | translate }}</mat-label>
-      <input matInput id="filter" (keyup)="applyFilter($event)" #input>
-    </mat-form-field>
-    <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
+    <div class="filter-sort-container">
+      <mat-form-field appearance="outline">
+        <mat-label for="labelFilter">{{ 'Filter' | translate }}</mat-label>
+        <input matInput id="filter" [(ngModel)]="inputValue" (keyup)="applyFilter($event)" #input>
+        <button 
+        mat-icon-button 
+        matSuffix 
+        *ngIf="inputValue" 
+        (click)="clearField()">
+        <mat-icon>close</mat-icon>
+      </button>
+      </mat-form-field>
+      <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
+    </div>
     <table mat-table [dataSource]="dataSource">
       <!-- Name Column -->
       <ng-container matColumnDef="titol">

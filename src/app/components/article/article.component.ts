@@ -82,7 +82,8 @@ export class ArticleComponent implements OnInit {
   onEdit(post: any) {
     this.dialog.open(EditComponent, { 
       data: { article: post },
-      exitAnimationDuration: '500ms' 
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
     });
     // this.navigationExtras.state = post;
     // this.router.navigate(['admin/edit'], this.navigationExtras);

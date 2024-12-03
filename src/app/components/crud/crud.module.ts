@@ -3,7 +3,7 @@ import { CrudComponent } from './crud.component';
 import { ListPostsComponent } from './list-posts/list-posts.component';
 import { NewComponent } from './posts/new/new.component';
 import { EditComponent } from './posts/edit/edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
 
 // Modules
@@ -45,7 +45,8 @@ import { GroupFormComponent } from './posts/group-form/group-form.component';
     MaterialModule,
     ReactiveFormsModule,
     InternationalitazionModule,
-    SharedModule
+    SharedModule,
+    FormsModule
 ]
 })
 export class CrudModule { }

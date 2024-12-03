@@ -25,6 +25,15 @@
   }
 }
 
+.filter-sort-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+}
+
 .inside {
   height: 100vh;
 }
@@ -41,14 +50,11 @@ table {
 }
 
 mat-form-field mat-label {
-  font-size: 14pt;
+  font-size: 11pt;
 }
 
-.mat-form-field {
-  padding: 0px 3%;
+mat-form-field {
   font-size: 14px;
-  width: 94%;
-  background: rgba(240, 240, 240, 1);
 }
 
 mat-paginator {
@@ -75,17 +81,15 @@ button {
   padding: 5px;
   border-radius: 5%;
   transition: transform 0.3s ease;
-  /* Suaviza la animación */
   cursor: pointer;
 }
 
 .cover-img.zoom {
   position: relative;
   transform: scale(6);
-  /* Escala la imagen al 170% */
   z-index: 1;
   @media(max-width: 700px) {
-    transform: scale(4);
+    transform: scale(3);
   }
   @media(max-width: 425px) {
     transform: scale(3);

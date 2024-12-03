@@ -106,7 +106,7 @@ export class EditComponent implements OnInit {
           this.router.navigate(['article/' + post.id]);
           this.utilsSvc.showSnackBar("Cover image updated", 5000);
         } else {
-          msg = this.translateService.instant('ImgMaximumExceed') + " 5MB";
+          msg = this.translateService.instant('ImgMaximumExceed') + " 10MB";
           this.utilsSvc.showSnackBar(msg, 5000);
         };
       } else {
