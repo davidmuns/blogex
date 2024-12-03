@@ -150,6 +150,9 @@
             "invalid-url": "Solamente son válidas las URLs de youtube",
             "posted": "Video publicado",
             "deleted": "Video eliminado"
+        },
+        "edit": {
+            "ok": "Artículo actualizado"
         }
     },
     "user-blog": {

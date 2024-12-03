@@ -149,6 +149,9 @@
             "invalid-url": "Només son vàlides las URLs de youtube",
             "posted": "Video publicat",
             "deleted": "Video eliminat"
+        },
+        "edit": {
+            "ok": "Article actualitzat"
         }
     },
     "user-blog": {

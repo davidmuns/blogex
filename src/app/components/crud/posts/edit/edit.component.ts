@@ -114,10 +114,12 @@ export class EditComponent implements OnInit {
   };
 
   private editPost(id: number, post: Article) {
+    let msg = '';
     if (this.editPostForm.valid) {
       this.articleService.updateArticle(post.id, post).subscribe({
         next: data => {
-         this.utilsSvc.showSnackBar(data.mensaje, 5000);
+          msg = this.translateService.instant('crud.edit.ok');
+          this.utilsSvc.showSnackBar(msg, 3000);
         },
         error: err => {
           this.utilsSvc.showSnackBar(err.error.mensaje, 5000);

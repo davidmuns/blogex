@@ -78,6 +78,7 @@
         "error": "An account with this email already exists",
         "valid": "Your personal information has been updated",
         "myAccount": "My account",
+        "updateUsernameWarm": "Username cannot be changed",
         "Optional": "Optional",
         "PersonalInformation": "Personal information",
         "Account": "Account",
@@ -149,6 +150,9 @@
             "invalid-url": "Only youtube URLs are valid",
             "posted": "Video posted",
             "deleted": "Video deleted"
+        },
+        "edit": {
+            "ok": "Article updated"
         }
     },
     "user-blog": {
