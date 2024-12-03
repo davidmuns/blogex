@@ -5,7 +5,7 @@ import { VideoService } from './../../../shared/services/video.service';
 import { Observable } from 'rxjs';
 import { Imagen } from './../../../shared/models/imagen';
 import { ArticleService } from './../../../shared/services/article.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import AOS from 'aos';
 
 @Component({
@@ -24,7 +24,7 @@ export class ArticleGalleryComponent implements OnInit {
   playerVars = {
     cc_lang_pref: 'es'
   }
-  isZoomed: boolean = false;
+  isZoomed!: number | null;
   
   constructor(
     private readonly articleSvc: ArticleService,
@@ -79,8 +79,16 @@ export class ArticleGalleryComponent implements OnInit {
     this.indice = (this.indice + 1) % this.urlmages.length;
   }
 
-  toggleZoom(): void {
-    this.isZoomed = !this.isZoomed; // Alterna entre activar y desactivar el zoom
+   // Alterna el zoom al hacer clic en una imagen
+   toggleZoom(event: Event, index: number): void {
+    event.stopPropagation(); // Evita que el evento se propague al documento
+    this.isZoomed = this.isZoomed === index ? null : index;
+  }
+
+  // Detecta clics fuera de las imágenes
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(): void {
+    this.isZoomed = null; // Resetea el zoom
   }
 
   private getImgsByArticleId(id: number) {
