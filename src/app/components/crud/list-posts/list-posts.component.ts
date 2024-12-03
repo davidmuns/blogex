@@ -27,23 +27,24 @@ export class ListPostsComponent implements OnInit {
   };
 
   showHidePosts: boolean = false;
-  displayedColumns: string[] = ['titol', 'borrar'];
+  displayedColumns: string[] = ['titol', 'cover-img', 'borrar'];
   dataSource = new MatTableDataSource();
   public articleHtml!: boolean;
   public innerWidth: any;
   isAdmin: boolean = false;
   username!: string;
   sortBy = '';
+  isZoomed!: number | null;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('list') asList!: ElementRef;
 
   @HostListener('window:resize', ['$event'])
-  onResize(event:any): void{
+  onResize(event: any): void {
     this.innerWidth = event.target.innerWidth;
-    if(this.innerWidth > 420){
+    if (this.innerWidth > 420) {
       this.articleHtml = true;
-    }else{
+    } else {
       this.articleHtml = false;
     }
   }
@@ -55,24 +56,36 @@ export class ListPostsComponent implements OnInit {
     private readonly articleSvc: ArticleService,
     private readonly renderer2: Renderer2,
     private readonly utilsSvc: UtilsService
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    this.username =this.tokenService.getUsername() as string;
+    this.username = this.tokenService.getUsername() as string;
     this.innerWidth = window.innerWidth;
-    this.isAdmin =this.tokenService.isAdmin();
-  
-    if(this.isAdmin){
+    this.isAdmin = this.tokenService.isAdmin();
+
+    if (this.isAdmin) {
       this.getAllArticles();
-    }else{
+    } else {
       this.getAllArticlesByUsername();
     }
 
-    if(this.innerWidth > 420){
+    if (this.innerWidth > 420) {
       this.articleHtml = true;
-    }else{
+    } else {
       this.articleHtml = false;
     }
+  }
+
+  // Alterna el zoom al hacer clic en una imagen
+  toggleZoom(event: Event, index: number): void {
+    event.stopPropagation(); // Evita que el evento se propague al documento
+    this.isZoomed = this.isZoomed === index ? null : index;
+  }
+
+  // Detecta clics fuera de las imágenes
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(): void {
+    this.isZoomed = null; // Resetea el zoom
   }
 
   onSortBy(optionSelected: string) {
@@ -84,7 +97,7 @@ export class ListPostsComponent implements OnInit {
     };
   }
 
-  private getAllArticles(){
+  private getAllArticles() {
     this.articleSvc.getAll().subscribe({
       next: (data: Article[]) => {
         this.dataSource.data = this.utilsSvc.sortArticlesBy(data, this.sortBy);
@@ -107,39 +120,39 @@ export class ListPostsComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  applyFilter(event: Event){
+  applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   //Send all the post
-  onEdit(post: Article){
+  onEdit(post: Article) {
     this.navigationExtras.state = post;
     this.router.navigate(['admin/edit'], this.navigationExtras);
     this.toList();
   }
 
-  onDelete(a: Article){
-    this.dialog.open(DeleteComponent, { 
-      data: {article: a, option: "deleteArticle"},
+  onDelete(a: Article) {
+    this.dialog.open(DeleteComponent, {
+      data: { article: a, option: "deleteArticle" },
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms'
     });
   }
-   
-  toList(){
+
+  toList() {
     const listPosts = this.asList.nativeElement;
     this.showHidePosts = !this.showHidePosts;
-    if(this.showHidePosts){
+    if (this.showHidePosts) {
       this.renderer2.setStyle(listPosts, 'height', '1200px');
       this.renderer2.setStyle(listPosts, 'transition', 'all 1s')
-    }else{
+    } else {
       this.renderer2.setStyle(listPosts, 'height', '0px');
     }
-    
+
   }
 }

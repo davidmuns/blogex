@@ -22,6 +22,22 @@
         </td>
       </ng-container>
 
+      <ng-container matColumnDef="cover-img">
+        <th mat-header-cell *matHeaderCellDef> {{ 'CoverImage' | translate }} </th>
+        <td 
+          mat-cell 
+          *matCellDef="let element; let i as index">
+          <img 
+          class="cover-img" 
+          [class.zoom]="isZoomed === i"
+          (click)="toggleZoom($event, i)"
+          matTooltip="zoom"
+          matTooltipPosition="above"
+          [src]="element.imagenPortada" 
+          [alt]="element.caption"> 
+        </td>
+      </ng-container>
+
       <!-- Delete Row -->
       <ng-container matColumnDef="borrar">
         <th mat-header-cell *matHeaderCellDef> {{ 'Delete' | translate }} </th>
