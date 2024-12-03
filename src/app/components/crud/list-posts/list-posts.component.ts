@@ -8,6 +8,7 @@ import { NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { DeleteComponent } from '../delete/delete.component';
+import { EditComponent } from '../posts/edit/edit.component';
 
 export interface PeriodicElement {
   title: string
@@ -131,9 +132,13 @@ export class ListPostsComponent implements OnInit {
 
   //Send all the post
   onEdit(post: Article) {
-    this.navigationExtras.state = post;
-    this.router.navigate(['admin/edit'], this.navigationExtras);
-    this.toList();
+    this.dialog.open(EditComponent, { 
+      data: { article: post },
+      exitAnimationDuration: '500ms' 
+    });
+    // this.navigationExtras.state = post;
+    // this.router.navigate(['admin/edit'], this.navigationExtras);
+    // this.toList();
   }
 
   onDelete(a: Article) {

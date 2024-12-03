@@ -2,11 +2,12 @@ import { UtilsService } from './../../../../shared/services/utils.service';
 import { TinyEditorService } from './../../../../shared/services/tiny-editor.service';
 import { environment } from 'src/environments/environment';
 import { ArticleService } from 'src/app/shared/services/article.service';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { TranslateService } from '@ngx-translate/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit',
@@ -38,6 +39,8 @@ export class EditComponent implements OnInit {
   public innerWidth: any;
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: { article: Article },
+    private readonly dialog: MatDialog,
     private utilsSvc: UtilsService,
     tinyEditorSvc: TinyEditorService,
     private articleService: ArticleService,
@@ -48,12 +51,14 @@ export class EditComponent implements OnInit {
       this.editorConfig = config;
     });
     const navigation = router.getCurrentNavigation();
-    this.article = navigation?.extras?.state;
+    this.article = data.article;
     this.reload();
     this.initForm();
   };
 
   ngOnInit(): void {
+    console.log(this.data);
+    
     if (typeof this.article !== 'undefined') {
       this.editPostForm.patchValue(this.article);
     } else {
@@ -76,6 +81,7 @@ export class EditComponent implements OnInit {
 
   toNew() {
     this.router.navigate(['group-form']);
+    this.dialog.closeAll();
   };
 
   private initForm(): void {
@@ -105,6 +111,7 @@ export class EditComponent implements OnInit {
         };
       } else {
         this.editPost(post.id, post);
+        this.dialog.closeAll();
         this.router.navigate(['article/' + post.id]);
       };
     } else {

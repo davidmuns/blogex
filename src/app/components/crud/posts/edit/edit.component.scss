@@ -1,11 +1,20 @@
 .container {
-    max-width: 70%;
+    // max-width: 100%;
+    width: 900px;
+    height: auto;
     margin-top: 30px;
     margin-bottom: 30px;
+    margin-left: 0px;
+    margin-right: 0px;
     @media(max-width:800px) {
         max-width: 100%;
     }
 }
+
+.header {
+    display: flex;
+    justify-content: space-between;
+  }
 
 mat-card {
     position: static;
@@ -29,7 +38,7 @@ mat-card-content {
     padding: 10px 30px;
 
     @media(max-width: 600px) {
-        padding-left: 10px;
+        // padding-left: 10px;
     }
 }
 
@@ -38,16 +47,24 @@ mat-card-content {
 }
 
 .input-coordinates {
-    @media(max-width: 500px) {
-        width: 170px;
+    @media(max-width: 750px) {
+        width: 140px;
     }
 
-    @media(max-width: 400px) {
-        width: 120px;
+    @media(max-width: 580px) {
+        width: 100px;
     }
 
-    @media(max-width: 300px) {
+    @media(max-width: 470px) {
         width: 80px;
+    }
+
+    @media(max-width: 420px) {
+        width: 70px;
+    }
+
+    @media(max-width: 390px) {
+        width: 60px;
     }
 }
 
@@ -90,10 +107,25 @@ mat-card-content {
     height: 70px;
 }
 
+.save-btn-container {
+
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    button{
+        background-color: var(--accent);
+        color: var(--lemon);
+    }
+    button:hover{
+        color: white;
+    }
+
+}
+
 #createButton {
-    min-width: 130px;
-    width: 30%;
-    margin: 10px 35%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
     background-color: var(--accent);
     color: var(--lemon);
 
@@ -109,10 +141,6 @@ mat-card-content {
 
 #moreButton {
     margin-top: 20px;
-}
-
-form h3 {
-    width: 100px;
 }
 
 .prev-image {

@@ -6,6 +6,8 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { TokenService } from 'src/app/shared/services/token.service';
+import { EditComponent } from '../crud/posts/edit/edit.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -32,7 +34,8 @@ export class ArticleComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly articleSvc: ArticleService,
     public tokenSvc: TokenService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -77,8 +80,12 @@ export class ArticleComponent implements OnInit {
   };
 
   onEdit(post: any) {
-    this.navigationExtras.state = post;
-    this.router.navigate(['admin/edit'], this.navigationExtras);
+    this.dialog.open(EditComponent, { 
+      data: { article: post },
+      exitAnimationDuration: '500ms' 
+    });
+    // this.navigationExtras.state = post;
+    // this.router.navigate(['admin/edit'], this.navigationExtras);
   }
 }
 
