@@ -35,19 +35,13 @@
             <mat-label>{{ 'Caption' | translate }}</mat-label>
             <input matInput formControlName="caption" placeholder="Information about the picture">
           </mat-form-field>
-       
-          
-        
-          <editor formControlName="content" [init]="this.editorConfig"></editor>
-   
             <h4>{{ 'Text' | translate }}:</h4>
             <mat-form-field class="input-width" appearance="fill">
               <mat-label>{{ 'Text' | translate }}</mat-label>
               <textarea matInput id="textarea" formControlName="content"
                 placeholder="{{ 'Text' | translate }}"></textarea>
             </mat-form-field>
-          
-        
+            <!-- <editor [init]="editorConfig"></editor> -->
       <!-- <h3 matTooltip="Introduce the coordinates to see this route on the map" matTooltipPosition="right">{{
         'Coordinates' | translate }}:
       </h3> -->
@@ -68,7 +62,9 @@
           </td>
         </tr>
       </table>
-      <button id="createButton" type="submit" mat-raised-button>{{ 'Publish' | translate }}</button>
+      <div class="create-btn-container">
+        <button type="submit" mat-raised-button>{{ 'Publish' | translate }}</button>
+      </div> 
     </form>
   </mat-card-content>
 </mat-card>

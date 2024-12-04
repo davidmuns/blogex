@@ -3,9 +3,7 @@
     <button class="toNew-btn" mat-stroked-button (click)="toNew()">{{ 'CreateArticle' | translate }}</button>
   </div>
 
-  <div>
-    <!-- <h2 mat-dialog-title>{{ 'EditArticle' | translate }}</h2> -->
-  </div>
+  <div></div>
   <div>
     <mat-icon mat-button mat-dialog-close class="close-btn">close</mat-icon>
   </div>
@@ -17,9 +15,6 @@
   <div class="container">
     <mat-card class="example-card">
       <mat-card-title>{{ 'EditArticle' | translate }}</mat-card-title>
-      <!-- <div class="toNew-btn-container">
-        <button class="toNew-btn" mat-stroked-button (click)="toNew()">{{ 'CreateArticle' | translate }}</button>
-      </div> -->
       <mat-card-content>
         <form [formGroup]="editPostForm" (ngSubmit)="onSubmit(editPostForm.value)">
           <h4>{{ 'Title' | translate }}:</h4>
@@ -53,12 +48,6 @@
             <mat-label>{{ 'Caption' | translate }}</mat-label>
             <input matInput formControlName="caption" placeholder="{{ 'Caption' | translate }}">
           </mat-form-field>
-
-          <p>
-            <mat-label>{{ 'Text' | translate }}:</mat-label><br><br>
-            <editor formControlName="content" [init]="this.editorConfig"></editor>
-          </p>
-         
           <h4>{{ 'Text' | translate }}:</h4>
           <mat-form-field class="input-width" appearance="fill">
             <mat-label>{{ 'Text' | translate }}</mat-label>
