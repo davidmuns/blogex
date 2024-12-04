@@ -7,4 +7,5 @@ export interface Imagen {
     caption: string;
     articleId: number;
     article: Article;
+    coverImg: boolean;
 }
