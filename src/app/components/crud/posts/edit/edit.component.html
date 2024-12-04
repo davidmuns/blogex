@@ -76,4 +76,11 @@
     </mat-card>
   </div>
 </mat-dialog-content>
+<mat-dialog-actions *ngIf="uploading" align="center">
+  <div class="spinner-container">
+    <div class="spinner"></div>
+    <div>{{ 'crud.article-card.uploading-icon-tool-tip' | translate }}</div>
+  </div>
+</mat-dialog-actions>
+
 <!-- <app-footer></app-footer> -->

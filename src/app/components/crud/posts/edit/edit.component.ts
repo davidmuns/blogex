@@ -37,6 +37,7 @@ export class EditComponent implements OnInit {
   public miniatura!: File;
   public articleHtml!: boolean;
   public innerWidth: any;
+  uploading = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article },
@@ -103,16 +104,14 @@ export class EditComponent implements OnInit {
         if (this.image.size <= environment.IMG_MAX_SIZE) {
           this.editPost(post.id, post);
           this.uploadImage(this.image);
-          this.router.navigate(['article/' + post.id]);
-          this.utilsSvc.showSnackBar("Cover image updated", 5000);
+          // this.router.navigate(['article/' + post.id]);
+          // this.utilsSvc.showSnackBar("Cover image updated", 5000);
         } else {
           msg = this.translateService.instant('ImgMaximumExceed') + " 10MB";
           this.utilsSvc.showSnackBar(msg, 5000);
         };
       } else {
         this.editPost(post.id, post);
-        this.dialog.closeAll();
-        this.router.navigate(['article/' + post.id]);
       };
     } else {
       msg = this.translateService.instant('FillBlanks');
@@ -122,11 +121,17 @@ export class EditComponent implements OnInit {
 
   private editPost(id: number, post: Article) {
     let msg = '';
+    this.uploading = true;
     if (this.editPostForm.valid) {
       this.articleService.updateArticle(post.id, post).subscribe({
         next: data => {
-          msg = this.translateService.instant('crud.edit.ok');
-          this.utilsSvc.showSnackBar(msg, 3000);
+          setTimeout(() => { 
+            this.router.navigate(['article/' + post.id]);
+            this.uploading = false;
+            this.dialog.closeAll();
+            msg = this.translateService.instant('crud.edit.ok');
+            this.utilsSvc.showSnackBar(msg, 3000);
+          }, 3000);     
         },
         error: err => {
           this.utilsSvc.showSnackBar(err.error.mensaje, 5000);
