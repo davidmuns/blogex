@@ -58,22 +58,16 @@
             'Coordinates' | translate }}:
           </h3> -->
           <h4>{{ 'Coordinates' | translate }}:</h4>
-          <table class="example-full-width" cellspacing="0">
-            <tr>
-              <td>
-                <mat-form-field class="input-coordinates" appearance="fill">
-                  <mat-label>{{ 'Latitude' | translate }}</mat-label>
-                  <input type="number" matInput formControlName="latitude">
-                </mat-form-field>
-              </td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <td>
-                <mat-form-field class="input-coordinates" appearance="fill">
-                  <mat-label>{{ 'Longitude' | translate }}</mat-label>
-                  <input type="number" matInput formControlName="longitude">
-                </mat-form-field>
-              </td>
-            </tr>
-          </table>
+          <div class="coordinates-container">
+            <mat-form-field class="input-coordinates" appearance="fill">
+              <mat-label>{{ 'Latitude' | translate }}</mat-label>
+              <input type="number" matInput formControlName="latitude">
+            </mat-form-field>
+            <mat-form-field class="input-coordinates" appearance="fill">
+              <mat-label>{{ 'Longitude' | translate }}</mat-label>
+              <input type="number" matInput formControlName="longitude">
+            </mat-form-field>
+          </div>
           <div class="save-btn-container">
             <button type="submit" mat-raised-button>{{ 'SaveChanges' | translate }}</button>
           </div>
