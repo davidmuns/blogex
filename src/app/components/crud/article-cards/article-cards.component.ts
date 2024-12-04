@@ -16,6 +16,7 @@ import { GalleryImagesComponent } from './gallery-images/gallery-images.componen
 import { GalleryVideosComponent } from './gallery-videos/gallery-videos.component';
 // Animate on scroll library => https://michalsnik.github.io/aos/
 import AOS from 'aos';
+import { EditComponent } from '../posts/edit/edit.component';
 
 
 @Component({
@@ -106,8 +107,13 @@ export class ArtcileCardsComponent implements OnInit {
   };
 
   onEdit(post: Article) {
-    this.navigationExtras.state = post;
-    this.router.navigate(['admin/edit'], this.navigationExtras);
+    this.dialog.open(EditComponent, { 
+      data: { article: post },
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms',
+    });
+    // this.navigationExtras.state = post;
+    // this.router.navigate(['admin/edit'], this.navigationExtras);
   };
 
   onSortBy(optionSelected: string) {
