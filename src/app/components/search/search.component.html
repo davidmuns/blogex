@@ -9,7 +9,12 @@
            [matAutocomplete]="auto"
            fontIcon="search">
     <!-- Ícono de borrar -->
-    <button *ngIf="myControl.value" mat-icon-button class="clear-button" aria-label="Clear" (click)="clearInput()">
+    <button 
+      *ngIf="myControl.value"
+      mat-icon-button 
+      class="clear-button" 
+      aria-label="Clear" 
+      (click)="clearInput()">
       <mat-icon>close</mat-icon>
     </button>
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">

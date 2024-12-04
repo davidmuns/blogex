@@ -7,11 +7,11 @@
         <mat-label for="labelFilter">{{ 'Filter' | translate }}</mat-label>
         <input matInput id="filter" [(ngModel)]="inputValue" (keyup)="applyFilter($event)" #input>
         <button 
-        mat-icon-button 
-        matSuffix 
-        *ngIf="inputValue" 
-        (click)="clearField()">
-        <mat-icon>close</mat-icon>
+          mat-icon-button 
+          matSuffix 
+          *ngIf="inputValue" 
+          (click)="clearField()">
+          <mat-icon>close</mat-icon>
       </button>
       </mat-form-field>
       <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>

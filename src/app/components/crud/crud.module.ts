@@ -19,7 +19,7 @@ import { NewModule } from './posts/new/new.module';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 // TinyMCE doc: https://www.tiny.cloud/docs/tinymce/6/angular-pm/
-// youtube tutorial: https://www.youtube.com/watch?v=YqEDASVUEPc&list=PLSVW22jAG8pCwwM3tjSMfwBKYIS6_fP-F&index=1
+// https://www.youtube.com/watch?v=HvsF0xgyoHI
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { GalleryImagesComponent } from './article-cards/gallery-images/gallery-images.component';
 import { SharedModule } from 'src/app/shared/shared.module';
