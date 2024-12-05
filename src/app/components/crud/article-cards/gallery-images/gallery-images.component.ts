@@ -34,10 +34,10 @@ export class GalleryImagesComponent implements OnInit {
  
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article },
-    private utilsSvc: UtilsService,
+    private readonly utilsSvc: UtilsService,
     private readonly dialog: MatDialog,
-    private articleSvc: ArticleService,
-    private translateService: TranslateService) { }
+    private readonly articleSvc: ArticleService,
+    private readonly translateService: TranslateService) { }
 
   ngOnInit() {
     AOS.init();
@@ -100,6 +100,7 @@ export class GalleryImagesComponent implements OnInit {
         this.getImgsByArticleId(this.data.article.id);
       },
       error: err => {
+        this.uploading = false;
         this.utilsSvc.showSnackBar(err.error.message, 5000);
       }
     });

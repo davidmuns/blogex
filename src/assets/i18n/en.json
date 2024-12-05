@@ -115,7 +115,8 @@
         "email-send": {
             "fill-blanks": "Please enter an email or username",
             "incorrect": "The email/username you entered is incorrect. Verify your credentials.",
-            "valid": "We have sent you an email to"
+            "valid": "We have sent you an email to",
+            "sending": "Sending email ..."
         },
         "reset-pass": {
             "fill-blanks": "Please fill in the blanks",
@@ -152,7 +153,8 @@
             "deleted": "Video deleted"
         },
         "edit": {
-            "ok": "Article updated"
+            "ok": "Article updated",
+            "updating": "Updating ..."
         }
     },
     "user-blog": {

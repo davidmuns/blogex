@@ -5,17 +5,14 @@
   </div>
 </div>
 
-
 <div class="header">
   <div></div>
-
   <div>
     <h2 mat-dialog-title>{{ 'Gallery' | translate }}</h2>
   </div>
   <div>
     <mat-icon mat-button mat-dialog-close class="close-btn">close</mat-icon>
   </div>
-
 </div>
 
 <mat-dialog-content class="mat-typography" style="background-color: #607d8b;">
@@ -44,7 +41,7 @@
         </mat-card-content>
 
         <mat-card-actions align="end">
-          <button class="caption-btn" mat-stroked-button (click)="onCaption(imagen.id)" matTooltip="add caption">
+          <button class="caption-btn" mat-stroked-button (click)="onCaption(imagen.id)" matTooltip="{{ 'Add' | translate }} {{ 'Caption' | translate | lowercase}}">
             <mat-icon>edit</mat-icon>
           </button>
           <button class="delete-btn" mat-stroked-button (click)="onDeleteImage(imagen.id)">
