@@ -2,7 +2,7 @@ import { UtilsService } from './../../../../shared/services/utils.service';
 import { TinyEditorService } from './../../../../shared/services/tiny-editor.service';
 import { environment } from 'src/environments/environment';
 import { ArticleService } from 'src/app/shared/services/article.service';
-import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
@@ -14,7 +14,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss']
 })
-export class EditComponent implements OnInit {
+export class EditComponent implements OnInit, OnDestroy {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
@@ -58,8 +58,6 @@ export class EditComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    console.log(this.data);
-    
     if (typeof this.article !== 'undefined') {
       this.editPostForm.patchValue(this.article);
     } else {
@@ -104,8 +102,6 @@ export class EditComponent implements OnInit {
         if (this.image.size <= environment.IMG_MAX_SIZE) {
           this.editPost(post.id, post);
           this.uploadImage(this.image);
-          // this.router.navigate(['article/' + post.id]);
-          // this.utilsSvc.showSnackBar("Cover image updated", 5000);
         } else {
           msg = this.translateService.instant('ImgMaximumExceed') + " 10MB";
           this.utilsSvc.showSnackBar(msg, 5000);
@@ -125,16 +121,17 @@ export class EditComponent implements OnInit {
     if (this.editPostForm.valid) {
       this.articleService.updateArticle(post.id, post).subscribe({
         next: data => {
+          this.dialog.closeAll();
           setTimeout(() => { 
             this.router.navigate(['article/' + post.id]);
-            this.uploading = false;
-            this.dialog.closeAll();
             msg = this.translateService.instant('crud.edit.ok');
             this.utilsSvc.showSnackBar(msg, 3000);
-          }, 3000);     
+          }, 700);     
         },
         error: err => {
-          this.utilsSvc.showSnackBar(err.error.mensaje, 5000);
+          this.uploading = false;
+          this.dialog.closeAll();
+          this.utilsSvc.showSnackBar(err.error.message, 5000);
         }
       });
     };
@@ -147,17 +144,6 @@ export class EditComponent implements OnInit {
       }
     });
   };
-
-  // handleImageOriginal(event: any) {
-  //   this.image = event.target.files[0];
-  //   const fr = new FileReader();
-  //   fr.onload = (e: any) => {
-  //     this.miniatura = e.target.result;
-  //   };
-  //   if (this.image != null) {
-  //     fr.readAsDataURL(this.image);
-  //   };
-  // };
 
   handleImageOnEditForm(event: any): void {
     this.image = event.target.files[0];
@@ -186,5 +172,8 @@ export class EditComponent implements OnInit {
       };
     };
     fr.readAsDataURL(this.image);
+  }
+  ngOnDestroy(): void {
+      this.uploading = false;
   }
 };

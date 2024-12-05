@@ -130,7 +130,8 @@ export class NewComponent {
           this.redirectTo(this.router.url);
         },
         error: err => {
-          this.utilsSvc.showSnackBar(err.error.mensaje, 3000);
+          this.uploading = false;
+          this.utilsSvc.showSnackBar(err.error.message, 5000);
         }
       });
     };
