@@ -56,7 +56,7 @@ export class DeleteComponent implements OnInit {
           this.uploading = false;
           this.redirectTo(this.router.url);
           this.utilsSvc.showSnackBar(data.mensaje, 3000);
-        }, 600);
+        }, 700);
         this.redirectTo(this.router.url);
       }
     });
