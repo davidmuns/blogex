@@ -14,7 +14,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.scss']
 })
-export class EditComponent implements OnInit, OnDestroy {
+export class EditComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any): void {
@@ -37,7 +37,7 @@ export class EditComponent implements OnInit, OnDestroy {
   public miniatura!: File;
   public articleHtml!: boolean;
   public innerWidth: any;
-  uploading = false;
+  timeout = 600;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article },
@@ -79,8 +79,10 @@ export class EditComponent implements OnInit, OnDestroy {
   };
 
   toNew() {
-    this.router.navigate(['group-form']);
     this.dialog.closeAll();
+    setTimeout(() => { 
+      this.router.navigate(['group-form']);
+    }, this.timeout); 
   };
 
   private initForm(): void {
@@ -117,7 +119,6 @@ export class EditComponent implements OnInit, OnDestroy {
 
   private editPost(id: number, post: Article) {
     let msg = '';
-    this.uploading = true;
     if (this.editPostForm.valid) {
       this.articleService.updateArticle(post.id, post).subscribe({
         next: data => {
@@ -126,10 +127,9 @@ export class EditComponent implements OnInit, OnDestroy {
             this.router.navigate(['article/' + post.id]);
             msg = this.translateService.instant('crud.edit.ok');
             this.utilsSvc.showSnackBar(msg, 3000);
-          }, 700);     
+          }, this.timeout);     
         },
         error: err => {
-          this.uploading = false;
           this.dialog.closeAll();
           this.utilsSvc.showSnackBar(err.error.message, 5000);
         }
@@ -172,8 +172,5 @@ export class EditComponent implements OnInit, OnDestroy {
       };
     };
     fr.readAsDataURL(this.image);
-  }
-  ngOnDestroy(): void {
-      this.uploading = false;
   }
 };
