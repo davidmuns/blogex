@@ -1,10 +1,14 @@
-<mat-card>
-  <mat-card-title>{{ 'NewArticle' | translate }}</mat-card-title>
-  <div *ngIf="uploading" class="spinner-container">
+<!-- Spinner Modal -->
+<div *ngIf="uploading" class="overlay">
+  <div class="spinner-modal">
     <div class="spinner"></div>
     <div>{{ 'crud.article-card.uploading-icon-tool-tip' | translate }}</div>
   </div>
-  <mat-card-content *ngIf="!uploading">
+</div>
+
+<mat-card>
+  <mat-card-title>{{ 'NewArticle' | translate }}</mat-card-title>
+  <mat-card-content>
     <form [formGroup]="newPostForm" (ngSubmit)="onSubmit(newPostForm.value)">
       <h4>{{ 'Title' | translate }}:</h4>
         <mat-form-field class="input-width" appearance="fill">

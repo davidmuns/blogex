@@ -1,6 +1,6 @@
 mat-card {
-    height: 800px;
-    margin: 30px 0 0 30px;
+    height: 900px;
+    margin: 30px 0 3px0 0px;
     padding: 0px;
     border: none;
 
@@ -83,7 +83,7 @@ mat-card-content {
 }
 
 .create-btn-container {
-    display: flex; 
+    display: flex;
     justify-content: center;
     margin-top: 20px;
 
@@ -102,9 +102,3 @@ mat-card-content {
     color: red;
     font-size: .8rem;
 }
-
-// .input-coordinates {
-//     @media(max-width: 500px) {
-//         width: 130px;
-//     }
-// }
