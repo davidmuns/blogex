@@ -9,6 +9,7 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
 import { MapComponent } from './map/map.component';
 import { HomeComponent } from './home.component';
 import { MaterialModule } from 'src/app/material.module';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { MaterialModule } from 'src/app/material.module';
     FormsModule,
     SharedModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    PipesModule
   ],
   exports: [
     FrontArticlesComponent,

@@ -1,12 +1,10 @@
+import { UserBlogModule } from './components/user-blog/user-blog.module';
 // Shared components
 import { CaptionComponent } from './shared/caption/caption.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 
 // Home components
-import { HomeComponent } from './components/home/home.component';
-import { AboutComponent } from './components/home/about/about.component';
-import { FrontArticlesComponent } from './components/home/front-articles/front-articles.component';
+
 
 // CRUD components
 import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
@@ -16,12 +14,8 @@ import { ResetPasswordComponent } from './components/auth/reset-password/reset-p
 
 // Other components
 import { AppComponent } from './app.component';
-import { ArticleComponent } from './components/article/article.component';
-import { ArticleGalleryComponent } from './components/article/article-gallery/articleGallery.component';
-import { UserBlogComponent } from './components/user-blog/user-blog.component';
 import { SearchComponent } from './components/search/search.component';
 import { InfoAppComponent } from './components/info-app/info-app.component';
-import { ArtcileCardsComponent } from './components/crud/article-cards/article-cards.component';
 import { GalleryVideosComponent } from './components/crud/article-cards/gallery-videos/gallery-videos.component';
 
 // Modules
@@ -35,10 +29,6 @@ import { SharedModule } from './shared/shared.module';
 import { interceptorProvider } from './interceptors/token-interceptor.service';
 
 // Pipes
-import { SearchPipe } from './shared/pipes/search.pipe';
-import { PaginatePipe } from './shared/pipes/paginate.pipe';
-import { SafeHtmlPipe } from './shared/pipes/safehtml.pipe';
-import { FormatDatePipe } from './shared/pipes/formatdate.pipe';
 import { SortFileByTypePipe } from './shared/pipes/sort-file-by-type.pipe';
 
 // Angular
@@ -64,6 +54,7 @@ import { InternationalitazionModule } from './internationalitazion.module';
 import { HomeModule } from './components/home/home.module';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { GroupFormRoutingModule } from './components/crud/posts/group-form/group-form-routing.module';
+import { ArticleModule } from './components/article/article.module';
 
 @NgModule({
   declarations: [
@@ -72,15 +63,7 @@ import { GroupFormRoutingModule } from './components/crud/posts/group-form/group
     AppComponent,
     HeaderComponent,
     SearchComponent,
-    ArticleComponent,
-    ArtcileCardsComponent,
-    UserBlogComponent,
-    ArticleGalleryComponent,
     CaptionComponent,
-    PaginatePipe,
-    SearchPipe,
-    FormatDatePipe,
-    SafeHtmlPipe,
     SortFileByTypePipe,
     GalleryVideosComponent,
     InfoAppComponent,
@@ -103,7 +86,9 @@ import { GroupFormRoutingModule } from './components/crud/posts/group-form/group
     ToastrModule.forRoot(), // ToastrModule added
     SharedModule,
     HomeModule,
-    GroupFormRoutingModule
+    GroupFormRoutingModule,
+    UserBlogModule,
+    ArticleModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

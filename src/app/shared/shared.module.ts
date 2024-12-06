@@ -6,25 +6,26 @@ import { MaterialModule } from '../material.module';
 import { FormTemplateComponent } from './form-template/form-template.component';
 import { SortSelectorComponent } from './sort-selector/sort-selector.component';
 import { FooterComponent } from './footer/footer.component';
+import { UserBlogComponent } from '../components/user-blog/user-blog.component';
 
 
 @NgModule({
   declarations: [
     FormTemplateComponent,
     SortSelectorComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     CommonModule,
     InternationalitazionModule,
     ReactiveFormsModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
   ],
   exports: [
     FormTemplateComponent,
     SortSelectorComponent,
-    FooterComponent
+    FooterComponent,
   ]
 })
 export class SharedModule { }

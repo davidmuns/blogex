@@ -27,11 +27,11 @@ import { EditComponent } from '../posts/edit/edit.component';
 export class ArtcileCardsComponent implements OnInit {
   
   sortBy = '';
-  navigationExtras: NavigationExtras = {
-    state: {
-      value: null
-    }
-  };
+  // navigationExtras: NavigationExtras = {
+  //   state: {
+  //     value: null
+  //   }
+  // };
   filterByTitle = '';
   articles: Article[] = [];
   imagenes: Imagen[] = [];
