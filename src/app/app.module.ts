@@ -64,6 +64,7 @@ import { InternationalitazionModule } from './internationalitazion.module';
 import { HomeModule } from './components/home/home.module';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { GroupFormRoutingModule } from './components/crud/posts/group-form/group-form-routing.module';
+import { PipesModule } from './shared/pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -77,10 +78,6 @@ import { GroupFormRoutingModule } from './components/crud/posts/group-form/group
     UserBlogComponent,
     ArticleGalleryComponent,
     CaptionComponent,
-    PaginatePipe,
-    SearchPipe,
-    FormatDatePipe,
-    SafeHtmlPipe,
     SortFileByTypePipe,
     GalleryVideosComponent,
     InfoAppComponent,
@@ -103,7 +100,8 @@ import { GroupFormRoutingModule } from './components/crud/posts/group-form/group
     ToastrModule.forRoot(), // ToastrModule added
     SharedModule,
     HomeModule,
-    GroupFormRoutingModule
+    GroupFormRoutingModule,
+    PipesModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

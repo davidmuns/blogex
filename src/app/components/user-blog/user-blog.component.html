@@ -20,7 +20,7 @@
 
 <!-- Sort selector -->
 <div class="container" style="display: flex; justify-content: center; margin-top: 20px;">
-    <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
+    <!-- <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector> -->
 </div>
 
 <div class="container body pt-5 pb-4 mb-4 rounded ">
@@ -28,7 +28,7 @@
     <ng-container *ngIf="this.articles.length; else noArticles">
 
         <div class="example-card mb-5" data-aos="fade-up" data-aos-duration="1500"
-            *ngFor="let article of this.articles  |  search:this.filterByTitle | paginate:pageSize:pageNumber; index as i"
+            *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber; index as i"
             style="width: 90%;">
             <div class="row g-0">
                 <div class="col-sm-4 col-md-4">
