@@ -1,4 +1,4 @@
-import { UserBlogModule } from './components/user-blog/user-blog.module';
+
 // Shared components
 import { CaptionComponent } from './shared/caption/caption.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -54,7 +54,10 @@ import { InternationalitazionModule } from './internationalitazion.module';
 import { HomeModule } from './components/home/home.module';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { GroupFormRoutingModule } from './components/crud/posts/group-form/group-form-routing.module';
-import { ArticleModule } from './components/article/article.module';
+import { UserBlogComponent } from './components/user-blog/user-blog.component';
+import { PipesModule } from './shared/pipes/pipes.module';
+import { ArticleComponent } from './components/article/article.component';
+import { ArticleGalleryComponent } from './components/article/article-gallery/articleGallery.component';
 
 @NgModule({
   declarations: [
@@ -68,6 +71,9 @@ import { ArticleModule } from './components/article/article.module';
     GalleryVideosComponent,
     InfoAppComponent,
     MyAccountComponent,
+    UserBlogComponent,
+    ArticleComponent,
+    ArticleGalleryComponent
   ],
   imports: [
     InternationalitazionModule,
@@ -87,8 +93,7 @@ import { ArticleModule } from './components/article/article.module';
     SharedModule,
     HomeModule,
     GroupFormRoutingModule,
-    UserBlogModule,
-    ArticleModule
+    PipesModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]
