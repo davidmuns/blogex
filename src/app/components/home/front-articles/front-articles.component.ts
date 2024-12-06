@@ -6,6 +6,7 @@ import { Imagen } from './../../../shared/models/imagen';
 import { Article } from 'src/app/shared/models/article';
 import { Router } from '@angular/router';
 import AOS from 'aos';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-front-articles',
@@ -21,6 +22,9 @@ export class FrontArticlesComponent implements OnInit {
   imagenes: Imagen[] = [];
   imagenesAll: Imagen[] = [];
   sortBy = '';
+  pageSizeOptions: number[] = [4, 8, 12, 16, 20];
+  pageSize: number = 20;
+  pageNumber: number = 1;
 
   constructor(
     private readonly articleService: ArticleService,
@@ -35,6 +39,11 @@ export class FrontArticlesComponent implements OnInit {
   onSortBy(selectedOption: string) {
     this.sortBy = selectedOption;
     this.getArticles();
+  };
+
+  onPageChange(event: PageEvent) {
+    this.pageSize = event.pageSize;
+    this.pageNumber = event.pageIndex + 1;
   };
 
   private getArticles() {

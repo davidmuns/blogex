@@ -24,6 +24,7 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { GalleryImagesComponent } from './article-cards/gallery-images/gallery-images.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { GroupFormComponent } from './posts/group-form/group-form.component';
+import { PipesModule } from 'src/app/shared/pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { GroupFormComponent } from './posts/group-form/group-form.component';
     ReactiveFormsModule,
     InternationalitazionModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    PipesModule
 ]
 })
 export class CrudModule { }
