@@ -45,7 +45,7 @@ import { GroupFormComponent } from './posts/group-form/group-form.component';
     MaterialModule,
     ReactiveFormsModule,
     InternationalitazionModule,
-    SharedModule
+    SharedModule,
 ]
 })
 export class CrudModule { }

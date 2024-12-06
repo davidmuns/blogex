@@ -72,7 +72,7 @@ export class NewComponent {
   // };
 
   handleImageOnNewForm(event: any): void {
-    
+
     this.image = event.target.files[0];
     if (!this.image?.type?.startsWith('image/')) {
       let msg = this.translateService.instant('crud.article-card.valid-img');
@@ -97,12 +97,12 @@ export class NewComponent {
         // Asignar miniatura si la orientación es válida
         this.miniatura = e.target.result;
       };
-      
+
     };
     fr.readAsDataURL(this.image);
   }
 
-  onSubmit(post: Article) { 
+  onSubmit(post: Article) {
     let msg = '';
     if (this.newPostForm.valid && this.image != null) {
       if (this.image.size <= environment.IMG_MAX_SIZE) {
@@ -128,7 +128,8 @@ export class NewComponent {
           this.redirectTo(this.router.url);
         },
         error: err => {
-          this.utilsSvc.showSnackBar(err.error.mensaje, 3000);
+          this.uploading = false;
+          this.utilsSvc.showSnackBar(err.error.message, 5000);
         }
       });
     };

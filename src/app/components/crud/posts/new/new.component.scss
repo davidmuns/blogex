@@ -1,7 +1,8 @@
 mat-card {
-    height: 800px;
-    margin: 30px 0 0 30px;
+    height: 900px;
+    margin: 30px 0 3px0 0px;
     padding: 0px;
+    border: none;
 
     @media(max-width:800px) {
         width: 90%;
@@ -81,44 +82,23 @@ mat-card-content {
     height: 70px;
 }
 
-#createButton {
-    min-width: 130px;
-    width: 30%;
-    margin: 10px 35%;
-    background-color: var(--accent);
-    color: var(--lemon);
-
-    @media(max-width: 350px) {
-        margin: 10px 5%;
-        width: 90%;
-    }
-}
-
-#createButton:hover {
-    color: white;
-}
-
-#moreButton {
+.create-btn-container {
+    display: flex;
+    justify-content: center;
     margin-top: 20px;
-}
 
-form h3 {
-    width: 100px;
-}
+    button {
+        width: 130px;
+        background-color: var(--accent);
+        color: var(--lemon);
+    }
 
-#toEdit {
-    position: absolute;
-    top: 14px;
-    left: 75%
+    button:hover {
+        color: white;
+    }
 }
 
 .error {
     color: red;
     font-size: .8rem;
-}
-
-.input-coordinates {
-    @media(max-width: 500px) {
-        width: 130px;
-    }
 }

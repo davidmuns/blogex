@@ -1,12 +1,16 @@
-<mat-card>
-  <mat-card-title>{{ 'NewArticle' | translate }}</mat-card-title>
-  <div *ngIf="uploading" class="spinner-container">
+<!-- Spinner Modal -->
+<div *ngIf="uploading" class="overlay">
+  <div class="spinner-modal">
     <div class="spinner"></div>
     <div>{{ 'crud.article-card.uploading-icon-tool-tip' | translate }}</div>
   </div>
-  <mat-card-content *ngIf="!uploading">
+</div>
+
+<mat-card>
+  <mat-card-title>{{ 'NewArticle' | translate }}</mat-card-title>
+  <mat-card-content>
     <form [formGroup]="newPostForm" (ngSubmit)="onSubmit(newPostForm.value)">
-      <p>
+      <h4>{{ 'Title' | translate }}:</h4>
         <mat-form-field class="input-width" appearance="fill">
           <mat-label>{{ 'Title' | translate }}</mat-label>
           <input matInput type="text" id="title" formControlName="title" placeholder="{{ 'Title' | translate }}">
@@ -14,7 +18,7 @@
             class="error">
             {{ 'TitleLength' | translate }}</div>
         </mat-form-field>
-      </p>
+
         <div class="containerFile">
           <label>{{ 'CoverImage' | translate }} (max 10MB):</label><br>
           <div *ngIf="this.image" style="margin-top: 5px;">
@@ -30,19 +34,22 @@
             </label>
           </div>
         </div>
-        <p>
+        <h4>{{ 'Caption' | translate }}:</h4>
           <mat-form-field class="input-width" appearance="fill">
             <mat-label>{{ 'Caption' | translate }}</mat-label>
             <input matInput formControlName="caption" placeholder="Information about the picture">
           </mat-form-field>
-        <p style="position: relative; z-index: 1;">
-          <p>
-          <mat-label>{{ 'Text' | translate }}:</mat-label><br><br>
-          <editor formControlName="content" [init]="this.editorConfig"></editor>
-        </p>
-      <h3 matTooltip="Introduce the coordinates to see this route on the map" matTooltipPosition="right">{{
+            <h4>{{ 'Text' | translate }}:</h4>
+            <mat-form-field class="input-width" appearance="fill">
+              <mat-label>{{ 'Text' | translate }}</mat-label>
+              <textarea matInput id="textarea" formControlName="content"
+                placeholder="{{ 'Text' | translate }}"></textarea>
+            </mat-form-field>
+            <!-- <editor [init]="editorConfig"></editor> -->
+      <!-- <h3 matTooltip="Introduce the coordinates to see this route on the map" matTooltipPosition="right">{{
         'Coordinates' | translate }}:
-      </h3>
+      </h3> -->
+      <h4>{{ 'Coordinates' | translate }}:</h4>
       <table class="example-full-width" cellspacing="0">
         <tr>
           <td>
@@ -59,7 +66,9 @@
           </td>
         </tr>
       </table>
-      <button id="createButton" type="submit" mat-raised-button>{{ 'Publish' | translate }}</button>
+      <div class="create-btn-container">
+        <button type="submit" mat-raised-button>{{ 'Publish' | translate }}</button>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>

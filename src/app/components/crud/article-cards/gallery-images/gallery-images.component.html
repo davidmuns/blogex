@@ -1,13 +1,18 @@
+<div *ngIf="uploading" class="overlay">
+  <div class="spinner-modal">
+    <div class="spinner"></div>
+    <div>{{ 'crud.article-card.uploading-icon-tool-tip' | translate }}</div>
+  </div>
+</div>
+
 <div class="header">
   <div></div>
-
   <div>
     <h2 mat-dialog-title>{{ 'Gallery' | translate }}</h2>
   </div>
   <div>
     <mat-icon mat-button mat-dialog-close class="close-btn">close</mat-icon>
   </div>
-
 </div>
 
 <mat-dialog-content class="mat-typography" style="background-color: #607d8b;">
@@ -15,17 +20,17 @@
     'crud.image-list.images' | translate }} {{ this.article.title }}</h1>
   <div class="main-container">
     <div *ngFor="let imagen of this.imagenes; index as i">
-      
+
       <mat-card class="example-card animate__animated animate__backInLeft"
         style="background-color: rgba(0, 0, 0, 0.4);">
-        
+
         <mat-card-header [ngClass]="{'mb-3': imagen.fileType === 'image'}">
-          <mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
+          <mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}<span *ngIf="imagen.coverImg"> {{ "CoverImage" | translate }}</span></mat-card-title>
         </mat-card-header>
-        
+
         <mat-card-content>
           <img *ngIf="imagen.fileType =='image'" mat-card-image [src]="imagen.url" [alt]="imagen.url">
-          <video *ngIf="imagen.fileType =='video'"      
+          <video *ngIf="imagen.fileType =='video'"
           width="250"
           height=""
           [src]="imagen.url"
@@ -36,7 +41,7 @@
         </mat-card-content>
 
         <mat-card-actions align="end">
-          <button class="caption-btn" mat-stroked-button (click)="onCaption(imagen.id)" matTooltip="add caption">
+          <button class="caption-btn" mat-stroked-button (click)="onCaption(imagen.id)" matTooltip="{{ 'Add' | translate }} {{ 'Caption' | translate | lowercase}}">
             <mat-icon>edit</mat-icon>
           </button>
           <button class="delete-btn" mat-stroked-button (click)="onDeleteImage(imagen.id)">
@@ -49,12 +54,7 @@
   </div>
 </mat-dialog-content>
 
-<div *ngIf="uploading" class="spinner-container">
-  <div class="spinner"></div>
-  <div>{{ 'crud.article-card.uploading-icon-tool-tip' | translate }}</div>
-</div>
-
-<mat-dialog-actions *ngIf="!uploading" align="end">
+<mat-dialog-actions align="end">
   <div class="input-div mx-1 p-1">{{ 'crud.article-card.upload-icon-tool-tip' | translate }}: </div>
   <div class="input-div mx-1 p-1 shadow-sm">
     <input type="file" class="file-input" accept="image/*" id="customImage" (change)="handleImage($event)">

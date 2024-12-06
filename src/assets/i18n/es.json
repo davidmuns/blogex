@@ -115,7 +115,8 @@
         "email-send": {
             "fill-blanks": "Por favor, introduce un nombre de usuario o un email",
              "incorrect": "La dirección de correo electrónico o el nombre de usuario introducidos son incorrectos. Verifica tus credenciales.",
-             "valid": "Te hemos enviado un correo electrónico a"
+             "valid": "Te hemos enviado un correo electrónico a",
+             "sending": "Enviando correo electrónico ..."
         },
         "reset-pass": {
             "fill-blanks": "Por favor, rellena los campos vacios",
@@ -134,7 +135,7 @@
             "video-tool-tip": "Vídeos de Youtube",
             "image-tool-tip": "Archivos del usuario",
             "upload-icon-tool-tip": "Subir",
-            "uploading-icon-tool-tip": "Enviando ...",
+            "uploading-icon-tool-tip": "Subiendo ...",
             "deleting-icon-tool-tip": "Eliminando ...",
             "cover-img-orientation": "No se permiten imágenes verticales en la portada del artículo",
             "valid-img": "Por favor, selecciona un archivo de imagen válido",
@@ -152,7 +153,8 @@
             "deleted": "Video eliminado"
         },
         "edit": {
-            "ok": "Artículo actualizado"
+            "ok": "Artículo actualizado",
+             "updating": "Actualizando ..."
         }
     },
     "user-blog": {

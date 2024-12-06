@@ -31,7 +31,7 @@ export class GalleryImagesComponent implements OnInit {
   image!: File;
   username!: string;
   uploading = false;
- 
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article },
     private utilsSvc: UtilsService,
@@ -46,7 +46,7 @@ export class GalleryImagesComponent implements OnInit {
 
   handleImage(event: any) {
     this.image = event.target.files[0];
-    this.onUpload(); 
+    this.onUpload();
   };
 
   onUpload() {
@@ -72,7 +72,7 @@ export class GalleryImagesComponent implements OnInit {
       }
     }
   };
-  
+
   onDeleteImage(id: string){
     this.dialog.open(DeleteComponent, {
       data:  {imgId: id, article: this.article, option: "deleteImage" },
@@ -82,7 +82,7 @@ export class GalleryImagesComponent implements OnInit {
   };
 
   onCaption(id: string) {
-    this.dialog.open(CaptionComponent, { 
+    this.dialog.open(CaptionComponent, {
       data: { imgId: id, article: this.article },
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms'
@@ -100,6 +100,7 @@ export class GalleryImagesComponent implements OnInit {
         this.getImgsByArticleId(this.data.article.id);
       },
       error: err => {
+        this.uploading = false;
         this.utilsSvc.showSnackBar(err.error.message, 5000);
       }
     });

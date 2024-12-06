@@ -51,9 +51,12 @@ export class DeleteComponent implements OnInit {
     this.uploading = true;
     this.articleSvc.deleteArticle(this.data.article.id).subscribe({
       next: data => {
-        this.uploading = false;
-        this.utilsSvc.showSnackBar(data.mensaje, 5000);
         this.dialog.closeAll();
+        setTimeout(() => {
+          this.uploading = false;
+          this.redirectTo(this.router.url);
+          this.utilsSvc.showSnackBar(data.mensaje, 3000);
+        }, 700);
         this.redirectTo(this.router.url);
       }
     });
@@ -67,10 +70,10 @@ export class DeleteComponent implements OnInit {
         this.dialog.closeAll();
         this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
         const msg = this.translateSvc.instant('crud.image-list.deleted');
-        this.utilsSvc.showSnackBar(msg, 5000);
+        this.utilsSvc.showSnackBar(msg, 3000);
       },
       error: err => {
-        this.utilsSvc.showSnackBar(err.error.message, 5000);
+        this.utilsSvc.showSnackBar(err.error.message, 3000);
       }
     })
   };
@@ -131,10 +134,10 @@ export class DeleteComponent implements OnInit {
 
   cancel() {
     this.dialog.closeAll();
-    if(this.data.option === 'deleteImage'){
+    if (this.data.option === 'deleteImage') {
       this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
     }
-    if(this.data.option === 'deleteVideo'){
+    if (this.data.option === 'deleteVideo') {
       this.dialog.open(GalleryVideosComponent, { data: { article: this.data.article } });
     }
   };

@@ -1,3 +1,10 @@
+<div *ngIf="uploading" class="overlay">
+  <div class="spinner-modal">
+    <div class="spinner"></div>
+    <div>{{ 'crud.article-card.deleting-icon-tool-tip' | translate }}</div>
+  </div>
+</div>
+
 <span class="material-icons">warning</span>
 
 <h3>{{ 'YouSure' | translate }}</h3>
@@ -6,18 +13,13 @@
   <p>{{ 'Undone' | translate }}</p>
 </mat-card-content>
 
-<div *ngIf="uploading" class="spinner-container">
-  <div class="spinner"></div>
-  <div>{{ 'crud.article-card.deleting-icon-tool-tip' | translate }}</div>
-</div>
-
-<mat-card-actions *ngIf="!uploading">
+<mat-card-actions>
   <ng-container *ngFor="let button of buttons">
     <ng-container *ngIf="data.option === button.option">
       <button
         type="button"
         class="delete-btn"
-        mat-button 
+        mat-button
         (click)="button.action()">
         {{ 'Delete' | translate }} {{ button.text | lowercase }}
       </button>

@@ -114,7 +114,8 @@
         "email-send": {
             "fill-blanks": "Si us plau, introdueix un nom d'usuari o un email",
             "incorrect": "L'adreça de correu electrònic o el nom d´usuari introduïts són incorrectes. Verifica les teves credencials.",
-            "valid": "T'hem enviat un correu electrònic a"
+            "valid": "T'hem enviat un correu electrònic a",
+            "sending": "Enviant correu electrònic ..."
         },
         "reset-pass": {
             "fill-blanks": "Si us plau, omple els camps buits",
@@ -133,7 +134,7 @@
             "video-tool-tip": "Vídeos de youtube",
             "image-tool-tip": "Arxius del usuari",
             "upload-icon-tool-tip": "Pujar",
-            "uploading-icon-tool-tip": "Enviant ...",
+            "uploading-icon-tool-tip": "Pujant ...",
             "deleting-icon-tool-tip": "Eliminant ...",
             "cover-img-orientation": "No es permeten imatges verticals a la portada de l'article",
             "valid-img": "Si us plau, seleccioneu un fitxer d'imatge vàlid",
@@ -151,7 +152,8 @@
             "deleted": "Video eliminat"
         },
         "edit": {
-            "ok": "Article actualitzat"
+            "ok": "Article actualitzat",
+            "updating": "Actualizant ..."
         }
     },
     "user-blog": {

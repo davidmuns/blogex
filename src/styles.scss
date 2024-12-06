@@ -115,15 +115,21 @@ input[type=number] {
         transform: rotate(360deg);
     }
 }
-
-.spinner-container {
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 1000;
     display: flex;
+    align-items: center;
     justify-content: center;
 }
 
-.spinner-container>div {
-    // background-color: #f1f1f1;
-    margin: 20px 10px 0 10px;
-    padding: 20px;
+.spinner-modal {
+    text-align: center;
+    color: white;
     font-size: 20px;
 }

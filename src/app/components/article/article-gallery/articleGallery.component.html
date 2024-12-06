@@ -14,7 +14,7 @@
 
 <!-- IMAGES & VIDEOS-->
 <div class="main-container">
-	
+
 	<!-- IMAGES -->
 		<div *ngFor="let imagen of imagenes; let i = index"
 			[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
@@ -23,15 +23,15 @@
 				<mat-card-header [ngClass]="{'mb-3': imagen.fileType === 'image'}">
 					<mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
 				</mat-card-header>
-			
+
 				<mat-card-content>
-					<a 
-						type="button" 
-						matTooltip="Preview" 
-						matTooltipPosition="above" 
+					<a
+						type="button"
+						matTooltip="Preview"
+						matTooltipPosition="above"
 						data-bs-toggle="modal"
-						data-bs-target="#exampleModal" 
-						style="cursor: pointer;" 
+						data-bs-target="#exampleModal"
+						style="cursor: pointer;"
 						(click)="openModal(i)">
 							<img *ngIf="imagen.fileType =='image'" mat-card-image [src]="imagen.url" alt="">
 					</a>
@@ -56,35 +56,35 @@
 	[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
 	<h1 *ngIf="i == 0" style="text-align: center;">{{ 'crud.article-card.video-tool-tip' | translate }} ({{ (videos$ | async)?.length }}) </h1>
 	<!-- <h2 *ngIf="i == 0" style="text-align: center;">{{ 'crud.article-card.video-tool-tip' | translate }}</h2> -->
-	
+
 	<!-- https://animate.style/ -->
 	<mat-card class="example-card">
-		
+
 		<mat-card-header>
 			<mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
 		</mat-card-header>
-		
+
 		<mat-card-content>
 			<youtube-player [videoId]="video.youtubeId" [playerVars]="this.playerVars" suggestedQuality="highres"
 				showBeforeIframeApiLoads="true" [width]="260">
 			</youtube-player>
 		</mat-card-content>
-	
+
 	</mat-card>
 
 </div>
-	
+
 		<!-- Modal con el Carousel -->
 	<div id="modal" class="modal" [class.active]="isModalOpen">
 		<div class="modal-content">
 			<span class="close" (click)="closeCarousel()">&times;</span>
 			<div class="carousel">
 				<button class="carousel-control prev" (click)="prevImage()">&#10094;</button>
-				<img 
-					[src]="urlmages[indice]" 
+				<img
+					[src]="urlmages[indice]"
 					class="carousel-image"
-					[class.zoom]="isZoomed"
-					(click)="toggleZoom()"
+					[class.zoom]="isZoomed === indice"
+					(click)="toggleZoom($event, indice)"
 					alt="Carousel Image">
 				<button class="carousel-control next" (click)="nextImage()">&#10095;</button>
 			</div>
@@ -104,7 +104,7 @@
 					(click)="hideGallery()"></button>
 			</div>
 			<div class="modal-body">
-				
+
 				<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
 					<div class="carousel-inner">
 						<div class="carousel-item" data-bs-interval="2000"
