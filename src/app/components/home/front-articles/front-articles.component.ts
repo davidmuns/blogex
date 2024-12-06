@@ -1,7 +1,6 @@
 import { ArticleService } from './../../../shared/services/article.service';
 import { UtilsService } from './../../../shared/services/utils.service';
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Imagen } from './../../../shared/models/imagen';
 import { Article } from 'src/app/shared/models/article';
 import { Router } from '@angular/router';
@@ -23,7 +22,7 @@ export class FrontArticlesComponent implements OnInit {
   imagenesAll: Imagen[] = [];
   sortBy = '';
   pageSizeOptions: number[] = [4, 8, 12, 16, 20];
-  pageSize: number = 4;
+  pageSize: number = 20;
   pageNumber: number = 1;
 
   constructor(

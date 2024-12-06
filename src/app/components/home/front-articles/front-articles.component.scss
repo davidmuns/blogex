@@ -11,11 +11,6 @@ article:hover {
 
 .container-articles {
     background-color: var(--cream);
-    position: relative;
-    top: 0px;
-    left: 0px;
-    // margin-bottom: 664px;
-    z-index: 1;
     padding: 20px 20px 140px;
 
 }
@@ -30,7 +25,6 @@ h1 {
 .example-card {
     width: 100%;
 
-    // border: 1px solid rgb(220, 220, 220);
     div {
         height: 60px;
     }
@@ -104,8 +98,6 @@ h1 {
 .main-container {
     padding: 20px;
     max-width: 1300px;
-    // background-color: white;
-    // background-image: linear-gradient(rgba(2, 7, 12, 0.1), rgba(2, 7, 12, 0.1)), url('../../../../assets/img/wallhaven-kx98xd.jpg');
     background-image: linear-gradient(rgba(2, 7, 12, 0.6), rgba(2, 7, 12, 0.6));
     background-size: cover;
     background-repeat: no-repeat;
@@ -138,9 +130,6 @@ h1 {
         width: 100%;
         padding: 20px 0px;
         margin: 0px;
-        height: 740px;
-        overflow-y: hidden;
-
         article {
             width: 46%;
             margin: 30px 2%;
@@ -155,13 +144,11 @@ h1 {
         margin-bottom: 0px;
 
         @media(max-width: 350px) {
-            //margin-top: 200px;
             padding: 22px 0px;
         }
     }
 
     .main-container {
-        height: 1950px;
         width: 80%;
         margin: 0px 10%;
 
@@ -176,10 +163,3 @@ h1 {
         }
     }
 }
-
-// .video {
-//     position: absolute;
-//     right: 0;
-//     bottom: 0;
-//     z-index: -2;
-// }
