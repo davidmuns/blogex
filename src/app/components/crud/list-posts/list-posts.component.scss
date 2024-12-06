@@ -33,7 +33,7 @@ h3{
 table {
   width: 100%;
   background-color: Gainsboro;
-} 
+}
 mat-form-field mat-label{
   font-size: 14pt;
 }
@@ -56,4 +56,25 @@ mat-paginator{
 }
 button{
   background-color: rgba(230,230,230, 1);
+}
+
+.cover-img {
+  max-width: 100px;
+  height: fit-content;
+  padding: 5px;
+  border-radius: 5%;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.cover-img.zoom {
+  position: relative;
+  transform: scale(6);
+  z-index: 1;
+  @media(max-width: 700px) {
+    transform: scale(3);
+  }
+  @media(max-width: 425px) {
+    transform: scale(3);
+  }
 }

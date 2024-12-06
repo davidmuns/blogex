@@ -11,14 +11,30 @@
       <!-- Name Column -->
       <ng-container matColumnDef="titol">
         <th mat-header-cell *matHeaderCellDef> {{ 'Title' | translate }} </th>
-        <td 
-          class="estilsArt" 
-          mat-cell 
-          *matCellDef="let element" 
-          (click)="onEdit(element)" 
-          matTooltip="{{ 'ClickToEdit' | translate }}" 
-          matTooltipPosition="above"> 
-            {{element.title}} 
+        <td
+          class="estilsArt"
+          mat-cell
+          *matCellDef="let element"
+          (click)="onEdit(element)"
+          matTooltip="{{ 'ClickToEdit' | translate }}"
+          matTooltipPosition="above">
+            {{element.title}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="cover-img">
+        <th mat-header-cell *matHeaderCellDef> {{ 'CoverImage' | translate }} </th>
+        <td
+          mat-cell
+          *matCellDef="let element; let i as index">
+          <img
+          class="cover-img"
+          [class.zoom]="isZoomed === i"
+          (click)="toggleZoom($event, i)"
+          matTooltip="zoom"
+          matTooltipPosition="right"
+          [src]="element.imagenPortada"
+          [alt]="element.caption">
         </td>
       </ng-container>
 

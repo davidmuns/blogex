@@ -27,13 +27,15 @@ export class ListPostsComponent implements OnInit {
   };
 
   showHidePosts: boolean = false;
-  displayedColumns: string[] = ['titol', 'borrar'];
+  displayedColumns: string[] = ['titol', 'cover-img', 'borrar'];
   dataSource = new MatTableDataSource();
   public articleHtml!: boolean;
   public innerWidth: any;
   isAdmin: boolean = false;
   username!: string;
   sortBy = '';
+  isZoomed!: number | null;
+  inputValue: string = '';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild('list') asList!: ElementRef;
@@ -61,7 +63,7 @@ export class ListPostsComponent implements OnInit {
     this.username =this.tokenService.getUsername() as string;
     this.innerWidth = window.innerWidth;
     this.isAdmin =this.tokenService.isAdmin();
-  
+
     if(this.isAdmin){
       this.getAllArticles();
     }else{
@@ -73,6 +75,23 @@ export class ListPostsComponent implements OnInit {
     }else{
       this.articleHtml = false;
     }
+  }
+
+  clearField(): void {
+    this.dataSource.filter = '';
+    this.inputValue = '';
+  }
+
+  // Alterna el zoom al hacer clic en una imagen
+  toggleZoom(event: Event, index: number): void {
+    event.stopPropagation(); // Evita que el evento se propague al documento
+    this.isZoomed = this.isZoomed === index ? null : index;
+  }
+
+  // Detecta clics fuera de las imágenes
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(): void {
+    this.isZoomed = null; // Resetea el zoom
   }
 
   onSortBy(optionSelected: string) {
@@ -124,13 +143,13 @@ export class ListPostsComponent implements OnInit {
   }
 
   onDelete(a: Article){
-    this.dialog.open(DeleteComponent, { 
+    this.dialog.open(DeleteComponent, {
       data: {article: a, option: "deleteArticle"},
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms'
     });
   }
-   
+
   toList(){
     const listPosts = this.asList.nativeElement;
     this.showHidePosts = !this.showHidePosts;
@@ -140,6 +159,6 @@ export class ListPostsComponent implements OnInit {
     }else{
       this.renderer2.setStyle(listPosts, 'height', '0px');
     }
-    
+
   }
 }
