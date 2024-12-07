@@ -3,15 +3,10 @@ import { CrudComponent } from './crud.component';
 import { ListPostsComponent } from './list-posts/list-posts.component';
 import { NewComponent } from './posts/new/new.component';
 import { EditComponent } from './posts/edit/edit.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
 
 // Modules
-import { InternationalitazionModule } from './../../internationalitazion.module';
-import { CommonModule } from '@angular/common';
-import { CrudRoutingModule } from './crud-routing.module';
 import { NgModule } from '@angular/core';
-import { MaterialModule } from 'src/app/material.module';
 import { EditModule } from './posts/edit/edit.module';
 import { NewModule } from './posts/new/new.module';
 
@@ -25,7 +20,7 @@ import { GalleryImagesComponent } from './article-cards/gallery-images/gallery-i
 import { SharedModule } from 'src/app/shared/shared.module';
 import { GroupFormComponent } from './posts/group-form/group-form.component';
 import { ArtcileCardsComponent } from './article-cards/article-cards.component';
-import { PipesModule } from 'src/app/shared/pipes/pipes.module';
+import { CrudRoutingModule } from './crud-routing.module';
 
 @NgModule({
   declarations: [
@@ -40,17 +35,11 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
   ],
   imports: [
     EditorModule,
-    NgxYoutubePlayerModule.forRoot(),
-    CommonModule,
     CrudRoutingModule,
+    // NgxYoutubePlayerModule.forRoot(),
     EditModule,
     NewModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    InternationalitazionModule,
     SharedModule,
-    FormsModule,
-    PipesModule
 ]
 })
 export class CrudModule { }

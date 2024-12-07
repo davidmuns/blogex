@@ -20,17 +20,7 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     HomeComponent,
   ],
   imports: [
-    CommonModule,
-    InternationalitazionModule,
-    FormsModule,
     SharedModule,
-    AppRoutingModule,
-    MaterialModule,
-    PipesModule
-  ],
-  exports: [
-    FrontArticlesComponent,
-    AboutComponent
   ]
 })
 export class HomeModule { }

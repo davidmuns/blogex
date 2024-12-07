@@ -1,10 +1,6 @@
-
 // Shared components
 import { CaptionComponent } from './shared/caption/caption.component';
 import { HeaderComponent } from './shared/header/header.component';
-
-// Home components
-
 
 // CRUD components
 import { AddImageComponent } from './components/crud/posts/add-image/add-image.component';
@@ -28,8 +24,6 @@ import { SharedModule } from './shared/shared.module';
 // Interceptors
 import { interceptorProvider } from './interceptors/token-interceptor.service';
 
-// Pipes
-import { SortFileByTypePipe } from './shared/pipes/sort-file-by-type.pipe';
 
 // Angular
 import { NgModule } from '@angular/core';
@@ -55,7 +49,6 @@ import { HomeModule } from './components/home/home.module';
 import { MyAccountComponent } from './components/my-account/my-account.component';
 import { GroupFormRoutingModule } from './components/crud/posts/group-form/group-form-routing.module';
 import { UserBlogComponent } from './components/user-blog/user-blog.component';
-import { PipesModule } from './shared/pipes/pipes.module';
 import { ArticleComponent } from './components/article/article.component';
 import { ArticleGalleryComponent } from './components/article/article-gallery/articleGallery.component';
 
@@ -67,7 +60,6 @@ import { ArticleGalleryComponent } from './components/article/article-gallery/ar
     HeaderComponent,
     SearchComponent,
     CaptionComponent,
-    SortFileByTypePipe,
     GalleryVideosComponent,
     InfoAppComponent,
     MyAccountComponent,
@@ -92,8 +84,7 @@ import { ArticleGalleryComponent } from './components/article/article-gallery/ar
     ToastrModule.forRoot(), // ToastrModule added
     SharedModule,
     HomeModule,
-    GroupFormRoutingModule,
-    PipesModule
+    GroupFormRoutingModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

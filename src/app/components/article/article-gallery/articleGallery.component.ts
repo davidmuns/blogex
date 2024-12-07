@@ -1,4 +1,3 @@
-import { SortFileByTypePipe } from './../../../shared/pipes/sort-file-by-type.pipe';
 import { UtilsService } from './../../../shared/services/utils.service';
 import { Video } from './../../../shared/models/video';
 import { VideoService } from './../../../shared/services/video.service';

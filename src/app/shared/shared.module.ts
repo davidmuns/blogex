@@ -6,7 +6,8 @@ import { MaterialModule } from '../material.module';
 import { FormTemplateComponent } from './form-template/form-template.component';
 import { SortSelectorComponent } from './sort-selector/sort-selector.component';
 import { FooterComponent } from './footer/footer.component';
-import { UserBlogComponent } from '../components/user-blog/user-blog.component';
+import { PipesModule } from './pipes/pipes.module';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 @NgModule({
@@ -21,11 +22,20 @@ import { UserBlogComponent } from '../components/user-blog/user-blog.component';
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,
+    PipesModule,
+    AppRoutingModule
   ],
   exports: [
     FormTemplateComponent,
     SortSelectorComponent,
     FooterComponent,
+    PipesModule,
+    CommonModule,
+    InternationalitazionModule,
+    ReactiveFormsModule,
+    FormsModule,
+    MaterialModule,
+    AppRoutingModule
   ]
 })
 export class SharedModule { }

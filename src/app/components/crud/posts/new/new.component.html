@@ -38,6 +38,9 @@
           <mat-form-field class="input-width" appearance="fill">
             <mat-label>{{ 'Caption' | translate }}</mat-label>
             <input matInput formControlName="caption" placeholder="Information about the picture">
+            <div *ngIf="newPostForm.get('caption')?.touched && newPostForm.get('caption')?.errors?.['maxlength']"
+              class="error">
+              {{ 'Pie de foto demasiado largo' | translate }}</div>
           </mat-form-field>
             <h4>{{ 'Text' | translate }}:</h4>
             <mat-form-field class="input-width" appearance="fill">
