@@ -41,15 +41,15 @@ export class FormTemplateComponent implements OnInit {
 
   private initFormLogin() {
     this.form = this.fb.group({
-      nombreUsuario: ['', Validators.required],
+      nombreUsuario: ['', [Validators.required, Validators.maxLength(20)]],
       password: ['', Validators.required]
     });
   }
 
   private initFormSignup() {
     this.form = this.fb.group({
-      nombreUsuario: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      nombreUsuario: ['', [Validators.required, Validators.maxLength(20)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(30)]],
       password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]]
     });
   }

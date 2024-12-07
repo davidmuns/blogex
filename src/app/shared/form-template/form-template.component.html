@@ -13,6 +13,10 @@
             *ngIf="form.get('nombreUsuario')?.touched && form.get('nombreUsuario')?.hasError('required')">
             {{ 'Required' | translate }}
         </div>
+        <div *ngIf="form.get('nombreUsuario')?.touched && form.get('nombreUsuario')?.errors?.['maxlength']"
+           class="error">
+           {{ 'TitleLength' | translate }}
+        </div>
     </mat-form-field>
     <!-- EMAIL INPUT -->
     <mat-form-field *ngIf="this.formType === 'signup'" class="input-witdh" appearance="fill">
@@ -23,6 +27,10 @@
         </div>
         <div *ngIf="form.get('email')?.touched && form.get('email')?.hasError('required')" class="error">
             {{ 'Required' | translate}}</div>
+        <div *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['maxlength']"
+           class="error">
+           {{ 'TitleLength' | translate }}
+        </div>
     </mat-form-field>
     <!-- PASSWORD INPUT -->
     <mat-form-field class="input-witdh" appearance="fill">

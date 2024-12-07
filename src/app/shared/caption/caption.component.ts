@@ -29,7 +29,7 @@ export class CaptionComponent implements OnInit {
 
   private initform(): void {
     this.captionForm = this.fb.group({
-      caption: ['', Validators.required]
+      caption: ['', [Validators.required, Validators.maxLength(25)]]
     });
   };
 

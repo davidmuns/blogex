@@ -1,13 +1,25 @@
 <div class="container">
-  <form [formGroup]="this.captionForm" (ngSubmit)="onSubmit(captionForm.value)">
+  <form [formGroup]="captionForm" (ngSubmit)="onSubmit(captionForm.value)">
     <h3>{{ 'Add' | translate }} {{ 'Caption' | translate | lowercase}}</h3>
     <p>
       <mat-form-field appearance="fill">
         <mat-label>{{ 'Caption' | translate }}</mat-label>
         <input matInput placeholder="{{ 'Insert' | translate }} {{ 'Caption' | translate | lowercase }}"
           formControlName="caption" required>
+          <button 
+                *ngIf="captionForm.get('caption')?.value" 
+                matSuffix 
+                mat-icon-button 
+                class="clear-btn" 
+                aria-label="Clear" 
+                (click)="captionForm.get('caption')?.reset()">
+                <mat-icon>close</mat-icon>
+           </button>
+           <div *ngIf="captionForm.get('caption')?.touched && captionForm.get('caption')?.errors?.['maxlength']"
+           class="error">
+           {{ 'TitleLength' | translate }}</div>
       </mat-form-field>
     </p>
-    <button type="submit" mat-raised-button>{{ 'SaveChanges' | translate }}</button>
+    <button class="submit-btn" type="submit" mat-raised-button>{{ 'SaveChanges' | translate }}</button>
   </form>
 </div>

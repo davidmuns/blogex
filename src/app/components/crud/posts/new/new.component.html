@@ -14,6 +14,15 @@
         <mat-form-field class="input-width" appearance="fill">
           <mat-label>{{ 'Title' | translate }}</mat-label>
           <input matInput type="text" id="title" formControlName="title" placeholder="{{ 'Title' | translate }}">
+            <button 
+              *ngIf="newPostForm.get('title')?.value" 
+              matSuffix 
+              mat-icon-button 
+              class="clear-btn" 
+              aria-label="Clear" 
+              (click)="newPostForm.get('title')?.reset()">
+              <mat-icon>close</mat-icon>
+            </button>
           <div *ngIf="newPostForm.get('title')?.touched && newPostForm.get('title')?.errors?.['maxlength']"
             class="error">
             {{ 'TitleLength' | translate }}</div>
@@ -37,6 +46,15 @@
           <mat-form-field class="input-width" appearance="fill">
             <mat-label>{{ 'Caption' | translate }}</mat-label>
             <input matInput formControlName="caption" placeholder="Information about the picture">
+              <button 
+                *ngIf="newPostForm.get('caption')?.value" 
+                matSuffix 
+                mat-icon-button 
+                class="clear-btn" 
+                aria-label="Clear" 
+                (click)="newPostForm.get('caption')?.reset()">
+                <mat-icon>close</mat-icon>
+              </button>
             <div *ngIf="newPostForm.get('caption')?.touched && newPostForm.get('caption')?.errors?.['maxlength']"
               class="error">
               {{ 'TitleLength' | translate }}</div>
@@ -58,12 +76,30 @@
             <mat-form-field class="input-coordinates" appearance="fill">
               <mat-label>{{ 'Latitude' | translate }}</mat-label>
               <input type="number" matInput formControlName="latitude">
+                <button 
+                  *ngIf="newPostForm.get('latitude')?.value" 
+                  matSuffix 
+                  mat-icon-button 
+                  class="clear-btn" 
+                  aria-label="Clear" 
+                  (click)="newPostForm.get('latitude')?.reset()">
+                  <mat-icon>close</mat-icon>
+                </button>
             </mat-form-field>
           </td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <td>
             <mat-form-field class="input-coordinates" appearance="fill">
               <mat-label>{{ 'Longitude' | translate }}</mat-label>
               <input type="number" matInput formControlName="longitude">
+                <button 
+                    *ngIf="newPostForm.get('longitude')?.value" 
+                    matSuffix 
+                    mat-icon-button 
+                    class="clear-btn" 
+                    aria-label="Clear" 
+                    (click)="newPostForm.get('longitude')?.reset()">
+                    <mat-icon>close</mat-icon>
+                </button>
             </mat-form-field>
           </td>
         </tr>
