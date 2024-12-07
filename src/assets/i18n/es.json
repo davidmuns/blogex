@@ -131,7 +131,7 @@
     "crud": {
         "article-card": {
             "articles-of": "Artículos de",
-            "search": "Buscar por título",
+            "search": "Buscar por título o username",
             "video-tool-tip": "Vídeos de Youtube",
             "image-tool-tip": "Archivos del usuario",
             "upload-icon-tool-tip": "Subir",

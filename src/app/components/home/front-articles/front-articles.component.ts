@@ -24,6 +24,7 @@ export class FrontArticlesComponent implements OnInit {
   pageSizeOptions: number[] = [4, 8, 16, 20, 24];
   pageSize: number = 8;
   pageNumber: number = 1;
+  filterByTitle = '';
 
   constructor(
     private readonly articleService: ArticleService,

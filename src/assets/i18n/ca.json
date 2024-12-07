@@ -3,8 +3,8 @@
     "Language": "Idioma",
     "Login": "Inicia sessió",
     "Logout": "Tanca sessió",
-    "Signup": "Registra´t",
-    "Home": "Pàgina d´inici",
+    "Signup": "Registra't",
+    "Home": "Pàgina d'inici",
     "Blog": "Blog",
     "BlogOf": "El blog de",
     "MyArticles": "Els meus articles",
@@ -77,7 +77,7 @@
         "error": "Ja existeix un compte amb aquest correu electrònic",
         "valid": "Hem actualitzat la teva informació personal",
         "myAccount": "El meu compte",
-        "updateUsernameWarm": "El nom d´usuari no es por canviar",
+        "updateUsernameWarm": "El nom d'usuari no es por canviar",
         "Optional": "Opcional",
         "PersonalInformation": "Informació personal",
         "Account": "Compte",
@@ -85,12 +85,12 @@
         "cancelAccountWarm": "El vostre compte es desactivarà immediatament després de la cancel·lació, i tots els actius fitxers s'eliminaran de forma permanent. Un cop eliminats, aquests fitxers no es podran recuperar."
     },
     "header": {
-        "articles-editor": "Editor d´articles",
+        "articles-editor": "Editor d'articles",
         "my-articles": "Els meus articles",
         "spanish": "Castellà",
         "catalan": "Català",
         "english": "Anglès",
-        "help": "Informació d´ajuda",
+        "help": "Informació d'ajuda",
         "see-you": "Fins aviat"
     },
     "about": {
@@ -100,7 +100,7 @@
     "auth": {
         "login": {
             "fill-blanks": "Si us plau, omple els camps buits",
-            "wrong-data": "No reconeixem el nom d´usuari, el correu electrònic o la contrasenya. Si us plau, comprova que les teves dades són correctes o registra't primer si encara no tens un compte.",
+            "wrong-data": "No reconeixem el nom d'usuari, el correu electrònic o la contrasenya. Si us plau, comprova que les teves dades són correctes o registra't primer si encara no tens un compte.",
             "user-saved": "Usuari registrat amb èxit. Si us plau, introdueix les teves dades per iniciar sessió.",
             "welcome": "Benvingut de nou"
         },
@@ -108,12 +108,12 @@
             "fill-blanks": "Si us plau, omple els camps buits",
             "pass-length": "La contrasenya ha de tenir com a mínim 8 caracters i ha de contenir números i lletres",
             "email-exists": "Aquest correu electrònic ja existeix",
-            "username-exists": "Aquest nom d´usuari ja existeix",
+            "username-exists": "Aquest nom d'usuari ja existeix",
             "invalid-email": "Ha de ser un correu electrónic vàlid"
         },
         "email-send": {
             "fill-blanks": "Si us plau, introdueix un nom d'usuari o un email",
-            "incorrect": "L'adreça de correu electrònic o el nom d´usuari introduïts són incorrectes. Verifica les teves credencials.",
+            "incorrect": "L'adreça de correu electrònic o el nom d'usuari introduïts són incorrectes. Verifica les teves credencials.",
             "valid": "T'hem enviat un correu electrònic a",
             "sending": "Enviant correu electrònic ..."
         },
@@ -130,7 +130,7 @@
     "crud": {
         "article-card": {
             "articles-of": "Articles de",
-            "search": "Buscar per títol",
+            "search": "Buscar per títol o nom d'usuari",
             "video-tool-tip": "Vídeos de youtube",
             "image-tool-tip": "Arxius del usuari",
             "upload-icon-tool-tip": "Pujar",
@@ -165,7 +165,7 @@
         "older": "Data (Més antic primer)",
         "newer": "Data (Més recent primer)",
         "none": "No ordenar",
-        "goto-article": "Anar a l´article"
+        "goto-article": "Anar a l'article"
     },
     "footer": {
         "text": "La tecnologia juga un paper fonamental a les nostres vides, és una fita en constant evolució. La fem servir en cada context del nostre dia a dia, sense gaire reflexió; i ha passat de ser un luxe a esdevenir una necessitat.",
@@ -187,11 +187,11 @@
     },
     "info": {
         "help": "Ajuda",
-        "account": "Crear compte d´usuari",
+        "account": "Crear compte d'usuari",
         "pass": "Restablir contrasenya",
         "create": "Crear article",
         "update": "Actualitzar article",
-        "delete": "Eliminar compte d´usuari",
+        "delete": "Eliminar compte d'usuari",
         "add": "Afegir imatges i vídeos"
     }
 }

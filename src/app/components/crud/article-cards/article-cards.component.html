@@ -5,6 +5,7 @@
     aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
   </mat-paginator>
 
+  <!-- search -->
   <div class="container search d-flex" style="background-color: transparent;">
     <input class="form-control" type="search" placeholder="{{ 'crud.article-card.search' | translate }}"
       aria-label="Search" [(ngModel)]="this.filterByTitle">
