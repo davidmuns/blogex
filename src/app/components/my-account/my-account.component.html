@@ -12,9 +12,19 @@
                             <mat-form-field appearance="fill" class="full-width">
                                 <mat-label>{{ 'Name' | translate }}</mat-label>
                                 <input matInput formControlName="nombre" placeholder="{{ 'Name' | translate }}">
-                                <mat-error *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched">
-                                    El username es obligatorio.
-                                </mat-error>
+                                <button 
+                                    *ngIf="form.get('nombre')?.value" 
+                                    matSuffix 
+                                    mat-icon-button 
+                                    class="clear-btn" 
+                                    aria-label="Clear" 
+                                    (click)="form.get('nombre')?.reset()">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                                <div *ngIf="form.get('nombre')?.touched && form.get('nombre')?.errors?.['maxlength']"
+                                    class="error">
+                                    {{ 'TitleLength' | translate }}
+                                </div>
                             </mat-form-field>
                             <h4>{{ 'Username' | translate }}</h4>
                             <mat-form-field appearance="fill" class="full-width">
@@ -28,6 +38,19 @@
                             <mat-form-field appearance="fill" class="full-width" disabled>
                                 <mat-label>{{ 'Email' | translate }}</mat-label>
                                 <input matInput type="email" formControlName="email" placeholder="{{ 'Email' | translate }}" required>
+                                <button 
+                                    *ngIf="form.get('email')?.value" 
+                                    matSuffix 
+                                    mat-icon-button 
+                                    class="clear-btn" 
+                                    aria-label="Clear" 
+                                    (click)="form.get('email')?.reset()">
+                                    <mat-icon>close</mat-icon>
+                                </button>
+                                <div *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['maxlength']"
+                                    class="error">
+                                    {{ 'TitleLength' | translate }}
+                                </div>
                                 <mat-error *ngIf="form.get('email')?.invalid && form.get('email')?.touched">
                                     {{ 'auth.signup.invalid-email' | translate }}
                                 </mat-error>

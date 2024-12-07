@@ -42,9 +42,9 @@ export class MyAccountComponent implements OnInit {
 
   private initForm() {
     this.form = this.fb.group({
-      nombre: [''],
+      nombre: ['', Validators.maxLength(30)],
       nombreUsuario: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(30)]],
     });
     this.form.get('nombreUsuario')?.disable();
   }
