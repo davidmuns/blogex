@@ -2,11 +2,12 @@ import { UtilsService } from './../../../../shared/services/utils.service';
 import { TinyEditorService } from './../../../../shared/services/tiny-editor.service';
 import { environment } from 'src/environments/environment';
 import { ArticleService } from 'src/app/shared/services/article.service';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { TranslateService } from '@ngx-translate/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit',
@@ -36,8 +37,11 @@ export class EditComponent implements OnInit {
   public miniatura!: File;
   public articleHtml!: boolean;
   public innerWidth: any;
+  timeout = 600;
 
   constructor(
+    @Inject(MAT_DIALOG_DATA) public data: { article: Article },
+    private readonly dialog: MatDialog,
     private utilsSvc: UtilsService,
     tinyEditorSvc: TinyEditorService,
     private articleService: ArticleService,
@@ -48,7 +52,7 @@ export class EditComponent implements OnInit {
       this.editorConfig = config;
     });
     const navigation = router.getCurrentNavigation();
-    this.article = navigation?.extras?.state;
+    this.article = data.article;
     this.reload();
     this.initForm();
   };
@@ -75,15 +79,18 @@ export class EditComponent implements OnInit {
   };
 
   toNew() {
-    this.router.navigate(['group-form']);
+    this.dialog.closeAll();
+    setTimeout(() => { 
+      this.router.navigate(['group-form']);
+    }, this.timeout); 
   };
 
   private initForm(): void {
     this.editPostForm = this.fBuilder.group({
       id: ['', Validators.required],
-      title: ['', [Validators.required, Validators.maxLength(60)]],
+      title: ['', [Validators.required, Validators.maxLength(25)]],
+      caption: ['', [Validators.required, Validators.maxLength(20)]],
       //img1: [''],
-      caption: ['', Validators.required],
       content: ['', Validators.required],
       longitude: ['', Validators.required],
       latitude: ['', Validators.required]
@@ -97,15 +104,12 @@ export class EditComponent implements OnInit {
         if (this.image.size <= environment.IMG_MAX_SIZE) {
           this.editPost(post.id, post);
           this.uploadImage(this.image);
-          this.router.navigate(['article/' + post.id]);
-          this.utilsSvc.showSnackBar("Cover image updated", 5000);
         } else {
-          msg = this.translateService.instant('ImgMaximumExceed') + " 5MB";
+          msg = this.translateService.instant('ImgMaximumExceed') + " 10MB";
           this.utilsSvc.showSnackBar(msg, 5000);
         };
       } else {
         this.editPost(post.id, post);
-        this.router.navigate(['article/' + post.id]);
       };
     } else {
       msg = this.translateService.instant('FillBlanks');
@@ -118,11 +122,16 @@ export class EditComponent implements OnInit {
     if (this.editPostForm.valid) {
       this.articleService.updateArticle(post.id, post).subscribe({
         next: data => {
-          msg = this.translateService.instant('crud.edit.ok');
-          this.utilsSvc.showSnackBar(msg, 3000);
+          this.dialog.closeAll();
+          setTimeout(() => { 
+            this.router.navigate(['article/' + post.id]);
+            msg = this.translateService.instant('crud.edit.ok');
+            this.utilsSvc.showSnackBar(msg, 3000);
+          }, this.timeout);     
         },
         error: err => {
-          this.utilsSvc.showSnackBar(err.error.mensaje, 5000);
+          this.dialog.closeAll();
+          this.utilsSvc.showSnackBar(err.error.message, 5000);
         }
       });
     };
@@ -135,17 +144,6 @@ export class EditComponent implements OnInit {
       }
     });
   };
-
-  // handleImageOriginal(event: any) {
-  //   this.image = event.target.files[0];
-  //   const fr = new FileReader();
-  //   fr.onload = (e: any) => {
-  //     this.miniatura = e.target.result;
-  //   };
-  //   if (this.image != null) {
-  //     fr.readAsDataURL(this.image);
-  //   };
-  // };
 
   handleImageOnEditForm(event: any): void {
     this.image = event.target.files[0];

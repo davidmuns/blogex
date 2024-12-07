@@ -1,10 +1,19 @@
 .container {
-    max-width: 70%;
+    width: 900px;
+    height: auto;
     margin-top: 30px;
     margin-bottom: 30px;
+    margin-left: 0px;
+    margin-right: 0px;
+
     @media(max-width:800px) {
         max-width: 100%;
     }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
 }
 
 mat-card {
@@ -12,11 +21,6 @@ mat-card {
     width: 100%;
     margin: 0px 1%;
     padding: 0px;
-
-    @media(max-width:800px) {
-        width: 90%;
-        margin: 0px 5%;
-    }
 }
 
 mat-card-title {
@@ -26,10 +30,24 @@ mat-card-title {
 }
 
 mat-card-content {
-    padding: 10px 30px;
+    padding: 10px 20px;
 
-    @media(max-width: 600px) {
-        padding-left: 10px;
+    @media(max-width: 425px) {
+        padding: 10px 10px;
+    }
+
+    @media(max-width: 320px) {
+        padding: 10px 5px;
+    }
+}
+
+.coordinates-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    @media(max-width: 426px) {
+        flex-direction: column;
     }
 }
 
@@ -38,17 +56,7 @@ mat-card-content {
 }
 
 .input-coordinates {
-    @media(max-width: 500px) {
-        width: 170px;
-    }
-
-    @media(max-width: 400px) {
-        width: 120px;
-    }
-
-    @media(max-width: 300px) {
-        width: 80px;
-    }
+    width: 170px;
 }
 
 .containerFile {
@@ -90,29 +98,21 @@ mat-card-content {
     height: 70px;
 }
 
-#createButton {
-    min-width: 130px;
-    width: 30%;
-    margin: 10px 35%;
-    background-color: var(--accent);
-    color: var(--lemon);
-
-    @media(max-width: 350px) {
-        margin: 10px 5%;
-        width: 90%;
-    }
-}
-
-#createButton:hover {
-    color: white;
-}
-
-#moreButton {
+.save-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
     margin-top: 20px;
-}
 
-form h3 {
-    width: 100px;
+    button {
+        background-color: var(--accent);
+        color: var(--lemon);
+    }
+
+    button:hover {
+        color: white;
+    }
+
 }
 
 .prev-image {
@@ -123,7 +123,8 @@ form h3 {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
-    button{
+
+    button {
         color: var(--accent);
     }
 }

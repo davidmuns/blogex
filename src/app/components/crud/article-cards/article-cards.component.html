@@ -1,5 +1,4 @@
 <!-- <body>
-
   <h1>{{ 'crud.article-card.articles-of' | translate }} {{ this.username }} </h1>
 
 
@@ -11,7 +10,6 @@
     <input class="form-control" type="search" placeholder="{{ 'crud.article-card.search' | translate }}"
       aria-label="Search" [(ngModel)]="this.filterByTitle">
   </div>
-
 
   <div style="display: flex; justify-content: center; margin-top: 20px;">
     <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
@@ -52,7 +50,6 @@
       </mat-card>
     </div>
   </div>
-
 
   <ng-template #noArticles>
     <div class="container shadow">
@@ -120,7 +117,6 @@
               (click)="onEdit(article)">
               <mat-icon>edit</mat-icon>
             </button>
-
             <button mat-button matTooltip="{{ 'crud.article-card.video-tool-tip' | translate }}"
               (click)="onOpenVideosGallery(article)" matTooltip="gallery view">
               <mat-icon>movie_creation</mat-icon>
@@ -131,7 +127,6 @@
             </button>
           <!-- </mat-card-actions>
           </mat-card> -->
-
         </div>
 
       </div>

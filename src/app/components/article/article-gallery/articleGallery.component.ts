@@ -1,4 +1,3 @@
-import { SortFileByTypePipe } from './../../../shared/pipes/sort-file-by-type.pipe';
 import { UtilsService } from './../../../shared/services/utils.service';
 import { Video } from './../../../shared/models/video';
 import { VideoService } from './../../../shared/services/video.service';
@@ -25,7 +24,6 @@ export class ArticleGalleryComponent implements OnInit {
     cc_lang_pref: 'es'
   }
   isZoomed!: number | null;
-
   constructor(
     private readonly articleSvc: ArticleService,
     private readonly utilsSvc: UtilsService,

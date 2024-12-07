@@ -86,6 +86,8 @@ export class NewComponent {
 
   onSubmit(post: Article) {
     let msg = '';
+    console.log(post);
+    
     if (this.newPostForm.valid && this.image != null) {
       if (this.image.size <= environment.IMG_MAX_SIZE) {
         const username = this.tokenService.getUsername() as string;
