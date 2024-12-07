@@ -3,15 +3,10 @@ import { CrudComponent } from './crud.component';
 import { ListPostsComponent } from './list-posts/list-posts.component';
 import { NewComponent } from './posts/new/new.component';
 import { EditComponent } from './posts/edit/edit.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DeleteComponent } from './delete/delete.component';
 
 // Modules
-import { InternationalitazionModule } from './../../internationalitazion.module';
-import { CommonModule } from '@angular/common';
-import { CrudRoutingModule } from './crud-routing.module';
 import { NgModule } from '@angular/core';
-import { MaterialModule } from 'src/app/material.module';
 import { EditModule } from './posts/edit/edit.module';
 import { NewModule } from './posts/new/new.module';
 
@@ -19,12 +14,13 @@ import { NewModule } from './posts/new/new.module';
 import { NgxYoutubePlayerModule } from 'ngx-youtube-player';
 
 // TinyMCE doc: https://www.tiny.cloud/docs/tinymce/6/angular-pm/
-// youtube tutorial: https://www.youtube.com/watch?v=YqEDASVUEPc&list=PLSVW22jAG8pCwwM3tjSMfwBKYIS6_fP-F&index=1
+// https://www.youtube.com/watch?v=HvsF0xgyoHI
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { GalleryImagesComponent } from './article-cards/gallery-images/gallery-images.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { GroupFormComponent } from './posts/group-form/group-form.component';
-import { PipesModule } from 'src/app/shared/pipes/pipes.module';
+import { ArtcileCardsComponent } from './article-cards/article-cards.component';
+import { CrudRoutingModule } from './crud-routing.module';
 
 @NgModule({
   declarations: [
@@ -34,21 +30,16 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
     EditComponent,
     DeleteComponent,
     GalleryImagesComponent,
-    GroupFormComponent
+    GroupFormComponent,
+    ArtcileCardsComponent
   ],
   imports: [
     EditorModule,
-    NgxYoutubePlayerModule.forRoot(),
-    CommonModule,
     CrudRoutingModule,
+    // NgxYoutubePlayerModule.forRoot(),
     EditModule,
     NewModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    InternationalitazionModule,
     SharedModule,
-    FormsModule,
-    PipesModule
 ]
 })
 export class CrudModule { }

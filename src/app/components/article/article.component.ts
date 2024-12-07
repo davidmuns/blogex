@@ -6,6 +6,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { TokenService } from 'src/app/shared/services/token.service';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -23,7 +24,7 @@ export class ArticleComponent implements OnInit {
   idPost!: number;
   temp!: number;
   username!: string;
-  iconUrl: string = ''; 
+  iconUrl: string = '';
 
   constructor(
     private readonly utilsSvc: UtilsService,
@@ -32,7 +33,8 @@ export class ArticleComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly articleSvc: ArticleService,
     public tokenSvc: TokenService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {

@@ -11,7 +11,7 @@ import { Imagen } from 'src/app/shared/models/imagen';
 // Angular
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
-// Components 
+// Components
 import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
 import { GalleryVideosComponent } from './gallery-videos/gallery-videos.component';
 // Animate on scroll library => https://michalsnik.github.io/aos/
@@ -24,7 +24,7 @@ import AOS from 'aos';
   styleUrls: ['./article-cards.component.scss']
 })
 export class ArtcileCardsComponent implements OnInit {
-  
+
   sortBy = '';
   navigationExtras: NavigationExtras = {
     state: {
@@ -39,8 +39,8 @@ export class ArtcileCardsComponent implements OnInit {
   miniatura!: Imagen;
   username!: string;
   articleId!: number;
-  pageSizeOptions: number[] = [5, 10, 15, 20, 25];
-  pageSize: number = 10;
+  pageSizeOptions: number[] = [4, 8, 16, 20, 24];
+  pageSize: number = 8;
   pageNumber: number = 1;
   isAdmin: boolean = false;
   sort: boolean = false;
@@ -92,14 +92,14 @@ export class ArtcileCardsComponent implements OnInit {
   };
 
   onOpenVideosGallery(a: Article) {
-    this.dialog.open(GalleryVideosComponent, { 
+    this.dialog.open(GalleryVideosComponent, {
       data: { article: a },
-      exitAnimationDuration: '500ms' 
+      exitAnimationDuration: '500ms'
     });
   };
 
   onOpenImagesGallery(a: Article) {
-    this.dialog.open(GalleryImagesComponent, { 
+    this.dialog.open(GalleryImagesComponent, {
       data: { article: a },
       exitAnimationDuration: '500ms'
     });

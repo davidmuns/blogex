@@ -45,31 +45,13 @@ export class NewComponent {
 
   private initForm(): void {
     this.newPostForm = this.fBuilder.group({
-      title: ['', [Validators.required, Validators.maxLength(60)]],
-      caption: ['', Validators.required],
+      title: ['', [Validators.required, Validators.maxLength(25)]],
+      caption: ['', [Validators.required, Validators.maxLength(20)]],
       content: ['', Validators.required],
       longitude: ['', Validators.required],
       latitude: ['', Validators.required]
     });
   };
-
-  // handleImageOnNewForm(event: any) {
-  //   this.image = event.target.files[0];
-
-  //    if (!this.image?.type?.startsWith('image/')) {
-  //     let msg = this.translateService.instant('crud.article-card.valid-img');
-  //     this.utilsSvc.showSnackBar(msg, 3000);
-  //     event.target.value = '';
-  //     return;
-  //   }
-  //   const fr = new FileReader();
-  //   fr.onload = (e: any) => {
-  //     this.miniatura = e.target.result;
-  //   };
-  //   if (this.image != null) {
-  //     fr.readAsDataURL(this.image);
-  //   };
-  // };
 
   handleImageOnNewForm(event: any): void {
 

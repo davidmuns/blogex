@@ -16,10 +16,9 @@ article:hover {
 }
 
 h1 {
-    margin: 40px 0px 50px;
-    text-align: center;
     color: var(--accent);
-    // font-weight: bold;
+    margin-top: 30px;
+    text-align: center;
 }
 
 .example-card {
@@ -115,9 +114,9 @@ h1 {
 
 }
 
-.main-container>article {
+.main-container> article {
     width: 23%;
-    margin: 80px 1%;
+    margin: 25px 1%;
     padding: 0px;
 }
 
@@ -162,4 +161,8 @@ h1 {
             margin: 10px 3%;
         }
     }
+}
+
+mat-paginator {
+    background-color: transparent;
 }

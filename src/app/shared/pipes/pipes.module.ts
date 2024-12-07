@@ -4,12 +4,16 @@ import { CommonModule } from '@angular/common';
 import { PaginatePipe } from './paginate.pipe';
 import { FormatDatePipe } from './formatdate.pipe';
 import { SafeHtmlPipe } from './safehtml.pipe';
-
-
-
+import { SortFileByTypePipe } from './sort-file-by-type.pipe';
 
 @NgModule({
-  declarations: [PaginatePipe, SearchPipe, FormatDatePipe, SafeHtmlPipe],
+  declarations: [
+    PaginatePipe,
+    SearchPipe,
+    FormatDatePipe,
+    SafeHtmlPipe,
+    SortFileByTypePipe
+  ],
   imports: [
     CommonModule
   ],
