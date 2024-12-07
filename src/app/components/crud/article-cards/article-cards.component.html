@@ -1,87 +1,5 @@
-<!-- <body>
-  <h1>{{ 'crud.article-card.articles-of' | translate }} {{ this.username }} </h1>
-
-
-  <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
-  </mat-paginator>
-
-  <div class="container search d-flex" style="background-color: transparent;">
-    <input class="form-control" type="search" placeholder="{{ 'crud.article-card.search' | translate }}"
-      aria-label="Search" [(ngModel)]="this.filterByTitle">
-  </div>
-
-  <div style="display: flex; justify-content: center; margin-top: 20px;">
-    <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
-  </div>
-
-  <div class="container cont-cards mb-4 rounded " *ngIf="this.articles.length > 0; else noArticles">
-
-    <div *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber; index as i" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1500">
-      <mat-card class="example-card" style="background-color: #607D8B">
-        <mat-card-header style="margin-bottom: 20px;">
-
-          <mat-card-title style="color: rgba(255, 255, 255);"><span>{{
-              article?.title }}</span></mat-card-title>
-
-        </mat-card-header>
-        <a routerLink="/article/{{ article.id }}" style="cursor: pointer;">
-          <img mat-card-image [src]="article.imagenPortada" alt="Imagen de protada"
-          mat-button matTooltip="{{ 'user-blog.goto-article' | translate }}" matTooltipPosition="above">
-        </a>
-        <mat-card-content>
-
-        </mat-card-content>
-        <mat-card-actions align="end">
-          <button mat-button matTooltip="{{ 'EditArticle' | translate }}"
-            (click)="onEdit(article)">
-            <mat-icon>edit</mat-icon>
-          </button>
-
-          <button mat-button matTooltip="{{ 'crud.article-card.video-tool-tip' | translate }}"
-            (click)="onOpenVideosGallery(article)" matTooltip="gallery view">
-            <mat-icon>movie_creation</mat-icon>
-          </button>
-          <button mat-button matTooltip="{{ 'crud.article-card.image-tool-tip' | translate }}"
-            (click)="onOpenImagesGallery(article)" matTooltip="gallery view">
-            <mat-icon>image</mat-icon>
-          </button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-  </div>
-
-  <ng-template #noArticles>
-    <div class="container shadow">
-      <div>
-        <mat-card class="example-card" style="background-color: #607D8B" data-aos="fade-up" data-aos-duration="3000">
-          <mat-card-header style="margin-bottom: 10px;">
-            <mat-card-title style="color: rgba(255, 255, 255);">No articles</mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src="https://res.cloudinary.com/dwfwp0eyg/image/upload/v1666339946/logo3_eaiqwb.jpg"
-            alt="blogex-logo">
-          <mat-card-content>
-          </mat-card-content>
-          <mat-card-actions align="end">
-            <button mat-button matTooltip="{{ 'create-article' | translate }}" matTooltipPosition="left"
-              routerLink="/admin/new">
-              <mat-icon style="color: rgba(255, 255, 255);">edit</mat-icon>
-            </button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-    </div>
-  </ng-template>
-
-  <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
-  </mat-paginator>
-</body>
-
-<app-footer></app-footer> -->
-
 <div class="container-articles">
-  <h1>{{ 'crud.article-card.articles-of' | translate }} {{ this.username }} </h1>
+  <h1>{{ 'crud.article-card.articles-of' | translate }} {{ this.username }} ({{ articles.length }})</h1>
   <!-- Paginator -->
   <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
     aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
@@ -97,7 +15,7 @@
     <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
   </div>
 
-  <section class="main-container shadow rounded">
+  <section *ngIf="articles.length > 0; else noArticles" class="main-container shadow rounded">
     <article *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber; index as i" data-aos="fade-up"
       data-aos-duration="1000">
       <div class="example-card">
@@ -111,8 +29,6 @@
             title="{{ 'user-blog.goto-article' | translate }}">
         </a>
         <div id="content">
-          <!-- <mat-card style="background-color: #607D8B">
-          <mat-card-actions align="end"> -->
             <button mat-button matTooltip="{{ 'EditArticle' | translate }}"
               (click)="onEdit(article)">
               <mat-icon>edit</mat-icon>
@@ -125,13 +41,28 @@
               (click)="onOpenImagesGallery(article)" matTooltip="gallery view">
               <mat-icon>image</mat-icon>
             </button>
-          <!-- </mat-card-actions>
-          </mat-card> -->
         </div>
-
       </div>
-
     </article>
   </section>
+
+  <ng-template #noArticles>
+    <section class="main-container shadow rounded">
+      <article data-aos="fade-up" data-aos-duration="1000">
+        <div class="example-card">
+          <div>
+              <h3 style="color: rgba(255, 255, 255); cursor: auto;">No articles</h3>
+          </div>
+            <img src="./../../../assets/img/logo-blogex.jpg" alt="logo-blogex"
+              title="{{ 'user-blog.goto-article' | translate }}" style="cursor: auto;">
+          <div id="content">
+              <button mat-button matTooltip="{{ 'New' | translate }}" routerLink="/group-form">
+                <mat-icon>edit</mat-icon>
+              </button>
+          </div>
+        </div>
+      </article>
+    </section>
+  </ng-template>
 </div>
 <app-footer></app-footer>
