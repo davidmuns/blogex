@@ -1,24 +1,22 @@
-<body>
-  <!-- Title -->
+<!-- <body>
+ 
   <h1>{{ 'crud.article-card.articles-of' | translate }} {{ this.username }} </h1>
 
-  <!-- Paginator -->
+
   <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
     aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
   </mat-paginator>
 
-  <!-- Search field -->
   <div class="container search d-flex" style="background-color: transparent;">
     <input class="form-control" type="search" placeholder="{{ 'crud.article-card.search' | translate }}"
       aria-label="Search" [(ngModel)]="this.filterByTitle">
   </div>
 
-  <!-- Sort selector -->
+  
   <div style="display: flex; justify-content: center; margin-top: 20px;">
     <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
   </div>
 
-  <!-- Show this container if there are articles -->
   <div class="container cont-cards mb-4 rounded " *ngIf="this.articles.length > 0; else noArticles">
 
     <div *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber; index as i" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1500">
@@ -55,7 +53,7 @@
     </div>
   </div>
 
-  <!-- Show this container if there are NO articles -->
+ 
   <ng-template #noArticles>
     <div class="container shadow">
       <div>
@@ -83,4 +81,62 @@
   </mat-paginator>
 </body>
 
+<app-footer></app-footer> -->
+
+<div class="container-articles">
+  <h1>{{ 'crud.article-card.articles-of' | translate }} {{ this.username }} </h1>
+  <!-- Paginator -->
+  <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+  </mat-paginator>
+
+  <div class="container search d-flex" style="background-color: transparent;">
+    <input class="form-control" type="search" placeholder="{{ 'crud.article-card.search' | translate }}"
+      aria-label="Search" [(ngModel)]="this.filterByTitle">
+  </div>
+
+  <!-- Sort selector -->
+  <div class="container" style="display: flex; justify-content: center; margin-top: 20px;">
+    <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
+  </div>
+
+  <section class="main-container shadow rounded">
+    <article *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber; index as i" data-aos="fade-up"
+      data-aos-duration="1000">
+      <div class="example-card">
+        <div>
+          <a>
+            <h3 style="color: rgba(255, 255, 255);">{{ article.title }}</h3>
+          </a>
+        </div>
+        <a routerLink="/article/{{ article.id }}" style="cursor: pointer;">
+          <img [src]="article.imagenPortada" alt="{{ article.caption }}"
+            title="{{ 'user-blog.goto-article' | translate }}">
+        </a>
+        <div id="content">
+          <!-- <mat-card style="background-color: #607D8B">
+          <mat-card-actions align="end"> -->
+            <button mat-button matTooltip="{{ 'EditArticle' | translate }}"
+              (click)="onEdit(article)">
+              <mat-icon>edit</mat-icon>
+            </button>
+  
+            <button mat-button matTooltip="{{ 'crud.article-card.video-tool-tip' | translate }}"
+              (click)="onOpenVideosGallery(article)" matTooltip="gallery view">
+              <mat-icon>movie_creation</mat-icon>
+            </button>
+            <button mat-button matTooltip="{{ 'crud.article-card.image-tool-tip' | translate }}"
+              (click)="onOpenImagesGallery(article)" matTooltip="gallery view">
+              <mat-icon>image</mat-icon>
+            </button>
+          <!-- </mat-card-actions>
+          </mat-card> -->
+              
+        </div>
+
+      </div>
+
+    </article>
+  </section>
+</div>
 <app-footer></app-footer>

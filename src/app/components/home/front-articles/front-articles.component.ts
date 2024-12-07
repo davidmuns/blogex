@@ -21,8 +21,8 @@ export class FrontArticlesComponent implements OnInit {
   imagenes: Imagen[] = [];
   imagenesAll: Imagen[] = [];
   sortBy = '';
-  pageSizeOptions: number[] = [4, 8, 12, 16, 20];
-  pageSize: number = 20;
+  pageSizeOptions: number[] = [4, 8, 16, 20, 24];
+  pageSize: number = 8;
   pageNumber: number = 1;
 
   constructor(

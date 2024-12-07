@@ -40,8 +40,8 @@ export class ArtcileCardsComponent implements OnInit {
   miniatura!: Imagen;
   username!: string;
   articleId!: number;
-  pageSizeOptions: number[] = [5, 10, 15, 20, 25];
-  pageSize: number = 10;
+  pageSizeOptions: number[] = [4, 8, 16, 20, 24];
+  pageSize: number = 8;
   pageNumber: number = 1;
   isAdmin: boolean = false;
   sort: boolean = false;
