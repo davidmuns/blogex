@@ -30,11 +30,13 @@ export class SortSelectorComponent implements OnInit, OnDestroy {
 
   setSortOptions(): void {
     this.sortOptions = [
-      { value: 'title-az', text: this.translateSvc.instant('user-blog.title-az') },
-      { value: 'title-za', text: this.translateSvc.instant('user-blog.title-za') },
-      { value: 'older', text: this.translateSvc.instant('user-blog.older') },
       { value: 'newer', text: this.translateSvc.instant('user-blog.newer') },
-      { value: 'more-files', text: this.translateSvc.instant('Popular') },
+      { value: 'more-activity', text: this.translateSvc.instant('user-blog.activity') },
+      { value: 'older', text: this.translateSvc.instant('user-blog.older') },
+      { value: 'title-az', text: this.translateSvc.instant('Title') + ' (A-Z)' },
+      { value: 'title-za', text: this.translateSvc.instant('Title') + ' (Z-A)' },
+      { value: 'username-az', text: this.translateSvc.instant('Username') + ' (A-Z)' },
+      { value: 'username-za', text: this.translateSvc.instant('Username') + ' (Z-A)' },
     ];
   }
 

@@ -9,12 +9,6 @@ import { Imagen } from '../models/imagen';
 })
 export class UtilsService {
 
-  orderOptions = [
-    { value: 'title', viewValue: this.translateSvc.instant('user-blog.title') },
-    { value: 'older', viewValue: this.translateSvc.instant('user-blog.older') },
-    { value: 'newer', viewValue: this.translateSvc.instant('user-blog.newer') },
-  ];
-
   constructor(
     private readonly snack: MatSnackBar,
     private readonly translateSvc: TranslateService) { };
@@ -30,11 +24,23 @@ export class UtilsService {
         return this.sortArticlesByOlder(articles);
       case 'newer':
         return this.sortArticlesByNewer(articles);
-      case 'more-files':
+      case 'more-activity':
         return this.sortArticlesByFiles(articles);
+      case 'username-az':
+        return this.sortArticlesByUsernameAZ(articles);
+      case 'username-za':
+        return this.sortArticlesByUsernameZA(articles);
       default:
         return articles;
     }
+  }
+
+  public sortArticlesByUsernameZA(articles: Article[]): Article[] {
+    return articles.sort((article1, article2) => article2.usuario.nombreUsuario.localeCompare(article1.usuario.nombreUsuario));
+  }
+
+  public sortArticlesByUsernameAZ(articles: Article[]): Article[] {
+    return articles.sort((article1, article2) => article1.usuario.nombreUsuario.localeCompare(article2.usuario.nombreUsuario));
   }
 
   public sortArticlesByTitleZA(articles: Article[]): Article[] {

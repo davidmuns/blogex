@@ -131,7 +131,7 @@
     "crud": {
         "article-card": {
             "articles-of": "Artículos de",
-            "search": "Buscar por título o username",
+            "search": "Buscar por título",
             "video-tool-tip": "Vídeos de Youtube",
             "image-tool-tip": "Archivos del usuario",
             "upload-icon-tool-tip": "Subir",
@@ -161,11 +161,10 @@
         "see-more": "Ver más",
         "sort": "Ordenar por",
         "date": "Fecha",
-        "title-az": "Título (A-Z)",
-        "title-za": "Título (Z-A)",
-        "older": "Fecha (Más antiguo primero)",
-        "newer": "Fecha (Más reciente primero)",
+        "older": "Más antiguos",
+        "newer": "Más recientes",
         "none": "No ordenar",
+        "activity": "Populares",
         "goto-article": "Ir al artículo"
     },
     "footer": {

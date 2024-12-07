@@ -130,7 +130,7 @@
     "crud": {
         "article-card": {
             "articles-of": "Articles de",
-            "search": "Buscar per títol o nom d'usuari",
+            "search": "Buscar per títol",
             "video-tool-tip": "Vídeos de youtube",
             "image-tool-tip": "Arxius del usuari",
             "upload-icon-tool-tip": "Pujar",
@@ -160,11 +160,10 @@
         "see-more": "Veure més",
         "sort": "Ordenar per",
         "date": "Data",
-        "title-az": "Títol (A-Z)",
-        "title-za": "Títol (Z-A)",
-        "older": "Data (Més antic primer)",
-        "newer": "Data (Més recent primer)",
+        "older": "Més antics",
+        "newer": "Més recents",
         "none": "No ordenar",
+        "activity": "Populars",
         "goto-article": "Anar a l'article"
     },
     "footer": {
