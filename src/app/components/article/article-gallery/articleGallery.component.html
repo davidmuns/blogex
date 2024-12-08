@@ -17,7 +17,7 @@
 	<div class="card-container">
 		<div class="card" *ngFor="let imagen of imagenes; index as i" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
 			<div class="card-title">
-				<span *ngIf="imagen.caption == null">No title</span>
+				<span *ngIf="imagen.caption == null">No {{ 'Title' | translate }}</span>
 				<ng-container *ngIf="imagen.coverImg; else notCover">
 					{{ imagen.caption }} <span style="font-size: 12px;">({{ "CoverImage" | translate }})</span>
 				</ng-container>
