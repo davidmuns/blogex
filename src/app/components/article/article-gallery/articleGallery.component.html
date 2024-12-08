@@ -15,7 +15,7 @@
 <div class="main-container">
 	<!-- https://animate.style/ -->
 	<div class="card-container">
-		<div class="card" *ngFor="let imagen of this.imagenes; index as i" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
+		<div class="card" *ngFor="let imagen of imagenes; index as i" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
 			<div class="card-title">
 				<span *ngIf="imagen.caption == null">No title</span>
 				<ng-container *ngIf="imagen.coverImg; else notCover">
@@ -24,11 +24,11 @@
 				<ng-template #notCover>{{ imagen.caption }}</ng-template>
 			</div>
 			<div class="card-image">
-				<img *ngIf="imagen.fileType =='image'" [src]="imagen.url" data-bs-toggle="modal" (click)="openModal(i)" alt="{{ imagen.caption }}">
+				<img *ngIf="imagen.fileType =='image'" [src]="imagen.url" (click)="openModal(i)" alt="{{ imagen.caption }}">
 				<video class="video-preview" *ngIf="imagen.fileType =='video'" [src]="imagen.url" controls></video>
 			</div>
 			<div class="card-actions">
-				<button class="caption-btn" mat-stroked-button matTooltip="preview" (click)="openModal(i)">
+				<button mat-stroked-button (click)="openModal(i)">
 					<mat-icon *ngIf="imagen.fileType == 'image'" >visibility</mat-icon>
 					<mat-icon *ngIf="imagen.fileType == 'video'" >visibility_off</mat-icon>
 				</button>
