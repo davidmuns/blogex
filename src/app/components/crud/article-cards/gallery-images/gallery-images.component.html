@@ -4,7 +4,6 @@
     <div>{{ 'crud.article-card.uploading-icon-tool-tip' | translate }}</div>
   </div>
 </div>
-
 <div class="header">
   <div></div>
   <div>
@@ -14,42 +13,32 @@
     <mat-icon mat-button mat-dialog-close class="close-btn">close</mat-icon>
   </div>
 </div>
-
-<mat-dialog-content class="mat-typography" style="background-color: #607d8b;">
-  <h1 class="mt-4 mb-0" style="text-align: center; color: rgba(255, 255, 255);">{{ this.imagenes.length }} {{
-    'crud.image-list.images' | translate }} {{ this.article.title }}</h1>
-  <div class="main-container">
-    <div *ngFor="let imagen of this.imagenes; index as i">
-
-      <mat-card class="example-card animate__animated animate__backInLeft"
-        style="background-color: rgba(0, 0, 0, 0.4);">
-
-        <mat-card-header [ngClass]="{'mb-3': imagen.fileType === 'image'}">
-          <mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}<span *ngIf="imagen.coverImg"> {{ "CoverImage" | translate }}</span></mat-card-title>
-        </mat-card-header>
-
-        <mat-card-content>
-          <img *ngIf="imagen.fileType =='image'" mat-card-image [src]="imagen.url" [alt]="imagen.url">
-          <video *ngIf="imagen.fileType =='video'"
-          width="250"
-          height=""
-          [src]="imagen.url"
-          title="video"
-          controls>
-        </video>
-          <p style="color: rgba(255, 255, 255);">{{ imagen.caption }}</p>
-        </mat-card-content>
-
-        <mat-card-actions align="end">
-          <button class="caption-btn" mat-stroked-button (click)="onCaption(imagen.id)" matTooltip="{{ 'Add' | translate }} {{ 'Caption' | translate | lowercase}}">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button class="delete-btn" mat-stroked-button (click)="onDeleteImage(imagen.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-card-actions>
-
-      </mat-card>
+<mat-dialog-content style="background-color: #607d8b;">
+  <h1 class="mt-4 mb-0" style="text-align: center; color: rgba(255, 255, 255);">
+    {{ this.article.title }} ({{ this.imagenes.length }} {{ 'images' | translate }})
+  </h1>
+  <div class="card-container">
+    <div class="card animate__animated animate__backInLeft" *ngFor="let imagen of this.imagenes; index as i">
+        <div class="card-title"s>
+          {{ i + 1 }}
+          <ng-container *ngIf="imagen.coverImg; else notCover">
+            {{ imagen.caption }} <span style="font-size: 12px;">({{ "CoverImage" | translate }})</span>
+          </ng-container>
+          <ng-template #notCover>{{ imagen.caption }}</ng-template>
+        </div>
+      <div class="card-image">
+        <img *ngIf="imagen.fileType =='image'" [src]="imagen.url" alt="Descripción de la imagen">
+        <video class="video-preview" *ngIf="imagen.fileType =='video'" [src]="imagen.url" title="video" controls></video>
+      </div>
+      <div class="card-actions">
+        <button class="caption-btn" mat-stroked-button (click)="onCaption(imagen.id)"
+          matTooltip="{{ 'Add' | translate }} {{ 'Caption' | translate | lowercase}}">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button class="delete-btn" mat-stroked-button (click)="onDeleteImage(imagen.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
     </div>
   </div>
 </mat-dialog-content>
@@ -60,7 +49,6 @@
     <input type="file" class="file-input" accept="image/*" id="customImage" (change)="handleImage($event)">
     <label class="file-label" for="customImage" matTooltip="max 10MB">{{ 'SelectImage' | translate }}</label>
   </div>
-  <!-- VIDEO INPUT -->
   <div class="input-div mx-1 p-1 shadow-sm">
     <input type="file" class="file-input" accept="video/*" id="customVideo" (change)="handleImage($event)">
     <label class="file-label" for="customVideo" matTooltip="max 100MB">{{ 'SelectVideo' | translate }}</label>
