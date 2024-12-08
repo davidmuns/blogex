@@ -88,8 +88,8 @@ export class EditComponent implements OnInit {
   private initForm(): void {
     this.editPostForm = this.fBuilder.group({
       id: ['', Validators.required],
-      title: ['', [Validators.required, Validators.maxLength(25)]],
-      caption: ['', [Validators.required, Validators.maxLength(20)]],
+      title: ['', [Validators.required, Validators.maxLength(40)]],
+      caption: ['', [Validators.required, Validators.maxLength(40)]],
       //img1: [''],
       content: ['', Validators.required],
       longitude: ['', Validators.required],

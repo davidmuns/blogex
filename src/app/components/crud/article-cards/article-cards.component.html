@@ -1,4 +1,4 @@
-<div class="container-articles">
+<div class="main-container">
   <h1>{{ 'crud.article-card.articles-of' | translate }} {{ this.username }} ({{ articles.length }})</h1>
   <!-- Paginator -->
   <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
@@ -16,10 +16,10 @@
     <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
   </div>
 
-  <section *ngIf="articles.length > 0; else noArticles" class="main-container shadow rounded">
+  <section *ngIf="articles.length > 0; else noArticles" class="articles-section shadow rounded">
     <article *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber; index as i" data-aos="fade-up"
       data-aos-duration="1000">
-      <div class="example-card">
+      <div class="article-card">
         <div>
           <a>
             <h3 style="color: rgba(255, 255, 255);">{{ article.title }}</h3>
@@ -29,7 +29,7 @@
           <img [src]="article.imagenPortada" alt="{{ article.caption }}"
             title="{{ 'user-blog.goto-article' | translate }}">
         </a>
-        <div id="content">
+        <div class="btn-container">
             <button mat-button matTooltip="{{ 'EditArticle' | translate }}"
               (click)="onEdit(article)">
               <mat-icon>edit</mat-icon>
@@ -48,15 +48,15 @@
   </section>
 
   <ng-template #noArticles>
-    <section class="main-container shadow rounded">
+    <section class="articles-section shadow rounded">
       <article data-aos="fade-up" data-aos-duration="1000">
-        <div class="example-card">
+        <div class="article-card">
           <div>
               <h3 style="color: rgba(255, 255, 255); cursor: auto;">No articles</h3>
           </div>
             <img src="./../../../assets/img/logo-blogex.jpg" alt="logo-blogex"
               title="{{ 'user-blog.goto-article' | translate }}" style="cursor: auto;">
-          <div id="content">
+          <div class="btn-container">
               <button mat-button matTooltip="{{ 'New' | translate }}" routerLink="/group-form">
                 <mat-icon>edit</mat-icon>
               </button>
