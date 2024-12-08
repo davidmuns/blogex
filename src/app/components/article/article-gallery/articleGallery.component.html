@@ -12,131 +12,58 @@
 	</div>
 </div>
 
-<!-- IMAGES & VIDEOS-->
 <div class="main-container">
-
-	<!-- IMAGES -->
-		<div *ngFor="let imagen of imagenes; let i = index"
-			[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
-			<h2 *ngIf="i == 0" style="text-align: center;">{{ username }} {{ 'Files' | translate }} ({{ imagenes.length }})</h2>
-			<mat-card class="example-card">
-				<mat-card-header [ngClass]="{'mb-3': imagen.fileType === 'image'}">
-					<mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
-				</mat-card-header>
-
-				<mat-card-content>
-					<a
-						type="button"
-						matTooltip="Preview"
-						matTooltipPosition="above"
-						data-bs-toggle="modal"
-						data-bs-target="#exampleModal"
-						style="cursor: pointer;"
-						(click)="openModal(i)">
-							<img *ngIf="imagen.fileType =='image'" mat-card-image [src]="imagen.url" alt="">
-					</a>
-					<video *ngIf="imagen.fileType =='video'"
-						width="250"
-						height=""
-						[src]="imagen.url"
-						title="video"
-						controls>
-					</video>
-					<p style="color: white;">{{ imagen.caption }}</p>
-				</mat-card-content>
-				<mat-card-actions align="start">
-
-				</mat-card-actions>
-			</mat-card>
-
-		</div>
-
-		<!-- VIDEOS -->
-	<div *ngFor="let video of (this.videos$ | async); let i = index"
-	[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
-	<h1 *ngIf="i == 0" style="text-align: center;">{{ 'crud.article-card.video-tool-tip' | translate }} ({{ (videos$ | async)?.length }}) </h1>
-	<!-- <h2 *ngIf="i == 0" style="text-align: center;">{{ 'crud.article-card.video-tool-tip' | translate }}</h2> -->
-
 	<!-- https://animate.style/ -->
-	<mat-card class="example-card">
-
-		<mat-card-header>
-			<mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title>
-		</mat-card-header>
-
-		<mat-card-content>
-			<youtube-player [videoId]="video.youtubeId" [playerVars]="this.playerVars" suggestedQuality="highres"
-				showBeforeIframeApiLoads="true" [width]="260">
-			</youtube-player>
-		</mat-card-content>
-
-	</mat-card>
-
-</div>
-
-		<!-- Modal con el Carousel -->
-	<div id="modal" class="modal" [class.active]="isModalOpen">
-		<div class="modal-content">
-			<span class="close" (click)="closeCarousel()">&times;</span>
-			<div class="carousel">
-				<button class="carousel-control prev" (click)="prevImage()">&#10094;</button>
-				<img
-					[src]="urlmages[indice]"
-					class="carousel-image"
-					[class.zoom]="isZoomed === indice"
-					(click)="toggleZoom($event, indice)"
-					alt="Carousel Image">
-				<button class="carousel-control next" (click)="nextImage()">&#10095;</button>
+	<div class="card-container">
+		<div class="card" *ngFor="let imagen of this.imagenes; index as i" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
+			<div class="card-title">
+				<span *ngIf="imagen.caption == null">No title</span>
+				<ng-container *ngIf="imagen.coverImg; else notCover">
+					{{ imagen.caption }} <span style="font-size: 12px;">({{ "CoverImage" | translate }})</span>
+				</ng-container>
+				<ng-template #notCover>{{ imagen.caption }}</ng-template>
+			</div>
+			<div class="card-image">
+				<img *ngIf="imagen.fileType =='image'" [src]="imagen.url" data-bs-toggle="modal" (click)="openModal(i)" alt="{{ imagen.caption }}">
+				<video class="video-preview" *ngIf="imagen.fileType =='video'" [src]="imagen.url" controls></video>
+			</div>
+			<div class="card-actions">
+				<button class="caption-btn" mat-stroked-button matTooltip="preview" (click)="openModal(i)">
+					<mat-icon *ngIf="imagen.fileType == 'image'" >visibility</mat-icon>
+					<mat-icon *ngIf="imagen.fileType == 'video'" >visibility_off</mat-icon>
+				</button>
 			</div>
 		</div>
 	</div>
 
+	<div *ngFor="let video of (this.videos$ | async); let i = index"
+		[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
+		
+		<mat-card class="youtube-card">
+
+			<mat-card-header>
+				<!-- <mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title> -->
+			</mat-card-header>
+
+			<mat-card-content>
+				<youtube-player [videoId]="video.youtubeId" [playerVars]="this.playerVars" suggestedQuality="highres"
+					showBeforeIframeApiLoads="true" [width]="260">
+				</youtube-player>
+			</mat-card-content>
+
+		</mat-card>
+
+	</div>
 </div>
-
-<!-- MODAL -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
-	style="padding: 0px;" data-bs-backdrop="static" data-bs-keyboard="false">
-	<div class="modal-dialog modal-xl">
-		<div class="modal-content" style="background-color: rgba(47, 47, 47, 1); border: none;">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">{{ '' }}</h5>
-				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"
-					(click)="hideGallery()"></button>
-			</div>
-			<div class="modal-body">
-
-				<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
-					<div class="carousel-inner">
-						<div class="carousel-item" data-bs-interval="2000"
-							*ngFor="let imagen of imagenes; index as i; count as items"
-							[ngClass]="{'active': i == this.indice, '': i != this.indice}">
-							<img *ngIf="imagen.fileType === 'image'" [src]="imagen.url" class="d-block w-100" alt="...">
-							<video *ngIf="imagen.fileType =='video'"
-								mat-card-image
-								width="215"
-								height="200"
-								[src]="imagen.url"
-								title="video"
-								controls>
-							</video>
-							<div class="carousel-caption d-none d-md-block">
-								<h2 class="m-0"><strong>{{ imagen.caption }}</strong></h2>
-								<p class="m-0">image {{ i + 1 }} of {{ items }}</p>
-							</div>
-						</div>
-					</div>
-					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-						data-bs-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Previous</span>
-					</button>
-					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-						data-bs-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Next</span>
-					</button>
-				</div>
-			</div>
+<!-- Modal con el Carousel -->
+<div id="modal" class="modal" [class.active]="isModalOpen">
+	<div class="modal-content">
+		<span class="close" (click)="closeCarousel()">&times;</span>
+		<div class="carousel">
+			<button class="carousel-control prev" (click)="prevImage()">&#10094;</button>
+			<img [src]="urlmages[indice]" class="carousel-image" [class.zoom]="isZoomed === indice"
+				(click)="toggleZoom($event, indice)" alt="Carousel Image">
+			<button class="carousel-control next" (click)="nextImage()">&#10095;</button>
 		</div>
 	</div>
-</div> -->
+</div>
