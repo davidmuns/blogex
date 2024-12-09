@@ -6,18 +6,18 @@
 }
 
 h1 {
-    margin: -120px 0px 0px;
+    margin: -40px 0px 20px 0px;
     text-align: center;
     color: var(--accent);
 
     @media(max-width:600px) {
-        margin: -120px 0px 0px;
+        margin: -40px 0px 20px 0px;
     }
 }
 
 h2 {
     position: relative;
-    top: -75px;
+    top: 5px;
     left: 0px;
     // z-index: 1;
     height: auto;
@@ -55,8 +55,12 @@ button:hover {
     }
 }
 
+#header {
+    margin-top: 100px;
+}
+
 .container {
-     /* Para pantallas medianas */
+     
   @media (max-width: 768px) and (min-width: 720px) {
     max-width: 700px;
   }
