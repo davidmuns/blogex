@@ -90,7 +90,8 @@ img {
 }
 
 button:hover {
-    box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
+    // box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
+    color: palevioletred;
 }
 
 ::ng-deep .mat-tooltip {
