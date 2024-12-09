@@ -1,77 +1,81 @@
-<div class="container pt-5 pb-5 mt-5 rounded" id="header">
-    <h2>{{ 'BlogOf' | translate }} {{ this.username }}
-       
-    </h2>
-</div>
+<div class="main-container">
+    <div class="container pt-5 pb-5 mt-5 rounded" id="header">
+        <h2>{{ 'BlogOf' | translate }} {{ this.username }}
+           
+        </h2>
+    </div>
 
-<!-- Title -->
-<h1>{{ this.articles.length }} {{ 'Articles' | translate }}</h1>
+    <!-- Title -->
+    <h1>{{ this.articles.length }} {{ 'Articles' | translate }}</h1>
 
-<!-- Paginator -->
-<mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
-</mat-paginator>
+    <!-- Paginator -->
+    <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+    </mat-paginator>
 
-<!-- Search field -->
-<div class="container d-flex" style="max-width: 270px;">
-    <input class="form-control" type="search" placeholder="{{ 'crud.article-card.search' | translate }}"
-        aria-label="Search" [(ngModel)]="this.filterByTitle">
-</div>
+    <!-- Search field -->
+    <div class="container d-flex" style="max-width: 270px;">
+        <input class="form-control" type="search" placeholder="{{ 'crud.article-card.search' | translate }}"
+            aria-label="Search" [(ngModel)]="this.filterByTitle">
+    </div>
 
-<!-- Sort selector -->
-<div class="container" style="display: flex; justify-content: center; margin-top: 20px;">
-    <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
-</div>
+    <!-- Sort selector -->
+    <div class="container" style="display: flex; justify-content: center; margin-top: 20px;">
+        <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
+    </div>
 
-<div class="container body pt-5 pb-4 mb-4 rounded ">
-    <!-- Show this container if there are articles -->
-    <ng-container *ngIf="this.articles.length; else noArticles">
+    <div class="container body pt-5 pb-4 mb-4 rounded ">
+        <!-- Show this container if there are articles -->
+        <ng-container *ngIf="this.articles.length; else noArticles">
 
-        <div class="example-card mb-5" data-aos="fade-up" data-aos-duration="1500"
-            *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber; index as i"
-            style="width: 90%;">
-            <div class="row g-0">
-                <div class="col-sm-4 col-md-4">
-                    <a routerLink="/article/{{ article.id }}" style="cursor: pointer;">
-                        <img mat-card-image class="img-fluid rounded-start" [src]="article.imagenPortada"
-                            alt="Imagen de protada" title="{{ 'user-blog.goto-article' | translate }}">
-                    </a>
-                </div>
-                <div class="col-sm-8 col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title mt-2" id="title-post">{{ article.title }}</h5>
-                        <button class="m-0 p-2" mat-icon-button color="accent"
-                            [routerLink]="['/article/', article.id]">
-                            <mat-icon>visibility</mat-icon> 
-                            <!-- {{ 'user-blog.see-more' | translate }} -->
-                        </button>
+            <div class="example-card mb-5" data-aos="fade-up" data-aos-duration="1500"
+                *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber; index as i"
+                style="width: 90%;">
+                <div class="row g-0">
+                    <div class="col-sm-4 col-md-4">
+                        <a routerLink="/article/{{ article.id }}" style="cursor: pointer;">
+                            <img mat-card-image class="img-fluid rounded-start" [src]="article.imagenPortada"
+                                alt="Imagen de protada" title="{{ 'user-blog.goto-article' | translate }}">
+                        </a>
                     </div>
-                    <p class="mx-3">{{ 'article.date' | translate }}: {{ article.date | formatDate }}</p>
-                    <p class="mx-3">{{ 'crud.article-card.video-tool-tip' | translate }}: {{ article.videos.length }}</p>
-                    <p class="mx-3">{{ 'crud.article-card.image-tool-tip' | translate }}: {{ article.imagenes.length }}</p>
+                    <div class="col-sm-8 col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title mt-2" id="title-post">{{ article.title }}</h5>
+                            <button class="m-0 p-2" mat-icon-button color="accent"
+                                [routerLink]="['/article/', article.id]">
+                                <mat-icon>visibility</mat-icon> 
+                                <!-- {{ 'user-blog.see-more' | translate }} -->
+                            </button>
+                        </div>
+                        <p class="mx-3">{{ 'article.date' | translate }}: {{ article.date | formatDate }}</p>
+                        <p class="mx-3">{{ 'crud.article-card.video-tool-tip' | translate }}: {{ article.videos.length }}</p>
+                        <p class="mx-3">{{ 'crud.article-card.image-tool-tip' | translate }}: {{ article.imagenes.length }}</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
-    </ng-container>
-</div>
-<!-- Show this container if there are NO articles -->
-<ng-template #noArticles>
-    <div class="no-articles-card" data-aos="fade-up" data-aos-duration="3000">
-        <mat-card-header>
-            <div class="example-header-image"></div>
-            <div id="title-post">No articles</div>
-        </mat-card-header>
-        <div class="imageMarc">
-            <img mat-card-image src="./../../../assets/img/logo-blogex.jpg"
-                alt="">
-        </div>
+        </ng-container>
     </div>
-</ng-template>
 
-<!-- Paginator -->
-<mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-    aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
-</mat-paginator>
+    <!-- Show this container if there are NO articles -->
+    <ng-template #noArticles>
+        <div class="no-articles-card" data-aos="fade-up" data-aos-duration="3000">
+            <mat-card-header>
+                <div class="example-header-image"></div>
+                <div id="title-post">No articles</div>
+            </mat-card-header>
+            <div class="imageMarc">
+                <img mat-card-image src="./../../../assets/img/logo-blogex.jpg"
+                    alt="">
+            </div>
+        </div>
+    </ng-template>
+
+    <!-- Paginator -->
+    <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        aria-label="Select page" showFirstLastButtons (page)="onPageChange($event)">
+    </mat-paginator>
+</div>
+
 
 <app-footer></app-footer>

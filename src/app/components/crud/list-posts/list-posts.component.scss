@@ -5,14 +5,14 @@
   @media(max-width: 800px) {
     left: 0px;
     min-width: 90%;
-    background-color: white;
+    // background-color: white;
     margin: 0px 5%;
   }
 
   @media(max-width: 420px) {
     left: 0px;
     min-width: 100%;
-    background-color: white;
+    // background-color: white;
     margin: 0px;
 
     td.mat-cell:first-of-type {
@@ -42,6 +42,7 @@ h3 {
   text-align: center;
   margin: 30px 0px 10px 0px;
   font-size: 1.4rem;
+  color: var(--accent);
 }
 
 table {
@@ -59,6 +60,7 @@ mat-form-field {
 
 mat-paginator {
   width: 100%;
+  background-color: transparent;
 }
 
 .estilsArt {

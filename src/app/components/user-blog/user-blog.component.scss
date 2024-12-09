@@ -6,20 +6,17 @@
 }
 
 h1 {
-    margin: -40px 0px 20px 0px;
+    margin: -20px 0px 20px 0px;
     text-align: center;
     color: var(--accent);
 
-    @media(max-width:600px) {
-        margin: -40px 0px 20px 0px;
+    @media(max-width: 500px) {
+        margin: -20px 0px 20px 0px;
     }
 }
 
 h2 {
-    position: relative;
-    top: 5px;
-    left: 0px;
-    // z-index: 1;
+    margin-top: 20px;
     height: auto;
     padding: 25px 0px 15px;
     text-align: center;
@@ -47,16 +44,16 @@ button:hover {
     align-items: baseline;
 }
 
-.top-paginator {
-    margin: 10px 0px 0px;
-
-    @media(max-width:600px) {
-        margin: 0px 0px 0px;
-    }
+mat-paginator {
+    background-color: transparent;
 }
 
 #header {
     margin-top: 100px;
+}
+
+.main-container {
+    background-color: var(--cream);
 }
 
 .container {

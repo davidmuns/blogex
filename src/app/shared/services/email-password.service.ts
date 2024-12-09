@@ -13,6 +13,7 @@ export class EmailPasswordService {
   constructor(private httpClient: HttpClient) { }
 
   public sendEmail(email: Email): Observable<any> {
+    email.emailTo = email.emailTo.trim();
     return this.httpClient.post<any>(environment.BACKEND_BASE_URL + 'email-password/send', email);
   }
 
