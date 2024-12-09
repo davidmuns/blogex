@@ -89,7 +89,7 @@
   <!-- MENU BUTTONS IF LOGGED -->
   <ng-container *ngIf="this.tokenService.isLogged()">
       <!-- MY BLOG BUTTON -->
-    <button mat-menu-item routerLink="/blog/{{ this.tokenService.getUsername() }}">
+    <button mat-menu-item (click)="onMyBlog()">
       <mat-icon>book</mat-icon>
       {{ 'Blog' | translate }}
     </button>

@@ -106,6 +106,11 @@ export class HeaderComponent implements OnInit {
     // menuTrigger.openMenu();
   }
 
+  onMyBlog(){
+    const uri = '/blog/' + this.tokenService.getUsername();
+    this.redirectTo(uri);
+  }
+
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
     this.setMobileScreen();
@@ -119,4 +124,10 @@ export class HeaderComponent implements OnInit {
       this.isMobile = false;
     }
   }
+
+  redirectTo(uri: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate([uri]));
+  }
+
 }
