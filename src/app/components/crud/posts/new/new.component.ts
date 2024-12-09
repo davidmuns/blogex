@@ -45,8 +45,8 @@ export class NewComponent {
 
   private initForm(): void {
     this.newPostForm = this.fBuilder.group({
-      title: ['', [Validators.required, Validators.maxLength(40)]],
-      caption: ['', [Validators.required, Validators.maxLength(40)]],
+      title: ['', [Validators.required, Validators.maxLength(35)]],
+      caption: ['', [Validators.required, Validators.maxLength(35)]],
       content: ['', Validators.required],
       longitude: ['', Validators.required],
       latitude: ['', Validators.required]
