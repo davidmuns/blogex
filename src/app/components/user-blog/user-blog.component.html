@@ -40,10 +40,10 @@
                 <div class="col-sm-8 col-md-8">
                     <div class="card-body">
                         <h5 class="card-title mt-2" id="title-post">{{ article.title }}</h5>
-                        <button class="m-0 p-2" mat-stroked-button color="accent" id="editAutor"
+                        <button class="m-0 p-2" mat-icon-button color="accent"
                             [routerLink]="['/article/', article.id]">
                             <mat-icon>visibility</mat-icon> 
-                            {{ 'user-blog.see-more' | translate }}
+                            <!-- {{ 'user-blog.see-more' | translate }} -->
                         </button>
                     </div>
                     <p class="mx-3">{{ 'article.date' | translate }}: {{ article.date | formatDate }}</p>
