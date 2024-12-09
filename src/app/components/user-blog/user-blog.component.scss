@@ -47,34 +47,6 @@ button:hover {
     align-items: baseline;
 }
 
-#linkToHome {
-    position: absolute;
-    top: 30px;
-    right: 4%;
-    z-index: 1;
-    color: var(--lemon);
-    border-radius: 2px;
-    padding: 5px;
-    box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
-
-    height: 24px;
-    display: flex;
-    align-items: center;
-    font-size: .9rem;
-
-    background-color: var(--accent);
-    transition: all .1s;
-    cursor: pointer;
-
-    @media(max-width:600px) {
-        top: 80px;
-    }
-}
-
-#linkToHome:hover {
-    box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
-}
-
 .top-paginator {
     margin: 10px 0px 0px;
 
@@ -83,9 +55,24 @@ button:hover {
     }
 }
 
-.example-card:hover {
-    max-width: 1025px;
-    box-shadow: 6px 6px 6px #888888;
+.container {
+     /* Para pantallas medianas */
+  @media (max-width: 768px) and (min-width: 720px) {
+    max-width: 700px;
+  }
+  @media (max-width: 720px) and (min-width: 668px) {
+    max-width: 655px;
+  }
+  @media (max-width: 668px) and (min-width: 592px) {
+    max-width: 640px;
+  }
+  @media (max-width: 592px) and (min-width: 425px) {
+    max-width: 400px;
+  }
+  @media (max-width: 425px) and (min-width: 320px) {
+    max-width: 350px;
+  }
+  
 }
 
 .example-card {
@@ -96,6 +83,14 @@ button:hover {
     padding: 0px;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 1px 1px 6px #888888;
+
+    @media (max-width: 577px) and (min-width: 425px) {
+        max-width: 350px;
+    }
+
+    @media (max-width: 425px) and (min-width: 320px) {
+        max-width: 300px;
+    }
 
     #title-post {
         font-size: 1.3rem;
@@ -125,6 +120,11 @@ button:hover {
         padding: 10px;
         margin: 0px;
     }
+    transition: all 0.03s ease-in-out; 
+}
+
+.example-card:hover {
+    transform: scale(1.05); /* Crece un 10% y rota 3 grados */
 }
 
 .form-control {

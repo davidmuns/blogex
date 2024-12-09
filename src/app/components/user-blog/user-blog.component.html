@@ -42,7 +42,8 @@
                         <h5 class="card-title mt-2" id="title-post">{{ article.title }}</h5>
                         <button class="m-0 p-2" mat-stroked-button color="accent" id="editAutor"
                             [routerLink]="['/article/', article.id]">
-                            <mat-icon>visibility</mat-icon> {{ 'user-blog.see-more' | translate }}
+                            <mat-icon>visibility</mat-icon> 
+                            {{ 'user-blog.see-more' | translate }}
                         </button>
                     </div>
                     <p class="mx-3">{{ 'article.date' | translate }}: {{ article.date | formatDate }}</p>
