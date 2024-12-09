@@ -25,6 +25,15 @@ img {
     border-radius: 50%;
 }
 
+.toolbarClass {
+    position: fixed; /* Hace que el elemento se mantenga fijo */
+    top: 0; /* Posiciona el toolbar en la parte superior */
+    left: 0; /* Asegura que comience desde el borde izquierdo */
+    width: 100%; /* Ocupa todo el ancho de la pantalla */
+    z-index: 1000; /* Asegura que el toolbar esté por encima de otros elementos */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Opcional: añade una sombra */
+}
+
 .toolbar {
     display: flex;
     justify-content: space-between;
