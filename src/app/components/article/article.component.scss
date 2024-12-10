@@ -9,23 +9,6 @@ body {
   }
 }
 
-// #linkToHome {
-//   position: absolute;
-//   top: 30px;
-//   right: 4%;
-//   z-index: 1;
-//   color: #69F0AE;
-//   border-radius: 2px;
-//   padding: 2px;
-//   background-color: var(--accent);
-//   transition: all .1s;
-//   cursor: pointer;
-
-//   @media(max-width:600px) {
-//     top: 80px;
-//   }
-// }
-
 button {
   margin: 30px 0px 20px;
   box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
@@ -50,12 +33,9 @@ button:hover {
 
   .header-container {
     display: flex;
-    /* Activa el modo flexbox */
     flex-wrap: wrap;
     align-items: baseline;
-    /* Alinea verticalmente los elementos en el centro */
     justify-content: flex-start;
-    /* Alinea horizontalmente los elementos en el centro */
   }
 
   #title-post {
@@ -75,13 +55,6 @@ button:hover {
 
   }
 
-  .imageMarc {
-    // border-top: 2px solid white;
-    // border-bottom: 1px solid white;
-    overflow: hidden;
-    width: 100%;
-  }
-
   .weather-icon {
     width: fit-content;
     // max-width: 100%;
@@ -92,13 +65,8 @@ button:hover {
 
   img {
     width: 100%;
-    max-height: 550px;
     height: auto;
-    object-fit: cover;
-    object-position: bottom;
-    @media (max-width: 768px) {
-      height: 250px;
-    }
+    margin: 0px;
   }
 
   #footerImg {
@@ -122,7 +90,6 @@ mat-card-content {
       span {
         font-size: 1.1rem;
         font-family: 'Libre Baskerville', serif;
-        // text-transform: capitalize;
         cursor: pointer;
       }
     }
