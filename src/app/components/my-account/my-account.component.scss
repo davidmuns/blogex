@@ -22,7 +22,7 @@ mat-card {
   margin-top: 85px;
   height: 100%;
   min-height: 70vh;
-  background-color: var(--cream);
+  // background-color: var(--cream);
   @media(max-width: 500px){
     margin-top: 75px;
 }
@@ -38,12 +38,6 @@ mat-card {
 .cancel-btn {
   background-color: var(--warnOrange);
   color: white;
-}
-
-::ng-deep .mat-tab-body-content {
-  background-color: #17373b;
-  background-color: var(--cream);
-  padding: 16px; /* Espaciado interno para el contenido */
 }
 
 mat-card-title {
@@ -79,8 +73,4 @@ p {
 .set-pass-btn:hover{
   color: var(--lemon);
   background-color: var(--accent);
-}
-
-::ng-deep .mat-tab-label-content {
-  font-size: 16px;
 }

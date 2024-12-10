@@ -102,3 +102,9 @@ mat-card-content {
     color: red;
     font-size: .8rem;
 }
+
+::ng-deep .mat-tab-body-content {
+    background-color: #17373b;
+    background-color: var(--cream);
+    padding: 25px;
+  }
