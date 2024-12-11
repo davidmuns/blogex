@@ -8,10 +8,26 @@ import { ArticleService } from 'src/app/shared/services/article.service';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditComponent } from '../crud/posts/edit/edit.component';
+import { bounce, fadeIn, fadeInZoom, fadeSlide, pulse, rotate, scaleUp, slideIn, zoomInOut } from './../../shared/models/animations';
+// Animate on scroll library => https://michalsnik.github.io/aos/
+import AOS from 'aos';
+
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
-  styleUrls: ['./article.component.scss']
+  styleUrls: ['./article.component.scss'],
+  animations: [
+    fadeInZoom,
+    fadeIn,
+    slideIn,
+    slideIn,
+    zoomInOut,
+    rotate,
+    scaleUp,
+    bounce,
+    pulse,
+    fadeSlide
+  ]
 })
 export class ArticleComponent implements OnInit {
 
@@ -40,6 +56,7 @@ export class ArticleComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(resp => {
+      AOS.init();
       if (resp.get('id') !== null) {
         this.idPost = parseInt(resp.get('id') as string);
       }
