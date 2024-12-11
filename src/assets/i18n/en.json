@@ -24,6 +24,7 @@
     "Email": "Email",
     "Text": "Content",
     "Title": "Title",
+    "noTitle": "Unspecified title",
     "TitleLength": "Title too long",
     "Caption": "Caption",
     "Coordinates": "Coordinates",

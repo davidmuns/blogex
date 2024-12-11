@@ -20,7 +20,7 @@
 				<ng-container *ngIf="imagen.caption; else noCaption">
 					{{ imagen.caption }}
 				</ng-container>
-				<ng-template #noCaption>No {{ 'Title' | translate }}</ng-template>
+				<ng-template #noCaption>{{ 'noTitle' | translate }}</ng-template>
 			</div>
 			<div class="card-image">
 				<img *ngIf="imagen.fileType =='image'" [src]="imagen.url" (click)="openModal(i)" alt="{{ imagen.caption }}">

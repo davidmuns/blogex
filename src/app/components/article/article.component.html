@@ -1,5 +1,4 @@
 <body>
-
   <div class="example-card">
     <div class="title-post">{{ post?.title }}</div>
     <span class="temperature">{{ this.temp }}º</span>
@@ -24,7 +23,12 @@
         </button>
       </div>
       <p>{{ 'article.date' | translate }}: {{ post?.date | formatDate }}</p>
+      <div class="content-title">
+        {{ post?.title }}
+      </div>
+      <hr>
       <p [innerHTML]="post?.content | safeHtml">
+    
     </mat-card-content>
     <app-articleGallery [articleId]="post?.id" [username]="username"></app-articleGallery>
     <mat-card-actions></mat-card-actions>

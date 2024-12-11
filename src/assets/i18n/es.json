@@ -24,6 +24,7 @@
     "Email": "Correo electrónico",
     "Text": "Contenido",
     "Title": "Título",
+    "noTitle": "Título no especificado",
     "TitleLength": "Título demasiado largo",
     "Caption": "Pie de foto",
     "Coordinates": "Coordenadas",
