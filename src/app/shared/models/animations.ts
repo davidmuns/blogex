@@ -3,7 +3,7 @@ import { trigger, style, transition, animate, keyframes } from '@angular/animati
 export const fadeInZoom = trigger('fadeInZoom', [
   transition(':enter', [
     style({ opacity: 0, transform: 'scale(0.8)' }),
-    animate('2s ease-in-out', style({ opacity: 1, transform: 'scale(1)' }))
+    animate('1s ease-in-out', style({ opacity: 1, transform: 'scale(1)' }))
   ])
 ]);
 
@@ -76,8 +76,9 @@ export const fadeIn = trigger('fadeIn', [
     transition('* => *', [
       animate('3s ease-in-out', keyframes([
         style({ transform: 'scale(1)', offset: 0 }),
-        style({ transform: 'scale(1.1)', offset: 0.5 }),
-        style({ transform: 'scale(1)', offset: 1 })
+        style({ transform: 'scale(1.05)', offset: 0.25 }),
+        style({ transform: 'scale(1.025)', offset: 0.5 }),
+        style({ transform: 'scale(1)', offset: 1 }),
       ]))
     ])
   ]);

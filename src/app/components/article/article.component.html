@@ -2,7 +2,7 @@
   <div class="example-card">
     <div class="title-post">{{ post?.title }}</div>
     <span class="temperature">{{ temp }}º</span>
-    <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.caption }}" data-aos="fade-up" data-aos-duration="1500">
+    <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.caption }}" [@pulse]>
     <p id="img-caption">{{ post?.caption }}</p>
     <img class="weather-icon" src="{{ iconUrl }}" alt="">
     <mat-card-content>
