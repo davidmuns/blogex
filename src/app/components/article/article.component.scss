@@ -27,7 +27,7 @@ button:hover {
   width: 100%;
   margin: auto;
   background-color: rgba(47, 47, 47, 1);
-  color: white;
+  color: rgba(250, 250, 250, 0.9);
 
   .weather-icon {
     position: absolute;
@@ -47,7 +47,7 @@ button:hover {
   img {
     width: 100%;
     height: auto;
-    max-height: 750px;
+    max-height: 550px;
     object-fit: cover;
     margin: 0px;
   }
@@ -67,7 +67,7 @@ button:hover {
   font-size: 1.8rem;
   font-family: 'Libre Baskerville', serif;
   width: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.2);
 
   @media(max-width: 500px) {
     padding: 20px 5px;
