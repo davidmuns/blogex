@@ -2,10 +2,14 @@
 
 body {
   background-color: var(--cream);
-  margin-top: 82px;
+  margin-top: 85px;
 
-  @media(max-width:500px) {
-    margin-top: 72px;
+  @media(max-width: 900px) {
+    margin-top: 80px;
+  }
+
+  @media(max-width: 500px) {
+    margin-top: 65px;
   }
 }
 
@@ -19,60 +23,70 @@ button:hover {
 }
 
 .example-card {
-  max-width: 1000px;
-  margin: 20px auto 100px;
+  position: relative;
+  width: 100%;
+  margin: auto;
   background-color: rgba(47, 47, 47, 1);
   color: white;
-  padding: 0px;
-  border-radius: 5px 5px 5px 5px;
-  box-shadow: 1px 1px 6px #888888;
-
-  @media(max-width: 600px) {
-    width: 100%;
-  }
-
-  .header-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
-    justify-content: flex-start;
-  }
-
-  #title-post {
-    font-size: 1.6rem;
-    font-family: 'Libre Baskerville', serif;
-    padding: 10px 10px 20px 15px;
-    line-height: 2rem;
-    height: auto;
-  }
-
-  .temperature {
-    font-size: 1.2rem;
-    font-family: 'Libre Baskerville', serif;
-    padding: 10px 0px 20px 15px;
-    line-height: 2rem;
-    height: auto;
-
-  }
 
   .weather-icon {
-    width: fit-content;
-    // max-width: 100%;
-    width: 50%;
-    height: 50%;
-    margin: 0;
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+
+    @media(max-width: 500px) {
+      top: -10px;
+      right: -10px;
+      width: 75px;
+      height: 75px;
+    }
   }
 
   img {
     width: 100%;
     height: auto;
+    max-height: 750px;
+    object-fit: cover;
     margin: 0px;
   }
 
-  #footerImg {
-    font-size: .8rem;
+  #img-caption {
+    font-size: 1rem;
     padding: 10px;
     margin: 0px;
+  }
+}
+
+.title-post {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 50px 20px;
+  font-size: 1.8rem;
+  font-family: 'Libre Baskerville', serif;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+
+  @media(max-width: 500px) {
+    padding: 20px 5px;
+    font-size: 1.1rem;
+  }
+}
+
+.temperature {
+  position: absolute;
+  top: 0;
+  right: 70px;
+  padding: 50px 50px;
+  font-size: 1.8rem;
+  font-family: 'Libre Baskerville', serif;
+
+  @media(max-width: 500px) {
+    right: 40px;
+    padding: 20px 17px;
+    font-size: 1.1rem;
   }
 }
 
