@@ -14,7 +14,7 @@ body {
 }
 
 button {
-  margin: 30px 0px 20px;
+  // margin: 30px 0px 20px;
   box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
 }
 
@@ -28,6 +28,7 @@ button:hover {
   margin: auto;
   background-color: rgba(47, 47, 47, 1);
   color: rgba(250, 250, 250, 0.9);
+  font-family: 'Libre Baskerville', serif;
 
   .weather-icon {
     position: absolute;
@@ -54,8 +55,13 @@ button:hover {
 
   #img-caption {
     font-size: 1rem;
-    padding: 10px;
-    margin: 0px;
+    font-style: italic;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    padding: 0 5px;
+    margin-bottom: 25px;
+    @media(max-width: 500px) {
+      font-size: 0.8rem;
+    }
   }
 }
 
@@ -65,12 +71,11 @@ button:hover {
   left: 0;
   padding: 50px 20px;
   font-size: 1.8rem;
-  font-family: 'Libre Baskerville', serif;
   width: 100%;
   background: rgba(0, 0, 0, 0.2);
 
   @media(max-width: 500px) {
-    padding: 20px 5px;
+    padding: 20px 10px;
     font-size: 1.1rem;
   }
 }
@@ -78,10 +83,10 @@ button:hover {
 .temperature {
   position: absolute;
   top: 0;
-  right: 70px;
+  right: 55px;
   padding: 50px 50px;
   font-size: 1.8rem;
-  font-family: 'Libre Baskerville', serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
 
   @media(max-width: 500px) {
     right: 40px;
@@ -103,7 +108,6 @@ mat-card-content {
 
       span {
         font-size: 1.1rem;
-        font-family: 'Libre Baskerville', serif;
         cursor: pointer;
       }
     }
