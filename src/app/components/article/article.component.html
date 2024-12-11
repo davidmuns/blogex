@@ -1,20 +1,20 @@
 <body>
   <div class="example-card">
     <div class="title-post">{{ post?.title }}</div>
-    <span class="temperature">{{ this.temp }}º</span>
+    <span class="temperature">{{ temp }}º</span>
     <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.caption }}">
     <p id="img-caption">{{ post?.caption }}</p>
-    <img class="weather-icon" src="{{ this.iconUrl }}" alt="">
+    <img class="weather-icon" src="{{ iconUrl }}" alt="">
     <mat-card-content>
       <div style="display: flex; justify-content: center;">
-        <button class="mx-2" mat-raised-button color="accent" id="editAutor" [routerLink]="['/blog/', this.username]">
-          <mat-icon>fast_rewind</mat-icon> Blog {{ this.username }}
+        <button class="mx-2" mat-raised-button color="accent" id="editAutor" [routerLink]="['/blog/', username]">
+          <mat-icon>fast_rewind</mat-icon> Blog {{ username }}
         </button>
       </div>
       <div class="autor">
-        <div id="autorLink">Blogger:&nbsp;<span routerLink="/blog/{{ this.username }}">
-            {{ this.username }}</span></div>&nbsp;&nbsp;&nbsp;
-        <button *ngIf="this.username == this.tokenSvc.getUsername()" mat-stroked-button color="accent" id="editAutor"
+        <div id="autorLink">Blogger:&nbsp;<span routerLink="/blog/{{ username }}">
+            {{ username }}</span></div>&nbsp;&nbsp;&nbsp;
+        <button *ngIf="username == tokenSvc.getUsername() || tokenSvc.isAdmin()" mat-stroked-button color="accent" id="editAutor"
           (click)="onEdit(post)">
           <mat-icon>edit</mat-icon> {{ 'EditArticle' | translate }}
         </button>

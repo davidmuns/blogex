@@ -3,7 +3,7 @@
     <img src="../../../../assets/img/user.png" alt="user-image" style="margin-top: 20px;"><br><br>
     <h3>{{ formType === 'login' ? ('Login' | translate) : ('Signup' | translate) }}</h3>
     <!-- EMAIL OR USERNAME INPUT -->
-    <mat-form-field class="input-witdh" appearance="fill">
+    <mat-form-field class="input-witdh" appearance="outline">
         <mat-label>{{ formType === 'login' ? ('UsernameOrEmail' | translate) : ('Username' | translate) }}</mat-label>
         <input 
             matInput
@@ -19,7 +19,7 @@
         </div>
     </mat-form-field>
     <!-- EMAIL INPUT -->
-    <mat-form-field *ngIf="this.formType === 'signup'" class="input-witdh" appearance="fill">
+    <mat-form-field *ngIf="this.formType === 'signup'" class="input-witdh" appearance="outline">
         <mat-label>{{ 'Email' | translate }}</mat-label>
         <input matInput placeholder="{{ 'Email' | translate }}" formControlName="email">
         <div *ngIf="form.get('email')?.touched && form.get('email')?.hasError('email')" class="error">
@@ -33,7 +33,7 @@
         </div>
     </mat-form-field>
     <!-- PASSWORD INPUT -->
-    <mat-form-field class="input-witdh" appearance="fill">
+    <mat-form-field class="input-witdh" appearance="outline">
         <mat-label>{{ 'Password' | translate }}</mat-label>
         <input 
             matInput [type]="hide ? 'password' : 'text'" placeholder="{{ 'Password' | translate }}"
