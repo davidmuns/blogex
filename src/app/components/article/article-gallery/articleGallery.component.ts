@@ -93,6 +93,9 @@ export class ArticleGalleryComponent implements OnInit {
     this.articleSvc.getImagesByArticleId(id).subscribe({
       next: data => {
         this.imagenes = this.utilsSvc.sortFilesByType(data);
+      },
+      error: err => {
+        this.utilsSvc.showSnackBar(err.error.message, 5000);
       }
     })
   }

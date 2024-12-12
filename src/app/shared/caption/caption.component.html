@@ -20,6 +20,6 @@
            {{ 'TitleLength' | translate }}</div>
       </mat-form-field>
     </p>
-    <button class="submit-btn" type="submit" mat-raised-button>{{ 'SaveChanges' | translate }}</button>
+    <button class="submit-btn" type="submit" mat-raised-button [disabled]="!captionForm.valid">{{ 'SaveChanges' | translate }}</button>
   </form>
 </div>

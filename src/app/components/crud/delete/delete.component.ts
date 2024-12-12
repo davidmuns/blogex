@@ -49,13 +49,15 @@ export class DeleteComponent implements OnInit {
 
   deleteArticle() {
     this.uploading = true;
+    let msg = '';
     this.articleSvc.deleteArticle(this.data.article.id).subscribe({
       next: data => {
         this.dialog.closeAll();
         setTimeout(() => {
           this.uploading = false;
           this.redirectTo(this.router.url);
-          this.utilsSvc.showSnackBar(data.mensaje, 3000);
+          msg = this.translateSvc.instant('crud.delete.ok');
+          this.utilsSvc.showSnackBar(msg, 3000);
         }, 700);
         this.redirectTo(this.router.url);
       }

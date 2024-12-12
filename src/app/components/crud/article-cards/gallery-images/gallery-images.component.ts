@@ -110,7 +110,6 @@ export class GalleryImagesComponent implements OnInit {
     this.articleSvc.getImagesByArticleId(id).subscribe({
       next: (data: Imagen[]) => {
         data.forEach(img => {
-          console.log("IMAGE => ", img);
           this.imagenes.push(img);
         });
       },

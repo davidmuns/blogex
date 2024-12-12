@@ -27,6 +27,7 @@
     "noTitle": "Título no especificado",
     "TitleLength": "Título demasiado largo",
     "Caption": "Pie de foto",
+    "captionUpdated": "Pie de foto actualizado",
     "Coordinates": "Coordenadas",
     "Longitude": "Longitud",
     "Latitude": "Latitud",
@@ -156,6 +157,12 @@
         "edit": {
             "ok": "Artículo actualizado",
              "updating": "Actualizando ..."
+        },
+        "new": {
+            "ok": "Article guardado"
+        },
+        "delete": {
+            "ok": "Se ha eliminado el artículo"
         }
     },
     "user-blog": {

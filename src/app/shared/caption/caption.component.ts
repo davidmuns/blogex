@@ -6,49 +6,66 @@ import { ImageService } from '../services/image.service';
 import { Imagen } from '../models/imagen';
 import { Article } from '../models/article';
 import { GalleryImagesComponent } from 'src/app/components/crud/article-cards/gallery-images/gallery-images.component';
+import { ArticleService } from '../services/article.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-caption',
   templateUrl: './caption.component.html',
   styleUrls: ['./caption.component.scss']
 })
-export class CaptionComponent implements OnInit {
+export class CaptionComponent {
   captionForm!: FormGroup;
-
+ 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: { imgId: string, article: Article },
+    @Inject(MAT_DIALOG_DATA) private data: { imgId: string, article: Article },
     private utilsSvc: UtilsService,
     private readonly fb: FormBuilder,
     private readonly dialog: MatDialog,
-    private imageService: ImageService
-    ) { };
-
-  ngOnInit(): void {
+    private imageService: ImageService,
+    private readonly articleSvc: ArticleService,
+    private readonly translateSvc: TranslateService
+  ) {
     this.initform();
+  };
+
+  onSubmit(img: Imagen) {
+    if (this.captionForm.valid) {
+      img.id = this.data.imgId;
+      this.addCaption(img);
+    };
   };
 
   private initform(): void {
     this.captionForm = this.fb.group({
       caption: ['', [Validators.required, Validators.maxLength(25)]]
     });
+    this.patchValue();
   };
 
-  onSubmit(img: Imagen) { 
-    if(this.captionForm.valid){
-      img.id = this.data.imgId;
-      this.addCaption(img);
-    };
-  };
+  private patchValue() {
+    this.articleSvc.getImagesByArticleId(this.data.article.id).subscribe({
+      next: imgs => {
+        const imagenes: Imagen[] = imgs.filter(i => i.id == this.data.imgId);
+        this.captionForm.patchValue(imagenes[0]);
+      },
+      error: err => {
+        this.utilsSvc.showSnackBar(err.error.message, 5000);
+      }
+    })
+  }
 
-  private addCaption(img: Imagen){
+  private addCaption(img: Imagen) {
+    let msg = '';
     this.imageService.addCaption(img).subscribe({
       next: (data: any) => {
-        this.utilsSvc.showSnackBar(data.mensaje, 3000);
         this.dialog.closeAll();
         this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
+        msg = this.translateSvc.instant('captionUpdated');
+        this.utilsSvc.showSnackBar(msg, 3000);
       },
       error: (err: any) => {
-        this.utilsSvc.showSnackBar(err.error.message, 3000);
+        this.utilsSvc.showSnackBar(err.error.message, 5000);
       }
     });
   };

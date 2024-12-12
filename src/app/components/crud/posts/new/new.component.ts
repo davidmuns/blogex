@@ -20,9 +20,7 @@ export class NewComponent {
   images: File[] = [];
   miniatura!: File;
   uploading = false;
-
   public newPostForm!: FormGroup;
-  // public viewForm: any = [1];
   public flag: number = 1;
   public buttonTag: string = "One More";
   // tinymce text editor config variable
@@ -35,7 +33,7 @@ export class NewComponent {
     private tokenService: TokenService,
     private articleService: ArticleService,
     private router: Router,
-    private translateService: TranslateService
+    private translateSvc: TranslateService
   ) {
     this.initForm();
     tinyEditorSvc.getEditorConfig().subscribe((config: any) => {
@@ -57,7 +55,7 @@ export class NewComponent {
 
     this.image = event.target.files[0];
     if (!this.image?.type?.startsWith('image/')) {
-      let msg = this.translateService.instant('crud.article-card.valid-img');
+      let msg = this.translateSvc.instant('crud.article-card.valid-img');
       this.utilsSvc.showSnackBar(msg, 3000);
       this.image = null;
       event.target.value = null;
@@ -69,9 +67,9 @@ export class NewComponent {
     fr.onload = (e: any) => {
       img.src = e.target.result;
       img.onload = () => {
-        if (img.height > img.width) {
-          let msg = this.translateService.instant('crud.article-card.cover-img-orientation');
-          this.utilsSvc.showSnackBar(msg, 3000);
+        if ((img.height > img.width) || (img.height == img.width)) {
+          let msg = this.translateSvc.instant('crud.article-card.cover-img-orientation');
+          this.utilsSvc.showSnackBar(msg, 5000);
           this.image = null;
           event.target.value = null;
           return;
@@ -93,22 +91,24 @@ export class NewComponent {
         const username = this.tokenService.getUsername() as string;
         this.createArticle(post, username, this.image);
       } else {
-        msg = this.translateService.instant('ImgMaximumExceed') + " 5MB";
+        msg = this.translateSvc.instant('ImgMaximumExceed') + " 5MB";
         this.utilsSvc.showSnackBar(msg, 3000);
       }
     } else {
-      msg = this.translateService.instant('FillBlanks');
+      msg = this.translateSvc.instant('FillBlanks');
       this.utilsSvc.showSnackBar(msg, 3000);
     };
   };
 
   private createArticle(post: Article, username: string, img: File) {
     this.uploading = true;
+    let msg = '';
     if (this.newPostForm.valid) {
       this.articleService.createArticle(post, username, img).subscribe({
         next: data => {
           this.uploading = false;
-          this.utilsSvc.showSnackBar(data.mensaje, 3000);
+          msg = this.translateSvc.instant('crud.new.ok');
+          this.utilsSvc.showSnackBar(msg, 3000);
           this.redirectTo(this.router.url);
         },
         error: err => {

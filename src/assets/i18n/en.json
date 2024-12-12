@@ -27,6 +27,7 @@
     "noTitle": "Unspecified title",
     "TitleLength": "Title too long",
     "Caption": "Caption",
+    "captionUpdated": "Caption updated",
     "Coordinates": "Coordinates",
     "Longitude": "Longitude",
     "Latitude": "Latitude",
@@ -156,6 +157,12 @@
         "edit": {
             "ok": "Article updated",
             "updating": "Updating ..."
+        },
+        "new": {
+            "ok": "Article saved"
+        },
+        "delete": {
+            "ok": "Article deleted"
         }
     },
     "user-blog": {

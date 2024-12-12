@@ -26,6 +26,7 @@
     "noTitle": "Títol no especificat",
     "TitleLength": "Títol massa llarg",
     "Caption": "Peu de foto",
+    "captionUpdated": "Peu de foto actualitzat",
     "Coordinates": "Coordenades",
     "Longitude": "Longitud",
     "Latitude": "Latitud",
@@ -155,6 +156,12 @@
         "edit": {
             "ok": "Article actualitzat",
             "updating": "Actualizant ..."
+        },
+        "new": {
+            "ok": "S'ha guardat l'article"
+        },
+        "delete": {
+            "ok": "S'ha eliminat l'article"
         }
     },
     "user-blog": {
