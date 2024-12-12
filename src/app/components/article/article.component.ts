@@ -6,12 +6,14 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { TokenService } from 'src/app/shared/services/token.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditComponent } from '../crud/posts/edit/edit.component';
 import { bounce, fadeIn, fadeInZoom, fadeSlide, pulse, rotate, scaleUp, slideIn, zoomInOut } from './../../shared/models/animations';
 // Animate on scroll library => https://michalsnik.github.io/aos/
 import AOS from 'aos';
-
+import { Overlay } from '@angular/cdk/overlay';
+import { environment } from 'src/environments/environment';
+// const dialogConfig = environment.dialogConfig;
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -31,13 +33,7 @@ import AOS from 'aos';
 })
 export class ArticleComponent implements OnInit {
 
-  navigationExtras: NavigationExtras = {
-    state: {
-      value: null
-    }
-  };
-
-  post!: Article | undefined;
+   post!: Article | undefined;
   idPost!: number;
   temp!: number;
   username!: string;
@@ -52,6 +48,7 @@ export class ArticleComponent implements OnInit {
     public tokenSvc: TokenService,
     private readonly router: Router,
     private readonly dialog: MatDialog,
+    private readonly overlay: Overlay
   ) { }
 
   ngOnInit(): void {
@@ -87,7 +84,7 @@ export class ArticleComponent implements OnInit {
 
   // https://www.youtube.com/watch?v=vpq2FxNzgd4
   private async getWeather(lat: number, lon: number) {
-     await this.apiWeatherService.getWeather(lat, lon)
+    await this.apiWeatherService.getWeather(lat, lon)
       .then(resp => resp.json())
       .then(data => {
         const iconCode = data.weather[0].icon;
@@ -97,13 +94,14 @@ export class ArticleComponent implements OnInit {
   };
 
   onEdit(post: any) {
-    this.dialog.open(EditComponent, { 
-      data: { article: post },
-      enterAnimationDuration: '500ms',
-      exitAnimationDuration: '500ms',
-    });
-    // this.navigationExtras.state = post;
-    // this.router.navigate(['admin/edit'], this.navigationExtras);
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.hasBackdrop = false;
+    dialogConfig.enterAnimationDuration = '500ms';
+    dialogConfig.exitAnimationDuration = '500ms'
+    dialogConfig.scrollStrategy = this.overlay.scrollStrategies.noop(); // Permite el scroll en el fondo.
+    dialogConfig.data = { article: post };
+    this.dialog.open(EditComponent, dialogConfig);
   }
 }
 

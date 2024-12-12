@@ -6,12 +6,17 @@ import { Map, marker, MarkerClusterGroup } from 'leaflet';
 import { Article } from 'src/app/shared/models/article';
 import 'leaflet.markercluster';
 import L from 'leaflet';
+import { fadeInZoom, pulse } from 'src/app/shared/models/animations';
 
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
+  animations: [
+      fadeInZoom,
+      pulse,   
+    ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MapComponent implements OnInit, OnDestroy, AfterViewInit {

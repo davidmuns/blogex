@@ -2,6 +2,9 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { MatDialogConfig } from "@angular/material/dialog";
+
+
 export const environment = {
   production: true,
   users: "",
