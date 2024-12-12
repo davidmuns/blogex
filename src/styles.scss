@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import url("https://unpkg.com/leaflet@1.9.2/dist/leaflet.css");
+// @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 :root {
     --primary: #3F51B5; //500
@@ -115,6 +116,7 @@ input[type=number] {
         transform: rotate(360deg);
     }
 }
+
 .overlay {
     position: fixed;
     top: 0;
@@ -132,4 +134,8 @@ input[type=number] {
     text-align: center;
     color: white;
     font-size: 20px;
+}
+
+[mat-dialog-title] {
+    cursor: move;
 }

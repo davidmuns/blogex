@@ -1,13 +1,15 @@
-<div class="header">
+<div class="header"
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle>
   <div></div>
-
   <div>
     <h2 mat-dialog-title>{{ 'Gallery' | translate }}</h2>
   </div>
   <div>
     <mat-icon mat-button mat-dialog-close class="close-btn">close</mat-icon>
   </div>
-
 </div>
 
 <mat-dialog-content class="mat-typography" style="background-color: #607d8b;">

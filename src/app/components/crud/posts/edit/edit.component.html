@@ -1,4 +1,9 @@
-<div class="header">
+<div class="header"
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle>
+
   <div class="toNew-btn-container">
     <button class="toNew-btn" mat-stroked-button (click)="toNew()">{{ 'CreateArticle' | translate }}</button>
   </div>

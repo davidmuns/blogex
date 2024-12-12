@@ -4,7 +4,11 @@
     <div>{{ 'crud.article-card.uploading-icon-tool-tip' | translate }}</div>
   </div>
 </div>
-<div class="header">
+<div class="header" 
+  mat-dialog-title
+  cdkDrag
+  cdkDragRootElement=".cdk-overlay-pane"
+  cdkDragHandle>
   <div></div>
   <div>
     <h2 mat-dialog-title>{{ 'Gallery' | translate }}</h2>
