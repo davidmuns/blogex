@@ -17,6 +17,7 @@ import { GalleryVideosComponent } from './gallery-videos/gallery-videos.componen
 // Animate on scroll library => https://michalsnik.github.io/aos/
 import AOS from 'aos';
 import { EditComponent } from '../posts/edit/edit.component';
+import { DeleteComponent } from '../delete/delete.component';
 
 
 @Component({
@@ -76,7 +77,7 @@ export class ArtcileCardsComponent implements OnInit {
         this.articles = this.utilsSvc.sortArticlesBy(data, this.sortBy);
       },
       error: (err: any) => {
-       this.utilsSvc.showSnackBar(err.error.message, 3000);
+        this.utilsSvc.showSnackBar(err.error.message, 5000);
       }
     });
   };
@@ -107,7 +108,7 @@ export class ArtcileCardsComponent implements OnInit {
   };
 
   onEdit(post: Article) {
-    this.dialog.open(EditComponent, { 
+    this.dialog.open(EditComponent, {
       data: { article: post },
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms',
@@ -115,6 +116,14 @@ export class ArtcileCardsComponent implements OnInit {
     // this.navigationExtras.state = post;
     // this.router.navigate(['admin/edit'], this.navigationExtras);
   };
+
+  onDelete(a: Article) {
+    this.dialog.open(DeleteComponent, {
+      data: { article: a, option: "deleteArticle" },
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms'
+    });
+  }
 
   onSortBy(optionSelected: string) {
     this.sortBy = optionSelected;

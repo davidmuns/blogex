@@ -33,7 +33,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ArticleComponent implements OnInit {
 
-   post!: Article | undefined;
+  post!: Article | undefined;
   idPost!: number;
   temp!: number;
   username!: string;

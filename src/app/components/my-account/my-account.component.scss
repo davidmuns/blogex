@@ -12,6 +12,13 @@ mat-card {
 .buttons-container {
   display: flex;
   gap: 25px;
+
+  @media(max-width: 375px) {
+    button {
+      font-size: 13px;
+    }
+  }
+  
 }
 
 .body {
@@ -22,10 +29,11 @@ mat-card {
   margin-top: 85px;
   height: 100%;
   min-height: 70vh;
+
   // background-color: var(--cream);
-  @media(max-width: 500px){
+  @media(max-width: 500px) {
     margin-top: 75px;
-}
+  }
 }
 
 .login {
@@ -46,8 +54,8 @@ mat-card-title {
   font-size: 1.4rem;
 
   @media(max-width:800px) {
-      font-size: 1.4rem;
-      margin-left: 10px;
+    font-size: 1.4rem;
+    margin-left: 10px;
   }
 }
 
@@ -70,7 +78,7 @@ p {
   color: var(--accent);
 }
 
-.set-pass-btn:hover{
+.set-pass-btn:hover {
   color: var(--lemon);
   background-color: var(--accent);
 }
