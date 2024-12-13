@@ -27,23 +27,24 @@
             <mat-icon>more_vert</mat-icon>
           </button>
         </div>
-        <a routerLink="/article/{{ article.id }}" style="cursor: pointer;">
-          <img [src]="article.imagenPortada" alt="{{ article.caption }}"
-            title="{{ 'user-blog.goto-article' | translate }}">
-        </a>
+        <img [src]="article.imagenPortada" alt="{{ article.caption }}">
         <div class="btn-container">
-            <!-- <button mat-button matTooltip="{{ 'EditArticle' | translate }}"
-              (click)="onEdit(article)">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-button matTooltip="{{ 'crud.article-card.video-tool-tip' | translate }}"
-              (click)="onOpenVideosGallery(article)" matTooltip="gallery view">
-              <mat-icon>movie_creation</mat-icon>
-            </button>
-            <button mat-button matTooltip="{{ 'MyImages' | translate }}"
-              (click)="onOpenImagesGallery(article)" matTooltip="gallery view">
-              <mat-icon>image</mat-icon>
-            </button> -->
+          <!-- <button mat-button matTooltip="{{ 'EditArticle' | translate }}"
+            (click)="onEdit(article)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-button matTooltip="{{ 'crud.article-card.video-tool-tip' | translate }}"
+            (click)="onOpenVideosGallery(article)" matTooltip="gallery view">
+            <mat-icon>movie_creation</mat-icon>
+          </button>
+          <button mat-button matTooltip="{{ 'MyImages' | translate }}"
+            (click)="onOpenImagesGallery(article)" matTooltip="gallery view">
+            <mat-icon>image</mat-icon>
+          </button> -->
+          <button mat-button  matTooltip="{{ 'user-blog.goto-article' | translate }}" [routerLink]="['/article/', article.id]">
+            <mat-icon>visibility</mat-icon> 
+            <!-- {{ 'user-blog.see-more' | translate }} -->
+          </button>
         </div>
       </div>
       <!-- MENU -->

@@ -4,10 +4,6 @@ h1 {
     text-align: center;
 }
 
-h3 {
-    color: white;
-}
-
 mat-paginator {
     background-color: transparent;
 }
@@ -59,11 +55,6 @@ mat-paginator {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
-    img {
-        cursor: pointer;
-    }
-
 }
 
 .articles-section>article {
@@ -151,10 +142,8 @@ article:hover {
     }
 
     div h3 {
-        font-size: .9rem;
-        text-align: center;
-        margin: 5px 0px;
-        cursor: pointer;
+        color: var(--cream);
+        margin: 7px 0px;
     }
 
     a {
@@ -165,7 +154,7 @@ article:hover {
 
     img {
         overflow: hidden;
-        // background-size: cover;
+        background-size: cover;
         height: 160px;
         width: 100%;
         margin-bottom: 0px;
@@ -182,6 +171,7 @@ article:hover {
     }
 
     button:hover {
+        color: palevioletred;
         box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
     }
 
@@ -191,6 +181,6 @@ article:hover {
     }
 
     mat-icon:hover {
-        color: rgba(255, 255, 255);
+        color: var(--cream);
     }
 }
