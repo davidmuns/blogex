@@ -10,7 +10,7 @@ import { Article } from '../../../shared/models/article';
 import { Imagen } from 'src/app/shared/models/imagen';
 // Angular
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router } from '@angular/router';
 // Components
 import { GalleryImagesComponent } from './gallery-images/gallery-images.component';
 import { GalleryVideosComponent } from './gallery-videos/gallery-videos.component';
@@ -28,11 +28,6 @@ import { DeleteComponent } from '../delete/delete.component';
 export class ArtcileCardsComponent implements OnInit {
 
   sortBy = '';
-  // navigationExtras: NavigationExtras = {
-  //   state: {
-  //     value: null
-  //   }
-  // };
   filterByTitle = '';
   articles: Article[] = [];
   imagenes: Imagen[] = [];
@@ -102,7 +97,7 @@ export class ArtcileCardsComponent implements OnInit {
 
   onOpenImagesGallery(a: Article) {
     this.dialog.open(GalleryImagesComponent, {
-      data: { article: a },
+      data: { article: a, from: 'article-cards-app' },
       exitAnimationDuration: '500ms'
     });
   };

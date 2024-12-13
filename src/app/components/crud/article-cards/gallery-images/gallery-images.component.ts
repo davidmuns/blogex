@@ -83,7 +83,7 @@ export class GalleryImagesComponent implements OnInit {
 
   onCaption(id: string) {
     this.dialog.open(CaptionComponent, {
-      data: { imgId: id, article: this.article },
+      data: { imgId: id, article: this.article, from: 'app-gallery-images' },
       enterAnimationDuration: '500ms',
       exitAnimationDuration: '500ms'
     });

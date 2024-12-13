@@ -6,6 +6,14 @@ import { Imagen } from './../../../shared/models/imagen';
 import { ArticleService } from './../../../shared/services/article.service';
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import AOS from 'aos';
+import { DeleteComponent } from '../../crud/delete/delete.component';
+import { CaptionComponent } from 'src/app/shared/caption/caption.component';
+import { MatDialog } from '@angular/material/dialog';
+import { Article } from 'src/app/shared/models/article';
+import { GalleryImagesComponent } from '../../crud/article-cards/gallery-images/gallery-images.component';
+import { EditComponent } from '../../crud/posts/edit/edit.component';
+import { Router } from '@angular/router';
+import { TokenService } from 'src/app/shared/services/token.service';
 
 @Component({
   selector: 'app-articleGallery',
@@ -13,7 +21,7 @@ import AOS from 'aos';
   styleUrls: ['./articleGallery.component.scss']
 })
 export class ArticleGalleryComponent implements OnInit {
-  @Input('articleId') articleId!: number | undefined;
+  @Input('article') article: any;
   @Input('username') username!: string;
   imagenes: Imagen[] = [];
   urlmages: string[] = [];
@@ -25,7 +33,9 @@ export class ArticleGalleryComponent implements OnInit {
   }
   isZoomed!: number | null;
   constructor(
+    public tokenSvc: TokenService,
     private readonly articleSvc: ArticleService,
+    private readonly dialog: MatDialog,
     private readonly utilsSvc: UtilsService,
     private readonly videoSvc: VideoService) { }
 
@@ -33,16 +43,39 @@ export class ArticleGalleryComponent implements OnInit {
     AOS.init();
   }
 
-  showGallery() {
-    this.getImgsByArticleId(this.articleId as number);
-    this.getVideosByArticleId(this.articleId as number);
+  showGallery() { 
+    this.getImgsByArticleId(this.article.id as number);
+    this.getVideosByArticleId(this.article.id as number);
   }
 
   hideGallery() {
     this.imagenes = [];
     this.videos$ = new Observable();
-    // window.scroll(0, 0);
   }
+
+  onDeleteImage(id: string) {
+    this.dialog.open(DeleteComponent, {
+      data: { imgId: id, article: null, option: "deleteImage" },
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms'
+    });
+  };
+
+  onDeleteYoutube(id: number | undefined) {
+    this.dialog.open(DeleteComponent, { 
+      data: { videoId: id, article: null, option: "deleteVideo" },
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms'
+    });
+  };
+
+  onCaption(id: string) {
+    this.dialog.open(CaptionComponent, {
+      data: { imgId: id, article: this.article, from: 'app-articleGallery' },
+      enterAnimationDuration: '500ms',
+      exitAnimationDuration: '500ms'
+    });
+  };
 
   openModal(index: number) {
     this.indice = index;
@@ -77,8 +110,8 @@ export class ArticleGalleryComponent implements OnInit {
     this.indice = (this.indice + 1) % this.urlmages.length;
   }
 
-   // Alterna el zoom al hacer clic en una imagen
-   toggleZoom(event: Event, index: number): void {
+  // Alterna el zoom al hacer clic en una imagen
+  toggleZoom(event: Event, index: number): void {
     event.stopPropagation(); // Evita que el evento se propague al documento
     this.isZoomed = this.isZoomed === index ? null : index;
   }

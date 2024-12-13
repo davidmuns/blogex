@@ -29,19 +29,7 @@
         </div>
         <img [src]="article.imagenPortada" alt="{{ article.caption }}">
         <div class="btn-container">
-          <!-- <button mat-button matTooltip="{{ 'EditArticle' | translate }}"
-            (click)="onEdit(article)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-button matTooltip="{{ 'crud.article-card.video-tool-tip' | translate }}"
-            (click)="onOpenVideosGallery(article)" matTooltip="gallery view">
-            <mat-icon>movie_creation</mat-icon>
-          </button>
-          <button mat-button matTooltip="{{ 'MyImages' | translate }}"
-            (click)="onOpenImagesGallery(article)" matTooltip="gallery view">
-            <mat-icon>image</mat-icon>
-          </button> -->
-          <button mat-button  matTooltip="{{ 'user-blog.goto-article' | translate }}" [routerLink]="['/article/', article.id]">
+          <button mat-button matTooltip="{{ 'user-blog.goto-article' | translate }}" [routerLink]="['/article/', article.id]">
             <mat-icon>visibility</mat-icon> 
             <!-- {{ 'user-blog.see-more' | translate }} -->
           </button>
@@ -49,7 +37,7 @@
       </div>
       <!-- MENU -->
       <mat-menu #menu xPosition="before">
-        <!-- EDIT BUTTON -->
+        <!-- NEW ARTICLE BUTTON -->
         <button mat-menu-item routerLink="/group-form">
           <mat-icon>add_circle</mat-icon>
           {{ 'CreateArticle' | translate }}
@@ -69,12 +57,13 @@
         <mat-divider></mat-divider>
         <!-- FILES BUTTON -->
         <button mat-menu-item (click)="onOpenImagesGallery(article)">
-          <mat-icon>image</mat-icon>
-          {{ 'MyImages' | translate }}
+          <mat-icon>folder</mat-icon>
+
+          {{ 'images' | translate }}
         </button>
         <mat-divider></mat-divider>
         <!-- DELETE BUTTON -->
-        <button mat-menu-item color="warn" (click)="onDelete(article)">
+        <button class="delete-btn" mat-menu-item (click)="onDelete(article)">
           <mat-icon>delete</mat-icon>
           {{ 'Delete' | translate }}
         </button>
@@ -86,8 +75,12 @@
     <section class="articles-section shadow rounded">
       <article data-aos="fade-up" data-aos-duration="1000">
         <div class="article-card">
-          <div>
-              <h3 style="color: rgba(255, 255, 255); cursor: auto;">No articles</h3>
+          <div class="header-card container">
+            <h3>No articles</h3>
+            <div></div>
+            <button mat-icon-button>
+              <mat-icon>sentiment_dissatisfied</mat-icon>
+            </button>        
           </div>
             <img src="./../../../assets/img/logo-blogex.jpg" alt="logo-blogex"
               title="{{ 'user-blog.goto-article' | translate }}" style="cursor: auto;">

@@ -18,7 +18,8 @@
 		<div class="card" *ngFor="let imagen of imagenes; index as i" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
 			<div class="card-title">
 				<ng-container *ngIf="imagen.caption; else noCaption">
-					{{ imagen.caption }}
+					<span *ngIf="imagen.coverImg">{{ "CoverImage" | translate }}</span>
+					<span *ngIf="!imagen.coverImg">{{ imagen.caption }}</span>
 				</ng-container>
 				<ng-template #noCaption>{{ 'noTitle' | translate }}</ng-template>
 			</div>
@@ -31,6 +32,19 @@
 					<mat-icon *ngIf="imagen.fileType == 'image'" >visibility</mat-icon>
 					<mat-icon *ngIf="imagen.fileType == 'video'" >visibility_off</mat-icon>
 				</button>
+				<ng-container *ngIf="username == tokenSvc.getUsername() || tokenSvc.isAdmin()">
+					<button 
+						[style.color]="imagen.coverImg ? 'gray': 'var(--lemon)'"
+						[matTooltip]="imagen.coverImg ? '' : ('Add' | translate) + ' ' + ('Caption' | translate | lowercase)" 
+						mat-stroked-button 
+						(click)="onCaption(imagen.id)" 
+						[disabled]="imagen.coverImg">
+					<mat-icon>edit</mat-icon>
+					</button>
+					<button class="delete-btn" mat-stroked-button (click)="onDeleteImage(imagen.id)" [disabled]="imagen.coverImg">
+						<mat-icon [style.color]="imagen.coverImg ? 'gray': 'rgb(255, 71, 71)'">delete</mat-icon>
+					</button>
+				</ng-container>
 			</div>
 		</div>
 	</div>
@@ -49,6 +63,11 @@
 					showBeforeIframeApiLoads="true" [width]="260">
 				</youtube-player>
 			</mat-card-content>
+			<mat-card-actions *ngIf="username == tokenSvc.getUsername() || tokenSvc.isAdmin()" align="end">
+				<button class="delete-btn" mat-stroked-button (click)="onDeleteYoutube(video.id)">
+					<mat-icon style="color: rgb(255, 71, 71)">delete</mat-icon>
+				</button>
+			</mat-card-actions>
 
 		</mat-card>
 

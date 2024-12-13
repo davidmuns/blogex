@@ -29,7 +29,7 @@
       <hr>
       <p [innerHTML]="post?.content | safeHtml">
     </mat-card-content>
-    <app-articleGallery [articleId]="post?.id" [username]="username"></app-articleGallery>
+    <app-articleGallery [article]="post" [username]="username"></app-articleGallery>
     <mat-card-actions></mat-card-actions>
   </div>
 </body>

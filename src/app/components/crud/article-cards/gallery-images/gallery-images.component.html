@@ -11,7 +11,7 @@
   cdkDragHandle>
   <div></div>
   <div>
-    <h2 mat-dialog-title>{{ 'Gallery' | translate }}</h2>
+    <h2 mat-dialog-title>{{ 'images' | translate }}</h2>
   </div>
   <div>
     <mat-icon mat-button mat-dialog-close class="close-btn">close</mat-icon>
@@ -24,23 +24,28 @@
   <div class="card-container">
     <div class="card animate__animated animate__backInLeft" *ngFor="let imagen of this.imagenes; index as i">
         <div class="card-title"s>
-          {{ i + 1 }}
-          <ng-container *ngIf="imagen.coverImg; else notCover">
-            {{ imagen.caption }} <span style="font-size: 12px;">({{ "CoverImage" | translate }})</span>
+          <ng-container *ngIf="imagen.caption; else noCaption">
+            <span *ngIf="imagen.coverImg">{{ "CoverImage" | translate }}</span>
+            <span *ngIf="!imagen.coverImg">{{ imagen.caption }}</span>
           </ng-container>
-          <ng-template #notCover>{{ imagen.caption }}</ng-template>
+          <ng-template #noCaption>{{ 'noTitle' | translate }}</ng-template>
         </div>
       <div class="card-image">
         <img *ngIf="imagen.fileType =='image'" [src]="imagen.url" alt="Descripción de la imagen">
         <video class="video-preview" *ngIf="imagen.fileType =='video'" [src]="imagen.url" title="video" controls></video>
       </div>
       <div class="card-actions">
-        <button class="caption-btn" mat-stroked-button (click)="onCaption(imagen.id)"
-          matTooltip="{{ 'Add' | translate }} {{ 'Caption' | translate | lowercase}}">
+        <button 
+            class="caption-btn" 
+            [style.color]="imagen.coverImg ? 'gray': 'var(--lemon)'"
+            [matTooltip]="imagen.coverImg ? '' : ('Add' | translate) + ' ' + ('Caption' | translate | lowercase)" 
+            mat-stroked-button 
+            (click)="onCaption(imagen.id)" 
+            [disabled]="imagen.coverImg">
           <mat-icon>edit</mat-icon>
         </button>
-        <button class="delete-btn" mat-stroked-button (click)="onDeleteImage(imagen.id)">
-          <mat-icon>delete</mat-icon>
+        <button class="delete-btn" mat-stroked-button (click)="onDeleteImage(imagen.id)" [disabled]="imagen.coverImg">
+          <mat-icon [style.color]="imagen.coverImg ? 'gray': 'rgb(255, 71, 71)'">delete</mat-icon>
         </button>
       </div>
     </div>

@@ -2,7 +2,7 @@ import { UtilsService } from './../../../../shared/services/utils.service';
 import { TinyEditorService } from './../../../../shared/services/tiny-editor.service';
 import { environment } from 'src/environments/environment';
 import { ArticleService } from 'src/app/shared/services/article.service';
-import { Component, HostListener, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/shared/models/article';
@@ -29,7 +29,6 @@ export class EditComponent implements OnInit {
   // tinymce text editor config variable
   editorConfig: any;
   public editPostForm!: FormGroup;
-  // public viewForm: any = [1];
   public flag: number = 1;
   public buttonTag: string = "One More";
   public article: any = null;
@@ -51,7 +50,6 @@ export class EditComponent implements OnInit {
     tinyEditorSvc.getEditorConfig().subscribe((config:any) => {
       this.editorConfig = config;
     });
-    const navigation = router.getCurrentNavigation();
     this.article = data.article;
     this.reload();
     this.initForm();

@@ -8,6 +8,7 @@ import { Article } from '../models/article';
 import { GalleryImagesComponent } from 'src/app/components/crud/article-cards/gallery-images/gallery-images.component';
 import { ArticleService } from '../services/article.service';
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-caption',
@@ -16,15 +17,16 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class CaptionComponent {
   captionForm!: FormGroup;
- 
+
   constructor(
-    @Inject(MAT_DIALOG_DATA) private data: { imgId: string, article: Article },
-    private utilsSvc: UtilsService,
+    @Inject(MAT_DIALOG_DATA) private readonly data: { imgId: string, article: Article, from: string },
+    private readonly utilsSvc: UtilsService,
     private readonly fb: FormBuilder,
     private readonly dialog: MatDialog,
-    private imageService: ImageService,
+    private readonly imageService: ImageService,
     private readonly articleSvc: ArticleService,
-    private readonly translateSvc: TranslateService
+    private readonly translateSvc: TranslateService,
+    private readonly router: Router,
   ) {
     this.initform();
   };
@@ -60,7 +62,12 @@ export class CaptionComponent {
     this.imageService.addCaption(img).subscribe({
       next: (data: any) => {
         this.dialog.closeAll();
-        this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
+        if (this.data.from == 'app-gallery-images') {
+          this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
+        }
+        if (this.data.from == 'app-articleGallery') {
+          this.redirectTo(this.router.url)
+        }
         msg = this.translateSvc.instant('captionUpdated');
         this.utilsSvc.showSnackBar(msg, 3000);
       },
@@ -69,4 +76,9 @@ export class CaptionComponent {
       }
     });
   };
+
+  redirectTo(uri: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate([uri]));
+  }
 };

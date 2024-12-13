@@ -120,6 +120,7 @@ article:hover {
 
 .mat-card-header-text {
     margin: 0px 4px;
+
     button {
         color: var(--lemon);
     }
@@ -129,6 +130,7 @@ article:hover {
     display: flex;
     justify-content: space-between;
     color: var(--lemon);
+
     button:hover {
         color: palevioletred;
     }
@@ -158,6 +160,12 @@ article:hover {
         height: 160px;
         width: 100%;
         margin-bottom: 0px;
+    }
+}
+
+.delete-btn {
+    mat-icon {
+        color: red;
     }
 }
 

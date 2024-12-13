@@ -21,7 +21,7 @@ import { Article } from 'src/app/shared/models/article';
   templateUrl: './delete.component.html',
   styleUrls: ['./delete.component.scss']
 })
-export class DeleteComponent implements OnInit {
+export class DeleteComponent {
 
   buttons = [
     { option: 'deleteArticle', text: this.translateSvc.instant('Article'), action: () => this.deleteArticle() },
@@ -36,7 +36,7 @@ export class DeleteComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article, imgId: string, videoId: number, option: string },
     private readonly utilsSvc: UtilsService,
-    private tokenSvc: TokenService,
+    private readonly tokenSvc: TokenService,
     private readonly authSvc: AuthService,
     private readonly dialog: MatDialog,
     private readonly articleSvc: ArticleService,
@@ -44,8 +44,6 @@ export class DeleteComponent implements OnInit {
     private readonly router: Router,
     private readonly translateSvc: TranslateService
   ) { }
-
-  ngOnInit(): void { }
 
   deleteArticle() {
     this.uploading = true;
@@ -70,7 +68,11 @@ export class DeleteComponent implements OnInit {
       next: (data: any) => {
         this.uploading = false;
         this.dialog.closeAll();
-        this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
+        if (this.data.article != null){
+          this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
+        }else{
+          this.redirectTo(this.router.url)
+        }
         const msg = this.translateSvc.instant('crud.image-list.deleted');
         this.utilsSvc.showSnackBar(msg, 3000);
       },
@@ -86,7 +88,11 @@ export class DeleteComponent implements OnInit {
       next: data => {
         this.uploading = false;
         this.dialog.closeAll();
-        this.dialog.open(GalleryVideosComponent, { data: { article: this.data.article } });
+        if (this.data.article != null){
+          this.dialog.open(GalleryVideosComponent, { data: { article: this.data.article } });
+        }else{
+          this.redirectTo(this.router.url)
+        }
         const msg = this.translateSvc.instant('crud.list-videos.deleted');
         this.utilsSvc.showSnackBar(msg, 5000);
       },
@@ -136,10 +142,10 @@ export class DeleteComponent implements OnInit {
 
   cancel() {
     this.dialog.closeAll();
-    if (this.data.option === 'deleteImage') {
+    if (this.data.option === 'deleteImage' && this.data.article != null) {
       this.dialog.open(GalleryImagesComponent, { data: { article: this.data.article } });
     }
-    if (this.data.option === 'deleteVideo') {
+    if (this.data.option === 'deleteVideo' && this.data.article != null) {
       this.dialog.open(GalleryVideosComponent, { data: { article: this.data.article } });
     }
   };
