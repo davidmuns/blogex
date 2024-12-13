@@ -78,8 +78,12 @@ export class FormTemplateComponent implements OnInit {
           this.tokenSvc.setToken(data.token);
           this.dialog.closeAll();
           const msg = `${this.translateSvc.instant('auth.login.welcome')} ${this.form.value.nombreUsuario}!`;
-          this.utilsSvc.showSnackBar(msg, 5000);
-          this.router.navigate(['group-form']);
+          
+          // this.router.navigate(['group-form']);
+          setTimeout(() => { 
+            this.utilsSvc.showSnackBar(msg, 5000);
+            this.router.navigate(['articles']);
+          }, 600);
         },
         error: err => {
           const msg = this.translateSvc.instant('auth.login.wrong-data');

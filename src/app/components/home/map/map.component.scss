@@ -19,13 +19,7 @@ mat-spinner{
     top:35vh;
     left:45vw;
 }
-.capa1{
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 120%;
-} 
+ 
 .capa{
     position: fixed;
     top: 60px;
@@ -49,26 +43,6 @@ mat-spinner{
     align-items: center;
     justify-content: center;
     
-}
-#map2{
-    position: sticky;
-    position:-webkit-sticky;
-    top: 0px;
-    left:0px;
-    width: 100%;
-    height: 100%;
-    z-index: -3;
-    display: block;
-}
-#map3{
-    position: sticky;
-    position:-webkit-sticky;
-    top: 0px;
-    left:0px;
-    width: 100%;
-    height: 100%;
-    z-index: -3;
-    display: block;
 }
 #message{
     color: red;

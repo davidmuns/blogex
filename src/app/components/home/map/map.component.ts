@@ -163,7 +163,6 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     if (this.subscription) {
-      // console.log("SUBSCRIPTION => ", this.subscription);
       this.subscription.unsubscribe();
       this.subscription = null; // Limpieza adicional
     }

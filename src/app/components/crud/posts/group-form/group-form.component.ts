@@ -53,24 +53,6 @@ export class GroupFormComponent {
     });
   };
 
-  // handleImageOnNewForm(event: any) {
-  //   this.image = event.target.files[0];
-
-  //    if (!this.image?.type?.startsWith('image/')) {
-  //     let msg = this.translateService.instant('crud.article-card.valid-img');
-  //     this.utilsSvc.showSnackBar(msg, 3000);
-  //     event.target.value = '';
-  //     return;
-  //   }
-  //   const fr = new FileReader();
-  //   fr.onload = (e: any) => {
-  //     this.miniatura = e.target.result;
-  //   };
-  //   if (this.image != null) {
-  //     fr.readAsDataURL(this.image);
-  //   };
-  // };
-
   handleImageOnNewForm(event: any): void {
 
     this.image = event.target.files[0];
@@ -138,6 +120,4 @@ export class GroupFormComponent {
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
       this.router.navigate([uri]));
   };
-
-
 }
