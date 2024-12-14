@@ -44,6 +44,23 @@ body {
     -webkit-box-orient: vertical;
 }
 
+/* Mueve los controles hacia abajo */
+.leaflet-top {
+    top: 85px;
+    // left: 50px
+}
+
+/* Opcional: Personaliza los controles individualmente */
+.leaflet-control-zoom {
+    // margin-top: 1320px;
+    /* Margen adicional entre el header y los controles de zoom */
+}
+
+.leaflet-control-layers {
+    margin-top: 20px;
+    /* Ajusta la posición del control de capas */
+}
+
 .leaflet-container a {
     cursor: pointer;
     font-size: 1rem;

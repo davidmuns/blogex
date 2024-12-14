@@ -19,6 +19,19 @@ export class HeaderComponent implements OnInit {
 
   private getScreenWidth: any;
   isMobile = false
+  isSolid = false;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (scrollTop === 0) {
+      this.isSolid = false; // Header sólido al inicio
+    } else if (scrollTop > 0 && scrollTop < 600) {
+      this.isSolid = false; // Header transparente entre 0 y 100px de scroll
+    } else if (scrollTop >= 600) {
+      this.isSolid = true; // Header sólido nuevamente después de 100px
+    }
+  }
  
   contexts = [
     {
@@ -110,6 +123,8 @@ export class HeaderComponent implements OnInit {
     const uri = '/blog/' + this.tokenService.getUsername();
     this.redirectTo(uri);
   }
+
+  
 
   @HostListener('window:resize', ['$event'])
   onWindowResize() {

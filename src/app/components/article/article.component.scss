@@ -2,14 +2,14 @@
 
 body {
   background-color: var(--cream);
-  margin-top: 85px;
+  // margin-top: 85px;
 
   @media(max-width: 900px) {
-    margin-top: 80px;
+    // margin-top: 80px;
   }
 
   @media(max-width: 500px) {
-    margin-top: 65px;
+    // margin-top: 65px;
   }
 }
 
@@ -27,13 +27,13 @@ button:hover {
 
   .weather-icon {
     position: absolute;
-    top: 15px;
+    top: 65px;
     right: 20px;
     width: 100px;
     height: 100px;
 
     @media(max-width: 500px) {
-      top: -10px;
+      top: 40px;
       right: -10px;
       width: 75px;
       height: 75px;
@@ -42,8 +42,8 @@ button:hover {
 
   img {
     width: 100%;
-    height: auto;
-    max-height: 650px;
+    // height: auto;
+    max-height: 750px;
     object-fit: cover;
     margin: 0px;
   }
@@ -65,20 +65,20 @@ button:hover {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 50px 20px;
+  padding: 100px 20px;
   font-size: 1.8rem;
   width: 100%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.009));
 
   @media(max-width: 500px) {
-    padding: 20px 10px;
+    padding: 70px 10px;
     font-size: 1.1rem;
   }
 }
 
 .temperature {
   position: absolute;
-  top: 0;
+  top: 50px;
   right: 55px;
   padding: 50px 50px;
   font-size: 1.8rem;

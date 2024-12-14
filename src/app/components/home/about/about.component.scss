@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
 
 img {
-    // width: 200%;
-    // height: auto;
+    width: auto;
+    height: 385px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
 }
 
 .container-about {
@@ -25,6 +27,7 @@ img {
         width: 100%;
         font-family: 'Libre Baskerville', serif;
         color: var(--lemon);
+        color: var(--cream);
         font-weight: bold;
     }
 
@@ -39,11 +42,12 @@ img {
             font-size: 1.2rem;
             line-height: 1.8rem;
             color: var(--lemon);
+            color: var(--cream);
         }
 
         div {
             margin: 40px auto 0px;
-
+            // border-radius: 10px;
             .color-button {
                 background: var(--lemon);
                 box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
@@ -68,6 +72,10 @@ img {
     #sky {
         background-size: cover;
         width: 50%;
+        // border-radius: 10px;
+        box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
+        max-height: 385px;
+       
     }
 }
 
@@ -158,6 +166,8 @@ img {
             width: 100%;
             margin-top: 10px;
             // margin-bottom: 20px;
+            // border-radius: 10px;
+            box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
         }
     }
 }

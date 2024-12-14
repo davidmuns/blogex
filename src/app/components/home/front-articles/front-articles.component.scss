@@ -30,6 +30,7 @@ h1 {
 
     div h3 {
         font-size: .9rem;
+        color: var(--cream);
         text-align: center;
         margin: 5px 0px;
         cursor: pointer;
@@ -54,42 +55,28 @@ h1 {
     margin: 0px 4px;
 }
 
-#content {
-    padding: 2%;
+.btn-container {
+    display: flex;
+    justify-content: end;
 
-    .example-header-image {
-        background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-        background-size: cover;
-        width: 20%;
-        height: 45px;
-        border-radius: 50%;
-        float: left;
+    button {
+        margin: 15px 10px 10px 0px;
+        box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
     }
 
-    p {
-        width: 76%;
-        display: flex;
-        justify-content: center;
-        padding: 8px 0px;
-        margin: 0px;
-        font-size: .8rem;
-        color: rgba(255, 255, 255);
-
-        span {
-            cursor: pointer;
-            font-size: .9rem;
-            font-weight: 500;
-        }
+    button:hover {
+        // color: palevioletred;
+        box-shadow: 3px 3px 6px rgba(60, 60, 60, 1);
     }
 
-    p:hover {
+    mat-icon {
         color: var(--lemon);
+        padding: 0px;
     }
 
-    img {
-        cursor: pointer;
+    mat-icon:hover {
+        color: var(--cream);
     }
-
 }
 
 // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
@@ -107,11 +94,6 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
-    img {
-        cursor: pointer;
-    }
-
 }
 
 .main-container> article {

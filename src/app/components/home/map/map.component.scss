@@ -1,16 +1,16 @@
 .map-container{
-    height: 600px;
-    margin-top: 80px;
+    height: 700px;
+    // margin-top: 80px;
     #map{
         height: 100%;
         width: 100%;
     }
     @media(max-width: 500px){
-        margin-top: 70px;
-        height: 400px;
+        // margin-top: 70px;
+        // height: 400px;
     }
     @media(max-width: 800px){
-        height: 400px;
+        // height: 400px;
     }
 }
 
@@ -48,7 +48,7 @@ mat-spinner{
     color: red;
     z-index: -2;
     position: absolute;
-    top: 150px;
+    top: 180px;
     left: 10px;
 }
 #marge{

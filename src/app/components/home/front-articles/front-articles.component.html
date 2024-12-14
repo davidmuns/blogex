@@ -1,4 +1,6 @@
-<div class="container-articles">
+<div class="container-articles" cdkDrag
+cdkDragRootElement=".cdk-overlay-pane"
+cdkDragHandle style="cursor: move;">
   <h1>{{ 'front-articles.last-articles' | translate }}</h1>
   <!-- Paginator -->
   <mat-paginator [length]="articles.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
@@ -17,27 +19,29 @@
   </div>
 
   <section class="main-container shadow rounded">
-    <article *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber; index as i" data-aos="fade-up"
-      data-aos-duration="1000">
-      <div class="example-card">
-        <div>
+    <article *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber; index as i" 
+      data-aos-duration="1000" cdkDrag
+      cdkDragRootElement=".cdk-overlay-pane"
+      cdkDragHandle style="cursor: move;">
+      <div class="example-card" >
+        <div >
           <a (click)="onClick(article.id)">
-            <h3 style="color: rgba(255, 255, 255);">{{ article.title }}</h3>
+            <h3 matTooltip="{{ 'user-blog.goto-article' | translate }}">{{ article.title }}</h3>
           </a>
         </div>
         <a routerLink="/article/{{ article.id }}" style="cursor: pointer;">
-          <img [src]="article.imagenPortada" alt="{{ article.caption }}"
-            title="{{ 'user-blog.goto-article' | translate }}">
+          <img [src]="article.imagenPortada" alt="{{ article.caption }}">
         </a>
-        <div id="content">
-
-          <p>{{ 'Author' | translate }}: &nbsp;<span routerLink="/blog/{{ article.usuario.nombreUsuario }}">{{
-              article.usuario.nombreUsuario
-              }}</span></p>
-        </div>
-
+          <div class="btn-container">
+            <!-- <button mat-button matTooltip="{{ 'user-blog.goto-article' | translate }}" [routerLink]="['/article/', article.id]">
+              <mat-icon>visibility</mat-icon> 
+            </button> -->
+            <button mat-raised-button color="accent" routerLink="/blog/{{ article.usuario.nombreUsuario }}">
+              Blog {{ article.usuario.nombreUsuario }}
+              <mat-icon>launch</mat-icon> 
+            </button>
+          </div>
       </div>
-
     </article>
   </section>
 </div>

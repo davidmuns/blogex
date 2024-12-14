@@ -1,6 +1,6 @@
 h1 {
     color: var(--accent);
-    margin-top: 30px;
+    margin-top: 80px;
     text-align: center;
 }
 
@@ -35,9 +35,10 @@ mat-paginator {
 }
 
 .main-container {
+    margin-top: 10px;
     background-color: var(--cream);
     padding: 20px 20px 140px;
-    margin-top: 72px;
+    
 }
 
 // https://www.youtube.com/watch?v=XdrRF4rMXkA&list=PLNGy7jWL6QFmTmS8azq1HRa1FIXFwRI95&index=1
@@ -65,7 +66,7 @@ mat-paginator {
 
 @media(max-width: 900px) {
     .main-container {
-        margin-top: 72px;
+        // margin-top: 72px;
     }
 
     .articles-section {
@@ -83,7 +84,7 @@ mat-paginator {
 @media(max-width: 500px) {
     .main-container {
         padding: 22px;
-        margin-top: 55px;
+        // margin-top: 55px;
         margin-bottom: 0px;
 
         @media(max-width: 350px) {

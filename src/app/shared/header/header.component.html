@@ -1,4 +1,4 @@
-<mat-toolbar class="toolbarClass">
+<mat-toolbar [ngClass]="{'solid': isSolid, 'transparent': !isSolid}" class="toolbarClass">
 
   <mat-toolbar-row class="toolbar">
 

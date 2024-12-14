@@ -27,7 +27,7 @@ export class MapComponent implements OnInit, OnDestroy, AfterViewInit {
   public postActual!: any;
   private readonly lat = 42.40249;
   private readonly lon = 2.194332;
-  private readonly zoom = 3;
+  private readonly zoom = 4;
   private layers: { [key: string]: L.TileLayer } = {};
   private article: Article | undefined = undefined;
   subscription: Subscription | null = null;
