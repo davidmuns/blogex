@@ -5,7 +5,7 @@ import { TinyEditorService } from './../services/tiny-editor.service';
 import { TranslateService } from '@ngx-translate/core';
 import { DeleteComponent } from './../../components/crud/delete/delete.component';
 import { TokenService } from './../services/token.service';
-import { Component, HostListener, OnInit, AfterViewInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -23,13 +23,11 @@ export class HeaderComponent implements OnInit {
 
   @HostListener('window:scroll', [])
   onWindowScroll() {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    if (scrollTop === 0) {
-      this.isSolid = false; // Header sólido al inicio
-    } else if (scrollTop > 0 && scrollTop < 600) {
-      this.isSolid = false; // Header transparente entre 0 y 100px de scroll
+    const scrollTop = document.documentElement.scrollTop;
+    if (scrollTop > 0 && scrollTop < 600) {
+      this.isSolid = false;
     } else if (scrollTop >= 600) {
-      this.isSolid = true; // Header sólido nuevamente después de 100px
+      this.isSolid = true;
     }
   }
  

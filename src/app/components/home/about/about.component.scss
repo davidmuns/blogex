@@ -13,12 +13,9 @@ img {
     position: relative;
     top: 0px;
     left: 0px;
-    // margin-top: 800px;
-    // margin-bottom: 10px;
-    // max-width: 1300px;
     padding: 0px 5% 25px;
     background: var(--accent);
-   
+
     h2 {
         padding: 30px 0px;
         margin: 0px;
@@ -26,7 +23,6 @@ img {
         font-size: 2.2rem;
         width: 100%;
         font-family: 'Libre Baskerville', serif;
-        color: var(--lemon);
         color: var(--cream);
         font-weight: bold;
     }
@@ -35,19 +31,18 @@ img {
         width: 49%;
         padding: 30px 4% 10px 0%;
         margin-left: 1%;
-        border-top: 1px solid var(--lemon);
+        border-top: 3px solid var(--lemon);
 
         p {
             text-align: justify;
             font-size: 1.2rem;
             line-height: 1.8rem;
-            color: var(--lemon);
             color: var(--cream);
         }
 
         div {
             margin: 40px auto 0px;
-            // border-radius: 10px;
+
             .color-button {
                 background: var(--lemon);
                 box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
@@ -72,10 +67,7 @@ img {
     #sky {
         background-size: cover;
         width: 50%;
-        // border-radius: 10px;
-        box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
         max-height: 385px;
-       
     }
 }
 
@@ -94,8 +86,6 @@ img {
             div {
                 margin-top: 30px;
                 display: flex;
-                // justify-content: center;
-
             }
 
             .color-button-blog {
@@ -130,7 +120,6 @@ img {
 
 @media(max-width: 700px) {
     .container-about {
-        // margin-top: 600px;
         padding: 0px 1% 10px;
 
         h2 {
@@ -141,12 +130,10 @@ img {
         }
 
         #text {
-            // text-align: justify;
             width: 100%;
             margin-bottom: 20px;
 
             p {
-                // font-size: 1rem;
                 text-align: justify;
             }
 
@@ -154,7 +141,6 @@ img {
                 display: flex;
                 justify-content: center;
             }
-
 
             .color-button-blog {
                 margin: 5px 40% 0px;
@@ -165,13 +151,9 @@ img {
             background-size: cover;
             width: 100%;
             margin-top: 10px;
-            // margin-bottom: 20px;
-            // border-radius: 10px;
-            box-shadow: 1px 1px 6px rgba(60, 60, 60, 1);
         }
     }
 }
-
 
 @media(max-width: 650px) {
     .container-about {
@@ -185,7 +167,6 @@ img {
             margin-bottom: 20px;
 
             p {
-                // font-size: 1rem;
                 text-align: justify;
             }
 

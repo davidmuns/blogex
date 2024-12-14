@@ -26,7 +26,7 @@
     </div>
    
     <h2>{{ 'about.title' | translate }}</h2>
-  
+    
     <div id="text">
         <p [innerHTML]="'about.text' | translate"></p>
         <div *ngIf="this.tokenSvc.isLogged() === false; else logged">
@@ -53,9 +53,6 @@
             <div id="sky" class="carousel-item">
                 <img src="../../../../assets/img/green-mountains.jpg" alt="First slide">
             </div>
-            <!-- <div id="sky" class="carousel-item">
-                <img src="../../../../assets/img/tulipas2.jpg" alt="First slide">
-            </div> -->
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#sky" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
