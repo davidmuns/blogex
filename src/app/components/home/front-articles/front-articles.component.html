@@ -19,10 +19,7 @@
   <section class="main-container shadow rounded">
     <article *ngFor="let article of this.articles | search:this.filterByTitle | paginate:pageSize:pageNumber; index as i"
       data-aos="fade-up"
-      data-aos-duration="1000" 
-      cdkDrag
-      cdkDragRootElement=".cdk-overlay-pane"
-      cdkDragHandle style="cursor: move;">
+      data-aos-duration="1000">
       <div class="example-card" >
         <div>
           <a (click)="onClick(article.id)">
