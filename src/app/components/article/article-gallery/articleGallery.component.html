@@ -74,13 +74,22 @@
 	</div>
 </div>
 <!-- Modal con el Carousel -->
-<div id="modal" class="modal" [class.active]="isModalOpen">
+<div class="modal" [class.active]="isModalOpen">
+	<button class="close" mat-stroked-button (click)="closeCarousel()">
+		<mat-icon>close</mat-icon>
+	</button>
 	<div class="modal-content">
-		<span class="close" (click)="closeCarousel()">&times;</span>
+		<!-- <span class="close" (click)="closeCarousel()">&times;</span> -->
+		
 		<div class="carousel">
 			<button class="carousel-control prev" (click)="prevImage()">&#10094;</button>
-			<img [src]="urlmages[indice]" class="carousel-image" [class.zoom]="isZoomed === indice"
-				(click)="toggleZoom($event, indice)" alt="Carousel Image">
+			<!-- <img 
+			[src]="urlmages[indice]" 
+			class="carousel-image" 
+			[class.zoom]="isZoomed === indice"
+			(click)="toggleZoom($event, indice)" 
+			alt="Carousel Image"> -->
+			<img [src]="urlmages[indice]" class="carousel-image" alt="Carousel Image" (click)="nextImage()">
 			<button class="carousel-control next" (click)="nextImage()">&#10095;</button>
 		</div>
 	</div>

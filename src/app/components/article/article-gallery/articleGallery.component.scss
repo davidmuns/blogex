@@ -98,7 +98,8 @@ button:hover {
 
 /* Estilo para el Modal */
 .modal {
-  background-color: rgba(0, 0, 0);
+  // position: relative;
+  background-color: black;
   justify-content: center;
   align-items: center;
 }
@@ -109,33 +110,22 @@ button:hover {
 
 .modal-content {
   position: relative;
-  max-width: 800px;
-  width: 90%;
+  // max-width: 800px;
+  // width: 90%;
   background: rgba(255, 255, 255, 0.09);
-  padding: 20px;
-  border-radius: 8px;
+  background-color: #000;
+  // padding: 20px;
+  // border-radius: 8px;
   text-align: center;
 }
 
 .close {
   position: absolute;
   top: 10px;
-  right: 10px;
+  right: 0px;
   font-size: 24px;
   cursor: pointer;
-}
-
-/* Botón adicional para cerrar el modal */
-.close-modal-btn {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+  z-index: 1000;
 }
 
 .close-modal-btn:hover {
@@ -151,12 +141,12 @@ button:hover {
 }
 
 .carousel-image {
-  max-width: 90%;
-  max-height: 80vh; // Limita la altura de la imagen al 80% del alto de la ventana
+  max-width: 100%;
+  max-height: 100vh; // Limita la altura de la imagen al 80% del alto de la ventana
   object-fit: contain;
   margin: auto;
   display: block;
-  border-radius: 8px;
+  // border-radius: 8px;
   cursor: pointer;
 }
 
