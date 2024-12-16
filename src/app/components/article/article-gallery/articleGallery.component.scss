@@ -141,8 +141,11 @@ button:hover {
   max-height: 99vh;
   object-fit: contain;
   flex-shrink: 0;
- 
   cursor: pointer;
+}
+
+.cursor-none {
+  cursor: default; /* Indica que no se puede avanzar */
 }
 
 
@@ -158,6 +161,12 @@ button:hover {
   transform: translateY(-50%);
   user-select: none;
   z-index: 1000;
+}
+
+.carousel-control:disabled {
+  color: transparent;
+  background-color: transparent;
+  cursor: default;
 }
 
 .carousel-control.prev {
