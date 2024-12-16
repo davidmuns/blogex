@@ -69,6 +69,7 @@
 	<div class="modal-content">
 		<div class="carousel">
 			<button class="carousel-control prev" (click)="prevImage()">&#10094;</button>
+			<!-- <img [src]="urlmages[indice]" class="carousel-image" alt="Carousel Image" (click)="nextImage()"> -->
 			<div class="carousel-track" [style.transform]="getTransform()">
 				<img *ngFor="let url of urlmages" [src]="url" class="carousel-image" alt="Carousel Image" (click)="nextImage()">
 			</div>
