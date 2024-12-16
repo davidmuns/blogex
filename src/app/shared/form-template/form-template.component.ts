@@ -41,7 +41,7 @@ export class FormTemplateComponent implements OnInit {
 
   private initFormLogin() {
     this.form = this.fb.group({
-      nombreUsuario: ['', [Validators.required, Validators.maxLength(20)]],
+      nombreUsuario: ['', [Validators.required, Validators.maxLength(30)]],
       password: ['', Validators.required]
     });
   }
