@@ -1,10 +1,17 @@
+<div *ngIf="loading" class="overlay">
+  <div class="spinner-modal">
+      <div class="spinner"></div>
+      <div>{{ 'crud.article-card.loading-icon-tool-tip' | translate }}</div>
+  </div>
+</div>
+
 <body>
-  <div class="example-card">
+  <div *ngIf="!loading" class="example-card">
     <div class="title-post">{{ post?.title }}</div>
     <span class="temperature">{{ temp }}º</span>
     <img mat-card-image [src]="post?.imagenPortada" alt="{{ post?.caption }}" [@pulse]>
     <p id="img-caption">{{ post?.caption }}</p>
-    <img class="weather-icon" src="{{ iconUrl }}" alt="">
+    <img *ngIf="!loading" class="weather-icon" src="{{ iconUrl }}" alt="">
     <mat-card-content>
       <div style="display: flex; justify-content: center;">
         <button class="mx-2" mat-raised-button color="accent" id="editAutor" [routerLink]="['/blog/', username]">
@@ -29,9 +36,9 @@
       <hr>
       <p [innerHTML]="post?.content | safeHtml">
     </mat-card-content>
-    <app-articleGallery [article]="post" [username]="username"></app-articleGallery>
+    <app-articleGallery *ngIf="post && username" [article]="post" [username]="username"></app-articleGallery>
     <mat-card-actions></mat-card-actions>
   </div>
 </body>
 
-<app-footer></app-footer>
+<app-footer *ngIf="!loading" ></app-footer>

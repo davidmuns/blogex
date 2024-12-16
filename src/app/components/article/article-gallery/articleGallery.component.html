@@ -1,16 +1,4 @@
-<h1 style="text-align: center;">{{ 'Gallery' | translate }}</h1>
-<div style="display: flex; justify-content: center">
-	<div>
-		<button mat-button (click)="showGallery()">
-			<mat-icon>visibility</mat-icon> {{ 'Show' | translate }}
-		</button>
-	</div>
-	<div>
-		<button mat-button (click)="hideGallery()">
-			<mat-icon>visibility_off</mat-icon> {{ "Hide" | translate }}
-		</button>
-	</div>
-</div>
+<h1 style="text-align: center;">{{ 'Gallery' | translate }} ({{ this.imagenes.length + this.videos.length }})</h1>
 
 <div class="main-container">
 	<!-- https://animate.style/ -->
@@ -49,7 +37,7 @@
 		</div>
 	</div>
 
-	<div *ngFor="let video of (this.videos$ | async); let i = index"
+	<div *ngFor="let video of this.videos; let i = index"
 		[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
 		
 		<mat-card class="youtube-card">
@@ -73,22 +61,14 @@
 
 	</div>
 </div>
-<!-- Modal con el Carousel -->
+
 <div class="modal" [class.active]="isModalOpen">
 	<button class="close" mat-stroked-button (click)="closeCarousel()">
 		<mat-icon>close</mat-icon>
 	</button>
 	<div class="modal-content">
-		<!-- <span class="close" (click)="closeCarousel()">&times;</span> -->
-		
 		<div class="carousel">
 			<button class="carousel-control prev" (click)="prevImage()">&#10094;</button>
-			<!-- <img 
-			[src]="urlmages[indice]" 
-			class="carousel-image" 
-			[class.zoom]="isZoomed === indice"
-			(click)="toggleZoom($event, indice)" 
-			alt="Carousel Image"> -->
 			<img [src]="urlmages[indice]" class="carousel-image" alt="Carousel Image" (click)="nextImage()">
 			<button class="carousel-control next" (click)="nextImage()">&#10095;</button>
 		</div>

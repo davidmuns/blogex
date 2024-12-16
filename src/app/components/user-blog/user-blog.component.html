@@ -1,7 +1,14 @@
+<div *ngIf="loading" class="overlay">
+    <div class="spinner-modal">
+        <div class="spinner"></div>
+        <div>{{ 'crud.article-card.loading-icon-tool-tip' | translate }}</div>
+    </div>
+</div>
+
 <div class="main-container">
     <div class="container pt-5 pb-5 mt-5 rounded" id="header">
         <h2>{{ 'BlogOf' | translate }} {{ this.username }}
-           
+
         </h2>
     </div>
 
@@ -24,7 +31,7 @@
         <app-sort-selector (selectedOption)="onSortBy($event)"></app-sort-selector>
     </div>
 
-    <div class="container body pt-5 pb-4 mb-4 rounded ">
+    <div *ngIf="!loading" class="container body pt-5 pb-4 mb-4 rounded">
         <!-- Show this container if there are articles -->
         <ng-container *ngIf="this.articles.length; else noArticles">
 
@@ -43,13 +50,15 @@
                             <h5 class="card-title mt-2" id="title-post">{{ article.title }}</h5>
                             <button class="m-0 p-2" mat-icon-button color="accent"
                                 [routerLink]="['/article/', article.id]">
-                                <mat-icon>visibility</mat-icon> 
+                                <mat-icon>visibility</mat-icon>
                                 <!-- {{ 'user-blog.see-more' | translate }} -->
                             </button>
                         </div>
                         <p class="mx-3">{{ 'article.date' | translate }}: {{ article.date | formatDate }}</p>
-                        <p class="mx-3">{{ 'crud.article-card.video-tool-tip' | translate }}: {{ article.videos.length }}</p>
-                        <p class="mx-3">{{ 'crud.article-card.image-tool-tip' | translate }}: {{ article.imagenes.length }}</p>
+                        <p class="mx-3">{{ 'crud.article-card.video-tool-tip' | translate }}: {{ article.videos.length
+                            }}</p>
+                        <p class="mx-3">{{ 'crud.article-card.image-tool-tip' | translate }}: {{ article.imagenes.length
+                            }}</p>
                     </div>
                 </div>
             </div>
@@ -65,8 +74,7 @@
                 <div id="title-post">No articles</div>
             </mat-card-header>
             <div class="imageMarc">
-                <img mat-card-image src="./../../../assets/img/logo-blogex.jpg"
-                    alt="">
+                <img mat-card-image src="./../../../assets/img/logo-blogex.jpg" alt="">
             </div>
         </div>
     </ng-template>

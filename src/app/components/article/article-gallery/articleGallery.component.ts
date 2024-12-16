@@ -10,9 +10,6 @@ import { DeleteComponent } from '../../crud/delete/delete.component';
 import { CaptionComponent } from 'src/app/shared/caption/caption.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Article } from 'src/app/shared/models/article';
-import { GalleryImagesComponent } from '../../crud/article-cards/gallery-images/gallery-images.component';
-import { EditComponent } from '../../crud/posts/edit/edit.component';
-import { Router } from '@angular/router';
 import { TokenService } from 'src/app/shared/services/token.service';
 
 @Component({
@@ -21,13 +18,13 @@ import { TokenService } from 'src/app/shared/services/token.service';
   styleUrls: ['./articleGallery.component.scss']
 })
 export class ArticleGalleryComponent implements OnInit {
-  @Input('article') article: any;
+  @Input('article') article!: Article;
   @Input('username') username!: string;
   imagenes: Imagen[] = [];
+  videos: Video[] = [];
   urlmages: string[] = [];
   isModalOpen: boolean = false;
   indice: number = 0;
-  videos$!: Observable<Video[]>;
   playerVars = {
     cc_lang_pref: 'es'
   }
@@ -37,20 +34,12 @@ export class ArticleGalleryComponent implements OnInit {
     private readonly articleSvc: ArticleService,
     private readonly dialog: MatDialog,
     private readonly utilsSvc: UtilsService,
-    private readonly videoSvc: VideoService) { }
+    private readonly videoSvc: VideoService) { console.log(this.article); }
 
   ngOnInit(): void {
     AOS.init();
-  }
-
-  showGallery() { 
-    this.getImgsByArticleId(this.article.id as number);
-    this.getVideosByArticleId(this.article.id as number);
-  }
-
-  hideGallery() {
-    this.imagenes = [];
-    this.videos$ = new Observable();
+    this.imagenes = this.article.imagenes;
+    this.videos = this.article.videos;
   }
 
   onDeleteImage(id: string) {
@@ -120,20 +109,5 @@ export class ArticleGalleryComponent implements OnInit {
   @HostListener('document:click', ['$event'])
   handleClickOutside(): void {
     this.isZoomed = null; // Resetea el zoom
-  }
-
-  private getImgsByArticleId(id: number) {
-    this.articleSvc.getImagesByArticleId(id).subscribe({
-      next: data => {
-        this.imagenes = this.utilsSvc.sortFilesByType(data);
-      },
-      error: err => {
-        this.utilsSvc.showSnackBar(err.error.message, 5000);
-      }
-    })
-  }
-
-  private getVideosByArticleId(id: number) {
-    this.videos$ = this.videoSvc.getAllByArticleId(id);
   }
 }

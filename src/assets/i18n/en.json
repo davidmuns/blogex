@@ -138,6 +138,7 @@
             "image-tool-tip": "User files",
             "upload-icon-tool-tip": "Upload",
             "uploading-icon-tool-tip": "Uploading ...",
+            "loading-icon-tool-tip": "loading ...",
             "deleting-icon-tool-tip": "Deleting ...",
             "cover-img-orientation": "Vertical images are not allowed on the article cover",
             "valid-img": "Please select a valid image file",

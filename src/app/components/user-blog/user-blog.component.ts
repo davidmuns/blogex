@@ -23,14 +23,14 @@ export class UserBlogComponent implements OnInit {
   pageNumber: number = 1;
   temp!: number;
   isAdmin: boolean = false;
+  loading = true;
 
   constructor(
-    private utilsSvc: UtilsService,
+    private readonly utilsSvc: UtilsService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly articleSvc: ArticleService,
-    private router: Router,
     public tokenSvc: TokenService,
-    private translateSvc: TranslateService
+    private readonly translateSvc: TranslateService
   ) { }
 
   ngOnInit(): void {
@@ -59,6 +59,7 @@ export class UserBlogComponent implements OnInit {
   }
 
   private getAllArticlesByUsername() {
+    this.loading = true;
     // https://youtu.be/nC-do8ceLWY?list=PL4vWncexIMYvaYdepQvyryGBhIHU-Sd04&t=313
     this.activatedRoute.paramMap.subscribe(resp => {
       if (resp.get('username') !== null) {
@@ -68,6 +69,7 @@ export class UserBlogComponent implements OnInit {
     this.articleSvc.getArticlesByUsername(this.username).subscribe(
       (data: Article[]) => {
         this.articles = this.utilsSvc.sortArticlesBy(data, this.sortBy);
+        this.loading = false;
       }
     )
   }

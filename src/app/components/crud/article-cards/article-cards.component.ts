@@ -41,6 +41,7 @@ export class ArtcileCardsComponent implements OnInit {
   pageNumber: number = 1;
   isAdmin: boolean = false;
   sort: boolean = false;
+  loading = false;
 
   constructor(
     private readonly utilsSvc: UtilsService,
@@ -67,9 +68,11 @@ export class ArtcileCardsComponent implements OnInit {
   };
 
   private getAllArticles() {
+    this.loading = true;
     this.articleService.getAll().subscribe({
       next: (data: Article[]) => {
         this.articles = this.utilsSvc.sortArticlesBy(data, this.sortBy);
+        this.loading = false;
       },
       error: (err: any) => {
         this.utilsSvc.showSnackBar(err.error.message, 5000);
@@ -78,9 +81,11 @@ export class ArtcileCardsComponent implements OnInit {
   };
 
   private getAllArticlesByUsername() {
+    this.loading = true;
     this.articleService.getArticlesByUsername(this.username).subscribe({
       next: (data: Article[]) => {
         this.articles = this.utilsSvc.sortArticlesBy(data, this.sortBy);
+        this.loading = false;
       },
       error: (err: any) => {
         this.utilsSvc.showSnackBar(err.error.message, 3000);

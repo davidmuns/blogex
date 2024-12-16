@@ -38,6 +38,7 @@ export class ArticleComponent implements OnInit {
   temp!: number;
   username!: string;
   iconUrl: string = '';
+  loading = false;
 
   constructor(
     private readonly utilsSvc: UtilsService,
@@ -68,11 +69,13 @@ export class ArticleComponent implements OnInit {
   }
 
   private getArticleById(id: number) {
+    this.loading = true;
     this.articleSvc.getArticle(id).subscribe({
       next: data => {
         this.post = data;
         this.username = data.usuario.nombreUsuario;
         this.getWeather(this.post.latitude, this.post.longitude);
+        this.loading = false;
       },
       error: err => {
         const msg = this.translateService.instant('article.exist');

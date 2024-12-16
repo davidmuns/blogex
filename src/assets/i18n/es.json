@@ -139,6 +139,7 @@
             "image-tool-tip": "Archivos del usuario",
             "upload-icon-tool-tip": "Subir",
             "uploading-icon-tool-tip": "Subiendo ...",
+            "loading-icon-tool-tip": "cargando ...",
             "deleting-icon-tool-tip": "Eliminando ...",
             "cover-img-orientation": "No se permiten imágenes verticales en la portada del artículo",
             "valid-img": "Por favor, selecciona un archivo de imagen válido",

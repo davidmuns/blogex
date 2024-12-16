@@ -137,6 +137,7 @@
             "image-tool-tip": "Arxius del usuari",
             "upload-icon-tool-tip": "Pujar",
             "uploading-icon-tool-tip": "Pujant ...",
+            "loading-icon-tool-tip": "carregant ...",
             "deleting-icon-tool-tip": "Eliminant ...",
             "cover-img-orientation": "No es permeten imatges verticals a la portada de l'article",
             "valid-img": "Si us plau, seleccioneu un fitxer d'imatge vàlid",
