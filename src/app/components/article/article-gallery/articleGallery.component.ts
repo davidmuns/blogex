@@ -33,11 +33,11 @@ export class ArticleGalleryComponent implements OnInit {
     private readonly articleSvc: ArticleService,
     private readonly dialog: MatDialog,
     private readonly utilsSvc: UtilsService,
-    private readonly videoSvc: VideoService) { console.log(this.article); }
+    private readonly videoSvc: VideoService) {}
 
   ngOnInit(): void {
     AOS.init();
-    this.imagenes = this.article.imagenes;
+    this.imagenes = this.utilsSvc.sortFilesByType(this.article.imagenes);
     this.videos = this.article.videos;
   }
 
