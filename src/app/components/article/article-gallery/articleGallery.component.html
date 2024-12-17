@@ -1,43 +1,43 @@
-<h1 style="text-align: center;">{{ 'Gallery' | translate }} ({{ this.imagenes.length + this.videos.length }})</h1>
+<h1 style="text-align: center;">{{ 'Gallery' | translate }} ({{ userFiles.length + youtubeVideos.length }})</h1>
 
 <div class="main-container">
 	<!-- https://animate.style/ -->
 	<div class="card-container">
-		<div class="card" *ngFor="let imagen of imagenes; index as i"
+		<div class="card" *ngFor="let file of userFiles; index as i"
 			[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
 			<div class="card-title">
-				<ng-container *ngIf="imagen.caption; else noCaption">
-					<span *ngIf="imagen.coverImg">{{ "CoverImage" | translate }}</span>
-					<span *ngIf="!imagen.coverImg">{{ imagen.caption }}</span>
+				<ng-container *ngIf="file.caption; else noCaption">
+					<span *ngIf="file.coverImg">{{ "CoverImage" | translate }}</span>
+					<span *ngIf="!file.coverImg">{{ file.caption }}</span>
 				</ng-container>
 				<ng-template #noCaption>{{ 'noTitle' | translate }}</ng-template>
 			</div>
 			<div class="card-image">
-				<img *ngIf="imagen.fileType =='image'" [src]="imagen.url" (click)="openModal(i)"
-					alt="{{ imagen.caption }}">
-				<video class="video-preview" *ngIf="imagen.fileType =='video'" [src]="imagen.url" controls></video>
+				<img *ngIf="file.fileType =='image'" [src]="file.url" (click)="openModal(i)"
+					alt="{{ file.caption }}">
+				<video class="video-preview" *ngIf="file.fileType =='video'" [src]="file.url" controls></video>
 			</div>
 			<div class="card-actions">
 				<button mat-stroked-button (click)="openModal(i)">
-					<mat-icon *ngIf="imagen.fileType == 'image'">visibility</mat-icon>
-					<mat-icon *ngIf="imagen.fileType == 'video'">visibility_off</mat-icon>
+					<mat-icon *ngIf="file.fileType == 'image'">visibility</mat-icon>
+					<mat-icon *ngIf="file.fileType == 'video'">visibility_off</mat-icon>
 				</button>
 				<ng-container *ngIf="username == tokenSvc.getUsername() || tokenSvc.isAdmin()">
-					<button [style.color]="imagen.coverImg ? 'gray': 'var(--lemon)'"
-						[matTooltip]="imagen.coverImg ? '' : ('Add' | translate) + ' ' + ('Caption' | translate | lowercase)"
-						mat-stroked-button (click)="onCaption(imagen.id)" [disabled]="imagen.coverImg">
+					<button [style.color]="file.coverImg ? 'gray': 'var(--lemon)'"
+						[matTooltip]="file.coverImg ? '' : ('Add' | translate) + ' ' + ('Caption' | translate | lowercase)"
+						mat-stroked-button (click)="onCaption(file.id)" [disabled]="file.coverImg">
 						<mat-icon>edit</mat-icon>
 					</button>
-					<button class="delete-btn" mat-stroked-button (click)="onDeleteImage(imagen.id)"
-						[disabled]="imagen.coverImg">
-						<mat-icon [style.color]="imagen.coverImg ? 'gray': 'rgb(255, 71, 71)'">delete</mat-icon>
+					<button class="delete-btn" mat-stroked-button (click)="onDeleteImage(file.id)"
+						[disabled]="file.coverImg">
+						<mat-icon [style.color]="file.coverImg ? 'gray': 'rgb(255, 71, 71)'">delete</mat-icon>
 					</button>
 				</ng-container>
 			</div>
 		</div>
 	</div>
 
-	<div *ngFor="let video of this.videos; let i = index" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'"
+	<div *ngFor="let video of youtubeVideos; let i = index" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'"
 		data-aos-duration="1000">
 		<mat-card class="youtube-card">
 			<mat-card-content>
@@ -56,7 +56,7 @@
 
 <app-carousel 
   *ngIf="isModalOpen" 
-  [imagenes]="imagenes" 
-  [index]="indice" 
+  [files]="userFiles" 
+  [indice]="indice" 
   (close)="closeModal()">
 </app-carousel>

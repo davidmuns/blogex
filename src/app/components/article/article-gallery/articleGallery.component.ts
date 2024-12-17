@@ -17,9 +17,8 @@ import { TokenService } from 'src/app/shared/services/token.service';
 export class ArticleGalleryComponent implements OnInit {
   @Input('article') article!: Article;
   @Input('username') username!: string;
-  imagenes: Imagen[] = [];
-  videos: Video[] = [];
-  urlmages: string[] = [];
+  userFiles: Imagen[] = [];
+  youtubeVideos: Video[] = [];
   isModalOpen: boolean = false;
   indice: number = 0;
   isDragging = false;
@@ -37,8 +36,8 @@ export class ArticleGalleryComponent implements OnInit {
 
   ngOnInit(): void {
     AOS.init();
-    this.imagenes = this.utilsSvc.sortFilesByType(this.article.imagenes);
-    this.videos = this.article.videos;
+    this.userFiles = this.utilsSvc.sortFilesByType(this.article.imagenes);
+    this.youtubeVideos = this.article.videos;
   }
 
   onDeleteImage(id: string) {
@@ -65,8 +64,8 @@ export class ArticleGalleryComponent implements OnInit {
     });
   };
 
-  openModal(index: number) {
-    this.indice = index;
+  openModal(indice: number) {
+    this.indice = indice;
     this.isModalOpen = true;
   }
 

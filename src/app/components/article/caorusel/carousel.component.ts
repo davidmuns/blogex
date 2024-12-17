@@ -7,10 +7,9 @@ import { Imagen } from 'src/app/shared/models/imagen';
   styleUrls: ['./carousel.component.scss']
 })
 export class CarouselComponent implements OnInit {
-  @Input() imagenes!: Imagen[];
-  @Input() index: number = 0;
+  @Input() files!: Imagen[];
+  @Input() indice!: number;
   @Output() close = new EventEmitter<void>();
-  indice = 0;
   urlmages: string[] = [];
   isDragging = false;
   startX = 0;
@@ -22,13 +21,10 @@ export class CarouselComponent implements OnInit {
   }
 
   setupCarousel() {
-    this.indice = this.index;
-    const imageFiles = this.imagenes.filter(file => file.fileType === 'image');
-    this.urlmages = imageFiles.map(file => file.url);
-    const clickedFile = this.imagenes[this.indice];
-    if (clickedFile.fileType === 'image') {
-      this.indice = imageFiles.findIndex(file => file.id === clickedFile.id); // Encuentra el índice dentro de las imágenes
-    }
+    const images = this.files.filter(file => file.fileType === 'image');
+    this.urlmages = images.map(img => img.url);
+    const clickedFile = this.files[this.indice];
+    this.indice = images.findIndex(img => img.id === clickedFile.id); // Encuentra el índice dentro de las imágenes
   }
 
   closeCarousel(): void {
@@ -101,8 +97,8 @@ export class CarouselComponent implements OnInit {
     // }
     if (applyTransition) {
       setTimeout(() => {
-        track.style.transition = 'none'; // Desactivar transición para futuros movimientos
-      }, 1000); // Duración según el tipo de interacción
+        track.style.transition = 'none';
+      }, 1000);
     }
   }
 }
