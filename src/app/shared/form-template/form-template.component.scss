@@ -80,6 +80,18 @@ button:hover {
     }
 }
 
+.clear-btn {
+    background: none;
+    color: black;
+    box-shadow: none;
+}
+
+.clear-btn:hover {
+    background: none;
+    color: var(--lemon);
+    box-shadow: none;
+}
+
 // ::ng-deep .mat-tab-label {
 //     font-size: 0.8rem;
 

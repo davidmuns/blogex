@@ -1,5 +1,5 @@
 <!-- FORM -->
-<form [formGroup]="this.form" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
     <img src="../../../../assets/img/user.png" alt="user-image" style="margin-top: 20px;"><br><br>
     <h3>{{ formType === 'login' ? ('Login' | translate) : ('Signup' | translate) }}</h3>
     <!-- EMAIL OR USERNAME INPUT -->
@@ -9,6 +9,15 @@
             matInput
             placeholder="{{ formType === 'login' ? ('UsernameOrEmail' | translate) : ('Username' | translate) }}"
             formControlName="nombreUsuario">
+        <button 
+            *ngIf="form.get('nombreUsuario')?.value" 
+            matSuffix 
+            mat-icon-button 
+            class="clear-btn" 
+            aria-label="Clear" 
+            (click)="form.get('nombreUsuario')?.reset()">
+        <mat-icon>close</mat-icon>
+        </button>
         <div class="error"
             *ngIf="form.get('nombreUsuario')?.touched && form.get('nombreUsuario')?.hasError('required')">
             {{ 'Required' | translate }}
@@ -22,6 +31,15 @@
     <mat-form-field *ngIf="this.formType === 'signup'" class="input-witdh" appearance="outline">
         <mat-label>{{ 'Email' | translate }}</mat-label>
         <input matInput placeholder="{{ 'Email' | translate }}" formControlName="email">
+        <button 
+            *ngIf="form.get('email')?.value" 
+            matSuffix 
+            mat-icon-button 
+            class="clear-btn" 
+            aria-label="Clear" 
+            (click)="form.get('email')?.reset()">
+            <mat-icon>close</mat-icon>
+        </button>
         <div *ngIf="form.get('email')?.touched && form.get('email')?.hasError('email')" class="error">
             {{ 'auth.signup.invalid-email' | translate }}
         </div>
@@ -37,7 +55,7 @@
         <mat-label>{{ 'Password' | translate }}</mat-label>
         <input 
             matInput [type]="hide ? 'password' : 'text'" placeholder="{{ 'Password' | translate }}"
-            formControlName="password">
+            formControlName="password">     
         <div mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
