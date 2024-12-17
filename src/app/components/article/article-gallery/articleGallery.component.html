@@ -15,7 +15,10 @@
 			<div class="card-image">
 				<img *ngIf="file.fileType =='image'" [src]="file.url" (click)="openModal(i)"
 					alt="{{ file.caption }}">
-				<video class="video-preview" *ngIf="file.fileType =='video'" [src]="file.url" controls></video>
+				<video class="video-preview" *ngIf="file.fileType =='video'" [src]="file.url"
+				controlslist="nodownload"
+				playsinline
+				controls></video>
 			</div>
 			<div class="card-actions">
 				<button mat-stroked-button (click)="openModal(i)">
