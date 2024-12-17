@@ -39,13 +39,7 @@
 
 	<div *ngFor="let video of this.videos; let i = index" [attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'"
 		data-aos-duration="1000">
-
 		<mat-card class="youtube-card">
-
-			<mat-card-header>
-				<!-- <mat-card-title style="color: rgba(255, 255, 255);">{{ i + 1 }}</mat-card-title> -->
-			</mat-card-header>
-
 			<mat-card-content>
 				<youtube-player [videoId]="video.youtubeId" [playerVars]="this.playerVars" suggestedQuality="highres"
 					showBeforeIframeApiLoads="true" [width]="260">
@@ -56,34 +50,13 @@
 					<mat-icon style="color: rgb(255, 71, 71)">delete</mat-icon>
 				</button>
 			</mat-card-actions>
-
 		</mat-card>
-
 	</div>
 </div>
 
-<div class="modal" [class.active]="isModalOpen">
-	<button class="close" mat-stroked-button (click)="closeCarousel()">
-		<mat-icon>close</mat-icon>
-	</button>
-	<div class="modal-content">
-		<div class="carousel"
-		(touchstart)="onTouchStart($event)"
-		(touchmove)="onTouchMove($event)" 
-		(touchend)="onTouchEnd()">
-			<button class="carousel-control prev" (click)="prevImage()" [disabled]="indice === 0">
-				<mat-icon>arrow_back</mat-icon>
-			</button>
-			<div class="carousel-track" [style.transform]="getTransform()">
-				<img *ngFor="let url of urlmages" 
-					[src]="url" class="carousel-image" 
-					alt="Carousel Image"
-					[ngClass]="{'cursor-none': indice === urlmages.length - 1}"  
-					>
-			</div>
-			<button class="carousel-control next" (click)="nextImage()" [disabled]="indice === urlmages.length - 1">
-				<mat-icon>arrow_forward</mat-icon>
-			</button>
-		</div>
-	</div>
-</div>
+<app-carousel 
+  *ngIf="isModalOpen" 
+  [imagenes]="imagenes" 
+  [index]="indice" 
+  (close)="closeModal()">
+</app-carousel>

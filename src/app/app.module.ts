@@ -51,6 +51,7 @@ import { GroupFormRoutingModule } from './components/crud/posts/group-form/group
 import { UserBlogComponent } from './components/user-blog/user-blog.component';
 import { ArticleComponent } from './components/article/article.component';
 import { ArticleGalleryComponent } from './components/article/article-gallery/articleGallery.component';
+import { CarouselComponent } from './components/article/caorusel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { ArticleGalleryComponent } from './components/article/article-gallery/ar
     MyAccountComponent,
     UserBlogComponent,
     ArticleComponent,
-    ArticleGalleryComponent
+    ArticleGalleryComponent,
+    CarouselComponent
   ],
   imports: [
     InternationalitazionModule,
