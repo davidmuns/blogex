@@ -1,3 +1,9 @@
+<div *ngIf="loading" class="overlay">
+    <div class="spinner-modal">
+        <div class="spinner"></div>
+        <div>{{ 'crud.article-card.loading-icon-tool-tip' | translate }}</div>
+    </div>
+</div>
 <div class="modal">
 	<button class="close" mat-stroked-button (click)="closeCarousel()">
 		<mat-icon>close</mat-icon>
@@ -10,7 +16,7 @@
 			<button class="carousel-control prev" (click)="prevImage()" [disabled]="indice === 0">
 				<mat-icon>arrow_back</mat-icon>
 			</button>
-			<div class="carousel-track" [style.transform]="getTransform()">
+			<div *ngIf="!loading" class="carousel-track" [style.transform]="getTransform()">
 				<img *ngFor="let url of urlmages" 
 					[src]="url" class="carousel-image" 
 					alt="Carousel Image"

@@ -1,7 +1,9 @@
+import { Article } from './../../../shared/models/article';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { LoginComponent } from '../../auth/login/login.component';
+import { Imagen } from 'src/app/shared/models/imagen';
 
 @Component({
   selector: 'app-about',
@@ -13,6 +15,17 @@ export class AboutComponent implements OnInit {
   public getScreenWidth: any;
   public getScreenHeight: any;
   carouselPositionTop = false;
+  isModalOpen: boolean = false;
+  indice: number = 0;
+
+  imgs: Imagen[]  = [
+    { id: '', name: 'barcelona', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1734313270/yrsmcoht8tivqmmugzud.jpg', fileType: 'image', date: '' },
+    { id: '', name: 'maldivas', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1734317610/fnqzqbmpipspugesi9ji.jpg', fileType: 'image', date: '' },
+    // { id: '', name: 'acantilados', url: '../../../../assets/img/acantilados.jpg', fileType: 'image', date: '' },
+    { id: '', name: 'omis', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1734315029/r9yowpi2s6dftaz5q2cx.jpg', fileType: 'image', date: '' },
+    { id: '', name: 'paris', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1733933056/qnbvj2jyai2emosmg4wk.jpg', fileType: 'image', date: '' },
+    
+  ]
 
   constructor(private readonly dialog: MatDialog,
     public tokenSvc: TokenService) { }
@@ -22,7 +35,7 @@ export class AboutComponent implements OnInit {
     this.getScreenHeight = window.innerHeight;
   }
 
-  openDialog(){
+  openDialog() {
     this.dialog.open(LoginComponent, {
       enterAnimationDuration: '1000ms'
     });
@@ -33,11 +46,20 @@ export class AboutComponent implements OnInit {
     this.getScreenWidth = window.innerWidth;
     this.getScreenHeight = window.innerHeight;
 
-    if(this.getScreenWidth < 700){
+    if (this.getScreenWidth < 700) {
       this.carouselPositionTop = true;
-    }else{
+    } else {
       this.carouselPositionTop = false;
     }
+  }
+
+  openModal(indice: number) {
+    this.indice = indice;
+    this.isModalOpen = true;
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false;
   }
 
 }

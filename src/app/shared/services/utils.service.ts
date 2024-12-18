@@ -63,6 +63,20 @@ export class UtilsService {
     );
   }
 
+  public sortImagesByNewer(articles: Imagen[]): Imagen[] {
+    return articles.sort(
+      (img1: Imagen, img2: Imagen) => new Date(img2.date).getTime() - new Date(img1.date).getTime()
+    );
+  }
+
+  public sortImagesByOlder(articles: Imagen[]): Imagen[] {
+    return articles.sort(
+      (img1: Imagen, img2: Imagen) => new Date(img1.date).getTime() - new Date(img2.date).getTime()
+    );
+  }
+
+
+
   public sortArticlesByFiles(articles: Article[]): Article[] {
     return articles.sort(
       (article1: Article, article2: Article) => article2.imagenes.length - article1.imagenes.length

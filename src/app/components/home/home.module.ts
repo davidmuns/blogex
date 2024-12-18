@@ -10,6 +10,7 @@ import { MapComponent } from './map/map.component';
 import { HomeComponent } from './home.component';
 import { MaterialModule } from 'src/app/material.module';
 import { PipesModule } from 'src/app/shared/pipes/pipes.module';
+import { ArticleModule } from '../article/article.module';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { PipesModule } from 'src/app/shared/pipes/pipes.module';
   ],
   imports: [
     SharedModule,
+    ArticleModule
   ]
 })
 export class HomeModule { }

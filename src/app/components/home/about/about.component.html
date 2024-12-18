@@ -2,17 +2,8 @@
 
     <div *ngIf="this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2500">
         <div class="carousel-inner">
-            <div id="sky" class="carousel-item active">
-                <img src="../../../../assets/img/plitvice.gif" alt="Second slide">
-            </div>
-            <div id="sky" class="carousel-item">
-                <img src="../../../../assets/img/maldivas.gif" alt="Second slide">
-            </div>
-            <div id="sky" class="carousel-item">
-                <img src="../../../../assets/img/acantilados.jpg" alt="Second slide">
-            </div>
-            <div id="sky" class="carousel-item">
-                <img src="../../../../assets/img/green-mountains.jpg" alt="First slide">
+            <div *ngFor="let img of imgs; let i = index" id="sky" [class.active]="i === 0" class="carousel-item">
+                <img [src]='img.url' [alt]="img.name" (click)="openModal(i)">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#sky" data-bs-slide="prev">
@@ -39,19 +30,10 @@
         
     </div>
 
-    <div *ngIf="!this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2500">
+    <div *ngIf="!this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="1500">
         <div class="carousel-inner">
-            <div id="sky" class="carousel-item active">
-                <img src="../../../../assets/img/plitvice.gif" alt="Second slide">
-            </div>
-            <div id="sky" class="carousel-item">
-                <img src="../../../../assets/img/maldivas.gif" alt="Second slide">
-            </div>
-            <div id="sky" class="carousel-item">
-                <img src="../../../../assets/img/acantilados.jpg" alt="Second slide">
-            </div>
-            <div id="sky" class="carousel-item">
-                <img src="../../../../assets/img/green-mountains.jpg" alt="First slide">
+            <div *ngFor="let img of imgs; let i = index" id="sky" [class.active]="i === 0" class="carousel-item">
+                <img [src]='img.url' [alt]="img.name" (click)="openModal(i)">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#sky" data-bs-slide="prev">
@@ -64,3 +46,10 @@
         </button>
     </div>
 </div>
+
+<app-carousel 
+  *ngIf="isModalOpen" 
+  [files]="imgs" 
+  [indice]="indice" 
+  (close)="closeModal()">
+</app-carousel>

@@ -15,8 +15,10 @@ export class CarouselComponent implements OnInit {
   startX = 0;
   currentTranslate = 0;
   prevTranslate = 0;
+  loading = false;
 
   ngOnInit(): void {
+    this.loading = true;
     this.setupCarousel();
   }
 
@@ -25,6 +27,7 @@ export class CarouselComponent implements OnInit {
     this.urlmages = images.map(img => img.url);
     const clickedFile = this.files[this.indice];
     this.indice = images.findIndex(img => img.id === clickedFile.id); // Encuentra el índice dentro de las imágenes
+    this.loading = false;
   }
 
   closeCarousel(): void {

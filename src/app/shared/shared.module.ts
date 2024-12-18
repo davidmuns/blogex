@@ -8,6 +8,7 @@ import { SortSelectorComponent } from './sort-selector/sort-selector.component';
 import { FooterComponent } from './footer/footer.component';
 import { PipesModule } from './pipes/pipes.module';
 import { AppRoutingModule } from '../app-routing.module';
+import { CarouselComponent } from '../components/article/caorusel/carousel.component';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { AppRoutingModule } from '../app-routing.module';
     ReactiveFormsModule,
     FormsModule,
     MaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
   ]
 })
 export class SharedModule { }

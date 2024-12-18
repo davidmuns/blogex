@@ -52,6 +52,7 @@ import { UserBlogComponent } from './components/user-blog/user-blog.component';
 import { ArticleComponent } from './components/article/article.component';
 import { ArticleGalleryComponent } from './components/article/article-gallery/articleGallery.component';
 import { CarouselComponent } from './components/article/caorusel/carousel.component';
+import { ArticleModule } from './components/article/article.module';
 
 @NgModule({
   declarations: [
@@ -65,9 +66,9 @@ import { CarouselComponent } from './components/article/caorusel/carousel.compon
     InfoAppComponent,
     MyAccountComponent,
     UserBlogComponent,
-    ArticleComponent,
-    ArticleGalleryComponent,
-    CarouselComponent
+    // ArticleComponent,
+    // ArticleGalleryComponent,
+    // CarouselComponent
   ],
   imports: [
     InternationalitazionModule,
@@ -86,7 +87,8 @@ import { CarouselComponent } from './components/article/caorusel/carousel.compon
     ToastrModule.forRoot(), // ToastrModule added
     SharedModule,
     HomeModule,
-    GroupFormRoutingModule
+    GroupFormRoutingModule,
+    ArticleModule
   ],
   providers: [interceptorProvider],
   bootstrap: [AppComponent]

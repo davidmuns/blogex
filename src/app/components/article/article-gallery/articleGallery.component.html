@@ -5,6 +5,7 @@
 	<div class="card-container">
 		<div class="card" *ngFor="let file of userFiles; index as i"
 			[attr.data-aos]="i % 2 === 0 ? 'fade-right' : 'fade-left'" data-aos-duration="1000">
+			<!-- <h4>{{ file.date | formatDate }}</h4> -->
 			<div class="card-title">
 				<ng-container *ngIf="file.caption; else noCaption">
 					<span *ngIf="file.coverImg">{{ "CoverImage" | translate }}</span>
