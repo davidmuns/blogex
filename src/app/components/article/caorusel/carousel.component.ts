@@ -10,12 +10,12 @@ export class CarouselComponent implements OnInit {
   @Input() files!: Imagen[];
   @Input() indice!: number;
   @Output() close = new EventEmitter<void>();
-  urlmages: string[] = [];
   isDragging = false;
   startX = 0;
   currentTranslate = 0;
   prevTranslate = 0;
   loading = false;
+  images!: Imagen [];
 
   ngOnInit(): void {
     this.loading = true;
@@ -23,10 +23,9 @@ export class CarouselComponent implements OnInit {
   }
 
   setupCarousel() {
-    const images = this.files.filter(file => file.fileType === 'image');
-    this.urlmages = images.map(img => img.url);
+    this.images = this.files.filter(file => file.fileType === 'image');
     const clickedFile = this.files[this.indice];
-    this.indice = images.findIndex(img => img.id === clickedFile.id); // Encuentra el índice dentro de las imágenes
+    this.indice = this.images.findIndex(img => img.id === clickedFile.id); // Encuentra el índice dentro de las imágenes
     this.loading = false;
   }
 
@@ -73,7 +72,7 @@ export class CarouselComponent implements OnInit {
     const itemWidth = window.innerWidth;
     const movedBy = this.currentTranslate - this.prevTranslate;
     // Determinar si el movimiento es suficiente para cambiar de imagen
-    if (movedBy < -itemWidth * 0.10 && this.indice < this.urlmages.length - 1) {
+    if (movedBy < -itemWidth * 0.10 && this.indice < this.images.length - 1) {
       this.indice++;
     } else if (movedBy > itemWidth * 0.10 && this.indice > 0) {
       this.indice--;

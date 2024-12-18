@@ -19,11 +19,11 @@ export class AboutComponent implements OnInit {
   indice: number = 0;
 
   imgs: Imagen[]  = [
-    { id: '', name: 'barcelona', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1734313270/yrsmcoht8tivqmmugzud.jpg', fileType: 'image', date: '' },
-    { id: '', name: 'maldivas', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1734317610/fnqzqbmpipspugesi9ji.jpg', fileType: 'image', date: '' },
+    { id: '', caption: 'Barcelona', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1734313270/yrsmcoht8tivqmmugzud.jpg', fileType: 'image', date: '' },
+    { id: '', caption: 'Maldivas', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1734317610/fnqzqbmpipspugesi9ji.jpg', fileType: 'image', date: '' },
     // { id: '', name: 'acantilados', url: '../../../../assets/img/acantilados.jpg', fileType: 'image', date: '' },
-    { id: '', name: 'omis', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1734315029/r9yowpi2s6dftaz5q2cx.jpg', fileType: 'image', date: '' },
-    { id: '', name: 'paris', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1733933056/qnbvj2jyai2emosmg4wk.jpg', fileType: 'image', date: '' },
+    { id: '', caption: 'Omis - Croacia', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1734315029/r9yowpi2s6dftaz5q2cx.jpg', fileType: 'image', date: '' },
+    { id: '', caption: 'Paris', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1733933056/qnbvj2jyai2emosmg4wk.jpg', fileType: 'image', date: '' },
     
   ]
 

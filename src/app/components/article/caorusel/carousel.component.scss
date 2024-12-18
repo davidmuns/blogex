@@ -12,15 +12,6 @@
     text-align: center;
 }
 
-.close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
 .carousel {
     position: relative;
     overflow: hidden;
@@ -28,10 +19,10 @@
 
 .carousel-track {
     display: flex;
-    align-items: center;
-    // transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-    // transition: transform 1s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    // transition: transform 1s linear;
+}
+
+.carousel-item {
+    position: relative;
 }
 
 .carousel-image {
@@ -39,6 +30,23 @@
     max-height: 99vh;
     object-fit: contain;
     flex-shrink: 0;
+}
+
+.image-title {
+    position: absolute;
+    top: 20px;
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Ajusta el centro */
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    border-radius: 3px;
+    padding: 5px 10px;
+    font-size: 15px;
+    text-align: center;
+    z-index: 1000;
+    @media(max-width: 425px) {
+        font-size: 13px;
+    }
 }
 
 .cursor-none {
@@ -63,6 +71,16 @@
     color: transparent;
     background-color: transparent;
     cursor: default;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;
 }
 
 .carousel-control.prev {
