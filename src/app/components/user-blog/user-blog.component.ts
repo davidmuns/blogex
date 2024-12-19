@@ -75,9 +75,11 @@ export class UserBlogComponent implements OnInit {
   }
 
   private getAllArticles() {
+    this.loading = true;
     this.articleSvc.getAll().subscribe({
       next: (data: Article[]) => {
         this.articles = this.utilsSvc.sortArticlesBy(data, this.sortBy);
+        this.loading = false;
       },
       error: (err: any) => {
         console.log(err);

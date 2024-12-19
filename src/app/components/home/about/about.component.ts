@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { TokenService } from 'src/app/shared/services/token.service';
 import { LoginComponent } from '../../auth/login/login.component';
 import { Imagen } from 'src/app/shared/models/imagen';
+import { ArticleService } from 'src/app/shared/services/article.service';
+import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
   selector: 'app-about',
@@ -17,22 +19,28 @@ export class AboutComponent implements OnInit {
   carouselPositionTop = false;
   isModalOpen: boolean = false;
   indice: number = 0;
+  article!: Article;
+  imagenes: Imagen[] = [];
 
   imgs: Imagen[]  = [
-    { id: '', caption: 'Barcelona', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1734313270/yrsmcoht8tivqmmugzud.jpg', fileType: 'image', date: '' },
-    { id: '', caption: 'Maldivas', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1734317610/fnqzqbmpipspugesi9ji.jpg', fileType: 'image', date: '' },
-    // { id: '', name: 'acantilados', url: '../../../../assets/img/acantilados.jpg', fileType: 'image', date: '' },
-    { id: '', caption: 'Omis - Croacia', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1734315029/r9yowpi2s6dftaz5q2cx.jpg', fileType: 'image', date: '' },
-    { id: '', caption: 'Paris', url: 'https://res.cloudinary.com/dwfwp0eyg/image/upload/v1733933056/qnbvj2jyai2emosmg4wk.jpg', fileType: 'image', date: '' },
+    { id: '', caption: 'Barcelona', url: '../../../../assets/img/hotel-vela.jpg', fileType: 'image', date: '' },
+    { id: '', caption: 'Maldivas', url: '../../../../assets/img/maldivas.jpg', fileType: 'image', date: '' },
+    { id: '', caption: 'Besalú - Girona', url: '../../../../assets/img/besalu.jpg', fileType: 'image', date: '' },
+    { id: '', caption: 'Omis - Croacia', url: '../../../../assets/img/omis.jpg', fileType: 'image', date: '' },
+    { id: '', caption: 'Paris', url: '../../../../assets/img/paris.jpg', fileType: 'image', date: '' },
     
   ]
 
-  constructor(private readonly dialog: MatDialog,
-    public tokenSvc: TokenService) { }
+  constructor(
+    private readonly articleSvc: ArticleService,
+    private readonly dialog: MatDialog,
+    public tokenSvc: TokenService,
+    private readonly utilsSvc: UtilsService) { }
 
   ngOnInit(): void {
     this.getScreenWidth = window.innerWidth;
     this.getScreenHeight = window.innerHeight;
+    this.getArticleById(463)
   }
 
   openDialog() {
@@ -51,6 +59,19 @@ export class AboutComponent implements OnInit {
     } else {
       this.carouselPositionTop = false;
     }
+  }
+
+  private getArticleById(id: number) {
+    
+    this.articleSvc.getArticle(id).subscribe({
+      next: data => {
+        this.imagenes = data.imagenes;
+      
+      },
+      error: err => {
+        this.utilsSvc.showSnackBar(err.error.message, 5000);
+      }
+    });
   }
 
   openModal(indice: number) {

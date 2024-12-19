@@ -1,9 +1,13 @@
 <div class="container-about shadow rounded">
-
+    
     <div *ngIf="this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2500">
         <div class="carousel-inner">
-            <div *ngFor="let img of imgs; let i = index" id="sky" [class.active]="i === 0" class="carousel-item">
-                <img [src]='img.url' [alt]="img.name" (click)="openModal(i)">
+            <div *ngFor="let img of imagenes; let i = index" id="sky" [class.active]="i === 0" class="carousel-item">
+                <div class="img-caption">
+                    <h3>{{ img.caption }}</h3>
+                </div>
+                <img *ngIf="!img.coverImg" [src]='img.url' [alt]="img.name" (click)="openModal(i)">
+                <img *ngIf="img.coverImg" [src]='imgs[0].url' [alt]="img.name" (click)="openModal(i)">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#sky" data-bs-slide="prev">
@@ -32,8 +36,12 @@
 
     <div *ngIf="!this.carouselPositionTop" id="sky" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="1500">
         <div class="carousel-inner">
-            <div *ngFor="let img of imgs; let i = index" id="sky" [class.active]="i === 0" class="carousel-item">
-                <img [src]='img.url' [alt]="img.name" (click)="openModal(i)">
+            <div *ngFor="let img of imagenes; let i = index" id="sky" [class.active]="i === 0" class="carousel-item">
+                <div class="img-caption">
+                    <h3>{{ img.caption }}</h3>
+                </div>
+                <img *ngIf="!img.coverImg" [src]='img.url' [alt]="img.name" (click)="openModal(i)">
+                <img *ngIf="img.coverImg" [src]='imgs[0].url' [alt]="img.name" (click)="openModal(i)">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#sky" data-bs-slide="prev">
@@ -49,7 +57,7 @@
 
 <app-carousel 
   *ngIf="isModalOpen" 
-  [files]="imgs" 
+  [files]="imagenes" 
   [indice]="indice" 
   (close)="closeModal()">
 </app-carousel>
