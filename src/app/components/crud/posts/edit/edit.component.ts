@@ -41,9 +41,9 @@ export class EditComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article },
     private readonly dialog: MatDialog,
-    private utilsSvc: UtilsService,
+    private readonly utilsSvc: UtilsService,
     tinyEditorSvc: TinyEditorService,
-    private articleService: ArticleService,
+    private readonly articleService: ArticleService,
     private readonly fBuilder: FormBuilder,
     private readonly router: Router,
     private translateService: TranslateService) {

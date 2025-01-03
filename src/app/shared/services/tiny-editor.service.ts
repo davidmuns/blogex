@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class TinyEditorService {
 
-  private editorConfig1 = new BehaviorSubject<any>({
+  private readonly editorConfig1 = new BehaviorSubject<any>({
     plugins: [
       'advlist autolink lists link image charmap print preview anchor',
       'searchreplace visualblocks code fullscreen',
@@ -47,12 +47,12 @@ export class TinyEditorService {
   );
 
   public getEditorConfig(): Observable<any> {
-    return this.editorConfig.asObservable();
+    return this.editorConfig1.asObservable();
   }
 
   public setLanguageInEditorConfig(language: string) {
-    this.editorConfig.next({
-      ...this.editorConfig.value,
+    this.editorConfig1.next({
+      ...this.editorConfig1.value,
       language
     });
   }

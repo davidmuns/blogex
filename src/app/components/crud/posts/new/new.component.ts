@@ -28,12 +28,12 @@ export class NewComponent {
 
   constructor(
     tinyEditorSvc: TinyEditorService,
-    private utilsSvc: UtilsService,
+    private readonly utilsSvc: UtilsService,
     private readonly fBuilder: FormBuilder,
-    private tokenService: TokenService,
-    private articleService: ArticleService,
-    private router: Router,
-    private translateSvc: TranslateService
+    private readonly tokenService: TokenService,
+    private readonly articleService: ArticleService,
+    private readonly router: Router,
+    private readonly translateSvc: TranslateService
   ) {
     this.initForm();
     tinyEditorSvc.getEditorConfig().subscribe((config: any) => {
