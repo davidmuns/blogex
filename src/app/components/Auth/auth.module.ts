@@ -6,6 +6,7 @@ import { AuthComponent } from './auth.component';
 // Modules
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AuthRoutingModule } from './auth-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
     EmailPasswordComponent
   ],
   imports: [
-    SharedModule
+    SharedModule,
+    AuthRoutingModule
 ]
 })
 export class AuthModule { }
