@@ -56,6 +56,14 @@ export class HeaderComponent implements OnInit {
       width: '20',
       height: '20'
     },
+    {
+      lang: 'ru',
+      flagUrl: 'https://www.publicdomainpictures.net/pictures/250000/velka/russian-flag-151947920021T.jpg',
+      title: 'Русский',
+      label: 'Русский',
+      width: '20',
+      height: '20'
+    },
   ]
 
   constructor(
@@ -68,7 +76,7 @@ export class HeaderComponent implements OnInit {
     private readonly translateService: TranslateService
   ) {
     translate.getBrowserLang();
-    translate.addLangs(['ca', 'en', 'es']);
+    translate.addLangs(['ca', 'en', 'es', 'ru']);
     translate.setDefaultLang('es');
   }
 

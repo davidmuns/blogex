@@ -40,7 +40,7 @@ export class CaptionComponent {
 
   private initform(): void {
     this.captionForm = this.fb.group({
-      caption: ['', [Validators.required, Validators.maxLength(25)]]
+      caption: ['', [Validators.required, Validators.maxLength(35)]]
     });
     this.patchValue();
   };
