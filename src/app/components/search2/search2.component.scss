@@ -1,13 +1,16 @@
 mat-form-field {
     margin-top: 20px;
     font-size: 15px;
+    @media(max-width: 425px) {
+        margin-top: 15px;
+        font-size: 10px;
+    }
 }
 
 :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
     background-color: rgb(232, 228, 228);
     border-radius: 5px;
-    border-color: var(--accent);
-    // color: black;
+    border-color: var(--accent); 
 }
 
 :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
@@ -23,5 +26,5 @@ mat-form-field {
 }
 
 input{
-    color: var(--accent); 
+    color: var(--accent);
 }

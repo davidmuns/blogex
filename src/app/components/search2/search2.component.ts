@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
+import { map, Observable, startWith } from 'rxjs';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
 
@@ -12,8 +12,8 @@ import { ArticleService } from 'src/app/shared/services/article.service';
 })
 export class Search2Component implements OnInit {
   articles: Article[] = [];
-  formGroup!: FormGroup;
-  filteredOptions: any;
+  filterOptions!: Observable<string[]>;
+  formControl = new FormControl('');
 
   constructor(
     private readonly fb: FormBuilder,
@@ -21,24 +21,17 @@ export class Search2Component implements OnInit {
     private readonly articleSvc: ArticleService) {}
 
   ngOnInit() {
-    this.initForm();
     this.getArticles();
-  }
-
-  initForm(){
-    this.formGroup = this.fb.group({
-      'title' : ['']
-    })
-    this.formGroup.get('title')?.valueChanges.subscribe( (response: any) => {  
-      this.filteredArticles(response)
-    })
+    this.filterOptions = this.formControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value || ''))
+    )
   }
 
   private getArticles() {
     this.articleSvc.getAll().subscribe({
       next: data => {
         this.articles = data;
-        this.filteredOptions = data;
       },
       error: err => {
         console.log(err);
@@ -46,33 +39,19 @@ export class Search2Component implements OnInit {
     });
   }
 
-  private getArticles2() {
-    this.articleSvc.getAll().pipe(
-     map( response => response.map(item => item['title']))
-    )
+  private _filter(value: string): string[]{
+    const searchValue = value.toLowerCase();
+    return this.articles.map(article => article.title).filter(title => title.toLowerCase().includes(searchValue));
   }
 
   clearInput(): void {
-    this.formGroup.reset();  // O también puedes usar this.myControl.setValue('') para borrar el contenido.
+    this.formControl.setValue('');  // O también puedes usar this.myControl.setValue('') para borrar el contenido.
 
   }
 
-  filteredArticles(value: any){
-    this.filteredOptions = this.articles.filter(item => {
-      return item.title.toLowerCase().indexOf(value.toLowerCase()) > -1
-    })
-  }
-
-  displayFn(article: any): string {
-    return article ? article.title : '';
-  }
-
-  onArticleSelected(title: any): void {
-    // Aquí puedes realizar la navegación al artículo
-    console.log('Artículo seleccionado:', title);
+  selectArticle(value: string) {
     for (const option of this.articles) {
-      if (option.title === title) {
-        
+      if (option.title === value) {
         this.router.navigate(['article', option.id]);
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';

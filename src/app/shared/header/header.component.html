@@ -4,9 +4,13 @@
 
     <img class="logo" src="../../../assets/img/logo-blogex.jpg" alt="logo-blogex" (click)="onHome()" matTooltip="{{ 'Home' | translate }}" >
 
-    <app-search></app-search>
-    <app-search2></app-search2>
-    
+    <ng-container *ngIf="isMobile; else noMobile">
+      <app-search></app-search>
+    </ng-container>
+    <ng-template #noMobile>
+      <app-search2></app-search2>
+    </ng-template>
+
     <div class="buttons">
       <!-- HEADER BUTTONS IF NOT MOBILE-->
       <ng-container *ngIf="!isMobile; else mobile">
