@@ -53,6 +53,7 @@ import { ArticleComponent } from './components/article/article.component';
 import { ArticleGalleryComponent } from './components/article/article-gallery/articleGallery.component';
 import { CarouselComponent } from './components/article/caorusel/carousel.component';
 import { ArticleModule } from './components/article/article.module';
+import { Search2Component } from './components/search2/search2.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { ArticleModule } from './components/article/article.module';
     InfoAppComponent,
     MyAccountComponent,
     UserBlogComponent,
+    Search2Component,
     // ArticleComponent,
     // ArticleGalleryComponent,
     // CarouselComponent

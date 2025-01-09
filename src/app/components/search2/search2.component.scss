@@ -1,0 +1,27 @@
+mat-form-field {
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: rgb(232, 228, 228);
+    border-radius: 5px;
+    border-color: var(--accent);
+    // color: black;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 5%;
+}
+
+:host ::ng-deep .mat-form-field-infix {
+    top: -4px;
+}
+
+:host ::ng-deep .mat-icon {
+    color: var(--accent);
+}
+
+input{
+    color: var(--accent); 
+}

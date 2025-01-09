@@ -1,0 +1,25 @@
+<form [formGroup]="formGroup">
+    <mat-form-field appearance="outline">
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput
+                type="search"
+                placeholder="{{ 'SearchArticle' | translate }}"
+                formControlName="title" 
+                [matAutocomplete]="auto"/>
+        <!-- Ícono de borrar -->
+        <button
+            *ngIf="formGroup.get('title')?.value"
+            matSuffix 
+            mat-icon-button
+            class="clear-button"
+            aria-label="Clear"
+            (click)="formGroup.get('title')?.reset()">
+            <mat-icon>close</mat-icon>
+        </button>
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+            <mat-option *ngFor="let article of filteredOptions" [value]="article.title">
+                <span (click)="onArticleSelected(article.title)">{{article.title}}</span>
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>
