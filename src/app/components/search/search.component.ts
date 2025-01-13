@@ -5,6 +5,7 @@ import { debounceTime, map, startWith } from 'rxjs/operators';
 import { ArticleService } from 'src/app/shared/services/article.service';
 import { Article } from 'src/app/shared/models/article';
 import { NavigationExtras, Router } from '@angular/router';
+import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
   selector: 'app-search',
@@ -32,7 +33,9 @@ export class SearchComponent implements OnInit {
   private debounceTimer!: any;
   private uniqueChars: string[] = [];
 
-  constructor(private readonly articleSvc: ArticleService,
+  constructor(
+    private readonly utilsSvc: UtilsService,
+    private readonly articleSvc: ArticleService,
     private readonly router: Router,
     private readonly renderer2: Renderer2,
     private readonly fb: FormBuilder
@@ -57,7 +60,7 @@ clearInput(): void {
     if (this.myControl.valid) {
       this.articleSvc.getAll()
         .subscribe(res => {
-          this.allOptions = res;
+          this.allOptions = this.utilsSvc.sortArticlesByTitleAZ(res);;
           this.options = [];
           this.allOptions.forEach(x => {
             this.options.push(x.title);

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { map, Observable, startWith } from 'rxjs';
 import { Article } from 'src/app/shared/models/article';
 import { ArticleService } from 'src/app/shared/services/article.service';
+import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
   selector: 'app-search2',
@@ -16,6 +17,7 @@ export class Search2Component implements OnInit {
   formControl = new FormControl('');
 
   constructor(
+    private readonly utilsSvc: UtilsService,
     private readonly fb: FormBuilder,
     private readonly router: Router, 
     private readonly articleSvc: ArticleService) {}
@@ -31,7 +33,7 @@ export class Search2Component implements OnInit {
   private getArticles() {
     this.articleSvc.getAll().subscribe({
       next: data => {
-        this.articles = data;
+        this.articles = this.utilsSvc.sortArticlesByTitleAZ(data);
       },
       error: err => {
         console.log(err);
