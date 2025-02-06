@@ -22,9 +22,8 @@
 				controls></video>
 			</div>
 			<div class="card-actions">
-				<button mat-stroked-button (click)="openModal(i)">
-					<mat-icon *ngIf="file.fileType == 'image'">visibility</mat-icon>
-					<mat-icon *ngIf="file.fileType == 'video'">visibility_off</mat-icon>
+				<button *ngIf="file.fileType == 'image'" mat-stroked-button (click)="openModal(i)">
+					<mat-icon>visibility</mat-icon>
 				</button>
 				<ng-container *ngIf="username == tokenSvc.getUsername() || tokenSvc.isAdmin()">
 					<button [style.color]="file.coverImg ? 'gray': 'var(--lemon)'"
