@@ -115,10 +115,11 @@ export class HeaderComponent implements OnInit {
   }
 
   onHelp() {
-    this.dialog.open(InfoAppComponent, {
-      enterAnimationDuration: '500ms',
-      exitAnimationDuration: '500ms' 
-    });
+    this.router.navigate(['/article/463']);
+    // this.dialog.open(InfoAppComponent, {
+    //   enterAnimationDuration: '500ms',
+    //   exitAnimationDuration: '500ms' 
+    // });
   }
   // https://www.concretepage.com/angular-material/angular-material-open-menu-on-hover
   openMenu(menuTrigger: MatMenuTrigger) {
