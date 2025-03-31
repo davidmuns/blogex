@@ -27,6 +27,8 @@
     "noTitle": "Unspecified title",
     "TitleLength": "Title too long",
     "Caption": "Caption",
+    "Tags": "Tags",
+    "addTags": "Write a name related to the article and press enter (i.e. 'Spain', 'Barcelona', 'Travel')",
     "captionUpdated": "Caption updated",
     "Coordinates": "Coordinates",
     "Longitude": "Longitude",

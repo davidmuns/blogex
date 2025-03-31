@@ -37,6 +37,8 @@ export class EditComponent implements OnInit {
   public articleHtml!: boolean;
   public innerWidth: any;
   timeout = 600;
+  tags: string[] = [];
+  separatorKeysCodes = [13, 188];
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { article: Article },
@@ -46,7 +48,7 @@ export class EditComponent implements OnInit {
     private readonly articleService: ArticleService,
     private readonly fBuilder: FormBuilder,
     private readonly router: Router,
-    private translateService: TranslateService) {
+    private readonly translateService: TranslateService) {
     tinyEditorSvc.getEditorConfig().subscribe((config:any) => {
       this.editorConfig = config;
     });
@@ -57,6 +59,10 @@ export class EditComponent implements OnInit {
 
   ngOnInit(): void {
     if (typeof this.article !== 'undefined') {
+      // Cargar las etiquetas del artículo en el formulario
+      if (this.article.tags) {
+        this.tags = this.article.tags.map((tag: { id: number, name: string }) => tag.name);  // Solo los nombres
+      }   
       this.editPostForm.patchValue(this.article);
     } else {
       this.router.navigate(['admin/new']);
@@ -88,15 +94,41 @@ export class EditComponent implements OnInit {
       id: ['', Validators.required],
       title: ['', [Validators.required, Validators.maxLength(30)]],
       caption: ['', [Validators.required, Validators.maxLength(50)]],
-      //img1: [''],
+      tags: [[]],
       content: ['', Validators.required],
       longitude: ['', Validators.required],
       latitude: ['', Validators.required]
     });
   };
+  // Función para agregar etiquetas
+  addTag(event: any): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || '').trim()) {
+      this.tags.push(value.trim());
+    }
+    // Limpiar el input después de agregar la etiqueta
+    if (input) {
+      input.value = '';
+    }
+  }
+  // Función para eliminar etiquetas
+  removeTag(tag: string): void {
+    const index = this.tags.indexOf(tag);
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }
+    console.log(this.tags);
+    
+  }
 
   onSubmit(post: Article) {
     let msg = '';
+    if (post.tags) {
+      post.tags = this.tags.map(tag => ({ name: tag }));
+    }
+    console.log(post);
     if (this.editPostForm.valid) {
       if (this.image != undefined) {  
         if (this.image.size <= environment.IMG_MAX_SIZE) {

@@ -19,6 +19,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { MatChipsModule } from '@angular/material/chips';
 
 const myModule = [
   MatButtonModule,
@@ -38,7 +39,8 @@ const myModule = [
   MatDividerModule,
   MatProgressSpinnerModule,
   MatTabsModule,
-  DragDropModule
+  DragDropModule,
+  MatChipsModule
 ];
 
 @NgModule({

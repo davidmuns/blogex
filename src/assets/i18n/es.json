@@ -27,6 +27,8 @@
     "noTitle": "Título no especificado",
     "TitleLength": "Título demasiado largo",
     "Caption": "Pie de foto",
+    "Tags": "Etiquetas",
+    "addTags": "Escribe un nombre relacionado con el artículo y presiona enter (por ejemplo, 'España', 'Barcelona', 'Viaje')",
     "addCaption": "Añadir pie de foto",
     "captionUpdated": "Pie de foto actualizado",
     "Coordinates": "Coordenadas",

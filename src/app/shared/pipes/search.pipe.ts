@@ -14,7 +14,8 @@ export class SearchPipe implements PipeTransform {
 
     return articles.filter(article =>
       this.normalizeText(article.title).includes(normalizedSearchTerm) ||
-      this.normalizeText(article.usuario.nombreUsuario).includes(normalizedSearchTerm)
+      this.normalizeText(article.usuario.nombreUsuario).includes(normalizedSearchTerm) ||
+      this.normalizeText(article.tags.map(tag => tag.name).join(' ')).includes(normalizedSearchTerm)
     );
   }
 

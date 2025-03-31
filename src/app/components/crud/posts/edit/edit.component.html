@@ -73,6 +73,23 @@
               {{ 'Pie de foto demasiado largo' | translate }}</div>
             
           </mat-form-field>
+          <h4>{{ 'Tags' | translate }}:</h4>
+          <mat-form-field class="input-width" appearance="fill">
+            <mat-label>{{ 'Tags' | translate }}</mat-label>
+            <mat-chip-list #chipList formControlName="tags">
+              <mat-chip *ngFor="let tag of tags" [selectable]="true" [removable]="true" (removed)="removeTag(tag)">
+                {{ tag }}
+                <button mat-icon-button *ngIf="tag" (click)="removeTag(tag)">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input matInput
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     (matChipInputTokenEnd)="addTag($event)"
+                     placeholder="{{ 'addTags' | translate }}"/>
+            </mat-chip-list>
+          </mat-form-field>
           <h4>{{ 'Text' | translate }}:</h4>
           <!-- <mat-form-field class="input-width" appearance="fill">
             <mat-label>{{ 'Text' | translate }}</mat-label>

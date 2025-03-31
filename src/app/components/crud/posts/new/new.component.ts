@@ -17,7 +17,6 @@ import { Article } from 'src/app/shared/models/article';
 export class NewComponent {
 
   image!: File | null;
-  images: File[] = [];
   miniatura!: File;
   uploading = false;
   public newPostForm!: FormGroup;
@@ -25,6 +24,8 @@ export class NewComponent {
   public buttonTag: string = "One More";
   // tinymce text editor config variable
   editorConfig: any;
+  tags: string[] = [];
+  separatorKeysCodes = [13, 188];
 
   constructor(
     tinyEditorSvc: TinyEditorService,
@@ -45,11 +46,34 @@ export class NewComponent {
     this.newPostForm = this.fBuilder.group({
       title: ['', [Validators.required, Validators.maxLength(30)]],
       caption: ['', [Validators.required, Validators.maxLength(50)]],
+      tags: [[]],
       content: ['', Validators.required],
       longitude: ['', Validators.required],
       latitude: ['', Validators.required]
     });
   };
+
+  // Función para agregar etiquetas
+  addTag(event: any): void {
+    const input = event.input;
+    const value = event.value;
+
+    if ((value || '').trim()) {
+      this.tags.push(value.trim());
+    }
+    // Limpiar el input después de agregar la etiqueta
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  // Función para eliminar etiquetas
+  removeTag(tag: string): void {
+    const index = this.tags.indexOf(tag);
+    if (index >= 0) {
+      this.tags.splice(index, 1);
+    }  
+  }
 
   handleImageOnNewForm(event: any): void {
 
@@ -84,6 +108,9 @@ export class NewComponent {
 
   onSubmit(post: Article) {
     let msg = '';
+    if (post.tags) {
+      post.tags = this.tags.map(tag => ({ name: tag }));
+    }   
     console.log(post);
     
     if (this.newPostForm.valid && this.image != null) {

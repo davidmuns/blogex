@@ -1,11 +1,11 @@
 import { Imagen } from "./imagen";
+import { Tag } from "./tag";
 import { Usuario } from "./usuario";
 import { Video } from "./video";
 
 export interface Article {
   id: number,
   title: string,
-  //img1?: File,
   caption: string,
   content: string,
   longitude: number,
@@ -14,5 +14,6 @@ export interface Article {
   imagenPortada: string,
   usuario: Usuario,
   imagenes:Imagen[],
-  videos: Video[]
+  videos: Video[],
+  tags: Tag[],
 }

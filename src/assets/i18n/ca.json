@@ -26,6 +26,8 @@
     "noTitle": "Títol no especificat",
     "TitleLength": "Títol massa llarg",
     "Caption": "Peu de foto",
+    "Tags": "Etiquetes",
+    "addTags": "Escriu un nom relacionat amb l'article i prem enter (ex. 'Espanya', 'Barcelona', 'Viatge')",
     "captionUpdated": "Peu de foto actualitzat",
     "Coordinates": "Coordenades",
     "Longitude": "Longitud",
