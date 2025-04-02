@@ -12,8 +12,7 @@ import { bounce, fadeIn, fadeInZoom, fadeSlide, pulse, rotate, scaleUp, slideIn,
 // Animate on scroll library => https://michalsnik.github.io/aos/
 import AOS from 'aos';
 import { Overlay } from '@angular/cdk/overlay';
-import { environment } from 'src/environments/environment';
-// const dialogConfig = environment.dialogConfig;
+import { Tag } from 'src/app/shared/models/tag';
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
@@ -105,6 +104,11 @@ export class ArticleComponent implements OnInit {
     dialogConfig.scrollStrategy = this.overlay.scrollStrategies.noop(); // Permite el scroll en el fondo.
     dialogConfig.data = { article: post };
     this.dialog.open(EditComponent, dialogConfig);
+  }
+
+  onClick(tagName: string | undefined) {
+    // Navegar a la página de inicio con el nombre de la etiqueta como parámetro de consulta
+    this.router.navigate(['/home'], { queryParams: { tagName: tagName } });
   }
 }
 

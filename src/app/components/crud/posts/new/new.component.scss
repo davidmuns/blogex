@@ -10,6 +10,13 @@ mat-card {
     }
 }
 
+.content-editor {
+    position: relative;
+    /* Puedes usar absolute o fixed según tus necesidades */
+    z-index: 9999;
+    /* Un valor alto para asegurar que esté por encima de otros elementos */
+}
+
 mat-card-title {
     text-align: center;
     padding: 30px 0px;
@@ -42,6 +49,7 @@ mat-card-content {
     }
 
 }
+
 
 .containerFile {
     margin: 20px 0px;
@@ -107,4 +115,4 @@ mat-card-content {
     background-color: #17373b;
     background-color: var(--cream);
     padding: 25px;
-  }
+}

@@ -107,6 +107,22 @@ mat-card-content {
     }
   }
 
+  .tag {
+    margin: 20px 0px 0px 20px;
+    a {
+      text-decoration: none;
+      color: rgba(47, 47, 47, 1);
+      cursor: pointer;
+    }
+    a:hover {
+      color: white;
+    }
+    mat-chip:hover {
+      background-color: var(--lemon);
+      color: rgba(47, 47, 47, 1);
+    }
+  }
+
   .title-content {
     font-size: 1.8rem;
     text-align: center;
@@ -114,6 +130,7 @@ mat-card-content {
     margin-bottom: 5px;
     font-family: Roboto, 'Helvetica Neue', sans-serif;
     color: var(--cream);
+    
 
     @media(max-width:600px) {
       font-size: 1.4rem;

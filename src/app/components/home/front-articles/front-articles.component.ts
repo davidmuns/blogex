@@ -1,9 +1,9 @@
 import { ArticleService } from './../../../shared/services/article.service';
 import { UtilsService } from './../../../shared/services/utils.service';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Imagen } from './../../../shared/models/imagen';
 import { Article } from 'src/app/shared/models/article';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import AOS from 'aos';
 import { PageEvent } from '@angular/material/paginator';
 
@@ -29,10 +29,18 @@ export class FrontArticlesComponent implements OnInit {
   constructor(
     private readonly articleService: ArticleService,
     private readonly utilsSvc: UtilsService,
+    private readonly route: ActivatedRoute,
     private readonly router: Router) { }
 
   ngOnInit(): void {
     this.getArticles();
+      // Captura el parámetro 'search' de la URL
+    this.route.queryParams.subscribe(params => {
+      if (params['tagName']) {
+        this.filterByTitle = params['tagName']; // Establece el valor del campo de búsqueda
+        this.scrollToSearch(); // Llama a la función para desplazar la página
+      }
+    });
     AOS.init();
   }
 
@@ -59,5 +67,14 @@ export class FrontArticlesComponent implements OnInit {
 
   onClick(articleId: number) {
     this.router.navigate(['article/' + articleId]);
+  }
+
+  // Función para desplazar la página hacia el campo de búsqueda
+  scrollToSearch() {
+    window.scroll({
+      top: 1400,
+      left: 0,
+      behavior: 'smooth'
+    });
   }
 }

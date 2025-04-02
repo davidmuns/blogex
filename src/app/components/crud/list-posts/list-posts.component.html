@@ -5,7 +5,7 @@
     <div class="filter-sort-container">
       <mat-form-field appearance="outline">
         <mat-label for="labelFilter">{{ 'Filter' | translate }}</mat-label>
-        <input matInput id="filter" [(ngModel)]="inputValue" (keyup)="applyFilter($event)" #input>
+        <input matInput id="filter" [(ngModel)]="inputValue" (keyup)="applyFilter($event)" #input placeholder="{{ 'crud.article-card.search' | translate }} / {{ 'Tags' | translate }}">
         <button
           mat-icon-button
           matSuffix

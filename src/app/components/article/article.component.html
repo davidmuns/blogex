@@ -19,8 +19,9 @@
         </button>
       </div>
       <div class="autor">
-        <div id="autorLink">Blogger:&nbsp;<span routerLink="/blog/{{ username }}">
-            {{ username }}</span></div>&nbsp;&nbsp;&nbsp;
+        <div id="autorLink">
+          Blogger:&nbsp;<span routerLink="/blog/{{ username }}">{{ username }}</span>
+        </div>&nbsp;&nbsp;&nbsp;
         <button *ngIf="username == tokenSvc.getUsername() || tokenSvc.isAdmin()" mat-stroked-button color="accent" id="editAutor"
           (click)="onEdit(post)">
           <mat-icon>edit</mat-icon> {{ 'EditArticle' | translate }}
@@ -30,6 +31,14 @@
         </button>
       </div>
       <p>{{ 'article.date' | translate }}: {{ post?.date | formatDate }}</p>
+      <p>{{ 'Tags' | translate }}:</p>
+      <div class="tag">
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip *ngFor="let tag of post?.tags" (click)="onClick(tag.name)">
+            <a>{{ tag.name }}</a>
+          </mat-chip>
+        </mat-chip-list>
+      </div>
       <div class="title-content">
         {{ post?.title }}
       </div>
