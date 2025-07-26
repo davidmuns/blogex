@@ -10,13 +10,6 @@ mat-card {
     }
 }
 
-.content-editor {
-    position: relative;
-    /* Puedes usar absolute o fixed según tus necesidades */
-    z-index: 9999;
-    /* Un valor alto para asegurar que esté por encima de otros elementos */
-}
-
 mat-card-title {
     text-align: center;
     padding: 30px 0px;
