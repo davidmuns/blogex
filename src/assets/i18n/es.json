@@ -112,7 +112,7 @@
         },
         "signup": {
             "fill-blanks": "Por favor, rellena los campos vacios",
-            "pass-length": "La contraseña debe tener como mínimo 8 caracteres y debe contener números y letras",
+            "pass-length": "La contraseña debe tener al menos 8 caracteres, incluyendo un número y una letra.",
             "email-exists": "Este correo electrónico ya existe",
             "username-exists": "Este nombre de usuario ya existe",
             "invalid-email": "Debe ser un correo electrónico válido"
@@ -125,7 +125,7 @@
         },
         "reset-pass": {
             "fill-blanks": "Por favor, rellena los campos vacios",
-            "pass-length": "La contraseña debe tener como mínimo 8 caracteres y debe contener números y letras",
+            "pass-length": "La contraseña debe tener al menos 8 caracteres, incluyendo un número y una letra.",
             "no-match": "Las contraseñas no coinciden",
             "valid": "Contraseña modificada con éxito. Redirigiendo a la página de inicio..."
         }

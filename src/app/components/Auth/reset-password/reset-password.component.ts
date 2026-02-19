@@ -45,7 +45,7 @@ export class ResetPasswordComponent implements OnInit {
   private initform(): void {
     this.resetForm = new FormGroup(
       {
-      newPassword: new FormControl("", [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]),
+      newPassword: new FormControl("", [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d).{8,}$')]),
       confirmPassword: new FormControl("", Validators.required)
       }, 
       passwordsMustBeEqual)

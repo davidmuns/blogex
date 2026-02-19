@@ -50,7 +50,7 @@ export class FormTemplateComponent implements OnInit {
     this.form = this.fb.group({
       nombreUsuario: ['', [Validators.required, Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(30)]],
-      password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$')]]
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[A-Za-z])(?=.*\\d).{8,}$')]]
     });
   }
 
