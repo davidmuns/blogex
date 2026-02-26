@@ -5,6 +5,10 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,//To bind JSON file of assets folder
     "baseUrl": "./",
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@env/*": ["src/environments/*"]
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

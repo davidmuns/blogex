@@ -1,4 +1,4 @@
-import { Article } from './../../../shared/models/article';
+import { Article } from '@app/shared/models/article';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TokenService } from 'src/app/shared/services/token.service';

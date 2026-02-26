@@ -1,14 +1,13 @@
-import { InfoAppComponent } from './../../components/info-app/info-app.component';
-import { UtilsService } from './../services/utils.service';
-import { LoginComponent } from '../../components/auth/login/login.component';
+import { UtilsService } from './../services/utils.service'
 import { TinyEditorService } from './../services/tiny-editor.service';
 import { TranslateService } from '@ngx-translate/core';
-import { DeleteComponent } from './../../components/crud/delete/delete.component';
+import { DeleteComponent } from '@app/components/crud/delete/delete.component';
 import { TokenService } from './../services/token.service';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { LoginComponent } from '@app/components/auth/login/login.component';
 
 @Component({
   selector: 'app-header',
